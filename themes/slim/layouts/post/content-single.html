@@ -1,0 +1,17 @@
+<article class="post">
+  {{ .Render "header" }}
+  <section id="social-share">
+    {{ partial "share-buttons" . }}
+  </section>
+  {{ .Render "featured" }}
+  <div class="content">
+    {{ .Content }}
+  </div>
+  <footer>
+    {{ .Render "stats" }}
+  </footer>
+</article>
+<article class="post">
+  {{ .Render "comments" }}
+</article>
+{{ .Render "pagination" }}

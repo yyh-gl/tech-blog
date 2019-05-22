@@ -1,7 +1,7 @@
-baseurl                 = "https://yyh-gl.github.io/tech-blog/"
+baseurl                 = "https://example.com/"
 DefaultContentLanguage  = "en"
-title                   = "yyh-gl's tech blog"
-theme                   = "slim"
+title                   = "Hugo Future Imperfect Slim"
+theme                   = "hugo-future-imperfect-slim"
 preserveTaxonomyNames   = true
 paginate                = 3
 disqusShortname         = ""
