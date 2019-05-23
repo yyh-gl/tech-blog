@@ -1,6 +1,6 @@
 baseurl                 = "https://yyh-gl.github.io/tech-blog/"
 DefaultContentLanguage  = "en"
-title                   = "yyh-gl's tech blog"
+title                   = "yyh-gl's Tech Blog"
 theme                   = "slim"
 preserveTaxonomyNames   = true
 paginate                = 3
@@ -21,24 +21,24 @@ disableLanguages        = [""]
   highlightjsTheme      = "github"
   highlightjsLang       = ["html", "css", "js", "toml"]
   # Sets where "View More Posts" links to
-  viewMorePostsLink     = "/blog/"
+  viewMorePostsLink     = "blog/"
   # Activate Estimated Reading Times, which appear in the post headers
   readingTime           = true
   # Sets which Social Share links appear in posts.
   # Options are twitter, facebook, reddit, linkedin, stumbleupon, pinterest, email
-  socialShare           = ["twitter", "facebook", "reddit", "linkedin",
-                          "stumbleupon", "pinterest", "email"]
+  socialShare           = ["twitter", "facebook"]
+  #["twitter", "facebook", "reddit", "linkedin", "stumbleupon", "pinterest", "email"]
 
   [params.meta]
     # Sets the meta tag description
-    description         = "A theme by HTML5 UP, ported by Julio Pescador. Slimmed and enhanced by Patrick Collins. Multilingual by StatnMap. Powered by Hugo."
+    description         = "yyh-gl's Tech Blog`"
     # Sets the meta tag author
-    author              = "HTML5UP and Hugo"
+    author              = "yyh-gl"
     # If you would like to add more comprehensive favicon support passed root
     # directory favicon.ico, utlize this funtion. It is recommened to use
     # https://realfavicongenerator.net to generate your icons as that is the basis
     # for the theme's naming.
-    favicon             = false
+    favicon             = true
     svg                 = true
     faviconVersion      = "1"
     msColor             = "#ffffff" # Copy from the https://realfavicongenerator.net
@@ -46,29 +46,29 @@ disableLanguages        = [""]
 
   [params.header]
     # Sets the navbarTitle that appears in the top left of the navigation bar
-    navbarTitle         = "Future Imperfect"
+    navbarTitle         = "yyh-gl's Tech Blog"
     # Sets navbarTitle to match the section of the website
     dynamicTitles       = true
     searchMenu          = true
     shareMenu           = true
-    languageMenu        = true
+    languageMenu        = false
 
   # These are optional params related to the sidebar. They are recommended, but not
   # required for proper functionality. HTML is supported within the params.
   [params.intro]
-    header                = "Hugo Future Imperfect Slim"
-    paragraph             = "Another fine, responsive site template by <a href='http://html5up.net'>HTML5 UP</a>."
+    header                = "yyh-gl's Tech Blog"
+    paragraph             = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
     rssIntro              = true
     socialIntro           = true
 
     # This appears at the top of the sidebar above params.intro.header.
     # A width of less than 100px is recommended from a design perspective.
     [params.intro.pic]
-      src                 = "/img/main/logo.jpg"
+      src                 = "/img/main/logo.png"
       # Masks image in a certain shape. Supported are circle, triangle, diamond, and hexagon.
       shape               = "circle"
-      width               = ""
-      alt                 = "Hugo Future Imperfect Slim"
+      width               = "80"
+      alt                 = "yyh-gl's icon"
 
   [params.sidebar]
     about               = "test"
@@ -106,31 +106,31 @@ disableLanguages        = [""]
   # Identifier prepends a Font Awesome icon to the menu item
   [[menu.main]]
     name              = "Home"
-    url               = "/"
+    url               = ""
     identifier        = "fas fa-home"
     weight            = 1
 
   [[menu.main]]
     name              = "About"
-    url               = "/about/"
+    url               = "about/"
     identifier        = "far fa-id-card"
     weight            = 2
 
   [[menu.main]]
     name              = "Blog"
-    url               = "/blog/"
+    url               = "blog/"
     identifier        = "far fa-newspaper"
     weight            = 3
 
   [[menu.main]]
     name              = "Categories"
-    url               = "/categories/"
+    url               = "categories/"
     identifier        = "fas fa-sitemap"
     weight            = 5
 
   [[menu.main]]
     name              = "Contact"
-    url               = "/contact/"
+    url               = "contact/"
     identifier        = "far fa-envelope"
     weight            = 6
 
@@ -178,49 +178,12 @@ disableLanguages        = [""]
       identifier        = "far fa-envelope"
       weight            = 6
 
-  [Languages.pl]
-    languageCode        = "pl"
-    LanguageName        = "Polskie"
-    title               = "Hugo przyszłość niedoskonała"
-    description         = "Motyw HTML5 UP, przeniesiony przez Julio Pescadora i wzbogacony przez Patricka Collinsa. Wielojęzyczny przez StatnMap. Zasilany przez Hugo."
-    weight              = 2
-
-    [[Languages.pl.menu.main]]
-      name              = "Home"
-      url               = "/"
-      identifier        = "fas fa-home"
-      weight            = 1
-
-    [[Languages.pl.menu.main]]
-      name              = "O mnie"
-      url               = "/about/"
-      identifier        = "far fa-id-card"
-      weight            = 2
-
-    [[Languages.pl.menu.main]]
-      name              = "Blog"
-      url               = "/blog/"
-      identifier        = "far fa-newspaper"
-      weight            = 3
-
-    [[Languages.pl.menu.main]]
-      name              = "Kategorie"
-      url               = "/categories/"
-      identifier        = "fas fa-sitemap"
-      weight            = 5
-
-    [[Languages.pl.menu.main]]
-      name              = "Kontakt"
-      url               = "/contact/"
-      identifier        = "far fa-envelope"
-      weight            = 6
-
 # Sets Social Media icons to appear and link to your account. Value should be your
 # username unless otherwise noted. These are the icons affected by socialAppearAtTop
 # and socialAppearAtBottom.
 [social]
   # Coding Communities
-  github                = "pacollins/hugo-future-imperfect-slim"
+  github                = "yyh-gl"
   gitlab                = ""
   stackoverflow         = "" # User Number
   bitbucket             = ""
@@ -228,22 +191,22 @@ disableLanguages        = [""]
   codepen               = ""
   # Visual Art Communities
   deviantart            = ""
-  flickr                = "example"
+  flickr                = ""
   behance               = ""
   dribbble              = ""
   # Publishing Communities
   wordpress             = ""
   medium                = ""
   # Professional/Business Oriented Communities
-  linkedin              = "example"
-  linkedin_company      = "examplebusiness"
+  linkedin              = ""
+  linkedin_company      = ""
   foursquare            = ""
   xing                  = ""
   slideshare            = ""
   # Social Networks
-  facebook              = "example"
+  facebook              = ""
   googleplus            = ""
-  reddit                = "example"
+  reddit                = ""
   quora                 = ""
   youtube               = ""
   vimeo                 = ""
@@ -251,16 +214,16 @@ disableLanguages        = [""]
     # WeChat and QQ need testing.
     wechat              = ""
     qq                  = "" # User ID Number
-  instagram             = "example"
+  instagram             = ""
   tumblr                = ""
-  twitter               = "example"
+  twitter               = "https://twitter.com/yyh_gl"
   skype                 = ""
   snapchat              = ""
-  pinterest             = "example"
-  telegram              = "example"
+  pinterest             = ""
+  telegram              = ""
   vine                  = ""
   googlescholar         = ""
   orcid                 = ""
-  researchgate          = "example"
+  researchgate          = ""
   # Email
-  email                 = "example"
+  email                 = ""
