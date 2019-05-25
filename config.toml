@@ -71,7 +71,7 @@ disableLanguages        = [""]
       alt                 = "yyh-gl's icon"
 
   [params.sidebar]
-    about               = "test"
+    about               = "フルスタック目指すエンジニア"
     # Sets the number of recent posts to show in the sidebar. The default value is 5.
     postAmount          = 5
     # set to show or to hide categories in the sidebar
