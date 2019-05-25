@@ -1,29 +1,26 @@
 +++
-title = "About Hugo"
-date = "2014-04-09"
+title = "About yyh-gl"
+date = "2019-05-22"
 +++
 
-Hugo is a static site engine written in Go.
+---
+# 趣味は開発
+---
+
+都内IT企業で働くエンジニアです。
+
+<u>趣味が開発</u> というくらいエンジニアリングが大好きです。
+
+---
+# 学生時代
+---
+
+IT企業でインターンやアルバイトでECサイトやゲームのバックエンド開発をしていました。
 
 
-It makes use of a variety of open source projects including:
+---
+# いま
+---
 
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
+主戦場はサーバサイド。でも、フルスタックエンジニアを目指して、日々勉強中です。
 
-Learn more and contribute on [GitHub](https://github.com/spf13).
-
-## Setup
-
-Some fun facts about [Hugo](http://gohugo.io/):
-
-* Built in [Go](http://golang.org/)
-* Loosely inspired by [Jekyll](http://jekyllrb.com/)
-* Primarily developed by [spf13](http://spf13.com/) on the train while commuting to and from Manhattan.
-* Coded in [Vim](http://vim.org) using [spf13-vim](http://vim.spf13.com/)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/spf13/hugo/issues/new) or [ask me on Twitter](https://twitter.com/spf13).
-
-Thanks for reading!
