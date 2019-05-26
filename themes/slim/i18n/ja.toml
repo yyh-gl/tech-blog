@@ -1,7 +1,7 @@
 [date_format]
   other = "2006-01-02"
 [postreadingtime]
-  other = "minute read"
+  other = "分くらいで読める記事"
 [recent_posts]
   other = "Recent posts"
 [see_more]
