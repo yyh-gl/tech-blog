@@ -5,7 +5,7 @@ theme                   = "slim"
 preserveTaxonomyNames   = true
 paginate                = 3
 disqusShortname         = ""
-googleAnalytics         = ""
+googleAnalytics         = "UA-140914324-1"
 pluralizeListTitles     = false
 disableLanguages        = [""]
 
