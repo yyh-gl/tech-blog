@@ -3,7 +3,7 @@ author = "yyh-gl"
 categories = ["チームマネジメント", "読書まとめ"]
 date = "2019-05-25"
 description = ""
-featured = ""
+featured = "engineering-organization-theory-mentoring/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
@@ -537,7 +537,7 @@ type = "post"
 # 心理的安全性と責任
 ---
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentaling/shinrianzen.png" width="600">
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/shinrianzen.png" width="600">
 <br>
 
 メンタリングにおいて重要なのは <u>ラーニングゾーン</u> である。
@@ -679,7 +679,7 @@ Youメッセージは相手に誤解を生みやすいメッセージである�
 # ジョハリの窓
 ---
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentaling/johali.png" width="600">
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/johali.png" width="600">
 
 <br>
 <br>
@@ -749,7 +749,7 @@ Youメッセージは相手に誤解を生みやすいメッセージである�
 # 能力と習慣をコントロールする
 ---
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentaling/koudoutosyuukan.png" width="600">
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/koudoutosyuukan.png" width="600">
 
 <br>
 <br>
