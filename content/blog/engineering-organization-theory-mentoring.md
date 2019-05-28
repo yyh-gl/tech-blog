@@ -412,7 +412,7 @@ type = "post"
 
 ## 明晰化
 
-可視化の家庭で、<u>感情的に固執してしまっている要素</u>を引き剥がし、
+可視化の過程で、<u>感情的に固執してしまっている要素</u>を引き剥がし、
 
 本来の問題が何であるのかをはっきりさせる。
 
@@ -538,7 +538,7 @@ type = "post"
 # 心理的安全性と責任
 ---
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/shinrianzen.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/shinrianzen.png" width="600">
 <br>
 
 メンタリングにおいて重要なのは <u>ラーニングゾーン</u> である。
@@ -680,7 +680,7 @@ Youメッセージは相手に誤解を生みやすいメッセージである�
 # ジョハリの窓
 ---
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/johali.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/johali.png" width="600">
 
 <br>
 <br>
@@ -750,7 +750,7 @@ Youメッセージは相手に誤解を生みやすいメッセージである�
 # 能力と習慣をコントロールする
 ---
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/koudoutosyuukan.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/engineering-organization-theory-mentoring/koudoutosyuukan.png" width="600">
 
 <br>
 <br>
