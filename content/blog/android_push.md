@@ -222,11 +222,11 @@ Android側で通知を受け取れているか確認しましょう。
 通知が来ましたね！ 音もついています。
 
 <div style="display:inline-block">
-    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/top.png" width="260">
+    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/top.png" width="250">
 
-    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/bar.png" width="260">
+    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/bar.png" width="250">
     
-    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/notification_center.png" width="260">
+    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/notification_center.png" width="250">
 </div>
 
 ステータスバーにもアイコンが表示されています（鳥のマークです）。
