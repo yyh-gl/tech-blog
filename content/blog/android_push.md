@@ -100,7 +100,7 @@ Googleアカウントを持っている方なら[公式サイト](https://fireba
 
 ひととおり作業が進むと、↓このような画面が表示されます。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/app-registering-complete.png" width="800">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/app-registering-complete.png" width="750">
 
 自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。
 
@@ -188,13 +188,13 @@ dependencies {
 
 Cloud Messaging 画面に行き、「Send your first message」から通知を作成します。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/send_notification.png" width="800">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/send_notification.png" width="750">
 
 <br>
 
 1. 通知のタイトルとメッセージを設定します。
 
-    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/create_message.png" width="800">
+    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/create_message.png" width="750">
 
 1. ターゲットは自分のアプリを選択してください。
 
@@ -204,7 +204,7 @@ Cloud Messaging 画面に行き、「Send your first message」から通知を�
 
 1. その他のオプションはチャンネルIDだけ設定します（Android8.0以上の人のみ）
 
-     <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/other_option.png" width="800">
+     <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/other_option.png" width="750">
 
 1. 「確認」 > 「公開」 で通知が送られます。
 
@@ -222,11 +222,11 @@ Android側で通知を受け取れているか確認しましょう。
 通知が来ましたね！ 音もついています。
 
 <div style="display:inline-block">
-    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/top.png" width="280">
+    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/top.png" width="260">
 
-    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/bar.png" width="280">
+    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/bar.png" width="260">
     
-    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/notification_center.png" width="280">
+    <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/android_push/notification_center.png" width="260">
 </div>
 
 ステータスバーにもアイコンが表示されています（鳥のマークです）。
