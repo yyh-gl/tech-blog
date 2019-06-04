@@ -12,8 +12,6 @@ type = "post"
 
 +++
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/-/-" width="600">
-
 <br>
 
 ---
@@ -39,7 +37,7 @@ AWSやGCP, Azure などの他に[様々なクラウドプラットフォーム](
 
 Terraform で AWS 上に下記のような環境を自動構築します。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/terraform_ecs/architecture.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/architecture.png" width="600">
 
 <br>
 
@@ -943,7 +941,7 @@ terraform コマンドが入ってない人は brew やらなんやらでイン�
 実行して（かなり時間がかかりますが）下記のように出力されたら成功です！
 
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/terraform_ecs/terraform_apply_success.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/terraform_apply_success.png" width="600">
 
 <br>
 
@@ -953,7 +951,7 @@ terraform コマンドが入ってない人は brew やらなんやらでイン�
 
 こちらもかなり時間がかかりますが、下記のようにリソースが削除されると思います。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/terraform_ecs/terraform_destroy_success.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/terraform_destroy_success.png" width="600">
 
 
 <br>
