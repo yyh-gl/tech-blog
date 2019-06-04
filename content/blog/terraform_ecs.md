@@ -903,10 +903,14 @@ resource "aws_rds_cluster" "this" {
 	master_password = "${data.aws_ssm_parameter.database_password.value}"
 
 	# RDSインスタンス削除時のスナップショットの取得強制を無効化
-
 	skip_final_snapshot = true
+
+	# 使用する Parameter Group を指定
+	db_cluster_parameter_group_name = "${aws_rds_cluster_parameter_group.this.name}"
 }
 
+# RDS Cluster Instance
+# https://www.terraform.io/docs/providers/aws/r/rds_cluster_instance.html
 resource "aws_rds_cluster_instance" "this" {
 	identifier         = "${local.name}"
 	cluster_identifier = "${aws_rds_cluster.this.id}"
@@ -916,7 +920,48 @@ resource "aws_rds_cluster_instance" "this" {
 	instance_class = "db.t3.small"
 }
 
-# terraform コマンド実行時にコンソールにエンドポイントを表示
+# RDS Cluster Parameter Group
+# https://www.terraform.io/docs/providers/aws/r/rds_cluster_parameter_group.html
+# 日本時間に変更 & 日本語対応のために文字コードを変更
+resource "aws_rds_cluster_parameter_group" "this" {
+	name   = "${local.name}"
+	family = "aurora-mysql5.7"
+
+	parameter {
+		name  = "time_zone"
+		value = "Asia/Tokyo"
+	}
+
+	parameter {
+		name  = "character_set_client"
+		value = "utf8mb4"
+	}
+
+	parameter {
+		name  = "character_set_connection"
+		value = "utf8mb4"
+	}
+
+	parameter {
+		name  = "character_set_database"
+		value = "utf8mb4"
+	}
+
+	parameter {
+		name  = "character_set_results"
+		value = "utf8mb4"
+	}
+
+	parameter {
+		name  = "character_set_server"
+		value = "utf8mb4"
+	}
+}
+
+# terraform applyコマンド完了時にコンソールにエンドポイントを表示
+# 【解説】もしエンドポイントも機密情報として扱うのであれば
+# ここで表示されたエンドポイントをパラメータストアに格納すればよい。
+# 今回は紹介のために使用。
 output "rds_endpoint" {
 	value = "${aws_rds_cluster.this.endpoint}"
 }
