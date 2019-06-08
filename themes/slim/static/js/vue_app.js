@@ -8,7 +8,9 @@ Vue.component('good-counter', {
     }
   },
   mounted () {
+    // URL から記事情報を取得
     let paths = location.pathname.split('/');
+    // URL のタイトル部分のみを抽出し、リクエストURL を作成
     let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + paths[paths.length - 2];
 
     axios
@@ -17,7 +19,9 @@ Vue.component('good-counter', {
   },
   methods: {
     addCount: function (event) {
+      // URL から記事情報を取得
       let paths = location.pathname.split('/');
+      // URL のタイトル部分のみを抽出し、リクエストURL を作成
       let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + paths[paths.length - 2] + '/good';
 
       if(event) {
