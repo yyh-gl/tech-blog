@@ -8,7 +8,7 @@ featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
 title = "【大規模サービス技術入門】大規模データ処理に入門する"
-type = "post"
+type = "postdra"
 
 +++
 
