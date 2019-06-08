@@ -12,7 +12,6 @@ type = "postaa"
 
 +++
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/05/-/-" width="600">
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/-/-" width="600">
 
 <br>
@@ -29,3 +28,6 @@ type = "postaa"
 ---
 # 構成
 ---
+
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/good_api/architecture" width="600">
+
