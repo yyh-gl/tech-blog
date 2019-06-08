@@ -28,5 +28,6 @@ git push origin master &&
 # 新規記事をサーバに登録
 curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"$1\"}" https://super.hobigon.work/api/v1/blogs &&
 
-echo "\nデプロイ完了！"
+echo
+echo "デプロイ完了！"
 
