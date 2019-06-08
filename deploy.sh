@@ -36,4 +36,4 @@ echo -e "\nサーバに記事を登録" &&
 curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"$1\"}" https://super.hobigon.work/api/v1/blogs &&
 echo -e "\nサーバに記事を登録完了" &&
 
-echo -e -n "\nデプロイ完了！"
+echo -e "\nデプロイ完了！"
