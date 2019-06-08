@@ -8,7 +8,7 @@ featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
 title = "【Web API + Vue.js】いいねボタン自作してみた"
-type = "posta"
+type = "postaa"
 
 +++
 
@@ -27,6 +27,6 @@ type = "posta"
 
 
 ---
-# 
+# 構成
 ---
 
