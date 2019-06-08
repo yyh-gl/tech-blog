@@ -2,6 +2,7 @@
 
 if [ $# -ne 1 ]
    then echo "引数でタイトルを指定"
+   exit -1
 fi
 
 echo "デプロイ開始 ..." &&
@@ -27,5 +28,5 @@ git push origin master &&
 # 新規記事をサーバに登録
 curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"$1\"}" https://super.hobigon.work/api/v1/blogs &&
 
-echo "デプロイ完了！"
+echo "\nデプロイ完了！"
 
