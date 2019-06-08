@@ -34,7 +34,6 @@ echo "GitHub Pages用リポジトリへPUSH完了" &&
 # 新規記事をサーバに登録
 echo -e "\nサーバに記事を登録" &&
 curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"$1\"}" https://super.hobigon.work/api/v1/blogs &&
-echo -n -e "\nサーバに記事を登録完了" &&
+echo -e "\nサーバに記事を登録完了" &&
 
-echo -n -e "\nデプロイ完了！"
-
+echo -e -n "\nデプロイ完了！"

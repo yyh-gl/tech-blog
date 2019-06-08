@@ -29,5 +29,3 @@ type = "postaa"
 ---
 # 構成
 ---
-aq
-aaaa
