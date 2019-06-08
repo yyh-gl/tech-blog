@@ -8,7 +8,7 @@ featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
 title = "【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた"
-type = "posta"
+type = "post"
 
 +++
 
@@ -56,9 +56,42 @@ Rails で APIサーバを建てる方法に関しては、
 
 <br>
 
+## DB にテーブル作成
+
+今回、ブログ記事を管理するために、下記のテーブルを作成しました。
+
+```
+mysql> describe blog_posts;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | bigint(20)   | NO   | PRI | NULL    | auto_increment |
+| title      | varchar(255) | NO   |     | NULL    |                |
+| count      | varchar(255) | NO   |     | 0       |                |
+| created_at | datetime     | NO   |     | NULL    |                |
+| updated_at | datetime     | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+```
+
+`title`には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
+記事ファイル（マークダウン）の名前（本記事だと『good_api』, 拡張子抜き）が入ります。
+
+
+<br>
+
+Web上の記事データと APIサーバのレコード をどうやって結びつけるか考えたとき、
+
+ページが持っている記事の情報って、 URL に含まれる 記事ファイル名 しかないなぁ…と考え、
+
+URL から取得した 英title と テーブルの `title` が一致するものを探すようにしました。
+
+
+<br>
+
 ## CORSの設定
 
-今回追加でやったのは CORS の設定です。
+今回重要なのは CORS の設定です。
 
 CORS を説明するとなると、 CSRF の説明やらなんやらで、とても長くなり、本題からかなり脱線するので
 
@@ -76,6 +109,8 @@ CORS を説明するとなると、 CSRF の説明やらなんやらで、とて
 では、本題の CORS の設定についてですが、
 
 Rails における CORS の設定はとても簡単です。
+
+<div>
 
 1. Gemfile に `rack-cors` を追加
 
@@ -143,11 +178,11 @@ Rails における CORS の設定はとても簡単です。
     
     事前にサーバに対してリクエストを送信しても大丈夫か問い合わせるさいに使用します（[参考](https://developer.mozilla.org/ja/docs/Web/HTTP/CORS#Preflighted_requests)）。
     
-    忘れずに追加しましょう。
-
+   忘れずに追加しましょう。
 <br>
 
-
+</div>
+<br>
 以上で、Rails における CORS の設定は完了です。
 
 
@@ -157,9 +192,7 @@ Rails における CORS の設定はとても簡単です。
 
 次は、記事ページからリクエストを送る部分です。
 
-Vue の SFC を使いたかったのですが、勉強不足で実現できず、このような実装になりました。
-
-詳しい人ぜひ教えてください。
+まず、HTMLファイルはこんな感じです ↓
 
 ```html
 <html>
@@ -180,22 +213,85 @@ IDが `GoodCounter` の `div`要素の部分に Vue コンポーネント（後�
 `script`タグは、上から axios, Vue, Vue コンポーネント を読み込んでいます。
 
 
-> axios が npm 経由のインストール方法しか見つけられなかったの CDN 経由なのですが、ローカルに落とすことってできるんでしょうか？）
+次に Vue コンポーネントです。
+
+（Vue のシンタックスハイライト対応してなかったので JS で代用…）
+
+```js
+// vue_app.js
+
+Vue.component('good-counter', {
+  template: '<button v-on:click="addCount">\n' +
+    '<i class="far fa-thumbs-up"></i> いいね　{{ good_count }}\n' +
+    '</button>',
+  data: function () {
+    return {
+      good_count: "-",
+    }
+  },
+  mounted () {
+    // URL から記事情報を取得
+    let paths = location.pathname.split('/');
+    // URL のタイトル部分のみを抽出
+    // GET /posts/:title への リクエストURL を作成
+    let reqUrl = '<server url>' + paths[paths.length - 2];
+
+    axios
+      .get(reqUrl)
+      .then(response => this.good_count = response.data.post.count)
+  },
+  methods: {
+    addCount: function (event) {
+      // URL から記事情報を取得
+      let paths = location.pathname.split('/');
+      // URL のタイトル部分のみを抽出
+      // POST /posts/:title/good への リクエストURL を作成
+      let reqUrl = '<server url>' + paths[paths.length - 2] + '/good';
+
+      if(event) {
+        axios
+          .post(reqUrl)
+          .then(response => this.good_count = response.data.after)
+      }
+    }
+  }
+});
+
+// root インスタンスを作成
+new Vue({
+  el: '#GoodCounter',
+});
+```
+
+いろいろ書いていますが、 URL から記事タイトルを取得し、
+
+それを基にリクエストを送っているだけです。
+
+Vue コンポーネントのマウント時に いいねの数を GET しています。
+
+そして、いいねボタンが押されるたびに `addCount()` が実行されて、 いいね が加算されます。
+
+<br>
+
+Vue の SFC を使いたかったのですが、勉強不足で実現できず、このような実装になりました。
+
+詳しい人ぜひ教えてください。
 
 
+---
+# 完成！
+---
 
+できあがったものは、↓ の方にスクロールしていったら実物があるので見てみてください
 
+<br>
 
+だれがいいねしてくれたかは分からないですが、 誰かがしてくれた という事実を噛み締めたいと思います。
 
+<br>
 
+Vue は僕の会社でも使われているので、今後も積極的にキャッチアップを続けていきたいです。
 
+フロントの知識もっとつけていきたいですねー👾
 
-
-
-
-
-
-
-
-
-
+（APIサーバへのアクセスを制限しないとな…）
