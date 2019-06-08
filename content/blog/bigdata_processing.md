@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["ビッグデータ", "解析", "書籍"]
-date = "2019-06-06"
+date = "2019-06-10"
 description = ""
 featured = "bigdata_processing/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
