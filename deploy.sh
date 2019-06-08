@@ -1,41 +1,31 @@
 #!/bin/bash
 
-echo "Start deploy..."
-
-# Build the project.
-hugo
-
-# Go to public folder
-cd public
-
-# Add changes to git.
-git add -A
-
-# Commit changes.
-msg="rebuilding site `date`"
-if [ $# -eq 1 ]
-  then msg="$1"
+if [ $# -ne 1 ]
+   then echo "引数でタイトルを指定"
 fi
-git commit -m "$msg"
 
-# Push source and build repos.
-git push origin master
+echo "デプロイ開始 ..." &&
 
-# Come back
-cd ..
+# 記事コンパイル
+hugo &&
 
-# Add changes to git.
-git add -A
+cd public &&
 
-# Commit changes.
-msg="rebuilding site `date`"
-if [ $# -eq 1 ]
-  then msg="$1"
-fi
-git commit -m "$msg"
+# ブログ設定用リポジトリへのPUSH
+msg="【公開】記事コード：$1"
+git add -A &&
+git commit -m "$msg" &&
+git push origin master &&
 
-# Push source and build repos.
-git push origin master
+cd .. &&
 
-echo "Done!"
+# GitHub Pages用リポジトリへPUSH
+git add -A &&
+git commit -m "$msg" &&
+git push origin master &&
+
+# 新規記事をサーバに登録
+curl -X POST --data-urlencode "payload={\"title\": \"$1\" }" https://super.hobigon.work/api/v1/blogs &&
+
+echo "デプロイ完了！"
 
