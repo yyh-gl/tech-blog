@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["AWS", "Terraform", "ECS", "RDS"]
-date = "2019-06-04"
+date = "2019-06-05"
 description = ""
 featured = "terraform_ecs/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
