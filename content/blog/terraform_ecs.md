@@ -35,7 +35,7 @@ AWSやGCP, Azure などの他に[様々なクラウドプラットフォーム](
 # 今回やること
 ---
 
-Terraform で AWS 上に下記のような環境を自動構築しますtesttest。
+Terraform で AWS 上に下記のような環境を自動構築します。
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/architecture.png" width="600">
 
