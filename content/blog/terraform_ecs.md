@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["AWS", "Terraform", "ECS", "RDS"]
-date = "2019-06-05"
+date = "2019-06-04"
 description = ""
 featured = "terraform_ecs/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
@@ -35,7 +35,7 @@ AWSやGCP, Azure などの他に[様々なクラウドプラットフォーム](
 # 今回やること
 ---
 
-Terraform で AWS 上に下記のような環境を自動構築します。
+Terraform で AWS 上に下記のような環境を自動構築しますtest。
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/architecture.png" width="600">
 
