@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd ~/tech-blog-settings &&
+git pull &&
 hugo &&
 cd public &&
 msg="【予約公開】記事コード：$1"
