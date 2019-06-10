@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["ビッグデータ", "解析", "読書まとめ"]
+categories = ["読書まとめ"]
 date = "2019-06-10"
 description = ""
 featured = "bigdata_processing/featured.png"
