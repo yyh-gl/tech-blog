@@ -1,19 +1,17 @@
 +++
 author = "yyh-gl"
-categories = ["Golang", "Web API"]
+categories = ["Golang", "考察"]
 date = "2019-06-11"
 description = ""
 featured = "go_project_template/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【Golang + Web API + go-kit】実際に手を動かしながらGolangプロジェクトのディレクトリ構成について考えてみた"
-type = "posta"
+title = "Golangプロジェクトのディレクトリ構成について考えてみた"
+type = "post"
 
 +++
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/-/-" width="600">
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/-/-" width="600">
 
 <br>
 
@@ -21,8 +19,10 @@ type = "posta"
 # Golangのディレクトリ構成で迷う
 ---
 
-Golang + go-kit でAPIサーバ作ろうと思ったときに、<br>
+Golang + Go kit でAPIサーバ作ろうと思ったときに、<br>
 ディレクトリ構成どうすりゃいいんだ？ってなりました。
+
+（Golang + Go kit で作るAPIサーバは後日ブログにします）
 
 Golang でプロジェクト作るとき、ディレクトリ構成で迷いませんか？<br>
 Rails や Laravel などは自動生成してくれるから迷いません。<br>
@@ -32,14 +32,13 @@ Rails や Laravel などは自動生成してくれるから迷いません。<b
 Golangにディレクトリ構成から自動生成してくれるやつってないですよね…？
 
 ざっくり調べた感じ個人の人が作ったジェネレータは何個か見つかりましたが、<br>
-みんながこれを使う！<br>
+Golangのディレクトリ構成といえこれ！<br>
 っていうデファクト・スタンダード的なライブラリは見つけられませんでした。<br>
 （あったらすみません）
 
 <br>
 
-今回は、Golang + go-kit でAPIサーバを作りながら、<br>
-どうやってディレクトリを切っていこうか考えようと思います。
+今回はどのようにディレクトリを切っていけばいいのか考えようと思います。
 
 
 ---
@@ -50,7 +49,7 @@ Golangにもディレクトリ構成のデファクト・スタンダードは�
 
 [golang-standards/project-layout](https://github.com/golang-standards/project-layout)
 
-ただし、これも公式に認められた構成ではないようです。
+ただし、これは公式に認められた構成ではないようです。
 
 それでも、8000弱のスターがついているので、<br>
 長いものには巻かれる精神でこのディレクトリ構成をベースにします。
@@ -69,41 +68,129 @@ Golangにもディレクトリ構成のデファクト・スタンダードは�
 [golang-standards/project-layout](https://github.com/golang-standards/project-layout) を参考にすると下記のとおりになるでしょうか。
 
 ```
-go-project-template
+go-api-project-template
 ├── api
 ├── build
 │   ├── ci
 │   └── package
 ├── cmd
-│   └── go-project-template
+│   ├── app1
+│   │   └── main.go
+│   └── app2
+│       └── main.go
 ├── configs
 ├── deployments
 ├── init
 ├── internal
+│   ├── app1
+│   └── app2
 ├── pkg
 ├── scripts
 ├── test
 └── vendor
 ```
 
-ひとつずつ見ていきます。
+ここで注意すべきは、今回作成する `go-project-template` というプロジェクトは <br>
+<u>`$GOPATH/src/` 配下に設置します。</u>
 
-（↓ 大文字になっちゃって見づらいと思います。すみません…そのうち直します ↓）
+それがGolangのお作法らしいです。
+
+<br>
+
+では、作成したディレクトリについて、ひとつずつ見ていきます。
 
 ---
-# /api
+# /cmd
 ---
 
-`/api` ディレクトリに以下のものが入ります。
+`/cmd` がプロジェクトのメインとなるディレクトリです。
 
-- OpenAPI や Swagger などの定義ファイル
+APIサーバで言えば、サーバを起動するやつがここに入ります。<br>
+（`main.go` や `server.go` などで表されるやつですね。 以降、例では `main.go` を使います。）
 
-- リクエストやレスポンスのJSONスキーマ定義ファイル <br>
-  リクエストはこういうので、レスポンスはこういう形っていうのを決めるやつですね
+<br>
 
-- protocol definition files <br>
-  プロトコルを決めるってなんでしょう…？
-  
+ここで、[golang-standards/project-layout](https://github.com/golang-standards/project-layout) の本文に
+
+> The directory name for each application should match the name of the executable you want to have (e.g., /cmd/myapp).
+
+上記の文章があるのですが、「The directory name for each application」… each とあります。
+
+複数のアプリケーションが混在することを想定しているかのような書き方ですが、<br>
+おそらく、マイクロサービスを組み合わせてひとつのサービスを作り上げることを想定しているのでしょう。
+
+したがって、今回作成した `go-project-template` というプロジェクト内には <br>
+いくつかのアプリケーションが混在するという想定で話が進みます。
+
+
+<br>
+
+## 注意1
+
+このときcmd配下に設置するディレクトリ名はアプリケーション名と合わすようにしましょう。<br>
+（本文には 「実行可能ファイルと一致させる」 と書かれています）
+
+したがって、今回の場合は下記のようになっているわけです。
+
+```
+go-api-project-template
+├── cmd
+│   ├── app1
+│   │   └── main.go
+│   └── app2
+│       └── main.go
+```
+
+<br>
+
+## app1 と app2
+
+app1 と app2 って例えばどんなのがあるでしょうか。
+
+僕が新卒研修で経験したものだと、
+
+APIサーバ本体 と DBのマイグレーション用システム で分けてありました。
+
+他に思いついたのだと Swagger を切り出す とかでしょうか。
+
+
+<br>
+
+## 注意2
+
+`/cmd` に配置する `main.go` の中にあまり多くの機能を書き込まないことです。
+
+後述の `/pkg` や `/internal` からインポートする形で機能を実装します。
+
+
+---
+# /internal
+---
+
+`/internal` はアプリケーションごとの専用ライブラリを格納します。
+
+よって、下記のようにディレクトリを切り、
+
+```
+go-api-project-template
+├── internal
+│   ├── app1
+│   └── app2
+``` 
+
+`/app1` の中に app1 が使用するコードを、<br>
+`/app2` の中に app2 が使用するコードをそれぞれ格納します。
+
+ビジネスロジックはここに入ることになるでしょう。
+
+
+---
+# /pkg
+---
+
+`/pkg` は外部のアプリケーションが使ってもよいパッケージを入れておくところです。<br>
+したがって、ここには app1 も app2 も両方が使用するコードが入ることになります。
+
 
 ---
 # /build
@@ -115,16 +202,6 @@ go-project-template
 ビルドするための設定ファイルを入れておくって感じですね。
  
 `/build/ci` には、名前のとおりCI関連の設定を入れます。
-
-
----
-# /cmd
----
-
-`/cmd` がプロジェクトのメインとなるディレクトリです。
-
-APIサーバで言えば、サーバを起動するやつがここに入ります。<br>
-（`main.go` や `server.go` などで表されるやつですね）
 
 
 ---
@@ -149,38 +226,92 @@ IaaS や PaaS，コンテナオーケストレーションシステム にデプ
 # /init
 --- 
 
-`/init` は、systemd，upstart，sysv などの「System init」と <br>
-runit，supervisord などの「process manager/supervisor」の設定を置きます。
+`/init` には、下記2種類のものが入ります。
 
-僕には systemd しか分からなかったので、ほぼ原文まま載せておきます。。。
+- systemd，upstart，sysv などの「System init」
+- runit，supervisord などの「process manager/supervisor」の設定
+
+僕には systemd しか分からなかったので、ほぼ原文まま載せておきます。
 
 <br>
 
-とにかく、ここにはサーバPC起動時に自動でアプリケーションを起動するための設定を入れておくってことですよね。
+とにかく、ここにはサーバPC起動時に <br>
+自動でアプリケーションを起動するための設定を入れておくってことですよね。
 
 
 ---
-# /internal
+# /api
 ---
 
+`/api` ディレクトリに以下のものが入ります。
 
+- OpenAPI や Swagger などの定義ファイル
 
----
-# /pkg
----
+- リクエストやレスポンスのJSONスキーマ定義ファイル <br>
+  リクエストはこういうので、レスポンスはこういう形っていうのを決めるやつですね
+
+- protocol definition files <br>
+  プロトコルを決めるファイル郡ってなんでしょう…？
+
+<br>
+
+Webサーバを作るときは `/web` を使います。詳細は [こちら](https://github.com/golang-standards/project-layout/tree/master/web) をどうぞ。
 
 ---
 # /scripts
 ---
 
+`/scripts` には、ビルドやインストール，解析などを行うスクリプトを入れておきます。
+
+[golang-standards/project-layout](https://github.com/golang-standards/project-layout) にどういったものを入れるのか例があったので載せておきます。
+
+- https://github.com/kubernetes/helm/tree/master/scripts
+- https://github.com/cockroachdb/cockroach/tree/master/scripts
+- https://github.com/hashicorp/terraform/tree/master/scripts
+
 ---
 # /test
 ---
+
+`/test` は テストのためのディレクトリですね。
+
+`/test` 配下の構造に関しては、「あなたの自由に」と書かれています。
+
+
 ---
 # /vendor
 ---
 
+`/vendor`はアプリケーションが依存関係（ライブラリ郡）を格納する場所です。
 
+<br>
+
+---
+# まとめ
+---
+
+以上で各ディレクトリに関する説明は終わりです。
+
+今回紹介したディレクトリ構成はかなりマイクロサービスを意識した構成だと感じました。<br>
+1つのプロジェクト内に複数のアプリケーションが置かれることを想定していますしね。
+
+<br>
+
+ひとつ疑問に思ったのは、「リポジトリ管理をどのようにするのか」です。<br>
+ひとつのリポジトリに突っ込むには粒度が大きすぎると感じました。<br>
+だからといって、submoduleに切ったら管理が大変そうですよね。（そうでもないか…）
+
+<br>
+
+実際のプロジェクトでどういうディレクトリ構成が取られているのか、<br>
+今後いろいろ経験して、自分なりのベストプラクティスを出していきたいです。
+
+<br> 
+
+次回あたりに、今回のディレクトリ構成を基に Golang + Go kit でAPIサーバを実装してみたいと思います。
+
+
+<br>
 
 ---
 # 参考
