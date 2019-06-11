@@ -7,7 +7,7 @@ featured = "bigdata_processing/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【大規模サービス技術入門】大規模データ処理に入門する"
+title = "【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた"
 type = "post"
 
 +++
