@@ -1,6 +1,9 @@
 #!/bin/bash
 
-cd ~/tech-blog-settings &&
+cd ~/tech-blog-settings/public &&
+git fetch origin &&
+git reset --hard origin/master &&
+cd .. &&
 git pull origin master&&
 hugo &&
 cd public &&
