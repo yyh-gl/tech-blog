@@ -74,15 +74,21 @@ $ go mod init go-api-project-template
 
 <br>
 
-と、思ったのですが、
+と、思ったのですが、 [Golang公式ブログ](https://blog.golang.org/using-go-modules) に
 
-`go.mod` を `/build/package` に移そうといろいろしたのですがうまくいかず…
+> The go.mod file only appears in the root of the module. 
 
-結局、諦めて、ルートディレクトリに置きました。（`go.mod` を移動させる方法ご存知の方教えてください）
+このように書いてありました。<br>
 
-> `/build/package` 内で `$go mod init go-api-project-template/build/package` して <br>
-> importのパスも `go-api-project-template/build/package` に変えたりしたんですが <br>
-> だめでした…
+「モジュールのルートにしか置けない」と…<br>
+モジュールのルートって、今回はプロジェクトのルートという解釈でよかったですかね。
+
+<br>
+
+それでも、なんとか `go.mod` を `/build/package` に移そうといろいろしたのですがうまくいかず…
+
+結局、諦めて、ルートディレクトリに置きました。<br>
+（`go.mod` を移動させる方法があれば教えてください）
 
 
 ---
