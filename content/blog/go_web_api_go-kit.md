@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = [["Web API", "Golang", "Docker"]]
+categories = ["Web API", "Golang", "Docker"]
 date = "2019-06-12"
 description = ""
 featured = "go_web_api_go-kit/featured.png"
