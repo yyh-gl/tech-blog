@@ -57,7 +57,7 @@ type = "posta"
 
 
 ---
-# go mod
+# パッケージ管理
 ---
 
 パッケージ管理には Golang 1.11 から導入された [Go Modules](https://qiita.com/propella/items/e49bccc88f3cc2407745) を使用します。
@@ -76,10 +76,26 @@ $ go mod init go-api-project-template
 
 と、思ったのですが、
 
-愚直に `go.mod` を `/build/package` に移そうとするとパッケージがうまく読み込めなくなりました。
+`go.mod` を `/build/package` に移そうといろいろしたのですがうまくいかず…
 
-結局、プロジェクトのルートディレクトリ以外に移す方法が分からず、<br>
-ルートディレクトリに置きました。（`go.mod` を移動させる方法ご存知の方教えてください）
+結局、諦めて、ルートディレクトリに置きました。（`go.mod` を移動させる方法ご存知の方教えてください）
+
+> `/build/package` 内で `$go mod init go-api-project-template/build/package` して <br>
+> importのパスも `go-api-project-template/build/package` に変えたりしたんですが <br>
+> だめでした…
+
+
+---
+# main.go
+---
+
+では、アプリケーションを起動させるメインのプログラムを作っていきましょう。
+
+以下のような `main.go` を作成します。
+
+```go
+
+```
 
 
 ---
@@ -116,9 +132,6 @@ CMD ["api-server"]
 Dockerfile もビルドに使用されるので `/build/package` に置きましょう。
 
 
----
-# main.go
----
 
 
 
