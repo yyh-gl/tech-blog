@@ -7,8 +7,8 @@ featured = "go_web_api/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【Golang】DDD を意識して Web API を構築してみる"
-type = "posta"
+title = "【Golang + レイヤアーキテクチャ】DDD を意識して Web API を実装してみる"
+type = "post"
 
 +++
 
@@ -22,26 +22,28 @@ type = "posta"
 ---
 
 前回の記事で Golang のディレクトリ構成についていろいろ調べた結果、<br>
-[こちらの資料](https://www.slideshare.net/pospome/go-80591000) が参考になりそうだったので、<br>
-今回はそちらを参考に Golang で Web API を作っていきたいと思います。
+[こちらの資料](https://www.slideshare.net/pospome/go-80591000) がとても分かりやすかったので、<br>
+今回はこちらを参考に Golang で Web API を作っていきたいと思います。
+
+なお、DDD，レイヤアーキテクチャ の要素が強いため、都度説明を入れています。<br>
+（ほぼレイヤアーキテクチャの勉強になっています）
 
 <br>
 
 ## 環境
 
 - MacOS Mojave 10.14.4
-- Golang 1.12
-- Docker for Mac Version 2.0.0.3
+- Golang 1.12.5
 
 <br>
 
 なお、今回は、Gin や Mux などといったフレームワークは使わず、<br>
-API周りに関して追加するパッケージは、 httprouter のみでやっていこうと思います。
+httprouter のみで薄く作っていこうと思います。
 
 Mux を使った実装は [僕の前のブログで紹介している](https://yyh-gl.hatenablog.com/entry/2019/02/08/195310) のでよければどうぞ。
 
 ---
-# 採用アーキテクチャ：レイヤーアーキテクチャ
+# 採用アーキテクチャ：レイヤアーキテクチャ
 ---
 
 [参考記事内](https://www.slideshare.net/pospome/go-80591000) で紹介されているのは <u>レイヤアーキテクチャ</u> をベースに <br>
@@ -54,7 +56,7 @@ Mux を使った実装は [僕の前のブログで紹介している](https://y
 
 <br>
 
-レイヤーアーキテクチャ における各層の依存関係 について説明を加えておきます。
+レイヤアーキテクチャ における各層の依存関係 について説明を加えておきます。
 
 依存関係の図は下記のとおりです。
 
@@ -63,17 +65,64 @@ Mux を使った実装は [僕の前のブログで紹介している](https://y
 矢印は依存の方向を示しています。<br>
 例えば、上図だと Handler層 は Usecase層 の処理を利用することを意味します。
 
-レイヤーアーキテクチャ に限らず、クリーンアーキテクチャ などでも同じですが、
-依存は中心に向かっていく方向にのみ存在します。
+レイヤアーキテクチャ に限らず、クリーンアーキテクチャ などでも同じですが、<br>
+依存は中心方向に <u>のみ</u> 存在します。
 
 この図だと、中心がどこか分かりづらいので、少し違う視点の図を下記に示します。
 
 <img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction1.png" width="600">
 
-例えば、ユーザから APIリクエスト があった場合、
+すべての依存が中心に向かっています。これが理想状態です。
+
+<br>
+
+ここで、ユーザから APIリクエスト があった場合を考えてみます。
 
 <img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction2.png" width="600">
 
+
+ユーザからのリクエストは Handler で受け取られ、 Usecase を使って処理が行われます。<br>
+さらに、Usecase は Domain を使って処理を行います。<br>
+ここまでは処理が中心に進んでいる、つまり依存は中心に向かって発生しています。
+
+しかし、たいていのサービスって DB を使用しますよね。<br>
+つまり、ドメインからユースケースを介して、Infra を利用することになります。
+
+…依存が外側を向いてしまいました。<br>
+これは許されていません。ではどうするか。
+
+<u>[依存性逆転の法則](https://medium.com/eureka-engineering/go-dependency-inversion-principle-8ffaf7854a55)</u> を使います。
+
+<br>
+
+<u>依存性逆転の法則 とは、 interfaceに依存させることで依存の方向を逆にすること</u> です。（個人的見解）
+
+もう少し詳しく説明します。<br>
+まず、 ① Domain層 において、 DB とのやりとりを interface で定義しておきます。<br>
+interface （後ほどコード内にて repository として出てきます） 自体は実装を持たないので、<br>
+どこにも依存していません。
+
+次に、 ② Infra層 から Domain層 に定義した interface （後ほどコード内にて persistence として出てきます） を実装します。
+
+<br>
+
+①, ② の2ステップを踏むことで、まず Domain は interface に対して 処理をお願いするだけでよくなります。
+先ほども言ったとおり interface は 実装を持たないので依存関係はありません。
+
+interface 自体は実装を持ちませんが、<br>
+Infra が interface の実装を行っているので、ちゃんとDBアクセスして処理を行うことができます。
+
+ここで、 Infra は interface を実装しているので、依存が interface 、すなわち Domain に向いています。 
+
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction3.png" width="600">
+
+依存性が逆転し、すべての依存関係が中心に向かうようになりましたね。
+
+<br>
+
+ここは難しいところなので、まだいまいち理解できないかもしれません。
+
+以降、実際のコードを紹介していくので、コードに当てはめながら考えてみてください。
 
 ---
 # 完成物
@@ -112,18 +161,18 @@ api-server-with-go-kit-and-ddd
 ├── go.mod
 ├── go.sum
 ├── handler
-├── infra
 │   └── router.go  // ルーティングの設定
+├── infra
 └── usecase
 ```
 
-`go run cmd/api/main.go` で最低限動作する状態にしてあります。
+ブランチ `1` 上で `go run cmd/api/main.go` すると動作する状態にしてあります。
 
-`http://localhost:3000` にアクセスしてもらえば、 Welcome と表示されるはずです。
+`http://localhost:3000` にアクセスしてもらえば、「Welcome!」と表示されるはずです。
 
 
 ---
-# 書籍一覧を取得するAPIを作る
+# 書籍一覧を取得するAPIを作る（ブランチ：2）
 ---
 
 ## Domain 層
@@ -229,7 +278,7 @@ func (book BookPersistence) GetAll() ([]*model.Book, error) {
 ```
 
 なお、 実際には DB にアクセスし、データを持ってくるようにします。<br>
-DB には後ほど接続できるようにするので、ここではモックデータを返すようにしておきます。
+ここでは一旦モックデータを返すようにしておきます。
 
 <br>
 
@@ -271,10 +320,6 @@ import (
 )
 
 type BookUsecase struct {}
-
-type IBookUsecase interface {
-	GetAll() ([]*model.Book, error)
-}
 
 func (bookUsecase BookUsecase) GetAll() ([]*model.Book, error) {
 	var books []*model.Book
@@ -342,7 +387,7 @@ import (
 func BookIndex(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
 	var books []*model.Book
 	var err error
-	books, err = usecase.IBookUsecase(usecase.BookUsecase{}).GetAll()
+	books, err = usecase.BookUsecase{}.GetAll()
 	if err != nil {
 		// TODO: エラーハンドリングをきちんとする
 		http.Error(w, "Internal Server Error", 500)
@@ -356,4 +401,63 @@ func BookIndex(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
 		return
 	}
 }
+
 ```
+<br>
+
+依存関係は以下のとおりです。
+
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_handler.png" width="600">
+
+Usecase を使用するので、Usecase層に依存しています。
+
+
+---
+# テスト
+---
+
+ここまでの実装で 書籍一覧 取得リクエスト を送れるようになりました。
+
+`GET http://localhost:3000/books` してみましょう。
+
+2つの書籍データが返ってくるはずです。
+
+```json
+[
+    {
+        "id": 1,
+        "title": "Test1",
+        "author": "Tester1",
+        "issued_at": "2019-06-13T23:50:51.888139+09:00",
+        "created_at": "2019-06-13T23:50:51.888139+09:00",
+        "updated_at": "2019-06-13T23:50:51.888139+09:00"
+    },
+    {
+        "id": 2,
+        "title": "Test2",
+        "author": "Tester2",
+        "issued_at": "2019-06-13T23:50:51.888139+09:00",
+        "created_at": "2019-06-13T23:50:51.88814+09:00",
+        "updated_at": "2019-06-13T23:50:51.88814+09:00"
+    }
+]
+```
+
+<br>
+
+まだ実装していないエンドポイントがあったり、DB 接続してなかったり、未完成なところが多いですが、<br>
+DDD や レイヤアーキテクチャ が絡んできて、結構重い内容になってきたので <br>
+一旦ここで切ろうと思います。後日、続編記事を出したいと思います。
+
+---
+# まとめ
+---
+
+[前々回の記事](https://yyh-gl.github.io/tech-blog/blog/go_project_template/) でディレクトリ構成を考え、<br>
+今回ようやく実装してみました。
+
+ディレクトリ構成が DDD を意識していることもあり、<br>
+DDD や レイヤアーキテクチャ の話がメインっぽくなりましたが、<br>
+DDD も勉強中だったので、僕的にはちょうど良い勉強になりました。
+
+今後は、エヴァンス本で「どうドメインモデルに落とし込んでいくのか」ってところを勉強していこうと思います。
