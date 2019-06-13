@@ -8,7 +8,7 @@ featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
 title = "【Go kit + Docker】GolangでAPIサーバを構築"
-type = "posta"
+type = "onHold"
 
 +++
 
@@ -90,6 +90,11 @@ $ go mod init go-api-project-template
 結局、諦めて、ルートディレクトリに置きました。<br>
 （`go.mod` を移動させる方法があれば教えてください）
 
+<br>
+
+[こちら](https://github.com/golang-standards/project-layout/issues/22#issuecomment-472141814) を見ると、<br>
+ルートディレクトリで `go mod init` してる人がいるっぽいですね。<br>
+（つまり、ルートディレクトリに `go.mod` を置いている）
 
 ---
 # main.go
