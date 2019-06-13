@@ -12,9 +12,6 @@ type = "post"
 
 +++
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/-/-" width="600">
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/-/-" width="600">
-
 <br>
 
 ---
@@ -60,7 +57,7 @@ Mux を使った実装は [僕の前のブログで紹介している](https://y
 
 依存関係の図は下記のとおりです。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/architecture.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/architecture.png" width="600">
 
 矢印は依存の方向を示しています。<br>
 例えば、上図だと Handler層 は Usecase層 の処理を利用することを意味します。
@@ -70,7 +67,7 @@ Mux を使った実装は [僕の前のブログで紹介している](https://y
 
 この図だと、中心がどこか分かりづらいので、少し違う視点の図を下記に示します。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction1.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction1.png" width="600">
 
 すべての依存が中心に向かっています。これが理想状態です。
 
@@ -78,7 +75,7 @@ Mux を使った実装は [僕の前のブログで紹介している](https://y
 
 ここで、ユーザから APIリクエスト があった場合を考えてみます。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction2.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction2.png" width="600">
 
 
 ユーザからのリクエストは Handler で受け取られ、 Usecase を使って処理が行われます。<br>
@@ -114,7 +111,7 @@ Infra が interface の実装を行っているので、ちゃんとDBアクセ�
 
 ここで、 Infra は interface を実装しているので、依存が interface 、すなわち Domain に向いています。 
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction3.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction3.png" width="600">
 
 依存性が逆転し、すべての依存関係が中心に向かうようになりましたね。
 
@@ -232,7 +229,7 @@ type BookRepository interface {
 今定義した Domain層 は他の層のコードを一切利用していません。<br>
 つまり、<u>下図の赤枠の中で依存関係が完結しています</u>。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_domain.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_domain.png" width="600">
 
 
 <br>
@@ -284,7 +281,7 @@ func (book BookPersistence) GetAll() ([]*model.Book, error) {
 
 先ほどと同様に 依存関係 を確認します。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_infra.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_infra.png" width="600">
 
 このコードだけでは分からないのですが、<br>
 Infra層 は Domain層 で作った `/domain/repository/book_repository.go` を実装しています。
@@ -338,7 +335,7 @@ func (bookUsecase BookUsecase) GetAll() ([]*model.Book, error) {
 
 Usecase層 の依存関係も見てみましょう。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_usecase.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_usecase.png" width="600">
 
 Usecase層 は `/domain/repository` のコードを使用しています。<br>
 したがって、 Usecase層 は Domain層 に依存しています。
@@ -407,7 +404,7 @@ func BookIndex(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
 
 依存関係は以下のとおりです。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_handler.png" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_handler.png" width="600">
 
 Usecase を使用するので、Usecase層に依存しています。
 
