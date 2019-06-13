@@ -8,7 +8,7 @@ featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
 title = "【Golang + レイヤアーキテクチャ】DDD を意識して Web API を実装してみる"
-type = "post"
+type = "posta"
 
 +++
 
