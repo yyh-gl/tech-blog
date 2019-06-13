@@ -22,30 +22,8 @@ type = "posta"
 ---
 
 前回の記事で Golang のディレクトリ構成についていろいろ調べた結果、<br>
-[こちら](https://www.slideshare.net/pospome/go-80591000)の記事が参考になりそうだったので、<br>
+[こちらの資料](https://www.slideshare.net/pospome/go-80591000) が参考になりそうだったので、<br>
 今回はそちらを参考に Golang で Web API を作っていきたいと思います。
-
-<br>
-
-## 採用アーキテクチャ
-
-記事内で紹介されているのは <u>レイヤアーキテクチャ</u> をベースに <br>
-いろいろカスタマイズされたものらしいです。
-
-クリーンアーキテクチャに似たアーキテクチャだとか。
-
-とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、<br>
-<u>DDD を意識して</u> Web API を実装していこうと思います。
-
-<br>
-
-依存関係の図だけ載せておきます。
-
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/architecture.png" width="600">
-
-矢印は依存の方向を示しています。<br>
-例えば、上図だと Handler層 は Usecase層 の処理を利用することを意味します。
-
 
 <br>
 
@@ -61,6 +39,40 @@ type = "posta"
 API周りに関して追加するパッケージは、 httprouter のみでやっていこうと思います。
 
 Mux を使った実装は [僕の前のブログで紹介している](https://yyh-gl.hatenablog.com/entry/2019/02/08/195310) のでよければどうぞ。
+
+---
+# 採用アーキテクチャ：レイヤーアーキテクチャ
+---
+
+[参考記事内](https://www.slideshare.net/pospome/go-80591000) で紹介されているのは <u>レイヤアーキテクチャ</u> をベースに <br>
+いろいろカスタマイズされたものらしいです。
+
+クリーンアーキテクチャに似たアーキテクチャだとか。
+
+とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、<br>
+<u>DDD を意識して</u> Web API を実装していこうと思います。
+
+<br>
+
+レイヤーアーキテクチャ における各層の依存関係 について説明を加えておきます。
+
+依存関係の図は下記のとおりです。
+
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/architecture.png" width="600">
+
+矢印は依存の方向を示しています。<br>
+例えば、上図だと Handler層 は Usecase層 の処理を利用することを意味します。
+
+レイヤーアーキテクチャ に限らず、クリーンアーキテクチャ などでも同じですが、
+依存は中心に向かっていく方向にのみ存在します。
+
+この図だと、中心がどこか分かりづらいので、少し違う視点の図を下記に示します。
+
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction1.png" width="600">
+
+例えば、ユーザから APIリクエスト があった場合、
+
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction2.png" width="600">
 
 
 ---
@@ -298,3 +310,50 @@ Usecase層 は `/domain/repository` のコードを使用しています。<br>
 やってることはキャストみたいなもんだと理解しています。<br>
 `Interface で定義した形に変換できない構造体は、実装すべきものを実装していない証拠` ってことですよね。
 
+<br>
+
+[参考にしている資料](https://www.slideshare.net/pospome/go-80591000) では、<br>
+Usecase層 をさらに input と output で切っていますが、「複雑になりすぎるかな」と思い、省略しました。
+
+<br>
+
+## Handler 層
+
+最後に Handler層 です。
+
+<u>Handler層 の役目は、HTTPリクエストを受け取り、Usecase を使って処理を行い、結果を返す</u> ことです。
+
+コード的には以下のようになります。
+
+`/handler/book_handler.go`
+
+```go
+package handler
+
+import (
+	"encoding/json"
+	"net/http"
+
+	"github.com/julienschmidt/httprouter"
+	"github.com/yyh-gl/go-api-server-by-ddd/domain/model"
+	"github.com/yyh-gl/go-api-server-by-ddd/usecase"
+)
+
+func BookIndex(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
+	var books []*model.Book
+	var err error
+	books, err = usecase.IBookUsecase(usecase.BookUsecase{}).GetAll()
+	if err != nil {
+		// TODO: エラーハンドリングをきちんとする
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	if err = json.NewEncoder(w).Encode(books); err != nil {
+		// TODO: エラーハンドリングをきちんとする
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+}
+```
