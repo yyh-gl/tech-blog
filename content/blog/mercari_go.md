@@ -27,7 +27,7 @@ type = "post"
 
 - 雰囲気
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/mercari_go/goods.JPG" width="300">
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/06/mercari_go/goods.JPG" height="300">
 
 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
    
