@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Golang", "勉強会"]
-date = "2019-06-14"
+date = "2019-06-15"
 description = ""
 featured = "mercari_go/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
