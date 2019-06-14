@@ -1,6 +1,6 @@
 +++
 title = "About yyh-gl"
-date = "2019-05-22"
+date = "2019-06-15"
 +++
 
 ---
@@ -28,9 +28,13 @@ IT企業でインターンやアルバイトでECサイトやスマホゲーム�
 # 技術スタック
 ---
 
-粒度がばらばらですが、とりあえず列挙してみました。
+<u>バックエンド</u>
 
-## 実務経験あり
+- Go
+  - Mux
+  - Gin
+  - Chi
+  - フレームワークなしによる実装
 - Java
   - Spring Boot
 - PHP
@@ -38,16 +42,52 @@ IT企業でインターンやアルバイトでECサイトやスマホゲーム�
   - FuelPHP
 - Ruby
   - Rails
-- Vagrant
+- Perl
+- ShellScript
+- Bash
+  
+<u>フロントエンド</u>
+
+- React 
+- Vue.js
 - HTML + CSS + JavaScript
 
+<u>ネイティブ</u>
 
-## 趣味の範疇
-- Golang
-- React
-- React Native
 - Kotlin
 - Swift
-- Vue.js
+- RxSwift
+- React Native
+
+<u>テスト</u>
+
+- JUnit
+- PHPUnit
+- Minitest
+
+<u>インフラ</u>
+
 - Docker
+- Vagrant
+- Linux
+
+<u>ミドルウェア</u>
+
+- Nginx
+- MySQL
+- Redis
+
+<u>クラウド</u>
+
 - AWS
+- GCP
+- Terraform
+
+<u>CI/CD</u>
+
+- Jenkins
+- CircleCI
+
+<u>サーバレス</u>
+
+- Cognito + AWS Lambda + DynamoDB
