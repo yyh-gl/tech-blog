@@ -90,4 +90,4 @@ IT企業でインターンやアルバイトでECサイトやスマホゲーム�
 
 <u>サーバレス</u>
 
-- Cognito + AWS Lambda + DynamoDB
+- Cognito + API Gateway + AWS Lambda + DynamoDB
