@@ -149,7 +149,7 @@ Infra が interface の実装を行っているので、ちゃんとDBアクセ�
 
 ディレクトリ構成はこんな感じです。
 
-```
+```tree
 api-server-with-go-kit-and-ddd
 ├── cmd
 │   └── api
