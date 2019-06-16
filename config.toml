@@ -71,8 +71,8 @@ disableLanguages        = [""]
       alt                 = "yyh-gl's icon"
 
     [params.intro.ogp]
-      src                 = "/img/main/ogp_image.png"
-      alt                 = "yyh-gl's image for OGP"
+      src = "/img/main/ogp_image.png"
+      alt = "yyh-gl's image for OGP"
 
   [params.sidebar]
     about               = "フルスタック目指すエンジニア"
