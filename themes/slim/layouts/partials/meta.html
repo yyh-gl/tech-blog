@@ -15,5 +15,5 @@
   {{ end }}
   <meta name="msapplication-TileColor" content="{{ .Site.Params.meta.msColor }}">
   <meta name="theme-color" content="{{ .Site.Params.meta.iOSColor }}">
-  <meta property="og:image" content="{{ .Site.Params.meta.favicon }}" />
+  <meta property="og:image" content="/tech-blog/img{{ if eq .Params.featuredpath "date" }}{{ .Page.Date.Format "2006/01" | relURL }}{{ else }}/img/{{ .Params.featuredpath }}{{ end }}/{{ .Params.featured }}" alt="{{ .Params.featuredalt }}" />
 {{ end }}
