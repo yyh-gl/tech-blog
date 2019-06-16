@@ -71,7 +71,7 @@ disableLanguages        = [""]
       alt                 = "yyh-gl's icon"
 
     [params.intro.ogp]
-      src = "/img/main/ogp_image.png"
+      src = "img/main/ogp_image.png"
       alt = "yyh-gl's image for OGP"
 
   [params.sidebar]
