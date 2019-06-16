@@ -5,7 +5,9 @@
   </section>
   {{ .Render "featured" }}
   <div class="content">
-    {{ .Content }}
+    <pre class="line-numbers">
+      {{ .Content }}
+    </pre>
   </div>
   <footer>
     {{ .Render "stats" }}

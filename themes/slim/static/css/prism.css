@@ -18,6 +18,7 @@ pre[class*="language-"] {
 	word-break: normal;
 	word-wrap: normal;
 	line-height: 1.5;
+	padding-left: 3.8em;
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -125,7 +126,6 @@ pre[class*="language-"] {
 
 pre[class*="language-"].line-numbers {
 	position: relative;
-	padding-left: 3.8em;
 	counter-reset: linenumber;
 }
 
@@ -139,10 +139,11 @@ pre[class*="language-"].line-numbers > code {
 	pointer-events: none;
 	top: 0;
 	font-size: 100%;
-	left: -3.8em;
+	left: 0;
 	width: 3em; /* works for line-numbers below 1000 lines */
 	letter-spacing: -1px;
 	border-right: 1px solid #999;
+	padding: 1em;
 
 	-webkit-user-select: none;
 	-moz-user-select: none;
