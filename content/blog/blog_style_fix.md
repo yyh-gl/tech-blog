@@ -7,7 +7,7 @@ featured = "blog_style_fix/syntax_highlight_after.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【HTML & CSS + Prism.js】ブログの見た目を整えた話"
+title = "【HTML + CSS + Prism.js】ブログの見た目を整えた話"
 type = "post"
 
 +++
