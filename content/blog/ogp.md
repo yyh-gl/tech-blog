@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Web全般"]
 date = "2019-06-17"
-description = ""
+description = "og:image が大事"
 featured = "ogp/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
