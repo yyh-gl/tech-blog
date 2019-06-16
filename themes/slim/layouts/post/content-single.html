@@ -5,9 +5,7 @@
   </section>
   {{ .Render "featured" }}
   <div class="content">
-    <pre class="line-numbers">
-      {{ .Content }}
-    </pre>
+    {{ .Content | replaceRE "<pre>" "<pre class=\"line-numbers\">" | safeHTML }}
   </div>
   <footer>
     {{ .Render "stats" }}

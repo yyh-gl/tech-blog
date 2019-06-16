@@ -21,10 +21,8 @@ type = "post"
 
 - connpass： [リンク](https://mercari.connpass.com/event/132114/?utm_campaign=event_message_to_selected_participant&utm_source=notifications&utm_medium=email&utm_content=title_link)
 - ハッシュタグ： [`#mercarigo`](https://twitter.com/search?q=%23mercarigo&src=typd&lang=ja)
-
 - 独自ルール： [懇親会のGルール](https://twitter.com/zaki_hmkc/status/1139481689300713472) <br>
    懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！
-
 - 雰囲気
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/mercari_go/goods.JPG" height="300">
@@ -51,24 +49,17 @@ type = "post"
 
 ## [Knative](https://cloud.google.com/knative/?hl=ja)
 
-- Knative ＝ 最新のサーバーレス ワークロードをビルド、デプロイ、管理できる Kubernetes ベースのプラットフォーム。
+- Knative ＝ 最新のサーバーレス ワークロードをビルド、デプロイ、管理できる Kubernetes ベースのプラットフォーム
   - AWS の Lmabda に近いことを k8s 上でできると解釈
-
-- 登壇者含め、会場内で Knative を本番に導入している人はなし。<br>まだ時期尚早っぽい。
-
-- k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供。
-
+- 登壇者含め、会場内で Knative を本番に導入している人はなし。<br>まだ時期尚早っぽい
+- k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供
 - k8s 上にのっかる。
-
 - Knative の構成
   - [Serving](https://speakerdeck.com/toshi0607/learning-knative-with-go?slide=8)
   - [Build](https://speakerdeck.com/toshi0607/learning-knative-with-go?slide=13)
   - [Eventing](https://speakerdeck.com/toshi0607/learning-knative-with-go?slide=15)
-
-- 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠。
-
-- 登壇者は 機能実装に一層集中するための基盤 として注目している。
-
+- 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠
+- 登壇者は 機能実装に一層集中するための基盤 として注目している
 - yml ファイルで定義した内容に基づいて コード生成
 
 
@@ -97,9 +88,7 @@ k8s の勉強しないとな。
 <br>
 
 - 技術をアウトプットするところに人は集まる
-
 - メルペイ エキスパートチーム では <u>50%以上の時間</u> をコミュニティへの貢献に充てている
-
 - 海外カンファレンスに参加する理由
   - 最新の技術を知る
   - 世界各地のエンジニアとの交流
@@ -175,8 +164,8 @@ k8s の勉強しないとな。
 
 - experimental の機能
 - 1.11 以上で使用可能
-- GOOS=js GOARCH=wasm でビルドすると `.wasm` ファイルが生成され、JavaScript から使用できる
-  - ≒ JavaScript から Golang を使用できるようになる
+- GOOS=js GOARCH=wasm でビルドすると .wasm ファイルが生成され、JavaScript から使用できる
+  ≒ JavaScript から Golang を使用できるようになる
 - クリックの動作を Golang で実装したりした
 - select{} 使わないと main 関数が終了して JavaScriptから呼べなくなる（[参考](https://twitter.com/shumon_84/status/1139502364673466368)）
 - つらみ
