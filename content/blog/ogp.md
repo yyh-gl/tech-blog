@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Web全般"]
-date = "2019-06-16"
+date = "2019-06-17"
 description = "og:image 大事"
 featured = "ogp/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
