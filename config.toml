@@ -31,7 +31,7 @@ disableLanguages        = [""]
 
   [params.meta]
     # Sets the meta tag description
-    description         = "yyh-gl's Tech Blog"
+    description         = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
     # Sets the meta tag author
     author              = "yyh-gl"
     # If you would like to add more comprehensive favicon support passed root
