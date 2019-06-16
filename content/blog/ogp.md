@@ -144,4 +144,3 @@ OGP という仕組みを知れてよかったです。
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">リンクのサムネイル出るようになったで🤡<a href="https://t.co/OGXRRGonKc">https://t.co/OGXRRGonKc</a></p>&mdash; ｴﾝｼﾞﾆｱのﾎｹﾞさん 🌕 (@yyh_gl) <a href="https://twitter.com/yyh_gl/status/1140245493844307969?ref_src=twsrc%5Etfw">2019年6月16日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
