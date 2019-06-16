@@ -9,7 +9,7 @@ echo "予約投稿開始 ..." &&
 
 # ブログ設定用リポジトリへのPUSH
 echo -e "\nブログ設定用リポジトリへPUSH" &&
-msg="【公開】記事コード：$1"
+msg="【予約公開】記事コード：$1"
 git add -A &&
 git commit -m "$msg" &&
 git push origin master &&
