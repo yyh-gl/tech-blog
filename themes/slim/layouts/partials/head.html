@@ -1,4 +1,5 @@
 <head>
+  {{ partial "meta" . }}
   {{ $.Hugo.Generator }}
   {{ template "_internal/schema.html" . }}
   {{ template "_internal/opengraph.html" . }}
@@ -24,5 +25,6 @@
     {{ end }}
   {{ end }}
   {{ if .Site.Params.staticman.recaptcha.recaptcha }}<script src="https://www.google.com/recaptcha/api.js?render={{ .Site.Params.staticman.recaptcha.sitekey }}"></script>{{ end }}
-  {{ partial "meta" . }}
+  <!-- 自分で設定した twitter:description を Twitter に読み込んでもらうために最終行に設置 -->
+  <meta property="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.meta.description }}{{ . }}{{ end }}{{ end }}">
 </head>
