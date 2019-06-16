@@ -1,6 +1,5 @@
 <head>
   {{ partial "meta" . }}
-
   {{ $.Hugo.Generator }}
   {{ template "_internal/schema.html" . }}
   {{ template "_internal/opengraph.html" . }}
@@ -26,7 +25,4 @@
     {{ end }}
   {{ end }}
   {{ if .Site.Params.staticman.recaptcha.recaptcha }}<script src="https://www.google.com/recaptcha/api.js?render={{ .Site.Params.staticman.recaptcha.sitekey }}"></script>{{ end }}
-
-  <!-- OGP の設定を最後に持ってくるために meta.html を最後に読み込む -->
-<!--  {{ partial "meta" . }}-->
 </head>
