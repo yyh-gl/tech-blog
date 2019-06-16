@@ -1,13 +1,12 @@
 <head>
-  {{ partial "meta" . }}
   {{ $.Hugo.Generator }}
   {{ template "_internal/schema.html" . }}
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/google_news.html" . }}
+  <!-- 自分で設定した og:description を後から読み込ませるためにここに設置 -->
+  {{ partial "meta" . }}
 
-  {{ if .Site.Params.highlightjs }}<link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/{{ .Site.Params.highlightjsTheme | default "default" }}.min.css">{{ end }}
   {{ range .Site.Params.cssFiles }}
     {{ if eq . "default" }}
       <link rel="stylesheet" href="{{ "css/normalize.css" | relURL}}">
