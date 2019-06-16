@@ -15,5 +15,5 @@
   {{ end }}
   <meta name="msapplication-TileColor" content="{{ .Site.Params.meta.msColor }}">
   <meta name="theme-color" content="{{ .Site.Params.meta.iOSColor }}">
-  <meta property="og:image" content="{{ .Site.BaseURL }}img/{{ if .Params.featured }}{{ .Params.featuredpath }}/{{ .Params.featured }}{{ else }}{{ .Site.Params.intro.ogp.src }}{{ end }}" />
+  <meta property="og:image" content="{{ .Site.BaseURL }}{{ if .Params.featured }}img/{{ .Params.featuredpath }}/{{ .Params.featured }}{{ else }}{{ .Site.Params.intro.ogp.src }}{{ end }}" />
 {{ end }}
