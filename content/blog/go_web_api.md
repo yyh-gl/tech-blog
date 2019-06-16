@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Golang", "Web API", "アーキテクチャ", "DDD"]
 date = "2019-06-14"
-description = ""
+description = "DDD って奥が深くておもしろいですね"
 featured = "go_web_api/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"

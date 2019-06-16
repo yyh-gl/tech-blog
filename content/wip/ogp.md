@@ -7,7 +7,7 @@ featured = "ogp/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【OGP】リンクにサムネイル画像が表示されるようにした話"
+title = "【OGP】リンク先のサムネイル画像を表示できるようにした話"
 type = "post"
 
 +++
@@ -32,7 +32,7 @@ type = "post"
 # どうやったらサムネイル画像が表示されるか
 ---
 
-Twitter や Facebook などの SNS で タイトルやサムネイルといったWebページの情報を表示するには、<br>
+Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、<br>
 <u>Open Graph Protocol（OGP）</u> というものを設定する必要があります。
 
 OGP を設定するだけで、Twitter や Facebook でサムネイル付きのリンクを表示することができます。
