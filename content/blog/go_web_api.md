@@ -32,8 +32,6 @@ type = "post"
 - MacOS Mojave 10.14.4
 - Golang 1.12.5
 
-<br>
-
 なお、今回は、Gin や Mux などといったフレームワークは使わず、<br>
 httprouter のみで薄く作っていこうと思います。
 
