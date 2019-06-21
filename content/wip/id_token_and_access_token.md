@@ -19,49 +19,45 @@ type = "post"
 # アクセストークン と IDトークン の違いが分からない
 ---
 
-OAuth 2.0 について調べていて、ふっと思ったことがあります。
+「OAuth 2.0」について調べていると、「OpenID Connect」という単語が出てきました。
 
-→ 「アクセストークン と IDトークン ってどこが違うの？」
+その中で「アクセストークン」と「IDトークン」という単語を見つけました。
 
 <br>
 
-なので、調べてみました。
+しかし、両者の違いを調べてみると、なんだかよく分からない。<br>
+むしろ一緒に見えてしまう。
+
+
+気になったので、調べてみました。
 
 
 ---
-# とりあえずネットで調べた
+# とりあえずブラウザを開いた
 ---
 
-「OAuth 2.0」や「ID token」で調べると、いっぱい記事が出てきます ↓
+「OAuth 2.0」や「OpenID Connect」で検索すると、たくさん記事が出てきます。
 
-- https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
-
-- https://qiita.com/TakahikoKawasaki/items/e37caf50776e00e733be
-
-- https://tech-lab.sios.jp/archives/8651
-
-<br>
-
-調べれば調べるほど、両者の違いがわからなくなっていきました。
-
-次に、RFCも読みました。
-
-- [OAuth 2.0 RFC]https://tools.ietf.org/html/rfc6749
-- [OpenID Connect RFC]https://openid.net/specs/openid-connect-core-1_0.html
-
-<br>
-
-だいたいの違いがイメージができてきました。
-
-https://qiita.com/wadahiro/items/ad36c7932c6627149873
-
-最後に、上記記事を読んで、「あーなるほど。こういうことか？」となりました。
+特に参考になったのが [こちらの記事](https://qiita.com/TakahikoKawasaki/items/f2a0d25a4f05790b3baa) です。
 
 
-<br>
 
-以降、解説が始まりますが、自分でも「完全に理解した！」という自身がありません。<br>
-もし間違っていたら、Twitterとかで教えてください🙇‍
+
+---
+# はじめに
+---
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ---
