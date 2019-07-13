@@ -27,7 +27,8 @@ IT企業でのインターンやアルバイトでECサイトやスマホゲー�
   - Mux
   - Gin
   - Chi
-  - フレームワークなしによる実装
+  - Goa
+  - httprouter
 - Java
   - Spring Boot
 - PHP
