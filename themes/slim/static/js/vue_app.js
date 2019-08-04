@@ -11,23 +11,37 @@ Vue.component('good-counter', {
     // URL から記事情報を取得
     let paths = location.pathname.split('/');
     // URL のタイトル部分のみを抽出し、リクエストURL を作成
-    let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + paths[paths.length - 2];
+    let reqUrl = 'https://super.hobigon.work/api/v1/blogs?title=' + paths[paths.length - 2];
 
     axios
-      .get(reqUrl)
-      .then(response => this.good_count = response.data.post.count)
+      .get(reqUrl, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {}
+      })
+      .then(response => {
+        this.good_count = response.data.count
+      })
   },
   methods: {
     addCount: function (event) {
       // URL から記事情報を取得
       let paths = location.pathname.split('/');
       // URL のタイトル部分のみを抽出し、リクエストURL を作成
-      let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + paths[paths.length - 2] + '/good';
+      let reqUrl = 'https://super.hobigon.work/api/v1/blogs/like';
 
       if(event) {
         axios
-          .post(reqUrl)
-          .then(response => this.good_count = response.data.after)
+          .post(reqUrl,
+            {
+              "title": paths[paths.length - 2]
+            },
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then(response => this.good_count = response.data.count)
       }
     }
   }
