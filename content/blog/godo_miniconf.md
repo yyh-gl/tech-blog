@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = [""]
 date = "2019-08-06"
-description = "CyberAgent ＆ merpay 主催のGolang関連のイベント"
+description = "CyberAgent ＆ merpay 主催の Golang 勉強会"
 featured = "/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
