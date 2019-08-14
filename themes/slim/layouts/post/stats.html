@@ -42,9 +42,9 @@
   </div>
 </ul>
 
-<!-- ホーム画面には いいね を表示しないようにする -->
+<!-- ホーム画面 または ブログ画面 には いいね を表示しないようにする -->
 <script>
-  if(location.pathname === "/tech-blog/") {
+  if(location.pathname === "/tech-blog/" || location.pathname === "/tech-blog/blog/") {
     document.getElementById("GoodCounter").style.display ="none";
   }
 </script>
