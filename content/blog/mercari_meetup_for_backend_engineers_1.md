@@ -51,7 +51,7 @@ type = "post"
 - 全サービスは Gatwway を経由
   - Gateway から Authority Service にくる
 
-- Authority Serviceを認証基盤チームが管理
+- Authority Service を認証基盤チームが管理
   - 外部からのリクエスト検証と内部通信用のトークンを生成している
 
 - 内部トークンは毎リクエストごとに生成
