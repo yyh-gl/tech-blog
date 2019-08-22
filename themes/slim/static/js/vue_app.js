@@ -11,7 +11,7 @@ Vue.component('good-counter', {
     // URL から記事情報を取得
     let paths = location.pathname.split('/');
     // URL のタイトル部分のみを抽出し、リクエストURL を作成
-    let reqUrl = 'https://super.hobigon.work/api/v1/blogs?title=' + paths[paths.length - 2];
+    let reqUrl = 'http://localhost:3000/api/v1/blogs/' + paths[paths.length - 2];
 
     axios
       .get(reqUrl, {
@@ -29,18 +29,11 @@ Vue.component('good-counter', {
       // URL から記事情報を取得
       let paths = location.pathname.split('/');
       // URL のタイトル部分のみを抽出し、リクエストURL を作成
-      let reqUrl = 'https://super.hobigon.work/api/v1/blogs/like';
+      let reqUrl = 'http://localhost:3000/api/v1/blogs/' + paths[paths.length - 2]+ '/like';
 
       if(event) {
         axios
-          .post(reqUrl,
-            {
-              "title": paths[paths.length - 2]
-            },
-            {
-              "Content-Type": "application/json",
-            }
-          )
+          .post(reqUrl)
           .then(response => this.good_count = response.data.count)
       }
     }
