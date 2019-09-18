@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Hobigon で実行
+
 cd ~/tech-blog-settings/public &&
 git fetch origin &&
 git reset --hard origin/master &&
