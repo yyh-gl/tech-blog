@@ -26,7 +26,8 @@ disableLanguages        = [""]
   readingTime           = true
   # Sets which Social Share links appear in posts.
   # Options are twitter, facebook, reddit, linkedin, stumbleupon, pinterest, email
-  socialShare           = ["twitter", "facebook"]
+  # FIXME: Permalink が取得できるようになったら Twitter と Facebook を追加
+  socialShare           = []
   #["twitter", "facebook", "reddit", "linkedin", "stumbleupon", "pinterest", "email"]
 
   [params.meta]
