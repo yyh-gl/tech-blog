@@ -3,7 +3,13 @@ title = "About yyh-gl"
 date = "2019-07-09"
 +++
 
+現在、副業 募集中です！
 
+<a href="https://twitter.com/yyh_gl">
+      DM お待ちしております 📬
+</a>
+
+---
 # いま
 ---
 
