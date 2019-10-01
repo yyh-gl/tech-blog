@@ -36,6 +36,8 @@ type = "post"
 - [pospomeさんのブログ](https://www.pospome.work/)
 - [Goのサーバサイド実装におけるレイヤ設計とレイヤ内実装について考える](https://www.slideshare.net/pospome/go-80591000)
 
+僕自身で書いた記事もあるので参考なれば幸いです。 -> [参考記事](https://yyh-gl.github.io/tech-blog/blog/go_web_api/)
+
 
 以降、本題に入っていきますが、上記記事を読んだうえで <br>
 比較しながら読んでいただけると幸いです。
