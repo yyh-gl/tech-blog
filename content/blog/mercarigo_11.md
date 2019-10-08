@@ -7,7 +7,7 @@ featured = "mercarigo_11/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【mercari.go #11】エラーハンドリング ＋ single flight ＋ ISUCON ベンチマーカー【Golang】"
+title = "【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー【Golang】"
 type = "post"
 
 +++
