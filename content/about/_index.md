@@ -62,6 +62,7 @@ DMM.com で働く 新卒1年目 です。
 - React 
 - Vue.js
 - HTML + CSS + JavaScript
+- Twig
 
 <u>ネイティブ</u>
 
