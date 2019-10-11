@@ -24,6 +24,11 @@ type = "post"
 
 今回もお弁当とドリンクがありました！ありがたや
 
+<br>
+[追記：2019年10月12日]<br>
+[Mercari Engineering Blog](https://tech.mercari.com/entry/2019/10/11/160000) にてイベントの記事が公開されました。<br>
+資料が載せてあります。ありがたや🙏
+
 
 ---
 # 1. About error handling in Go
