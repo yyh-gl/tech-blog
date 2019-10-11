@@ -27,7 +27,7 @@ type = "post"
 <br>
 [追記：2019年10月12日]<br>
 [Mercari Engineering Blog](https://tech.mercari.com/entry/2019/10/11/160000) にてイベントの記事が公開されました。<br>
-資料が載せてあります。ありがたや🙏
+発表資料が載せてあります。ありがたや🙏
 
 
 ---
