@@ -5,6 +5,7 @@ Vue.component('good-counter', {
   data: function () {
     return {
       good_count: "-",
+      already: false,
     }
   },
   mounted () {
@@ -12,6 +13,9 @@ Vue.component('good-counter', {
     let paths = location.pathname.split('/');
     // URL のタイトル部分のみを抽出し、リクエストURL を作成
     let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + paths[paths.length - 2];
+
+    // いいね済みかどうか判定
+    this.already = !!localStorage.getItem(`${paths[paths.length - 2]}`);
 
     axios
       .get(reqUrl, {
@@ -26,6 +30,12 @@ Vue.component('good-counter', {
   },
   methods: {
     addCount: function (event) {
+      // 既にいいね済みの場合はダイアログを出して終了
+      if (this.already) {
+        window.confirm("いいねありがとうございます！\nただ、あなたはすでにいいねされてるみたいです😅");
+        return
+      }
+
       // URL から記事情報を取得
       let paths = location.pathname.split('/');
       // URL のタイトル部分のみを抽出し、リクエストURL を作成
@@ -34,7 +44,13 @@ Vue.component('good-counter', {
       if(event) {
         axios
           .post(reqUrl)
-          .then(response => this.good_count = response.data.count)
+          .then(response => {
+            this.good_count = response.data.count;
+
+            // ローカルストレージにいいねされたことを保存
+            localStorage.setItem(`${paths[paths.length - 2]}`, 'like');
+            this.already = true;
+          })
       }
     }
   }
