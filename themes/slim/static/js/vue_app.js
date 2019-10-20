@@ -4,8 +4,8 @@ Vue.component('good-counter', {
     '</button>',
   data: function () {
     return {
-      good_count: "-",
-      already: false,
+      good_count: "-", // いいね数
+      already: false,  // いいね済みかどうかのフラグ
     }
   },
   mounted () {
