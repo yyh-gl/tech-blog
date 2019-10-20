@@ -32,7 +32,7 @@ Vue.component('good-counter', {
     addCount: function (event) {
       // 既にいいね済みの場合はダイアログを出して終了
       if (this.already) {
-        alert("本記事へのいいね ありがとうございます！\nただ、あなたは既にいいねされているみたいです😅");
+        alert("本記事へのいいね ありがとうございます！\nただ、あなたは既にいいねされているみたいです😅🙇");
         return
       }
 
