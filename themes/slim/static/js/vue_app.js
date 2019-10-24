@@ -25,7 +25,7 @@ Vue.component('good-counter', {
         data: {}
       })
       .then(response => {
-        this.good_count = response.data.blog.count
+        this.good_count = response.data.blog.count;
       })
   },
   methods: {
@@ -45,7 +45,7 @@ Vue.component('good-counter', {
         axios
           .post(reqUrl)
           .then(response => {
-            this.good_count = response.data.count;
+            this.good_count = response.data.blog.count;
 
             // ローカルストレージにいいねされたことを保存
             localStorage.setItem(`${paths[paths.length - 2]}`, 'like');
