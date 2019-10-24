@@ -25,7 +25,7 @@ Vue.component('good-counter', {
         data: {}
       })
       .then(response => {
-        this.good_count = response.data.count
+        this.good_count = response.data.blog.count
       })
   },
   methods: {
