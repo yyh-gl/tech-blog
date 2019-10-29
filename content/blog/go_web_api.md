@@ -363,7 +363,7 @@ Domain層と Infra層 でパッケージ名が被ってしまうため、やむ�
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_infra.png" width="600">
 
-Infra層 は Domain層 で作った `/domain/repository/book.go` を実装しています。<br>
+Infra層 は Domain層 で作った `/domain/repository/book.go` のインターフェース（BookRepository）を実装しています。<br>
 
 <br>
 
