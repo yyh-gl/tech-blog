@@ -372,7 +372,7 @@ Infra層 は Domain層 で作った `/domain/repository/book.go` のインター
 
 答えは、 `NewBookPersistence()` です。<br>
 この関数の戻り値は インターフェース です。<br>
-したがって、21行目でreturnする bookUseCase がインターフェースを満たしていないとエラーとなります。<br>
+したがって、17行目でreturnする bookUseCase がインターフェースを満たしていないとエラーとなります。<br>
 このようにして インターフェースを満たしているか否かを判別します。
 
 `NewBookPersistence()` をどこで使うかは後述します。
