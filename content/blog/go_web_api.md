@@ -571,8 +571,8 @@ func (bh bookHandler) Index(w http.ResponseWriter, r *http.Request, pr httproute
 ## main.go
 
 ここまでで、書籍に関する Handler, UseCase, Repository が用意できました。<br>
-最後にこれらの用意したものを `main.go` にて依存関係を注入してやることで、利用可能な状態にします。<br>
-（注入とか言ってますが DI とかやってません🙏）
+最後に、`main.go` にて、これらの依存関係を定義してやることで、利用可能な状態にします。<br>
+（DI とかはやってません🙏）
 
 このとき利用するのが、各層に用意されている `NewXxx()` という関数です。
 
