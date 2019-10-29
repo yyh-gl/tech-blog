@@ -663,7 +663,7 @@ DDD や レイヤードアーキテクチャ が絡んできて、結構重い�
 # まとめ
 ---
 
-[前々回の記事](https://yyh-gl.github.io/tech-blog/blog/go_project_template/) でディレクトリ構成を考え、<br>
+[前々回の記事](https://yyh-gl.github.io/tech-blog/blog/go_project_template/) でディレクトリ構成を考え、
 今回ようやく実装してみました。
 
 ディレクトリ構成が DDD を意識していることもあり、<br>
