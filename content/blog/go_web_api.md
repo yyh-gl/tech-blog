@@ -377,6 +377,7 @@ Infra層 は Domain層 で作った `/domain/repository/book.go` のインター
 
 `NewBookPersistence()` をどこで使うかは後述します。
 
+<br>
 
 では、依存関係を見ていきます。<br>
 上述したとおり、Infra層 は Domain層 のインターフェースを満たすように作られているので、Domain層に依存しています。<br>
