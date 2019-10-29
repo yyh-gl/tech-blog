@@ -625,8 +625,12 @@ DI ライブラリを使うことで、よりスマートに書けると思い�
 
 ここまでの実装で 書籍一覧 取得リクエスト を送れるようになりました。
 
-`GET http://localhost:3000/books` してみましょう。
+```bash
+$ go run cmd/api/main.go
+$ curl -X GET  http://localhost:3000/api/v1/books
+```
 
+上記コマンドを実行すると、<br>
 2つの書籍データが返ってくるはずです。
 
 ```json
