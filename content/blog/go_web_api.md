@@ -576,7 +576,7 @@ func (bh bookHandler) Index(w http.ResponseWriter, r *http.Request, pr httproute
 
 このとき利用するのが、各層に用意されている `NewXxx()` という関数です。
 
-`NewXxx()` で生成した Handler や UseCase, Repository を使って、必要なメソッドを実行できるようにします。
+`NewXxx()` を使用して、Handler や UseCase, Repository を生成し、それを用いてメソッドを実行します。
 
 `/cmd/api/main.go`
 
