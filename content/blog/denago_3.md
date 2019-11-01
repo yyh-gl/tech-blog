@@ -30,7 +30,7 @@ type = "post"
 
 そしてなんとなんと <br>
 k8sの技術書をいただいちゃいました！！！<br>
-もちろんシールもありましたよ👍
+もちろんステッカーもありましたよ👍
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/k8s.JPG" width="450">
 
