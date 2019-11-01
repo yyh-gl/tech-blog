@@ -16,9 +16,6 @@ type = "post"
 <br>
 
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/09/-/-" width="600">
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/09/-/-" width="600">
-
 ---
 # DeNA.go #3
 ---
@@ -29,13 +26,13 @@ type = "post"
 初参加です！<br>
 ビールとお弁当もらいました。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/11/denago_3/dinner.JPG" width="450">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/dinner.JPG" width="450">
 
 そしてなんとなんと <br>
 k8sの技術書をいただいちゃいました！！！<br>
 もちろんシールもありましたよ👍
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/11/denago_3/k8s.JPG" width="450">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/k8s.JPG" width="450">
 
 <br>
 
@@ -43,7 +40,7 @@ k8sの技術書をいただいちゃいました！！！<br>
 # 1. [Go活用事例]安全運転支援サービスを支える運用サイト
 ---
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2019/11/denago_3/session1.JPG" width="450">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/session1.JPG" width="450">
 
 登壇者：@suhirotaka さん <br>
 オートモーティブ事業本部スマートドライビング部システム開発グループ
