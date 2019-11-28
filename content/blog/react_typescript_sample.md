@@ -53,11 +53,14 @@ React の実プロジェクトにおいて、<br>
 
 <br>
 
-説明はこれくらいにして、ここからは簡単なコンポーネントを作りながら、<br>
-実際に TS に触れていきたいと思います。
+では、実際にコードを交えながら基礎的な部分を説明していきます。<br>
+ただし、応用編で使用する内容に絞って説明していきますので、<br>
+その点はご了承ください🙇‍
+
+<br>
 
 ---
-# 静的型付け
+# 型
 ---
 
 では、早速、TS の型に触れていきましょう。<br>
@@ -78,9 +81,11 @@ TS で使用できる基本的な型として以下のものがあります。
 だいたいの型は他言語でも用意されているので、<br>
 説明がなくても理解できると思います。
 
-Tuple や Never といった見慣れない型もあると思います。<br>
-型について、より詳細に知りたい方は、<br>
-[こちらの記事](https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a)が参考になると思います。
+Tuple や Never といった見慣れない型もあると思いますが、<br>
+他サイトでたくさん説明されているので割愛します。<br>
+気になる方は、下記サイトを参考にしてみてください。
+- [公式サイト](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+- [Qiita記事](https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a)
 
 <br>
 
@@ -91,21 +96,116 @@ function greeter(person: string) {
     return "Hello, " + person;
 }
 
-const user = "Jane User";
+const user: string = "Jane User";
 
 document.body.textContent = greeter(user);
 ```
 
-1行目にて、greeter() に person という string 型の引数を渡すことが明示されています。
+1行目にて、greeter() に person という string 型の引数を渡すことが明示されています。<br>
+また、関数定義においては、引数と戻り値の型を宣言しています。
+
+<br>
+
+---
+# インターフェース
+---
+
+次にインターフェースについて見ていきます。<br>
+（本来、インターフェースは JavaScript に無い仕様です）
+
+インターフェースはクラスやオブジェクトの規格を定義します。<br>
+クラスだけでなく、オブジェクトの規格を定義できるため、<br>
+API のレスポンスとして返ってくるオブジェクトを定義することが可能です。
+
+有用性の高い仕様のひとつではないでしょうか。
+
+定義方法は以下のとおりです。
+
+```typescript
+interface LabeledValue {
+    label: string;
+}
+
+function printLabel(labeledObj: LabeledValue) {
+    console.log(labeledObj.label);
+}
+
+let myObj = {size: 10, label: "Size 10 Object"};
+printLabel(myObj);
+```
+
+上記コードは、`LabeledValue` というインターフェースと、<br>
+そのインターフェースを満たす `myObj` というオブジェクトを定義しています。<br>
+加えて、`printLabel()` という `LabeledValue` インターフェースを受け取る関数が用意されています。
+
+`myObj` は `label` を持っているので、`LabeledValue` インターフェースを満たしており、<br>
+`printLabel()` に引数として渡すことが可能です。
+
+<br>
+
+クラスの規格定義としてのインターフェースは以下のとおりです。<br>
+こちらは他言語でよく見る形なので説明は省略します。
+
+```typescript
+interface ClockInterface {
+    currentTime: Date;
+    setTime(d: Date): void;
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date = new Date();
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) { }
+}
+```
+
+なお、クラスという概念は JavaScript（ES6） に組み込まれているクラスの機能を <br>
+ES6 以前の JavaScript でも使えるようにしただけ（←重要）であるため説明は省略します。
+
+
+<br>
+
+---
+# 入門時の落とし穴
+---
+
+僕が TS を初めて触ったときに戸惑ったのが以下のエラーでした。
+
+```
+Could not find a declaration file for module 'react-router-config'. '/hoge/index.js' implicitly has an 'any' type.
+  Try `npm install @types/react-router-config` if it exists or add a new declaration (.d.ts) file containing `declare module 'react-router-config';`  TS7016
+
+    1 | import React from 'react';
+  > 2 | import { renderRoutes, RouteConfigComponentProps } from 'react-router-config';
+      |                                                         ^
+    3 | import './App.css';
+    4 | 
+    5 | const App: React.FC<RouteConfigComponentProps> = ({ route }) => {
+```
+
+このエラーが何を言っているかと言うと、<br>
 
 
 
 <br>
 
 ---
-# Interface
+# 実践編
 ---
 
+<br>
+
+## ライブラリ使用時の注意
+
+<br>
+
+## API リクエスト
+
+<br>
+
+## 
 
 <br>
 
