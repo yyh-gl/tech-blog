@@ -56,6 +56,7 @@ React の実プロジェクトにおいて、<br>
 では、実際にコードを交えながら基礎的な部分を説明していきます。<br>
 ただし、応用編で使用する内容に絞って説明していきますので、<br>
 その点はご了承ください🙇‍
+（足りない情報は[公式ドキュメント](https://www.typescriptlang.org/docs/home.html)を参考にしてください）
 
 <br>
 
@@ -186,14 +187,48 @@ Could not find a declaration file for module 'react-router-config'. '/hoge/index
 ```
 
 このエラーが何を言っているかと言うと、<br>
+「ライブラリで使ってるやつに関する型宣言情報がないから、どう解釈したらいいか分からん！」<br>
+ってことです。
 
+ライブラリは TS のためではなく、JavaScript のためのものなので、<br>
+インポートしたライブラリの中には、TS 対応していないものがあるのは当然ですよね。
 
+では、どうするかですが、<br>
+`@types` を使ってやればOKです。
+
+<br>
+
+## @types
+
+`@types` とは、提供されている型定義ファイルを落としてくるさいに使用します。
+
+[本サイト](https://typescript-jp.gitbook.io/deep-dive/type-system/types)によると、JSライブラリの90%に対応しているんだとか。<br>
+すごすぎる。。。
+
+例えば、さきほどのエラーに対応する場合は、<br>
+`npm install @types/react-router-config` を実行してやることで、<br>
+react-router-config ライブラリの型に関する定義を取得できます。
+
+<br>
+
+## 型定義ファイル
+
+もし型定義ファイルが提供されていない場合は、<br>
+自分で型定義ファイルを作る必要があります。<br>
+作るときは[本サイト](https://qiita.com/Nossa/items/726cc3e67527e896ed1e#2-%E5%9E%8B%E5%AE%9A%E7%BE%A9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB-dts-%E3%82%92%E8%87%AA%E4%BD%9C%E3%81%99%E3%82%8B)
+が参考になると思います。
+
+（[こんな技](https://qiita.com/Nossa/items/726cc3e67527e896ed1e#3-require-%E3%81%A7%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80)
+もありますが…）
 
 <br>
 
 ---
 # 実践編
 ---
+
+では、かなりだいぶめちゃくちゃざっくりと基本的なことはお話したので、<br>
+実践的な内容に入っていきます。
 
 <br>
 
