@@ -38,10 +38,9 @@ React の実プロジェクトにおいて、
 # 基礎編
 ---
 
+<br>
 
----
-# TypeScript とは
----
+## TypeScript とは
 
 https://yyh-gl.github.io/tech-blog/img/tech-blog
 <img src="http://localhost:1313/tech-blog/img/tech-blog/2019/12/react_typescript_sample/ts.png" width="200">
@@ -63,11 +62,9 @@ https://yyh-gl.github.io/tech-blog/img/tech-blog
 その点はご了承ください🙇‍
 （足りない情報は[公式ドキュメント](https://www.typescriptlang.org/docs/home.html)を参考にしてください）
 
- 
+ <br>
 
----
-# 型
----
+## 型
 
 では、早速、TS の型に触れていきましょう。 
 TS で使用できる基本的な型として以下のものがあります。
@@ -117,9 +114,9 @@ document.body.textContent = greeter(user);
 
  
 
----
-# インターフェース
----
+<br>
+
+## インターフェース
 
 次にインターフェースについて見ていきます。 
 インターフェースは本来、JS に無い機能ですが、 
@@ -178,9 +175,9 @@ ES6 以前の JS でも使えるようにしたものです。
 
  
 
----
-# 入門時の落とし穴
----
+<br>
+
+## 入門時の落とし穴
 
 僕が TS を初めて触ったときに戸惑ったのが以下のエラーでした。
 
@@ -623,7 +620,7 @@ let x = (foo !== null && foo !== undefined) ?
  
 
 ---
-まとめ
+# まとめ
 ---
 
 TS 入門 いかがでしたでしょうか？
