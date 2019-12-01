@@ -7,7 +7,7 @@ featured = "react_typescript_sample/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【React+TS】ガチ素人のTypeScript入門"
+title = "【React+TypeScript】ガチ素人のTypeScript入門"
 type = "post"
 
 +++
@@ -45,11 +45,11 @@ React の実プロジェクトにおいて、
 https://yyh-gl.github.io/tech-blog/img/tech-blog
 <img src="http://localhost:1313/tech-blog/img/tech-blog/2019/12/react_typescript_sample/ts.png" width="200">
 
-[TypeScript（TS）](https://www.typescriptlang.org/index.html) は Microsoft 社によって開発され、 
+[TypeScript](https://www.typescriptlang.org/index.html) は Microsoft 社によって開発され、 
 現在は [OSS](https://github.com/microsoft/TypeScript) として開発が進められています。
 
-「TS とは何か」を簡単に説明すると、 
-<u>JavaScript（JS） に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット</u> です。
+「TypeScript とは何か」を簡単に説明すると、 
+<u>JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット</u> です。
 
 [公式サイト](https://www.typescriptlang.org/) はこちらです。
 
@@ -66,8 +66,8 @@ https://yyh-gl.github.io/tech-blog/img/tech-blog
 
 ## 型
 
-では、早速、TS の型に触れていきましょう。 
-TS で使用できる基本的な型として以下のものがあります。
+では、早速、TypeScript の型に触れていきましょう。 
+TypeScript で使用できる基本的な型として以下のものがあります。
 
 - Boolean
 - Number
@@ -119,12 +119,12 @@ document.body.textContent = greeter(user);
 ## インターフェース
 
 次にインターフェースについて見ていきます。 
-インターフェースは本来、JS に無い機能ですが、 
-TS によってその機能が追加されています。
+インターフェースは本来、JavaScript に無い機能ですが、 
+TypeScript によってその機能が追加されています。
 
 インターフェースは、クラスやオブジェクトの規格を定義するのに使用します。 
 クラスだけでなく、オブジェクトの規格を定義できるため、 
-API のレスポンスとして返ってくるオブジェクトを定義することが可能です。
+API のレスポンスとして返ってくるデータ（＝オブジェクト）の規格を定義することが可能です。
 
 有用性の高い機能のひとつではないでしょうか。
 
@@ -170,8 +170,8 @@ class Clock implements ClockInterface {
 }
 ```
 
-なお、クラスという概念は JS（ES6） に組み込まれているクラスの機能を  
-ES6 以前の JS でも使えるようにしたものです。 
+なお、クラスという概念は JavaScript（ES6） に組み込まれているクラスの機能を  
+ES6 以前の JavaScript でも使えるようにしたものです。 
 
  
 
@@ -179,7 +179,7 @@ ES6 以前の JS でも使えるようにしたものです。
 
 ## 入門時の落とし穴
 
-僕が TS を初めて触ったときに戸惑ったのが以下のエラーでした。
+僕が TypeScript を初めて触ったときに戸惑ったのが以下のエラーでした。
 
 ```zsh
 Could not find a declaration file for module 'react-router-config'. '/hoge/index.js' implicitly has an 'any' type.
@@ -197,8 +197,8 @@ Could not find a declaration file for module 'react-router-config'. '/hoge/index
 「ライブラリで使用する関数や変数に関する型宣言情報がないから、どう解釈したらいいか分からん！」 
 ってことです。
 
-ライブラリは TS のためではなく、JS のためのものなので、 
-インポートしたライブラリの中には、TS 対応していないものがあるのは当然ですよね。
+ライブラリは TypeScript のためではなく、JavaScript のためのものなので、 
+インポートしたライブラリの中には、TypeScript 対応していないものがあるのは当然ですよね。
 
 では、どうするかですが、 
 `@types` を使ってやればOKです。
@@ -209,7 +209,7 @@ Could not find a declaration file for module 'react-router-config'. '/hoge/index
 
 `@types` を使用することで、提供されている型定義ファイルを取得することができます。
 
-[本サイト](https://typescript-jp.gitbook.io/deep-dive/type-system/types)によると、JSライブラリの90%に対応しているんだとか。 
+[本サイト](https://typescript-jp.gitbook.io/deep-dive/type-system/types)によると、JavaScriptライブラリの90%に対応しているんだとか。 
 すごすぎる。。。
 
 例えば、さきほどのエラーに対応する場合は、 
@@ -243,9 +243,9 @@ react-router-config ライブラリの型に関する定義を取得できます
 
  
 
-## React ＋ TS 環境のセットアップ
+## React ＋ TypeScript 環境のセットアップ
 
-React ＋ TS の開発環境は下記コマンドひとつで揃います。 
+React ＋ TypeScript の開発環境は下記コマンドひとつで揃います。 
 `$ npx create-react-app my-app --typescript`
 
 ここから、src配下のディレクトリ構成を少し変更していきます。 
@@ -301,7 +301,7 @@ react-typescript-sample
 以下のようなメリットがあります。
 
 - レスポンス内容がフロントのコードから読み取れる
-  - 思いがけない凡ミスを無くせる
+  - 存在しないパラメータにアクセスしようとするといった凡ミスを無くせる
 - IDE による補完が効く
 
 では、実際にどうやって API のレスポンスを定義するのか見ていきます。
@@ -388,22 +388,22 @@ client.interceptors.response.use(
  
 
 2つ目は、`camelcase-keys` というライブラリを使用している点です。 
-JS のコーディング規約では、変数名にキャメルケースを使用します。 
+JavaScript のコーディング規約では、変数名にキャメルケースを使用します。 
 しかしながら、 JSON のキー名は多くの場合でスネークケースです。 
 
 つまり、普通に JSON を受け取ると、  
 `resposen.first_name` のようにしてデータを取り出します。
 
-しかし、これでは JS の命名規則的に気持ち悪いですね。 
+しかし、これでは JavaScript の命名規則的に気持ち悪いですね。 
 加えて、`User` モデル（interface）は `firstName` として定義しているため、 
 `first_name` として受け取るのはよろしくありません。
 
 ここで `camelcase-keys` ライブラリの登場です。 
-本ライブラリはスネークケースの名称をキャメルケースに変換します。 
-これでスネークケースの JSON データをキャメルケースに変換しています。
+スネークケースのキー名をキャメルケースに変換するためのもので、
+本ライブラリを用いて、受け取った JSON データのキー名を全てをキャメルケースに変換しています。
 
-TS の話から少し脱線しましたが、
-これで User インターフェースどおりのオブジェクトを受け取ることが可能となりました。
+TypeScript の話から少し脱線しましたが、
+これで User インターフェースどおりのオブジェクトを受け取ることが可能になりました。
  
 
 ## 3. ユーザ一覧取得 API リクエストを実装
@@ -488,13 +488,13 @@ export default Users;
  
 
 このとき、33行目のユーザ情報表示処理では、 
-User interface を定義しているため、 
-IDE上では、どういったキーが存在するかが補完候補として出てきます！ ↓
+User インターフェースを定義しているため、 
+IDE において、どういったキーが存在するかが補完候補として出てきます！ ↓
 
 <img src="http://localhost:1313/tech-blog/img/tech-blog/2019/12/react_typescript_sample/complement.png" width="600">
 
 型がちゃんと定義されているので、 
-取得したデータに対して、どういった処理ができる（どのメソッドを適用できるか）が明確になり、 
+取得したデータに対して、どういった処理ができる（どのメソッドを適用できる）かが明確になり、 
 凡ミスを減らすことができますし、コードの可読性向上にも繋がります。
 
 いいですね！
@@ -504,19 +504,19 @@ IDE上では、どういったキーが存在するかが補完候補として�
 実践編は以上です。 
 API リクエスト部分だけかよというツッコミはどうかご勘弁を😇
 
-最後に TS を使う上での注意点と最新版で追加された機能を少し紹介して終わりにしたいと思います。
+最後に TypeScript を使う上での注意点と最新版で追加された機能を少し紹介して終わりにしたいと思います。
 
  
 
 ---
-# TSを使う上での注意点
+# TypeScriptを使う上での注意点
 ---
 
-## TS の型情報はなくなる
+## TypeScript の型情報はなくなる
 
-TS で型を定義していたとしても、最終的にそのコードは JS に変換されます。
+TypeScript で型を定義していたとしても、最終的にそのコードは JavaScript に変換されます。
 
-ご存知のとおり、JS には型などありません。 
+ご存知のとおり、JavaScript には型などありません。 
 したがって、実際に動くコードには型情報はついていません。
 
 あくまで開発段階で型の整合性チェックや補完などができるだけであること、 
@@ -527,7 +527,7 @@ TS で型を定義していたとしても、最終的にそのコードは JS �
 ## create-react-app では使えない機能がある
 
 create-react-app（CRA）の最新版 3.2.0 では、 
-TS 3.7 から使用できる一部機能にまだ対応していません。
+TypeScript 3.7 から使用できる一部機能にまだ対応していません。
 
 本内容については、次章にて詳細に話します。
 
@@ -559,7 +559,7 @@ let x = (foo === null || foo === undefined) ?
 
  
 
-ここで、さきほど、最新版の CRA では 最新版 TS の一部機能が使えないと言いましたが、 
+ここで、さきほど、最新版の CRA では 最新版 TypeScript の一部機能が使えないと言いましたが、 
 その機能がこの Optional Chaining です。
 
 本機能を使用しようとすると、
@@ -580,7 +580,7 @@ Add @babel/plugin-proposal-optional-chaining (https://git.io/vb4Sk) to the 'plug
 ```
 
 このようにエラーが出て、 
-Babel（TS を JS に変換するやつ）の設定ファイルに `@babel/plugin-proposal-optional-chaining ` を追加しろと言われます。
+Babel（TypeScript を JavaScript に変換するやつ）の設定ファイルに `@babel/plugin-proposal-optional-chaining ` を追加しろと言われます。
 
 しかしながら、現在、Babel の設定ファイルである `.babelrc` や `babel.config.js` に CRA（厳密には `react-scripts`）が対応しておらず、読み込むことができません。
 
@@ -590,8 +590,8 @@ Babel（TS を JS に変換するやつ）の設定ファイルに `@babel/plugi
 
  
 
-なお、Optional Chaining は本家 JS にも組み込まれる予定です！ 
-TS は JS の Class のように、JSのバージョンを上げないと使えない機能を  
+なお、Optional Chaining は本家 JavaScript にも組み込まれる予定です！ 
+TypeScript は JavaScript の Class のように、JavaScriptのバージョンを上げないと使えない機能を  
 ライブラリレベルで使えるようにしてくれるのでいいですね👍
 
  
@@ -623,12 +623,12 @@ let x = (foo !== null && foo !== undefined) ?
 # まとめ
 ---
 
-TS 入門 いかがでしたでしょうか？
+TypeScript 入門 いかがでしたでしょうか？
 
-詳細な説明を飛ばしたところをもありましたが、 
-TS がどんな感じなのか、少しでも感じてもらえれば幸いです。
+詳細な説明を飛ばしたところもありましたが、 
+TypeScript がどんな感じなのか、少しでも感じてもらえたならば幸いです。
 
-TS は型に注目がいきがちですが、 
+TypeScript は型に注目がいきがちですが、 
 他にも様々な便利機能があるので、どんどん使い倒していきたいですね！
 
 明日からのアドベントカレンダー記事も楽しみです😃
