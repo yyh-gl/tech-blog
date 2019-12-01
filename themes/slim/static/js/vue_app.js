@@ -1,6 +1,6 @@
 Vue.component('good-counter', {
-  template: '<button v-on:click="addCount">\n' +
-    '<i class="far fa-thumbs-up"></i> いいね　{{ good_count }}\n' +
+  template: '<button v-on:click="addCount" v-bind:disabled="already">\n' +
+    '<i class="far fa-thumbs-up"></i> いいね{{ this.already ? "済み" : ""}}　{{ good_count }}\n' +
     '</button>',
   data: function () {
     return {
