@@ -21,9 +21,7 @@ type = "post"
 
 本記事は [TypeScript Advent Calendar 2019](https://qiita.com/advent-calendar/2019/typescript) の 2 日目の記事です。
 
-内容としては、TypeScript ガチ素人の僕がお届けする、TypeScript 入門です。 
-したがって、TypeScript 上級者用ではなく、 
-これから TypeScript を使っていこうとされている方向けです。 
+内容としては、TypeScript 初級者のための TypeScript 入門です。 
 
 基礎的な内容から入り、 
 最終的には、企業や個人の技術ブログを参考に、 
@@ -34,7 +32,12 @@ React の実プロジェクトにおいて、
 今日の記事を読んで TypeScript に入門し、 
 今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！
 
+<br>
  
+---
+# 基礎編
+---
+
 
 ---
 # TypeScript とは
@@ -47,7 +50,7 @@ https://yyh-gl.github.io/tech-blog/img/tech-blog
 現在は [OSS](https://github.com/microsoft/TypeScript) として開発が進められています。
 
 「TS とは何か」を簡単に説明すると、 
-<u>JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット</u> です。
+<u>JavaScript（JS） に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット</u> です。
 
 [公式サイト](https://www.typescriptlang.org/) はこちらです。
 
@@ -110,7 +113,7 @@ document.body.textContent = greeter(user);
 また、関数定義においては、引数と戻り値の型を宣言しています。
 
 仮に `greeter()` に string 型以外の値を渡すと、 
-コンパイル時 or IDE にエラーが吐かれるので、ミスに気づくことが可能です。
+コンパイル時 or IDE 上にエラーが吐かれるので、ミスに気づくことが可能です。
 
  
 
@@ -119,7 +122,7 @@ document.body.textContent = greeter(user);
 ---
 
 次にインターフェースについて見ていきます。 
-インターフェースは本来、JavaScript に無い機能ですが、 
+インターフェースは本来、JS に無い機能ですが、 
 TS によってその機能が追加されています。
 
 インターフェースは、クラスやオブジェクトの規格を定義するのに使用します。 
@@ -170,8 +173,8 @@ class Clock implements ClockInterface {
 }
 ```
 
-なお、クラスという概念は JavaScript（ES6） に組み込まれているクラスの機能を  
-ES6 以前の JavaScript でも使えるようにしたものです。 
+なお、クラスという概念は JS（ES6） に組み込まれているクラスの機能を  
+ES6 以前の JS でも使えるようにしたものです。 
 
  
 
@@ -197,7 +200,7 @@ Could not find a declaration file for module 'react-router-config'. '/hoge/index
 「ライブラリで使用する関数や変数に関する型宣言情報がないから、どう解釈したらいいか分からん！」 
 ってことです。
 
-ライブラリは TS のためではなく、JavaScript のためのものなので、 
+ライブラリは TS のためではなく、JS のためのものなので、 
 インポートしたライブラリの中には、TS 対応していないものがあるのは当然ですよね。
 
 では、どうするかですが、 
@@ -207,7 +210,7 @@ Could not find a declaration file for module 'react-router-config'. '/hoge/index
 
 ## @types
 
-`@types` とは、提供されている型定義ファイルを落としてくるさいに使用します。
+`@types` を使用することで、提供されている型定義ファイルを取得することができます。
 
 [本サイト](https://typescript-jp.gitbook.io/deep-dive/type-system/types)によると、JSライブラリの90%に対応しているんだとか。 
 すごすぎる。。。
@@ -284,10 +287,10 @@ react-typescript-sample
 なお、今回は説明しやすくするために、 
 `components` および `layouts` は使用していません。
 
-本来であれば、`pages` は `components` 配下のコンポーネントによって表現します。 
+本来であれば、`pages` は `components` 配下のコンポーネントを組み合わせることにより表現します。  
 `components` 配下は、Atomic Design に沿ったディレクトリ構成が取られることが多い気がします。 
 
-また、ページのレイアウトは `layouts` 配下のコンポーネントによって表現します。
+また、ページのレイアウト（ヘッダーやフッター、メインコンテンツの位置など）は、`layouts` 配下のコンポーネントによって表現します。
 
  
 
@@ -306,7 +309,7 @@ react-typescript-sample
 
 では、実際にどうやって API のレスポンスを定義するのか見ていきます。
 
-なお、サンプルとしてユーザ情報を受け取る API を用意しました。 
+今回は、例としてユーザ情報を受け取る API を用意しました。 
 下記のような JSON を取得します。
 
 ```json
@@ -379,11 +382,11 @@ client.interceptors.response.use(
 
 ここで注目すべき点が2つあります。
 
-1つ目は Axios をインポートするさいに型情報も合わせて取得している点です。 
+1つ目は、Axios をインポートするさいに型情報も合わせて取得している点です。 
 1行目にて、`axios` 以外に `AxiosInstance` と `AxiosResponse` を取得しています。
 
 この `AxiosInstance` と `AxiosResponse` こそが Axios ライブラリで使用する型情報です。 
-したがって、それぞれ 4行目 と 14行目 で使用しています。
+それぞれ 4行目 と 14行目 で使用しています。
 
  
 
@@ -391,7 +394,7 @@ client.interceptors.response.use(
 JS のコーディング規約では、変数名にキャメルケースを使用します。 
 しかしながら、 JSON のキー名は多くの場合でスネークケースです。 
 
-つまり、JS で JSON を受け取ると、 
+つまり、普通に JSON を受け取ると、  
 `resposen.first_name` のようにしてデータを取り出します。
 
 しかし、これでは JS の命名規則的に気持ち悪いですね。 
@@ -402,6 +405,8 @@ JS のコーディング規約では、変数名にキャメルケースを使�
 本ライブラリはスネークケースの名称をキャメルケースに変換します。 
 これでスネークケースの JSON データをキャメルケースに変換しています。
 
+TS の話から少し脱線しましたが、
+これで User インターフェースどおりのオブジェクトを受け取ることが可能となりました。
  
 
 ## 3. ユーザ一覧取得 API リクエストを実装
@@ -463,7 +468,7 @@ const Users: React.FC = () => {
             {
                 userList && userList.map((user) => {
                     return (
-                        <p key={user.id}>{`${user.lastName} ${user.firstName}`}</p>
+                        <p key={user.id}>{`${user.lastName} ${user.firstName}`}</p> <!-- ポイント3 -->
                     );
                 })
             }
@@ -512,9 +517,9 @@ API リクエスト部分だけかよというツッコミはどうかご勘弁�
 
 ## TS の型情報はなくなる
 
-TS で型を定義していたとしても、最終的にそのコードは JavaScript に変換されます。
+TS で型を定義していたとしても、最終的にそのコードは JS に変換されます。
 
-ご存知のとおり、JavaScript には型などありません。 
+ご存知のとおり、JS には型などありません。 
 したがって、実際に動くコードには型情報はついていません。
 
 あくまで開発段階で型の整合性チェックや補完などができるだけであること、 
@@ -540,8 +545,7 @@ TS 3.7 から使用できる一部機能にまだ対応していません。
 
 ## [Optional Chaining](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#optional-chaining)
 
-いわゆる Optional 型です。 
-Kotlin に触れたことがある人には馴染みの深い文法です。
+Kotlin を書いたことがある人は、見覚えのある文法ではないでしょうか？
 
 ```typescript
 let x = foo?.bar.baz();
@@ -589,7 +593,7 @@ Babel（TS を JS に変換するやつ）の設定ファイルに `@babel/plugi
 
  
 
-なお、Optional Chaining は本家 JavaScript にも組み込まれる予定です！ 
+なお、Optional Chaining は本家 JS にも組み込まれる予定です！ 
 TS は JS の Class のように、JSのバージョンを上げないと使えない機能を  
 ライブラリレベルで使えるようにしてくれるのでいいですね👍
 
