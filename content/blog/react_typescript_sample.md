@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["React", "TypeScript"]
-date = "2019-12-01"
+date = "2019-12-02"
 description = "TypeScript Advent Calendar 2019 2日目"
 featured = "react_typescript_sample/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
