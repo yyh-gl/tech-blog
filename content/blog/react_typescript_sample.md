@@ -7,7 +7,7 @@ featured = "react_typescript_sample/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【React+TypeScript】ガチ素人のTypeScript入門"
+title = "【React+TypeScript】TypeScript入門"
 type = "post"
 
 +++
