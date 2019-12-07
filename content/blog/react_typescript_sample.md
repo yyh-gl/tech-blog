@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["React", "TypeScript"]
+categories = ["React", "TypeScript", "Advent Calendar"]
 date = "2019-12-02"
 description = "TypeScript Advent Calendar 2019 2日目"
 featured = "react_typescript_sample/featured.png"
