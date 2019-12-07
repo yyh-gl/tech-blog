@@ -703,7 +703,7 @@ go-vcr を利用することで、外部API通信のモック化および管理�
 
 また、今回は説明しませんでしたが、<br>
 [Protecting Sensitive Data](https://github.com/dnaeon/go-vcr#protecting-sensitive-data) という機能もあり、<br>
-保存したくないデータを部分的に保存しないようにするといったこともできます。
+指定したデータを保存しないようにするといったこともできます。
 
 カスタマイズ性が高く、とてもおすすめのライブラリです。
 
