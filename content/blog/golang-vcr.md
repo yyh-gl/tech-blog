@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["golang", "vcr", "テスト", "Advent Calendar"]
-date = "2019-12-07"
+date = "2019-12-08"
 description = "Go3 Advent Calendar 2019 8日目"
 featured = "golang-vcr/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
