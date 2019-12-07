@@ -9,7 +9,7 @@ echo "デプロイ開始 ..." &&
 
 # 記事コンパイル
 echo -e "\nコンパイルを開始" &&
-hugo &&
+hugo --buildFuture &&
 echo "コンパイルが完了" &&
 
 cd public &&
