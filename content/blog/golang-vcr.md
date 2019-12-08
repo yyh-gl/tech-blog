@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["golang", "vcr", "テスト", "Advent Calendar"]
+categories = ["golang", "テスト", "Advent Calendar"]
 date = "2019-12-08"
 description = "Go3 Advent Calendar 2019 8日目"
 featured = "golang-vcr/featured.png"
@@ -688,7 +688,14 @@ func Test_FetchUser(t *testing.T) {
 # 保存内容を修正する必要が出たときはどうする？
 ---
 
-yaml ファイルを消すだけです。以上！
+yaml ファイルを消すだけです。
+
+例えば、外部APIの仕様が変わり、モックを更新する必要が出てきた場合は、<br>
+yaml ファイルを消してやるだけで、次のAPIリクエストの内容を保存 => つまり、モックを更新できます。
+
+もちろん yaml ファイルを直接変更することもできます。
+
+モックの管理が楽になりますね👍
 
 
 <br>
@@ -702,7 +709,7 @@ go-vcr を利用することで、外部API通信のモック化および管理�
 仕様が漏れることもないでしょう。
 
 また、今回は説明しませんでしたが、<br>
-[Protecting Sensitive Data](https://github.com/dnaeon/go-vcr#protecting-sensitive-data) という機能もあり、<br>
+go-vcr には [Protecting Sensitive Data](https://github.com/dnaeon/go-vcr#protecting-sensitive-data) という機能もあり、<br>
 指定したデータを保存しないようにするといったこともできます。
 
 カスタマイズ性が高く、とてもおすすめのライブラリです。
