@@ -7,7 +7,7 @@ git fetch origin &&
 git reset --hard origin/master &&
 cd .. &&
 git pull origin master&&
-hugo &&
+hugo --buildFuture &&
 cd public &&
 msg="【予約公開】記事コード：$1"
 git add -A &&

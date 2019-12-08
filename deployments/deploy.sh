@@ -7,13 +7,6 @@ fi
 
 echo "デプロイ開始 ..." &&
 
-# 記事コンパイル
-echo -e "\nコンパイルを開始" &&
-hugo &&
-echo "コンパイルが完了" &&
-
-cd public &&
-
 # ブログ設定用リポジトリへのPUSH
 echo -e "\nブログ設定用リポジトリへPUSH" &&
 msg="【公開】記事コード：$1"
@@ -22,7 +15,12 @@ git commit -m "$msg" &&
 git push origin master &&
 echo "ブログ設定用リポジトリへPUSH完了" &&
 
-cd .. &&
+# 記事コンパイル
+echo -e "\nコンパイルを開始" &&
+hugo --buildFuture &&
+echo "コンパイルが完了" &&
+
+cd public &&
 
 # GitHub Pages用リポジトリへPUSH
 echo -e "\nGitHub Pages用リポジトリへPUSH" &&
