@@ -637,3 +637,8 @@ TypeScript は型に注目がいきがちですが、<br>
 他にも様々な便利機能があるので、どんどん使い倒していきたいですね！
 
 明日からのアドベントカレンダー記事も楽しみです😃
+
+<br>
+
+TypeScript Advent Calendar 2019、<br>
+明日は [kimromi](https://qiita.com/kimromi) さんの『[FlowからTypeScriptに段階的に移行する](https://kimromi.hatenablog.jp/entry/2019/12/03/134214)』です🛫

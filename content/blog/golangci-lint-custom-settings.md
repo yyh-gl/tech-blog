@@ -396,3 +396,7 @@ Linter の導入・管理コストがとても低くなったと感じていま�
 ぜひ、GolangCI-Lint の導入を検討しみてはいかかでしょうか？
 
 最高の DX です🎁
+
+<br>
+
+DMM Advent Calendar 2019、明日は [mimickn](https://qiita.com/mimickn) さんです！

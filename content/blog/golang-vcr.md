@@ -716,3 +716,7 @@ go-vcr には [Protecting Sensitive Data](https://github.com/dnaeon/go-vcr#prote
 
 もしモックの作成・管理で悩んでいる方がおられたら、<br>
 ぜひ一度検討してみてください！
+
+<br>
+
+TypeScript Advent Calendar 2019、明日は [EbiEbiEvidence](https://qiita.com/EbiEbiEvidence) さんです🛫
