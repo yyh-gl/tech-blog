@@ -80,6 +80,10 @@ Golang の場合、Linter がデフォルトで用意されているうえに、
 Golang の Linter を一元管理するためのツールです。<br>
 開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
 
+したがって、Linter の導入・管理コストが一気に下がりますし、<br>
+運用していく過程で不要だと感じた Linter は、簡単に無効化することもできるので、<br>
+気軽に Linter を試用することができます。
+
 対応 Linter は[こちら](https://github.com/golangci/golangci-lint#supported-linters)に一覧が載っています。
 
 似たようなツールに [gometalinter](https://github.com/alecthomas/gometalinter) というのがあったのですが、<br>
@@ -383,11 +387,12 @@ GolangCI-Lint で使用できる設定を探したい場合は、<br>
 # まとめ
 ---
 
-GolangCI-Lint により、様々な Linter が一元管理でき、Linter 導入の敷居が低くなったと思います。<br>
-（使用する Linter が増えるにつれて、必要な知識量も増えますが。。。）
+GolangCI-Lint により、様々な Linter が一元管理でき、<br>
+Linter の導入・管理コストがとても低くなったと感じています。<br>
+また、いろいろな Linter を気軽に試せるようになりました。
 
 ちょっとしたコーディング規約違反を毎回人力で指摘している方、<br>
-コンパイラでは見つけきれないエラーに困っている方などは、<br>
+コンパイラでは発見できないエラーに困っている方などは、<br>
 ぜひ、GolangCI-Lint の導入を検討しみてはいかかでしょうか？
 
 最高の DX です🎁
