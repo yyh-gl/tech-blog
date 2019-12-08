@@ -21,11 +21,16 @@ type = "post"
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
 
-本記事は [DMM Advent Calendar 2019](https://qiita.com/advent-calendar/2019/dmm) の 8日目 の記事です。
+本記事は [DMM Advent Calendar 2019](https://qiita.com/advent-calendar/2019/dmm) の 9日目 の記事です。
+
+<br>
+
+私は現在、DMM.com の [CDS チーム](https://inside.dmm.com/archive/category/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC)という共通基盤を作るチームで、<br>
+主にレビューシステムのバックエンドを開発しています。
 
 <br> 
 
-Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、<br>
+今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、<br>
 GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
 
 <br>
@@ -36,7 +41,8 @@ GolangCI-Lint のハマリポイントとその解決策である設定周りの
 
 突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？
 
-私の所属するチームでは、主にコーディング規約違反を発見するために、<br>
+私の所属するチームでは、<br>
+<u>コーディング規約違反</u> および <u>コンパイラでは見つけられないエラー</u> を検知するために、<br>
 ローカルと CI において Linter を回すようにしています。
 
 <br>
