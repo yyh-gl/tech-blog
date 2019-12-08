@@ -25,8 +25,8 @@ type = "post"
 
 <br>
 
-私は現在、DMM.com の [CDS チーム](https://inside.dmm.com/archive/category/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC)という共通基盤を作るチームで、<br>
-主にレビューシステムのバックエンドを開発しています。
+私は現在、DMM.com の CDS チームという共通の基盤システムを作るチームに所属し、<br>
+主に[ユーザレビュー基盤](https://inside.dmm.com/archive/category/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC)のバックエンドを開発しています。
 
 <br> 
 
