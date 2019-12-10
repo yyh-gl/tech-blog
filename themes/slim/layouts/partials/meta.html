@@ -2,7 +2,7 @@
 <title>{{ .Title }}{{ if ne .Title .Site.Title }} - {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.meta.description }}{{ . }}{{ end }}{{ end }}">
 <meta property="og:image" content="{{ .Site.BaseURL }}{{ if .Params.featured }}img{{ .Page.Date.Format "2006/01" | relURL }}/{{ .Params.featured }}{{ else }}{{ .Site.Params.intro.ogp.src }}{{ end }}" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width">
 <!-- TODO: Do we want to add rel=author? -->
 {{ if .Site.Params.meta.favicon }}
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "favicon/apple-touch-icon.png" | relURL}}{{ with .Site.Params.meta.faviconVersion }}?v={{ . }}{{ end }}">
