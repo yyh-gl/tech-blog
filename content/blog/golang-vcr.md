@@ -719,4 +719,4 @@ go-vcr には [Protecting Sensitive Data](https://github.com/dnaeon/go-vcr#prote
 
 <br>
 
-TypeScript Advent Calendar 2019、明日は [EbiEbiEvidence](https://qiita.com/EbiEbiEvidence) さんです🛫
+Go3 Advent Calendar 2019、明日は [EbiEbiEvidence](https://qiita.com/EbiEbiEvidence) さんです🛫
