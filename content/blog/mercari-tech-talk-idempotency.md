@@ -7,7 +7,7 @@ featured = "mercari-tech-talk-idempotency/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【Mercari Tech Talk】マイクロサービスの冪等性に関する勉強会"
+title = "【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会"
 type = "post"
 
 +++
@@ -24,7 +24,7 @@ type = "post"
 - [質問板](https://handsup.cloud/r/VEQvy2o#new-comment)
 
 
-Merpay社で開催された勉強会です。<br>
+merpay社で開催された勉強会です。<br>
 参加者のツイートも含めてメモを残しておきます。
 
 かなり雑なのでコンテキストが読み取れないところもあると思いますが、<br>
