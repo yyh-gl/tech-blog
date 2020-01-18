@@ -1,5 +1,5 @@
 <section id="site-intro">
-  {{ partial "job-hunting" . }}
+<!--  {{ partial "job-hunting" . }}-->
   {{ with .Site.Params.intro.pic }}<a href="{{ "/" | relLangURL}}"><img src="{{ .src | relURL }}" class="{{ .shape }}" width="{{ .width }}" alt="{{ .alt }}" /></a>{{ end }}
   <header>
     {{ with .Site.Params.intro.header }}<h1>{{ . | safeHTML }}</h1>{{ end }}
