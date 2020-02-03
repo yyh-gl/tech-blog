@@ -23,8 +23,19 @@ type = "post"
 
 今回は <b>Go1.12からの変更点</b> についてです。
 
-ただし、[こちら](https://speakerdeck.com/campoy/the-state-of-go-2020)のスライドから、<br>
-完全主観で、自分が興味のある内容のみをハイライトします〜😇
+<br>
+
+---
+# The State of Go 2020
+---
+
+Twitterで『[The State of Go 2020](https://speakerdeck.com/campoy/the-state-of-go-2020)』というタイトルのスライドを見つけました。
+
+Go1.12から変わったところに焦点を当て、<br>
+Go1.13でどのような機能が追加されているのか、 <br>
+Go1.14でどのような機能が追加される予定なのかまとめてあります。
+
+今回は、完全主観で自分が興味のある内容をハイライトします〜😇
 
 <br>
 
