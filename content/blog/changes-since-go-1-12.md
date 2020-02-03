@@ -7,7 +7,7 @@ featured = "changes-since-go-1-12/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【簡単まとめシリーズ】Go1.12からの変更点（個人的）まとめ"
+title = "【簡単まとめシリーズ】Go1.12からの変更点"
 type = "post"
 
 +++
