@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["golang", "簡単まとめ"]
 date = "2020-02-03"
-description = "1.14が楽しみ"
+description = "Go1.14が楽しみ"
 featured = "changes-since-go-1-12/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
