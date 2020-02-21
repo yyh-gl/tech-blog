@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["アーキテクチャ", "DDD"]
 date = "2020-02-18"
-description = "これからは「データの一貫性の境界」をちゃんと意識していこう"
+description = "「データの一貫性の境界」を見極めよう！"
 featured = "ddd-aggregates-transaction/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
