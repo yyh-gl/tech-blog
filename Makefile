@@ -10,14 +10,21 @@ help: ## helpを表示
 .PHONY: new
 new: ## 記事テンプレート生成
 	@if [ -z "${title}" ]; then \
-    	echo 'titleを指定してください。'; \
-    	exit 1; \
+		echo 'titleを指定してください。'; \
+		exit 1; \
     fi
+	git checkout master
+	git checkout -b ${title}
+	@echo ''
 	hugo new blog/${title}.md
 	@echo ''
 	mkdir -p ./static/img/tech-blog/`date +"%Y/%m"`/${title}
 	@echo ''
 	open ./static/img/tech-blog/`date +"%Y/%m"`/${title}
+	@echo ''
+	open http://localhost:1313/tech-blog/
+	@echo ''
+	open ~/workspaces/blog/tech-blog/static/img/tech-blog/default_ogp.key
 
 .PHONY: post
 post: ## 記事を投稿
