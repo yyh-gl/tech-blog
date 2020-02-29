@@ -6,7 +6,6 @@ help: ## helpを表示
 	@echo '   - https://github.com/yyh-gl/tech-blog-settings'
 	@echo ''
 	@grep -E '^[%/a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-22s\033[0m %s\n", $$1, $$2}'
-	@echo ''
 
 .PHONY: new
 new: ## 記事テンプレート生成
@@ -15,7 +14,9 @@ new: ## 記事テンプレート生成
     	exit 1; \
     fi
 	hugo new blog/${title}.md
+	@echo ''
 	mkdir -p ./static/img/tech-blog/`date +"%Y/%m"`/${title}
+	@echo ''
 	open ./static/img/tech-blog/`date +"%Y/%m"`/${title}
 
 .PHONY: post
@@ -25,8 +26,11 @@ post: ## 記事を投稿
 		exit 1; \
 	fi
 	curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}" https://super.hobigon.work/api/v1/blogs
+	@echo ''
 	make git-push msg="【公開】記事コード：${title}"
+	@echo ''
 	hugo --buildFuture
+	@echo ''
 	cd ./public
 	make git-push msg="【公開】記事コード：${title}"
 
@@ -37,7 +41,9 @@ update: ## 記事を更新（修正）
 		exit 1; \
 	fi
 	make git-push msg="【修正】記事コード：${title}"
+	@echo ''
 	hugo --buildFuture
+	@echo ''
 	cd ./public
 	make git-push msg="【修正】記事コード：${title}"
 
