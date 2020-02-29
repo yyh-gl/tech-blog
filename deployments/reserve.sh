@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Mac で実行
+# TODO: Makefileに移行
 
 if [ $# -ne 1 ]
    then echo "引数でタイトルを指定"

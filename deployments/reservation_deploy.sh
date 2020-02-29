@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Hobigon で実行
+# TODO: Makefileに移行
 
 cd ~/tech-blog-settings/public &&
 git fetch origin &&
