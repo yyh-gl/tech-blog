@@ -95,17 +95,20 @@ DMM.com で働く 新卒1年目 です。
 
 - AWS
   - CloudFormation
+  - Cognito
+  - API Gateway
+  - Lambda
+  - DynamoDB
+  - ECS
+  - RDS
 - GCP
 - Terraform
 
 <u>CI/CD</u>
 
+- GitHub Actions
 - Jenkins
 - CircleCI
-
-<u>サーバレス</u>
-
-- Cognito + API Gateway + AWS Lambda + DynamoDB
 
 <u>設計</u>
 
