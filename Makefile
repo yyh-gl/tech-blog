@@ -36,6 +36,7 @@ post: ## 記事を投稿
 	@echo ''
 	make git-push-to-settings msg="【公開】記事コード：${title}"
 	@echo ''
+	make git-reset-at-public
 	hugo --buildFuture
 	@echo ''
 	make git-push-to-public msg="【公開】記事コード：${title}"
@@ -48,6 +49,7 @@ update: ## 記事を更新（修正）
 	fi
 	make git-push-to-settings msg="【修正】記事コード：${title}"
 	@echo ''
+	make git-reset-at-public
 	hugo --buildFuture
 	@echo ''
 	make git-push-to-public msg="【修正】記事コード：${title}"
@@ -70,7 +72,7 @@ reserve-post: ## 予約記事を投稿
 	fi
 	git fetch origin
 	git reset --hard origin/master
-	cd ./public && git fetch origin && git reset --hard origin/master
+	make git-reset-at-public
 	@echo ''
 	git pull origin master
 	hugo --buildFuture
@@ -88,3 +90,7 @@ git-push-to-settings: ## tech-blog-settingsリポジトリにPUSH（Makefile内�
 .PHONY: git-push-to-public
 git-push-to-public: ## tech-blogリポジトリにPUSH（Makefile内部で使用）
 	cd public && git add . && git cm -m "${msg}" && git push origin master
+
+.PHONY: git-reset-at-public
+git-reset-at-public: ## tech-blogリポジトリのリモートリポジトリの内容にリセット（Makefile内部で使用）
+	cd ./public && git fetch origin && git reset --hard origin/master
