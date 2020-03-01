@@ -89,7 +89,7 @@ git-push-to-settings: ## tech-blog-settingsリポジトリにPUSH（Makefile内�
 
 .PHONY: git-push-to-public
 git-push-to-public: ## tech-blogリポジトリにPUSH（Makefile内部で使用）
-	cd public && git add . && git cm -m "${msg}" && git push origin master
+	cd ./public && git add . && git cm -m "${msg}" && git push origin master
 
 .PHONY: git-reset-at-public
 git-reset-at-public: ## tech-blogリポジトリのリモートリポジトリの内容にリセット（Makefile内部で使用）
