@@ -77,6 +77,7 @@ reserve-post: ## 予約記事を投稿
 	git reset --hard origin/master
 	cd ..
 	@echo ''
+	git pull origin master
 	hugo --buildFuture
 	@echo ''
 	cd ./public
