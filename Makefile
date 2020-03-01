@@ -79,7 +79,7 @@ reserve-post: ## 予約記事を投稿
 	@echo ''
 	curl -X POST -H "Content-Type: application/json" -d "{\"text\":\"【予約公開】記事コード：${title}\"}" ${WEBHOOK_URL_TO_51}
 
-.PHONY: post
+.PHONY: git-push
 git-push: ## GitへPUSH（Makefile内部で使用）
 	git add .
 	git cm -m "${msg}"
