@@ -44,7 +44,7 @@ IT企業でのインターンやアルバイトで、ECサイトやスマホゲ�
 # 技術スタック
 ---
 
-<u>バックエンド</u>
+## バックエンド
 
 - Go
   - Mux
@@ -62,40 +62,52 @@ IT企業でのインターンやアルバイトで、ECサイトやスマホゲ�
 - Perl
 - ShellScript
 - Bash
-  
-<u>フロントエンド</u>
+
+<br>
+
+## フロントエンド
 
 - React 
 - Vue.js
 - HTML + CSS + JavaScript
 - Twig
 
-<u>ネイティブ</u>
+<br>
+
+## ネイティブ
 
 - Kotlin
 - Swift
 - RxSwift
 - React Native
 
-<u>テスト</u>
+<br>
+
+## テスト
 
 - JUnit
 - PHPUnit
 - Minitest
 
-<u>インフラ</u>
+<br>
+
+## インフラ
 
 - Docker
 - Vagrant
 - Linux
 
-<u>ミドルウェア</u>
+<br>
+
+## ミドルウェア
 
 - Nginx
 - MySQL
 - Redis
 
-<u>クラウド</u>
+<br>
+
+## クラウド
 
 - AWS
   - CloudFormation
@@ -108,13 +120,17 @@ IT企業でのインターンやアルバイトで、ECサイトやスマホゲ�
 - GCP
 - Terraform
 
-<u>CI/CD</u>
+<br>
+
+## CI/CD
 
 - GitHub Actions
 - Jenkins
 - CircleCI
 
-<u>設計</u>
+<br>
+
+## 設計
 
 - レイヤードアーキテクチャ
 - クリーンアーキテクチャ
