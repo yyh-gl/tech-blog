@@ -70,10 +70,6 @@ reserve-post: ## 予約記事を投稿
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	@if [ -z "${webhook_url}" ]; then \
-		echo 'webhook_urlを指定してください。'; \
-		exit 1; \
-	fi
 	git fetch origin
 	git reset --hard origin/master
 	cd ./public
@@ -86,7 +82,7 @@ reserve-post: ## 予約記事を投稿
 	cd ./public
 	make git-push msg="【予約公開】記事コード：${title}"
 	@echo ''
-	curl -X POST -H "Content-Type: application/json" -d "{\"text\":\"【予約公開】記事コード：${title}\"}" https://hooks.slack.com/services/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
+	curl -X POST -H "Content-Type: application/json" -d "{\"text\":\"【予約公開】記事コード：${title}\"}" ${WEBHOOK_URL_TO_51}
 
 .PHONY: post
 git-push: ## GitへPUSH（Makefile内部で使用）
