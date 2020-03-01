@@ -38,8 +38,7 @@ post: ## 記事を投稿
 	@echo ''
 	hugo --buildFuture
 	@echo ''
-	cd ./public
-	make git-push msg="【公開】記事コード：${title}"
+	cd ./public && make git-push msg="【公開】記事コード：${title}"
 
 .PHONY: update
 update: ## 記事を更新（修正）
@@ -51,8 +50,7 @@ update: ## 記事を更新（修正）
 	@echo ''
 	hugo --buildFuture
 	@echo ''
-	cd ./public
-	make git-push msg="【修正】記事コード：${title}"
+	cd ./public && make git-push msg="【修正】記事コード：${title}"
 
 .PHONY: reserve
 reserve: ## 記事投稿を予約
@@ -72,16 +70,12 @@ reserve-post: ## 予約記事を投稿
 	fi
 	git fetch origin
 	git reset --hard origin/master
-	cd ./public
-	git fetch origin
-	git reset --hard origin/master
-	cd ..
+	cd ./public && git fetch origin && git reset --hard origin/master
 	@echo ''
 	git pull origin master
 	hugo --buildFuture
 	@echo ''
-	cd ./public
-	make git-push msg="【予約公開】記事コード：${title}"
+	cd ./public && make git-push msg="【予約公開】記事コード：${title}"
 	@echo ''
 	curl -X POST -H "Content-Type: application/json" -d "{\"text\":\"【予約公開】記事コード：${title}\"}" ${WEBHOOK_URL_TO_51}
 
