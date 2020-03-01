@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = [""]
-date = "2020-02-"
+date = "2020-03-"
 description = ""
 featured = "-/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
@@ -27,5 +27,5 @@ type = "post"
 
 
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2020/01/-/-" width="600">
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/02/-/-" width="600">
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2020/03/-/-" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/03/-/-" width="600">
