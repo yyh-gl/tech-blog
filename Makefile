@@ -34,11 +34,11 @@ post: ## 記事を投稿
 	fi
 	curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}" https://super.hobigon.work/api/v1/blogs
 	@echo ''
-	make git-push msg="【公開】記事コード：${title}"
+	make git-push-to-settings msg="【公開】記事コード：${title}"
 	@echo ''
 	hugo --buildFuture
 	@echo ''
-	cd ./public && make git-push msg="【公開】記事コード：${title}"
+	make git-push-to-public msg="【公開】記事コード：${title}"
 
 .PHONY: update
 update: ## 記事を更新（修正）
@@ -46,11 +46,11 @@ update: ## 記事を更新（修正）
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	make git-push msg="【修正】記事コード：${title}"
+	make git-push-to-settings msg="【修正】記事コード：${title}"
 	@echo ''
 	hugo --buildFuture
 	@echo ''
-	cd ./public && make git-push msg="【修正】記事コード：${title}"
+	make git-push-to-public msg="【修正】記事コード：${title}"
 
 .PHONY: reserve
 reserve: ## 記事投稿を予約
@@ -60,7 +60,7 @@ reserve: ## 記事投稿を予約
 	fi
 	curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}" https://super.hobigon.work/api/v1/blogs
 	@echo ''
-	make git-push msg="【予約公開】記事コード：${title}"
+	make git-push-settings msg="【予約公開】記事コード：${title}"
 
 .PHONY: reserve-post
 reserve-post: ## 予約記事を投稿
@@ -75,12 +75,16 @@ reserve-post: ## 予約記事を投稿
 	git pull origin master
 	hugo --buildFuture
 	@echo ''
-	cd ./public && make git-push msg="【予約公開】記事コード：${title}"
+	make git-push-to-public msg="【予約公開】記事コード：${title}"
 	@echo ''
 	curl -X POST -H "Content-Type: application/json" -d "{\"text\":\"【予約公開】記事コード：${title}\"}" ${WEBHOOK_URL_TO_51}
 
-.PHONY: git-push
-git-push: ## GitへPUSH（Makefile内部で使用）
+.PHONY: git-push-to-settings
+git-push-to-settings: ## tech-blog-settingsリポジトリにPUSH（Makefile内部で使用）
 	git add .
 	git cm -m "${msg}"
 	git push origin master
+
+.PHONY: git-push-to-public
+git-push-to-public: ## tech-blogリポジトリにPUSH（Makefile内部で使用）
+	cd public && git add . && git cm -m "${msg}" && git push origin master
