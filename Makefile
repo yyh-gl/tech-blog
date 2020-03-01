@@ -12,7 +12,7 @@ new: ## 記事テンプレート生成
 	@if [ -z "${title}" ]; then \
 		echo 'titleを指定してください。'; \
 		exit 1; \
-    fi
+	fi
 	git checkout master
 	git checkout -b ${title}
 	@echo ''
