@@ -62,7 +62,7 @@ reserve: ## 記事投稿を予約
 	fi
 	curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}" https://super.hobigon.work/api/v1/blogs
 	@echo ''
-	make git-push-settings msg="【予約公開】記事コード：${title}"
+	make git-push-to-settings msg="【予約公開】記事コード：${title}"
 
 .PHONY: reserve-post
 reserve-post: ## 予約記事を投稿
