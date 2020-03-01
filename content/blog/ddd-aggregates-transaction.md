@@ -113,3 +113,5 @@ DDDではエンティティと値オブジェクトというものがありま�
 - [集約とトランザクション境界に関するメモ](https://dnskimox.hateblo.jp/entry/2018/12/22/154038)
 - [集約の境界と整合性の維持の仕方に悩んで2ヶ月ぐらい結論を出せていない話](https://kbigwheel.hateblo.jp/entry/2018/12/03/aggregate-and-consistency)
 - [集約の境界と整合性問題に関する感想](https://qiita.com/j5ik2o/items/ae8a4d3cdaa24afe7599)
+
+テスト
