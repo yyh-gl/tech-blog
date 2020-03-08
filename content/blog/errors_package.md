@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Golang"]
 date = "2020-03-09"
-description = "今回は Is()，As()，Unwrap() についてお届け"
+description = "今回は Unwrap()，Is()，As() についてお届け"
 featured = "errors_package/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
@@ -19,7 +19,7 @@ type = "post"
 # errorsパッケージに興味持った
 ---
 
-v1.13からerrorsパッケージに `Is()` `As()` `Unwarp()` といった関数が追加されました。<br>
+v1.13からerrorsパッケージに `Unwrap()` `Is()` `As()` といった関数が追加されました。<br>
 （もう1.14もリリースされているのに今さらですね😇）
 
 今回はこれら3つの関数について、内部実装を追いかけていきます。
@@ -353,10 +353,3 @@ reflectliteを一緒に読みたいって方おられたらTwitterでDMくださ
 - [Go 1.13 のエラー・ハンドリング](https://text.baldanders.info/golang/error-handling-in-go-1_3/)
 - [Golang: How to handle Errors in v1.13](https://medium.com/@felipedutratine/golang-how-to-handle-errors-in-v1-13-fda7f035d027)
 - [reflectliteパッケージの公式ドキュメント](https://golang.org/pkg/internal/reflectlite/)
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
