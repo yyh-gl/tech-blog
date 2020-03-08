@@ -340,7 +340,7 @@ reflectliteの動きが分からない部分もあったので、<br>
 （reflectliteを少し覗いたのですが、Goの型のデータ構造？的な話が入ってきており、ビビってます😇）
 
 reflectliteを一緒に読みたいって方おられたら[TwitterでDM](https://twitter.com/yyh_gl)ください！<br>
-ぜひオンラインコードリーディング会しましょう
+ぜひオンラインでコードリーディング会しましょう
 
 <br>
 
