@@ -34,7 +34,8 @@ post: ## 記事を投稿
 	fi
 	curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}" https://super.hobigon.work/api/v1/blogs
 	@echo ''
-	make git-push-to-settings msg="【公開】記事コード：${title}"
+	git merge ${title}
+	git push origin master
 	@echo ''
 	make git-reset-at-public
 	hugo --buildFuture
