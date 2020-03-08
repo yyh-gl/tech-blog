@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Golang"]
-date = "2020-03-03"
+date = "2020-03-09"
 description = "今回は Is()，As()，Unwrap() についてお届け"
 featured = "errors_package/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
@@ -340,4 +340,23 @@ reflectliteの動きが分からない部分もあったので、<br>
 ただ、reflectliteの中身を軽く見たら、<br>
 Goの型のデータ構造？的な話にまで広がっており、少しビビってます😇
 
-reflectlite一緒に読みたいって方おられたらTwitterでDMくださいｗ
+reflectliteを一緒に読みたいって方おられたらTwitterでDMください！<br>
+ぜひオンラインコードリーディング会しましょう
+
+<br>
+
+---
+# 参考文献
+---
+
+- [errorsパッケージの公式ドキュメント](https://golang.org/pkg/errors/)
+- [Go 1.13 のエラー・ハンドリング](https://text.baldanders.info/golang/error-handling-in-go-1_3/)
+- [Golang: How to handle Errors in v1.13](https://medium.com/@felipedutratine/golang-how-to-handle-errors-in-v1-13-fda7f035d027)
+- [reflectliteパッケージの公式ドキュメント](https://golang.org/pkg/internal/reflectlite/)
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
