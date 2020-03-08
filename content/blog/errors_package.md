@@ -337,7 +337,7 @@ errorsパッケージの実装を覗いてみましたが、いかがだった�
 reflectliteの動きが分からない部分もあったので、<br>
 次はreflectliteの中身も見たいなという気持ちになっています。
 
-（reflectliteの中身を少し見たら、Goの型のデータ構造？的な話が入ってきており、少しビビってます😇）
+（reflectliteを少し覗いたのですが、Goの型のデータ構造？的な話が入ってきており、ビビってます😇）
 
 reflectliteを一緒に読みたいって方おられたら[TwitterでDM](https://twitter.com/yyh_gl)ください！<br>
 ぜひオンラインコードリーディング会しましょう
