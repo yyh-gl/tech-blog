@@ -3,7 +3,7 @@ author = "yyh-gl"
 categories = ["Golang"]
 date = "2020-03-10"
 description = "errorに関するちょっとしたメモ"
-featured = "error_equality/featured.png"
+featured = "error_question/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
@@ -27,7 +27,8 @@ Goのコードを書いてて、ふと気になったことがあったので調
 # errorの同値性
 ---
 
-1つ目の疑問は、下記コードで e1 と e2 がイコールではないことです。 
+1つ目の疑問は、下記コードで e1 と e2 がイコールではないことです。 <br>
+（同値性なんて仰々しく言ってすみません。たったこれだけの疑問ですｗ）
 
 ```go
 func main() {
