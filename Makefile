@@ -38,7 +38,7 @@ post: ## 記事を投稿
 	git push origin master
 	@echo ''
 	make git-reset-at-public
-	hugo --buildFuture
+	hugo --buildFuture --cleanDestinationDir
 	@echo ''
 	make git-push-to-public msg="【公開】記事コード：${title}"
 
@@ -51,7 +51,7 @@ update: ## 記事を更新（修正）
 	make git-push-to-settings msg="【修正】記事コード：${title}"
 	@echo ''
 	make git-reset-at-public
-	hugo --buildFuture
+	hugo --buildFuture --cleanDestinationDir
 	@echo ''
 	make git-push-to-public msg="【修正】記事コード：${title}"
 
@@ -76,7 +76,7 @@ reserve-post: ## 予約記事を投稿
 	make git-reset-at-public
 	@echo ''
 	git pull origin master
-	hugo --buildFuture
+	hugo --buildFuture --cleanDestinationDir
 	@echo ''
 	make git-push-to-public msg="【予約公開】記事コード：${title}"
 	@echo ''
