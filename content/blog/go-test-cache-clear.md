@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Golang"]
-date = "2020-04-29"
+date = "2020-04-30"
 description = "知っておくと便利"
 featured = "go-test-cache-clear/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
