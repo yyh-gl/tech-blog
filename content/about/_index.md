@@ -156,7 +156,7 @@ DDDについては、戦略的設計および戦術的設計の両方に興味�
 # OSS活動
 ---
 
-簡単なバグ修正やドキュメント修正程度しかコントリビュートできていません🚧
+🔰簡単なバグ修正やドキュメント修正程度です🔰
 
 - [Goa](https://github.com/goadesign/goa.design/graphs/contributors)
 - [Realize](https://github.com/oxequa/realize/graphs/contributors)
