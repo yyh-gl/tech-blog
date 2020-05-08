@@ -42,11 +42,15 @@ type Dog struct {
 	name Name
 }
 
-func New(name string) *Dog {
-	n := newName(name)
+func New(name string) (*Dog, error) {
+	n, err := newName(name)
+	if err != nil {
+		return nil, err
+	}
+
 	return &Dog{
 		name: *n,
-	}
+	}, nil
 }
 ```
 
@@ -55,13 +59,20 @@ func New(name string) *Dog {
 
 package dog
 
+import (
+	"errors"
+	"unicode/utf8"
+)
+
 type Name string
 
-func newName(v string) *Name {
-	// ちゃん付けで呼ぶというビジネスロジック
-	v = v + "ちゃん"
+func newName(v string) (*Name, error) {
+	// 名前は3文字以上というビジネスロジック
+	if utf8.RuneCountInString(v) < 3 {
+		return nil, errors.New("名前は3文字以上！")
+	}
 	n := Name(v)
-	return &n
+	return &n, nil
 }
 ```
 
@@ -76,21 +87,23 @@ import (
 )
 
 func main() {
-    // 簡略化のためにmainから呼び出していますが、
-    // 実際にはアプリケーション（ユースケース）層から呼び出します
-
 	// d := dog.Dog{name: "犬太郎"} できない
-	d := dog.New("犬太郎") // できる
-	fmt.Printf("%+v", d)
+	d, _ := dog.New("犬太郎") // できる
+	fmt.Printf("%+v\n", d)
+	
+	d, err := dog.New("犬")
+	if err != nil {
+		fmt.Println(err) // 犬の名前が「犬」は可愛そうだからできない()
+	}
 }
 ```
-[playground](https://play.golang.org/p/z7S8QYfwtpl)
+[playground](https://play.golang.org/p/cmNp5MlCNuc)
 
 <br>
 
 今回の例では、`Dog`というstructがEntityで、`Name`がVOです。
 
-Dogのnameは必ず「ちゃん」付けにするというビジネスロジックがあります。
+Dogのnameは必ず3文字以上にするというビジネスロジックがあります。
 
 <br>
 
@@ -122,7 +135,7 @@ nameの値をセットできないようにしています。<br>
 （`dog.Dog{name: "hoge"}` はできない）
 
 また、`New()`を経由することで、<u>必ず`NewName()`が使われる</u> ため、<br>
-Dogのnameは <b>「ちゃん」付けにするというビジネスロジックを確実に守ることができます。</b><br>
+Dogのnameは <b>3文字以上にするというビジネスロジックを確実に守ることができます。</b><br>
 
 <br>
 
@@ -167,11 +180,15 @@ type Dog struct {
 	name Name
 }
 
-func New(name string) *Dog {
-	n := newName(name)
+func New(name string) (*Dog, error) {
+	n, err := newName(name)
+	if err != nil {
+		return nil, err
+	}
+
 	return &Dog{
 		name: *n,
-	}
+	}, nil
 }
 
 func (d Dog) Name() *Name {
@@ -184,13 +201,20 @@ func (d Dog) Name() *Name {
 
 package dog
 
+import (
+	"errors"
+	"unicode/utf8"
+)
+
 type Name string
 
-func newName(v string) *Name {
-	// ちゃん付けで呼ぶというビジネスロジック
-	v = v + "ちゃん"
+func newName(v string) (*Name, error) {
+	// 名前は3文字以上というビジネスロジック
+	if utf8.RuneCountInString(v) < 3 {
+		return nil, errors.New("名前は3文字以上！")
+	}
 	n := Name(v)
-	return &n
+	return &n, nil
 }
 
 func (n Name) String() string {
@@ -209,12 +233,12 @@ import (
 )
 
 func main() {
-	d := dog.New("犬太郎")
+	d, _ := dog.New("犬太郎")
 	fmt.Println(d.Name().String())
 }
 ```
 
-[playground](https://play.golang.org/p/cZtkgjuX580)
+[playground](https://play.golang.org/p/PTOelACOUAv)
 
 <br>
 
