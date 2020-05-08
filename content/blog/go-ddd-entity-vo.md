@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Golang", "DDD"]
-date = "2020-05-07"
+date = "2020-05-08"
 description = "こんな感じでやってます"
 featured = "go-ddd-entity-vo/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
