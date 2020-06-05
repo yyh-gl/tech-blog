@@ -1,3 +1,5 @@
+記事の内容が大きく間違ってたから削除
+
 +++
 author = "yyh-gl"
 categories = ["Golang", "考察"]
