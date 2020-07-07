@@ -7,7 +7,7 @@ featured = "id_token_and_access_token/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【OAuth 2.0 / OpenID Connect】アクセストークン と IDトークン の違い"
+title = "【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史"
 type = "post"
 
 +++
@@ -16,81 +16,83 @@ type = "post"
 <br>
 
 ---
-# アクセストークン と IDトークン の違いが分からない
+# はじめに
 ---
 
 Web API のセキュリティ周りについて調べていると、<br>
 「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
 
-さらに調べると、「アクセストークン」と「IDトークン」という単語に出会うでしょう。
+さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。
 
 <br>
 
-しかし、この「2つのトークンの違い」について、<br>
+しかし、この2つのトークンの違いについて、<br>
 いまいち理解ができていなかったので、今回は両者の違いを調べてみました。
 
-
----
-# 2つのトークンの差異
----
-
-いきなりですが、ほぼ結論です。
-
-アクセストークン と IDトークン、両者の違いは以下のとおりです。
-
-- アクセストークン：
-  - 主目的：リソース（欲しいデータ）へのアクセスコントロール
-  - 使用例：他のアプリケーションにもAPIを公開する場合に使用
-- IDトークン：
-  - 主目的：認証が主目的
-  - 使用例：他のアプリケーションにAPIを公開しない（同一の1サービスにおける、フロントエンドとバックエンドの関係）場合に使用
-
-> ★認証：その人が誰かを確認すること <br>
+加えて、トークンについて調べる中で、<br>
+OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。
 
 <br>
 
-両者の違いの本質は <u>そのトークンが誰のためのものか判断できるか否か</u> です。
+---
+# 2つのトークンの違い
+---
+
+アクセストークン と IDトークン、両者は役割が大きく異なります。
+
+- アクセストークン：認可（リソースへのアクセスコントロール＝あるリソースへの権限（readやwriteなど）を持っているかどうか確認すること）
+- IDトークン：認証（その人が誰かを確認すること）
+
+名前のままでした。
+
+認可に使うためのいろいろな情報が詰まっているのがアクセストークンで、<br>
+認証に使うためのいろいろな情報が詰まっているのがIDトークンです。
 
 <br>
 
-なお、誤解のないように言っておきますが、<br>
-<u>OpenID Connect は OAuth 2.0 を拡張した仕様</u> です。
+---
+# OpenID Connectが生み出された経緯
+---
 
+OAuth 2.0およびOpenID Connectについて調べていると、<br>
+「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。
 
-> ★したがって、両者は <u>本来、別々のものではなく、ふたつでひとつです。</u> <br>
-> 　本来、そこに差異などないです。ひとつの仕組みなんですから。 <br>
-> 　僕はそこも理解していなかったので、余計頭がこんがらがってしまいました。<br>
-> 　みなさんはお間違えのないように。
-> 　（遊○王みたいな関係）
+どうしてOpenID Connectが必要になったのか、<br>
+この辺の経緯についてもせっかくなのでメモとして残しておきます↓
+
+<br>
 
 ---
 # OAuth 2.0 は 認可 の仕組み
 ---
 
-<u>OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない</u>。
-
-OAuth 2.0 で認証を行うと、どういう問題があるか。
-
-[こちら](https://www.sakimura.org/2012/02/1487/) の記事に詳しく書いてあるので、ご覧ください。
+まずは、OAuth 2.0について見ていきます。
 
 <br>
 
-上記記事内で述べられている OAuth 2.0 による認証の問題点は、<br>
-<u>クライアント側でトークンの正当性を確かめる術がない</u> ということです。
+「<u>OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない</u>」
 
+OAuth 2.0 で認証を行うことの問題点については、<br>
+[こちら](https://www.sakimura.org/2012/02/1487/) の記事に詳しく書いてあります。
+
+上記記事より、OAuth 2.0 による認証の問題点は、<br>
+<u>クライアント側でトークンの正当性を確かめる術がない</u> ことであるとわかります。
+
+<br>
 
 ---
 # クライアント側でトークンの正当性を確かめたい
 ---
 
-さきほどの記事を読んでいただければ分かると思いますが、<br>
-<u>認証は OpenID Connect によって行うことで問題を解決できます</u>
+<u>OAuth 2.0 による認証の問題は OpenID Connect に則ることで解決できます。</u><br>
+（詳細は[さきほどの参考記事](https://www.sakimura.org/2012/02/1487/)を参照してください）
 
 <br>
 
-では、どうして OpenID Connect を使うと認証ができるようになるのでしょうか。<br>
+では、どうして OpenID Connect を使うと安全に認証できるようになるのでしょうか。<br>
 キーとなるのは IDトークン に含まれる <u>audクレーム</u> です。
 
+<br>
 
 ---
 # audクレーム
@@ -110,12 +112,19 @@ audクレーム は IDトークン に含まれるデータのひとつです。
 この「クライアント側で audクレーム のチェックを行う」ことは <br>
 <u>OpenID Connect の仕様として決められています。</u> → [参考](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#IDTokenValidation)
 
+<br>
 
 ---
 # まとめ
 ---
 
-<u>認証がしたいなら OpenID Connect を使用しましょう。</u>
+- アクセストークンは認可、IDトークンは認証に使うもの
+- 認証がしたいなら OpenID Connect を使いましょう
+
+<br>
+
+今回の内容は、自分が調べたことをだいぶざっくりメモした程度のものです。<br>
+下記に参考記事を載せておくので、詳細はそちらを御覧ください。
 
 <br>
 
@@ -125,6 +134,7 @@ audクレーム は IDトークン に含まれるデータのひとつです。
 
 - [OAuth 2.0 仕様](https://tools.ietf.org/html/rfc6749)
 - [OpenID Connect 仕様](https://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html)
-- [OAuth 2.0 + OpenID Connect のフルスクラッチ実装者が知見を語る （@TakahikoKawasaki さん）](https://qiita.com/TakahikoKawasaki/items/f2a0d25a4f05790b3baa)
-- [IDトークンが分かれば OpenID Connect が分かる （@TakahikoKawasaki さん）](https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06)
-- [OAuth 2.0/OpenID Connectの2つのトークンの使いみち （@wadahiro さん）](https://qiita.com/wadahiro/items/ad36c7932c6627149873)
+- [OAuth 2.0 + OpenID Connect のフルスクラッチ実装者が知見を語る（@TakahikoKawasaki さん）](https://qiita.com/TakahikoKawasaki/items/f2a0d25a4f05790b3baa)
+- [IDトークンが分かれば OpenID Connect が分かる（@TakahikoKawasaki さん）](https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06)
+- [OAuth 2.0/OpenID Connectの2つのトークンの使いみち（@wadahiro さん）](https://qiita.com/wadahiro/items/ad36c7932c6627149873)
+- [単なる OAuth 2.0 を認証に使うと、車が通れるほどのどでかいセキュリティー・ホールができる（Nat Sakimura さん）](https://www.sakimura.org/2012/02/1487/)
