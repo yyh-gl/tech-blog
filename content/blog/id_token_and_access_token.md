@@ -114,7 +114,7 @@ audクレーム は IDトークン に含まれるデータのひとつです。
 <br>
 
 したがって、audクレームを使用することで、<br>
-クライアントは自分のためのトークンかどうか調べることが可能です。
+クライアントは自身のためのトークンかどうか調べることが可能です。
 
 この「クライアント側で audクレーム のチェックを行う」ことは <br>
 <u>OpenID Connect の仕様として決められています。</u> → [参考](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#IDTokenValidation)
