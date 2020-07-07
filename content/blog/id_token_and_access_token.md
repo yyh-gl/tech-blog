@@ -117,12 +117,12 @@ audクレーム は IDトークン に含まれるデータのひとつです。
 クライアントは自身のためのトークンかどうか調べることが可能です。
 
 この「クライアント側で audクレーム のチェックを行う」ことは <br>
-<u>OpenID Connect の仕様として決められています（[参考](https://tools.ietf.org/html/rfc7519#section-4.1.3)）。</u>
+<u>OpenID Connect の仕様として決められています。</u>（[参考](https://tools.ietf.org/html/rfc7519#section-4.1.3)）
 
 <br>
 
 このような仕組み（ルール）があるから、<br>
-OpenID ConnectでOAuth 2.0 による認証の問題を解決できるわけですね。
+OpenID ConnectでOAuth 2.0 による認証の問題を解決できるわけですね。なるほど
 
 <br>
 
