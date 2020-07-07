@@ -51,7 +51,7 @@ OpenID Connectが生まれた経緯も知ることができたのでメモして
 <br>
 
 ---
-# OpenID Connectが生み出された経緯
+# OpenID Connectが生まれた経緯
 ---
 
 OAuth 2.0およびOpenID Connectについて調べていると、<br>
