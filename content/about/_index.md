@@ -7,7 +7,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2020年6月13日】
+【最終更新日：2020年7月15日】
 
 ---
 # いま
@@ -243,7 +243,9 @@ DMM.comに入社しました。
 ---
 
 - [よんでますよ、本田さん #5](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
-  - DMM社内でのGoに関する取り組みについて話しています
+  - DMM社内でのGoに関する取り組みについて
+- [ドキュメントとコードが乖離しないように<br>DMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた](https://logmi.jp/tech/articles/323091)
+  - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事（[logmi Tech](https://logmi.jp/tech)掲載）
 
 <br>
 
