@@ -95,3 +95,12 @@ git-push-to-public: ## tech-blogリポジトリにPUSH（Makefile内部で使用
 .PHONY: git-reset-at-public
 git-reset-at-public: ## tech-blogリポジトリのリモートリポジトリの内容にリセット（Makefile内部で使用）
 	cd ./public && git fetch origin && git reset --hard origin/master
+
+.PHONY: create-ogp
+create-ogp: ## OGP画像を生成
+	@if [ -z "${title}" ]; then \
+		echo 'titleを指定してください。'; \
+		exit 1; \
+	fi
+	tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/tech-blog/`date +"%Y/%m"`/${title} content/blog/${title}.md
+	mv static/img/tech-blog/`date +"%Y/%m"`/${title}/${title}.png static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png
