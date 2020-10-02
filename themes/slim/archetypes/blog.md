@@ -1,7 +1,8 @@
 +++
-author = "yyh-gl"
+author = ["yyh-gl"]
 categories = [""]
-date = "2020-09-"
+tags = [""]
+date = "2020-10-01T00:00:00Z"
 description = ""
 featured = "-/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
