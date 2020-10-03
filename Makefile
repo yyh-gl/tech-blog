@@ -23,8 +23,6 @@ new: ## 記事テンプレート生成
 	open ./static/img/tech-blog/`date +"%Y/%m"`/${title}
 	@echo ''
 	open http://localhost:1313/tech-blog/
-	@echo ''
-	open ~/workspaces/blog/tech-blog/static/img/tech-blog/default_ogp.key
 
 .PHONY: post
 post: ## 記事を投稿
