@@ -8,7 +8,7 @@ featured = "go-switch-fallthrough/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
 linktitle = ""
-title = "【Go】Switch文のfallthroughの動作を確認した"
+title = "【Go】Switch文のfallthroughに関するまとめ"
 type = "post"
 
 +++
