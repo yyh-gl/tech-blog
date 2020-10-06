@@ -58,7 +58,7 @@ disableLanguages        = [""]
   # required for proper functionality. HTML is supported within the params.
   [params.intro]
     header                = "yyh-gl's Tech Blog"
-    paragraph             = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
+    paragraph             = "技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"
     rssIntro              = true
     socialIntro           = true
 
@@ -76,7 +76,7 @@ disableLanguages        = [""]
       alt = "yyh-gl's image for OGP"
 
   [params.sidebar]
-    about               = "フルスタック目指すエンジニア"
+    about               = "バックエンドメインのソフトウェアエンジニアです。\nたまにフロントやインフラもやります。"
     # Sets the number of recent posts to show in the sidebar. The default value is 5.
     postAmount          = 5
     # set to show or to hide categories in the sidebar
