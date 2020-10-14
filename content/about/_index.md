@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2020年9月14日】
+【最終更新日：2020年10月14日】
 
 ---
 # いま
@@ -155,13 +155,14 @@ DDDについては、戦略的設計および戦術的設計の両方に興味�
 <br>
 
 ---
-# OSS活動
+# OSS
 ---
 
-🔰簡単なバグ修正やドキュメント修正程度です🔰
+まだまだ初心者🔰
 
-- [Goa](https://github.com/goadesign/goa.design/graphs/contributors)
-- [Realize](https://github.com/oxequa/realize/graphs/contributors)
+- [goadesign/goa.design](https://github.com/goadesign/goa.design/graphs/contributors)
+- [oxequa/realize](https://github.com/oxequa/realize/graphs/contributors)
+- [Ladicle/tcardgen](https://github.com/Ladicle/tcardgen/graphs/contributors)
 
 <br>
 
