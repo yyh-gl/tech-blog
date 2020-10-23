@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+      
+      - name: Lint
+        run: |
+          npm install textlint textlint-rule-preset-ja-technical-writing
+          textlint ./content/**
+          
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
