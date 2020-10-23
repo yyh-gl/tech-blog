@@ -18,7 +18,10 @@ jobs:
           hugo-version: 'latest'
 
       - name: Build
-        run: hugo --buildFuture --minify
+        run: hugo --minify
+      
+      - name: Set favicon
+        run: cp -r ./static/img/favicon ./public/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
