@@ -21,7 +21,9 @@ jobs:
         run: hugo --minify
       
       - name: Set favicon
-        run: cp -r ./static/img/favicon ./public/
+        run: |
+          cp -r ./static/img/favicon ./public/
+          cp ./static/img/favicon/favicon.ico ./public/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
