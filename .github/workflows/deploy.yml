@@ -15,7 +15,7 @@ jobs:
       - name: Lint
         run: |
           npm install textlint textlint-rule-preset-ja-technical-writing
-          textlint ./content/**
+          $(npm bin)/textlint ./content/**
           
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
