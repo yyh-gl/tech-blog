@@ -237,9 +237,9 @@ DMM.comに入社しました。
 # 記事
 ---
 
-- [よんでますよ、本田さん #5](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
+- [『よんでますよ、本田さん #5』](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
   - DMM社内でのGoに関する取り組みについて
-- [ドキュメントとコードが乖離しないように<br>DMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた](https://logmi.jp/tech/articles/323091)
+- [『ドキュメントとコードが乖離しないように<br>DMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた』](https://logmi.jp/tech/articles/323091)
   - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事（[logmi Tech](https://logmi.jp/tech)掲載）
 
 <br>
