@@ -9,13 +9,23 @@ Vue.component('good-counter', {
     }
   },
   mounted () {
-    // URL から記事情報を取得
+    // URLから記事情報を取得
     let paths = location.pathname.split('/');
-    // URL のタイトル部分のみを抽出し、リクエストURL を作成
-    let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + paths[paths.length - 2];
+    // ページカテゴリー取得（例：blog, about など）
+    let page_category = paths[paths.length - 3]
+    // URLのタイトル部分のみを抽出
+    let title = paths[paths.length - 2]
+
+    // blogページ&&titleの指定がある場合にのみいいね数を取得
+    if (page_category !== 'blog') {
+      return
+    }
+    
+    // いいね数取得リクエストURLを作成
+    let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + title;
 
     // いいね済みかどうか判定
-    this.already = !!localStorage.getItem(`${paths[paths.length - 2]}`);
+    this.already = !!localStorage.getItem(`${title}`);
 
     axios
       .get(reqUrl, {
@@ -33,11 +43,13 @@ Vue.component('good-counter', {
       if (this.already) {
         return
       }
-
-      // URL から記事情報を取得
+      
+      // URLから記事情報を取得
       let paths = location.pathname.split('/');
-      // URL のタイトル部分のみを抽出し、リクエストURL を作成
-      let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + paths[paths.length - 2]+ '/like';
+      // URLのタイトル部分のみを抽出
+      let title = paths[paths.length - 2]
+      // いいね+1リクエストURLを作成
+      let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + title+ '/like';
 
       if(event) {
         axios
@@ -46,7 +58,7 @@ Vue.component('good-counter', {
             this.good_count = response.data.count;
 
             // ローカルストレージにいいねされたことを保存
-            localStorage.setItem(`${paths[paths.length - 2]}`, 'like');
+            localStorage.setItem(`${title}`, 'like');
             this.already = true;
           })
       }
