@@ -1,7 +1,8 @@
 +++
-author = "yyh-gl"
+author = ["yyh-gl"]
 categories = ["Golang"]
-date = "2020-06-14"
+tags = ["Golang"]
+date = "2020-06-14T00:00:00Z"
 description = "Goでは全てが値渡し"
 featured = "go-always-passing-by-value/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
