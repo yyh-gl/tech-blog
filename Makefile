@@ -40,5 +40,4 @@ create-ogp: ## OGP画像を生成
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/tech-blog/`date +"%Y/%m"`/${title} content/blog/${title}.md
-	mv static/img/tech-blog/`date +"%Y/%m"`/${title}/${title}.png static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png
+	tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/tech-blog/`date +"%Y/%m"`/${title}/feature.png content/blog/${title}.md
