@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang"]
+categories = ["Go"]
 date = "2020-04-30"
 description = "知っておくと便利"
 featured = "go-test-cache-clear/featured.png"

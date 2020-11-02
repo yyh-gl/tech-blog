@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang"]
+categories = ["Go"]
 date = "2020-03-10"
 description = "errorに関するちょっとしたメモ"
 featured = "error_questions/featured.png"

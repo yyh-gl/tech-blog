@@ -1,7 +1,7 @@
 +++
-author = ["yyh-gl"]
-categories = ["golang"]
-tags = ["golang"]
+author = "yyh-gl"
+categories = ["Go"]
+tags = ["Go"]
 date = "2020-10-03T00:00:00Z"
 description = "忘れがちじゃないですか？？"
 featured = "go-switch-fallthrough/featured.png"

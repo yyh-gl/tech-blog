@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["HTML & CSS", "Web全般"]
+categories = ["HTML/CSS", "Web全般"]
 date = "2019-06-16"
 description = ""
 featured = "blog_style_fix/syntax_highlight_after.png"

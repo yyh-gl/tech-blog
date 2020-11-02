@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["思ったことを徒然なるままに"]
+categories = ["ポエム"]
 date = "2019-06-18"
 description = "サービス発案って難しい…"
 featured = "my_thinking_about_planning/featured.png"

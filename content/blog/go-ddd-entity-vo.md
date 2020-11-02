@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang", "DDD"]
+categories = ["Go", "DDD"]
 date = "2020-05-08"
 description = "こんな感じでやってます"
 featured = "go-ddd-entity-vo/featured.png"

@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang"]
+categories = ["Go"]
 date = "2020-04-26"
 description = ""
 featured = "go-json-tips/featured.png"

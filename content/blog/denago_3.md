@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["勉強会", "golang"]
+categories = ["勉強会", "Go"]
 date = "2019-11-01"
 description = "DeNAさん主催のGolang勉強会"
 featured = "denago_3/featured.png"

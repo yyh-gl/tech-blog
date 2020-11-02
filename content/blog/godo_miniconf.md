@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["golang", "勉強会"]
+categories = ["Go", "勉強会"]
 date = "2019-08-06"
 description = "CyberAgent ＆ merpay 主催の Golang 勉強会"
 featured = "godo_miniconf/featured.png"

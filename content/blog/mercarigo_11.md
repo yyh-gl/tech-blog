@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang", "勉強会"]
+categories = ["Go", "勉強会"]
 date = "2019-10-07"
 description = "めちゃくちゃためになった"
 featured = "mercarigo_11/featured.png"

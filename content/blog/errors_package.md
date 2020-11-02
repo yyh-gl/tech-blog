@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang"]
+categories = ["Go"]
 date = "2020-03-09"
 description = "今回は Unwrap()，Is()，As() についてお届け"
 featured = "errors_package/featured.png"

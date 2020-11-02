@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang", "Web API", "アーキテクチャ", "DDD"]
+categories = ["Go", "Web API", "アーキテクチャ", "DDD"]
 date = "2019-06-14"
 description = "2019/10/30 に内容を一部更新しました"
 featured = "go_web_api/featured.png"

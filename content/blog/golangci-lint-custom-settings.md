@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Advent Calendar", "テスト", "Lint", "golang"]
+categories = ["Advent Calendar", "テスト", "Lint", "Go"]
 date = "2019-12-09"
 description = "DMM Advent Calendar 2019 9日目"
 featured = "golangci-lint-custom-settings/featured.png"

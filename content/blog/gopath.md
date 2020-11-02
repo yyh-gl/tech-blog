@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang"]
+categories = ["Go"]
 date = "2019-06-13"
 description = ""
 featured = "gopath/featured.png"

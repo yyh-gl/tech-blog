@@ -1,16 +1,16 @@
 +++
-author = ["yyh-gl"]
-categories = ["podcast", "ddd"]
-tags = ["podcast", "ddd"]
+title = "texta.fm #1 まとめ"
+author = "yyh-gl"
+tags = ["Tech"]
+categories = ["Podcast", "DDD"]
 date = "2020-10-01T00:00:00Z"
 description = "2020年8月27日放送分のまとめです"
-featured = "podcast-matome-texta-200827/podcast-matome-texta-200827.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
-title = "texta.fm #1 まとめ"
+[[images]]
+  src = "img/tech-blog/podcast-matome-texta-200827/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 type = "post"
-
+draft = false
 +++
 
 

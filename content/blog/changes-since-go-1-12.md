@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["golang", "簡単まとめ"]
+categories = ["Go", "簡単まとめ"]
 date = "2020-02-03"
 description = "Go1.14が楽しみ"
 featured = "changes-since-go-1-12/featured.png"

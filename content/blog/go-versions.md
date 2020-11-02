@@ -1,6 +1,6 @@
 +++
 author = "yyh-gl"
-categories = ["Golang"]
+categories = ["Go"]
 date = "2020-03-03"
 description = "Goの後方互換性すばらしい"
 featured = "go-versions/featured.png"
