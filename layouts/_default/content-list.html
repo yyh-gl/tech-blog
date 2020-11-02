@@ -1,0 +1,10 @@
+<article class="post">
+  {{ .Render "header" }}
+  <div class="content">
+    {{ .Render "featured" }}
+  </div>
+  <footer>
+    <a href="{{ .RelPermalink }}" class="button big">{{ i18n "read_more" }}</a>
+    {{ .Render "stats" }}
+  </footer>
+</article>
