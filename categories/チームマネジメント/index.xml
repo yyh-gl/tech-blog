@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>チームマネジメント on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88/</link><description>Recent content in チームマネジメント on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88/index.xml" rel="self" type="application/rss+xml"/><item><title>【エンジニアリング組織論への招待】メンタリングの技術</title><link>https://yyh-gl.github.io/tech-blog/blog/engineering_organization_theory_mentoring/</link><pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/engineering_organization_theory_mentoring/</guid><description>概要 今回は、広木 大地さんが書かれた 『エンジニアリング組織論への招待 不確実性に向き合う思考と組織のリファクタリング』 という本から、
+2章「メンタリングの技術」についてまとめます。
+（初投稿の内容が技術系じゃなくてチームマネジメント系かよとか言わないでくださいね）
+最初に覚えておいてほしいこと メンタリングは、自律的な人材を育むために行う。
+そのために、下記3点の状態にメンティ自身からなれるように導く。
+自分の気がつかなかった問題に気がつくようになる 認知の歪みによる感情と問題の癒着を切り離せる 答えではなく、次の一手を生み出す行動が取れるようになる これらがとても重要です。
+以下いろいろな話が出てきますが、結局は上記3点の状態を実現するための方法です。
+ここをしっかりと意識して読んでいただければ、
+より一層理解が深まると思います。
+以下まとめ （★マークは個人的解釈・感想です）
+そもそもメンタリングとは 相手を上から押し付けるような教育方法ではない 相手の考え方を少しずつ変えることで、問題解決の力を育む手法 対話を通じて、以下の2点を行い、相手を成長させる。
+歪んだ認知を補正 次の行動を促進 メンタリングと聞くと、
+大学で何年も学ばないと身に着けられないような技術であると思いがちだが、
+体得すればだれでもできるようになる。
+エンジニアリングにおけるメンタリングの重要性 エンジニアリングは知識が全てではない エンジニアリングでは技術的な課題がよく取り上げられるが、
+技術的な課題というのは心理的な課題と密接に関係している。
+例えば、
+ソフトウェア開発はチームプレイ ★ 技術的な課題解決だけでなく、人間関係とかもあるってことかな
+各個人の開発における問題解決は、自分自身との対話によって制御するもの ★ 自身を制すものがエラーを制す
+上記のようにエンジニアリングには心理的な課題も存在する。
+プロダクト開発では 不確実性を排除する ことがとても重要である。
+したがって、不確実性のひとつである心理的な課題は排除すべき対象である。
+★ だから、メンタリングが重要なんですね。
+メンタリングは 自ら考える人材を作る ためのテクニック 自立型人材と依存型人材 自ら考える人材を自立型人材、そうでない人材を依存型人材とすると、</description></item></channel></rss>

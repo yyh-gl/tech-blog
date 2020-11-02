@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>入門 on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/%E5%85%A5%E9%96%80/</link><description>Recent content in 入門 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 05 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/%E5%85%A5%E9%96%80/index.xml" rel="self" type="application/rss+xml"/><item><title>スクラムについて学んだ話</title><link>https://yyh-gl.github.io/tech-blog/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/scrum_entry/</guid><description>スクラムとは 概要 変化に対し柔軟に開発を運用するためのアジャイルフレームワーク
+開発に常に優先度をつける
+仕事を進めることを主眼に考え、そのために改善を常に行う
+ロールが3つあり、協調しあい開発する
+プロダクトオーナー スクラムチーム 開発チーム POが満足するアウトプットがあったかのみを検証
+5つのイベントがある（後述）
+2つのアウトプット（成果物）がある（後述）
+特徴 非常にシンプルなフレームワーク
+定められたルールが他の手法より少なくアレンジが容易 実践的で経験主義
+世界的に普及している
+アジャイル開発とは アジャイルとスクラムの違い スクラムとはアジャイル開発手法のひとつ
+他にもXPとかがある
+アジャイルソフトウェア開発宣言 ここにいろいろな言語で宣言されています
+この宣言では以下のことを重要視している
+個人と対話 動くソフトウェア 顧客との協調 変化への対応 スクラムとウォータフォールの違い ウォータフォール</description></item></channel></rss>
