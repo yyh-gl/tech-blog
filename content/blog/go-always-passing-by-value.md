@@ -1,16 +1,16 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
-tags = ["Go"]
+tags = ["Tech"]
 date = "2020-06-14T00:00:00Z"
 description = "Goでは全てが値渡し"
-featured = "go-always-passing-by-value/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "Goの参照渡しについて調べてみた"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/06/go-always-passing-by-value/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

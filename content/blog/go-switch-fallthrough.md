@@ -1,16 +1,16 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
-tags = ["Go"]
+tags = ["Tech"]
 date = "2020-10-03T00:00:00Z"
 description = "忘れがちじゃないですか？？"
-featured = "go-switch-fallthrough/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Go】Switch文のfallthroughに関するまとめ"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/10/go-switch-fallthrough/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

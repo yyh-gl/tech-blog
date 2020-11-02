@@ -5,12 +5,12 @@ tags = ["Tech"]
 categories = ["Podcast", "DDD"]
 date = "2020-10-01T00:00:00Z"
 description = "2020年8月27日放送分のまとめです"
+type = "post"
+draft = false
 [[images]]
   src = "img/tech-blog/2020/10/podcast-matome-texta-200827/featured.png"
   alt = "featured"
   stretch = "stretchH"
-type = "post"
-draft = false
 +++
 
 
