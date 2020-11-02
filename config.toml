@@ -1,232 +1,187 @@
-baseurl                 = "https://yyh-gl.github.io/tech-blog/"
-DefaultContentLanguage  = "ja"
-title                   = "yyh-gl's Tech Blog"
-theme                   = "slim"
-preserveTaxonomyNames   = true
-paginate                = 3
-disqusShortname         = ""
-googleAnalytics         = "UA-140914324-1"
-pluralizeListTitles     = false
-disableLanguages        = [""]
+# For a description of these parameters, please visit the theme wiki.
+# https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
+baseurl                = "https://yyh-gl.github.io/tech-blog/"
+DefaultContentLanguage = "ja"
+title                  = "yyh-gl's Tech Blog"
+theme                  = "hugo-future-imperfect-slim"
+paginate               = 5
+disqusShortname        = ""
+googleAnalytics        = "UA-140914324-1"
+pluralizeListTitles    = false
+disableLanguages       = []
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe             = true
+
+  [markup.highlight]
+    lineNoStart        = 1
+    lineNos            = true
+    lineNumbersInTable = false
+
+[outputs]
+  home = ["html", "json", "rss"]
 
 [params]
-  # Loads CSS and JavaScript files. The variable is an array so that you can load
-  # multiple/additional files if necessary. The standard theme files can be loaded
-  # by adding the value, "default". Default includes the add-on.css and and-on.js.
-  # Example: ["default", "/path/to/file"]
-  cssFiles              = ["default"]
-  jsFiles               = ["default"]
-  # Sets options for highlight.js
-  highlightjs           = true
-  highlightjsTheme      = "github"
-  highlightjsLang       = ["html", "css", "js", "toml"]
-  # Sets where "View More Posts" links to
-  viewMorePostsLink     = "blog/"
-  # Activate Estimated Reading Times, which appear in the post headers
-  readingTime           = true
-  # Sets which Social Share links appear in posts.
-  # Options are twitter, facebook, reddit, linkedin, stumbleupon, pinterest, email
+  enableCDN              = false
+  cssFiles               = ["default"]
+  jsFiles                = ["default"]
+  viewMorePostsLink      = "blog/"
+  readingTime            = true
+  imageStretch           = ""
+  removeBlur             = false
   # FIXME: Permalink が取得できるようになったら Twitter と Facebook を追加
-  socialShare           = []
+  socialShare            = []
   #["twitter", "facebook", "reddit", "linkedin", "stumbleupon", "pinterest", "email"]
+  hideEmptyStats         = false
+  mainSections           = ["post"]
 
   [params.meta]
-    # Sets the meta tag description
-    description         = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
-    # Sets the meta tag author
-    author              = "yyh-gl"
-    # If you would like to add more comprehensive favicon support passed root
-    # directory favicon.ico, utlize this funtion. It is recommened to use
-    # https://realfavicongenerator.net to generate your icons as that is the basis
-    # for the theme's naming.
-    favicon             = true
-    svg                 = true
-    faviconVersion      = "1"
-    msColor             = "#ffffff" # Copy from the https://realfavicongenerator.net
-    iOSColor            = "#ffffff" # Copy from the https://realfavicongenerator.net
+    description          = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
+    author               = "yyh-gl"
+    favicon              = true
+    svg                  = true
+    faviconVersion       = "1"
+    msColor              = "#ffffff"
+    iOSColor             = "#ffffff"
 
   [params.header]
-    # Sets the navbarTitle that appears in the top left of the navigation bar
-    navbarTitle         = "yyh-gl's Tech Blog"
-    # Sets navbarTitle to match the section of the website
-    dynamicTitles       = true
-    searchMenu          = true
-    shareMenu           = true
-    languageMenu        = false
+    navbarTitle          = "yyh-gl's Tech Blog"
+    dynamicTitles        = true
+    searchMenu           = false
+    shareMenu            = false
+    # TODO: そのうち英語記事始めたいなぁ
+    languageMenu         = false
 
-  # These are optional params related to the sidebar. They are recommended, but not
-  # required for proper functionality. HTML is supported within the params.
   [params.intro]
-    header                = "yyh-gl's Tech Blog"
-    paragraph             = "技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"
-    rssIntro              = true
-    socialIntro           = true
+    header               = "yyh-gl's Tech Blog"
+    paragraph            = "技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"
+    rssIntro             = true
+    socialIntro          = true
+    hideWhenSingleColumn = false
+    alwaysOnHomepage     = false
 
-    # This appears at the top of the sidebar above params.intro.header.
-    # A width of less than 100px is recommended from a design perspective.
-    [params.intro.pic]
-      src                 = "/img/main/logo.png"
-      # Masks image in a certain shape. Supported are circle, triangle, diamond, and hexagon.
-      shape               = "circle"
-      width               = "80"
-      alt                 = "yyh-gl's icon"
-
-    [params.intro.ogp]
-      src = "img/main/ogp_image_small.png"
-      alt = "yyh-gl's image for OGP"
+  [params.intro.pic]
+    src                  = "img/main/logo.png"
+    shape                = "circle"
+    width                = "80"
+    alt                  = "yyh-gl's icon"
 
   [params.sidebar]
-    about               = "東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。"
-    # Sets the number of recent posts to show in the sidebar. The default value is 5.
-    postAmount          = 5
-    # set to show or to hide categories in the sidebar
-    categories          = true
-    # Sets Categories to sort by number of posts instead of alphabetical
-    categoriesByCount   = true
+    about                = "東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。"
+    postAmount           = 3
+    categories           = true
+    categoriesByCount    = true
 
   [params.footer]
-    # Sets RSS icons to appear on the sidebar with the social media buttons
-    rssFooter           = true
-    # Sets Social Media icons to appear on the sidebar
-    socialFooter        = true
+    rssFooter            = true
+    socialFooter         = true
 
-  # Disqus will take priority over Staticman (github.com/eduardoboucas/staticman)
-  # due to its ease of use. Feel free to check out both and decide which you would
-  # prefer to use. See Staticman.yml for additional settings.
   [params.staticman]
-    # Sets Statiman to be active
-    staticman           = false
-    # Sets the location for Staticman to connect to
-    username            = ""
-    repo                = ""
-    branch              = ""
+    enabled              = true
+    api                  = ""  # No Trailing Slash
+    gitProvider          = ""
+    username             = ""
+    repo                 = ""
+    branch               = ""
 
-    [params.staticman.recaptcha]
-      recaptcha         = false
-      siteKey           = "" # Site Key
-      encryptedKey      = ""
+  [params.staticman.recaptcha]
+    siteKey              = ""
+    encryptedKey         = ""
 
 [menu]
-  # Sets the menu items in the navigation bar
-  # Identifier prepends a Font Awesome icon to the menu item
   [[menu.main]]
-    name              = "Home"
-    url               = ""
-    identifier        = "fas fa-home"
-    weight            = 1
+    name       = "Home"
+    identifier = "home"
+    url        = ""
+    pre        = "<i class='fa fa-home'></i>"
+    weight     = 1
 
   [[menu.main]]
-    name              = "About"
-    url               = "about/"
-    identifier        = "far fa-id-card"
-    weight            = 2
+    name       = "About"
+    identifier = "about"
+    url        = "about/"
+    pre        = "<i class='far fa-id-card'></i>"
+    weight     = 2
 
   [[menu.main]]
-    name              = "Blog"
-    url               = "blog/"
-    identifier        = "far fa-newspaper"
-    weight            = 3
+    name       = "Blog"
+    identifier = "blog"
+    url        = "blog/"
+    pre        = "<i class='far fa-newspaper'></i>"
+    weight     = 3
 
   [[menu.main]]
-    name              = "Categories"
-    url               = "categories/"
-    identifier        = "fas fa-sitemap"
-    weight            = 5
+    name       = "Categories"
+    identifier = "categories"
+    url        = "categories/"
+    pre        = "<i class='fas fa-sitemap'></i>"
+    weight     = 4
 
-  #[[menu.main]]
-  #  name              = "Contact"
-  #  url               = "contact/"
-  #  identifier        = "far fa-envelope"
-  #  weight            = 6
+#  [[menu.main]]
+#    name       = "Contact"
+#    identifier = "contact"
+#    url        = "contact/"
+#    pre        = "<i class='far fa-envelope'></i>"
+#    weight     = 6
 
 [Languages]
-  # Each language has its own menu.
   [Languages.ja]
-      languageCode = "ja"
-      LanguageName = "Japanese"
-      weight       = 1
+    languageCode = "ja"
+    LanguageName = "Japanese"
+    weight       = 1
 
   [Languages.en]
-    languageCode   = "en"
-    LanguageName   = "English"
-    weight         = 2
+    languageCode = "en"
+    LanguageName = "English"
+    weight       = 2
 
-#    [[Languages.fr.menu.main]]
-#      name              = "Accueil"
-#      url               = "/"
-#      identifier        = "fas fa-home"
-#      weight            = 1
-#
-#    [[Languages.fr.menu.main]]
-#      name              = "About"
-#      url               = "/about/"
-#      identifier        = "far fa-id-card"
-#      weight            = 2
-#
-#    [[Languages.fr.menu.main]]
-#      name              = "Blog"
-#      url               = "/blog/"
-#      identifier        = "far fa-newspaper"
-#      weight            = 3
-#
-#    [[Languages.fr.menu.main]]
-#      name              = "Catégories"
-#      url               = "/categories/"
-#      identifier        = "fas fa-sitemap"
-#      weight            = 5
-#
-#    [[Languages.fr.menu.main]]
-#      name              = "Contact"
-#      url               = "/contact/"
-#      identifier        = "far fa-envelope"
-#      weight            = 6
-
-# Sets Social Media icons to appear and link to your account. Value should be your
-# username unless otherwise noted. These are the icons affected by socialAppearAtTop
-# and socialAppearAtBottom.
 [social]
   # Coding Communities
-  github                = "yyh-gl"
-  gitlab                = ""
-  stackoverflow         = "" # User Number
-  bitbucket             = ""
-  jsfiddle              = ""
-  codepen               = ""
+  github           = "yyh-gl"
+  gitlab           = ""
+  stackoverflow    = "" # User Number
+  bitbucket        = ""
+  jsfiddle         = ""
+  codepen          = ""
   # Visual Art Communities
-  deviantart            = ""
-  flickr                = ""
-  behance               = ""
-  dribbble              = ""
+  deviantart       = ""
+  flickr           = ""
+  behance          = ""
+  dribbble         = ""
   # Publishing Communities
-  wordpress             = ""
-  medium                = ""
+  wordpress        = ""
+  medium           = ""
   # Professional/Business Oriented Communities
-  linkedin              = ""
-  linkedin_company      = ""
-  foursquare            = ""
-  xing                  = ""
-  slideshare            = ""
+  linkedin         = ""
+  linkedin_company = ""
+  foursquare       = ""
+  xing             = ""
+  slideshare       = ""
   # Social Networks
-  facebook              = ""
-  googleplus            = ""
-  reddit                = ""
-  quora                 = ""
-  youtube               = ""
-  vimeo                 = ""
-  whatsapp              = "" # WhatsApp Number
+  facebook         = ""
+  googleplus       = ""
+  reddit           = ""
+  quora            = ""
+  youtube          = ""
+  vimeo            = ""
+  whatsapp         = "" # WhatsApp Number
     # WeChat and QQ need testing.
-    wechat              = ""
-    qq                  = "" # User ID Number
-  instagram             = ""
-  tumblr                = ""
-  twitter               = "yyh_gl"
-  skype                 = ""
-  snapchat              = ""
-  pinterest             = ""
-  telegram              = ""
-  vine                  = ""
-  googlescholar         = ""
-  orcid                 = ""
-  researchgate          = ""
+    wechat         = ""
+    qq             = "" # User ID Number
+  instagram        = ""
+  tumblr           = ""
+  twitter          = "yyh_gl"
+  strava           = ""
+  skype            = ""
+  snapchat         = ""
+  pinterest        = ""
+  telegram         = ""
+  vine             = ""
+  googlescholar    = ""
+  orcid            = ""
+  researchgate     = ""
+  keybase          = ""
+  mastodon         = ""
   # Email
-  email                 = ""
+  email            = ""
