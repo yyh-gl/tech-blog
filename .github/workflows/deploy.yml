@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       
 # TODO: 時間あるときにLintエラーをすべて直して、本ステップを復活させる
 #      - name: Lint
