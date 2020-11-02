@@ -20,7 +20,7 @@ disableLanguages       = []
     lineNumbersInTable = false
 
 [outputs]
-  home = ["html", "json", "rss"]
+  home = ["html"]
 
 [params]
   enableCDN              = false
