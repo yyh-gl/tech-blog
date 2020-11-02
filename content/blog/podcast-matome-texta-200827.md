@@ -6,7 +6,7 @@ categories = ["Podcast", "DDD"]
 date = "2020-10-01T00:00:00Z"
 description = "2020年8月27日放送分のまとめです"
 [[images]]
-  src = "img/tech-blog/podcast-matome-texta-200827/featured.png"
+  src = "img/tech-blog/2020/10/podcast-matome-texta-200827/featured.png"
   alt = "featured"
   stretch = "stretchH"
 type = "post"
