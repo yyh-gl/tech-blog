@@ -294,6 +294,7 @@ body {
 
 body,
 input,
+button,
 select,
 textarea {
   color: hsl(0, 0%, 20%);
@@ -418,6 +419,7 @@ label {
 }
 
 input,
+button,
 select,
 textarea {
   background: $input-color;
@@ -428,7 +430,9 @@ textarea {
   width: 100%;
   transition: border-color $hover;
   &:hover {
-    border-color: $accent-color;
+    &:not(:disabled) {
+      border-color: $accent-color;
+    }
   }
   &:focus,
   &:active {
@@ -437,8 +441,13 @@ textarea {
 }
 
 input,
+button,
 select {
   height: 2.75em;
+}
+
+button {
+  margin-top: 1em;
 }
 
 textarea {

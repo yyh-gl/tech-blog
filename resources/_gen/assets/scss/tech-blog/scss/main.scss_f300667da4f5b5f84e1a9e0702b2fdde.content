@@ -119,6 +119,7 @@ body {
 /* Type */
 body,
 input,
+button,
 select,
 textarea {
   color: #333333;
@@ -235,6 +236,7 @@ label {
   font-weight: 700; }
 
 input,
+button,
 select,
 textarea {
   background: rgba(161, 161, 161, 0.07);
@@ -244,11 +246,14 @@ textarea {
   padding: 0 1em;
   width: 100%;
   transition: border-color 0.2s ease-in-out; }
-  input:hover,
-  select:hover,
-  textarea:hover {
+  input:hover:not(:disabled),
+  button:hover:not(:disabled),
+  select:hover:not(:disabled),
+  textarea:hover:not(:disabled) {
     border-color: #2eb8ac; }
   input:focus, input:active,
+  button:focus,
+  button:active,
   select:focus,
   select:active,
   textarea:focus,
@@ -256,8 +261,12 @@ textarea {
     border: 1px solid #2eb8ac; }
 
 input,
+button,
 select {
   height: 2.75em; }
+
+button {
+  margin-top: 1em; }
 
 textarea {
   height: 5em; }
