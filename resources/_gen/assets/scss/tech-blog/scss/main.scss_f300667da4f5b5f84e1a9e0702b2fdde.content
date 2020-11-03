@@ -628,15 +628,19 @@ figcaption {
   text-decoration: inherit; }
 
 .left::before {
-  content: "\f053";
-  float: left;
-  padding-right: 0.5em; }
-
+  content: "\f053\f053"; }
+  @media (min-width: 425px) {
+    .left::before {
+      content: "\f053";
+      float: left;
+      padding-right: 0.5em; } }
 .right::before {
-  content: "\f054";
-  float: right;
-  padding-left: 0.5em; }
-
+  content: "\f054\f054"; }
+  @media (min-width: 425px) {
+    .right::before {
+      content: "\f054";
+      float: right;
+      padding-left: 0.5em; } }
 .nav {
   border: 0;
   border-left: 1px solid rgba(161, 161, 161, 0.3);

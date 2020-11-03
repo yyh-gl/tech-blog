@@ -851,15 +851,21 @@ figcaption {
 }
 
 .left::before {
-  content: "\f053";
-  float: left;
-  padding-right: 0.5em;
+  content: "\f053\f053";
+  @include for-tablet-up {
+    content: "\f053";
+    float: left;
+    padding-right: 0.5em;
+  }
 }
 
 .right::before {
-  content: "\f054";
-  float: right;
-  padding-left: 0.5em;
+  content: "\f054\f054";
+  @include for-tablet-up {
+    content: "\f054";
+    float: right;
+    padding-left: 0.5em;
+  }
 }
 
 .nav {
