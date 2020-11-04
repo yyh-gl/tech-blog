@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2020年10月23日】
+【最終更新日：2020年11月05日】
 
 ---
 # いま
@@ -147,11 +147,10 @@ DDDについては、戦略および戦術の両方に興味があり、日々�
 # OSS
 ---
 
-まだまだ初心者🔰
-
 - [goadesign/goa.design](https://github.com/goadesign/goa.design/graphs/contributors)
 - [oxequa/realize](https://github.com/oxequa/realize/graphs/contributors)
 - [Ladicle/tcardgen](https://github.com/Ladicle/tcardgen/graphs/contributors)
+- [pacollins/hugo-future-imperfect-slim](https://github.com/pacollins/hugo-future-imperfect-slim/graphs/contributors)
 
 <br>
 
