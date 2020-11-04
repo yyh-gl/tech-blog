@@ -251,13 +251,13 @@ textarea {
   select:hover:not(:disabled),
   textarea:hover:not(:disabled) {
     border-color: #2eb8ac; }
-  input:focus, input:active,
-  button:focus,
-  button:active,
-  select:focus,
-  select:active,
-  textarea:focus,
-  textarea:active {
+  input:focus:not(:disabled), input:active:not(:disabled),
+  button:focus:not(:disabled),
+  button:active:not(:disabled),
+  select:focus:not(:disabled),
+  select:active:not(:disabled),
+  textarea:focus:not(:disabled),
+  textarea:active:not(:disabled) {
     border: 1px solid #2eb8ac; }
 
 input,

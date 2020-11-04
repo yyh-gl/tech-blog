@@ -436,7 +436,9 @@ textarea {
   }
   &:focus,
   &:active {
-    border: 1px solid $accent-color;
+    &:not(:disabled) {
+      border: 1px solid $accent-color;
+    }
   }
 }
 
