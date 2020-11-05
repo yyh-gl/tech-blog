@@ -20,5 +20,4 @@ Prism.js highlight.js Google code-prettify どれにしようか迷ったので�
 今回導入した Prism.js のプラグインは、
 Line Highlight：行指定した箇所をハイライトする機能（上記画像内では使用していません） Line Numbers：行番号を表示する機能 Show Language：右上に 言語名 を表示している機能 の3つです。
 困ったこと 行番号が表示されない 行番号を表示するには、
-&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt; コード &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; 上記コードのように、表示するコードスニペットに対して、
-line-numbers というクラスを付与してあげるだけでOKです。</description></item></channel></rss>
+1&amp;lt;pre class=&amp;#34;line-numbers&amp;#34;&amp;gt;&amp;lt;code class=&amp;#34;language-c&amp;#34;&amp;gt; 2 コード 3&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; 上記コードのように、表示するコードスニペットに対して、</description></item></channel></rss>
