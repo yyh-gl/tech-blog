@@ -116,7 +116,7 @@ Rails における CORS の設定はとても簡単です。
   
     コメントを解除してあげましょう。
     
-    ```
+    ```text
     # Gemfile
     
     …省略
@@ -215,7 +215,7 @@ IDが `GoodCounter` の `div`要素の部分に Vue コンポーネント（後�
 
 （Vue のシンタックスハイライト対応してなかったので JS で代用…）
 
-```js
+```java
 // vue_app.js
 
 Vue.component('good-counter', {

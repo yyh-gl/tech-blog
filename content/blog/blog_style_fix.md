@@ -83,7 +83,7 @@ type = "post"
 
 行番号を表示するには、
 
-```markup
+```java
 <pre class="line-numbers"><code class="language-c">
   コード
 </code></pre>
@@ -115,7 +115,7 @@ Prism.js 導入後…
 
 しかし、これは僕が手抜きで、
 
-```markup
+```java
 <pre class="line-numbers"><code class="language-c">
   コード
 </code></pre>
@@ -135,7 +135,7 @@ Prism.js 導入後…
 
 最終的には、 `content-single.html` を以下のとおり修正しました。
 
-```markup
+```java
 <article class="post">
   {{ .Render "header" }}
   <section id="social-share">
@@ -153,11 +153,15 @@ Prism.js 導入後…
 
 修正したのは 8行目部分です。
 
-`{{ .Content }}`
+```java
+{{ .Content }}
+```
 
 だけだった部分を
 
+```java
 `{{ .Content | replaceRE "<pre>" "<pre class=\"line-numbers\">" | safeHTML }}`
+```
 
 こうすることで、 コードスニペット部分だけに line-numbers を適用することができました。
 
