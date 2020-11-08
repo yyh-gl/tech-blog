@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Web全般"]
 date = "2019-06-17"
-description = "og:image 大事"
+description = "OGP大事"
 featured = "ogp/featured.png"
 featuredalt = "画像がどこかへ逝ってしまったようだ…"
 featuredpath = "date"
@@ -53,7 +53,7 @@ OGP の設定項目には以下のものがあります。
 
 これらを HTML に meta タグで埋め込めば OK です。
 
-```markup
+```html
 <meta property="og:title" content="【Golang + レイヤアーキテクチャ】DDD を意識して Web API を実装してみる">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/go_web_api/">
@@ -73,8 +73,8 @@ OGP の設定項目には以下のものがあります。
 
 下記のような og:image の設定を `/themes/<your-theme-name>/layouts/partials/meta.html` に追加しました。
 
-```markup
-<meta property="og:image" content="{{ .Site.BaseURL }}{{ if .Params.featured }}img{{ .Page.Date.Format "2006/01" | relURL }}/{{ .Params.featured }}{{ else }}{{ .Site.Params.intro.ogp.src }}{{ end }}" />
+```html
+<meta property="og:image" content="｛｛ .Site.BaseURL ｝｝｛｛ if .Params.featured ｝｝img｛｛ .Page.Date.Format "2006/01" | relURL ｝｝/｛｛ .Params.featured ｝｝｛｛ else ｝｝｛｛ .Site.Params.intro.ogp.src ｝｝｛｛ end ｝｝" />
 ```
 
 なにやら長たらしく定義していますが、やっていることをまとめると、<br>

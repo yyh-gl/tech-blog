@@ -213,14 +213,12 @@ IDが `GoodCounter` の `div`要素の部分に Vue コンポーネント（後�
 
 次に Vue コンポーネントです。
 
-（Vue のシンタックスハイライト対応してなかったので JS で代用…）
-
-```java
+```js
 // vue_app.js
 
 Vue.component('good-counter', {
   template: '<button v-on:click="addCount">\n' +
-    '<i class="far fa-thumbs-up"></i> いいね　{{ good_count }}\n' +
+    '<i class="far fa-thumbs-up"></i> いいね　｛｛ good_count ｝｝\n' +
     '</button>',
   data: function () {
     return {
