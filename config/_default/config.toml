@@ -6,7 +6,7 @@ title                  = "yyh-gl's Tech Blog"
 theme                  = "hugo-future-imperfect-slim"
 paginate               = 5
 disqusShortname        = ""
-googleAnalytics        = "UA-140914324-1"
+googleAnalytics        = ""
 pluralizeListTitles    = false
 disableLanguages       = []
 
