@@ -43,7 +43,7 @@ type = "post"
 
 登壇者： @toshi0607 さん
 
-スライド： https://speakerdeck.com/toshi0607/learning-knative-with-go
+[スライドリンク](https://speakerdeck.com/toshi0607/learning-knative-with-go)
 
 <br>
 
@@ -83,7 +83,7 @@ k8s の勉強しないとな。
 
 登壇者： @tenntenn
 
-スライド： https://docs.google.com/presentation/d/1u6E0btAS_uJP8F62Ly2GdZScJYbLK-Ub9QnnMGm0IRY/edit
+[スライドリンク](https://docs.google.com/presentation/d/1u6E0btAS_uJP8F62Ly2GdZScJYbLK-Ub9QnnMGm0IRY)
 
 <br>
 
@@ -156,7 +156,7 @@ k8s の勉強しないとな。
 - メルペイのバックエンドエンジニア
 - Go Playground にタブを追加する chrome拡張を作った人
 
-スライド： https://speakerdeck.com/syumai/using-go-and-webassembly/
+[スライドリンク](https://speakerdeck.com/syumai/using-go-and-webassembly/)
 
 <br>
 

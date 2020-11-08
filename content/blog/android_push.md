@@ -452,8 +452,7 @@ Firebaseさまさまですね。
 # 参考サイト
 ---
 
-- https://www.villness.com/2363
-
-- https://firebase.google.com/docs/cloud-messaging?hl=ja
+- [公式ドキュメント](https://firebase.google.com/docs/cloud-messaging?hl=ja)
+- [【Android】FCMを使ったpush通知の実装方法 - 株式会社Villness（ヴィルネス）](https://www.villness.com/2363)
 
 

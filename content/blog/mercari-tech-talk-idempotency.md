@@ -90,7 +90,9 @@ DeleteなしでCRUのみ
 
 - レスポンスはDBから引ける情報で組み立てる
 - 取引IDから引ける情報
-  - 取引後残高は返さない → https://twitter.com/matsukaz/status/1207250011391553536
+  - 取引後残高は返さない
+
+[Twitterメモ](https://twitter.com/matsukaz/status/1207250011391553536)
 
 <br>
 
@@ -233,7 +235,7 @@ Balance Service の前段にある Payment Service にて発行 <br>
 しかし、その別マイクロサービスからもらうデータが変わったことでエラーとなった。<br>
 →解決策として、Bodyデータ（別マイクロサービスの？）もDBに保存して使いまわした
 
-https://twitter.com/sonatard/status/1207263596494802944?s=20
+[Twitterメモ](https://twitter.com/sonatard/status/1207263596494802944?s=20)
 
 
 <br>
@@ -251,7 +253,8 @@ ex. ユニーク成約に引っかかるようになったらロールバック�
 Istioでfalte injection機能で取り組もうとしているが、想定した機能ではなかったのでまだ実施していない
 
 Cloud Spannerの部分をMockにしてランダムでエラーを返すなどのテストを実行している<br>
-https://twitter.com/sonatard/status/1207264613269590016?s=20
+
+[Twitterメモ](https://twitter.com/sonatard/status/1207264613269590016?s=20)
 
 
 <br>
@@ -275,7 +278,8 @@ update でやってる。<br>
 
 最初はkazegusuriさんが口酸っぱく言っていたが、今はみんなが意識できている。
 
-https://mobile.twitter.com/sonatard/status/1207266041090297856<br>
+[Twitterメモ](https://mobile.twitter.com/sonatard/status/1207266041090297856<br>)
+
 デザインドックを書いてレビューしてから取り組む<br>
 冪等性の理解の普及をしてきた<br>
 そのうえでチームに任せている
@@ -290,7 +294,8 @@ IDが絶対に被らない生成方法がある？
 リトライ時のパラメータが変わった時に問題が起きる可能性があるので、<br>
 リクエストのボディーなども見るようにしたかった<br>
 (が、今は冪等性キーだけしか見ていない？<br>
-https://twitter.com/sonatard/status/1207266711117844482
+
+[Twitterメモ](https://twitter.com/sonatard/status/1207266711117844482)
 
 
 <br>
@@ -332,7 +337,8 @@ yes
 取引IDが同じで処理内容が異なるリクエストの場合に、<br>
 処理済みOKと誤って返さないようにという配慮の観点もあるとのこと。<br>
 勉強になりました、良き 
-https://twitter.com/laqiiz/status/1207268316437368832
+
+[Twitterメモ](https://twitter.com/laqiiz/status/1207268316437368832)
 
 
 <br>
@@ -422,9 +428,10 @@ QRとかNFCとか決済プロバイダ側で担保すること、<br>
 
 インナーペイメント：クレカでいくら、残高からいくらって言えば、処理して、その結果を返すやつ
 
-（↑まとめきれませんでした。特にひどい。ですが↓のツイートが参考になります）
+（↑まとめきれませんでした。ですが↓のツイートが参考になります）
 
-https://twitter.com/sonatard/status/1207273197093019648<br>
+[Twitterメモ](https://twitter.com/sonatard/status/1207273197093019648)
+
 Code PaymentとInternal Paymentは分けすぎなのではないか？<br>
 外部へのオーソリを投げるのはやり過ぎではないか？もっと簡易的にするべきではないか
 
@@ -440,6 +447,6 @@ Code Paymentは、決済プロバイダを使うFintech企業のサービスの�
 
 <b>「自分のマイクロサービスだけでは冪等性を守れないので、そのマイクロサービスを使う他のマイクロサービスのチームとコミュニケーション大事」</b>
 
- https://twitter.com/s_naga03/status/1207255206456524801?s=20
+[Twitterメモ](https://twitter.com/s_naga03/status/1207255206456524801?s=20)
 
 <br>

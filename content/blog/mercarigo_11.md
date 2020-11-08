@@ -93,7 +93,8 @@ Remember ”Error is your domain”
 <br> 
 
 ### エラーの分割方法
-https://twitter.com/fukubaka0825/status/1181162651008659461
+
+[Twitterメモ](https://twitter.com/fukubaka0825/status/1181162651008659461)
 
 <br>
 
