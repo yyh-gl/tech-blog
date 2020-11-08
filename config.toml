@@ -12,17 +12,15 @@ disableLanguages       = []
 
 [markup]
   [markup.highlight]
-    lineNoStart        = 1
-    lineNos            = true
-    lineNumbersInTable = false
+    codeFences = false
 
 [outputs]
   home = ["html"]
 
 [params]
   enableCDN              = false
-  cssFiles               = ["default"]
-  jsFiles                = ["default"]
+  cssFiles               = ["default", "css/prism.css"]
+  jsFiles                = ["default", "js/prism.js"]
   viewMorePostsLink      = "blog/"
   readingTime            = true
   imageStretch           = ""
