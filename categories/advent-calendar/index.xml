@@ -1,53 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Advent Calendar on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/advent-calendar/</link><description>Recent content in Advent Calendar on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 09 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/advent-calendar/index.xml" rel="self" type="application/rss+xml"/><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
-私は現在、DMM.com の CDS というチームに所属し、
-主にユーザレビュー基盤のバックエンドを開発しています。
-今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、
-GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
+私は現在、DMM.com の CDS というチームに所属し、主にユーザレビュー基盤のバックエンドを開発しています。
+今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
 Linter 導入していますか？ 突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？
-私の所属するチームでは、
-コーディング規約違反 および コンパイラでは見つけられないエラー を検知するために、
-ローカルと CI において Linter を回すようにしています。
-Golang における Linter Golang の場合、Linter がデフォルトで用意されているうえに、
-ライブラリとして公開されているものも多く存在します。
+私の所属するチームでは、コーディング規約違反および コンパイラでは見つけられないエラーを検知するために、ローカルと CI において Linter を回すようにしています。
+Golang における Linter Golang の場合、Linter がデフォルトで用意されているうえに、ライブラリとして公開されているものも多く存在します。
 なかでも有名なものに以下のようなものがあります。
-govet：Golang デフォルトの Linter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。
-加えて、導入する Linter が増えれば、その分だけ 導入・管理コストが増加 します。</description></item><item><title>【Golang+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+govet：Golang デフォルトの Linter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。加えて、導入する Linter が増えれば、その分だけ 導入・管理コストが増加します。
+この問題を解決してくれるツールが GolangCI-Lintです。
+GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
+GolangCI-Lintとは、 Golang の Linter を一元管理するためのツールです。開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。</description></item><item><title>【Golang+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
 ではでは、早速本題に入っていきます。
 モック使ってますか？ みなさんモックコードは書いていますか？
-テストコードを書いているなら、ほぼ必ず登場するあのモックです。
-DB処理や関数のモックなどいろいろありますよね。
-そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？
-モックだからといって雑なコードになっていませんか？
-今回は、外部API通信のモック化にフォーカスし、
-モックコードの作成・管理コストを軽減する VCR ライブラリ を紹介します。
-VCR ライブラリ とは？ VCR（Video Cassette Recorder）とは、通信を保存し、再生するライブラリです。
-つまり、APIリクエストの初回通信の内容を保存し、
-次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。
+テストコードを書いているなら、ほぼ必ず登場するあのモックです。DB処理や関数のモックなどいろいろありますよね。
+そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？モックだからといって雑なコードになっていませんか？
+今回は、外部API通信のモック化にフォーカスし、モックコードの作成・管理コストを軽減する VCR ライブラリを紹介します。
+VCR ライブラリ とは？ VCR（Video Cassette Recorder）とは、通信を保存し、再生するライブラリです。つまり、APIリクエストの初回通信の内容を保存し、次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。
 言い換えれば、外部APIのモックを自動生成してくれるということですね！
-VCR ライブラリ in Golang World Golang 用の VCR ライブラリはいろいろあります。
-スター数が多いのは以下のものです。
+VCR ライブラリ in Golang World Golang 用の VCR ライブラリはいろいろあります。スター数が多いのは以下のものです。
 go-vcr vcr-go govcr rpcreplay go-vcr および vcr-go，govcr の開発は盛んではないようです。
-rpcreplay は google-cloud-goに包含されるパッケージであり、安心して使えそうです。
-ただし、gRPC 用なので、その点は注意が必要です。
-GoDocはこちらです。
-今回は REST API を使って説明していくので、go-vcr を使用します。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
+rpcreplay は google-cloud-goに包含されるパッケージであり、安心して使えそうです。ただし、gRPC 用なので、その点は注意が必要です。GoDocはこちらです。
+今回は REST API を使って説明していくので、go-vcr を使用します。go-vcr は、vcr-go と govcr よりスター数が多いです。Ruby 製の vcr というライブラリがもとになっているようです。
+サンプルを見ていく では、コードを交えて紹介していきたいと思います。今回は下記のような簡単なサンプルを用意しました。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
 内容としては、TypeScript 初級者のための TypeScript 入門です。
-基礎的な内容から入り、
-最終的には、企業や個人の技術ブログを参考に、
-React の実プロジェクトにおいて、
-どのように TypeScript が使われているのか紹介できればと思います。
+基礎的な内容から入り、最終的には、企業や個人の技術ブログを参考に、React の実プロジェクトにおいて、どのように TypeScript が使われているのか紹介できればと思います。
 （APIリクエスト周りのTypeScript活用事例を紹介）
-今日の記事を読んで TypeScript に入門し、
-今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！
+今日の記事を読んで TypeScript に入門し、今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！
 基礎編 TypeScript とは TypeScript は Microsoft 社によって開発され、 現在は OSS として開発が進められています。
-「TypeScript とは何か」を簡単に説明すると、
-JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット です。
-公式サイト はこちらで、
-2019年12月2日現在、最新版は 3.7.2 となっています。
-では、実際にコードを交えながら基礎的な部分を説明していきます。
-ただし、実践編で使用する内容に絞って説明していきますので、
-その点はご了承ください🙇‍
-（足りない情報は公式ドキュメントを参考にしてください）
-型 では、早速、TypeScript の型に触れていきましょう。
-TypeScript で使用できる基本的な型として以下のものがあります。
-Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、</description></item></channel></rss>
+「TypeScript とは何か」を簡単に説明すると、JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセットです。
+公式サイト はこちらで、2019年12月2日現在、最新版は 3.7.2 となっています。
+では、実際にコードを交えながら基礎的な部分を説明していきます。ただし、実践編で使用する内容に絞って説明していきますので、その点はご了承ください🙇‍（足りない情報は公式ドキュメントを参考にしてください）
+型 では、早速、TypeScript の型に触れていきましょう。TypeScript で使用できる基本的な型として以下のものがあります。
+Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、説明がなくても理解できると思います。</description></item></channel></rss>

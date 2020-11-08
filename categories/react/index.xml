@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>React on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/react/</link><description>Recent content in React on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 02 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/react/index.xml" rel="self" type="application/rss+xml"/><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
 内容としては、TypeScript 初級者のための TypeScript 入門です。
-基礎的な内容から入り、
-最終的には、企業や個人の技術ブログを参考に、
-React の実プロジェクトにおいて、
-どのように TypeScript が使われているのか紹介できればと思います。
+基礎的な内容から入り、最終的には、企業や個人の技術ブログを参考に、React の実プロジェクトにおいて、どのように TypeScript が使われているのか紹介できればと思います。
 （APIリクエスト周りのTypeScript活用事例を紹介）
-今日の記事を読んで TypeScript に入門し、
-今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！
+今日の記事を読んで TypeScript に入門し、今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！
 基礎編 TypeScript とは TypeScript は Microsoft 社によって開発され、 現在は OSS として開発が進められています。
-「TypeScript とは何か」を簡単に説明すると、
-JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット です。
-公式サイト はこちらで、
-2019年12月2日現在、最新版は 3.7.2 となっています。
-では、実際にコードを交えながら基礎的な部分を説明していきます。
-ただし、実践編で使用する内容に絞って説明していきますので、
-その点はご了承ください🙇‍
-（足りない情報は公式ドキュメントを参考にしてください）
-型 では、早速、TypeScript の型に触れていきましょう。
-TypeScript で使用できる基本的な型として以下のものがあります。
-Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、</description></item><item><title>React.memo について調べたのでメモを残しておく</title><link>https://yyh-gl.github.io/tech-blog/blog/react_memo/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_memo/</guid><description>React.memo とは 公式ドキュメントを見ると、
+「TypeScript とは何か」を簡単に説明すると、JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセットです。
+公式サイト はこちらで、2019年12月2日現在、最新版は 3.7.2 となっています。
+では、実際にコードを交えながら基礎的な部分を説明していきます。ただし、実践編で使用する内容に絞って説明していきますので、その点はご了承ください🙇‍（足りない情報は公式ドキュメントを参考にしてください）
+型 では、早速、TypeScript の型に触れていきましょう。TypeScript で使用できる基本的な型として以下のものがあります。
+Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、説明がなくても理解できると思います。</description></item><item><title>React.memo について調べたのでメモを残しておく</title><link>https://yyh-gl.github.io/tech-blog/blog/react_memo/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_memo/</guid><description>React.memo とは 公式ドキュメントを見ると、
 これは React.PureComponent に似ていますが、クラスではなく関数コンポーネント用です。
 とあります。
 つまり、 React.PureComponent を関数コンポーネントで実現するための手段らしいです。
@@ -30,11 +20,9 @@ shouldComponentUpdate() によって、どういった変更があれば再描�
 PureComonentはprops及びstateの変更を検出した場合のみレンダリングを行います。 Messageコンポーネントではmessage propsの変更を察知し、必要分の更新を行うようになります。
 とあります。
 自分で再描画条件を定義できるので、無駄な再描画を省くことができ、パフォーマンス向上を実現できるんですね。。
-→ React.PureComponent を用いることでパフォーマンスを向上させることができるようです。
-（参考記事内にもあるとおり銀の弾丸ではないようですが…）
+→ React.PureComponent を用いることでパフォーマンスを向上させることができるようです。（参考記事内にもあるとおり銀の弾丸ではないようですが…）
 浅い比較 とは shouldComponentUpdate() は浅い比較によって変更検知を行う。
-とありましたが、浅い比較とはなんでしょうか。
-（shouldComponentUpdate() のデフォルトが浅い比較というだけで、オリジナルの比較方法を実装可能なようです）
+とありましたが、浅い比較とはなんでしょうか。（shouldComponentUpdate() のデフォルトが浅い比較というだけで、オリジナルの比較方法を実装可能なようです）
 さきほどの参考記事にて説明されていました。
 浅い比較というのは、簡潔に述べるとオブジェクトの参照先が同じであれば等しいと見なすことです。
-参照先しか見ていないので、中身は見ていないということですね。</description></item></channel></rss>
+参照先しか見ていないので、中身は見ていないということですね。（このような実装なのは、React の思想として、props や state といったデータは immutable であるべきだとしているからだと思います）</description></item></channel></rss>

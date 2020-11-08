@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/go/</link><description>Recent content in Go on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/go/index.xml" rel="self" type="application/rss+xml"/><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワードが使用可能です。
-機能としては、Switch文における次の節（caseやdefault）に移動するというものです。（参考）
-言葉で説明するよりも、サンプルコードを見てもらった方がイメージがつきやすいと思います。
-1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 num := 1 7 switch num { 8 case 1: 9 fmt.Print(&amp;#34;I &amp;#34;) 10 fallthrough 11 case 2: 12 fmt.Print(&amp;#34;am &amp;#34;) 13 fallthrough 14 case 3: 15 fmt.Println(&amp;#34;yyh-gl.&amp;#34;) 16 // fallthrough // 次の節がなければコンパイルエラー 17 } 18} 19 20// 実行結果： 21// I am yyh-gl. Playground
-defaultにも飛べるという例
-fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所))</description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</guid><description>Goにおける参照渡し＝ポインタの値渡し Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。
-（C派生の言語はすべてそうらしいです）
+機能としては、Switch文における次の節（caseやdefault）に移動するというものです。（参考）言葉で説明するよりも、サンプルコードを見てもらった方がイメージがつきやすいと思います。
+package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground
+defaultにも飛べるという例</description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</guid><description>Goにおける参照渡し＝ポインタの値渡し Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。（C派生の言語はすべてそうらしいです）
 じゃあ、参照渡しって何？ってなりますよね。
-参照渡し＝ポインタの値渡しです。
-つまり、ポインタそのものを渡しているわけではなく、ポインタのコピーを渡しています。
-値渡しと参照渡しの差は、内部の値をコピーするかどうかです。
-こちらについては後ほど例を交えて説明します。
+参照渡し＝ポインタの値渡しです。つまり、ポインタそのものを渡しているわけではなく、ポインタのコピーを渡しています。値渡しと参照渡しの差は、内部の値をコピーするかどうかです。こちらについては後ほど例を交えて説明します。
 今回の内容はGo公式ドキュメントの『Pointers and Allocation』の章に 詳細な記載があります。
 本記事では、『Pointers and Allocation』から要点を抜粋して紹介します。
 値渡しと参照渡しの違いは内部値のコピー有無 まずは、先述した
@@ -18,84 +12,65 @@ fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも
 公式ドキュメント『When are function parameters passed by value?』の節に以下の記述があります。
 For instance, passing an int value to a function makes a copy of the int, and passing a pointer value makes a copy of the pointer, but not the data it points to.
 たとえば、int値を関数に渡すとintのコピーが作成され、ポインター値を渡すとポインターのコピーが作成されますが、ポインターが指すデータは作成されません。
-つまり、</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。
-このプロジェクトでは、DDDの考え方や設計パターンも取り入れています。
-今回はDDDの設計パターンの中でもEntityとValue Object（VO）について、
-僕がGoでどうやって実装しているのか紹介していきます。
+つまり、
+値渡し：値のコピーが作成される 参照渡し：ポインタのコピーは作成されるが、ポインタが指すデータ（値）のコピーは作成しない といった差があります。</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。このプロジェクトでは、DDDの考え方や設計パターンも取り入れています。
+今回はDDDの設計パターンの中でもEntityとValue Object（VO）について、僕がGoでどうやって実装しているのか紹介していきます。
 実装例 兎にも角にも、まずはコードを示します。
-1// animal/dog/dog.go 2 3package dog 4 5type Dog struct { 6 name Name 7} 8 9func New(name string) (*Dog, error) { 10 n, err := newName(name) 11 if err != nil { 12 return nil, err 13 } 14 15 return &amp;amp;Dog{ 16 name: *n, 17 }, nil 18} 1// animal/dog/name.go 2 3package dog 4 5import ( 6 &amp;#34;errors&amp;#34; 7 &amp;#34;unicode/utf8&amp;#34; 8) 9 10type Name string 11 12func newName(v string) (*Name, error) { 13 // 名前は3文字以上というビジネスロジック 14 if utf8.</description></item><item><title>【Golang】go test におけるキャッシュの消し方</title><link>https://yyh-gl.github.io/tech-blog/blog/go-test-cache-clear/</link><pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-test-cache-clear/</guid><description>go test のキャッシュを消すのは簡単 $ go clean -testcache
+// animal/dog/dog.go package dog type Dog struct { name Name } func New(name string) (*Dog, error) { n, err := newName(name) if err != nil { return nil, err } return &amp;amp;Dog{ name: *n, }, nil } // animal/dog/name.go package dog import ( &amp;quot;errors&amp;quot; &amp;quot;unicode/utf8&amp;quot; ) type Name string func newName(v string) (*Name, error) { // 名前は3文字以上というビジネスロジック if utf8.RuneCountInString(v) &amp;lt; 3 { return nil, errors.</description></item><item><title>【Golang】go test におけるキャッシュの消し方</title><link>https://yyh-gl.github.io/tech-blog/blog/go-test-cache-clear/</link><pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-test-cache-clear/</guid><description>go test のキャッシュを消すのは簡単 $ go clean -testcache
 以上です！
-1$ go test ./... 2ok github.com/oxequa/realize (cached) 3ok github.com/oxequa/realize/realize (cached) このように (cached) となっていたものが、、、
-1$ go clean -testcache 2$ go test ./... 3ok github.com/oxequa/realize 0.086s 4ok github.com/oxequa/realize/realize 0.389s このように、実行時間が表示されており、キャッシュが消えていることが分かりますね。
-ちなみに、キャッシュを無視する方法はもうひとつあり、
-以下のように -count=1 をつけてやればOKです。
-1$ go test ./... -count=1 2ok github.com/oxequa/realize 0.076s 3ok github.com/oxequa/realize/realize 0.384s
-ここからは上記コマンドが一体なにをしてくれたのか、
-もう少し詳細に話していきます。
+$ go test ./... ok github.com/oxequa/realize (cached) ok github.com/oxequa/realize/realize (cached) このように (cached) となっていたものが、、、
+$ go clean -testcache $ go test ./... ok github.com/oxequa/realize 0.086s ok github.com/oxequa/realize/realize 0.389s このように、実行時間が表示されており、キャッシュが消えていることが分かりますね。
+ちなみに、キャッシュを無視する方法はもうひとつあり、以下のように -count=1 をつけてやればOKです。
+$ go test ./... -count=1 ok github.com/oxequa/realize 0.076s ok github.com/oxequa/realize/realize 0.384s ここからは上記コマンドが一体なにをしてくれたのか、もう少し詳細に話していきます。
 go clean とは こちらにドキュメントがあります。
 Clean removes object files from package source directories.</description></item><item><title>【Golang】jsonパッケージの知っておくと便利な機能</title><link>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</guid><description>jsonパッケージ Goを触ってる人ならだれもが一度はお世話になるであろう パッケージ「json」
-今回はそんな json パッケージについて、
-知っておくと便利な機能を2つ紹介します。
+今回はそんな json パッケージについて、知っておくと便利な機能を2つ紹介します。
 （比較的有名なものしかないですが🙏）
-1. 独自の変換ロジックを実装できる 例えば、下記のコードのように、
-ある構造体（Human）のフィールドを外部公開したくない場合、
-jsonパッケージの Unmarshal()，Marshal() が使えません。
-（上記関数は外部公開されたフィールドのみ変換できる）
-1type Human struct { 2 // フィールドを外部公開したくない 3 name string 4 age int 5} 6 7func main() { 8 h := Human{ 9 name: &amp;#34;Taro&amp;#34;, 10 age: 21, 11 } 12 13 // 構造体 → JSON 14 j, _ := json.Marshal(h) 15 fmt.Println(string(j)) // {} 16 17 // JSON → 構造体 18 var uh Human 19 _ = json.</description></item><item><title>【Golang】errorの同値性と表示について調べた</title><link>https://yyh-gl.github.io/tech-blog/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/error_questions/</guid><description>errorについて疑問があった Goのコードを書いてて、ふと気になったことがあったので調べてみました。
+1. 独自の変換ロジックを実装できる 例えば、下記のコードのように、ある構造体（Human）のフィールドを外部公開したくない場合、jsonパッケージの Unmarshal()，Marshal() が使えません。（上記関数は外部公開されたフィールドのみ変換できる）
+type Human struct { // フィールドを外部公開したくない name string age int } func main() { h := Human{ name: &amp;quot;Taro&amp;quot;, age: 21, } // 構造体 → JSON j, _ := json.Marshal(h) fmt.Println(string(j)) // {} // JSON → 構造体 var uh Human _ = json.Unmarshal(j, &amp;amp;uh) fmt.Printf(&amp;quot;%+v\n&amp;quot;, uh) // {name: age:0} } playgroud
+実際に実行してみると、うまく変換できていないことが分かると思います。
+さて、このときどうすれば正しく変換できるかというと、変換対象の構造体に以下のメソッドを生やしてやればOKです。</description></item><item><title>【Golang】errorの同値性と表示について調べた</title><link>https://yyh-gl.github.io/tech-blog/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/error_questions/</guid><description>errorについて疑問があった Goのコードを書いてて、ふと気になったことがあったので調べてみました。
 errorの同値性 1つ目の疑問は、下記コードで e1 と e2 がイコールではないことです。 （同値性なんて仰々しく言ってすみません。たったこれだけの疑問です😇🙇‍♂️）
-1func main() { 2 e1 := errors.New(&amp;#34;error1&amp;#34;) 3 e2 := errors.New(&amp;#34;error1&amp;#34;) 4 e3 := e1 5 6 fmt.Println(e1 == e2) // false 7 fmt.Println(e1 == e3) // true 8} Playground
+func main() { e1 := errors.New(&amp;quot;error1&amp;quot;) e2 := errors.New(&amp;quot;error1&amp;quot;) e3 := e1 fmt.Println(e1 == e2) // false fmt.Println(e1 == e3) // true } Playground
 結論（errorの同値性） errors.New() が返しているのがポインタでした。
 つまり、さきほどのコードの6行目はポインタの値を比較しているので、そりゃfalseになりますね。
-errorの表示 2つ目の疑問は、下記コードで e1 を表示すると、
-errors.New()の戻り値である構造体の値ではなく、エラー文言が表示されることです。
-1package main 2 3import ( 4 &amp;#34;fmt&amp;#34; 5 &amp;#34;errors&amp;#34; 6) 7 8func main() { 9 e1 := errors.</description></item><item><title>【Golang】errorsパッケージの中身覗いてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/errors_package/</link><pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/errors_package/</guid><description>errorsパッケージに興味持った v1.13からerrorsパッケージに Unwrap() Is() As() といった関数が追加されました。
-（もう1.14もリリースされているのに今さらですね😇）
+errorの表示 2つ目の疑問は、下記コードで e1 を表示すると、errors.New()の戻り値である構造体の値ではなく、エラー文言が表示されることです。
+package main import ( &amp;quot;fmt&amp;quot; &amp;quot;errors&amp;quot; ) func main() { e1 := errors.New(&amp;quot;error1&amp;quot;) fmt.Println(e1) // error1 } Playground
+errors.New()が返しているのは構造体なので、下記コードのように構造体の内容が表示されないのはなんでだ？ってなったわけです。package main import &amp;quot;fmt&amp;quot; func Hoge() interface{} { type hoge struct { s string } return &amp;amp;hoge{s: &amp;quot;hoge&amp;quot;} } func main() { h := Hoge() fmt.</description></item><item><title>【Golang】errorsパッケージの中身覗いてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/errors_package/</link><pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/errors_package/</guid><description>errorsパッケージに興味持った v1.13からerrorsパッケージに Unwrap() Is() As() といった関数が追加されました。（もう1.14もリリースされているのに今さらですね😇）
 今回はこれら3つの関数について、内部実装を追いかけていきます。
 と、その前に、errorsパッケージの概要と関連パッケージについて軽く説明しておきます。
-errorsパッケージと関連パッケージ errorsパッケージ 名前の通り、エラー関連の処理がまとまっているパッケージですね。
-Goの標準パッケージです。
-→ GoDoc
-v1.13にて、先述の Unwrap() Is() As() という関数たちが追加されました。
-errorを扱うパッケージとして、もうひとつ有名なパッケージがあります。
-xerrorsパッケージです。
-xerrorsパッケージ xerrors とは、 Goのサブリポジトリで開発が進められているパッケージです。
-（準標準パッケージといった感じでしょうか）
+errorsパッケージと関連パッケージ errorsパッケージ 名前の通り、エラー関連の処理がまとまっているパッケージですね。Goの標準パッケージです。→ GoDoc
+v1.13にて、先述の Unwrap() Is() As() という関数たちが追加されました。errorを扱うパッケージとして、もうひとつ有名なパッケージがあります。xerrorsパッケージです。
+xerrorsパッケージ xerrors とは、 Goのサブリポジトリで開発が進められているパッケージです。（準標準パッケージといった感じでしょうか）
 xerrorsのGoDocに下記の記述がある通り、
 These functions were incorporated into the standard library&amp;rsquo;s errors package in Go 1.13: - Is - As - Unwrap
-もともとは本パッケージに Unwrap() Is() As() が実装されていましたが、
-v1.13にて標準パッケージに取り込まれました。
-さて、軽くerror関連のパッケージについて触れたところで、
-早速、Unwrap() Is() As() の内部実装を見ていきたいと思います。
-なお、Goのコードはv1.14.0を参照しています。
-Unwrap() ラップされたエラーから中身のエラーを取り出す関数です。</description></item><item><title>Goのバージョン管理について</title><link>https://yyh-gl.github.io/tech-blog/blog/go-versions/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-versions/</guid><description>Goのバージョン管理 注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。 注意2：基本的にMacユーザを対象にしています。（WindowsもLinuxも好きですよ😅）
-開発において言語のバージョン管理はつきものだと思います。
-そのニーズは高く、rbenv や nodenv といったバージョン管理ツールが普及しています。
-ただし、Goの場合は少し話が変わってきます。
-もちろんGoでも goenv が用意されていますが、
-（今のところ）Goは後方互換性が担保されているので、基本的に最新バージョンに上げ続ければOKです。
+もともとは本パッケージに Unwrap() Is() As() が実装されていましたが、v1.13にて標準パッケージに取り込まれました。
+さて、軽くerror関連のパッケージについて触れたところで、早速、Unwrap() Is() As() の内部実装を見ていきたいと思います。なお、Goのコードはv1.14.0を参照しています。
+Unwrap() ラップされたエラーから中身のエラーを取り出す関数です。
+処理としては下記のようになっています。
+func Unwrap(err error) error { u, ok := err.(interface { Unwrap() error }) if !</description></item><item><title>Goのバージョン管理について</title><link>https://yyh-gl.github.io/tech-blog/blog/go-versions/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-versions/</guid><description>Goのバージョン管理 注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。注意2：基本的にMacユーザを対象にしています。（WindowsもLinuxも好きですよ😅）開発において言語のバージョン管理はつきものだと思います。そのニーズは高く、rbenv や nodenv といったバージョン管理ツールが普及しています。
+ただし、Goの場合は少し話が変わってきます。もちろんGoでも goenv が用意されていますが、（今のところ）Goは後方互換性が担保されているので、基本的に最新バージョンに上げ続ければOKです。
 …と言いつつも、GAEを使用するといった場合に、どうしてもバージョン管理したくなることがあると思います。
-そこで今回はまずGoのバージョン管理ツールの紹介をした後で、
-最新バージョンをインストールする方法を紹介していきたいと思います。
-Goのバージョン管理ツール ▼ goenv ○○env系は有名ですよね。
-言語のバージョン管理といえばこれです。
+そこで今回はまずGoのバージョン管理ツールの紹介をした後で、最新バージョンをインストールする方法を紹介していきたいと思います。
+Goのバージョン管理ツール ▼ goenv ○○env系は有名ですよね。言語のバージョン管理といえばこれです。
 導入手順は公式の手順通りなので省略します。
-1点はまりどころがあります。
-$GOPATHが変わらなくなってしまうという問題です。
-本件に関しては以前、僕のブログで対処法を書いているので、
-こちらを参考にしてみてください。
+1点はまりどころがあります。$GOPATHが変わらなくなってしまうという問題です。
+本件に関しては以前、僕のブログで対処法を書いているので、こちらを参考にしてみてください。
 ▼ go get（公式おすすめ） （バージョン管理ツールではないですが…👼）
 本方法が公式おすすめの方法です。
-1$ go get golang.org/dl/goX.Y.Z 2$ goX.Y.Z download 3$ goX.Y.Z version 4go version goX.Y.Z linux/amd64 コマンド打つたびに、バージョンまで打つのがめんどくさいという方は、
-bash や zsh の設定でエイリアスでも貼ってやればOKですね。
-最新バージョンのインストール方法 次は常に最新バージョンをインストールする方法です。
-特に新しいこともなくいろんなサイトで紹介されているのでさらっと流していきます。
-▼ Homebrew 1$ brew install go 以上です！
-標準出力にて「必要ならパスの設定してね」と言われます。
-設定したい場合は、言われたとおりにやればOKです。</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
-今回は Go1.12からの変更点 についてです。
+$ go get golang.org/dl/goX.Y.Z $ goX.Y.Z download $ goX.Y.Z version go version goX.Y.Z linux/amd64 コマンド打つたびに、バージョンまで打つのがめんどくさいという方は、bash や zsh の設定でエイリアスでも貼ってやればOKですね。
+最新バージョンのインストール方法 次は常に最新バージョンをインストールする方法です。特に新しいこともなくいろんなサイトで紹介されているのでさらっと流していきます。
+▼ Homebrew $ brew install go 以上です！
+標準出力にて「必要ならパスの設定してね」と言われます。設定したい場合は、言われたとおりにやればOKです。
+▼ ソースからのインストール こちらの方法は先述の方法と比べると、少しややこしくなります。
+ざっくり手順を説明します。（公式の説明ページ）
+Go1.4をインストール
+https://golang.org/doc/install/source#go14
+なぜ、いきなりv1.4をインストールするかというと、v1.5以降は全てGoで書かれているため、Go自身でコンパイルすることができます。
+よって、v1.5以降のGoをインストールするために GoをビルドするためのGoが必要になるというわけです。（ややこしいですが、セルフホスティングってやつですね）</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
+今回は Go1.12からの変更点についてです。
 The State of Go 2020 Twitterで『The State of Go 2020』というタイトルのスライドを見つけました。
-Go1.12から変わったところに焦点を当て、
-Go1.13でどのような機能が追加されているのか、 Go1.14でどのような機能が追加される予定なのかまとめてあります。
+Go1.12から変わったところに焦点を当て、Go1.13でどのような機能が追加されているのか、 Go1.14でどのような機能が追加される予定なのかまとめてあります。
 今回は、完全主観で自分が興味のある内容をハイライトします〜😇
 完全主観ハイライト ▼ 数値まわりの表現方法が増える https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7
 ▼ interfaceにおける関数の重複が許可される（例外あり） https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17
@@ -107,41 +82,29 @@ Go1.13でどのような機能が追加されているのか、 Go1.14でどの�
 ▼ json関連の処理が速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52
 ▼ 他にもいろいろ速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53
 ▼ GopherConの参加者が増えていく様子がえもい https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
-私は現在、DMM.com の CDS というチームに所属し、
-主にユーザレビュー基盤のバックエンドを開発しています。
-今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、
-GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
+私は現在、DMM.com の CDS というチームに所属し、主にユーザレビュー基盤のバックエンドを開発しています。
+今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
 Linter 導入していますか？ 突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？
-私の所属するチームでは、
-コーディング規約違反 および コンパイラでは見つけられないエラー を検知するために、
-ローカルと CI において Linter を回すようにしています。
-Golang における Linter Golang の場合、Linter がデフォルトで用意されているうえに、
-ライブラリとして公開されているものも多く存在します。
+私の所属するチームでは、コーディング規約違反および コンパイラでは見つけられないエラーを検知するために、ローカルと CI において Linter を回すようにしています。
+Golang における Linter Golang の場合、Linter がデフォルトで用意されているうえに、ライブラリとして公開されているものも多く存在します。
 なかでも有名なものに以下のようなものがあります。
-govet：Golang デフォルトの Linter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。
-加えて、導入する Linter が増えれば、その分だけ 導入・管理コストが増加 します。</description></item><item><title>【Golang+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+govet：Golang デフォルトの Linter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。加えて、導入する Linter が増えれば、その分だけ 導入・管理コストが増加します。
+この問題を解決してくれるツールが GolangCI-Lintです。
+GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
+GolangCI-Lintとは、 Golang の Linter を一元管理するためのツールです。開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。</description></item><item><title>【Golang+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
 ではでは、早速本題に入っていきます。
 モック使ってますか？ みなさんモックコードは書いていますか？
-テストコードを書いているなら、ほぼ必ず登場するあのモックです。
-DB処理や関数のモックなどいろいろありますよね。
-そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？
-モックだからといって雑なコードになっていませんか？
-今回は、外部API通信のモック化にフォーカスし、
-モックコードの作成・管理コストを軽減する VCR ライブラリ を紹介します。
-VCR ライブラリ とは？ VCR（Video Cassette Recorder）とは、通信を保存し、再生するライブラリです。
-つまり、APIリクエストの初回通信の内容を保存し、
-次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。
+テストコードを書いているなら、ほぼ必ず登場するあのモックです。DB処理や関数のモックなどいろいろありますよね。
+そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？モックだからといって雑なコードになっていませんか？
+今回は、外部API通信のモック化にフォーカスし、モックコードの作成・管理コストを軽減する VCR ライブラリを紹介します。
+VCR ライブラリ とは？ VCR（Video Cassette Recorder）とは、通信を保存し、再生するライブラリです。つまり、APIリクエストの初回通信の内容を保存し、次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。
 言い換えれば、外部APIのモックを自動生成してくれるということですね！
-VCR ライブラリ in Golang World Golang 用の VCR ライブラリはいろいろあります。
-スター数が多いのは以下のものです。
+VCR ライブラリ in Golang World Golang 用の VCR ライブラリはいろいろあります。スター数が多いのは以下のものです。
 go-vcr vcr-go govcr rpcreplay go-vcr および vcr-go，govcr の開発は盛んではないようです。
-rpcreplay は google-cloud-goに包含されるパッケージであり、安心して使えそうです。
-ただし、gRPC 用なので、その点は注意が必要です。
-GoDocはこちらです。
-今回は REST API を使って説明していくので、go-vcr を使用します。</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！
-ビールとお弁当もらいました。
-そしてなんとなんと k8sの技術書をいただいちゃいました！！！
-もちろんステッカーもありましたよ👍
+rpcreplay は google-cloud-goに包含されるパッケージであり、安心して使えそうです。ただし、gRPC 用なので、その点は注意が必要です。GoDocはこちらです。
+今回は REST API を使って説明していくので、go-vcr を使用します。go-vcr は、vcr-go と govcr よりスター数が多いです。Ruby 製の vcr というライブラリがもとになっているようです。
+サンプルを見ていく では、コードを交えて紹介していきたいと思います。今回は下記のような簡単なサンプルを用意しました。</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！ビールとお弁当もらいました。
+そしてなんとなんと k8sの技術書をいただいちゃいました！！！もちろんステッカーもありましたよ👍
 1. [Go活用事例]安全運転支援サービスを支える運用サイト 登壇者：@suhirotaka さん オートモーティブ事業本部スマートドライビング部システム開発グループ
 スライド
 以下メモ 主題 管理画面を Golang で作成
@@ -153,54 +116,42 @@ DeNAではフルスタック・MVCを選択
 GolangにおけるフルスタックなWAF Beego：採用！ Revel：開発が止まってきている Iris：プロジェクトの運用がうまくいっていないようだった Beego フルスタックのMVCフレームワーク ORMまでついてる セッション管理、ロガー、キャッシュなどのライブラリがいろいろついてるけど、全てモジュール化されていて、部分的に他のライブラリを使うことができる Railsライクなフレームワーク Railsのbefore/after_actionに相当するものもある（Prepare(), Finish()） ライブラリ 使用ライブラリはこちら
 こういうの教えてくれるのめっちゃ嬉しい
 ORM：GORM ロガー：logrus PDF生成：gopdf → 日本語もきれいにでるので最高にクール 画像生成：gg バーコード生成：Barcode 2.</description></item><item><title>【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー【Golang】</title><link>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</link><pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</guid><description>mercari.go #11 connpass： リンク ハッシュタグ： #mercarigo 今回もお弁当とドリンクがありました！ありがたや
-[追記：2019年10月12日]
-[Mercari Engineering Blog](https://tech.mercari.com/entry/2019/10/11/160000) にて、本イベントの記事が公開されました。
-発表資料が載せてあります。ありがたや🙏 1. About error handling in Go 登壇者：jd さん（@JehandadKamal）
+1. About error handling in Go 登壇者：jd さん（@JehandadKamal）
 資料（正式に共有されたものでないので、発表の内容が少し異なります）
 Errors are values ”Errors are values” という考え方。
 Golangでよくあるエラー処理パターン エラーをラップしてより詳細な情報を付与する 専用構造体を作る スタックトレースを構成する ”Error is your domain” Domain Error Struct を作成する。
-1type Error struct { 2 Op Op 3 Kind Kind 4 Serverity zapcore.ErrorLevel 5 Err error 6} Op：Operation → 関数名とか Kind：エラー種別 → NotAvailable, NotFound といったもの Serverity：エラーレベル Err：エラー内容 上記のような構造体を作る理由 error を比較するときは、基本的に文字列の比較になるため取り回しが悪い → ”NotFound” という文字列を比較するとかとか</description></item><item><title>【Go同miniConf】Golangの勉強会に参加してきた話</title><link>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</link><pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</guid><description>概要 CyberAgent ＆ merpay が共催した Golang のイベント
+type Error struct { Op Op Kind Kind Serverity zapcore.ErrorLevel Err error } Op：Operation → 関数名とか Kind：エラー種別 → NotAvailable, NotFound といったもの Serverity：エラーレベル Err：エラー内容 上記のような構造体を作る理由 error を比較するときは、基本的に文字列の比較になるため取り回しが悪い → ”NotFound” という文字列を比較するとかとか</description></item><item><title>【Go同miniConf】Golangの勉強会に参加してきた話</title><link>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</link><pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</guid><description>概要 CyberAgent ＆ merpay が共催した Golang のイベント
 Connpass情報 ハッシュタグ：#godo_miniconf （写真撮るの忘れた…）
 以下、発表まとめ
 1. マイクロサービスとMonoRepo 登壇者：江頭 宏亮さん（@_hiro511） 発表スライド リポジトリ管理について WinTicket というサービス開発・運用中
-36個のマイクロサービスで動いている
-マルチリポジトリ：マイクロサービスごとにリポジトリが別れている モノリポジトリ：ひとつのリポジトリ。WinTicket ではこっち モノリポジトリ Google, FB, Tiwtter, Uberが採用 メリット 依存管理をシンプルにできる マルチリポジトリの場合、複数のリポジトリに変更を加える必要があるし、変更を取り込むのが面倒 モノレポだとすべてのコードが一箇所にあるので変更が楽 一貫性のある変更 複数のサービスにまたがる変更においても、アトミックなコミットが可能 コードの共有と再利用が用意 common ディレクトリがあればできる 大きなリファクタリングが容易 ビルドとテストを効率良くしたいという モノリポジトリだと、ビルドとテストに時間がかかる ので、効率よくビルドとテストしたい
+36個のマイクロサービスで動いている マルチリポジトリ：マイクロサービスごとにリポジトリが別れている モノリポジトリ：ひとつのリポジトリ。WinTicket ではこっち モノリポジトリ Google, FB, Tiwtter, Uberが採用 メリット 依存管理をシンプルにできる マルチリポジトリの場合、複数のリポジトリに変更を加える必要があるし、変更を取り込むのが面倒 モノレポだとすべてのコードが一箇所にあるので変更が楽 一貫性のある変更 複数のサービスにまたがる変更においても、アトミックなコミットが可能 コードの共有と再利用が用意 common ディレクトリがあればできる 大きなリファクタリングが容易 ビルドとテストを効率良くしたいという モノリポジトリだと、ビルドとテストに時間がかかるので、効率よくビルドとテストしたい
 Bazel（ベイゼル）：ビルド・テストツール Go, Andoroid, iOSなど様々な言語に対応 Googleが使っている（Googleの自社ツールがOSS化） 必要箇所だけビルド・テストする 速い スケーラブル 拡張可能 StarDarkという独自言語で設定定義 WinTicketではDockerビルドもこれ Golang with Bazel Bazel のインストール by brew WORKSPACEファイルの作成 外部の依存関係を記述 BUILDファイルを作成 ビルド方法を示したもの Gazzelを利用して自動生成可能 ディレクトリ構成例</description></item><item><title>【mercari.go #8】メルカリの Golang に関する勉強会メモ</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</guid><description>mercari.go #8 connpass： リンク ハッシュタグ： #mercarigo 独自ルール： 懇親会のGルール 懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！ 雰囲気 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
-以降、自分用のメモを書き連ねます。
-詳細はスライドの方をご覧ください。
+以降、自分用のメモを書き連ねます。詳細はスライドの方をご覧ください。
 1. Goで学ぶKnative 登壇者： @toshi0607 さん
 スライド： https://speakerdeck.com/toshi0607/learning-knative-with-go
-Knative Knative ＝ 最新のサーバーレス ワークロードをビルド、デプロイ、管理できる Kubernetes ベースのプラットフォーム AWS の Lmabda に近いことを k8s 上でできると解釈 登壇者含め、会場内で Knative を本番に導入している人はなし。
-まだ時期尚早っぽい k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供 k8s 上にのっかる。 Knative の構成 Serving Build Eventing 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠 登壇者は 機能実装に一層集中するための基盤 として注目している yml ファイルで定義した内容に基づいて コード生成 感想 終盤、 Knative の内部処理を コードリーディング していたのですが、</description></item><item><title>【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
-この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
-今回やること Golang のディレクトリ構成についていろいろと調べる中で、
-こちらの資料 がとても分かりやすかったので、
-今回はこちらを参考に Golang で Web API を作っていきたいと思います。
-加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャー を取り入れます。
-（内容はほぼレイヤードアーキテクチャになってしまいましたが…）
-DDD については、「DDD を Golang とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。
-パッケージ構成の参考になれば幸いです。
-（ですので、ドメインモデルは重度のドメイン貧血症に陥っていますｗ）
+Knative Knative ＝ 最新のサーバーレス ワークロードをビルド、デプロイ、管理できる Kubernetes ベースのプラットフォーム AWS の Lmabda に近いことを k8s 上でできると解釈 登壇者含め、会場内で Knative を本番に導入している人はなし。まだ時期尚早っぽい k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供 k8s 上にのっかる。 Knative の構成 Serving Build Eventing 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠 登壇者は 機能実装に一層集中するための基盤 として注目している yml ファイルで定義した内容に基づいて コード生成 感想 終盤、 Knative の内部処理を コードリーディング していたのですが、見入ってしまいメモを忘れていました。。。</description></item><item><title>【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
+今回やること Golang のディレクトリ構成についていろいろと調べる中で、こちらの資料 がとても分かりやすかったので、今回はこちらを参考に Golang で Web API を作っていきたいと思います。
+加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャー を取り入れます。（内容はほぼレイヤードアーキテクチャになってしまいましたが…）
+DDD については、「DDD を Golang とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。パッケージ構成の参考になれば幸いです。（ですので、ドメインモデルは重度のドメイン貧血症に陥っていますｗ）
 釣りタイトルみたいになっちゃっててすみません🧝‍♀️
-環境 MacOS Mojave 10.14.6 Golang 1.12.5 なお、今回は、Gin や Mux などといったフレームワークは使わず、
-httprouter のみで薄く作っていこうと思います。
+環境 MacOS Mojave 10.14.6 Golang 1.12.5 なお、今回は、Gin や Mux などといったフレームワークは使わず、httprouter のみで薄く作っていこうと思います。
 Mux を使った実装は 僕の前のブログで紹介している のでよければどうぞ。
-・ ・
+・
 ・
 では、早速本題に入っていきましょう。
-採用アーキテクチャ：レイヤードアーキテクチャ 参考記事内 で紹介されているのは レイヤードアーキテクチャ をベースに いろいろカスタマイズされたものらしいです。
+採用アーキテクチャ：レイヤードアーキテクチャ 参考記事内 で紹介されているのは レイヤードアーキテクチャをベースに いろいろカスタマイズされたものらしいです。
 クリーンアーキテクチャに似たアーキテクチャだとか。
 ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。
-DDD の文脈だと アプリケーション層 と呼ばれますが、
-アプリケーションって意味が広くて分かりづらいので、</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://yyh-gl.github.io/tech-blog/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
+DDD の文脈だと アプリケーション層 と呼ばれますが、アプリケーションって意味が広くて分かりづらいので、本プロジェクトでは ユースケース という単語を使用します。
+とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 DDD を意識してWeb API を実装していこうと思います。
+（意識だけして、実践できずに終わりましたが😇）
+レイヤードアーキテクチャ における各層の依存関係 について説明します。</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://yyh-gl.github.io/tech-blog/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
 $ export GOPATH=/Users/yyh-gl/workspaces/Go $ echo $GOPATH /Users/yyh-gl/workspaces/Go $ go env GOPATH /Users/yyh-gl/go/1.12.5 GOPATH が書き換わらない。
 解決方法 社内Slack で適当につぶやいたら、同期が助けてくれた（神）
 画像にある Qiita のリンクが こちら
 ちなみに僕の環境の goenv は バージョン 1.12.5 だったので、2系に上げなくても発生する模様。
-（追記：19/06/14）またまた同期が教えてくれました。
-こちらの記事 によると、 goenv による管理は バージョン 1.12 からとのこと。
-結論：goenv が GOPATH を管理しようとしてた
-goenv の管理から外してやるには GOENV_DISABLE_GOPATH=1 にしてやればOK。
+（追記：19/06/14）またまた同期が教えてくれました。こちらの記事 によると、 goenv による管理は バージョン 1.12 からとのこと。
+結論：goenv が GOPATH を管理しようとしてたgoenv の管理から外してやるには GOENV_DISABLE_GOPATH=1 にしてやればOK。
 僕は zshrc に以下のとおり追記しました。
 export GOENV_DISABLE_GOPATH=1
 （zshrc の読み込み直しを忘れずに）

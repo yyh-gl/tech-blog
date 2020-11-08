@@ -1,51 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワードが使用可能です。
-機能としては、Switch文における次の節（caseやdefault）に移動するというものです。（参考）
-言葉で説明するよりも、サンプルコードを見てもらった方がイメージがつきやすいと思います。
-1package main 2 3import &amp;#34;fmt&amp;#34; 4 5func main() { 6 num := 1 7 switch num { 8 case 1: 9 fmt.Print(&amp;#34;I &amp;#34;) 10 fallthrough 11 case 2: 12 fmt.Print(&amp;#34;am &amp;#34;) 13 fallthrough 14 case 3: 15 fmt.Println(&amp;#34;yyh-gl.&amp;#34;) 16 // fallthrough // 次の節がなければコンパイルエラー 17 } 18} 19 20// 実行結果： 21// I am yyh-gl. Playground
-defaultにも飛べるという例
-fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所))</description></item><item><title>texta.fm #1 まとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分）を聞いて、特にDDDについて学びが多かったのでまとめました。
-エヴァンス本を読む前に知っておいた方がいい時代背景、そして、意識すべき点を知ることができるので、
-時間があればぜひ実際に聞きに行ってみてください。
+機能としては、Switch文における次の節（caseやdefault）に移動するというものです。（参考）言葉で説明するよりも、サンプルコードを見てもらった方がイメージがつきやすいと思います。
+package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground
+defaultにも飛べるという例</description></item><item><title>texta.fm #1 まとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分）を聞いて、特にDDDについて学びが多かったのでまとめました。
+エヴァンス本を読む前に知っておいた方がいい時代背景、そして、意識すべき点を知ることができるので、時間があればぜひ実際に聞きに行ってみてください。
 話者：
-@_yasaichiさん @t_wadaさん 以降、勉強になった点を抜き出していきます。
-なお、&amp;lt;&amp;gt;内に記載している時間は、記述内容が実際に話されている時間を示しています。
+@_yasaichiさん @t_wadaさん 以降、勉強になった点を抜き出していきます。なお、&amp;lt;&amp;gt;内に記載している時間は、記述内容が実際に話されている時間を示しています。
 DDDが解決したかった問題 &amp;lt;6分30秒ぐらいから&amp;gt;
 エリック・エヴァンスがDDDで解決しようとしていた問題は以下の2点
 分析モデルとコード間の乖離：詳細は後述 ビジネス側と開発側の乖離：ビジネス側の言葉と開発側の言葉が異なることによる開発の複雑化 分析モデルとコード間の乖離ってなに？ &amp;lt;9分45秒ぐらいから&amp;gt;
-2000年代前半はフェーズで区切ったソフトウェア開発が主流だった。
-そして、その区切られたフェーズのひとつである「モデリングフェーズ」では、
-分析や設計を通してモデルを作り上げていくのであるが、
-開発の対象領域をきちんと写し取った抽象的なモデル（分析モデル）を作ることが最大の目的であった。
-しかし、開発フェーズに入った時、分析モデルでは不完全なことが多かった。
-よって、開発で使えるように修正が加えられ、最終的には分析モデルとは全く異なるモデルができあがる。
-コードを書かないと分からないこと、実際にシステムが使われ始めないと分からないことがたくさんあるので、当然の結果である。
-解決策：改善のループを回そう &amp;lt;17分20秒ぐらいから&amp;gt;
-分析モデルとコード間の乖離を解決するために、
-分析モデル→開発時のモデルの一方通行ではなく、
-開発時のモデル↔分析モデルのように両方向にフィードバックする。
-そして、フィードバックをもとに改善のループを回していくことが重要。
-（＝アジャイルソフトウェア開発時代の改善ループの回し方）
+2000年代前半はフェーズで区切ったソフトウェア開発が主流だった。そして、その区切られたフェーズのひとつである「モデリングフェーズ」では、分析や設計を通してモデルを作り上げていくのであるが、開発の対象領域をきちんと写し取った抽象的なモデル（分析モデル）を作ることが最大の目的であった。
+しかし、開発フェーズに入った時、分析モデルでは不完全なことが多かった。よって、開発で使えるように修正が加えられ、最終的には分析モデルとは全く異なるモデルができあがる。
+コードを書かないと分からないこと、実際にシステムが使われ始めないと分からないことがたくさんあるので、当然の結果である。 解決策：改善のループを回そう &amp;lt;17分20秒ぐらいから&amp;gt;
+分析モデルとコード間の乖離を解決するために、分析モデル→開発時のモデルの一方通行ではなく、開発時のモデル↔分析モデルのように両方向にフィードバックする。そして、フィードバックをもとに改善のループを回していくことが重要。（＝アジャイルソフトウェア開発時代の改善ループの回し方）
 今はあまり分析モデルとコード間の乖離が問題にならない &amp;lt;25分00秒ぐらいから&amp;gt;
-現在ではあまり分析モデルとコード間の乖離が問題にならない。
-理由としては、分析モデルの作成フェーズ（モデリングフェーズ）と開発フェーズを担当する人が同じになってきたから。
-昨今の開発ではこうした開発体制が普通になっているので、
-そもそも今いる大半のエンジニアにはイメージがつきにくい事象である。
+現在ではあまり分析モデルとコード間の乖離が問題にならない。理由としては、分析モデルの作成フェーズ（モデリングフェーズ）と開発フェーズを担当する人が同じになってきたから。昨今の開発ではこうした開発体制が普通になっているので、そもそも今いる大半のエンジニアにはイメージがつきにくい事象である。
 したがって、現在は、DDDと言われるとビジネス側と開発側の乖離に注目が行きがち。
 エヴァンス本から学ぶべき大事なこと &amp;lt;21分40秒ぐらいから&amp;gt;
-コードとドメイン知識間の乖離を無くし、
-一致させ続ける反復的作業こそが大事であると訴えたことがとても良かった。
-つまり、先述したとおり、
-フィードバックが 分析モデル→開発時のモデルの一方通行 だったものを 開発時のモデル↔分析モデルのような両方向 にしようと提唱したことこそが最重要。
+コードとドメイン知識間の乖離を無くし、一致させ続ける反復的作業こそが大事であると訴えたことがとても良かった。
+つまり、先述したとおり、フィードバックが 分析モデル→開発時のモデルの一方通行だったものを 開発時のモデル↔分析モデルのような両方向にしようと提唱したことこそが最重要。
 ここを意識して学ぼう！
 &amp;lt;33分00秒ぐらいから&amp;gt;
-デザインパターンの部分（2部、3部あたり）はもちろん大事であるが、
-エヴァンス本の本質的な部分ではない。</description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</guid><description>Goにおける参照渡し＝ポインタの値渡し Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。
-（C派生の言語はすべてそうらしいです）
+デザインパターンの部分（2部、3部あたり）はもちろん大事であるが、エヴァンス本の本質的な部分ではない。</description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</guid><description>Goにおける参照渡し＝ポインタの値渡し Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。（C派生の言語はすべてそうらしいです）
 じゃあ、参照渡しって何？ってなりますよね。
-参照渡し＝ポインタの値渡しです。
-つまり、ポインタそのものを渡しているわけではなく、ポインタのコピーを渡しています。
-値渡しと参照渡しの差は、内部の値をコピーするかどうかです。
-こちらについては後ほど例を交えて説明します。
+参照渡し＝ポインタの値渡しです。つまり、ポインタそのものを渡しているわけではなく、ポインタのコピーを渡しています。値渡しと参照渡しの差は、内部の値をコピーするかどうかです。こちらについては後ほど例を交えて説明します。
 今回の内容はGo公式ドキュメントの『Pointers and Allocation』の章に 詳細な記載があります。
 本記事では、『Pointers and Allocation』から要点を抜粋して紹介します。
 値渡しと参照渡しの違いは内部値のコピー有無 まずは、先述した
@@ -54,4 +31,5 @@ DDDが解決したかった問題 &amp;lt;6分30秒ぐらいから&amp;gt;
 公式ドキュメント『When are function parameters passed by value?』の節に以下の記述があります。
 For instance, passing an int value to a function makes a copy of the int, and passing a pointer value makes a copy of the pointer, but not the data it points to.
 たとえば、int値を関数に渡すとintのコピーが作成され、ポインター値を渡すとポインターのコピーが作成されますが、ポインターが指すデータは作成されません。
-つまり、</description></item></channel></rss>
+つまり、
+値渡し：値のコピーが作成される 参照渡し：ポインタのコピーは作成されるが、ポインタが指すデータ（値）のコピーは作成しない といった差があります。</description></item></channel></rss>

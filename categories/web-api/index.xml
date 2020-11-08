@@ -1,44 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web API on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/web-api/</link><description>Recent content in Web API on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 19 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/web-api/index.xml" rel="self" type="application/rss+xml"/><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
-「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web API on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/web-api/</link><description>Recent content in Web API on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 19 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/web-api/index.xml" rel="self" type="application/rss+xml"/><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
 さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。
-しかし、この2つのトークンの違いについて、
-いまいち理解ができていなかったので、今回は両者の違いを調べてみました。
-加えて、トークンについて調べる中で、
-OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。
+しかし、この2つのトークンの違いについて、いまいち理解ができていなかったので、今回は両者の違いを調べてみました。
+加えて、トークンについて調べる中で、OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。
 2つのトークンの違い アクセストークン と IDトークン、両者は役割が大きく異なります。
 アクセストークン：認可（リソースへのアクセスコントロール＝あるリソースへの権限（readやwriteなど）を持っているかどうか確認すること） IDトークン：認証（その人が誰かを確認すること） 名前のままでした。
 認可に使うためのいろいろな情報が詰まっているのがアクセストークンで、 認証に使うためのいろいろな情報が詰まっているのがIDトークンです。
-OpenID Connectが生まれた経緯 OAuth 2.0およびOpenID Connectについて調べていると、
-「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。
-どうしてOpenID Connectが必要になったのか、
-この辺の経緯について述べていきます。
+OpenID Connectが生まれた経緯 OAuth 2.0およびOpenID Connectについて調べていると、「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。
+どうしてOpenID Connectが必要になったのか、この辺の経緯について述べていきます。
 OAuth 2.0 は 認可 の仕組み まずは、OAuth 2.0について見ていきます。
-OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない
-のですが、実際にはOAuth 2.0を認証用途で使っているシステムは多く存在します。
-OAuth 2.0 で認証を行うことの問題点については、
-こちら の記事に詳しく書いてあります。
-上記記事より、OAuth 2.0 による認証の問題点は、</description></item><item><title>【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
-この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
-今回やること Golang のディレクトリ構成についていろいろと調べる中で、
-こちらの資料 がとても分かりやすかったので、
-今回はこちらを参考に Golang で Web API を作っていきたいと思います。
-加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャー を取り入れます。
-（内容はほぼレイヤードアーキテクチャになってしまいましたが…）
-DDD については、「DDD を Golang とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。
-パッケージ構成の参考になれば幸いです。
-（ですので、ドメインモデルは重度のドメイン貧血症に陥っていますｗ）
+OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではないのですが、実際にはOAuth 2.0を認証用途で使っているシステムは多く存在します。
+OAuth 2.0 で認証を行うことの問題点については、こちら の記事に詳しく書いてあります。
+上記記事より、OAuth 2.0 による認証の問題点は、クライアント（アプリケーション）側でトークンの正当性を確かめる術がないことであるとわかります。
+なお、ここでいう「正当性」に関して補足しておくと、「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。
+つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。（トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）
+「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。 説明しやすくするためにこういった言葉を使っています。</description></item><item><title>【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
+今回やること Golang のディレクトリ構成についていろいろと調べる中で、こちらの資料 がとても分かりやすかったので、今回はこちらを参考に Golang で Web API を作っていきたいと思います。
+加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャー を取り入れます。（内容はほぼレイヤードアーキテクチャになってしまいましたが…）
+DDD については、「DDD を Golang とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。パッケージ構成の参考になれば幸いです。（ですので、ドメインモデルは重度のドメイン貧血症に陥っていますｗ）
 釣りタイトルみたいになっちゃっててすみません🧝‍♀️
-環境 MacOS Mojave 10.14.6 Golang 1.12.5 なお、今回は、Gin や Mux などといったフレームワークは使わず、
-httprouter のみで薄く作っていこうと思います。
+環境 MacOS Mojave 10.14.6 Golang 1.12.5 なお、今回は、Gin や Mux などといったフレームワークは使わず、httprouter のみで薄く作っていこうと思います。
 Mux を使った実装は 僕の前のブログで紹介している のでよければどうぞ。
-・ ・
+・
 ・
 では、早速本題に入っていきましょう。
-採用アーキテクチャ：レイヤードアーキテクチャ 参考記事内 で紹介されているのは レイヤードアーキテクチャ をベースに いろいろカスタマイズされたものらしいです。
+採用アーキテクチャ：レイヤードアーキテクチャ 参考記事内 で紹介されているのは レイヤードアーキテクチャをベースに いろいろカスタマイズされたものらしいです。
 クリーンアーキテクチャに似たアーキテクチャだとか。
 ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。
-DDD の文脈だと アプリケーション層 と呼ばれますが、
-アプリケーションって意味が広くて分かりづらいので、</description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/good_api/</guid><description>いいねボタンがないブログ 本ブログ、いいねボタンが ありませんでした。
+DDD の文脈だと アプリケーション層 と呼ばれますが、アプリケーションって意味が広くて分かりづらいので、本プロジェクトでは ユースケース という単語を使用します。
+とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 DDD を意識してWeb API を実装していこうと思います。
+（意識だけして、実践できずに終わりましたが😇）
+レイヤードアーキテクチャ における各層の依存関係 について説明します。</description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/good_api/</guid><description>いいねボタンがないブログ 本ブログ、いいねボタンが ありませんでした。
 だから、作っちゃいました。っていう記事です。
 構成 上図のように
 記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。
