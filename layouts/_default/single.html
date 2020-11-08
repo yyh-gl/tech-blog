@@ -6,7 +6,7 @@
     </div>
     <div class="content">
       {{ .Render "featured" }}
-      {{ .Content | replaceRE "<pre>" "<pre class=\"line-numbers\">" | safeHTML }}
+      {{ .Content | replaceRE "<pre" "<pre class=\"line-numbers\"" | safeHTML }}
     </div>
     <footer>
       {{ .Render "stats" }}
