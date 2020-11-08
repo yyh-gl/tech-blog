@@ -11,9 +11,6 @@ pluralizeListTitles    = false
 disableLanguages       = []
 
 [markup]
-  [markup.goldmark.renderer]
-    unsafe             = true
-
   [markup.highlight]
     lineNoStart        = 1
     lineNos            = true
