@@ -11,7 +11,8 @@ DeleteなしでCRUのみ
 同じリクエストを何回繰り返しても内部的には処理されない
 何度リクエストしても同じ結果が返ってくる 何度でもリトライできる
 取引IDが保存されていれば既に行われた取引である
-冪等性の担保 冪等性キーが同じ 外部から指定される取引IDのこと 残高の種類が同じ ポイント/メイルペイ残高 など 操作する金額が同じ 冪等なレスポンス レスポンスはDBから引ける情報で組み立てる 取引IDから引ける情報 取引後残高は返さない → https://twitter.com/matsukaz/status/1207250011391553536 冪等なAPIでのエラー リトライしても良いエラー：ex. タイムアウト リトライだめなエラー：ex. 残高不足 誰がどう使うのか？ リクエストを投げる側の使い方1つで簡単に冪等性が壊れる → ex. 取引IDを毎回変えるとか 2.</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！ビールとお弁当もらいました。
+冪等性の担保 冪等性キーが同じ 外部から指定される取引IDのこと 残高の種類が同じ ポイント/メイルペイ残高 など 操作する金額が同じ 冪等なレスポンス レスポンスはDBから引ける情報で組み立てる 取引IDから引ける情報 取引後残高は返さない Twitterメモ
+冪等なAPIでのエラー リトライしても良いエラー：ex. タイムアウト リトライだめなエラー：ex. 残高不足 誰がどう使うのか？ リクエストを投げる側の使い方1つで簡単に冪等性が壊れる → ex. 取引IDを毎回変えるとか 2.</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！ビールとお弁当もらいました。
 そしてなんとなんと k8sの技術書をいただいちゃいました！！！もちろんステッカーもありましたよ👍
 1. [Go活用事例]安全運転支援サービスを支える運用サイト 登壇者：@suhirotaka さん オートモーティブ事業本部スマートドライビング部システム開発グループ
 スライド
@@ -45,5 +46,5 @@ Connpass情報 ハッシュタグ：#godo_miniconf （写真撮るの忘れた�
 Bazel（ベイゼル）：ビルド・テストツール Go, Andoroid, iOSなど様々な言語に対応 Googleが使っている（Googleの自社ツールがOSS化） 必要箇所だけビルド・テストする 速い スケーラブル 拡張可能 StarDarkという独自言語で設定定義 WinTicketではDockerビルドもこれ Golang with Bazel Bazel のインストール by brew WORKSPACEファイルの作成 外部の依存関係を記述 BUILDファイルを作成 ビルド方法を示したもの Gazzelを利用して自動生成可能 ディレクトリ構成例</description></item><item><title>【mercari.go #8】メルカリの Golang に関する勉強会メモ</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</guid><description>mercari.go #8 connpass： リンク ハッシュタグ： #mercarigo 独自ルール： 懇親会のGルール 懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！ 雰囲気 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
 以降、自分用のメモを書き連ねます。詳細はスライドの方をご覧ください。
 1. Goで学ぶKnative 登壇者： @toshi0607 さん
-スライド： https://speakerdeck.com/toshi0607/learning-knative-with-go
+スライドリンク
 Knative Knative ＝ 最新のサーバーレス ワークロードをビルド、デプロイ、管理できる Kubernetes ベースのプラットフォーム AWS の Lmabda に近いことを k8s 上でできると解釈 登壇者含め、会場内で Knative を本番に導入している人はなし。まだ時期尚早っぽい k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供 k8s 上にのっかる。 Knative の構成 Serving Build Eventing 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠 登壇者は 機能実装に一層集中するための基盤 として注目している yml ファイルで定義した内容に基づいて コード生成 感想 終盤、 Knative の内部処理を コードリーディング していたのですが、見入ってしまいメモを忘れていました。。。</description></item></channel></rss>
