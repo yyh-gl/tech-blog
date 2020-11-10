@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Android", "Kotlin", "Firebase"]
 date = "2019-05-30"
 description = ""
-featured = "android_push/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/05/android_push/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 <br>
@@ -111,7 +111,7 @@ Googleアカウントを持っている方なら[公式サイト](https://fireba
 アプリ情報の登録工程において、 `app/build.gradle` を触ったと思いますが、加えて、以下の追記が必要です。
 
 
-```
+```gradle
 dependencies {
     // ... 省略
 
@@ -141,7 +141,7 @@ dependencies {
 `AndroidManifest.xml` に下記のとおり追記してください。
 
 
-```
+```xml
 <application
     // ... 省略
 
@@ -237,14 +237,7 @@ Android側で通知を受け取れているか確認しましょう。
 
 各自の適当な場所に以下の Service を作成してください。
 
-> 下記コードについて、Kotlinのシンタックスハイライトに対応しておらず、
-
-> Javaのシンタックスハイライトで代用しています。
-
-> もしおかしなハイライトがあればごめんなさいします。
-
-
-```java
+```kotlin
 package <パッケージ名>
 
 import android.app.Notification
@@ -363,7 +356,7 @@ class PushNotificationListenerService: FirebaseMessagingService() {
 
 `AndroidManifest.xml` に以下の設定を追記します。
 
-```
+```xml
 <application
     // ... 省略
     >
