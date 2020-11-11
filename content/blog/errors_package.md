@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go"]
 date = "2020-03-09"
 description = "今回は Unwrap()，Is()，As() についてお届け"
-featured = "errors_package/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Golang】errorsパッケージの中身覗いてみた"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/03/errors_package/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

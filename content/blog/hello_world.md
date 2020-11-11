@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["自己紹介"]
 date = "2019-05-22"
 description = "【一文まとめ】技術ブログはじめます"
-featured = "hello_world/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "Hello Wolrd"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/05/hello_world/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

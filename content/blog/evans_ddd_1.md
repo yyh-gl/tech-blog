@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["DDD", "アーキテクチャ", "読書まとめ"]
 date = "2019-06-11"
 description = ""
-featured = "evans_ddd_1/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/evans_ddd_1/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 <br>

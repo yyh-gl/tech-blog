@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["ポエム"]
 date = "2019-06-18"
 description = "サービス発案って難しい…"
-featured = "my_thinking_about_planning/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【徒然なるままに】サービス発案における主観と客観のバランスについて"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/my_thinking_about_planning/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

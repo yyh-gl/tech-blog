@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go"]
 date = "2019-06-13"
 description = ""
-featured = "gopath/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【goenv】GOPATH が変わらないときの対処法"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/gopath/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 <br>

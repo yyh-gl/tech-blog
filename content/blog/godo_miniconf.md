@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go", "勉強会"]
 date = "2019-08-06"
 description = "CyberAgent ＆ merpay 主催の Golang 勉強会"
-featured = "godo_miniconf/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Go同miniConf】Golangの勉強会に参加してきた話"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/08/godo_miniconf/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

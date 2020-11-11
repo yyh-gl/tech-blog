@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go"]
 date = "2020-03-03"
 description = "Goの後方互換性すばらしい"
-featured = "go-versions/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "Goのバージョン管理について"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/03/go-versions/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

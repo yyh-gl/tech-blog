@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["React"]
 date = "2019-09-18"
 description = "React Hooks 楽しい"
-featured = "react_memo/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "React.memo について調べたのでメモを残しておく"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/09/react_memo/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

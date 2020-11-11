@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["勉強会", "セキュリティ"]
 date = "2019-08-21"
 description = "実は2日連続でメルカリ行ってた"
-featured = "mercari_meetup_for_backend_engineers_1/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/08/mercari_meetup_for_backend_engineers_1/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

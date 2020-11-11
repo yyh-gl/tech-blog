@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["HTML/CSS", "Web全般"]
 date = "2019-06-16"
 description = ""
-featured = "blog_style_fix/syntax_highlight_after.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【HTML + CSS + Prism.js】ブログの見た目を整えた話"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/blog_style_fix/syntax_highlight_after.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

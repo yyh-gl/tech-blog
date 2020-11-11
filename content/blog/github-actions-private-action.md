@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["CI/CD", "GitHub"]
 date = "2019-10-22"
 description = "HCLではなくてyml版です"
-featured = "github-actions-private-action/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【GitHub Actions】プライベートアクションを使ってみた"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/10/github-actions-private-action/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

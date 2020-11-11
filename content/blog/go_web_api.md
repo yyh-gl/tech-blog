@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go", "Web API", "アーキテクチャ", "DDD"]
 date = "2019-06-14"
 description = "2019/10/30 に内容を一部更新しました"
-featured = "go_web_api/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/go_web_api/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 <br>

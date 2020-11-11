@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go", "勉強会"]
 date = "2019-06-15"
 description = ""
-featured = "mercari_go/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【mercari.go #8】メルカリの Golang に関する勉強会メモ"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/mercari_go/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

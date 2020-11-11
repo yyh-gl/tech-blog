@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go"]
 date = "2020-04-30"
 description = "知っておくと便利"
-featured = "go-test-cache-clear/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Golang】go test におけるキャッシュの消し方"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/04/go-test-cache-clear/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

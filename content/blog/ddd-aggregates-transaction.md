@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["アーキテクチャ", "DDD"]
 date = "2020-02-18"
 description = "「データの一貫性の境界」を見極めよう！"
-featured = "ddd-aggregates-transaction/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【DDD】集約とトランザクション境界について調べたことメモ"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/02/ddd-aggregates-transaction/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

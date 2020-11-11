@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["スクラム", "入門"]
 date = "2019-06-05"
 description = ""
-featured = "scrum_entry/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "スクラムについて学んだ話"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/scrum_entry/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 <br>

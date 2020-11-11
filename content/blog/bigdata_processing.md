@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["読書まとめ"]
 date = "2019-06-10"
 description = ""
-featured = "bigdata_processing/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/bigdata_processing/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 <br>

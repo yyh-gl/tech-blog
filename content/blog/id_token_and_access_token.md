@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Web API", "セキュリティ"]
 date = "2019-06-19"
 description = ""
-featured = "id_token_and_access_token/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/id_token_and_access_token/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

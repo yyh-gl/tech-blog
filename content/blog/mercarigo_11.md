@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go", "勉強会"]
 date = "2019-10-07"
 description = "めちゃくちゃためになった"
-featured = "mercarigo_11/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー【Golang】"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/10/mercarigo_11/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

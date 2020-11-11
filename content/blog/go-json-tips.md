@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go"]
 date = "2020-04-26"
 description = ""
-featured = "go-json-tips/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Golang】jsonパッケージの知っておくと便利な機能"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/04/go-json-tips/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

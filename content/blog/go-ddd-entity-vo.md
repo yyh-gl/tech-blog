@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go", "DDD"]
 date = "2020-05-08"
 description = "こんな感じでやってます"
-featured = "go-ddd-entity-vo/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/05/go-ddd-entity-vo/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

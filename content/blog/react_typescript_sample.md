@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["React", "TypeScript", "Advent Calendar"]
 date = "2019-12-02"
 description = "TypeScript Advent Calendar 2019 2日目"
-featured = "react_typescript_sample/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【React+TypeScript】TypeScript入門"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/12/react_typescript_sample/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

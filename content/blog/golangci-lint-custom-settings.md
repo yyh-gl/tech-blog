@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Advent Calendar", "テスト", "Lint", "Go"]
 date = "2019-12-09"
 description = "DMM Advent Calendar 2019 9日目"
-featured = "golangci-lint-custom-settings/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "GolangCI-Lintの設定ファイルを理解する"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/12/golangci-lint-custom-settings/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

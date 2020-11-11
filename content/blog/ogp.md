@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Web全般"]
 date = "2019-06-17"
 description = "OGP大事"
-featured = "ogp/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【OGP】リンク先のサムネイル画像を表示できるようにした話"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/ogp/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

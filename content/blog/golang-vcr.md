@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go", "テスト", "Advent Calendar"]
 date = "2019-12-08"
 description = "Go3 Advent Calendar 2019 8日目"
-featured = "golang-vcr/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Golang+VCR】外部APIとの通信を保存してテストに使用する話"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/12/golang-vcr/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

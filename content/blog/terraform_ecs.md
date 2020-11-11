@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["AWS", "Terraform", "ECS", "RDS"]
 date = "2019-06-04"
 description = ""
-featured = "terraform_ecs/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【Terraform + ECS + RDS】Terraform で ECS環境構築してみた"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/06/terraform_ecs/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 <br>

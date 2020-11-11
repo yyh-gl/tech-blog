@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["Go", "簡単まとめ"]
 date = "2020-02-03"
 description = "Go1.14が楽しみ"
-featured = "changes-since-go-1-12/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【簡単まとめシリーズ】Go1.12からの変更点"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2020/02/changes-since-go-1-12/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

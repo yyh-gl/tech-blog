@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["勉強会", "Go"]
 date = "2019-11-01"
 description = "DeNAさん主催のGolang勉強会"
-featured = "denago_3/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title = "【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/11/denago_3/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 

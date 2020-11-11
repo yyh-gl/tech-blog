@@ -3,13 +3,13 @@ author = "yyh-gl"
 categories = ["チームマネジメント", "読書まとめ"]
 date = "2019-05-25"
 description = ""
-featured = "engineering_organization_theory_mentoring/featured.png"
-featuredalt = "画像がどこかへ逝ってしまったようだ…"
-featuredpath = "date"
-linktitle = ""
 title =  "【エンジニアリング組織論への招待】メンタリングの技術"
 type = "post"
-
+draft = false
+[[images]]
+  src = "img/tech-blog/2019/05/engineering_organization_theory_mentoring/featured.png"
+  alt = "featured"
+  stretch = "stretchH"
 +++
 
 
