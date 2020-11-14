@@ -15,7 +15,7 @@ disableLanguages       = []
     codeFences = false
 
 [outputs]
-  home = ["html"]
+  home = ["html", "json", "rss"]
 
 [params]
   enableCDN              = false
