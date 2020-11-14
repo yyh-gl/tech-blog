@@ -13,13 +13,6 @@ draft = false
   stretch = "stretchH"
 +++
 
-draft = false
-[[images]]
-  src = "img/tech-blog/20//
-  alt = "featured"
-  stretch = "stretchH"
-
-
 <br>
 
 ---
