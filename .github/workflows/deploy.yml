@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 2
           submodules: true
 
-      - name: Cache node modules
+      - name: Cache tools installed by npm
         uses: actions/cache@v2
         with:
           path: ~/.npm
