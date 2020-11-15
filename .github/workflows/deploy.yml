@@ -42,3 +42,22 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+
+      - name: Slack success notification
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
+          SLACK_USERNAME: Mario
+          SLACK_ICON_EMOJI: ":mario:"
+          SLACK_TITLE: Test Success
+
+      - name: Slack failure notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
+          SLACK_USERNAME: Mario
+          SLACK_ICON_EMOJI: ":mario:"
+          SLACK_COLOR: danger
+          SLACK_TITLE: Test Failure
