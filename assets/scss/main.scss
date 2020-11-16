@@ -328,6 +328,13 @@ h6 {
   }
 }
 
+.content {
+  h1 {
+    border-bottom: double 0.3em $border-color;
+    margin-top: 2.5em;
+  }
+}
+
 blockquote {
   border-left: 4px solid $border-color;
   font-style: italic;
