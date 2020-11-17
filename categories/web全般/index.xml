@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web全般 on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/web%E5%85%A8%E8%88%AC/</link><description>Recent content in Web全般 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 17 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/web%E5%85%A8%E8%88%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://yyh-gl.github.io/tech-blog/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/ogp/</guid><description>Twitter のリンクにサムネイル画像が表示されない このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
 はてなブログをやっていたときは、何もしなくてもサムネイルが表示されていました。
 トップ画像をよしなにサムネイルにしてくれるのかなぁっと思っていましたが違ったんですね…。
-どうやったらサムネイル画像が表示されるか Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、Open Graph Protocol（OGP）というものを設定する必要があります。
+どうやったらサムネイル画像が表示されるか Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、
+Open Graph Protocol（OGP） というものを設定する必要があります。
 OGP を設定するだけで、Twitter や Facebook でサムネイル付きのリンクを表示することができます。
 こちらのサイト で詳細が説明されています。
 OGP の設定 OGP の設定項目には以下のものがあります。
 og:title og:type og:url og:description og:image これらを HTML に meta タグで埋め込めば OK です。
-&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Golang + レイヤアーキテクチャ】DDD を意識して Web API を実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; こんな感じですね。これを head タグ内に埋め込みます。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
+&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Golang + レイヤアーキテクチャ】DDD を意識して Web API を実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; こんな感じですね。
+これを head タグ内に埋め込みます。
+ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
 正確には対応していない言語が（めちゃくちゃ）ありました。
 このとおり、 Golang にも対応していませんでした…。
-もともと、このブログのテーマは Hugo Themes（Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、シンタックスハイライト部分だけ個別に導入することにしました。
+もともと、このブログのテーマは Hugo Themes（Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
+シンタックスハイライト部分だけ個別に導入することにしました。
 Prism.js さっそく、「HTML シンタックスハイライト」で調べてみました。
 そしたら、だいたい以下の3つが出てきました。
 Prism.js highlight.js Google code-prettify どれにしようか迷ったのですが、見た目が一番好みだった Prism.js を使うことにしました。
@@ -18,5 +22,8 @@ Prism.js highlight.js Google code-prettify どれにしようか迷ったので�
 今回導入した Prism.js のプラグインは、
 Line Highlight：行指定した箇所をハイライトする機能（上記画像内では使用していません） Line Numbers：行番号を表示する機能 Show Language：右上に 言語名 を表示している機能 の3つです。
 困ったこと 行番号が表示されない 行番号を表示するには、
-&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt; コード &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; 上記コードのように、表示するコードスニペットに対して、line-numbers というクラスを付与してあげるだけでOKです。
-…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。したがって、prism.css を修正して行番号が他の要素の上に来るようにしました。</description></item></channel></rss>
+&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt; コード &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; 上記コードのように、表示するコードスニペットに対して、
+line-numbers というクラスを付与してあげるだけでOKです。
+…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。
+したがって、prism.css を修正して行番号が他の要素の上に来るようにしました。
+リスト表示の行間が異様に広い Prism.js 導入後…</description></item></channel></rss>

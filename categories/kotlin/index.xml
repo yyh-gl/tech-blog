@@ -9,4 +9,6 @@ Firebaseにプロジェクト作成 プロジェクト登録ページでプロ�
 デバッグ用の署名証明書 SHA-1 の取得方法 以下コマンドを実行
 Mac/Linux
 keytool -list -v \ -alias androiddebugkey -keystore ~/.android/debug.keystore Windows
-keytool -list -v \ -alias androiddebugkey -keystore %USERPROFILE%\.</description></item></channel></rss>
+keytool -list -v \ -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore パスワード入力
+パスワードは android です。
+表示される SHA-1 をメモ</description></item></channel></rss>
