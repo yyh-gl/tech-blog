@@ -11,9 +11,8 @@ date = "2020-04-04"
 
 【最終更新日：2020年11月05日】
 
----
+
 # いま
----
 
 DMM.com で働くエンジニアです。
 
@@ -30,16 +29,12 @@ DMM.com で働くエンジニアです。
 バックエンド開発がメインです。<br>
 アプリケーションレイヤの設計について考えるのが好きです。
 
-<br>
 
----
 # 技術スタック
----
 
 並列関係にするとおかしいものもありますが、<br>
 僕が触ったことのある技術がざっくり伝わると嬉しいです🙂
 
-<br>
 
 ## バックエンド
 
@@ -62,7 +57,6 @@ DMM.com で働くエンジニアです。
 - ShellScript
 - Bash
 
-<br>
 
 ## フロントエンド
 
@@ -71,7 +65,6 @@ DMM.com で働くエンジニアです。
 - HTML + CSS + JavaScript
 - Twig
 
-<br>
 
 ## ネイティブ
 
@@ -80,7 +73,6 @@ DMM.com で働くエンジニアです。
 - RxSwift
 - React Native
 
-<br>
 
 ## テスト
 
@@ -88,7 +80,6 @@ DMM.com で働くエンジニアです。
 - PHPUnit
 - Minitest
 
-<br>
 
 ## インフラ
 
@@ -96,7 +87,6 @@ DMM.com で働くエンジニアです。
 - Vagrant
 - Linux
 
-<br>
 
 ## ミドルウェア
 
@@ -104,8 +94,6 @@ DMM.com で働くエンジニアです。
 - MySQL
 - Redis
 - Couchbase
-
-<br>
 
 ## クラウド関連
 
@@ -120,8 +108,6 @@ DMM.com で働くエンジニアです。
 - GCP
 - Terraform
 
-<br>
-
 ## CI/CD
 
 - GitHub Actions
@@ -132,8 +118,6 @@ DMM.com で働くエンジニアです。
 
 - Gatling
 
-<br>
-
 ## 設計
 
 学生時代のインターン先でDDD+クリーンアーキテクチャに出会い、設計に興味を持ちました。
@@ -141,41 +125,33 @@ DMM.com で働くエンジニアです。
 DDDについては、戦略および戦術の両方に興味があり、日々勉強中です。<br>
 コアドメイン難しい。
 
-<br>
 
----
 # OSS
----
 
 - [goadesign/goa.design](https://github.com/goadesign/goa.design/graphs/contributors)
 - [oxequa/realize](https://github.com/oxequa/realize/graphs/contributors)
 - [Ladicle/tcardgen](https://github.com/Ladicle/tcardgen/graphs/contributors)
 - [pacollins/hugo-future-imperfect-slim](https://github.com/pacollins/hugo-future-imperfect-slim/graphs/contributors)
 
-<br>
 
----
 # 経歴っぽいもの（参加プロジェクト）
----
+
 <details><summary><b>〜2018年（学生時代）</b></summary><div>
 
 アルバイトでの開発です。
 
-<br>
 
 ## ・スマホゲームの開発・運用：2018年3月〜2019年3月
 
 - ロール：エンジニア（バックエンド）
 - 技術：PHP（CakePHP，Laravel）
 
-<br>
 
 ## ・ECサイトの開発・運用：2018年9月〜2019年10月
 
 - ロール：エンジニア（バックエンド）
 - 技術：PHP（FuelPHP，Laravel）
 
-<br>
 
 ## ・ECサイトの新規開発・運用：2018年1月〜2019年3月
 
@@ -190,7 +166,6 @@ DDDについては、戦略および戦術の両方に興味があり、日々�
 
 DMM.comに入社しました。
 
-<br>
 
 ## ・レビュー基盤のリプレイス・運用：2019年7月〜現在
 
@@ -198,7 +173,6 @@ DMM.comに入社しました。
 - 言語：Go（Echo），JS（React）
 - IaC：CloudFormation
 
-<br>
 
 ## ・DMM PointClubの新規開発・運用：2020年1月〜現在
 
@@ -208,39 +182,27 @@ DMM.comに入社しました。
 
 </div></details>
 
-<br>
 
----
 # コミュニティ運営
----
 
 - DMM.go
 
-<br>
 
----
 # 登壇歴
----
 
 - [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
 - [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
 
-<br>
 
----
 # 記事
----
 
 - [『よんでますよ、本田さん #5』](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
   - DMM社内でのGoに関する取り組みについて
 - [『ドキュメントとコードが乖離しないように<br>DMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた』](https://logmi.jp/tech/articles/323091)
   - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事（[logmi Tech](https://logmi.jp/tech)掲載）
 
-<br>
 
----
 # 余談：学生時代の研究
----
 
 主に無線センサネットワークに関する研究をしていました。
 
