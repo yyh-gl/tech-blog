@@ -12,12 +12,7 @@ draft = false
   stretch = "stretchH"
 +++
 
-
-<br>
-
----
 # jsonパッケージ
----
 
 Goを触ってる人ならだれもが一度はお世話になるであろう
 パッケージ「[json](https://golang.org/pkg/encoding/json/)」
@@ -28,11 +23,7 @@ Goを触ってる人ならだれもが一度はお世話になるであろう
 （比較的有名なものしかないですが🙏）
 
 
-<br>
-
----
 # 1. 独自の変換ロジックを実装できる
----
 
 例えば、下記のコードのように、<br>
 ある構造体（`Human`）のフィールドを外部公開したくない場合、<br>
@@ -134,8 +125,6 @@ func main() {
 このように、`Marshal()` と `Unmarhsal()` は <br>
 対象の構造体に生えている `MarshalJSON()` と `UnmarhsalJSON()` を見に行ってくれるわけです。
 
-<br>
-
 ## Goの内部実装を追いかけたければ…
 
 > 対象の構造体に生えている `MarshalJSON()` と `UnmarhsalJSON()` を見に行ってくれるわけです。
@@ -145,8 +134,6 @@ func main() {
 を見ればわかります。<br>
 → [494行目らへんとかとか](https://github.com/golang/go/blob/master/src/encoding/json/encode.go#L494)
 
-<br>
-
 ## 使いみちいろいろ
 
 今回紹介した例以外にも、<br>
@@ -155,11 +142,7 @@ func main() {
 - [時間形式の変更](https://dev.classmethod.jp/articles/struct-json/)
 
 
-<br>
-
----
 # 2. 構造体なしでも変換できる
----
 
 実はJSONの変換処理は、構造体をきっちり定義してやる必要はありません。
 
@@ -197,11 +180,7 @@ func main() {
 その状況に合わせて、使い分けれると良さそうですね👍<br>
 みなさんどうしているのか聞いてみたいですね〜
 
-<br>
-
----
 # まとめ
----
 
 知っていればどうってことない機能ですが、<br>
 知らなければハマりどころになるところですよね。

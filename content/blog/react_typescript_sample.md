@@ -13,11 +13,7 @@ draft = false
 +++
 
 
- 
-
----
 # TypeScript Advent Calendar 2019
----
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
 
@@ -34,11 +30,8 @@ React の実プロジェクトにおいて、<br>
 今日の記事を読んで TypeScript に入門し、<br>
 今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！
 
-<br>
- 
----
+
 # 基礎編
----
 
 ## TypeScript とは
 
@@ -59,8 +52,6 @@ React の実プロジェクトにおいて、<br>
 ただし、実践編で使用する内容に絞って説明していきますので、<br> 
 その点はご了承ください🙇‍<br>
 （足りない情報は[公式ドキュメント](https://www.typescriptlang.org/docs/home.html)を参考にしてください）
-
-<br>
 
 ## 型
 
@@ -109,8 +100,6 @@ document.body.textContent = greeter(user);
 
 仮に `greeter()` に string 型以外の値を渡すと、<br>
 コンパイル時 or IDE 上にエラーが吐かれるので、ミスに気づくことが可能です。
-
-<br>
 
 ## インターフェース
 
@@ -172,8 +161,6 @@ ES6 以前の JavaScript でも使えるようにしたものです。
 
  
 
-<br>
-
 ## 入門時の落とし穴
 
 僕が TypeScript を初めて触ったときに戸惑ったのが以下のエラーでした。
@@ -200,8 +187,6 @@ Could not find a declaration file for module 'react-router-config'. '/hoge/index
 では、どうするかですが、<br>
 `@types` を使ってやればOKです。
 
-<br>
-
 ## @types
 
 `@types` を使用することで、提供されている型定義ファイルを取得することができます。
@@ -214,8 +199,6 @@ JavaScriptライブラリの90%に対応しているんだとか。<br>
 `npm install @types/react-router-config` を実行してやることで、<br> 
 react-router-config ライブラリの型に関する定義を取得できます。
 
-<br>
-
 ## 型定義ファイル
 
 もし型定義ファイルが提供されていない場合は、 
@@ -226,11 +209,8 @@ react-router-config ライブラリの型に関する定義を取得できます
 （[こんな技](https://qiita.com/Nossa/items/726cc3e67527e896ed1e#3-require-%E3%81%A7%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80)
 もあるようですが…）
 
-<br>
 
----
 # 実践編
----
 
 では、（かなりざっくりと）基本的なことはお話したので、<br>
 実践的な内容に入っていきます。
@@ -238,8 +218,6 @@ react-router-config ライブラリの型に関する定義を取得できます
 今回は、React + TypeScript を使用します。
 
 ソースは[GitHub](https://github.com/yyh-gl/react-typescript-sample)上にあげています。
-
-<br>
 
 ## React ＋ TypeScript 環境のセットアップ
 
@@ -288,8 +266,6 @@ react-typescript-sample
 また、ページのレイアウト（ヘッダーやフッター、メインコンテンツの位置など）は、<br>
 `layouts` 配下のコンポーネントによって表現します。
 
-<br>
-
 ## API リクエスト
 
 最近のフロントエンドでは、<br>
@@ -330,8 +306,6 @@ GET https://localhost:3000/api/v1/users
 ]
 ```
 
-<br>
-
 ## 1. interface を定義
 
 まずは、ユーザ情報がどういった形式で送られてくるのか、<br>
@@ -346,8 +320,6 @@ export interface User {
     lastName: string;
 }
 ```
-
-<br>
 
 ## 2. API クライアントを実装
 
@@ -404,8 +376,6 @@ JavaScript のコーディング規約では、変数名にキャメルケース
 TypeScript の話から少し脱線しましたが、<br>
 これで User インターフェースどおりのオブジェクトを受け取ることが可能になりました。
 
-<br>
-
 ## 3. ユーザ一覧取得 API リクエストを実装
 
 では、さきほど実装した Axios クライアントを使って、<br>
@@ -423,8 +393,6 @@ export const fetchUsers = (): AxiosPromise<User[]> => client.get(`/users`);
 ``` 
 
 8行目にて、`User[]` を受け取ることを明示しています。
-
-<br>
 
 ## 4. ユーザ一覧を取得＆表示
 
@@ -506,11 +474,8 @@ API リクエスト部分だけかよというツッコミはどうかご勘弁�
 
 最後に TypeScript を使う上での注意点と最新版で追加された機能を少し紹介して終わりにしたいと思います。
 
-<br>
 
----
 # TypeScriptを使う上での注意点
----
 
 ## TypeScript の型情報はなくなる
 
@@ -522,8 +487,6 @@ TypeScript で型を定義していたとしても、最終的にそのコード
 あくまで開発段階で型の整合性チェックや補完などができるだけであること、<br>
 ちゃんと理解しておくことが、とても重要だと思います。
 
-<br>
-
 ## create-react-app では使えない機能がある
 
 create-react-app の最新版 3.2.0 では、<br>
@@ -531,16 +494,11 @@ TypeScript 3.7 から使用できる一部機能にまだ対応していませ�
 
 本内容については、次章にて詳細に話します。
 
-<br>
 
----
 # 最新安定版 3.7 で追加された機能
----
 
 2019年11月7日にメジャーアップデートが行われ、バージョン 3.7 がリリースされました。<br>
 今回は以下の新機能をついて紹介します。
-
-<br>
 
 ## [Optional Chaining](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#optional-chaining)
 
@@ -599,8 +557,6 @@ TypeScript は、JavaScript の Class のように、<br>
 JavaScriptのバージョンを上げないと使えない機能を<br>
 ライブラリレベルで使えるようにしてくれるのでいいですね👍
 
-<br>
-
 ## [Nullish Coalescing](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#nullish-coalescing)
 
 Nullish Coalescing をコードで表すと下記のようになります。
@@ -622,11 +578,8 @@ let x = (foo !== null && foo !== undefined) ?
 
 コードの記述量が減っていいですね👍
 
-<br>
 
----
 # まとめ
----
 
 TypeScript 入門 いかがでしたでしょうか？
 

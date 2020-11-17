@@ -13,13 +13,7 @@ draft = false
 +++
 
 
-<br>
-
-
----
 # DeNA.go #3
----
-
 - [connpass](https://dena.connpass.com/event/150676/)
 - ハッシュタグ：[#DeNAgo](https://twitter.com/hashtag/DeNAgo)
 
@@ -34,12 +28,8 @@ k8sの技術書をいただいちゃいました！！！<br>
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/k8s.JPG" width="450">
 
-<br>
 
----
 # 1. [Go活用事例]安全運転支援サービスを支える運用サイト
----
-
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/session1.JPG" width="450">
 
 登壇者：@suhirotaka さん <br>
@@ -47,28 +37,21 @@ k8sの技術書をいただいちゃいました！！！<br>
 
 [スライド](https://speakerdeck.com/suhirotaka/gohuo-yong-shi-li-an-quan-yun-zhuan-zhi-yuan-sabisuwozhi-eru-yun-yong-guan-li-sisutemu)
 
-<br>
 
-# 以下メモ
-
-<br>
-
-# 主題
+## 主題
 
 管理画面を Golang で作成
 
-<br>
 
-# Railsで作ってるものをGolangで作る理由
+## Railsで作ってるものをGolangで作る理由
 
 - 実証実験時はスピード重視でRails
 - 本サービスはパフォーマンス重視でGolang
 
 順次Golangに書き換えていく
 
-<br>
 
-# Golangのフレームワーク
+## Golangのフレームワーク
 
 GolangのWAF（Web Application Framework）には
 
@@ -81,17 +64,15 @@ GolangのWAF（Web Application Framework）には
 
 DeNAではフルスタック・MVCを選択
 
-<br>
 
-# GolangにおけるフルスタックなWAF
+## GolangにおけるフルスタックなWAF
 
 - Beego：採用！
 - Revel：開発が止まってきている
 - Iris：プロジェクトの運用がうまくいっていないようだった
 
-<br>
 
-# Beego
+## Beego
 
 - フルスタックのMVCフレームワーク
 - ORMまでついてる
@@ -99,9 +80,8 @@ DeNAではフルスタック・MVCを選択
 - Railsライクなフレームワーク
   - Railsのbefore/after_actionに相当するものもある（Prepare(), Finish()）
 
-<br>
 
-# ライブラリ
+## ライブラリ
 
 使用ライブラリは[こちら](https://speakerdeck.com/suhirotaka/gohuo-yong-shi-li-an-quan-yun-zhuan-zhi-yuan-sabisuwozhi-eru-yun-yong-guan-li-sisutemu?slide=32)
 
@@ -113,11 +93,8 @@ DeNAではフルスタック・MVCを選択
 - 画像生成：gg
 - バーコード生成：Barcode
 
-<br>
 
----
 # 2. WebシステムのパフォーマンスとGo
----
 
 （写真撮り忘れた…）
 
@@ -126,37 +103,29 @@ DeNAではフルスタック・MVCを選択
 
 [スライド](https://speakerdeck.com/karupanerura/websisutemufalsehahuomansutogo)
 
-<br>
 
-# Webシステムにおけるパフォーマンスとは
+## Webシステムにおけるパフォーマンスとは
 
 たくさんリクエスト処理できる かつ リソース消費が少ないのが <br>
 システム全体で見たときの理想的なパフォーマンス
 
-<br>
 
-# パフォーマンスチューニングのいろいろ
+## パフォーマンスチューニングのいろいろ
 
 詳しいチューニング方法は[こちら](https://speakerdeck.com/karupanerura/websisutemufalsehahuomansutogo?slide=24)
 
 この中で初めて知ったものをピックアップ↓
 
-<br>
-
-## ◎ Server Sent Events
+### ◎ Server Sent Events
 
 - HTTPコネクションを持続させる
 - WebSocketより扱いが簡単らしい
 
-<br>
-
-## バファリングの諸注意
+### バファリングの諸注意
 
 結局リソースを消費していることに違わないので、メモリ管理はちゃんとしないといけない
 
-<br>
-
-# Q&A
+## Q&A
 
 Q. sync.Pool でメモリ効率は良いがメモリは消費していくとは？（[該当スライドページ](https://speakerdeck.com/karupanerura/websisutemufalsehahuomansutogo?slide=40)）
 

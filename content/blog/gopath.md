@@ -12,11 +12,8 @@ draft = false
   stretch = "stretchH"
 +++
 
-<br>
 
----
 # GOPATH が変わらない…
----
 
 今日こんな現象に遭遇した。
 
@@ -33,9 +30,7 @@ $ go env GOPATH
 GOPATH が書き換わらない。
 
 
----
 # 解決方法
----
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/gopath/help.png" width="600">
 
@@ -66,9 +61,7 @@ goenv の管理から外してやるには `GOENV_DISABLE_GOPATH=1` にしてや
 （zshrc の読み込み直しを忘れずに）
 
 
----
 # 結果
----
 
 ```
 $ go env GOPATH

@@ -12,13 +12,7 @@ draft = false
   stretch = "stretchH"
 +++
 
-
-<br>
-
----
 # errorsパッケージに興味持った
----
-
 v1.13からerrorsパッケージに `Unwrap()` `Is()` `As()` といった関数が追加されました。<br>
 （もう1.14もリリースされているのに今さらですね😇）
 
@@ -27,12 +21,7 @@ v1.13からerrorsパッケージに `Unwrap()` `Is()` `As()` といった関数�
 と、その前に、errorsパッケージの概要と関連パッケージについて軽く説明しておきます。
 
 
-<br>
-
----
 # errorsパッケージと関連パッケージ
----
-
 ## errorsパッケージ
 
 名前の通り、エラー関連の処理がまとまっているパッケージですね。<br>
@@ -43,8 +32,6 @@ v1.13にて、先述の `Unwrap()` `Is()` `As()` という関数たちが追加�
 
 errorを扱うパッケージとして、もうひとつ有名なパッケージがあります。<br>
 xerrorsパッケージです。 
-
-<br>
 
 ## xerrorsパッケージ
 
@@ -66,12 +53,8 @@ v1.13にて標準パッケージに取り込まれました。
 早速、`Unwrap()` `Is()` `As()` の内部実装を見ていきたいと思います。<br>
 なお、Goのコードはv1.14.0を参照しています。
 
-<br>
 
----
 # [Unwrap()](https://golang.org/pkg/errors/#Unwrap)
----
-
 ラップされたエラーから中身のエラーを取り出す関数です。
 
 処理としては下記のようになっています。
@@ -119,7 +102,6 @@ func Unwrap(err error) error {
 では、12行目の `Unwrap()` はどこにあるのか。
 答えはerrorをラップする処理のところにあります。
 
-<br>
 
 ## errorをラップする関数
 
@@ -173,12 +155,8 @@ wrapError構造体は内部フィールドに `err` を持っており、<br>
 
 どんどん行きましょう。
 
-<br>
 
----
 # [Is()](https://golang.org/pkg/errors/#Is)
----
-
 次は `Is()` を見ていきます。
 
 本関数は2つのエラーが同じエラーかどうかを判定します。<br>
@@ -249,12 +227,8 @@ func (m MyError) Is(target error) bool { return target == os.ErrExist }
 
 というのを実現しているわけですね。
 
-<br>
 
----
 # [As()](https://golang.org/pkg/errors/#As)
----
-
 最後に `As()` です。<br>
 本関数はラップされたエラーから指定のエラーを抽出します。<br>
 抽出できるエラーがない場合は戻り値としてfalseが返されます。
@@ -323,11 +297,8 @@ err を `Unwrap()` して再度同じ処理を行います。
 
 そして、格納できるエラーがなかった場合は false を返すわけですね。
 
-<br>
 
----
 # まとめ
----
 
 errorsパッケージの実装を覗いてみましたが、いかがだったでしょうか？<br>
 普段使ってる標準パッケージの内部実装を追いかけるのは楽しいですね〜
@@ -342,11 +313,8 @@ reflectliteの動きが分からない部分もあったので、<br>
 reflectliteを一緒に読みたいって方おられたら[TwitterでDM](https://twitter.com/yyh_gl)ください！<br>
 ぜひオンラインでコードリーディング会しましょう
 
-<br>
 
----
 # 参考文献
----
 
 - [errorsパッケージの公式ドキュメント](https://golang.org/pkg/errors/)
 - [Go 1.13 のエラー・ハンドリング](https://text.baldanders.info/golang/error-handling-in-go-1_3/)

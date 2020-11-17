@@ -13,11 +13,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # mercari.go #11 
----
 
 - connpass： [リンク](https://mercari.connpass.com/event/148913/)
 - ハッシュタグ： [`#mercarigo`](https://twitter.com/search?q=%23mercarigo&src=typd&lang=ja)
@@ -30,29 +26,21 @@ draft = false
 発表資料が載せてあります。ありがたや🙏
 
 
----
 # 1. About error handling in Go
----
 
 登壇者：jd さん（@JehandadKamal）
 
 [資料](https://about.sourcegraph.com/go/gophercon-2019-handling-go-errors)（正式に共有されたものでないので、発表の内容が少し異なります）
-
-<br>
 
 ## Errors are values
 
 ”[Errors are values](https://blog.golang.org/errors-are-values)” という考え方。
 
 
-<br>
-
 ## Golangでよくあるエラー処理パターン
 - エラーをラップしてより詳細な情報を付与する
 - 専用構造体を作る
 - スタックトレースを構成する
-
-<br>
 
 ## ”Error is your domain”
 
@@ -72,8 +60,6 @@ type Error struct {
 - Serverity：エラーレベル
 - Err：エラー内容
 
-<br>
-
 ## 上記のような構造体を作る理由
 
 error を比較するときは、基本的に文字列の比較になるため取り回しが悪い
@@ -85,8 +71,6 @@ Domain Error Struct を作れば Kind での比較などが可能になる。
 加えて、操作内容やエラー種別とか情報を付与できる。
 
 
-<br>
-
 ### これ大事！
 Remember ”Error is your domain”
 
@@ -96,17 +80,12 @@ Remember ”Error is your domain”
 
 [Twitterメモ](https://twitter.com/fukubaka0825/status/1181162651008659461)
 
-<br>
 
----
 # 2. singleflight
----
 
 登壇者：@nsega さん
 
 [スライド](https://speakerdeck.com/nsega/introduction-to-singleflight)
-
-<br>
 
 ## singleflight
 
@@ -120,8 +99,6 @@ Remember ”Error is your domain”
 
 - [ここ](https://godoc.org/golang.org/x/sync/singleflight)にある3つの関数さえ押さえればOK。
 
-<br>
-
 ## singleflight のユースケース
 
 初見だと、キャッシュとなにが違うのか分かりづらいと思います。
@@ -130,9 +107,6 @@ Remember ”Error is your domain”
 
 - [singleflight で解決できること1](https://christina04.hatenablog.com/entry/go-singleflight)
 - [singleflight で解決できること2](https://qiita.com/methane/items/27ccaee5b989fb5fca72)
-
-<br>
-
 
 ## Q&A
 
@@ -147,11 +121,7 @@ singleflight は扱いが難しいので、呼び出し元がわからなくな�
 → 呼び出し元は明確な方が追跡しやすくていいと思う。
 
 
-<br>
-
----
 # 3. ISUCON9予選のベンチマーカーについて（TBD）
----
 
 登壇者：カタツイさん（@catatsuy）
 

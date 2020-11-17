@@ -13,12 +13,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # プライベートアクションとは
----
-
 GitHub Actions では、開発者がアクション（Lint やテストといったジョブなど）を作って、公開することができます。
 <br>
 この公開されたアクションは、世界中の人が使えるため、もちろん自分のプロジェクトに持ってきて使用できます。
@@ -37,10 +32,7 @@ GitHub Actions では、開発者がアクション（Lint やテストといっ
 つまり、公開しない（できない）アクション ＝ <u>プライベートアクション</u> です。
 
 
----
 # プライベートアクションを使うための準備
----
-
 ディレクトリ構成は以下のとおりです。
 
 ```
@@ -61,10 +53,7 @@ GitHub Actions では、開発者がアクション（Lint やテストといっ
 では、次から各ファイルの定義を見ていきます。
 
 
----
 # プライベートアクションの定義
----
-
 ```yml
 # /actions/golang-test/action.yml
 
@@ -133,10 +122,7 @@ fi
 `Dockerfile` と `entrypoint.sh` は[こちら](https://dev.classmethod.jp/etc/github-actions-golang/)を参考にしました。
 
 
----
 # ワークフローの定義
----
-
 ```yml
 # /workflow/golang.yml
 
@@ -170,8 +156,6 @@ jobs:
 `/workflows/golang.yml` の中身を上記のとおりです。
 <br>
 今回は Lint と go test を並列で実行しています。
-
-<br>
 
 ## 重要ポイント：プライベートアクションとパブリックアクションでの設定差異
 <u>プライベートアクションを使用するときは チェックアウト が必須です！</u>
@@ -208,8 +192,6 @@ jobs:
 しかし、プライベートアクションは自分のプロジェクト内にアクションの本体があります。
 <br>
 したがって、チェックアウトして、プロジェクトのコードをアクション実行環境に持ってくる必要があります。
-
-<br>
 
 ## 重要ポイント：チェックアウト
 
@@ -248,10 +230,7 @@ GitHub が公開している公式アクションの中に、[actions/checkout](
 
 ・
 
----
 # ワークフローを実行
----
-
 後は push するだけです。
 
 実際、push してみると、
@@ -262,10 +241,7 @@ GitHub が公開している公式アクションの中に、[actions/checkout](
 
 ログを見ると、Dockerfile からアクションが組み立てられていることが、なんとなく読み取れると思います。
 
----
 # まとめ
----
-
 パブリックアクションが実現する CI/CD まわりのエコシステムは、とてもワクワクしますね。
 <br>
 でも、やっぱり公開できないアクションもあると思います。
@@ -280,10 +256,7 @@ GitHub が公開している公式アクションの中に、[actions/checkout](
 日本語対応しています👍
 
 
----
 # 参考記事
----
-
 - [Docker コンテナのアクションを作成する｜Docker公式ドキュメント](https://help.github.com/ja/github/automating-your-workflow-with-github-actions/creating-a-docker-container-action)
 - [ワークフローを設定する｜Docker公式ドキュメント](https://help.github.com/ja/github/automating-your-workflow-with-github-actions/configuring-a-workflow)
 - [GitHub Actionsのワークフロー構文｜Docker公式ドキュメント](https://help.github.com/ja/github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)

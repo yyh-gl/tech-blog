@@ -13,11 +13,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # Twitter のリンクにサムネイル画像が表示されない
----
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/ogp/before.png" width="600">
 
@@ -28,9 +24,7 @@ draft = false
 トップ画像をよしなにサムネイルにしてくれるのかなぁっと思っていましたが違ったんですね…。
 
 
----
 # どうやったらサムネイル画像が表示されるか
----
 
 Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、<br>
 <u>Open Graph Protocol（OGP）</u> というものを設定する必要があります。
@@ -39,9 +33,8 @@ OGP を設定するだけで、Twitter や Facebook でサムネイル付きの�
 
 [こちらのサイト](https://digitalidentity.co.jp/blog/seo/ogp-share-setting.html) で詳細が説明されています。
 
----
+
 # OGP の設定
----
 
 OGP の設定項目には以下のものがあります。
 
@@ -67,8 +60,6 @@ OGP の設定項目には以下のものがあります。
 ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。<br>
 したがって、今回は og:image を追加で設定しました。
 
-<br>
-
 ## og:image の設定
 
 下記のような og:image の設定を `/themes/<your-theme-name>/layouts/partials/meta.html` に追加しました。
@@ -83,8 +74,6 @@ OGP の設定項目には以下のものがあります。
 - featured画像が設定されていなければ、デフォルトの OGP 用画像を使用
 
 以上のことをしています。
-
-<br>
 
 ## 【おまけ】toml による定数定義
 
@@ -109,9 +98,8 @@ og:image を定義するさいに `.Site.Params.intro.ogp.src` こんなのを�
 
 9 〜 11 行目が OGP 用のデフォルト画像を設定しているところです。
 
----
+
 # 結果
----
 
 OGP が正しく設定できているかは 以下のサイトを使って確かめることが可能です。
 
@@ -133,9 +121,7 @@ OGP が正しく設定できているかは 以下のサイトを使って確か
 少しサイズがずれちゃっていますが、ちゃんと表示できていますね👍
 
 
----
 # 感想
----
 
 はてなブログを見に行ってみたら、 OGP 用の設定がされていました。<br>
 裏で設定してくれていたんですね。

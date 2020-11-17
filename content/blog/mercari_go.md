@@ -13,11 +13,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # mercari.go #8 
----
 
 - connpass： [リンク](https://mercari.connpass.com/event/132114/?utm_campaign=event_message_to_selected_participant&utm_source=notifications&utm_medium=email&utm_content=title_link)
 - ハッシュタグ： [`#mercarigo`](https://twitter.com/search?q=%23mercarigo&src=typd&lang=ja)
@@ -34,18 +30,12 @@ draft = false
 以降、自分用のメモを書き連ねます。<br>
 詳細はスライドの方をご覧ください。
 
-<br>
 
-
----
 # 1. Goで学ぶKnative
----
 
 登壇者： @toshi0607 さん
 
 [スライドリンク](https://speakerdeck.com/toshi0607/learning-knative-with-go)
-
-<br>
 
 ## [Knative](https://cloud.google.com/knative/?hl=ja)
 
@@ -63,8 +53,6 @@ draft = false
 - yml ファイルで定義した内容に基づいて コード生成
 
 
-<br>
-
 ## 感想
 
 終盤、 Knative の内部処理を コードリーディング していたのですが、<br>
@@ -75,11 +63,7 @@ Knative 初めて聞いたのですが、おもしろそうだなという感想
 k8s の勉強しないとな。
 
 
-<br>
-
----
 # 2. Gotham GoとGopherCon EUに参加してきました
----
 
 登壇者： @tenntenn
 
@@ -92,8 +76,6 @@ k8s の勉強しないとな。
 - 海外カンファレンスに参加する理由
   - 最新の技術を知る
   - 世界各地のエンジニアとの交流
-
-<br>
 
 ## Gotham Go
 
@@ -111,8 +93,6 @@ k8s の勉強しないとな。
   - ただし、 現地に Goチーム がいるので登壇者が豪華
 - 突然ビンゴ大会が始まったりする
 
-<br>
-
 ## GopherCon EU
 
 - ヨーロッパで毎年開催されている
@@ -126,8 +106,6 @@ k8s の勉強しないとな。
   - <u>IDE でコードを読むなんて、 洞窟でたいまつをもって壁画に書かれた文字を読むようなもの。</u> 可視化しましょう！
 - <u>現在使用では、 map に range を使うとキーがランダムに並ぶ</u> ので、それを使ってLT大会の発表順を決めた 
 
-
-<br>
 
 ## 感想
 
@@ -145,11 +123,8 @@ k8s の勉強しないとな。
 
 ぜひ、一度行ってみたいです。
 
-<br>
 
----
 # 3. Go + WebAssemblyを活用する
----
 
 登壇者： @__syumai
 
@@ -157,8 +132,6 @@ k8s の勉強しないとな。
 - Go Playground にタブを追加する chrome拡張を作った人
 
 [スライドリンク](https://speakerdeck.com/syumai/using-go-and-webassembly/)
-
-<br>
 
 ## Go WebAssembly（wasm ワズム）
 
@@ -176,18 +149,13 @@ k8s の勉強しないとな。
      - DOM操作は素直に JavaScript にお任せした方がいい
 
 
-<br>
-
 ## 感想
 
 JavaScript から Golang で実装した機能を使えるとか、夢しかないですね。楽しそう。<br>
 （黒魔術の匂いがする）
 
-<br>
 
----
 # 4. E2E Testing with 'main' function
----
 
 登壇者： @yuki.ito
 
@@ -202,8 +170,6 @@ JavaScript から Golang で実装した機能を使えるとか、夢しかな�
 
 
 
-<br>
-
 ## 感想
 
 こういう工夫して問題解決する話大好きです。
@@ -211,9 +177,7 @@ JavaScript から Golang で実装した機能を使えるとか、夢しかな�
 その手があったか。とただただ説明を聞き入ってました。
 
 
----
 # 全体まとめ
----
 
 メルカリ社の技術力の高さがとても分かる勉強会でした。
 

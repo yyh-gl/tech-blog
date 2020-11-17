@@ -12,20 +12,13 @@ draft = false
   stretch = "stretchH"
 +++
 
-<br>
-
----
 # 更新（2019年10月30日）
----
 
 初回投稿から3ヶ月経ちました。<br>
 この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
 
-<br>
 
----
 # 今回やること
----
 
 Golang のディレクトリ構成についていろいろと調べる中で、<br>
 [こちらの資料](https://www.slideshare.net/pospome/go-80591000) がとても分かりやすかったので、<br>
@@ -41,8 +34,6 @@ DDD については、「DDD を Golang とレイヤードアーキテクチャ�
 （ですので、ドメインモデルは重度のドメイン貧血症に陥っていますｗ）
 
 釣りタイトルみたいになっちゃっててすみません🧝‍♀️
-
-<br>
 
 ## 環境
 
@@ -63,9 +54,8 @@ Mux を使った実装は [僕の前のブログで紹介している](https://y
 
 では、早速本題に入っていきましょう。
 
----
+
 # 採用アーキテクチャ：レイヤードアーキテクチャ
----
 
 [参考記事内](https://www.slideshare.net/pospome/go-80591000) で紹介されているのは <u>レイヤードアーキテクチャ</u> をベースに <br>
 いろいろカスタマイズされたものらしいです。
@@ -178,13 +168,10 @@ Infra が interface の実装を行っているので、ちゃんとDBアクセ�
 
 以降、実際のコードを紹介していくので、コードに落とし込みながら考えてみてください。
 
----
+
 # 完成物
----
 
 完成物に関しては [こちら](https://github.com/yyh-gl/go-api-server-by-ddd) に置いておきます。
-
-<br>
 
 ## API 一覧
 
@@ -219,9 +206,7 @@ api-server-with-go-kit-and-ddd
 ```
 
 
----
 # 書籍一覧を取得するAPIを作る
----
 
 ## Domain 層
 
@@ -298,8 +283,6 @@ type BookRepository interface {
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_domain.png" width="600">
 
-
-<br>
 
 ## Infra 層
 
@@ -386,8 +369,6 @@ Golang には implements とかないので分かりづらいですね。<br>
 でも、確かに依存しています。
 
 
-<br>
-
 ## UseCase 層
 
 <u>UseCase層 では、システムのユースケースを満たす処理の流れを実装します。</u>
@@ -454,8 +435,6 @@ UseCase層 は `/domain/repository` を呼び出しています。<br>
 
 [参考にしている資料](https://www.slideshare.net/pospome/go-80591000) では、<br>
 UseCase層 をさらに input と output で切っていますが、複雑になりすぎると思い、省略しました。
-
-<br>
 
 ## Handler 層
 
@@ -567,8 +546,6 @@ func (bh bookHandler) Index(w http.ResponseWriter, r *http.Request, pr httproute
 57行目で UseCase を使用するので、UseCase層に依存しています。
 
 
-<br>
-
 ## main.go
 
 ここまでで、書籍に関する Handler, UseCase, Repository が用意できました。<br>
@@ -621,9 +598,7 @@ DI ライブラリを使うことで、よりスマートに書けると思い�
 愚直にやるならこんな感じです。
 
 
----
 # テスト
----
 
 ここまでの実装で 書籍一覧 取得リクエスト を送れるようになりました。
 
@@ -660,9 +635,8 @@ $ curl -X GET  http://localhost:3000/api/v1/books
 DDD や レイヤードアーキテクチャ が絡んできて、結構重い内容になってきたので、一旦ここで切ろうと思います。<br>
 後日、続編記事を出したいと思います。
 
----
+
 # まとめ
----
 
 レイヤードアーキテクチャがメインの話になりましたが、<br>
 アーキテクチャについて勉強中だったので、僕的にはちょうど良い勉強になりました。

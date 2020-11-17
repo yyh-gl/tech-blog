@@ -14,11 +14,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # fallthrough とは
----
 
 GoではSwitch文でfallthroughという[キーワード](https://golang.org/ref/spec#Keywords)が使用可能です。
 

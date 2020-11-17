@@ -12,11 +12,8 @@ draft = false
   stretch = "stretchH"
 +++
 
-<br>
 
----
 # Terraform とは
----
 
 最近流行りの IaC です。
 
@@ -30,10 +27,7 @@ AWSやGCP, Azure などの他に[様々なクラウドプラットフォーム](
 （ちなみに、Vagrant 開発元の [HashiCorp](https://www.hashicorp.com/) 社が開発しています）
 
 
-
----
 # 今回やること
----
 
 Terraform で AWS 上に下記のような環境を自動構築します。
 
@@ -50,17 +44,14 @@ ECS でデプロイされるサービスは ECR から引っ張ってくるよ�
 【⚠注意⚠】今回独自ドメインを使用していますが、ドメイン取得に関しては省略しています。
 
 
-<br>
-
 ## 今回やる内容は…
 
 僕が所属する会社の研修資料を参考に進めています。
 
 資料を作成してくださった[@_y_ohgi](https://twitter.com/_y_ohgi)さんに感謝。
 
----
+
 # 自動構築プロセス全体で使用する共通設定を定義
----
 
 まず、 `main.tf` を作成し、以下のとおり共通設定を定義していきます。
 
@@ -90,9 +81,9 @@ variable "prefix" {
 
 切り出す方法は[こちら](https://qiita.com/ringo/items/3af1735cd833fb80da75#%E5%A4%89%E6%95%B0%E6%88%A6%E7%95%A5%E8%A8%AD%E8%A8%88)が参考になると思います。
 
----
+
 # Route53 の設定
----
+
 
 `route53_acm.tf` を作成し、以下のとおり定義します。
 
@@ -228,9 +219,8 @@ resource "aws_security_group_rule" "alb_https" {
 }
 ```
 
----
+
 # VPCの設定
----
 
 `vpc.tf` を以下のとおり定義します。
 
@@ -490,9 +480,7 @@ resource "aws_route_table_association" "private_1d" {
 ```
 
 
----
 # ロードバランサの設定
----
 
 次は ALB の定義を作成します。
 
@@ -567,9 +555,8 @@ resource "aws_lb_listener" "main" {
 }
 ```
 
----
+
 # ECSの設定
----
 
 `ecs.tf` はこんな感じです。
 
@@ -820,9 +807,7 @@ resource "aws_ecs_service" "main" {
 機密情報として設定する値は System Manager のパラメータストアにセットする必要があります。
 
 
----
 # RDSの設定
----
 
 最後に `rds.tf` を以下のとおり定義します。
 
@@ -967,9 +952,8 @@ output "rds_endpoint" {
 }
 ```
 
----
+
 # テスト
----
 
 上記で作成してきた tfファイルたちを同じディレクトリに格納し、
 
@@ -999,8 +983,6 @@ terraform コマンドが入ってない人は brew やらなんやらでイン�
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/terraform_destroy_success.png" width="600">
 
 
-<br>
-
 ## tfファイルの実行順
 
 tfファイル内で作成したリソースから取得した値を他のリソースで使用する場面がありました。
@@ -1018,9 +1000,7 @@ terraform 側でよしなに順番を決めてやってくれます。
 すごい。
 
 
----
 # まとめ
----
 
 Terraformすごい。
 

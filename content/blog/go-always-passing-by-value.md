@@ -14,12 +14,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # Goにおける参照渡し＝ポインタの値渡し
----
-
 <u>Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。</u><br>
 （C派生の言語はすべてそうらしいです）
 
@@ -40,12 +35,8 @@ draft = false
 
 本記事では、[『Pointers and Allocation』](https://golang.org/doc/faq#Pointers)から要点を抜粋して紹介します。
 
-<br>
 
----
 # 値渡しと参照渡しの違いは内部値のコピー有無
----
-
 まずは、先述した
 
 > 値渡しと参照渡しの差は、内部の値をコピーするかどうかです。
@@ -91,12 +82,8 @@ draft = false
 - [pospomeのプログラミング日記『golang の 引数、戻り値、レシーバをポインタにすべきか、値にすべきかの判断基準について迷っている』](https://www.pospome.work/entry/2017/08/12/195032)
 - [THE Finatext Tech Blog『Go言語（golang）における値渡しとポインタ渡しのパフォーマンス影響について』](https://medium.com/finatext/go%E8%A8%80%E8%AA%9E-golang-%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%80%A4%E6%B8%A1%E3%81%97%E3%81%A8%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF%E6%B8%A1%E3%81%97%E3%81%AE%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E5%BD%B1%E9%9F%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-70aa3605adc5)
 
-<br>
 
----
 # コードで確認
----
-
 では、最後にここまでの内容をコードで確認して終わります。
 
 [playground](https://play.golang.org/p/Zo9Op3ryKyW)

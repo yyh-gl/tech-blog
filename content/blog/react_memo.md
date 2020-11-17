@@ -13,11 +13,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # React.memo とは
----
 
 [公式ドキュメント](https://ja.reactjs.org/docs/react-api.html#reactmemo)を見ると、
 
@@ -28,11 +24,7 @@ draft = false
 つまり、 React.PureComponent を関数コンポーネントで実現するための手段らしいです。
 
 
-<br>
-
----
 # React.PureComponent とは
----
 
 [公式ドキュメント](https://ja.reactjs.org/docs/react-api.html#reactpurecomponent)を見ると、
 
@@ -59,11 +51,7 @@ draft = false
 （参考記事内にもあるとおり銀の弾丸ではないようですが…）
 
 
-<br>
-
----
 # 浅い比較 とは
----
 
 > shouldComponentUpdate() は浅い比較によって変更検知を行う。
 
@@ -77,8 +65,6 @@ draft = false
 参照先しか見ていないので、中身は見ていないということですね。<br>
 （このような実装なのは、React の思想として、props や state といったデータは immutable であるべきだとしているからだと思います）
 
-<br>
-
 ## ちなみに
 ミューテート（変更）せずに新しいオブジェクトを作るには下記のようにして、新しいオブジェクトを作って返してやればいいようです。（[参考](https://ja.reactjs.org/docs/optimizing-performance.html#the-power-of-not-mutating-data)）
 
@@ -87,11 +73,7 @@ Object.assign({}, prevState, {color: 'blue'});
 ```
 
 
-<br>
-
----
 # React.memo 実践（していく予定）
----
 
 React.memo の使い方は
 

@@ -13,12 +13,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # go test のキャッシュを消すのは簡単
----
-
 `$ go clean -testcache`
 
 以上です！
@@ -57,11 +52,7 @@ ok  	github.com/oxequa/realize/realize	0.384s
 もう少し詳細に話していきます。
 
 
-<br>
-
----
 # go clean とは
----
 
 [こちら](https://golang.org/pkg/cmd/go/internal/clean/)にドキュメントがあります。
 
@@ -74,22 +65,14 @@ ok  	github.com/oxequa/realize/realize	0.384s
 
 では、次にキャッシュファイルがどこにあるのか見ていきます。
 
-<br>
-
----
 # キャッシュはどこに保存されている？
----
 
-環境変数 `GOCACH` で指定されている場所に保存されます。
+環境変数 `GOCACHE` で指定されている場所に保存されます。
 
 参考：[公式ドキュメント](https://golang.org/cmd/go/#hdr-Build_and_test_caching)
 
 
-<br>
-
----
 # count オプションについて
----
 
 最後に`$ go test ./... -count=1` によって、<br>
 キャッシュを無効化できた理由についてです。

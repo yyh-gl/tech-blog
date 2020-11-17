@@ -13,11 +13,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # 概要
----
 
 CyberAgent ＆ merpay が共催した Golang のイベント
 
@@ -31,14 +27,10 @@ CyberAgent ＆ merpay が共催した Golang のイベント
 以下、発表まとめ
 
 
----
 # 1. マイクロサービスとMonoRepo
----
 
 - 登壇者：江頭 宏亮さん（@_hiro511）
 - [発表スライド](https://speakerdeck.com/_hiro511/microservices-and-monorepo)
-
-<br>
 
 ## リポジトリ管理について
 
@@ -48,8 +40,6 @@ WinTicket というサービス開発・運用中
 
 - マルチリポジトリ：マイクロサービスごとにリポジトリが別れている
 - モノリポジトリ：ひとつのリポジトリ。WinTicket ではこっち
-
-<br>
 
 ## モノリポジトリ
 
@@ -64,8 +54,6 @@ WinTicket というサービス開発・運用中
     - common ディレクトリがあればできる
   - 大きなリファクタリングが容易
 
-<br>
-
 ## ビルドとテストを効率良くしたいという
 
 <u>モノリポジトリだと、ビルドとテストに時間がかかる</u> ので、効率よくビルドとテストしたい
@@ -79,8 +67,6 @@ WinTicket というサービス開発・運用中
   - 拡張可能
     - StarDarkという独自言語で設定定義
   - WinTicketではDockerビルドもこれ
-
-<br>
 
 ## Golang with Bazel
 
@@ -102,19 +88,13 @@ WinTicket というサービス開発・運用中
    └main.go
 ```
 
-<br>
-
 ## Gazzelは Go Modules と dep に対応
 
 go.mod, Gopkg.lockファイルから依存パッケージを取りこみWORKSPACEファイルに書き込んでくれる
 
-<br>
-
 ## Protocol Buffer を Golang コンパイル可能
 
 golang/protocolbufとgogoprotoに対応している
-
-<br>
 
 ## ビルドアウトプットをリモートにキャッシュできる
 - 開発者やCIなどでビルドアウトプットを共有できる
@@ -124,16 +104,10 @@ golang/protocolbufとgogoprotoに対応している
   - google cloud storage などなど
 
 
-<br>
-
----
 # Go Modules and Proxy Walkthrough
----
 
 - 登壇者：キタローさん（@ktr_0731）
 - [発表スライド](https://speakerdeck.com/ktr_0731/go-modules-and-proxy-walkthrough-515ee291-bab5-4eb0-861d-9b0c0ca0050b)
-
-<br>
 
 ## Go modules の特徴
 - リポジトリのモジュール化
@@ -146,14 +120,10 @@ golang/protocolbufとgogoprotoに対応している
 
 ただし、src内でもgo.modがあればonになるようになる
 
-<br>
-
 ## Go Modules 有効時の go get の挙動
 - $GOPATH/src 配下にモジュールが配置されなくなる
 - go.modとgo.sumが書き換わる
 - `go get -u=patch` とするとパッチを当てられる
-
-<br>
 
 ## Go Modules 周辺ツール
 
@@ -176,8 +146,6 @@ golang/protocolbufとgogoprotoに対応している
   - Go 1.13 から go modules はproxyからモジュールを取得しにいくようになる
   - $GOPROCXY と $GOSUMDB で設定変更可能
 
-<br>
-  
 ## Private Modules
 - github のプライベートリポジトリに proxy.golang.org はアクセスできない
   - セキュリティ的な問題からモジュール取得に失敗するとエラーとなる
@@ -187,9 +155,7 @@ golang/protocolbufとgogoprotoに対応している
     - 環境変数に GONOPROXY を設定して回避したらOK
     
 
----
 # パネルディスカッション
----
 
 登壇者：
 - とのもりさん（@osamingo）メルカリ
@@ -199,9 +165,7 @@ golang/protocolbufとgogoprotoに対応している
 - たかなみさん（@storz）メルペイ
 
 
----
 # プロダクト関連の話
----
 
 ## テスト
 - WinTicket
@@ -218,8 +182,6 @@ golang/protocolbufとgogoprotoに対応している
   - assertを使わず、gocmpという構造体の比較を行っている
     - testifyコントリビュータに聞くと madrier...? というライブラリをおすすめされた
 
-<br>
-
 ## ロギング
 - WinTicket
   - zapを使っている
@@ -232,8 +194,6 @@ golang/protocolbufとgogoprotoに対応している
     - お金かかるのでログを残すものの取捨選択をし始めている
   - templateリポジトリがあってログとかの基盤系処理が容易されている
   - アクセスログはビッグクエリに流している
-
-<br>
 
 ## repository/package戦略
 - WinTicket
@@ -250,8 +210,6 @@ golang/protocolbufとgogoprotoに対応している
       - ドメインごとに切っている
       - 人によってパッケージの切り方が異なってくるので、統一するために、最近はクリーンアーキテクチャを採用することが増えている
       
-<br>
-
 ## エディタ
 
 - WinTicket
@@ -264,8 +222,6 @@ golang/protocolbufとgogoprotoに対応している
 
 acme（russが使ってるやつ）はいないｗ
 
-<br>
-
 ## go modules は使っているか
 
 - WinTicket
@@ -276,9 +232,7 @@ acme（russが使ってるやつ）はいないｗ
   - 最近のはmodules
 
 
----
 # エンジニアの育成について
----
 
 ## 育成どうしてます？
 
@@ -295,15 +249,11 @@ acme（russが使ってるやつ）はいないｗ
   - アーキテクトチームがあり、マイクロサービスの基本的な考え方を指導している
   - [Design Doc](https://github.com/kaiinui/note/blob/master/Design--Designdoc.md) を導入しており、他のチームからレビューしてもらえる環境を作っている
 
-<br>
-
 ## Webエンジニアの採用
 
 - メルペイ
   - 技術試験のコードを自動採点する仕組みがある
 
-
-<br>
 
 ## 新卒教育
 

@@ -12,25 +12,18 @@ draft = false
   stretch = "stretchH"
 +++
 
-<br>
 
 僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので
 
 なにか困ったときはそこを一度見てみてください。
 
----
 # tl;dr
----
-
 - Firebase使ってAndroidアプリにプッシュ通知を実装した
 - フォアグラウンドとバックグラウンドで表示方法が異なる
 - めちゃくちゃ簡単
 
 
----
 # 開発環境
----
-
 - macOS Mojave 10.14.4
 - Android Studio 3.4.1
 - Gradle 3.4.1
@@ -38,34 +31,23 @@ draft = false
 - Kotlin 1.3.21
 
 
----
 # Firebaseに登録
----
-
 Firebaseを使用するためには登録が必要です。
 
 Googleアカウントを持っている方なら[公式サイト](https://firebase.google.com/?hl=ja)から簡単に登録できます
 
 
----
 # Firebaseにプロジェクト作成
----
-
 [プロジェクト登録ページ](https://console.firebase.google.com/)でプロジェクトを登録します。
 
 プロジェクト名は特に指定はありません。ご自由にどうぞ。
 
 
----
 # アプリ情報を登録する
----
-
 プロジェクト選択後のホーム画面より 「Project Overview」 をクリック。
 
 画面の指示に従って進めていてください。
 
-
-<br>
 
 ## デバッグ用の署名証明書 SHA-1 の取得方法
 
@@ -104,10 +86,7 @@ Googleアカウントを持っている方なら[公式サイト](https://fireba
 エミュレータでもちゃんと通信してくれるか不安だったのですが大丈夫でした。
 
 
----
 # Firebase 関連のライブラリを追加
----
-
 アプリ情報の登録工程において、 `app/build.gradle` を触ったと思いますが、加えて、以下の追記が必要です。
 
 
@@ -123,10 +102,7 @@ dependencies {
 
 注意しましょう。
 
----
 # 通知時の見た目の設定（バックグラウンド動作時）
----
-
 <u>PUSH通知の見た目はバックグラウンドとフォアグラウンドで違います。</u>
 
 フォアグラウンドでのPUSH通知は自分のアプリの処理を通りますが、
@@ -176,10 +152,7 @@ dependencies {
 
 > ★ Android 8.0 未満であれば気にしなくて大丈夫です。
 
----
 # 動作テスト
----
-
 以上でバックグラウンドでの通知は受け取れるようになりました。
 
 Cloud Messaging 画面に行き、「Send your first message」から通知を作成します。
@@ -231,10 +204,7 @@ Android側で通知を受け取れているか確認しましょう。
 
 表示できるようにしていきましょう。
 
----
 # 通知時の見た目の設定（フォアグラウンド動作時）
----
-
 各自の適当な場所に以下の Service を作成してください。
 
 ```kotlin
@@ -347,10 +317,7 @@ class PushNotificationListenerService: FirebaseMessagingService() {
 古いバージョンの情報部分を書き換えたりしています。
 
 
----
 # AndroidManifest を修正
----
-
 ↑で実装した Service をマニフェストに登録し、使えるようにします。
 
 
@@ -375,10 +342,7 @@ class PushNotificationListenerService: FirebaseMessagingService() {
 `android:name` は各自のディレクトリ構成とファイル名に合わせて変更してください。
 
 
----
 # 動作テスト
----
-
 以上でフォアグラウンドにおける通知の設定が完了しました。
 
 通知を受け取れるかテストしてみましょう。
@@ -399,10 +363,7 @@ class PushNotificationListenerService: FirebaseMessagingService() {
 > ちょっとフォアグラウンドなのか分かりづらいと思いますが、 <u>フォアグラウンドです</u>。
 
 
----
 # つまづきポイント
----
-
 バックグラウンドとフォアグラウンドどちらにおいても、通知がうまく表示されないときがありました。
 
 具体的には
@@ -423,10 +384,7 @@ class PushNotificationListenerService: FirebaseMessagingService() {
 （それにしてもなんで無理だったんだろうか… また調べてみよう）
 
 
----
 # まとめ
----
-
 PUSH通知実装いかかがだったでしょうか？
 
 僕的にはとても簡単で驚きしかありませんでした。
@@ -441,10 +399,7 @@ Firebaseさまさまですね。
 
 
 
----
 # 参考サイト
----
-
 - [公式ドキュメント](https://firebase.google.com/docs/cloud-messaging?hl=ja)
 - [【Android】FCMを使ったpush通知の実装方法 - 株式会社Villness（ヴィルネス）](https://www.villness.com/2363)
 

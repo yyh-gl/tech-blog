@@ -13,11 +13,7 @@ draft = false
 +++
 
 
-<br>
-
----
 # DMM Advent Calendar 2019
----
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
 
@@ -33,11 +29,8 @@ draft = false
 今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、<br>
 GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
 
-<br>
 
----
 # Linter 導入していますか？
----
 
 突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？
 
@@ -45,11 +38,8 @@ GolangCI-Lint のハマリポイントとその解決策である設定周りの
 <u>コーディング規約違反</u> および <u>コンパイラでは見つけられないエラー</u> を検知するために、<br>
 ローカルと CI において Linter を回すようにしています。
 
-<br>
 
----
 # Golang における Linter
----
 
 Golang の場合、Linter がデフォルトで用意されているうえに、<br>
 ライブラリとして公開されているものも多く存在します。
@@ -69,11 +59,8 @@ Golang の場合、Linter がデフォルトで用意されているうえに、
 
 この問題を解決してくれるツールが <b>GolangCI-Lint</b> です。
 
-<br>
 
----
 # GolangCI-Lint
----
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/golangci-lint-logo.png" width="200">
 
@@ -102,11 +89,8 @@ Golang の Linter を一元管理するためのツールです。<br>
 （…ロゴいいですよね👍）
 
 
-<br>
 
----
 # 使ってみる
----
 
 ## 導入
 
@@ -132,8 +116,6 @@ wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/ins
 
 弊チームでは、ローカル用コンテナイメージのビルド時に `go get` してインストールしています。
 
-<br>
-
 ## 実行
 
 `$ golangci-lint run` コマンドで実行できます。<br>
@@ -158,11 +140,8 @@ domain/model/task/task.go:9:2: structtag: struct field tag `json:"title","hoge"`
 （厳密には Lint で出力された内容はエラーではありませんが、CIがこけるという意味で「エラー」と呼ぶことにします）<br>
 今回の場合だと、errcheck と govet がエラーを発見したようですね。
 
-<br>
 
----
 # GolangCI-Lint には検知できないエラーがある…？🧐
----
 
 では、ここから本記事の主題に入っていきたいと思います。<br>
 実際に GolangCI-Lint を導入しようとしてハマったポイントです。
@@ -193,8 +172,6 @@ GolangCI-Lint はデフォルト設定だと、いくつかのエラーを無視
 そこまで厳密に守らなくてもいい内容ですね。（僕は守りたい派ですが。。。）<br>
 したがって、GolangCI-Lint が気を利かせて無視するようにしてくれています。
 
-<br>
-
 ## デフォルトで無視されるルール
 
 デフォルト設定だと無視されるルールは <br>
@@ -222,11 +199,8 @@ GolangCI-Lint はデフォルト設定だと、いくつかのエラーを無視
 このルール、人によっては「これ無視しちゃだめだろ」と思われるものもあると思いますが、<br>
 投稿日時点ではこのようなルールがデフォルトで無視されるようになっています。
 
-<br>
 
----
 # 設定ファイル .golangci.yml
----
 
 気を利かせてくれているのは分かりますが、無視しないで欲しいときもありますよね。<br>
 逆にこのエラーは無視してほしいっていうニーズもあると思います。
@@ -236,8 +210,6 @@ GolangCI-Lint はデフォルト設定だと、いくつかのエラーを無視
 
 CLIのオプションでも指定できますが、チームで共有するなら設定ファイルの方がいいでしょう。<br>
 また、後述しますが、CLIのオプションでは指定できない設定もあるので注意が必要です。
-
-<br>
 
 ## [設定方法](https://github.com/golangci/golangci-lint#config-file)
 
@@ -253,8 +225,6 @@ CLIのオプションでも指定できますが、チームで共有するな�
 使えるオプションはCLIと同じです。<br>
 ただし、CLI では、Linter ごとの設定（`linters-settings`）ができないため、<br>
 Linter ごとに細かく設定をしたい場合は設定ファイルを書く必要があります。
-
-<br>
 
 ## 設置場所
 
@@ -291,11 +261,8 @@ level=info msg="[config_reader] Used config file .golangci.yml" ← ここ
 さきほどの golint が検知していたコメント記述形式に関するエラーを、<br>
 GolangCI-Lint でも検知できるようにしてみます。
 
-<br>
 
----
 # "デフォルトで無視されるルール"を無視する
----
 
 golint が検知していたコメント記述形式に関するエラーを検知するには、<br>
 "デフォルトで無視されるルール"を無視する必要があります。
@@ -330,15 +297,10 @@ golint のエラーが増えましたね👍
 
 このように簡単に GolangCI-Lint の設定を変更することができます。
 
-<br>
 
----
 # 細かな設定も可能
----
 
 さきほど少し触れましたが、各 Linter ごとの細かな設定も可能です。
-
-<br>
 
 ## linters-settings
 
@@ -376,8 +338,6 @@ linters-settings:
 数値が低いほど厳しいルールが適用されます。<br>
 （ちなみに、デフォルトは 0.8で、1.1 にすると何も検知しなくなります😇）
 
-<br>
-
 ## 他の設定たち
 
 GolangCI-Lint で使用できる設定を探したい場合は、<br>
@@ -387,11 +347,8 @@ GolangCI-Lint で使用できる設定を探したい場合は、<br>
 
 - [設定ファイルのサンプル](https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml)
 
-<br>
 
----
 # まとめ
----
 
 GolangCI-Lint により、様々な Linter が一元管理でき、<br>
 Linter の導入・管理コストがとても低くなったと感じています。<br>
