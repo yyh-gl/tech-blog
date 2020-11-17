@@ -151,8 +151,7 @@ k8s の勉強しないとな。
 
 ## 感想
 
-JavaScript から Golang で実装した機能を使えるとか、夢しかないですね。楽しそう。<br>
-（黒魔術の匂いがする）
+JavaScript から Golang で実装した機能を使えるのはいろいろと便利そう。
 
 
 # 4. E2E Testing with 'main' function
