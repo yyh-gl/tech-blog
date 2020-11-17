@@ -250,9 +250,14 @@ GitHub が公開している公式アクションの中に、[actions/checkout](
 
 <br>
 【余談】
+
 <br>
-ワークフローについてもっと知りたい方は、ぜひ[公式ドキュメント](https://help.github.com/ja/github/automating-your-workflow-with-github-actions/configuring-a-workflow)を読んでみてください。
+
+ワークフローについてもっと知りたい方は、
+ぜひ[公式ドキュメント](https://help.github.com/ja/github/automating-your-workflow-with-github-actions/configuring-a-workflow)を読んでみてください。
+
 <br>
+
 日本語対応しています👍
 
 
