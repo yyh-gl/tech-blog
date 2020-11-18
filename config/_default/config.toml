@@ -60,7 +60,7 @@ disableLanguages       = []
     alwaysOnHomepage     = false
 
   [params.intro.pic]
-    src                  = "img/main/logo.png"
+    src                  = "img/main/logo.webp"
     shape                = "circle"
     width                = "80"
     alt                  = "yyh-gl's icon"
