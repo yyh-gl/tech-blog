@@ -3,6 +3,7 @@ title = ""
 author = "yyh-gl"
 tags = [""]
 categories = [""]
+tags = ["Tech"]
 date = {{ .Date }}
 description = ""
 type = "post"

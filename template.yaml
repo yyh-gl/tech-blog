@@ -24,8 +24,8 @@ info:
   fontStyle: Regular
 tags:
   start:
-    px: 120
-    py: 475
+    px: 350
+    py: 120
   fgHexColor: "#FFFFFF"
   bgHexColor: "#7F7776"
   fontSize: 22
