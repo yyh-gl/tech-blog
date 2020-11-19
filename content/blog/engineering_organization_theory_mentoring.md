@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["チームマネジメント", "読書まとめ"]
+tags = ["Tech"]
 date = "2019-05-25T00:00:00Z"
 description = ""
 title =  "【エンジニアリング組織論への招待】メンタリングの技術"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/05/engineering_organization_theory_mentoring/featured.png"
+  src = "img/tech-blog/2019/05/engineering_organization_theory_mentoring/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

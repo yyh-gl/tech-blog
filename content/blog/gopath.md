@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
+tags = ["Tech"]
 date = "2019-06-13T00:00:00Z"
 description = ""
 title = "【goenv】GOPATH が変わらないときの対処法"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/gopath/featured.png"
+  src = "img/tech-blog/2019/06/gopath/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

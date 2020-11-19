@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["読書まとめ"]
+tags = ["Tech"]
 date = "2019-06-10T00:00:00Z"
 description = ""
 title = "【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/bigdata_processing/featured.png"
+  src = "img/tech-blog/2019/06/bigdata_processing/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "勉強会"]
+tags = ["Tech"]
 date = "2019-06-15T00:00:00Z"
 description = ""
 title = "【mercari.go #8】メルカリの Golang に関する勉強会メモ"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/mercari_go/featured.png"
+  src = "img/tech-blog/2019/06/mercari_go/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

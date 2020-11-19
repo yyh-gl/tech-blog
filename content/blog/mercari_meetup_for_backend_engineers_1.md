@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["勉強会", "セキュリティ"]
+tags = ["Tech"]
 date = "2019-08-21T00:00:00Z"
 description = "実は2日連続でメルカリ行ってた"
 title = "【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/08/mercari_meetup_for_backend_engineers_1/featured.png"
+  src = "img/tech-blog/2019/08/mercari_meetup_for_backend_engineers_1/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

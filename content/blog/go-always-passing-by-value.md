@@ -8,7 +8,7 @@ title = "Goの参照渡しについて調べてみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/06/go-always-passing-by-value/featured.png"
+  src = "img/tech-blog/2020/06/go-always-passing-by-value/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

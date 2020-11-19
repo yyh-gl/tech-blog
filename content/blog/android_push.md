@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Android", "Kotlin", "Firebase"]
+tags = ["Tech"]
 date = "2019-05-30T00:00:00Z"
 description = ""
 title = "【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/05/android_push/featured.png"
+  src = "img/tech-blog/2019/05/android_push/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

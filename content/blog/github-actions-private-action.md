@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["CI/CD", "GitHub"]
+tags = ["Tech"]
 date = "2019-10-22T00:00:00Z"
 description = "HCLではなくてyml版です"
 title = "【GitHub Actions】プライベートアクションを使ってみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/10/github-actions-private-action/featured.png"
+  src = "img/tech-blog/2019/10/github-actions-private-action/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Web API", "Vue.js", "HTML/CSS"]
+tags = ["Tech"]
 date = "2019-06-08T00:00:00Z"
 description = "いいね機能つけました"
 title = "【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/good_api/featured.png"
+  src = "img/tech-blog/2019/06/good_api/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

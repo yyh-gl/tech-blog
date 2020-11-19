@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["勉強会"]
-date = "2019-12-20"
+tags = ["Tech"]
+date = "2019-12-20T00:00:00Z"
 description = "冪等性 is 大事"
 title = "【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/12/mercari-tech-talk-idempotency/featured.png"
+  src = "img/tech-blog/2019/12/mercari-tech-talk-idempotency/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

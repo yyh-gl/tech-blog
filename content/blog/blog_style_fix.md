@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["HTML/CSS", "Web全般"]
+tags = ["Tech"]
 date = "2019-06-16T00:00:00Z"
 description = ""
 title = "【HTML + CSS + Prism.js】ブログの見た目を整えた話"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/blog_style_fix/syntax_highlight_after.png"
+  src = "img/tech-blog/2019/06/blog_style_fix/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

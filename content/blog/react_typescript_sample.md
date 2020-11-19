@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["React", "TypeScript", "Advent Calendar"]
+tags = ["Tech"]
 date = "2019-12-02T00:00:00Z"
 description = "TypeScript Advent Calendar 2019 2日目"
 title = "【React+TypeScript】TypeScript入門"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/12/react_typescript_sample/featured.png"
+  src = "img/tech-blog/2019/12/react_typescript_sample/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
+tags = ["Tech"]
 date = "2020-03-03T00:00:00Z"
 description = "Goの後方互換性すばらしい"
 title = "Goのバージョン管理について"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/03/go-versions/featured.png"
+  src = "img/tech-blog/2020/03/go-versions/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

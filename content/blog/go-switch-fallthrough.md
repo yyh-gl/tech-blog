@@ -8,7 +8,7 @@ title = "【Go】Switch文のfallthroughに関するまとめ"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/10/go-switch-fallthrough/featured.png"
+  src = "img/tech-blog/2020/10/go-switch-fallthrough/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

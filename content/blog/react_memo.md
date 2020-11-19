@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["React"]
+tags = ["Tech"]
 date = "2019-09-18T00:00:00Z"
 description = "React Hooks 楽しい"
 title = "React.memo について調べたのでメモを残しておく"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/09/react_memo/featured.png"
+  src = "img/tech-blog/2019/09/react_memo/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

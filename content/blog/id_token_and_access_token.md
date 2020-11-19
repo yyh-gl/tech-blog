@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Web API", "セキュリティ"]
-date = "2019-06-19"
+tags = ["Tech"]
+date = "2019-06-19T00:00:00Z"
 description = ""
 title = "【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/id_token_and_access_token/featured.png"
+  src = "img/tech-blog/2019/06/id_token_and_access_token/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

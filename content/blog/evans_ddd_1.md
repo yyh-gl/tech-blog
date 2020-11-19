@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["DDD", "アーキテクチャ", "読書まとめ"]
+tags = ["Tech"]
 date = "2019-06-11T00:00:00Z"
 description = ""
 title = "【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/evans_ddd_1/featured.png"
+  src = "img/tech-blog/2019/06/evans_ddd_1/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

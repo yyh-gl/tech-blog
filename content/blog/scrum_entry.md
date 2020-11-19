@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["スクラム", "入門"]
+tags = ["Tech"]
 date = "2019-06-05T00:00:00Z"
 description = ""
 title = "スクラムについて学んだ話"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/scrum_entry/featured.png"
+  src = "img/tech-blog/2019/06/scrum_entry/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

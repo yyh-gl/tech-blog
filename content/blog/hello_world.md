@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["自己紹介"]
+tags = ["Tech"]
 date = "2019-05-22T00:00:00Z"
 description = "【一文まとめ】技術ブログはじめます"
 title = "Hello Wolrd"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/05/hello_world/featured.png"
+  src = "img/tech-blog/2019/05/hello_world/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

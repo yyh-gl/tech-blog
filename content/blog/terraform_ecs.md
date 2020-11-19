@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["AWS", "Terraform", "ECS", "RDS"]
+tags = ["Tech"]
 date = "2019-06-04T00:00:00Z"
 description = ""
 title = "【Terraform + ECS + RDS】Terraform で ECS環境構築してみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/terraform_ecs/featured.png"
+  src = "img/tech-blog/2019/06/terraform_ecs/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

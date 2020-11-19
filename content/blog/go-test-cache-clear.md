@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
+tags = ["Tech"]
 date = "2020-04-30T00:00:00Z"
 description = "知っておくと便利"
 title = "【Golang】go test におけるキャッシュの消し方"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/04/go-test-cache-clear/featured.png"
+  src = "img/tech-blog/2020/04/go-test-cache-clear/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

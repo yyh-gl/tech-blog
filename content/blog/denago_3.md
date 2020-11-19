@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["勉強会", "Go"]
+tags = ["Tech"]
 date = "2019-11-01T00:00:00Z"
 description = "DeNAさん主催のGolang勉強会"
 title = "【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/11/denago_3/featured.png"
+  src = "img/tech-blog/2019/11/denago_3/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

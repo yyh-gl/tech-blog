@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "簡単まとめ"]
+tags = ["Tech"]
 date = "2020-02-03T00:00:00Z"
 description = "Go1.14が楽しみ"
 title = "【簡単まとめシリーズ】Go1.12からの変更点"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/02/changes-since-go-1-12/featured.png"
+  src = "img/tech-blog/2020/02/changes-since-go-1-12/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

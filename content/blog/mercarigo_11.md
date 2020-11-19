@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "勉強会"]
+tags = ["Tech"]
 date = "2019-10-07T00:00:00Z"
 description = "めちゃくちゃためになった"
 title = "【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー【Golang】"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/10/mercarigo_11/featured.png"
+  src = "img/tech-blog/2019/10/mercarigo_11/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

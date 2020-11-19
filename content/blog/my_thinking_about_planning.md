@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["ポエム"]
+tags = ["Tech"]
 date = "2019-06-18T00:00:00Z"
 description = "サービス発案って難しい…"
 title = "【徒然なるままに】サービス発案における主観と客観のバランスについて"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/my_thinking_about_planning/featured.png"
+  src = "img/tech-blog/2019/06/my_thinking_about_planning/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

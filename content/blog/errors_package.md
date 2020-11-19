@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
+tags = ["Tech"]
 date = "2020-03-09T00:00:00Z"
 description = "今回は Unwrap()，Is()，As() についてお届け"
 title = "【Golang】errorsパッケージの中身覗いてみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/03/errors_package/featured.png"
+  src = "img/tech-blog/2020/03/errors_package/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

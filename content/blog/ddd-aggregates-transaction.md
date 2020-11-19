@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["アーキテクチャ", "DDD"]
+tags = ["Tech"]
 date = "2020-02-18T00:00:00Z"
 description = "「データの一貫性の境界」を見極めよう！"
 title = "【DDD】集約とトランザクション境界について調べたことメモ"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/02/ddd-aggregates-transaction/featured.png"
+  src = "img/tech-blog/2020/02/ddd-aggregates-transaction/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

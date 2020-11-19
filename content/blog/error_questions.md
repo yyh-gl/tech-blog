@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
+tags = ["Tech"]
 date = "2020-03-10T00:00:00Z"
 description = "errorに関するちょっとしたメモ"
 title = "【Golang】errorの同値性と表示について調べた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/03/error_questions/featured.png"
+  src = "img/tech-blog/2020/03/error_questions/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Web全般"]
+tags = ["Tech"]
 date = "2019-06-17T00:00:00Z"
 description = "OGP大事"
 title = "【OGP】リンク先のサムネイル画像を表示できるようにした話"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/ogp/featured.png"
+  src = "img/tech-blog/2019/06/ogp/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

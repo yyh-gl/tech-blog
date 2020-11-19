@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "DDD"]
+tags = ["Tech"]
 date = "2020-05-08T00:00:00Z"
 description = "こんな感じでやってます"
 title = "【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/05/go-ddd-entity-vo/featured.png"
+  src = "img/tech-blog/2020/05/go-ddd-entity-vo/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

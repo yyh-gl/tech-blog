@@ -1,13 +1,14 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "Web API", "アーキテクチャ", "DDD"]
+tags = ["Tech"]
 date = "2019-06-14T00:00:00Z"
 description = "2019/10/30 に内容を一部更新しました"
 title = "【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/go_web_api/featured.png"
+  src = "img/tech-blog/2019/06/go_web_api/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
