@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "テスト", "Advent Calendar"]
-date = "2019-12-08"
+date = "2019-12-08T00:00:00Z"
 description = "Go3 Advent Calendar 2019 8日目"
 title = "【Golang+VCR】外部APIとの通信を保存してテストに使用する話"
 type = "post"

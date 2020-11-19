@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["勉強会", "Go"]
-date = "2019-11-01"
+date = "2019-11-01T00:00:00Z"
 description = "DeNAさん主催のGolang勉強会"
 title = "【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた"
 type = "post"

@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
-date = "2020-03-03"
+date = "2020-03-03T00:00:00Z"
 description = "Goの後方互換性すばらしい"
 title = "Goのバージョン管理について"
 type = "post"

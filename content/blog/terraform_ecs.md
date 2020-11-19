@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["AWS", "Terraform", "ECS", "RDS"]
-date = "2019-06-04"
+date = "2019-06-04T00:00:00Z"
 description = ""
 title = "【Terraform + ECS + RDS】Terraform で ECS環境構築してみた"
 type = "post"

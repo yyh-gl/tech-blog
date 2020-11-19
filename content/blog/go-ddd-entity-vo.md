@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "DDD"]
-date = "2020-05-08"
+date = "2020-05-08T00:00:00Z"
 description = "こんな感じでやってます"
 title = "【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）"
 type = "post"

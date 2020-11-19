@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "勉強会"]
-date = "2019-08-06"
+date = "2019-08-06T00:00:00Z"
 description = "CyberAgent ＆ merpay 主催の Golang 勉強会"
 title = "【Go同miniConf】Golangの勉強会に参加してきた話"
 type = "post"

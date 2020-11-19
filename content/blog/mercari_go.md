@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "勉強会"]
-date = "2019-06-15"
+date = "2019-06-15T00:00:00Z"
 description = ""
 title = "【mercari.go #8】メルカリの Golang に関する勉強会メモ"
 type = "post"

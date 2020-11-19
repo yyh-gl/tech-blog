@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "Web API", "アーキテクチャ", "DDD"]
-date = "2019-06-14"
+date = "2019-06-14T00:00:00Z"
 description = "2019/10/30 に内容を一部更新しました"
 title = "【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる"
 type = "post"

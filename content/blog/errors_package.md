@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
-date = "2020-03-09"
+date = "2020-03-09T00:00:00Z"
 description = "今回は Unwrap()，Is()，As() についてお届け"
 title = "【Golang】errorsパッケージの中身覗いてみた"
 type = "post"

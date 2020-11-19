@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["スクラム", "入門"]
-date = "2019-06-05"
+date = "2019-06-05T00:00:00Z"
 description = ""
 title = "スクラムについて学んだ話"
 type = "post"

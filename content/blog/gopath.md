@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
-date = "2019-06-13"
+date = "2019-06-13T00:00:00Z"
 description = ""
 title = "【goenv】GOPATH が変わらないときの対処法"
 type = "post"

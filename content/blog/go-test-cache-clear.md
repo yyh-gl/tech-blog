@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
-date = "2020-04-30"
+date = "2020-04-30T00:00:00Z"
 description = "知っておくと便利"
 title = "【Golang】go test におけるキャッシュの消し方"
 type = "post"
