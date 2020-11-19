@@ -55,4 +55,526 @@ DDDが解決したかった問題 &amp;lt;6分30秒ぐらいから&amp;gt;
 For instance, passing an int value to a function makes a copy of the int, and passing a pointer value makes a copy of the pointer, but not the data it points to.
 たとえば、int値を関数に渡すとintのコピーが作成され、ポインター値を渡すとポインターのコピーが作成されますが、ポインターが指すデータは作成されません。
 つまり、
-値渡し：値のコピーが作成される 参照渡し：ポインタのコピーは作成されるが、ポインタが指すデータ（値）のコピーは作成しない といった差があります。</description></item></channel></rss>
+値渡し：値のコピーが作成される 参照渡し：ポインタのコピーは作成されるが、ポインタが指すデータ（値）のコピーは作成しない といった差があります。</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。
+このプロジェクトでは、DDDの考え方や設計パターンも取り入れています。
+今回はDDDの設計パターンの中でもEntityとValue Object（VO）について、
+僕がGoでどうやって実装しているのか紹介していきます。
+実装例 兎にも角にも、まずはコードを示します。
+// animal/dog/dog.go package dog type Dog struct { name Name } func New(name string) (*Dog, error) { n, err := newName(name) if err != nil { return nil, err } return &amp;amp;Dog{ name: *n, }, nil } // animal/dog/name.go package dog import ( &amp;quot;errors&amp;quot; &amp;quot;unicode/utf8&amp;quot; ) type Name string func newName(v string) (*Name, error) { // 名前は3文字以上というビジネスロジック if utf8.RuneCountInString(v) &amp;lt; 3 { return nil, errors.</description></item><item><title>【Golang】go test におけるキャッシュの消し方</title><link>https://yyh-gl.github.io/tech-blog/blog/go-test-cache-clear/</link><pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-test-cache-clear/</guid><description>go test のキャッシュを消すのは簡単 $ go clean -testcache
+以上です！
+$ go test ./... ok github.com/oxequa/realize (cached) ok github.com/oxequa/realize/realize (cached) このように (cached) となっていたものが、、、
+$ go clean -testcache $ go test ./... ok github.com/oxequa/realize 0.086s ok github.com/oxequa/realize/realize 0.389s このように、実行時間が表示されており、キャッシュが消えていることが分かりますね。
+ちなみに、キャッシュを無視する方法はもうひとつあり、
+以下のように -count=1 をつけてやればOKです。
+$ go test ./... -count=1 ok github.com/oxequa/realize 0.076s ok github.com/oxequa/realize/realize 0.384s ここからは上記コマンドが一体なにをしてくれたのか、
+もう少し詳細に話していきます。
+go clean とは こちらにドキュメントがあります。
+Clean removes object files from package source directories.
+go clean は上記のとおりファイルを消してくれるわけですね。</description></item><item><title>【Golang】jsonパッケージの知っておくと便利な機能</title><link>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</guid><description>jsonパッケージ Goを触ってる人ならだれもが一度はお世話になるであろう パッケージ「json」
+今回はそんな json パッケージについて、
+知っておくと便利な機能を2つ紹介します。
+（比較的有名なものしかないですが🙏）
+1. 独自の変換ロジックを実装できる 例えば、下記のコードのように、
+ある構造体（Human）のフィールドを外部公開したくない場合、
+jsonパッケージの Unmarshal()，Marshal() が使えません。
+（上記関数は外部公開されたフィールドのみ変換できる）
+type Human struct { // フィールドを外部公開したくない name string age int } func main() { h := Human{ name: &amp;quot;Taro&amp;quot;, age: 21, } // 構造体 → JSON j, _ := json.Marshal(h) fmt.Println(string(j)) // {} // JSON → 構造体 var uh Human _ = json.Unmarshal(j, &amp;amp;uh) fmt.Printf(&amp;quot;%+v\n&amp;quot;, uh) // {name: age:0} } playgroud
+実際に実行してみると、うまく変換できていないことが分かると思います。
+さて、このときどうすれば正しく変換できるかというと、</description></item><item><title>【Golang】errorの同値性と表示について調べた</title><link>https://yyh-gl.github.io/tech-blog/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/error_questions/</guid><description>errorについて疑問があった Goのコードを書いてて、ふと気になったことがあったので調べてみました。
+errorの同値性 1つ目の疑問は、下記コードで e1 と e2 がイコールではないことです。 （同値性なんて仰々しく言ってすみません。たったこれだけの疑問です😇🙇‍♂️）
+func main() { e1 := errors.New(&amp;quot;error1&amp;quot;) e2 := errors.New(&amp;quot;error1&amp;quot;) e3 := e1 fmt.Println(e1 == e2) // false fmt.Println(e1 == e3) // true } Playground
+結論（errorの同値性） errors.New() が返しているのがポインタでした。
+つまり、さきほどのコードの6行目はポインタの値を比較しているので、そりゃfalseになりますね。
+errorの表示 2つ目の疑問は、下記コードで e1 を表示すると、
+errors.New()の戻り値である構造体の値ではなく、エラー文言が表示されることです。
+package main import ( &amp;quot;fmt&amp;quot; &amp;quot;errors&amp;quot; ) func main() { e1 := errors.New(&amp;quot;error1&amp;quot;) fmt.Println(e1) // error1 } Playground
+errors.New()が返しているのは構造体なので、
+下記コードのように構造体の内容が表示されないのはなんでだ？ってなったわけです。
+package main import &amp;quot;fmt&amp;quot; func Hoge() interface{} { type hoge struct { s string } return &amp;amp;hoge{s: &amp;quot;hoge&amp;quot;} } func main() { h := Hoge() fmt.</description></item><item><title>【Golang】errorsパッケージの中身覗いてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/errors_package/</link><pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/errors_package/</guid><description>errorsパッケージに興味持った v1.13からerrorsパッケージに Unwrap() Is() As() といった関数が追加されました。
+（もう1.14もリリースされているのに今さらですね😇）
+今回はこれら3つの関数について、内部実装を追いかけていきます。
+と、その前に、errorsパッケージの概要と関連パッケージについて軽く説明しておきます。
+errorsパッケージと関連パッケージ errorsパッケージ 名前の通り、エラー関連の処理がまとまっているパッケージですね。
+Goの標準パッケージです。
+→ GoDoc
+v1.13にて、先述の Unwrap() Is() As() という関数たちが追加されました。
+errorを扱うパッケージとして、もうひとつ有名なパッケージがあります。
+xerrorsパッケージです。
+xerrorsパッケージ xerrors とは、 Goのサブリポジトリで開発が進められているパッケージです。
+（準標準パッケージといった感じでしょうか）
+xerrorsのGoDocに下記の記述がある通り、
+These functions were incorporated into the standard library&amp;rsquo;s errors package in Go 1.13: - Is - As - Unwrap
+もともとは本パッケージに Unwrap() Is() As() が実装されていましたが、
+v1.13にて標準パッケージに取り込まれました。
+さて、軽くerror関連のパッケージについて触れたところで、
+早速、Unwrap() Is() As() の内部実装を見ていきたいと思います。
+なお、Goのコードはv1.14.0を参照しています。
+Unwrap() ラップされたエラーから中身のエラーを取り出す関数です。
+処理としては下記のようになっています。
+func Unwrap(err error) error { u, ok := err.</description></item><item><title>Goのバージョン管理について</title><link>https://yyh-gl.github.io/tech-blog/blog/go-versions/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-versions/</guid><description>Goのバージョン管理 注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。 注意2：基本的にMacユーザを対象にしています。（WindowsもLinuxも好きですよ😅）
+開発において言語のバージョン管理はつきものだと思います。
+そのニーズは高く、rbenv や nodenv といったバージョン管理ツールが普及しています。
+ただし、Goの場合は少し話が変わってきます。
+もちろんGoでも goenv が用意されていますが、
+（今のところ）Goは後方互換性が担保されているので、基本的に最新バージョンに上げ続ければOKです。
+…と言いつつも、GAEを使用するといった場合に、どうしてもバージョン管理したくなることがあると思います。
+そこで今回はまずGoのバージョン管理ツールの紹介をした後で、
+最新バージョンをインストールする方法を紹介していきたいと思います。
+Goのバージョン管理ツール ▼ goenv ○○env系は有名ですよね。
+言語のバージョン管理といえばこれです。
+導入手順は公式の手順通りなので省略します。
+1点はまりどころがあります。
+$GOPATHが変わらなくなってしまうという問題です。
+本件に関しては以前、僕のブログで対処法を書いているので、
+こちらを参考にしてみてください。
+▼ go get（公式おすすめ） （バージョン管理ツールではないですが…👼）
+本方法が公式おすすめの方法です。
+$ go get golang.org/dl/goX.Y.Z $ goX.Y.Z download $ goX.Y.Z version go version goX.Y.Z linux/amd64 コマンド打つたびに、バージョンまで打つのがめんどくさいという方は、
+bash や zsh の設定でエイリアスでも貼ってやればOKですね。
+最新バージョンのインストール方法 次は常に最新バージョンをインストールする方法です。
+特に新しいこともなくいろんなサイトで紹介されているのでさらっと流していきます。
+▼ Homebrew $ brew install go 以上です！
+標準出力にて「必要ならパスの設定してね」と言われます。
+設定したい場合は、言われたとおりにやればOKです。
+▼ ソースからのインストール こちらの方法は先述の方法と比べると、少しややこしくなります。
+ざっくり手順を説明します。（公式の説明ページ）
+Go1.</description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://yyh-gl.github.io/tech-blog/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/ddd-aggregates-transaction/</guid><description>簡単まとめシリーズ 今回は 集約とトランザクション境界 について、
+自分のわからないところを調べたので、メモとして残しておきます。
+集約 集約の説明を『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』から拝借すると、
+「データを変更するための単位として扱われるオブジェクトの集まりを集約といいます」とのこと。
+↓ もうすこし具体的に言うと
+DDDではエンティティと値オブジェクトというものがありますが、
+値オブジェクトを直接触らず、 エンティティ経由でしか変更しないようにするというものですね。
+このような制限をかけることで、
+ひとまとまりにされたオブジェクト間で維持されるべき不変条件を守ることができます。
+トランザクション境界 基本的な考えとしては、集約ごとにトランザクションを貼ります。
+↑この基本を守るためにも、理想としては正しいモデリングにより、
+正しいトランザクション境界を見つけることが大事です。
+正しいトランザクション境界を見つけることは、不用意に大きなDBロックの発生を防止します。
+しかしながら、集約をまたいでトランザクション制御したくなるときもあります。
+→ 参考例
+こういうときにどうするか、上記リンクでもいくつかの方法が挙げられています。
+他のサイトも調べてみましたが、だいたい同じような方法が出てきました。
+結果整合性 主流っぽい いろいろなサイト、書籍の中で紹介されていました 整合性を担保するための仕組みづくりが必要 整合性をチェックするためのバッチ など 集約をまたいでトランザクションを貼る 下記理由のためにあまり推奨されない ロック範囲が大きくなってしまう 守るべき「データの一貫性の境界」をコード上で表現できなくなる 参考サイト 複数の集約をさらにまとめた集約をつくる ロック範囲が大きくなってしまうため、あまり推奨されない 結果整合性 結果整合性については、
+『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』の 12章3説「集約の大きさと操作の単位」で言及されているので、もう少しだけ詳しく調べました。</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
+今回は Go1.12からの変更点 についてです。
+The State of Go 2020 Twitterで『The State of Go 2020』というタイトルのスライドを見つけました。
+Go1.12から変わったところに焦点を当て、
+Go1.13でどのような機能が追加されているのか、 Go1.14でどのような機能が追加される予定なのかまとめてあります。
+今回は、完全主観で自分が興味のある内容をハイライトします〜😇
+完全主観ハイライト ▼ 数値まわりの表現方法が増える https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7
+▼ interfaceにおける関数の重複が許可される（例外あり） https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17
+▼ エラーハンドリングが変わる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=26
+▼ testingパッケージに CleanUp() が追加 https://speakerdeck.com/campoy/the-state-of-go-2020?slide=39
+▼ go modules https://speakerdeck.com/campoy/the-state-of-go-2020?slide=43
+▼ 配列・スライスにおける範囲外指定時のエラーが親切になった https://speakerdeck.com/campoy/the-state-of-go-2020?slide=50
+▼ deferが速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=51
+▼ json関連の処理が速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52
+▼ 他にもいろいろ速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53
+▼ GopherConの参加者が増えていく様子がえもい https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64</description></item><item><title>【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari-tech-talk-idempotency/</link><pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari-tech-talk-idempotency/</guid><description>Tech Talk vol.2 Backend Engineer 〜マイクロサービスの冪等性〜 connpass ハッシュタグ：#merpay_techtalk 質問板 merpay社で開催された勉強会です。
+参加者のツイートも含めてメモを残しておきます。
+かなり雑なのでコンテキストが読み取れないところもあると思いますが、
+なにかの参考になれば幸いです。
+（@sonatard さんの実況にとても助けられました。 ありがとうございました！）
+1. 500万ユーザーを支える残高の冪等性 登壇者：（@knsh14）
+スライド
+参考スライド （ベースとなる話は↑これ）
+残高管理サービス（Balance Service） 使ってるDBはCloud Spanner
+外部サービスや他のマイクロサービスには依存してない
+DeleteなしでCRUのみ
+かなりシンプルで冪等性を担保しやすい
+冪等性があるAPI 最初に成功した一度だけ処理される
+同じリクエストを何回繰り返しても内部的には処理されない
+何度リクエストしても同じ結果が返ってくる 何度でもリトライできる
+取引IDが保存されていれば既に行われた取引である
+冪等性の担保 冪等性キーが同じ 外部から指定される取引IDのこと 残高の種類が同じ ポイント/メイルペイ残高 など 操作する金額が同じ 冪等なレスポンス レスポンスはDBから引ける情報で組み立てる 取引IDから引ける情報 取引後残高は返さない Twitterメモ
+冪等なAPIでのエラー リトライしても良いエラー：ex. タイムアウト リトライだめなエラー：ex. 残高不足 誰がどう使うのか？ リクエストを投げる側の使い方1つで簡単に冪等性が壊れる → ex. 取引IDを毎回変えるとか 2.</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
+私は現在、DMM.com の CDS というチームに所属し、
+主にユーザレビュー基盤のバックエンドを開発しています。
+今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、
+GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
+Linter 導入していますか？ 突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？
+私の所属するチームでは、
+コーディング規約違反 および コンパイラでは見つけられないエラー を検知するために、
+ローカルと CI において Linter を回すようにしています。
+Golang における Linter Golang の場合、Linter がデフォルトで用意されているうえに、
+ライブラリとして公開されているものも多く存在します。
+なかでも有名なものに以下のようなものがあります。
+govet：Golang デフォルトの Linter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。
+加えて、導入する Linter が増えれば、その分だけ 導入・管理コストが増加 します。
+この問題を解決してくれるツールが GolangCI-Lint です。
+GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、
+ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。</description></item><item><title>【Golang+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+ではでは、早速本題に入っていきます。
+モック使ってますか？ みなさんモックコードは書いていますか？
+テストコードを書いているなら、ほぼ必ず登場するあのモックです。
+DB処理や関数のモックなどいろいろありますよね。
+そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？
+モックだからといって雑なコードになっていませんか？
+今回は、外部API通信のモック化にフォーカスし、
+モックコードの作成・管理コストを軽減する VCR ライブラリ を紹介します。
+VCR ライブラリ とは？ VCR（Video Cassette Recorder）とは、通信を保存し、再生するライブラリです。
+つまり、APIリクエストの初回通信の内容を保存し、
+次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。
+言い換えれば、外部APIのモックを自動生成してくれるということですね！
+VCR ライブラリ in Golang World Golang 用の VCR ライブラリはいろいろあります。
+スター数が多いのは以下のものです。
+go-vcr vcr-go govcr rpcreplay go-vcr および vcr-go，govcr の開発は盛んではないようです。
+rpcreplay は google-cloud-goに包含されるパッケージであり、安心して使えそうです。
+ただし、gRPC 用なので、その点は注意が必要です。
+GoDocはこちらです。
+今回は REST API を使って説明していくので、go-vcr を使用します。
+go-vcr は、vcr-go と govcr よりスター数が多いです。
+Ruby 製の vcr というライブラリがもとになっているようです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
+内容としては、TypeScript 初級者のための TypeScript 入門です。
+基礎的な内容から入り、
+最終的には、企業や個人の技術ブログを参考に、
+React の実プロジェクトにおいて、
+どのように TypeScript が使われているのか紹介できればと思います。
+（APIリクエスト周りのTypeScript活用事例を紹介）
+今日の記事を読んで TypeScript に入門し、
+今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！
+基礎編 TypeScript とは TypeScript は Microsoft 社によって開発され、 現在は OSS として開発が進められています。
+「TypeScript とは何か」を簡単に説明すると、
+JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット です。
+公式サイト はこちらで、
+2019年12月2日現在、最新版は 3.7.2 となっています。
+では、実際にコードを交えながら基礎的な部分を説明していきます。
+ただし、実践編で使用する内容に絞って説明していきますので、
+その点はご了承ください🙇‍
+（足りない情報は公式ドキュメントを参考にしてください）
+型 では、早速、TypeScript の型に触れていきましょう。
+TypeScript で使用できる基本的な型として以下のものがあります。
+Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！
+ビールとお弁当もらいました。
+そしてなんとなんと k8sの技術書をいただいちゃいました！！！
+もちろんステッカーもありましたよ👍
+1. [Go活用事例]安全運転支援サービスを支える運用サイト 登壇者：@suhirotaka さん オートモーティブ事業本部スマートドライビング部システム開発グループ
+スライド
+主題 管理画面を Golang で作成
+Railsで作ってるものをGolangで作る理由 実証実験時はスピード重視でRails 本サービスはパフォーマンス重視でGolang 順次Golangに書き換えていく
+Golangのフレームワーク GolangのWAF（Web Application Framework）には
+フルスタック・MVC ミニマル・高速 の2種類がある
+この辺の話は、僕の旧ブログにもいろいろ書いているのでどうぞー
+DeNAではフルスタック・MVCを選択
+GolangにおけるフルスタックなWAF Beego：採用！ Revel：開発が止まってきている Iris：プロジェクトの運用がうまくいっていないようだった Beego フルスタックのMVCフレームワーク ORMまでついてる セッション管理、ロガー、キャッシュなどのライブラリがいろいろついてるけど、全てモジュール化されていて、部分的に他のライブラリを使うことができる Railsライクなフレームワーク Railsのbefore/after_actionに相当するものもある（Prepare(), Finish()） ライブラリ 使用ライブラリはこちら
+こういうの教えてくれるのめっちゃ嬉しい
+ORM：GORM ロガー：logrus PDF生成：gopdf → 日本語もきれいにでるので最高にクール 画像生成：gg バーコード生成：Barcode 2. WebシステムのパフォーマンスとGo （写真撮り忘れた…）</description></item><item><title>【GitHub Actions】プライベートアクションを使ってみた</title><link>https://yyh-gl.github.io/tech-blog/blog/github-actions-private-action/</link><pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/github-actions-private-action/</guid><description>プライベートアクションとは GitHub Actions では、開発者がアクション（Lint やテストといったジョブなど）を作って、公開することができます。 この公開されたアクションは、世界中の人が使えるため、もちろん自分のプロジェクトに持ってきて使用できます。 この公開されたアクションのことを パブリックアクション といいます。
+パブリックアクションが溢れた世界を想像するだけでワクワクしますね👍 （野良 Docker イメージと同様に、ほいそれとは使えないでしょうが…）
+今回、とりあげるのはパブリックアクションの正反対にあるものです。 つまり、公開しない（できない）アクション ＝ プライベートアクション です。 プライベートアクションを使うための準備 ディレクトリ構成は以下のとおりです。
+.github ├── actions │ └── golang-test │ ├── Dockerfile │ ├── action.yml │ └── entrypoint.sh └── workflows └── golang.yml /actions ディレクトリ配下に golang-test という、Lint とテストを実行するアクションを作ってみます。
+/workflow ディレクトリ配下には、golang 用のワークフロー定義ファイルを置いています。
+では、次から各ファイルの定義を見ていきます。
+プライベートアクションの定義 # /actions/golang-test/action.yml name: 'Golang Lint and Test Action' description: 'Lint and Test for Golang' author: 'yyh-gl' runs: # Docker を使って実行することを宣言 using: 'docker' # 使用する Docker イメージを指定 image: 'Dockerfile' アクションの定義は上記のとおりです。 公式ドキュメントを参考にしました。</description></item><item><title>【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー【Golang】</title><link>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</link><pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</guid><description>mercari.go #11 connpass： リンク ハッシュタグ： #mercarigo 今回もお弁当とドリンクがありました！ありがたや
+[追記：2019年10月12日]
+[Mercari Engineering Blog](https://tech.mercari.com/entry/2019/10/11/160000) にて、本イベントの記事が公開されました。
+発表資料が載せてあります。ありがたや🙏 1. About error handling in Go 登壇者：jd さん（@JehandadKamal）
+資料（正式に共有されたものでないので、発表の内容が少し異なります）
+Errors are values ”Errors are values” という考え方。
+Golangでよくあるエラー処理パターン エラーをラップしてより詳細な情報を付与する 専用構造体を作る スタックトレースを構成する ”Error is your domain” Domain Error Struct を作成する。
+type Error struct { Op Op Kind Kind Serverity zapcore.ErrorLevel Err error } Op：Operation → 関数名とか Kind：エラー種別 → NotAvailable, NotFound といったもの Serverity：エラーレベル Err：エラー内容 上記のような構造体を作る理由 error を比較するときは、基本的に文字列の比較になるため取り回しが悪い → ”NotFound” という文字列を比較するとかとか</description></item><item><title>React.memo について調べたのでメモを残しておく</title><link>https://yyh-gl.github.io/tech-blog/blog/react_memo/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_memo/</guid><description>React.memo とは 公式ドキュメントを見ると、
+これは React.PureComponent に似ていますが、クラスではなく関数コンポーネント用です。
+とあります。
+つまり、 React.PureComponent を関数コンポーネントで実現するための手段らしいです。
+React.PureComponent とは 公式ドキュメントを見ると、
+React.PureComponent は React.Component と似ています。 両者の違いは React.Component が shouldComponentUpdate() を実装していないことに対し、 React.PureComponent は props と state を浅く (shallow) 比較することでそれを実装していることです。
+とあります。
+shouldComponentUpdate() によって、どういった変更があれば再描画するかを定義するようです。
+追加でこの参考記事を読んでみると、
+PureComonentはprops及びstateの変更を検出した場合のみレンダリングを行います。 Messageコンポーネントではmessage propsの変更を察知し、必要分の更新を行うようになります。
+とあります。
+自分で再描画条件を定義できるので、無駄な再描画を省くことができ、パフォーマンス向上を期待できるんですね。
+→ React.PureComponent を用いることでパフォーマンスを向上させることができるようです。
+（参考記事内にもあるとおり銀の弾丸ではないようですが…）
+浅い比較 とは shouldComponentUpdate() は浅い比較によって変更検知を行う。
+とありましたが、浅い比較とはなんでしょうか。
+（shouldComponentUpdate() のデフォルトが浅い比較というだけで、オリジナルの比較方法を実装可能なようです）
+さきほどの参考記事にて説明されていました。
+浅い比較というのは、簡潔に述べるとオブジェクトの参照先が同じであれば等しいと見なすことです。
+参照先しか見ていないので、中身は見ていないということですね。
+（このような実装なのは、React の思想として、props や state といったデータは immutable であるべきだとしているからだと思います）</description></item><item><title>【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_meetup_for_backend_engineers_1/</link><pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_meetup_for_backend_engineers_1/</guid><description>Backend Engineer’s meetup ~マイクロサービスにおける認証認可基盤~ connpass ハッシュタグ：#merpay_meetup メルカリさん恒例のオリジナルドリンクもらいました
+1. マイクロサービスの内部通信における認証について 登壇者：@pospome さん
+スライド（日本語が消えてしまっていますが、ダウンロードしたら見れました）
+上記スライドの簡易メモ アカウント管理とログイン処理はそれぞれのチームに任せている
+SubjectID という 全サービス共通のID に変換して扱う メルカリでは、OIDCベースの認可の仕組みを採用
+RFCに書いてあるものと大差ないので、今回は マイクロサービスの内部通信における認証 について話す 全サービスは Gatwway を経由
+Gateway から Authority Service にくる Authority Service を認証基盤チームが管理
+外部からのリクエスト検証と内部通信用のトークンを生成している 内部トークンは毎リクエストごとに生成
+マイクロサービス間で使用されるトークンはリクエスト単位で同一 内部トークン用のSDKを提供
+Golangのみ対応 SDKを使うといろいろとよしなにしてくれる クレームをいい感じに取得 SubjectID のパースとかをいい感じにしてくれる マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる</description></item><item><title>【Go同miniConf】Golangの勉強会に参加してきた話</title><link>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</link><pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</guid><description>概要 CyberAgent ＆ merpay が共催した Golang のイベント
+Connpass情報 ハッシュタグ：#godo_miniconf （写真撮るの忘れた…）
+以下、発表まとめ
+1. マイクロサービスとMonoRepo 登壇者：江頭 宏亮さん（@_hiro511） 発表スライド リポジトリ管理について WinTicket というサービス開発・運用中
+36個のマイクロサービスで動いている
+マルチリポジトリ：マイクロサービスごとにリポジトリが別れている モノリポジトリ：ひとつのリポジトリ。WinTicket ではこっち モノリポジトリ Google, FB, Tiwtter, Uberが採用 メリット 依存管理をシンプルにできる マルチリポジトリの場合、複数のリポジトリに変更を加える必要があるし、変更を取り込むのが面倒 モノレポだとすべてのコードが一箇所にあるので変更が楽 一貫性のある変更 複数のサービスにまたがる変更においても、アトミックなコミットが可能 コードの共有と再利用が用意 common ディレクトリがあればできる 大きなリファクタリングが容易 ビルドとテストを効率良くしたいという モノリポジトリだと、ビルドとテストに時間がかかる ので、効率よくビルドとテストしたい
+Bazel（ベイゼル）：ビルド・テストツール Go, Andoroid, iOSなど様々な言語に対応 Googleが使っている（Googleの自社ツールがOSS化） 必要箇所だけビルド・テストする 速い スケーラブル 拡張可能 StarDarkという独自言語で設定定義 WinTicketではDockerビルドもこれ Golang with Bazel Bazel のインストール by brew WORKSPACEファイルの作成 外部の依存関係を記述 BUILDファイルを作成 ビルド方法を示したもの Gazzelを利用して自動生成可能 ディレクトリ構成例</description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
+「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
+さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。
+しかし、この2つのトークンの違いについて、
+いまいち理解ができていなかったので、今回は両者の違いを調べてみました。
+加えて、トークンについて調べる中で、
+OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。
+2つのトークンの違い アクセストークン と IDトークン、両者は役割が大きく異なります。
+アクセストークン：認可（リソースへのアクセスコントロール＝あるリソースへの権限（readやwriteなど）を持っているかどうか確認すること） IDトークン：認証（その人が誰かを確認すること） 名前のままでした。
+認可に使うためのいろいろな情報が詰まっているのがアクセストークンで、 認証に使うためのいろいろな情報が詰まっているのがIDトークンです。
+OpenID Connectが生まれた経緯 OAuth 2.0およびOpenID Connectについて調べていると、
+「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。
+どうしてOpenID Connectが必要になったのか、
+この辺の経緯について述べていきます。
+OAuth 2.0 は 認可 の仕組み まずは、OAuth 2.0について見ていきます。
+OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない
+のですが、実際にはOAuth 2.0を認証用途で使っているシステムは多く存在します。
+OAuth 2.0 で認証を行うことの問題点については、
+こちら の記事に詳しく書いてあります。
+上記記事より、OAuth 2.0 による認証の問題点は、
+クライアント（アプリケーション）側でトークンの正当性を確かめる術がない ことであるとわかります。
+なお、ここでいう「正当性」に関して補足しておくと、
+「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。
+つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。
+（トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）
+「OAuth 2.</description></item><item><title>【徒然なるままに】サービス発案における主観と客観のバランスについて</title><link>https://yyh-gl.github.io/tech-blog/blog/my_thinking_about_planning/</link><pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/my_thinking_about_planning/</guid><description>研修での サービス発案 をやった 新卒研修で サービス発案 について学び、実際に
+問題提議 ソリューション検討 サービスに落とし込む など、チームで作業しました。
+（今回考えたサービスを、今後チームで開発していきます）
+そして、一日考えたサービスをターゲット層となる人たちに 「こんなサービスどうですか？あったら欲しいですか？」といったアンケートを行いました。 返ってきた答えは「欲しくない」 が過半数でした。
+そのとき僕たちは 正直、意気消沈しました。
+ただ、こういう結果になった原因は明白でした。
+なぜかというと、この時、チーム内から多く出た声が
+「必死に考えたサービスだったのに」
+「絶対欲しいでしょこれ」
+「俺は欲しい」
+といった内容だったからです。
+ハッカソンでもあるあるですよね。
+自分たちが考えたサービスに愛着が出てきて、客観性がなくなっている状態。
+そうです。僕たちは客観的になれていなかったんです。
+それでもめげずに僕たちは動いた めそめそしていても仕方ないので、僕たちはアンケートを答えてくれた人に 話を聞きに行ってみることにしました。
+この行動が大正解でした。
+チーム外の人の話を聞くと、どういったところがだめだったのかが見えてきました。
+加えて、 自分たちもサービスを客観視することができるようになり、
+他にもだめなところが見えてきました。
+後、意外だったのですが、自分たちが特にどこに力を入れていて、
+どういった解決方法を取ろうとしているのか、熱量を持って伝えると、
+相手方が理解して、共感・納得してくれることがありました。
+つまり… サービスを提案する上で、第一に大事なのは 客観性 だと感じました。
+自分たちがどれだけいいものだと思っても、
+他の人々がいらないと言ったら、そのサービスは世の中には受け入れられません。
+つまり、客観的に見る ＝ 世の人々がなにに課題を感じているのか調査し、
+ソリューションを提供していくことが大事です。
+しかしながら、さきほど言ったとおり、
+熱量を持って伝えると、相手方が理解して、共感・納得してくれることもありました。
+こういうケースもあります。
+これは、多少主観的でも論理的に正しいことを熱量持って伝えることで、
+世の人々がまだ気づいていない課題に気づき、提案サービスの必要性を感じてもらえた瞬間だと思います。
+ただ、相手にサービスの良さを気づいてもらうには、
+サービスに対する絶対的自信（主観）がないと難しいですよね。
+すなわち、主観 も大事ってことですね。
+主観と客観のバランスが難しい ここまでの内容をまとめると 僕は「サービス発案において、主観 と 客観 どちらも大事」という結論に落ちつきました。
+でも、主観と客観のバランスってめちゃくちゃ難しくないですか？
+主観的意見もある程度は受け入れてもらえるんです。
+そして、そこがそのサービスのユニークな機能になると思います。</description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://yyh-gl.github.io/tech-blog/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/ogp/</guid><description>Twitter のリンクにサムネイル画像が表示されない このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
+はてなブログをやっていたときは、何もしなくてもサムネイルが表示されていました。
+トップ画像をよしなにサムネイルにしてくれるのかなぁっと思っていましたが違ったんですね…。
+どうやったらサムネイル画像が表示されるか Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、
+Open Graph Protocol（OGP） というものを設定する必要があります。
+OGP を設定するだけで、Twitter や Facebook でサムネイル付きのリンクを表示することができます。
+こちらのサイト で詳細が説明されています。
+OGP の設定 OGP の設定項目には以下のものがあります。
+og:title og:type og:url og:description og:image これらを HTML に meta タグで埋め込めば OK です。
+&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Golang + レイヤアーキテクチャ】DDD を意識して Web API を実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; こんな感じですね。
+これを head タグ内に埋め込みます。
+ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
+正確には対応していない言語が（めちゃくちゃ）ありました。
+このとおり、 Golang にも対応していませんでした…。
+もともと、このブログのテーマは Hugo Themes（Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
+シンタックスハイライト部分だけ個別に導入することにしました。
+Prism.js さっそく、「HTML シンタックスハイライト」で調べてみました。
+そしたら、だいたい以下の3つが出てきました。
+Prism.js highlight.js Google code-prettify どれにしようか迷ったのですが、見た目が一番好みだった Prism.js を使うことにしました。
+導入 導入方法については記事がたくさんあるので、そちらをご覧ください。
+公式ダウンロードページ 導入 参考記事 導入 参考記事 導入 参考記事 導入後 きれいですねー
+今回導入した Prism.js のプラグインは、
+Line Highlight：行指定した箇所をハイライトする機能（上記画像内では使用していません） Line Numbers：行番号を表示する機能 Show Language：右上に 言語名 を表示している機能 の3つです。
+困ったこと 行番号が表示されない 行番号を表示するには、
+&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt; コード &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; 上記コードのように、表示するコードスニペットに対して、
+line-numbers というクラスを付与してあげるだけでOKです。
+…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。
+したがって、prism.css を修正して行番号が他の要素の上に来るようにしました。
+リスト表示の行間が異様に広い Prism.js 導入後…</description></item><item><title>【mercari.go #8】メルカリの Golang に関する勉強会メモ</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</guid><description>mercari.go #8 connpass： リンク ハッシュタグ： #mercarigo 独自ルール： 懇親会のGルール 懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！ 雰囲気 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
+以降、自分用のメモを書き連ねます。
+詳細はスライドの方をご覧ください。
+1. Goで学ぶKnative 登壇者： @toshi0607 さん
+スライドリンク
+Knative Knative ＝ 最新のサーバーレス ワークロードをビルド、デプロイ、管理できる Kubernetes ベースのプラットフォーム AWS の Lmabda に近いことを k8s 上でできると解釈 登壇者含め、会場内で Knative を本番に導入している人はなし。
+まだ時期尚早っぽい k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供 k8s 上にのっかる。 Knative の構成 Serving Build Eventing 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠 登壇者は 機能実装に一層集中するための基盤 として注目している yml ファイルで定義した内容に基づいて コード生成 感想 終盤、 Knative の内部処理を コードリーディング していたのですが、
+見入ってしまいメモを忘れていました。。。</description></item><item><title>【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
+この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
+今回やること Golang のディレクトリ構成についていろいろと調べる中で、
+こちらの資料 がとても分かりやすかったので、
+今回はこちらを参考に Golang で Web API を作っていきたいと思います。
+加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャー を取り入れます。
+（内容はほぼレイヤードアーキテクチャになってしまいましたが…）
+DDD については、「DDD を Golang とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。
+パッケージ構成の参考になれば幸いです。
+（ですので、ドメインモデルは重度のドメイン貧血症に陥っていますｗ）
+釣りタイトルみたいになっちゃっててすみません🧝‍♀️
+環境 MacOS Mojave 10.14.6 Golang 1.12.5 なお、今回は、Gin や Mux などといったフレームワークは使わず、
+httprouter のみで薄く作っていこうと思います。
+Mux を使った実装は 僕の前のブログで紹介している のでよければどうぞ。
+・ ・
+・
+では、早速本題に入っていきましょう。
+採用アーキテクチャ：レイヤードアーキテクチャ 参考記事内 で紹介されているのは レイヤードアーキテクチャ をベースに いろいろカスタマイズされたものらしいです。
+クリーンアーキテクチャに似たアーキテクチャだとか。
+ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。
+DDD の文脈だと アプリケーション層 と呼ばれますが、
+アプリケーションって意味が広くて分かりづらいので、
+本プロジェクトでは ユースケース という単語を使用します。
+とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 DDD を意識して Web API を実装していこうと思います。</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://yyh-gl.github.io/tech-blog/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
+$ export GOPATH=/Users/yyh-gl/workspaces/Go $ echo $GOPATH /Users/yyh-gl/workspaces/Go $ go env GOPATH /Users/yyh-gl/go/1.12.5 GOPATH が書き換わらない。
+解決方法 社内Slack で適当につぶやいたら、同期が助けてくれた（神）
+画像にある Qiita のリンクが こちら
+ちなみに僕の環境の goenv は バージョン 1.12.5 だったので、2系に上げなくても発生する模様。
+（追記：19/06/14）またまた同期が教えてくれました。
+こちらの記事 によると、 goenv による管理は バージョン 1.12 からとのこと。
+結論：goenv が GOPATH を管理しようとしてた
+goenv の管理から外してやるには GOENV_DISABLE_GOPATH=1 にしてやればOK。
+僕は zshrc に以下のとおり追記しました。
+export GOENV_DISABLE_GOPATH=1
+（zshrc の読み込み直しを忘れずに）
+結果 $ go env GOPATH /Users/yyh-gl/workspaces/Go 変わった。よかった</description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://yyh-gl.github.io/tech-blog/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/evans_ddd_1/</guid><description>DDD の勉強始めます 新卒研修を受ける中で DDD が出てきて、勉強したくなったので、
+『エリック・エヴァンスのドメイン駆動設計』（エリック・エヴァンス著，今関 剛 監訳，和智 右桂、牧野 祐子 訳）を読んでいこうと思います。
+今回は第1部「ドメインモデルを機能させる」の 1章 と 2章 をまとめます。
+注意： 僕の理解をそのままメモとして書き連ねていきます。
+したがって、誤った理解もあると思うので、そのときはDMとかでご指摘お願いします！
+1章 知識をかみ砕く ソフトウェアを作るときに、はじめから対象を十分に理解している開発者などいない。
+対象 ＝ これから作るソフトウェアで実現する作業 ＝ ドメイン
+したがって、対象について詳しい人（ドメインエキスパート）と開発者で 十分に話し合って理解を深めることが重要である。
+理解したことはモデルとして書き出す。 そして、ドメインエキスパートは足りないところがあれば追加で説明する。
+開発者は分からないところがあれば質問する。
+上記工程を何度も繰り返し、その都度得た知識をモデルに落とし込んでいく。
+→ 継続的学習（継続的学習は開発が始まった後でも行う）
+はじめから対象を如実に表したモデルを作れることは滅多にない。
+ドメインエキスパート と 開発者 では見ている視点が違うので少し話を聞いたぐらいで 完璧なモデルを作ることができないのは当たり前である。
+だからこそ、対話を通して、互いに疑問点や不要な点を洗い出し、洗練する必要がある。
+これが 知識のかみ砕き である。
+1章 まとめ ドメインエキスパートと開発者が話し合ってドメインをモデルに落とし込んでいく 用語の説明や不足点の追加など とにかく話す ドメイン：ソフトウェア化する対象（業務やサービスなど、ソフトウェア化の対象となりうる万物） 一発で完璧なモデリングはできないから、継続的に改善していく 2章 コミュニケーションと言語の使い方 ドメインエキスパートが使う専門用語を開発者は理解できないし、
+開発者が使う専門用語をドメインエキスパートは理解できない。
+ドメインエキスパートと開発者の両者が同じ意味だと思って使っていたとしても たいていの場合、差異がある。
+このような差異があると 通訳 が必要となる。
+通訳はコミュニケーションを鈍らせ、知識のかみ砕きを沈滞させる。
+共通言語としてのモデル 通訳をなくすために、 モデルを言語の骨格として使用 する。</description></item><item><title>【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた</title><link>https://yyh-gl.github.io/tech-blog/blog/bigdata_processing/</link><pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/bigdata_processing/</guid><description>はじめに 社内で伊藤 直也さんと田中 慎司さんが書かれた
+『Web開発者のための大規模サービス技術入門』を輪読しました。
+今回は、僕が担当した 第5回の「大規模データ処理[実践]入門」についてまとめます。
+なお、本書は2010年に出版された本であるため、
+少なくとも第5回の内容は今では当たり前のことという印象を受けました。
+それでも、しっかりと文章で学んでおくことは大事だと思うのでまとめます。
+★印は個人メモです。
+以下まとめ
+大量なデータを扱う場面 全文検索やデータマイニングなど RDBMSで処理できない規模のデータを
+処理したい場面は多く存在します。
+では、RDBMSが使えない規模のデータをどう処理すればいいでしょうか。
+データを抽出 結論から言うと、RDBMSで扱うことができないデータは、適宜RDBMSから 抽出 して利用します。
+具体的には バッチ処理でRDBMSからデータを抽出し、
+別途インデックスサーバのようなものを作って、そこに入れていきます。
+★ ここで言っているインデックスサーバというのは、例えば全文検索用であれば
+「検索用にチューニングした（検索しやすくした）データ構造」と考えるべきでしょう。
+★ 最近は、Fluentd を使用してログを外部に吐き出してから解析したりしますよね。
+それと考え方は一緒だと思います。
+インデックスサーバにはRPC（Remote Procedure Call）を使ってアクセスします。
+（なお、RPCと言いましたが、現在では Web API でのアクセスが一般的なので、以降、 Web API を例に使用します）
+イメージとしては下図のようになります。
+用途特化型のインデクシング 上述した方法を、はてな社（著者がはてな社出身の方なのでよく出てきます）では、
+用途特化型インデクシング と呼ぶそうです。
+用途特化型インデクシングとRDBMS RDBMS はデータソートや統計処理、JOIN など、データに対して様々な処理を行うことができます。
+しかし、汎用的故に、特定の目的だけに使うときには、それ用にチューニングしたデータ構造、
+すなわち 用途特化型インデクシング を使う方が圧倒的に速くなります。
+★ 先ほど言っていた Fluentd を用いたログ解析システム は ログ解析用にチューニングしたものと言えるでしょうか。
+用途特化型インデクシングの使用例： 全文検索エンジン 全文検索エンジンでは、以下3点の要求をどう満たすか 考える必要があります。</description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/good_api/</guid><description>いいねボタンがないブログ 本ブログ、いいねボタンが ありませんでした。
+だから、作っちゃいました。っていう記事です。
+構成 上図のように
+記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。
+記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。
+APIサーバは Rails で実装しました。
+（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）
+APIサーバ Rails で APIサーバを建てる方法に関しては、
+以前に Qiita で 入門記事 書いたのでそちらをご覧ください。
+（少し古い記事ですが、そんなに問題はないはずです）
+DB にテーブル作成 今回、ブログ記事を管理するために、下記のテーブルを作成しました。
+mysql&amp;gt; describe blog_posts; +------------+--------------+------+-----+---------+----------------+ | Field | Type | Null | Key | Default | Extra | +------------+--------------+------+-----+---------+----------------+ | id | bigint(20) | NO | PRI | NULL | auto_increment | | title | varchar(255) | NO | | NULL | | | count | varchar(255) | NO | | 0 | | | created_at | datetime | NO | | NULL | | | updated_at | datetime | NO | | NULL | | +------------+--------------+------+-----+---------+----------------+ 5 rows in set (0.</description></item><item><title>スクラムについて学んだ話</title><link>https://yyh-gl.github.io/tech-blog/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/scrum_entry/</guid><description>スクラムとは 概要 変化に対し柔軟に開発を運用するためのアジャイルフレームワーク
+開発に常に優先度をつける
+仕事を進めることを主眼に考え、そのために改善を常に行う
+ロールが3つあり、協調しあい開発する
+プロダクトオーナー スクラムチーム 開発チーム POが満足するアウトプットがあったかのみを検証
+5つのイベントがある（後述）
+2つのアウトプット（成果物）がある（後述）
+特徴 非常にシンプルなフレームワーク
+定められたルールが他の手法より少なくアレンジが容易 実践的で経験主義
+世界的に普及している
+アジャイル開発とは アジャイルとスクラムの違い スクラムとはアジャイル開発手法のひとつ
+他にもXPとかがある
+アジャイルソフトウェア開発宣言 ここにいろいろな言語で宣言されています
+この宣言では以下のことを重要視している
+個人と対話 動くソフトウェア 顧客との協調 変化への対応 スクラムとウォータフォールの違い ウォータフォール
+計画、設計、実装、テストが一方向に進む リリース直前の実装や仕様に漏れがあると最悪の場合プロジェクトがぽしゃる 運用・保守には強い。新規案件向けではない スクラム</description></item><item><title>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/terraform_ecs/</link><pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/terraform_ecs/</guid><description>Terraform とは 最近流行りの IaC です。
+つまり、コードベースでインフラリソースを管理するためのツールです。
+中でもTerraform はクラウドに特化した IaC ツールという立ち位置です。
+AWSやGCP, Azure などの他に様々なクラウドプラットフォームに対応しています。
+（ちなみに、Vagrant 開発元の HashiCorp 社が開発しています）
+今回やること Terraform で AWS 上に下記のような環境を自動構築します。
+ECS でデプロイされるサービスは ECR から引っ張ってくるようにします。
+そして、そのサービスは Aurora を使うシステムを想定しています。
+【⚠注意⚠】上記構成はお金が発生します！ まったくもって無料枠ではありません！
+【⚠注意⚠】今回独自ドメインを使用していますが、ドメイン取得に関しては省略しています。
+今回やる内容は… 僕が所属する会社の研修資料を参考に進めています。
+資料を作成してくださった@_y_ohgiさんに感謝。
+自動構築プロセス全体で使用する共通設定を定義 まず、 main.tf を作成し、以下のとおり共通設定を定義していきます。
+# AWS を利用することを明示 provider &amp;quot;aws&amp;quot; { # リージョンを設定 region = &amp;quot;ap-northeast-1&amp;quot; } # これから作成するリソースに付与する名前のプリフィックスを設定 # グローバル変数的な立ち位置で定義 variable &amp;quot;prefix&amp;quot; { default = &amp;quot;sample-project&amp;quot; } provider で使用するクラウドを指定することができます。
+variable は変数定義です。
+${var.prefix} と書くことで default で指定した内容が展開されます。</description></item><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/android_push/</link><pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/android_push/</guid><description>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので
+なにか困ったときはそこを一度見てみてください。
+tl;dr Firebase使ってAndroidアプリにプッシュ通知を実装した フォアグラウンドとバックグラウンドで表示方法が異なる めちゃくちゃ簡単 開発環境 macOS Mojave 10.14.4 Android Studio 3.4.1 Gradle 3.4.1 Java 1.8.0_202 Kotlin 1.3.21 Firebaseに登録 Firebaseを使用するためには登録が必要です。
+Googleアカウントを持っている方なら公式サイトから簡単に登録できます
+Firebaseにプロジェクト作成 プロジェクト登録ページでプロジェクトを登録します。
+プロジェクト名は特に指定はありません。ご自由にどうぞ。
+アプリ情報を登録する プロジェクト選択後のホーム画面より 「Project Overview」 をクリック。
+画面の指示に従って進めていてください。
+デバッグ用の署名証明書 SHA-1 の取得方法 以下コマンドを実行
+Mac/Linux
+keytool -list -v \ -alias androiddebugkey -keystore ~/.android/debug.keystore Windows
+keytool -list -v \ -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore パスワード入力
+パスワードは android です。
+表示される SHA-1 をメモ</description></item><item><title>【エンジニアリング組織論への招待】メンタリングの技術</title><link>https://yyh-gl.github.io/tech-blog/blog/engineering_organization_theory_mentoring/</link><pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/engineering_organization_theory_mentoring/</guid><description>概要 今回は、広木 大地さんが書かれた 『エンジニアリング組織論への招待 不確実性に向き合う思考と組織のリファクタリング』 という本から、
+2章「メンタリングの技術」についてまとめます。
+（初投稿の内容が技術系じゃなくてチームマネジメント系かよとか言わないでくださいね）
+最初に覚えておいてほしいこと メンタリングは、自律的な人材を育むために行う。
+そのために、下記3点の状態にメンティ自身からなれるように導く。
+自分の気がつかなかった問題に気がつくようになる 認知の歪みによる感情と問題の癒着を切り離せる 答えではなく、次の一手を生み出す行動が取れるようになる これらがとても重要です。
+以下いろいろな話が出てきますが、結局は上記3点の状態を実現するための方法です。
+ここをしっかりと意識して読んでいただければ、
+より一層理解が深まると思います。
+以下まとめ （★マークは個人的解釈・感想です）
+そもそもメンタリングとは 相手を上から押し付けるような教育方法ではない 相手の考え方を少しずつ変えることで、問題解決の力を育む手法 対話を通じて、以下の2点を行い、相手を成長させる。
+歪んだ認知を補正 次の行動を促進 メンタリングと聞くと、
+大学で何年も学ばないと身に着けられないような技術であると思いがちだが、
+体得すればだれでもできるようになる。
+エンジニアリングにおけるメンタリングの重要性 エンジニアリングは知識が全てではない エンジニアリングでは技術的な課題がよく取り上げられるが、
+技術的な課題というのは心理的な課題と密接に関係している。
+例えば、
+ソフトウェア開発はチームプレイ ★ 技術的な課題解決だけでなく、人間関係とかもあるってことかな
+各個人の開発における問題解決は、自分自身との対話によって制御するもの ★ 自身を制すものがエラーを制す
+上記のようにエンジニアリングには心理的な課題も存在する。
+プロダクト開発では 不確実性を排除する ことがとても重要である。
+したがって、不確実性のひとつである心理的な課題は排除すべき対象である。
+★ だから、メンタリングが重要なんですね。
+メンタリングは 自ら考える人材を作る ためのテクニック 自立型人材と依存型人材 自ら考える人材を自立型人材、そうでない人材を依存型人材とすると、
+それぞれ下記のような特徴がある。
+自立型人材 自ら問題を発見し、解決することができる 問題について、自分ごととして捉えている 問題の根本的原因は自分にあると考える 改善のために行動できる 依存型人材 問題を与えられてから考える 問題と解決策を渡されてから動ける 問題の根本的原因は他人にあると考える 改善のために行動できず、他人のせいにしてしまう 両人材の境界線 多くの人は時には自立型人材、しかし、ある場面では依存型人材になってしまう。</description></item><item><title>Hello Wolrd</title><link>https://yyh-gl.github.io/tech-blog/blog/hello_world/</link><pubDate>Wed, 22 May 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/hello_world/</guid><description>技術ブログはじめます 不定期で学んだことをアウトプットしていきます。
+サーバサイドのネタを中心に、フロントやインフラ（クラウド）の話も書いていく予定です。
+まさかり大歓迎です。
+自己紹介 19新卒として社会人1年目を始めたエンジニアです。
+学生時代はインターンやアルバイトで
+ECサービスやスマホゲームのバックエンドなどを開発していました。
+現在は、フルスタックエンジニア目指して、日々修行中。
+（メインはサーバサイド）
+学んだことをアウトプットする場として
+本ブログを始めました。
+頑張ります</description></item></channel></rss>
