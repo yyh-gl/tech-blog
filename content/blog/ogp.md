@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Web全般"]
-date = "2019-06-17"
+date = "2019-06-17T00:00:00Z"
 description = "OGP大事"
 title = "【OGP】リンク先のサムネイル画像を表示できるようにした話"
 type = "post"

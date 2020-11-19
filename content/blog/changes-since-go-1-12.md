@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go", "簡単まとめ"]
-date = "2020-02-03"
+date = "2020-02-03T00:00:00Z"
 description = "Go1.14が楽しみ"
 title = "【簡単まとめシリーズ】Go1.12からの変更点"
 type = "post"

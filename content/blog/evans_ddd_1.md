@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["DDD", "アーキテクチャ", "読書まとめ"]
-date = "2019-06-11"
+date = "2019-06-11T00:00:00Z"
 description = ""
 title = "【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1"
 type = "post"

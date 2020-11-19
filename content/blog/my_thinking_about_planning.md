@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["ポエム"]
-date = "2019-06-18"
+date = "2019-06-18T00:00:00Z"
 description = "サービス発案って難しい…"
 title = "【徒然なるままに】サービス発案における主観と客観のバランスについて"
 type = "post"

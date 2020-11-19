@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["React", "TypeScript", "Advent Calendar"]
-date = "2019-12-02"
+date = "2019-12-02T00:00:00Z"
 description = "TypeScript Advent Calendar 2019 2日目"
 title = "【React+TypeScript】TypeScript入門"
 type = "post"

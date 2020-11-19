@@ -1,7 +1,7 @@
 +++
 author = "yyh-gl"
 categories = ["Go"]
-date = "2020-04-26"
+date = "2020-04-26T00:00:00Z"
 description = ""
 title = "【Golang】jsonパッケージの知っておくと便利な機能"
 type = "post"
