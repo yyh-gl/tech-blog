@@ -183,3 +183,4 @@ disableLanguages       = []
   mastodon         = ""
   # Email
   email            = ""
+  speaker_deck     = "yyh_gl"
