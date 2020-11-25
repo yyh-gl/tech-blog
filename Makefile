@@ -21,7 +21,7 @@ new: ## 記事テンプレート生成
 	@echo ''
 	open ./static/img/tech-blog/`date +"%Y/%m"`/${title}
 	@echo ''
-	open http://localhost:1313/tech-blog/
+	open http://192.168.2.200:1313/tech-blog/
 
 .PHONY: post
 post: ## 記事を投稿
