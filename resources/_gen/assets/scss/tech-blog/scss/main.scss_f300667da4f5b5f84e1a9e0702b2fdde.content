@@ -17,6 +17,31 @@
 /* ==========================================================================
    Variables
    ========================================================================== */
+/* Base Color */
+@media (prefers-color-scheme: no-preference) {
+  :root {
+    --background-main: hsl(0, 0%, 100%);
+    --background-sub: hsl(0, 0%, 96%);
+    --header-font-color: hsl(0, 1%, 23%);
+    --body-font-color: hsl(0, 0%, 20%);
+    --heder-border-color: hsla(0, 0%, 70%); } }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-main: hsl(0, 0%, 100%);
+    --background-sub: hsl(0, 0%, 96%);
+    --header-font-color: hsl(0, 1%, 23%);
+    --body-font-color: hsl(0, 0%, 20%);
+    --heder-border-color: hsla(0, 0%, 70%); } }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-main: hsl(0, 2%, 15%);
+    --background-sub: hsl(0, 2%, 20%);
+    --header-font-color: hsl(0, 0%, 80%);
+    --body-font-color: hsl(0, 0%, 80%);
+    --heder-border-color: hsl(0, 0%, 70%); } }
+
 /* Font */
 /* Background & Border */
 /* Other */
@@ -32,7 +57,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 html {
-  color: #3b3a3a;
+  color: var(--header-font-color);
   font-size: 1em;
   line-height: 1.4; }
 
@@ -105,7 +130,7 @@ textarea {
    Theme Basic Tag Styles
    ========================================================================== */
 body {
-  background: whitesmoke;
+  background: var(--background-sub);
   margin-top: 3.5em;
   max-width: 100vw;
   -ms-overflow-style: scrollbar; }
@@ -122,7 +147,7 @@ input,
 button,
 select,
 textarea {
-  color: #333333;
+  color: var(--body-font-color);
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   line-height: 1.75em; }
 
@@ -141,7 +166,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #3b3a3a;
+  color: var(--header-font-color);
   font-family: "Raleway", Helvetica, sans-serif;
   letter-spacing: 0.25em;
   line-height: 1.65; }
@@ -164,7 +189,7 @@ h6 {
   border-bottom: none; }
 
 .post h1 {
-  border-bottom: double 0.3em rgba(161, 161, 161, 0.3);
+  border-bottom: solid 0.1em var(--heder-border-color);
   margin-top: 2.5em; }
 
 .post h2, .post h3, .post h4, .post h5, .post h6 {
@@ -219,7 +244,7 @@ input[type="button"],
 .button {
   background-color: transparent;
   border: 1px solid rgba(161, 161, 161, 0.3);
-  color: #3b3a3a;
+  color: var(--header-font-color);
   cursor: pointer;
   display: inline-block;
   font-family: "Raleway", Helvetica, sans-serif;
@@ -247,7 +272,7 @@ input[type="button"],
       background-color: rgba(46, 184, 172, 0.05); }
 
 label {
-  color: #3b3a3a;
+  color: var(--header-font-color);
   display: block;
   font-size: 0.9em;
   font-weight: 700; }
@@ -297,7 +322,7 @@ textarea {
   opacity: 1; }
 
 table {
-  background-color: white;
+  background-color: var(--background-main);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin: 1em auto;
   width: 75%; }
@@ -311,12 +336,12 @@ table {
         background-color: #ededed;
         display: table-header-group; } }
   table > tbody > tr {
-    border-bottom: 1px solid whitesmoke;
+    border-bottom: 1px solid var(--background-sub);
     text-align: center;
     transition: 0.2s ease-in-out; }
     @media (min-width: 768px) {
       table > tbody > tr:nth-child(even) {
-        background-color: whitesmoke; }
+        background-color: var(--background-sub); }
       table > tbody > tr:hover {
         background-color: rgba(46, 184, 172, 0.25); } }
     table > tbody > tr > td {
@@ -353,7 +378,7 @@ table {
             table > tbody > tr > td:first-child::after {
               display: none; } }
       table > tbody > tr > td:not(:first-child) {
-        border-bottom: 1px solid whitesmoke;
+        border-bottom: 1px solid var(--background-sub);
         opacity: 0;
         position: absolute;
         text-align: right;
@@ -397,7 +422,7 @@ table {
     padding: 0.5em; }
 
 figure {
-  background: white;
+  background: var(--background-main);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin: 10px auto;
   max-width: 85%;
@@ -418,7 +443,7 @@ figcaption {
    Classes
    ========================================================================== */
 .post {
-  background: white;
+  background: var(--background-main);
   margin: 1.5em auto;
   padding: 1em;
   max-width: 55em; }
@@ -669,7 +694,7 @@ figcaption {
   padding: 0 1.5em; }
 
 .flyout-menu {
-  background-color: white;
+  background-color: var(--background-main);
   border-left: 1px solid rgba(161, 161, 161, 0.3);
   height: 100%;
   margin-top: 3.5em;
@@ -757,7 +782,7 @@ figcaption {
     vertical-align: middle; }
 
 .search-input {
-  background-color: white;
+  background-color: var(--background-main);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   height: 0px;
   opacity: 0;
@@ -818,7 +843,7 @@ figcaption {
       padding: 0 1.25em .1em; }
 
 .mini-post {
-  background: white;
+  background: var(--background-main);
   border: 1px solid rgba(161, 161, 161, 0.3);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -884,7 +909,7 @@ figcaption {
    IDs and Grid
    ========================================================================== */
 #site-header {
-  background-color: white;
+  background-color: var(--background-main);
   border-bottom: 1px solid rgba(161, 161, 161, 0.3);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   height: 3.5em;
@@ -1364,7 +1389,7 @@ figcaption {
   border-radius: 4px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   letter-spacing: 0;
-  color: white;
+  color: var(--background-main);
   text-align: center;
   transition: background-color 0.2s ease-in-out; }
   .share-btn:active {
@@ -1373,7 +1398,7 @@ figcaption {
     box-shadow: none;
     color: #e6e6e6; }
   .share-btn:hover {
-    color: white; }
+    color: var(--background-main); }
 
 /* Share Branding */
 .twitter {
@@ -1524,7 +1549,7 @@ figcaption {
   *,
   *::before,
   *::after {
-    background: white !important;
+    background: var(--background-main) !important;
     color: black !important;
     /* Black prints faster */
     box-shadow: none !important;

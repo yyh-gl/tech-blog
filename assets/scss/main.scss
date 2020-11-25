@@ -20,6 +20,34 @@
    Variables
    ========================================================================== */
 
+/* Base Color */
+
+:root{
+  @media (prefers-color-scheme: no-preference) {
+    --background-main: hsl(0, 0%, 100%);
+    --background-sub: hsl(0, 0%, 96%);
+    --header-font-color: hsl(0, 1%, 23%);
+    --body-font-color: hsl(0, 0%, 20%);
+    --heder-border-color: hsla(0, 0%, 70%);
+  }
+  
+  @media (prefers-color-scheme: light) {
+    --background-main: hsl(0, 0%, 100%);
+    --background-sub: hsl(0, 0%, 96%);
+    --header-font-color: hsl(0, 1%, 23%);
+    --body-font-color: hsl(0, 0%, 20%);
+    --heder-border-color: hsla(0, 0%, 70%);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    --background-main: hsl(0, 2%, 15%);
+    --background-sub: hsl(0, 2%, 20%);
+    --header-font-color: hsl(0, 0%, 80%);
+    --body-font-color: hsl(0, 0%, 80%);
+    --heder-border-color: hsl(0, 0%, 70%);
+  }
+}
+
 /* Font */
 
 $header-font: "Raleway", Helvetica, sans-serif;
@@ -27,20 +55,22 @@ $body-font: "Source Sans Pro", Helvetica, sans-serif;
 $code-font: "Courier New", monospace;
 $fa-free-font: "Font Awesome 5 Free";
 $fa-brands-font: "Font Awesome 5 Brands";
-$header-color: 	hsl(0, 1%, 23%);
+$header-color: 	var(--header-font-color);
 $accent-color: 	hsl(175, 60%, 45%);
 $accent-hover: hsla(175, 60%, 45%, 0.25);
 $warning-color: hsl(332, 60%, 45%);
 $warning-hover: hsla(332, 60%, 45%, 0.25);
 $utility-gray: hsl(0, 0%, 67%);
-$utility-gray-2: 	hsl(210, 13%, 50%);
-$utility-white: hsl(0, 0%, 96%);
+$utility-gray-2: hsl(210, 13%, 50%);
+$utility-white: var(--background-sub);
 
 /* Background & Border */
 
-$white: hsl(0, 0%, 100%);
+$white: var(--background-main);
+$dark-white: hsl(0, 0%, 90%);
 $black: hsl(0, 0%, 0%);
 $border-color: hsla(0, 0%, 63%, 0.3);
+$header-border-color: var(--heder-border-color);
 $input-color: hsla(0, 0%, 63%, 0.07);
 $active-color: hsla(175, 60%, 45%, 0.05);
 $primary-border: 1px solid $border-color;
@@ -297,7 +327,7 @@ input,
 button,
 select,
 textarea {
-  color: hsl(0, 0%, 20%);
+  color: var(--body-font-color);
   font-family: $body-font;
   line-height: 1.75em;
 }
@@ -347,7 +377,7 @@ h6 {
   }
   
   h1 {
-    border-bottom: double 0.3em $border-color;
+    border-bottom: solid 0.1em $header-border-color;
     margin-top: 2.5em;
   }
 
@@ -1611,7 +1641,7 @@ figcaption {
     position: relative;
     top: 2px;
     box-shadow: none;
-    color: darken($white, 10%);
+    color: $dark-white;
   }
   &:hover {
     color: $white;
