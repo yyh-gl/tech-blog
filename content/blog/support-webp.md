@@ -4,7 +4,7 @@ author = "yyh-gl"
 categories = ["Web全般"]
 tags = ["Tech"]
 date = 2020-11-26T13:50:31+09:00
-description = "macOS Big Surにしないと表示されない😇"
+description = "Safariはv14からじゃないと表示できない😇"
 type = "post"
 draft = false
 [[images]]
