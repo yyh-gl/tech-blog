@@ -42,3 +42,4 @@ create-ogp: ## OGP画像を生成
 	fi
 	tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png content/blog/${title}.md
 	cwebp static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png -o static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.webp
+	rm -f static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png
