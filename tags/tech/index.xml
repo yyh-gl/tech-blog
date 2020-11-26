@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワードが使用可能です。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 26 Nov 2020 13:50:31 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://yyh-gl.github.io/tech-blog/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
+まずはサムネ画像をWebPに変えてみました。
+WebPとは、Googleが開発しているオープンな静止画像フォーマットで、
+トラフィック量軽減と表示速度短縮を目的しています。 （wikiから拝借）
+WebPを採用した結果 以下のツイートのとおりです。
+たまたま100が撮れただけで、もう一回テストしみると少し落ちました。
+それでも90台はキープできていそうです。
+個人ブログ（Desktop版）のPerformanceが78だったので、画像をwebpに変えたら一気に100になった🎊
+（モバイルは未だに70切ってる😇） pic.twitter.com/VNxztIsR28
+&amp;mdash; hon-D (@yyh_gl) November 19, 2020 Safariでは注意が必要 多くのブラウザでWebPへの対応が既に完了しています。
+ただし、Safariに関してはv14でようやく対応しました。
+対応状況
+Safari v14は2020年9月17日（日本時間）にリリースされたばかりなので、
+まだ画像をちゃんと見れないユーザが多く存在すると思われます。
+リリースノート
+Safariのwebp対応ってバージョン14からだったんだ😇
+自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
+&amp;mdash; hon-D (@yyh_gl) November 26, 2020 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
+嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワードが使用可能です。
 機能としては、Switch文における次の節（caseやdefault）に移動するというものです。（参考）
 言葉で説明するよりも、サンプルコードを見てもらった方がイメージがつきやすいと思います。
 package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground
