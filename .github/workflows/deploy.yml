@@ -24,10 +24,10 @@ jobs:
           path: ~/.npm
           key: cache-npm
         
-#      - name: Lint
-#        run: |
-#          npm install textlint textlint-rule-preset-ja-technical-writing
-#          git diff --name-only HEAD~ | xargs $(npm bin)/textlint
+      - name: Lint
+        run: |
+          npm install textlint textlint-rule-preset-ja-technical-writing
+          git diff --name-only HEAD~ | xargs $(npm bin)/textlint
           
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
