@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2020年11月05日】
+【最終更新日：2020年11月30日】
 
 
 # いま
@@ -192,6 +192,7 @@ DMM.comに入社しました。
 
 - [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
 - [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
+- [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜<br>『事業をグロースさせるためにエンジニアができること』](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
 
 
 # 記事
