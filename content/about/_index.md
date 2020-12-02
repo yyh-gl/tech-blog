@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2020年11月30日】
+【最終更新日：2020年12月02日】
 
 
 # いま
@@ -61,17 +61,8 @@ DMM.com で働くエンジニアです。
 ## フロントエンド
 
 - React 
-- Vue.js
 - HTML + CSS + JavaScript
 - Twig
-
-
-## ネイティブ
-
-- Kotlin
-- Swift
-- RxSwift
-- React Native
 
 
 ## テスト
@@ -110,13 +101,9 @@ DMM.com で働くエンジニアです。
 
 ## CI/CD
 
+- CircleCI
 - GitHub Actions
 - Jenkins
-- CircleCI
-
-## パフォーマンスチューニング
-
-- Gatling
 
 ## 設計
 
