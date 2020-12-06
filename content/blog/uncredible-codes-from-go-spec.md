@@ -1,32 +1,35 @@
 <!-- textlint-disable -->
+
 +++
 title = "The Go Programming Language Specificationで知った「こんなことできるだ」を紹介"
 author = ["yyh-gl"]
 categories = ["Go"]
 tags = ["Tech"]
-date = 2020-12-06T20:43:42+09:00
+date = 2020-12-08T00:00:00+09:00
 description = "Go 5 Advent Calendar 2020 13日目"
 type = "post"
-draft = true
+draft = false
 [[images]]
   src = "img/tech-blog/2020/12/uncredible-codes-from-go-spec/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
+
 <!-- textlint-enable -->
+
 
 本記事は『[Go 5 Advent Calendar 2020 13日目](https://qiita.com/advent-calendar/2020/go5)』の記事です。
 
 
 # Go Language Specification輪読会
 
-現在、[Go Language Specification輪読会](https://gospecreading.connpass.com/)という、<br>
+現在、[Go Language Specification輪読会](https://gospecreading.connpass.com/)という、
 Goの言語仕様を読んでいく会に参加しています。
 
-今回は、そんな輪読会で知った「こんなことできるんだ！？」となったコードを解説付きで紹介していきます。<br>
+今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。<br>
 （挙げだすときりがないので、5個ほど選んで紹介します）
 
-**ちなみに、現場では使えないコードです😇**
+**ちなみに、だいたいのコードは現場で使うと怒られそうです😇**
 
 
 # 1. Comments
@@ -57,9 +60,9 @@ https://play.golang.org/p/9Dun0LiT5N5
 
 > A general comment containing no newlines acts like a space.
 > 
-> 改行を含まない一般的なコメントはスペースのように作用する。
+> 改行を含まないgeneral commentはスペースのように作用する。
 
-（一般的なコメントとは`/**/`で囲われたコメントのことを指します）
+（general commentとは`/**/`で囲われたコメントのことを指します）
 
 よって、先程のコードは以下と同じということです。
 
@@ -140,10 +143,10 @@ Identifierについて、[Spec](https://golang.org/ref/spec#Identifiers)を参�
 > 
 > いくつかの識別子は事前に宣言されています。
 
-今回取り上げた`false`はこの事前宣言されたIdentifierです。<br>
+今回取り上げた`false`はこの事前宣言されたIdentifierに該当します。<br>
 （事前宣言されているIdentifier一覧は[こちら](https://golang.org/ref/spec#Predeclared_identifiers)）
 
-事前に宣言されているだけで、以下のコードの`hoge`となんら変わりはありません。
+事前に宣言されているだけで、以下のコードの`hoge`と変わりはありません。
 
 ```go
 package main
@@ -167,7 +170,8 @@ func main() {
 > 以下のキーワードは予約されており、識別子として使用することはできません。
 
 とあります。<br>
-よって、下記のとおり変更できません。
+よって、下記のとおり変更できません。<br>
+（`default`はKeywordです）
 
 ```go
 package main
@@ -183,8 +187,8 @@ https://play.golang.org/p/Cxuolg_b7Xx
 
 <br>
 
-では、`false`の話に戻しますが、先述のとおり、`false`はIdentifierです。<br>
-したがって、開発者は自由に変更できるため、最初に示したコードが成り立つわけです。
+`false`の話に戻しますが、先述のとおり、`false`はKeywordではなく、Identifierです。<br>
+Identifierは自由に変更できるため、最初に示したコードが成り立つわけです。
 
 
 # 3. Slice types
@@ -205,10 +209,11 @@ func main() {
 ```
 https://play.golang.org/p/inbRV8SWfNO
 
-上記のコードですが、`fmt.Println(b[0:4])`の出力結果に違和感がないでしょうか。
+一度実行してみてください。<br>
+`fmt.Println(b[0:4])`の出力結果に違和感がないでしょうか。
 
-`b`は`a[1:3]`＝`{1, 2}`のはずです。<br>
-実際、`fmt.Println(b)`の表示はそうなっています。<br>
+`b`＝`a[1:3]`＝`{1, 2}`のはずです。<br>
+実際、`fmt.Println(b)`の出力結果はそうなっています。<br>
 よって、`b[0:4]`は取れないはずです。
 
 しかし、実行してみると`b[0:4]`が取れています。
@@ -219,7 +224,7 @@ https://play.golang.org/p/inbRV8SWfNO
 
 > A slice is a descriptor for a contiguous segment of an underlying array and provides access to a numbered sequence of elements from that array.
 > 
-> スライスは、基底となる配列の連続したセグメントの記述子であり、その配列の要素の番号付きシーケンスへのアクセスを提供します。
+> スライスは、underlying arrayの連続したセグメントの記述子であり、そのunderlying arrayの要素の番号付きシーケンスへのアクセスを提供します。
 
 とあります。
 
@@ -232,24 +237,107 @@ https://play.golang.org/p/inbRV8SWfNO
 b := a[1:3]
 ```
 
-こうしたときに`b`の後ろには`[5]int{0, 1, 2, 3, 4}`がいることになります。<br>
-（ただし、実際にアクセスできるのは`{1, 2, 3, 4}`のみ）
+こうしたときに`b`の後ろには`[5]int{0, 1, 2, 3, 4}`がいることになります。
 
-したがって、`b[0:4]`の範囲にもアクセスできたというわけです。
+実際にアクセスできるのは`{1, 2, 3, 4}`だけなので、<br>
+厳密には背後に`{1, 2, 3, 4}`という要素を持った配列がいるように思えるでしょう。
 
-
-## 4. Method declarations
-
-https://play.golang.org/p/RqPf_QBoETy
-
-https://play.golang.org/p/BTWgu0DwLiG
-
-## 5. Composite literals
-
-https://play.golang.org/p/ln0GCYwQZ5g
+ここまでくると、最初のコードで`b[0:4]`の範囲にアクセスできたのも納得ですね。
 
 
+# 4. Method declarations
 
-https://golang.org/ref/spec#Keywords
+続いてはこちらです。
 
-https://docs.google.com/document/d/1RfZkLngAu9NmZcl9wBjzktXDQZjJAYFloIvuKWGIljk/edit#
+```go
+package main
+
+type S int
+
+func(S) _() {}
+func(S) _() {}
+
+func _() {}
+func _() {}
+
+func main() {}
+```
+https://play.golang.org/p/sHq9NZvlPsL
+
+同じ関数名が乱立しています。
+
+もうなんとなく察してる方もおられると思いますが、<br>
+これはブランクが使用されているために成り立っています。
+
+## 解説
+
+[Spec](https://golang.org/ref/spec#Method_declarations)に以下の一文があります。
+
+> For a base type, the non-blank names of methods bound to it must be unique.
+> 
+> Base typeにバインドされているブランクではないメソッド名は一意である必要があります。
+
+言い換えると、関数名がブランクである場合は、ユニークでなくても良いということになります。
+
+
+# 5. Composite literals
+
+最後はこちらです。
+
+```go
+package main
+
+import "fmt"
+
+var arr = [3]int{2: 2}
+var slice = []int{3: 3}
+
+func main() {
+	fmt.Println(arr)
+	fmt.Println(slice)
+}
+```
+https://play.golang.org/p/7vfUjbDEeCZ
+
+5, 6行目の中括弧の中を見ると、一瞬、mapかなと思った人もいるかもしれません。<br>
+しかし、これはArrayとSliceの初期化です。
+
+## 解説
+
+ArrayとSliceでもキー（インデックス）指定で初期化できます。
+
+[Spec](https://golang.org/ref/spec#Composite_literals)には、
+ArrayとSliceに対して以下の一文が記載されています。
+
+> An element with a key uses the key as its index. The key must be a non-negative constant representable by a value of type int; and if it is typed it must be of integer type.
+> 
+> キーを持つ要素は、そのキーをインデックスとして使用します。キーは int 型の値で表すことができる非負の定数でなければならず、型付けされている場合は整数型でなければなりません。
+
+まぁ、あまり見ることはないコードでしょう🙈
+
+
+# まとめ
+
+Goの言語仕様を学ぶことで、<br>
+**こういうコードを書いたときにGoがどのように解釈するのか**が理解できます。
+
+個人的には、ここを理解してくると、<br>
+なぜLinterが怒っていたのかが分かるようになってきて、<br>
+言語仕様を読むのがさらにおもしろくなりました。
+
+<br>
+
+今回はあくまで言語仕様に興味を持ってもらうために、<br>
+実務では使えないであろうコードを中心に紹介しました😇
+
+しかし、実際に役に立つ発見も多くあるので、ぜひ一緒に言語仕様を読み進められればなと思っています！
+
+<br>
+
+▶▶▶ [Go Language Specification輪読会](https://gospecreading.connpass.com/)
+
+
+# 明日は、、、
+
+[Go 5 Advent Calendar 2020](https://qiita.com/advent-calendar/2020/go5)の枠はまだ結構空いてる状態なので、
+次の方はどなたになりますかね🎅
