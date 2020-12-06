@@ -8,5 +8,8 @@
     "preset-ja-technical-writing": {
       "ja-no-mixed-period": false
     }
+  },
+  "filters": {
+    "comments": true
   }
 }
