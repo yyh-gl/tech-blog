@@ -2,10 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - *
   workflow_dispatch:
-
 
 jobs:
   review:
@@ -32,7 +29,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
           SLACK_USERNAME: Mario
-          SLACK_ICON_EMOJI: ":mario:"
+          SLACK_ICON_EMOJI: ':mario:'
           SLACK_TITLE: Review Success
       - name: Slack review failure notification
         if: ${{ failure() }}
@@ -40,7 +37,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
           SLACK_USERNAME: Mario
-          SLACK_ICON_EMOJI: ":mario:"
+          SLACK_ICON_EMOJI: ':mario:'
           SLACK_COLOR: danger
           SLACK_TITLE: Review Failure
   
@@ -72,7 +69,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
           SLACK_USERNAME: Mario
-          SLACK_ICON_EMOJI: ":mario:"
+          SLACK_ICON_EMOJI: ':mario:'
           SLACK_TITLE: Deploy Success
       - name: Slack deploy failure notification
         if: ${{ failure() }}
@@ -80,6 +77,6 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
           SLACK_USERNAME: Mario
-          SLACK_ICON_EMOJI: ":mario:"
+          SLACK_ICON_EMOJI: ':mario:'
           SLACK_COLOR: danger
           SLACK_TITLE: Deploy Failure
