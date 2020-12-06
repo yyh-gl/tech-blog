@@ -43,7 +43,7 @@ DMM.com で働くエンジニアです。
   - Gin
   - Chi
   - Goa
-  - 一番好きなのはフレームワーク無し
+  - No framework
     - httprouter
 - Java
   - Spring Boot
