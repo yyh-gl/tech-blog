@@ -6,7 +6,9 @@
   },
   "rules": {
     "preset-ja-technical-writing": {
-      "ja-no-mixed-period": false
+      "ja-no-mixed-period": false,
+      "no-exclamation-question-mark": false,
+      "ja-no-weak-phrase": false
     }
   }
 }
