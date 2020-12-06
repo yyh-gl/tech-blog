@@ -21,7 +21,7 @@ jobs:
           key: cache-npm
       - name: Lint
         run: |
-          npm install textlint textlint-rule-preset-ja-technical-writing
+          npm install textlint textlint-rule-preset-ja-technical-writing textlint-filter-rule-comments
           git diff --name-only HEAD~ | xargs $(npm bin)/textlint
       - name: Slack review success notification
         if: ${{ success() }}

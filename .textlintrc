@@ -10,5 +10,8 @@
       "no-exclamation-question-mark": false,
       "ja-no-weak-phrase": false
     }
+  },
+  "filters": {
+    "comments": true
   }
 }
