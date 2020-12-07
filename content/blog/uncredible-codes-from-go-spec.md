@@ -6,7 +6,7 @@ author = ["yyh-gl"]
 categories = ["Go"]
 tags = ["Tech"]
 date = 2020-12-08T00:00:00+09:00
-description = "Go 5 Advent Calendar 2020 13日目"
+description = "Go 5 Advent Calendar 2020 8日目"
 type = "post"
 draft = false
 [[images]]
@@ -18,18 +18,19 @@ draft = false
 <!-- textlint-enable -->
 
 
-本記事は『[Go 5 Advent Calendar 2020 13日目](https://qiita.com/advent-calendar/2020/go5)』の記事です。
+本記事は『[Go 5 Advent Calendar 2020 8日目](https://qiita.com/advent-calendar/2020/go5)』の記事です。
 
 
 # Go Language Specification輪読会
 
 現在、[Go Language Specification輪読会](https://gospecreading.connpass.com/)という、
-Goの言語仕様を読んでいく会に参加しています。
+[Goの言語仕様](https://golang.org/ref/spec)を読んでいく会に参加しています。
 
 今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。<br>
-（挙げだすときりがないので、5個ほど選んで紹介します）
+（振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
 
-**ちなみに、だいたいのコードは現場で使うと怒られそうです😇**
+**ちなみに、だいたいのコードは現場で使うと怒られそうです😇** <br>
+（いや、まず間違いなく怒られる）
 
 
 # 1. Comments
@@ -135,9 +136,9 @@ Identifierについて、[Spec](https://golang.org/ref/spec#Identifiers)を参�
 > 識別子は、変数や型などのプログラムエンティティの名前を付けます。
 
 とあります。<br>
-すなわち、名前を付けているだけです。
+Identifierは、ただ単に名前を付けるためのものなんですね。
 
-加えて、以下の一文から、事前に宣言されているIdentifierがあることも分かります。
+加えて、以下の一文から、事前に宣言されているIdentifierがあると分かります。
 
 > Some identifiers are predeclared.
 > 
@@ -146,20 +147,7 @@ Identifierについて、[Spec](https://golang.org/ref/spec#Identifiers)を参�
 今回取り上げた`false`はこの事前宣言されたIdentifierに該当します。<br>
 （事前宣言されているIdentifier一覧は[こちら](https://golang.org/ref/spec#Predeclared_identifiers)）
 
-事前に宣言されているだけで、以下のコードの`hoge`と変わりはありません。
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-	hoge := true
-	if hoge {
-		fmt.Println("false is true")
-	}
-}
-```
+<br>
 
 次に、Keywordについて見ていきます。
 
@@ -170,7 +158,7 @@ func main() {
 > 以下のキーワードは予約されており、識別子として使用することはできません。
 
 とあります。<br>
-よって、下記のとおり変更できません。<br>
+よって、下記のとおり`default`をIdentifierとして使用できません。<br>
 （`default`はKeywordです）
 
 ```go
@@ -187,8 +175,8 @@ https://play.golang.org/p/Cxuolg_b7Xx
 
 <br>
 
-`false`の話に戻しますが、先述のとおり、`false`はKeywordではなく、Identifierです。<br>
-Identifierは自由に変更できるため、最初に示したコードが成り立つわけです。
+`false`の話に戻しますが、`false`はIdentifierであり、Keywordではありません。<br>
+したがって、最初に示したコードのとおり、別の対象に対して`false`と名付けることが可能です。
 
 
 # 3. Slice types
@@ -267,7 +255,7 @@ https://play.golang.org/p/sHq9NZvlPsL
 同じ関数名が乱立しています。
 
 もうなんとなく察してる方もおられると思いますが、<br>
-これはブランクが使用されているために成り立っています。
+これはブランク（`_`）が使用されているために成り立っています。
 
 ## 解説
 
@@ -299,7 +287,7 @@ func main() {
 ```
 https://play.golang.org/p/7vfUjbDEeCZ
 
-5, 6行目の中括弧の中を見ると、一瞬、mapかなと思った人もいるかもしれません。<br>
+5, 6行目の中括弧の中を見ると、一瞬、mapかなと思った人がいるかもしれません。<br>
 しかし、これはArrayとSliceの初期化です。
 
 ## 解説
@@ -318,17 +306,17 @@ ArrayとSliceに対して以下の一文が記載されています。
 
 # まとめ
 
-Goの言語仕様を学ぶことで、<br>
-**こういうコードを書いたときにGoがどのように解釈するのか**が理解できます。
+Goの言語仕様をちゃんと勉強し始めたことで、<br>
+**こういう仕様だから、こうやって処理されていたのか**というのが理解できてきました。
 
 個人的には、ここを理解してくると、<br>
-なぜLinterが怒っていたのかが分かるようになってきて、<br>
+なぜCompilerやLinterが怒っていたのかが分かるようになってきて、<br>
 言語仕様を読むのがさらにおもしろくなりました。
 
 <br>
 
-今回はあくまで言語仕様に興味を持ってもらうために、<br>
-実務では使えないであろうコードを中心に紹介しました😇
+今回の内容は、個人的に「おおお、、、」っとなったものを中心に取り上げたのですが、<br>
+実務では使えないであろうコードばかりになってしまいました😇
 
 しかし、実際に役に立つ発見も多くあるので、ぜひ一緒に言語仕様を読み進められればなと思っています！
 
@@ -339,5 +327,4 @@ Goの言語仕様を学ぶことで、<br>
 
 # 明日は、、、
 
-[Go 5 Advent Calendar 2020](https://qiita.com/advent-calendar/2020/go5)の枠はまだ結構空いてる状態なので、
-次の方はどなたになりますかね🎅
+[Go 5 Advent Calendar 2020](https://qiita.com/advent-calendar/2020/go5)の明日の枠はまだ空いていますね〜🎅
