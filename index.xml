@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/</link><description>Recent content on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/index.xml" rel="self" type="application/rss+xml"/><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://yyh-gl.github.io/tech-blog/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 8日目』の記事です。
 Go Language Specification輪読会 現在、Go Language Specification輪読会という、 Goの言語仕様を読んでいく会に参加しています。
 今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
-（結構いろいろとあるので、今回はその中から5個選んで紹介します）
+（振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
 ちなみに、だいたいのコードは現場で使うと怒られそうです😇 （いや、まず間違いなく怒られる）
 1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5
 まずはこちら。
