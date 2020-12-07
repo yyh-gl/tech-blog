@@ -34,6 +34,7 @@ post: ## 記事を投稿
 	git merge ${title}
 	git push origin main
 	git br -d ${title}
+	git push origin :${title}
 
 .PHONY: reserve-post
 reserve-post: ## 予約記事を投稿
@@ -44,7 +45,10 @@ reserve-post: ## 予約記事を投稿
 	curl -X POST https://super.hobigon.work/api/v1/blogs -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}"
 	@echo ''
 	git fetch origin
-	make post title=${title}
+	git pull origin main
+	git merge origin/${title}
+	git push origin main
+	git push origin :${title}
 
 .PHONY: create-ogp
 create-ogp: ## OGP画像を生成
