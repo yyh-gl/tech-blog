@@ -46,18 +46,7 @@ func main() {
 		fmt.Println(&quot;false is true&quot;)
 	}
 }
-</code></pre><p><a href=https://play.golang.org/p/kzf4fwRxyAJ>https://play.golang.org/p/kzf4fwRxyAJ</a></p><p>これはGoクイズでもよく出てくるので、ご存じの方も多いかと思います。</p><h2 id=解説-1>解説</h2><p>ここで重要になってくる単語として以下の2つがあります。</p><ul><li>Identifier</li><li>Keyword</li></ul><p>Identifierについて、<a href=https://golang.org/ref/spec#Identifiers>Spec</a>を参照すると、</p><blockquote><p>Identifiers name program entities such as variables and types.</p><p>識別子は、変数や型などのプログラムエンティティの名前を付けます。</p></blockquote><p>とあります。<br>Identifierは、ただ単に名前を付けるためのものなんですね。</p><p>加えて、以下の一文から、事前に宣言されているIdentifierがあると分かります。</p><blockquote><p>Some identifiers are predeclared.</p><p>いくつかの識別子は事前に宣言されています。</p></blockquote><p>今回取り上げた<code>false</code>はこの事前宣言されたIdentifierに該当します。<br>（事前宣言されているIdentifier一覧は<a href=https://golang.org/ref/spec#Predeclared_identifiers>こちら</a>）</p><p><code>false</code>は事前に宣言されているよーってだけなので、
-最初に示したコードでやっていることは以下のコードと変わりありません。</p><pre class=line-numbers><code class=language-go>package main
-
-import &quot;fmt&quot;
-
-func main() {
-	hoge := true
-	if hoge {
-		fmt.Println(&quot;false is true&quot;)
-	}
-}
-</code></pre><p>次に、Keywordについて見ていきます。</p><p><a href=https://golang.org/ref/spec#Keywords>Spec</a>を参照すると、</p><blockquote><p>The following keywords are reserved and may not be used as identifiers.</p><p>以下のキーワードは予約されており、識別子として使用することはできません。</p></blockquote><p>とあります。<br>よって、下記のとおり変更できません。<br>（<code>default</code>はKeywordです）</p><pre class=line-numbers><code class=language-go>package main
+</code></pre><p><a href=https://play.golang.org/p/kzf4fwRxyAJ>https://play.golang.org/p/kzf4fwRxyAJ</a></p><p>これはGoクイズでもよく出てくるので、ご存じの方も多いかと思います。</p><h2 id=解説-1>解説</h2><p>ここで重要になってくる単語として以下の2つがあります。</p><ul><li>Identifier</li><li>Keyword</li></ul><p>Identifierについて、<a href=https://golang.org/ref/spec#Identifiers>Spec</a>を参照すると、</p><blockquote><p>Identifiers name program entities such as variables and types.</p><p>識別子は、変数や型などのプログラムエンティティの名前を付けます。</p></blockquote><p>とあります。<br>Identifierは、ただ単に名前を付けるためのものなんですね。</p><p>加えて、以下の一文から、事前に宣言されているIdentifierがあると分かります。</p><blockquote><p>Some identifiers are predeclared.</p><p>いくつかの識別子は事前に宣言されています。</p></blockquote><p>今回取り上げた<code>false</code>はこの事前宣言されたIdentifierに該当します。<br>（事前宣言されているIdentifier一覧は<a href=https://golang.org/ref/spec#Predeclared_identifiers>こちら</a>）</p><p>次に、Keywordについて見ていきます。</p><p><a href=https://golang.org/ref/spec#Keywords>Spec</a>を参照すると、</p><blockquote><p>The following keywords are reserved and may not be used as identifiers.</p><p>以下のキーワードは予約されており、識別子として使用することはできません。</p></blockquote><p>とあります。<br>よって、下記のとおり変更できません。<br>（<code>default</code>はKeywordです）</p><pre class=line-numbers><code class=language-go>package main
 
 import &quot;fmt&quot;
 
@@ -65,7 +54,7 @@ func main() {
 	default := true
 	fmt.Println(default)
 }
-</code></pre><p><a href=https://play.golang.org/p/Cxuolg_b7Xx>https://play.golang.org/p/Cxuolg_b7Xx</a></p><br><p><code>false</code>の話に戻しますが、先述のとおり、<code>false</code>はKeywordではなく、Identifierです。<br>したがって、中身を書き換えることが可能です。</p><h1 id=3-slice-types>3. Slice types</h1><p>次はSlice関連です。</p><pre class=line-numbers><code class=language-go>package main
+</code></pre><p><a href=https://play.golang.org/p/Cxuolg_b7Xx>https://play.golang.org/p/Cxuolg_b7Xx</a></p><br><p><code>false</code>の話に戻しますが、<code>false</code>はIdentifierであり、Keywordではありません。<br>したがって、最初に示したコードのとおり、別の対象に対して<code>false</code>と名付けることが可能です。</p><h1 id=3-slice-types>3. Slice types</h1><p>次はSlice関連です。</p><pre class=line-numbers><code class=language-go>package main
 
 import &quot;fmt&quot;
 
