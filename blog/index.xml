@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/blog/</link><description>Recent content in Blog on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 26 Nov 2020 13:50:31 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://yyh-gl.github.io/tech-blog/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/blog/</link><description>Recent content in Blog on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://yyh-gl.github.io/tech-blog/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 13日目』の記事です。
+Go Language Specification輪読会 現在、Go Language Specification輪読会という、 Goの言語仕様を読んでいく会に参加しています。
+今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
+（挙げだすときりがないので、5個ほど選んで紹介します）
+ちなみに、だいたいのコードは現場で使うと怒られそうです😇
+1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5
+まずはこちら。
+変な位置にコメントが挿入されています。
+コメント部分を消すとvara = 1となるのでエラーになりそうです。
+しかし、実行してみると、すんなりと変数aを表示してくれます。
+解説 Specを参照すると以下の一文があります。
+A general comment containing no newlines acts like a space.
+改行を含まないgeneral commentはスペースのように作用する。
+（general commentとは/**/で囲われたコメントのことを指します）
+よって、先程のコードは以下と同じということです。
+package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://yyh-gl.github.io/tech-blog/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
 まずはサムネ画像をWebPに変えてみました。
 WebPとは、Googleが開発しているオープンな静止画像フォーマットで、
 トラフィック量軽減と表示速度短縮を目的しています。 （wikiから拝借）
