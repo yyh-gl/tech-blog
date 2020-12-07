@@ -35,6 +35,17 @@ post: ## 記事を投稿
 	git push origin main
 	git br -d ${title}
 
+.PHONY: reserve-post
+reserve-post: ## 予約記事を投稿
+	@if [ -z "${title}" ]; then \
+		echo 'titleを指定してください。'; \
+		exit 1; \
+	fi
+	curl -X POST https://super.hobigon.work/api/v1/blogs -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}"
+	@echo ''
+	git fetch origin
+	make post title=${title}
+
 .PHONY: create-ogp
 create-ogp: ## OGP画像を生成
 	@if [ -z "${title}" ]; then \
