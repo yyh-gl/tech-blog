@@ -2,7 +2,7 @@
 Go Language Specification輪読会 現在、Go Language Specification輪読会という、 Goの言語仕様を読んでいく会に参加しています。
 今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
 （挙げだすときりがないので、5個ほど選んで紹介します）
-ちなみに、だいたいのコードは現場で使うと怒られそうです😇
+ちなみに、だいたいのコードは現場で使うと怒られそうです😇 （いや、まず間違いなく怒られる）
 1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5
 まずはこちら。
 変な位置にコメントが挿入されています。
