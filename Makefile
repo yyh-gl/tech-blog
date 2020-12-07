@@ -12,7 +12,7 @@ new: ## 記事テンプレート生成
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	git checkout master
+	git checkout main
 	git checkout -b ${title}
 	@echo ''
 	hugo new blog/${title}.md
@@ -32,7 +32,7 @@ post: ## 記事を投稿
 	curl -X POST https://super.hobigon.work/api/v1/blogs -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}"
 	@echo ''
 	git merge ${title}
-	git push origin master
+	git push origin main
 
 .PHONY: create-ogp
 create-ogp: ## OGP画像を生成
