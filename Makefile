@@ -33,6 +33,7 @@ post: ## 記事を投稿
 	@echo ''
 	git merge ${title}
 	git push origin main
+	git br -d ${title}
 
 .PHONY: create-ogp
 create-ogp: ## OGP画像を生成
