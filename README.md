@@ -6,5 +6,5 @@
 
 ## Branches
 
-- master: work branch
+- main: work branch
 - gh-pages: publication branch
