@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>勉強会 on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/%E5%8B%89%E5%BC%B7%E4%BC%9A/</link><description>Recent content in 勉強会 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/%E5%8B%89%E5%BC%B7%E4%BC%9A/index.xml" rel="self" type="application/rss+xml"/><item><title>【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari-tech-talk-idempotency/</link><pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari-tech-talk-idempotency/</guid><description>Tech Talk vol.2 Backend Engineer 〜マイクロサービスの冪等性〜 connpass ハッシュタグ：#merpay_techtalk 質問板 merpay社で開催された勉強会です。
+参加者のツイートも含めてメモを残しておきます。
+かなり雑なのでコンテキストが読み取れないところもあると思いますが、
+なにかの参考になれば幸いです。
+（@sonatard さんの実況にとても助けられました。 ありがとうございました！）
+1. 500万ユーザーを支える残高の冪等性 登壇者：（@knsh14）
+スライド
+参考スライド （ベースとなる話は↑これ）
+残高管理サービス（Balance Service） 使ってるDBはCloud Spanner
+外部サービスや他のマイクロサービスには依存してない
+DeleteなしでCRUのみ
+かなりシンプルで冪等性を担保しやすい
+冪等性があるAPI 最初に成功した一度だけ処理される
+同じリクエストを何回繰り返しても内部的には処理されない
+何度リクエストしても同じ結果が返ってくる 何度でもリトライできる
+取引IDが保存されていれば既に行われた取引である
+冪等性の担保 冪等性キーが同じ 外部から指定される取引IDのこと 残高の種類が同じ ポイント/メイルペイ残高 など 操作する金額が同じ 冪等なレスポンス レスポンスはDBから引ける情報で組み立てる 取引IDから引ける情報 取引後残高は返さない Twitterメモ
+冪等なAPIでのエラー リトライしても良いエラー：ex. タイムアウト リトライだめなエラー：ex. 残高不足 誰がどう使うのか？ リクエストを投げる側の使い方1つで簡単に冪等性が壊れる → ex. 取引IDを毎回変えるとか 2.</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！
+ビールとお弁当もらいました。
+そしてなんとなんと k8sの技術書をいただいちゃいました！！！
+もちろんステッカーもありましたよ👍
+1. [Go活用事例]安全運転支援サービスを支える運用サイト 登壇者：@suhirotaka さん オートモーティブ事業本部スマートドライビング部システム開発グループ
+スライド
+主題 管理画面を Golang で作成
+Railsで作ってるものをGolangで作る理由 実証実験時はスピード重視でRails 本サービスはパフォーマンス重視でGolang 順次Golangに書き換えていく
+Golangのフレームワーク GolangのWAF（Web Application Framework）には
+フルスタック・MVC ミニマル・高速 の2種類がある
+この辺の話は、僕の旧ブログにもいろいろ書いているのでどうぞー
+DeNAではフルスタック・MVCを選択
+GolangにおけるフルスタックなWAF Beego：採用！ Revel：開発が止まってきている Iris：プロジェクトの運用がうまくいっていないようだった Beego フルスタックのMVCフレームワーク ORMまでついてる セッション管理、ロガー、キャッシュなどのライブラリがいろいろついてるけど、全てモジュール化されていて、部分的に他のライブラリを使うことができる Railsライクなフレームワーク Railsのbefore/after_actionに相当するものもある（Prepare(), Finish()） ライブラリ 使用ライブラリはこちら
+こういうの教えてくれるのめっちゃ嬉しい
+ORM：GORM ロガー：logrus PDF生成：gopdf → 日本語もきれいにでるので最高にクール 画像生成：gg バーコード生成：Barcode 2. WebシステムのパフォーマンスとGo （写真撮り忘れた…）</description></item><item><title>【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー【Golang】</title><link>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</link><pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</guid><description>mercari.go #11 connpass： リンク ハッシュタグ： #mercarigo 今回もお弁当とドリンクがありました！ありがたや
+[追記：2019年10月12日]
+[Mercari Engineering Blog](https://tech.mercari.com/entry/2019/10/11/160000) にて、本イベントの記事が公開されました。
+発表資料が載せてあります。ありがたや🙏 1. About error handling in Go 登壇者：jd さん（@JehandadKamal）
+資料（正式に共有されたものでないので、発表の内容が少し異なります）
+Errors are values ”Errors are values” という考え方。
+Golangでよくあるエラー処理パターン エラーをラップしてより詳細な情報を付与する 専用構造体を作る スタックトレースを構成する ”Error is your domain” Domain Error Struct を作成する。
+type Error struct { Op Op Kind Kind Serverity zapcore.ErrorLevel Err error } Op：Operation → 関数名とか Kind：エラー種別 → NotAvailable, NotFound といったもの Serverity：エラーレベル Err：エラー内容 上記のような構造体を作る理由 error を比較するときは、基本的に文字列の比較になるため取り回しが悪い → ”NotFound” という文字列を比較するとかとか</description></item><item><title>【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_meetup_for_backend_engineers_1/</link><pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_meetup_for_backend_engineers_1/</guid><description>Backend Engineer’s meetup ~マイクロサービスにおける認証認可基盤~ connpass ハッシュタグ：#merpay_meetup メルカリさん恒例のオリジナルドリンクもらいました
+1. マイクロサービスの内部通信における認証について 登壇者：@pospome さん
+スライド（日本語が消えてしまっていますが、ダウンロードしたら見れました）
+上記スライドの簡易メモ アカウント管理とログイン処理はそれぞれのチームに任せている
+SubjectID という 全サービス共通のID に変換して扱う メルカリでは、OIDCベースの認可の仕組みを採用
+RFCに書いてあるものと大差ないので、今回は マイクロサービスの内部通信における認証 について話す 全サービスは Gatwway を経由
+Gateway から Authority Service にくる Authority Service を認証基盤チームが管理
+外部からのリクエスト検証と内部通信用のトークンを生成している 内部トークンは毎リクエストごとに生成
+マイクロサービス間で使用されるトークンはリクエスト単位で同一 内部トークン用のSDKを提供
+Golangのみ対応 SDKを使うといろいろとよしなにしてくれる クレームをいい感じに取得 SubjectID のパースとかをいい感じにしてくれる マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる</description></item><item><title>【Go同miniConf】Golangの勉強会に参加してきた話</title><link>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</link><pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</guid><description>概要 CyberAgent ＆ merpay が共催した Golang のイベント
+Connpass情報 ハッシュタグ：#godo_miniconf （写真撮るの忘れた…）
+以下、発表まとめ
+1. マイクロサービスとMonoRepo 登壇者：江頭 宏亮さん（@_hiro511） 発表スライド リポジトリ管理について WinTicket というサービス開発・運用中
+36個のマイクロサービスで動いている
+マルチリポジトリ：マイクロサービスごとにリポジトリが別れている モノリポジトリ：ひとつのリポジトリ。WinTicket ではこっち モノリポジトリ Google, FB, Tiwtter, Uberが採用 メリット 依存管理をシンプルにできる マルチリポジトリの場合、複数のリポジトリに変更を加える必要があるし、変更を取り込むのが面倒 モノレポだとすべてのコードが一箇所にあるので変更が楽 一貫性のある変更 複数のサービスにまたがる変更においても、アトミックなコミットが可能 コードの共有と再利用が用意 common ディレクトリがあればできる 大きなリファクタリングが容易 ビルドとテストを効率良くしたいという モノリポジトリだと、ビルドとテストに時間がかかる ので、効率よくビルドとテストしたい
+Bazel（ベイゼル）：ビルド・テストツール Go, Andoroid, iOSなど様々な言語に対応 Googleが使っている（Googleの自社ツールがOSS化） 必要箇所だけビルド・テストする 速い スケーラブル 拡張可能 StarDarkという独自言語で設定定義 WinTicketではDockerビルドもこれ Golang with Bazel Bazel のインストール by brew WORKSPACEファイルの作成 外部の依存関係を記述 BUILDファイルを作成 ビルド方法を示したもの Gazzelを利用して自動生成可能 ディレクトリ構成例</description></item><item><title>【mercari.go #8】メルカリの Golang に関する勉強会メモ</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</guid><description>mercari.go #8 connpass： リンク ハッシュタグ： #mercarigo 独自ルール： 懇親会のGルール 懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！ 雰囲気 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
+以降、自分用のメモを書き連ねます。
+詳細はスライドの方をご覧ください。
+1. Goで学ぶKnative 登壇者： @toshi0607 さん
+スライドリンク
+Knative Knative ＝ 最新のサーバーレス ワークロードをビルド、デプロイ、管理できる Kubernetes ベースのプラットフォーム AWS の Lmabda に近いことを k8s 上でできると解釈 登壇者含め、会場内で Knative を本番に導入している人はなし。
+まだ時期尚早っぽい k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供 k8s 上にのっかる。 Knative の構成 Serving Build Eventing 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠 登壇者は 機能実装に一層集中するための基盤 として注目している yml ファイルで定義した内容に基づいて コード生成 感想 終盤、 Knative の内部処理を コードリーディング していたのですが、
+見入ってしまいメモを忘れていました。。。</description></item></channel></rss>

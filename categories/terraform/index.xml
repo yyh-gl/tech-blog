@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Terraform on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/terraform/</link><description>Recent content in Terraform on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 04 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/terraform/index.xml" rel="self" type="application/rss+xml"/><item><title>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/terraform_ecs/</link><pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/terraform_ecs/</guid><description>Terraform とは 最近流行りの IaC です。
+つまり、コードベースでインフラリソースを管理するためのツールです。
+中でもTerraform はクラウドに特化した IaC ツールという立ち位置です。
+AWSやGCP, Azure などの他に様々なクラウドプラットフォームに対応しています。
+（ちなみに、Vagrant 開発元の HashiCorp 社が開発しています）
+今回やること Terraform で AWS 上に下記のような環境を自動構築します。
+ECS でデプロイされるサービスは ECR から引っ張ってくるようにします。
+そして、そのサービスは Aurora を使うシステムを想定しています。
+【⚠注意⚠】上記構成はお金が発生します！ まったくもって無料枠ではありません！
+【⚠注意⚠】今回独自ドメインを使用していますが、ドメイン取得に関しては省略しています。
+今回やる内容は… 僕が所属する会社の研修資料を参考に進めています。
+資料を作成してくださった@_y_ohgiさんに感謝。
+自動構築プロセス全体で使用する共通設定を定義 まず、 main.tf を作成し、以下のとおり共通設定を定義していきます。
+# AWS を利用することを明示 provider &amp;quot;aws&amp;quot; { # リージョンを設定 region = &amp;quot;ap-northeast-1&amp;quot; } # これから作成するリソースに付与する名前のプリフィックスを設定 # グローバル変数的な立ち位置で定義 variable &amp;quot;prefix&amp;quot; { default = &amp;quot;sample-project&amp;quot; } provider で使用するクラウドを指定することができます。
+variable は変数定義です。
+${var.prefix} と書くことで default で指定した内容が展開されます。</description></item></channel></rss>
