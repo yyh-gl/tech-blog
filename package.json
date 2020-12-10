@@ -1,0 +1,20 @@
+{
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yyh-gl/tech-blog.git"
+  },
+  "author": "yyh-gl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yyh-gl/tech-blog/issues"
+  },
+  "homepage": "https://github.com/yyh-gl/tech-blog#readme",
+  "dependencies": {
+    "textlint": "^11.7.6",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-preset-ja-technical-writing": "^4.0.1"
+  }
+}

@@ -17,11 +17,12 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm
-          restore-keys: ${{ runner.os }}-npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Lint
         run: |
-          npm install textlint textlint-rule-preset-ja-technical-writing textlint-filter-rule-comments
+          npm install
           git diff --name-only HEAD~ | xargs $(npm bin)/textlint
   
   deploy:
