@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web全般 on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/web%E5%85%A8%E8%88%AC/</link><description>Recent content in Web全般 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 26 Nov 2020 13:50:31 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/web%E5%85%A8%E8%88%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://yyh-gl.github.io/tech-blog/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
 まずはサムネ画像をWebPに変えてみました。
 WebPとは、Googleが開発しているオープンな静止画像フォーマットで、
-トラフィック量軽減と表示速度短縮を目的しています。 （wikiから拝借）
+トラフィック量軽減と表示速度短縮を目的しています。 （wikiから拝借 ）
 WebPを採用した結果 以下のツイートのとおりです。
 たまたま100が撮れただけで、もう一回テストしみると少し落ちました。
 それでも90台はキープできていそうです。
@@ -9,11 +9,9 @@ WebPを採用した結果 以下のツイートのとおりです。
 （モバイルは未だに70切ってる😇） pic.twitter.com/VNxztIsR28
 &amp;mdash; hon-D (@yyh_gl) November 19, 2020 Safariでは注意が必要 多くのブラウザでWebPへの対応が既に完了しています。
 ただし、Safariに関してはv14でようやく対応しました。
-対応状況
-Safari v14は2020年9月17日（日本時間）にリリースされたばかりなので、
+対応状況 Safari v14は2020年9月17日（日本時間）にリリースされたばかりなので、
 まだ画像をちゃんと見れないユーザが多く存在すると思われます。
-リリースノート
-Safariのwebp対応ってバージョン14からだったんだ😇
+リリースノート Safariのwebp対応ってバージョン14からだったんだ😇
 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
 &amp;mdash; hon-D (@yyh_gl) November 26, 2020 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
 嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://yyh-gl.github.io/tech-blog/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/ogp/</guid><description>Twitter のリンクにサムネイル画像が表示されない このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
@@ -30,7 +28,7 @@ og:title og:type og:url og:description og:image これらを HTML に meta タ�
 ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
 正確には対応していない言語が（めちゃくちゃ）ありました。
 このとおり、 Golang にも対応していませんでした…。
-もともと、このブログのテーマは Hugo Themes（Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
+もともと、このブログのテーマは Hugo Themes （Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
 シンタックスハイライト部分だけ個別に導入することにしました。
 Prism.js さっそく、「HTML シンタックスハイライト」で調べてみました。
 そしたら、だいたい以下の3つが出てきました。
@@ -40,8 +38,4 @@ Prism.js highlight.js Google code-prettify どれにしようか迷ったので�
 今回導入した Prism.js のプラグインは、
 Line Highlight：行指定した箇所をハイライトする機能（上記画像内では使用していません） Line Numbers：行番号を表示する機能 Show Language：右上に 言語名 を表示している機能 の3つです。
 困ったこと 行番号が表示されない 行番号を表示するには、
-&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt; コード &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; 上記コードのように、表示するコードスニペットに対して、
-line-numbers というクラスを付与してあげるだけでOKです。
-…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。
-したがって、prism.css を修正して行番号が他の要素の上に来るようにしました。
-リスト表示の行間が異様に広い Prism.js 導入後…</description></item></channel></rss>
+&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt; コード &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; 上記コードのように、表示するコードスニペットに対して、</description></item></channel></rss>

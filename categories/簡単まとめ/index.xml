@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>簡単まとめ on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/%E7%B0%A1%E5%8D%98%E3%81%BE%E3%81%A8%E3%82%81/</link><description>Recent content in 簡単まとめ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 03 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/%E7%B0%A1%E5%8D%98%E3%81%BE%E3%81%A8%E3%82%81/index.xml" rel="self" type="application/rss+xml"/><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
 今回は Go1.12からの変更点 についてです。
-The State of Go 2020 Twitterで『The State of Go 2020』というタイトルのスライドを見つけました。
+The State of Go 2020 Twitterで『The State of Go 2020 』というタイトルのスライドを見つけました。
 Go1.12から変わったところに焦点を当て、
 Go1.13でどのような機能が追加されているのか、 Go1.14でどのような機能が追加される予定なのかまとめてあります。
 今回は、完全主観で自分が興味のある内容をハイライトします〜😇

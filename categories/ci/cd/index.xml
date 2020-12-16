@@ -4,4 +4,4 @@
 .github ├── actions │ └── golang-test │ ├── Dockerfile │ ├── action.yml │ └── entrypoint.sh └── workflows └── golang.yml /actions ディレクトリ配下に golang-test という、Lint とテストを実行するアクションを作ってみます。
 /workflow ディレクトリ配下には、golang 用のワークフロー定義ファイルを置いています。
 では、次から各ファイルの定義を見ていきます。
-プライベートアクションの定義 # /actions/golang-test/action.yml name: 'Golang Lint and Test Action' description: 'Lint and Test for Golang' author: 'yyh-gl' runs: # Docker を使って実行することを宣言 using: 'docker' # 使用する Docker イメージを指定 image: 'Dockerfile' アクションの定義は上記のとおりです。 公式ドキュメントを参考にしました。</description></item></channel></rss>
+プライベートアクションの定義 # /actions/golang-test/action.yml name: 'Golang Lint and Test Action' description: 'Lint and Test for Golang' author: 'yyh-gl' runs: # Docker を使って実行することを宣言 using: 'docker' # 使用する Docker イメージを指定 image: 'Dockerfile' アクションの定義は上記のとおりです。 公式ドキュメント を参考にしました。</description></item></channel></rss>
