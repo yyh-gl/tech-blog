@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2020年12月02日】
+【最終更新日：2020年12月16日】
 
 
 # いま
@@ -32,78 +32,60 @@ DMM.com で働くエンジニアです。
 
 # 技術スタック
 
-並列関係にするとおかしいものもありますが、<br>
-僕が触ったことのある技術がざっくり伝わると嬉しいです🙂
+実務で触ったことのある技術を列挙しています。
 
 
 ## バックエンド
 
 - Go
-  - Mux
-  - Gin
-  - Chi
+  - Echo
   - Goa
-  - No framework
-    - httprouter
+  - mux
 - Java
   - Spring Boot
 - PHP
   - Laravel
   - FuelPHP
   - CakePHP
-- Ruby
-  - Rails
 - Perl
 - ShellScript
-- Bash
 
 
 ## フロントエンド
 
 - React 
 - HTML + CSS + JavaScript
-- Twig
 
 
-## テスト
-
-- JUnit
-- PHPUnit
-- Minitest
-
-
-## インフラ
+## ローカル開発環境
 
 - Docker
 - Vagrant
-- Linux
 
 
-## ミドルウェア
+## データストア
 
-- Nginx
 - MySQL
+  - RDS
+  - Aurora
+- DynamoDB
 - Redis
-- Couchbase
 
-## クラウド関連
+
+## クラウド
 
 - AWS
   - CloudFormation
-  - Cognito
-  - API Gateway
-  - Lambda
-  - DynamoDB
-  - ECS
-  - RDS
 - GCP
-- Terraform
+
 
 ## CI/CD
 
 - CircleCI
 - GitHub Actions
 - Jenkins
+- CodeDeploy
+
 
 ## 設計
 
