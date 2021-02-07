@@ -8,11 +8,15 @@ help: ## helpを表示
 
 .PHONY: server
 server: ## Hugoサーバを起動
-	docker run --rm -it \
-	  -v `pwd`:/src \
+	docker run --rm -it --name tech-blog \
+	  -v `pwd`:/go/src/github.com/yyh-gl/tech-blog \
 	  -p 1313:1313 \
-	  klakegg/hugo:ext-alpine \
+	  tech-blog \
 	  server -D --bind 192.168.2.200 --baseURL=http://192.168.2.200/tech-blog
+
+.PHONY: lint
+lint: ## textlint実行
+	@git diff --name-only HEAD~ | xargs docker exec tech-blog /go/src/github.com/yyh-gl/tech-blog/node_modules/.bin/textlint
 
 .PHONY: new
 new: ## 記事テンプレート生成
