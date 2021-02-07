@@ -3,7 +3,7 @@ author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
 date = "2020-03-03T00:00:00Z"
-description = "Goの後方互換性すばらしい"
+description = "地味にいろいろとあってややこしい"
 title = "Goのバージョン管理について"
 type = "post"
 draft = false
@@ -17,7 +17,7 @@ draft = false
 # Goのバージョン管理
 
 <b>注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。</b> <br>
-<b>注意2：基本的にMacユーザを対象にしています。（WindowsもLinuxも好きですよ😅）</b>
+<b>注意2：基本的にMacユーザを対象にしています。（WindowsとLinuxももちろん好きです）</b>
 
 <br>
 
@@ -52,7 +52,7 @@ draft = false
 
 ## ▼ go get（公式おすすめ）
 
-（バージョン管理ツールではないですが…👼）
+（バージョン管理ツールとは言えませんが。。。）
 
 本方法が[公式おすすめ](https://golang.org/doc/install#extra_versions)の方法です。
 
@@ -69,8 +69,10 @@ bash や zsh の設定でエイリアスでも貼ってやればOKですね。
 
 # 最新バージョンのインストール方法
 
-次は常に最新バージョンをインストールする方法です。<br>
-特に新しいこともなくいろんなサイトで紹介されているのでさらっと流していきます。
+冒頭で「基本的に最新バージョンに上げ続ければOK」と述べていたので、<br>
+最新バージョンのインストール方法についても言及しておきます。
+
+特に新しいことはなくいろんなサイトで紹介されているのでさらっと流していきます。
 
 ## ▼ Homebrew
 
@@ -78,14 +80,14 @@ bash や zsh の設定でエイリアスでも貼ってやればOKですね。
 $ brew install go
 ```
 
-以上です！
+以上です。
 
 標準出力にて「必要ならパスの設定してね」と言われます。<br>
-設定したい場合は、言われたとおりにやればOKです。
+言われたとおりにやればOKです。
 
 ## ▼ ソースからのインストール
 
-こちらの方法は先述の方法と比べると、少しややこしくなります。
+こちらの方法はHomebrewでのインストールと比べると、少しややこしくなります。
 
 ざっくり手順を説明します。（[公式の説明ページ](https://golang.org/doc/install/source)）
 
@@ -111,9 +113,41 @@ $ brew install go
 
     https://golang.org/doc/install/source#testing
 
-（ただのリンク集になっていますが）以上となります。
+（ただのリンク集になっていますが）以上です。
+
+## ▼ 公式サイトからのインストール
+
+この方法の方がソースからインストールするより簡単かなと思います。
+
+こちらの方法も[公式サイト](https://golang.org/doc/install)に詳しい説明があるのでざっくりの説明だけ載せておきます。<br>
+（[公式サイト](https://golang.org/doc/install)には
+LinuxおよびWindowsについてもちゃんと説明があります）
+
+
+1. Go本体をダウンロード
+
+    https://golang.org/doc/install#download
+
+    [次節の『Go install.』](https://golang.org/doc/install#install)で
+    指定したOS用のGoがダウンロードされるので、Macを選択した上でダウンロードを開始します。
+
+1. インストール
+
+    https://golang.org/doc/install#install
+
+    ダウンロードした`.pkg`ファイルを開くとインストールが勝手に始まります。
+
+1. PATH設定
+
+    https://golang.org/doc/install#install
+
+    インストールして得たバイナリに対してPATHを通します。
+
+以上です。
 
 
 # まとめ
 
-Goでは常に最新版を使えばいい！
+バージョン管理ツールおよびインストール方法はいくつか存在します。
+
+使いやすい方法でどうぞ！
