@@ -6,6 +6,14 @@ help: ## helpを表示
 	@echo ''
 	@grep -E '^[%/a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-22s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: server
+server: ## Hugoサーバを起動
+	docker run --rm -it \
+	  -v `pwd`:/src \
+	  -p 1313:1313 \
+	  klakegg/hugo:ext-alpine \
+	  server -D --bind 192.168.2.200 --baseURL=http://192.168.2.200/tech-blog
+
 .PHONY: new
 new: ## 記事テンプレート生成
 	@if [ -z "${title}" ]; then \
