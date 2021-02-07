@@ -1,3 +1,5 @@
+<!-- textlint-disable -->
+
 +++
 author = "yyh-gl"
 categories = ["Go"]
@@ -12,6 +14,8 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
+
+<!-- textlint-enable -->
 
 
 # Goのバージョン管理
@@ -39,7 +43,7 @@ draft = false
 
 ## ▼ [goenv](https://github.com/syndbg/goenv)
 
-○○env系は有名ですよね。<br>
+◯◯env系は有名ですよね。<br>
 言語のバージョン管理といえばこれです。
 
 導入手順は[公式の手順](https://github.com/syndbg/goenv/blob/master/INSTALL.md)通りなので省略します。
@@ -50,11 +54,12 @@ draft = false
 本件に関しては以前、僕のブログで対処法を書いているので、<br>
 [こちら](https://yyh-gl.github.io/tech-blog/blog/gopath/)を参考にしてみてください。
 
-## ▼ go get（公式おすすめ）
+## ▼ go get（公式サイトに記載のある方法）
 
-（バージョン管理ツールとは言えませんが。。。）
+（バージョン管理"ツール"とは言えませんが…）
 
-本方法が[公式おすすめ](https://golang.org/doc/install#extra_versions)の方法です。
+本方法は[公式サイト](https://golang.org/doc/manage-install#installing-multiple)に
+記載されている方法です。
 
 ```zsh
 $ go get golang.org/dl/goX.Y.Z
@@ -96,7 +101,7 @@ $ brew install go
     https://golang.org/doc/install/source#go14
 
     なぜ、いきなりv1.4をインストールするかというと、<br>
-    v1.5以降は全てGoで書かれているため、Go自身でコンパイルすることができます。
+    v1.5以降は全てGoで書かれているため、Go自身でコンパイルできます。
     
     よって、v1.5以降のGoをインストールするために <u>GoをビルドするためのGoが必要になる</u> というわけです。<br>
     （ややこしいですが、[セルフホスティング](https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%83%95%E3%83%9B%E3%82%B9%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0)ってやつですね）
