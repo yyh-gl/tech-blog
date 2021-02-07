@@ -99,15 +99,14 @@ $GOPATHが変わらなくなってしまうという問題です。
 本件に関しては以前、僕のブログで対処法を書いているので、
 こちら を参考にしてみてください。
 ▼ go get（公式サイトに記載のある方法） （バージョン管理ツールとは言えませんが…）
-本方法が公式サイト にも記載されている方法です。
+本方法は公式サイト に 記載されている方法です。
 $ go get golang.org/dl/goX.Y.Z $ goX.Y.Z download $ goX.Y.Z version go version goX.Y.Z linux/amd64 コマンド打つたびに、バージョンまで打つのがめんどくさいという方は、
 bash や zsh の設定でエイリアスでも貼ってやればOKですね。
 最新バージョンのインストール方法 冒頭で「基本的に最新バージョンに上げ続ければOK」と述べていたので、
 最新バージョンのインストール方法についても言及しておきます。
 特に新しいことはなくいろんなサイトで紹介されているのでさらっと流していきます。
 ▼ Homebrew $ brew install go 以上です。
-標準出力にて「必要ならパスの設定してね」と言われます。
-言われたとおりにやればOKです。</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
+標準出力にて「必要ならパスの設定してね」と言われます。</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
 今回は Go1.12からの変更点 についてです。
 The State of Go 2020 Twitterで『The State of Go 2020 』というタイトルのスライドを見つけました。
 Go1.12から変わったところに焦点を当て、
