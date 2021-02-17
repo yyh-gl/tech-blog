@@ -27,7 +27,7 @@ new: ## 記事テンプレート生成
 	git checkout main
 	git checkout -b ${title}
 	@echo ''
-	hugo new blog/${title}.md
+	docker exec tech-blog hugo new blog/${title}.md
 	@echo ''
 	mkdir -p ./static/img/tech-blog/`date +"%Y/%m"`/${title}
 	@echo ''
@@ -54,6 +54,6 @@ create-ogp: ## OGP画像を生成
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png content/blog/${title}.md
-	cwebp static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png -o static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.webp
+	docker exec tech-blog /tmp/go/bin/tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png content/blog/${title}.md
+	docker exec tech-blog cwebp static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png -o static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.webp
 	rm -f static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png
