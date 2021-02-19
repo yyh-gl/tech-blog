@@ -4,7 +4,7 @@
 なおかつ自動更新されるようにしました。
 コードはこちら に置いてあります。
 やっていることはとてもシンプルで、
-Goで書いたREADME更新スクリプトをGitHub Actionsで実行しているだけです。
+Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。
 興味あったらコードを覗いてみてください。</description></item><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://yyh-gl.github.io/tech-blog/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 8日目 』の記事です。
 Go Language Specification輪読会 現在、Go Language Specification輪読会 という、 Goの言語仕様 を読んでいく会に参加しています。
 今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。

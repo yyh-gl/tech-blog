@@ -4,5 +4,5 @@
 なおかつ自動更新されるようにしました。
 コードはこちら に置いてあります。
 やっていることはとてもシンプルで、
-Goで書いたREADME更新スクリプトをGitHub Actionsで実行しているだけです。
+Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。
 興味あったらコードを覗いてみてください。</description></item></channel></rss>

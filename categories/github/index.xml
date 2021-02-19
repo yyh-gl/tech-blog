@@ -4,7 +4,7 @@
 なおかつ自動更新されるようにしました。
 コードはこちら に置いてあります。
 やっていることはとてもシンプルで、
-Goで書いたREADME更新スクリプトをGitHub Actionsで実行しているだけです。
+Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。
 興味あったらコードを覗いてみてください。</description></item><item><title>【GitHub Actions】プライベートアクションを使ってみた</title><link>https://yyh-gl.github.io/tech-blog/blog/github-actions-private-action/</link><pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/github-actions-private-action/</guid><description>プライベートアクションとは GitHub Actions では、開発者がアクション（Lint やテストといったジョブなど）を作って、公開することができます。 この公開されたアクションは、世界中の人が使えるため、もちろん自分のプロジェクトに持ってきて使用できます。 この公開されたアクションのことを パブリックアクション といいます。
 パブリックアクションが溢れた世界を想像するだけでワクワクしますね👍 （野良 Docker イメージと同様に、ほいそれとは使えないでしょうが…）
 今回、とりあげるのはパブリックアクションの正反対にあるものです。 つまり、公開しない（できない）アクション ＝ プライベートアクション です。 プライベートアクションを使うための準備 ディレクトリ構成は以下のとおりです。
