@@ -16,3 +16,6 @@ draft = true
 +++
 
 <!-- textlint-enable -->
+
+<img src="http://localhost:1313/tech-blog/img/tech-blog/2021/02//.webp" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02//.webp" width="600">
