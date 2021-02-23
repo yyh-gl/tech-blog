@@ -174,7 +174,7 @@ DMM.comに入社しました。
 
 # アクティビティ
 
-- [2020年](https://yyh-gl.github.io/tech-blog/blog/activity_2020)
+- [2020年](https://yyh-gl.github.io/tech-blog/blog/activity-2020)
 
 
 # 余談：学生時代の研究

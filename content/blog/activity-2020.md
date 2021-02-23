@@ -1,7 +1,7 @@
 <!-- textlint-disable -->
 
 +++
-title = "2020年のアクティビティまとめ"
+title = "【2020年】アクティビティまとめ"
 author = "yyh-gl"
 categories = ["勉強会", "アクティビティ"]
 tags = ["Tech"]
