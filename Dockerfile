@@ -4,7 +4,7 @@ WORKDIR /go/src/github.com/yyh-gl/tech-blog
 
 RUN apk add --no-cache libwebp-tools
 RUN npm install
-RUN go get github.com/Ladicle/tcardgen
+RUN go get -u github.com/Ladicle/tcardgen
 
 EXPOSE 1313
 
