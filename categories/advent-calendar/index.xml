@@ -16,19 +16,22 @@ A general comment containing no newlines acts like a space.
 package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
 私は現在、DMM.com の CDS というチームに所属し、
 主にユーザレビュー基盤 のバックエンドを開発しています。
-今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、
+今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、
 GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
 Linter 導入していますか？ 突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？
 私の所属するチームでは、
 コーディング規約違反 および コンパイラでは見つけられないエラー を検知するために、
 ローカルと CI において Linter を回すようにしています。
-Golang における Linter Golang の場合、Linter がデフォルトで用意されているうえに、
+GoにおけるLinter Goの場合、Linterがデフォルトで用意されているうえに、
 ライブラリとして公開されているものも多く存在します。
 なかでも有名なものに以下のようなものがあります。
-govet：Golang デフォルトの Linter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。
+govet：GoデフォルトのLinter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。
 加えて、導入する Linter が増えれば、その分だけ 導入・管理コストが増加 します。
 この問題を解決してくれるツールが GolangCI-Lint です。
-GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、</description></item><item><title>【Golang+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、
+ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
+GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
+開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
 ではでは、早速本題に入っていきます。
 モック使ってますか？ みなさんモックコードは書いていますか？
 テストコードを書いているなら、ほぼ必ず登場するあのモックです。
@@ -41,13 +44,14 @@ VCR ライブラリ とは？ VCR（Video Cassette Recorder）とは、通信を
 つまり、APIリクエストの初回通信の内容を保存し、
 次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。
 言い換えれば、外部APIのモックを自動生成してくれるということですね！
-VCR ライブラリ in Golang World Golang 用の VCR ライブラリはいろいろあります 。
+VCR ライブラリ in Go World Go用のVCRライブラリはいろいろあります 。
 スター数が多いのは以下のものです。
 go-vcr vcr-go govcr rpcreplay go-vcr および vcr-go，govcr の開発は盛んではないようです。
 rpcreplay は google-cloud-go に包含されるパッケージであり、安心して使えそうです。
 ただし、gRPC 用なので、その点は注意が必要です。
 GoDocはこちら です。
-今回は REST API を使って説明していくので、go-vcr を使用します。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
+今回は REST API を使って説明していくので、go-vcr を使用します。
+go-vcr は、vcr-go と govcr よりスター数が多いです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
 内容としては、TypeScript 初級者のための TypeScript 入門です。
 基礎的な内容から入り、
 最終的には、企業や個人の技術ブログを参考に、

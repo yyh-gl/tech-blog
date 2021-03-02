@@ -23,11 +23,11 @@ OGP を設定するだけで、Twitter や Facebook でサムネイル付きの�
 こちらのサイト で詳細が説明されています。
 OGP の設定 OGP の設定項目には以下のものがあります。
 og:title og:type og:url og:description og:image これらを HTML に meta タグで埋め込めば OK です。
-&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Golang + レイヤアーキテクチャ】DDD を意識して Web API を実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; こんな感じですね。
+&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; こんな感じですね。
 これを head タグ内に埋め込みます。
 ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
 正確には対応していない言語が（めちゃくちゃ）ありました。
-このとおり、 Golang にも対応していませんでした…。
+このとおり、 Goにも対応していませんでした…。
 もともと、このブログのテーマは Hugo Themes （Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
 シンタックスハイライト部分だけ個別に導入することにしました。
 Prism.js さっそく、「HTML シンタックスハイライト」で調べてみました。

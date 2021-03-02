@@ -7,7 +7,7 @@ RFCに書いてあるものと大差ないので、今回は マイクロサー�
 Gateway から Authority Service にくる Authority Service を認証基盤チームが管理
 外部からのリクエスト検証と内部通信用のトークンを生成している 内部トークンは毎リクエストごとに生成
 マイクロサービス間で使用されるトークンはリクエスト単位で同一 内部トークン用のSDKを提供
-Golangのみ対応 SDKを使うといろいろとよしなにしてくれる クレームをいい感じに取得 SubjectID のパースとかをいい感じにしてくれる マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる</description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
+Goのみ対応 SDKを使うといろいろとよしなにしてくれる クレームをいい感じに取得 SubjectID のパースとかをいい感じにしてくれる マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる</description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
 「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
 さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。
 しかし、この2つのトークンの違いについて、
