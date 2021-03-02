@@ -4,7 +4,7 @@ categories = ["Go", "Web API", "アーキテクチャ", "DDD"]
 tags = ["Tech"]
 date = "2019-06-14T00:00:00Z"
 description = "2019/10/30 に内容を一部更新しました"
-title = "【Golang + レイヤードアーキテクチャー】DDD を意識して Web API を実装してみる"
+title = "【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる"
 type = "post"
 draft = false
 [[images]]
@@ -21,16 +21,16 @@ draft = false
 
 # 今回やること
 
-Golang のディレクトリ構成についていろいろと調べる中で、<br>
+Goのディレクトリ構成についていろいろと調べる中で、<br>
 [こちらの資料](https://www.slideshare.net/pospome/go-80591000) がとても分かりやすかったので、<br>
-今回はこちらを参考に Golang で Web API を作っていきたいと思います。
+今回はこちらを参考にGoでWeb APIを作っていきたいと思います。
 
 <br>
 
 加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャー を取り入れます。<br>
 （内容はほぼレイヤードアーキテクチャになってしまいましたが…）
 
-DDD については、「DDD を Golang とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。<br>
+DDD については、「DDD を Go とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。<br>
 パッケージ構成の参考になれば幸いです。<br>
 （ですので、ドメインモデルは重度のドメイン貧血症に陥っていますｗ）
 
@@ -39,7 +39,7 @@ DDD については、「DDD を Golang とレイヤードアーキテクチャ�
 ## 環境
 
 - MacOS Mojave 10.14.6
-- Golang 1.12.5
+- Go 1.12.5
 
 なお、今回は、Gin や Mux などといったフレームワークは使わず、<br>
 httprouter のみで薄く作っていこうと思います。
@@ -352,7 +352,7 @@ Infra層 は Domain層 で作った `/domain/repository/book.go` のインター
 
 <br>
 
-ここで、Golang に慣れていない方は、どこでインターフェースと関連づけてるの？<br>
+ここで、Goに慣れていない方は、どこでインターフェースと関連づけてるの？<br>
 という疑問が生まれると思います。
 
 答えは、 `NewBookPersistence()` です。<br>
@@ -366,7 +366,7 @@ Infra層 は Domain層 で作った `/domain/repository/book.go` のインター
 
 では、依存関係を見ていきます。<br>
 上述したとおり、Infra層 は Domain層 のインターフェースを満たすように作られているので、Domain層に依存しています。<br>
-Golang には implements とかないので分かりづらいですね。<br>
+Goには implements とかないので分かりづらいですね。<br>
 でも、確かに依存しています。
 
 

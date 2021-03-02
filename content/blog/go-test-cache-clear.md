@@ -4,7 +4,7 @@ categories = ["Go"]
 tags = ["Tech"]
 date = "2020-04-30T00:00:00Z"
 description = "知っておくと便利"
-title = "【Golang】go test におけるキャッシュの消し方"
+title = "go test におけるキャッシュの消し方"
 type = "post"
 draft = false
 [[images]]

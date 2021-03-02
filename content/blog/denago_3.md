@@ -3,7 +3,7 @@ author = "yyh-gl"
 categories = ["勉強会", "Go"]
 tags = ["Tech"]
 date = "2019-11-01T00:00:00Z"
-description = "DeNAさん主催のGolang勉強会"
+description = "DeNAさん主催のGo勉強会"
 title = "【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた"
 type = "post"
 draft = false
@@ -41,20 +41,20 @@ k8sの技術書をいただいちゃいました！！！<br>
 
 ## 主題
 
-管理画面を Golang で作成
+管理画面をGoで作成
 
 
-## Railsで作ってるものをGolangで作る理由
+## Railsで作ってるものをGoで作る理由
 
 - 実証実験時はスピード重視でRails
-- 本サービスはパフォーマンス重視でGolang
+- 本サービスはパフォーマンス重視でGo
 
-順次Golangに書き換えていく
+順次Goに書き換えていく
 
 
-## Golangのフレームワーク
+## Goのフレームワーク
 
-GolangのWAF（Web Application Framework）には
+GoのWAF（Web Application Framework）には
 
 - フルスタック・MVC
 - ミニマル・高速
@@ -66,7 +66,7 @@ GolangのWAF（Web Application Framework）には
 DeNAではフルスタック・MVCを選択
 
 
-## GolangにおけるフルスタックなWAF
+## GoにおけるフルスタックなWAF
 
 - Beego：採用！
 - Revel：開発が止まってきている

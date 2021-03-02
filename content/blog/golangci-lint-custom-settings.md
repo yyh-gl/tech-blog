@@ -27,7 +27,7 @@ draft = false
 
 <br> 
 
-今回は、Golang 用 Linter である GolangCI-Lint を軽く紹介した後に、<br>
+今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、<br>
 GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
 
 
@@ -40,14 +40,14 @@ GolangCI-Lint のハマリポイントとその解決策である設定周りの
 ローカルと CI において Linter を回すようにしています。
 
 
-# Golang における Linter
+# GoにおけるLinter
 
-Golang の場合、Linter がデフォルトで用意されているうえに、<br>
+Goの場合、Linterがデフォルトで用意されているうえに、<br>
 ライブラリとして公開されているものも多く存在します。
 
 なかでも有名なものに以下のようなものがあります。
 
-- govet：Golang デフォルトの Linter
+- govet：GoデフォルトのLinter
 - errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる
 - unused：未使用の定義をチェックしてくれる
 - goimports：未使用のimportを消してくれたり、フォーマット修正してくれる
@@ -71,7 +71,7 @@ Golang の場合、Linter がデフォルトで用意されているうえに、
 <br>
 
 [GolangCI-Lint](https://github.com/golangci/golangci-lint)とは、
-Golang の Linter を一元管理するためのツールです。<br>
+GoのLinterを一元管理するためのツールです。<br>
 開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
 
 したがって、Linter の導入・管理コストが一気に下がりますし、<br>
