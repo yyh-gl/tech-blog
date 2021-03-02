@@ -20,7 +20,7 @@ draft = false
 
 <img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/blog_style_fix/syntax_highlight_before.png" width="600">
 
-このとおり、 Golang にも対応していませんでした…。
+このとおり、 Goにも対応していませんでした…。
 
 <br>
 

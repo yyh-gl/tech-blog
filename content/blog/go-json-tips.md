@@ -4,7 +4,7 @@ categories = ["Go"]
 tags = ["Tech"]
 date = "2020-04-26T00:00:00Z"
 description = ""
-title = "【Golang】jsonパッケージの知っておくと便利な機能"
+title = "【Go】jsonパッケージの知っておくと便利な機能"
 type = "post"
 draft = false
 [[images]]

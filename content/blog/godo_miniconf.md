@@ -3,8 +3,8 @@ author = "yyh-gl"
 categories = ["Go", "勉強会"]
 tags = ["Tech"]
 date = "2019-08-06T00:00:00Z"
-description = "CyberAgent ＆ merpay 主催の Golang 勉強会"
-title = "【Go同miniConf】Golangの勉強会に参加してきた話"
+description = "CyberAgent ＆ merpay 主催のGo勉強会"
+title = "【Go同miniConf】Goの勉強会に参加してきた話"
 type = "post"
 draft = false
 [[images]]
@@ -16,7 +16,7 @@ draft = false
 
 # 概要
 
-CyberAgent ＆ merpay が共催した Golang のイベント
+CyberAgent ＆ merpay が共催したGoのイベント
 
 - [Connpass情報](https://mercari.connpass.com/event/141047/)
 - ハッシュタグ：#godo_miniconf
@@ -69,7 +69,7 @@ WinTicket というサービス開発・運用中
     - StarDarkという独自言語で設定定義
   - WinTicketではDockerビルドもこれ
 
-## Golang with Bazel
+## Go with Bazel
 
 1. Bazel のインストール by brew
 2. WORKSPACEファイルの作成
@@ -93,7 +93,7 @@ WinTicket というサービス開発・運用中
 
 go.mod, Gopkg.lockファイルから依存パッケージを取りこみWORKSPACEファイルに書き込んでくれる
 
-## Protocol Buffer を Golang コンパイル可能
+## Protocol BufferをGoコンパイル可能
 
 golang/protocolbufとgogoprotoに対応している
 

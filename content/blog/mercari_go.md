@@ -4,7 +4,7 @@ categories = ["Go", "勉強会"]
 tags = ["Tech"]
 date = "2019-06-15T00:00:00Z"
 description = ""
-title = "【mercari.go #8】メルカリの Golang に関する勉強会メモ"
+title = "【mercari.go #8】メルカリのGoに関する勉強会メモ"
 type = "post"
 draft = false
 [[images]]
@@ -139,20 +139,20 @@ k8s の勉強しないとな。
 - experimental の機能
 - 1.11 以上で使用可能
 - GOOS=js GOARCH=wasm でビルドすると .wasm ファイルが生成され、JavaScript から使用できる
-  ≒ JavaScript から Golang を使用できるようになる
-- クリックの動作を Golang で実装したりした
+  ≒ JavaScriptからGoを使用できるようになる
+- クリックの動作をGoで実装したりした
 - select{} 使わないと main 関数が終了して JavaScriptから呼べなくなる（[参考](https://twitter.com/shumon_84/status/1139502364673466368)）
 - つらみ
   - GOOS=js GOARCH=wasm でしかビルドできないので、テストができない
      - （解決策）テストしたい部分は別パッケージにエクスポートする。Goで実装するやつは main.go だけに依存するようにしたらいい。
   - DOM操作をGoでやった（JavaScript ならしゅっと書けるのに…）
-     - （解決策）ビジネスロジック部分だけを Golang で実装するようにしないとつらい
+     - （解決策）ビジネスロジック部分だけをGoで実装するようにしないとつらい
      - DOM操作は素直に JavaScript にお任せした方がいい
 
 
 ## 感想
 
-JavaScript から Golang で実装した機能を使えるのはいろいろと便利そう。
+JavaScriptからGoで実装した機能を使えるのはいろいろと便利そう。
 
 
 # 4. E2E Testing with 'main' function

@@ -4,7 +4,7 @@ categories = ["Go", "テスト", "Advent Calendar"]
 tags = ["Tech"]
 date = "2019-12-08T00:00:00Z"
 description = "Go3 Advent Calendar 2019 8日目"
-title = "【Golang+VCR】外部APIとの通信を保存してテストに使用する話"
+title = "【Go+VCR】外部APIとの通信を保存してテストに使用する話"
 type = "post"
 draft = false
 [[images]]
@@ -49,9 +49,9 @@ VCR（Video Cassette Recorder）とは、<u>通信を保存し、再生するラ
 
 言い換えれば、外部APIのモックを自動生成してくれるということですね！
 
-## VCR ライブラリ in Golang World
+## VCR ライブラリ in Go World
 
-Golang 用の VCR ライブラリは[いろいろあります](https://github.com/search?l=Go&q=vcr&type=Repositories)。<br>
+Go用のVCRライブラリは[いろいろあります](https://github.com/search?l=Go&q=vcr&type=Repositories)。<br>
 スター数が多いのは以下のものです。
 
 - [go-vcr](https://github.com/dnaeon/go-vcr)

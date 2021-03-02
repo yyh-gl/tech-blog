@@ -4,7 +4,7 @@ categories = ["Go", "勉強会"]
 tags = ["Tech"]
 date = "2019-10-07T00:00:00Z"
 description = "めちゃくちゃためになった"
-title = "【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー【Golang】"
+title = "【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー"
 type = "post"
 draft = false
 [[images]]
@@ -38,7 +38,7 @@ draft = false
 ”[Errors are values](https://blog.golang.org/errors-are-values)” という考え方。
 
 
-## Golangでよくあるエラー処理パターン
+## Goでよくあるエラー処理パターン
 - エラーをラップしてより詳細な情報を付与する
 - 専用構造体を作る
 - スタックトレースを構成する
