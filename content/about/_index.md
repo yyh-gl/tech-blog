@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2020年12月16日】
+【最終更新日：2021年3月18日】
 
 
 # いま
@@ -110,19 +110,19 @@ DDDについては、戦略および戦術の両方に興味があり、日々�
 アルバイトでの開発です。
 
 
-## ・スマホゲームの開発・運用：2018年3月〜2019年3月
+## ・スマホゲームの開発/運用：2018年3月〜2019年3月
 
 - ロール：エンジニア（バックエンド）
 - 技術：PHP（CakePHP，Laravel）
 
 
-## ・ECサイトの開発・運用：2018年9月〜2019年10月
+## ・ECサイトの開発/運用：2018年9月〜2019年10月
 
 - ロール：エンジニア（バックエンド）
 - 技術：PHP（FuelPHP，Laravel）
 
 
-## ・ECサイトの新規開発・運用：2018年1月〜2019年3月
+## ・ECサイトの新規開発/運用：2018年1月〜2019年3月
 
 - ロール：エンジニア（バックエンド）
 - 技術：Java（SpringBoot）
@@ -136,17 +136,23 @@ DDDについては、戦略および戦術の両方に興味があり、日々�
 DMM.comに入社しました。
 
 
-## ・レビュー基盤のリプレイス・運用：2019年7月〜現在
+## ・レビュー基盤のリプレイス/運用：2019年7月〜現在
 
 - ロール：エンジニア（バックエンド、フロントエンド、インフラ）
 - 言語：Go（Echo），JS（React）
 - IaC：CloudFormation
 
 
-## ・DMM PointClubの新規開発・運用：2020年1月〜現在
+## ・DMM PointClubの新規開発/運用：2020年1月〜現在
 
 - ロール：エンジニア（バックエンド、インフラ）
 - 言語：Go（Goa）
+- IaC：CloudFormation
+
+## ・通知配信基盤の新規開発/運用：2020年11月〜現在
+
+- ロール：エンジニア（バックエンド、フロントエンド、インフラ）
+- 言語：Go（Echo），JS（React）
 - IaC：CloudFormation
 
 </div></details>
@@ -154,22 +160,26 @@ DMM.comに入社しました。
 
 # コミュニティ運営
 
-- DMM.go
+- [DMM.go](https://dmm.connpass.com/event/157222/)
+- [入門Go言語仕様輪読会](https://gospecreading.connpass.com/event/202388/)
 
 
 # 登壇歴
 
 - [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
 - [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
-- [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜<br>『事業をグロースさせるためにエンジニアができること』](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
+- [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜『事業をグロースさせるためにエンジニアができること』](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
+- Assignability（入門Go言語仕様輪読会）
+  - [go-talks](https://go-talks.appspot.com/github.com/yyh-gl/slide-decks/210318_gospecreading_assignability.slide)
+  - [Speaker Deck](https://speakerdeck.com/yyh_gl/go-language-specification-assignability)
 
 
 # 記事
 
 - [『よんでますよ、本田さん #5』](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
   - DMM社内でのGoに関する取り組みについて
-- [『ドキュメントとコードが乖離しないように<br>DMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた』](https://logmi.jp/tech/articles/323091)
-  - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事（[logmi Tech](https://logmi.jp/tech)掲載）
+- [『ドキュメントとコードが乖離しないようにDMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた』](https://logmi.jp/tech/articles/323091)
+  - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事
   
 
 # アクティビティ

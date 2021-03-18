@@ -8,7 +8,8 @@
     "preset-ja-technical-writing": {
       "ja-no-mixed-period": false,
       "no-exclamation-question-mark": false,
-      "ja-no-weak-phrase": false
+      "ja-no-weak-phrase": false,
+      "max-kanji-continuous-len": false
     }
   },
   "filters": {
