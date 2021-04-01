@@ -1,3 +1,5 @@
+<!-- textlint-disable -->
+
 +++
 author = "yyh-gl"
 categories = ["Go"]
@@ -13,13 +15,14 @@ draft = false
   stretch = "stretchH"
 +++
 
+<!-- textlint-enable -->
 
 # fallthrough とは
 
 GoではSwitch文でfallthroughという[キーワード](https://golang.org/ref/spec#Keywords)が使用可能です。
 
-機能としては、Switch文における次の節（caseやdefault）に移動するというものです。（[参考](https://github.com/golang/go/wiki/Switch#fall-through)）<br>
-言葉で説明するよりも、サンプルコードを見てもらった方がイメージがつきやすいと思います。
+機能としては、処理を次の節（caseやdefault）に進めます。（[参考](https://github.com/golang/go/wiki/Switch#fall-through)）<br>
+言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。
 
 ```go
 package main
@@ -51,5 +54,5 @@ func main() {
 
 <br>
 
-`fallthrough`は、Go言語のORMライブラリとして有名な『GORM』でも使用されています。([使用箇所](https://github.com/go-gorm/gorm/blob/master/finisher_api.go#L44)))<br>
+`fallthrough`は、Go言語のORMライブラリとして有名な『GORM』でも使用されています。([使用箇所](https://github.com/go-gorm/gorm/blob/26dd4c980a62d47c990a05da9e5566bff3b2b00c/finisher_api.go#L94))<br>
 
