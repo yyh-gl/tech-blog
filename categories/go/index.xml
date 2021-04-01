@@ -21,9 +21,9 @@ A general comment containing no newlines acts like a space.
 （general commentとは/**/で囲われたコメントのことを指します）
 よって、先程のコードは以下と同じということです。
 package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワード が使用可能です。
-機能としては、Switch文における次の節（caseやdefault）に移動するというものです。（参考 ）
-言葉で説明するよりも、サンプルコードを見てもらった方がイメージがつきやすいと思います。
-package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground defaultにも飛べるという例 fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所 ))</description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</guid><description>Goにおける参照渡し＝ポインタの値渡し Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。
+機能としては、処理を次の節（caseやdefault）に進めます。（参考 ）
+言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。
+package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground defaultにも飛べるという例 fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所 )</description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</guid><description>Goにおける参照渡し＝ポインタの値渡し Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。
 （C派生の言語はすべてそうらしいです）
 じゃあ、参照渡しって何？ってなりますよね。
 参照渡し＝ポインタの値渡しです。

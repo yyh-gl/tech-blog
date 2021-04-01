@@ -44,9 +44,9 @@ WebPを採用した結果 以下のツイートのとおりです。
 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
 &amp;mdash; hon-D (@yyh_gl) November 26, 2020 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
 嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワード が使用可能です。
-機能としては、Switch文における次の節（caseやdefault）に移動するというものです。（参考 ）
-言葉で説明するよりも、サンプルコードを見てもらった方がイメージがつきやすいと思います。
-package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground defaultにも飛べるという例 fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所 ))</description></item><item><title>texta.fm #1 まとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
+機能としては、処理を次の節（caseやdefault）に進めます。（参考 ）
+言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。
+package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground defaultにも飛べるという例 fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所 )</description></item><item><title>texta.fm #1 まとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
 エヴァンス本を読む前に知っておいた方がいい時代背景、そして、意識すべき点を知ることができるので、
 時間があればぜひ実際に聞きに行ってみてください。
 話者：
