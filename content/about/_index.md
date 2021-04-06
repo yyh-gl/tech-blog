@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2021年3月18日】
+【最終更新日：2021年4月7日】
 
 
 # いま
@@ -101,6 +101,10 @@ DDDについては、戦略および戦術の両方に興味があり、日々�
 - [oxequa/realize](https://github.com/oxequa/realize/graphs/contributors)
 - [Ladicle/tcardgen](https://github.com/Ladicle/tcardgen/graphs/contributors)
 - [pacollins/hugo-future-imperfect-slim](https://github.com/pacollins/hugo-future-imperfect-slim/graphs/contributors)
+- [ent/ent](https://github.com/ent/ent)（[ドキュメントの日本語訳](https://crowdin.com/project/ent/ja#)）
+  <details><summary><b>詳細</b></summary><div>
+    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">A big shoutout to the awesome people who are helping us translate ent documentation to Chinese and Japanese. Thanks a lot for your contributions! <a href="https://twitter.com/mattn_jp?ref_src=twsrc%5Etfw">@mattn_jp</a> <a href="https://twitter.com/uta_mory?ref_src=twsrc%5Etfw">@uta_mory</a> <a href="https://twitter.com/mengyx1?ref_src=twsrc%5Etfw">@mengyx1</a> <a href="https://twitter.com/re_yuzuy?ref_src=twsrc%5Etfw">@re_yuzuy</a> <a href="https://twitter.com/yyh_gl?ref_src=twsrc%5Etfw">@yyh_gl</a> <a href="https://twitter.com/CreatorQsF?ref_src=twsrc%5Etfw">@CreatorQsF</a> <a href="https://t.co/rxPWLXzMG9">pic.twitter.com/rxPWLXzMG9</a></p>&mdash; ent (@entgo_io) <a href="https://twitter.com/entgo_io/status/1379443233835606020?ref_src=twsrc%5Etfw">April 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </details>
 
 
 # 経歴っぽいもの（参加プロジェクト）
