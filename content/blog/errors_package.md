@@ -1,3 +1,5 @@
+<!-- textlint-disable -->
+
 +++
 author = "yyh-gl"
 categories = ["Go"]
@@ -12,6 +14,8 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
+
+<!-- textlint-enable -->
 
 # errorsパッケージに興味持った
 v1.13からerrorsパッケージに `Unwrap()` `Is()` `As()` といった関数が追加されました。<br>
@@ -92,15 +96,14 @@ func Unwrap(err error) error {
 }
 ```
 
-やっていることとしては、7行目で <br>
-型アサーションを用いてラップされたエラーのインターフェースを満たしているかチェックし、<br>
-満たしていなければ（ok == false）、nilを返す。<br>
-満たしていれば（ok == true）、実装されている `Unwrap()` を処理するわけです。
+処理を順に追っていくと、
+7行目で型アサーションを用いてラップされたエラーのインターフェースを満たしているかチェックし、
+満たしていなければ（ok == false）nilを返します。<br>
+満たしていれば（ok == true）実装されている `Unwrap()` を処理します。
 
-ここで注意ですが、<br>
-12行目の `Unwrap()` は今まで話に出てきていた `errors.Unwrap()` とは全く別物です。
-
-では、12行目の `Unwrap()` はどこにあるのか。
+ここで注意ですが、
+12行目の `Unwrap()` は今まで話に出てきていた `errors.Unwrap()` とは全くの別物です。<br>
+では、12行目の `Unwrap()` はどこにあるのか。<br>
 答えはerrorをラップする処理のところにあります。
 
 
@@ -126,7 +129,7 @@ func Errorf(format string, a ...interface{}) error {
 ```
 https://golang.org/src/fmt/errors.go?s=624:674#L17
 
-10行目で、`wrapError` なる構造体を返していますね。
+10行目で、`wrapError` という構造体を返していますね。<br>
 宣言箇所に飛んでみましょう。
 
 ```go
@@ -145,14 +148,16 @@ func (e *wrapError) Unwrap() error {
 ```
 https://golang.org/src/fmt/errors.go#L32
 
-`Unwrap()` がありましたね。<br>
-wrapError構造体は内部フィールドに `err` を持っており、<br>
-ここにラップしたエラーを入れるわけです。<br>
-実際、さきほどの `Errorf()` の10行目でセットしてますよね。
+`Unwrap()` がありました。
+
+まず、`wrapError`構造体ですが、本構造体は`err`フィールドを持っており、ここにラップするエラーを格納しています。<br>
+（さきほど見た `Errorf()` の内部処理では、10行目にて`wrapError`が使用されています）
+
+`Unwrap()`は`wrapError`構造体の`err`フィールド、すなわち、ラップしていたエラーを返しているだけですね。
 
 <br>
 
-`errors.Unwrap()` はこうして実装されていたわけですね〜
+以上、`errors.Unwrap()` の内部実装はこんな感じでした。
 
 どんどん行きましょう。
 
@@ -193,15 +198,18 @@ func Is(err, target error) bool {
 まずは、8,9行目にて単純にエラー同士の比較をしています。<br>
 ここで一致すれば `return true` ですね。
 
-次に11行目でerrが `Is(error) bool` という関数を持っているかどうか、<br>
-型アサーションによって確認しています。
+次に11行目で、型アサーションを利用して `err`が `Is(error) bool` という関数を実装しているかチェックしています。
 
-本処理がなにをしているかというと、<br>
+<!-- textlint-disable -->
+このチェック処理は、
 <u>独自の同値判定処理がないか確認し、ある場合はその同値判定処理を使用して判定を行う</u><br>
-ということをしてくれています。
+ために用意されています。
+<!-- textlint-enable -->
 
 `Is(error) bool` の実装例が[公式のドキュメント](https://golang.org/pkg/errors/#Is)にあります。<br>
+<!-- textlint-disable -->
 ↓↓↓
+<!-- textlint-enable -->
 
 ```go
 func (m MyError) Is(target error) bool { return target == os.ErrExist }
@@ -210,18 +218,19 @@ func (m MyError) Is(target error) bool { return target == os.ErrExist }
 独自のエラー型を定義するときに役立ちそうですね。
 
 では、最後に15行目からの処理です。<br>
-ここはerrをUnwrapする処理ですね。<br>
-（このUnwrap()は前章で説明した関数です）
+ここは`err`をUnwrapする処理ですね。<br>
+（この`Unwrap()`は前章で説明した関数です）
 
+<!-- textlint-disable -->
 つまり、<br>
 `isComparable && err == target`<br>
 および<br>
 `x, ok := err.(interface{ Is(error) bool }); ok && x.Is(target)`<br>
-の両条件に該当しなかった場合は、errの中にあるエラーを抜き取り、<br>
+の両条件に該当しなかった場合は、`err`の中にあるエラーを抜き取り、<br>
 そのエラーに対して、forループの最初から処理していくということになります。
+<!-- textlint-enable -->
 
-この最後のUnwrap()により、<br>
-本章冒頭に述べた
+この最後の`Unwrap()`により、本章冒頭に述べた
 
 > また、比較元（第一引数）のエラーがラップしたエラーだったとしても、<br>
   最後までUnwrapして比較してくれます。
@@ -230,9 +239,12 @@ func (m MyError) Is(target error) bool { return target == os.ErrExist }
 
 
 # [As()](https://golang.org/pkg/errors/#As)
-最後に `As()` です。<br>
-本関数はラップされたエラーから指定のエラーを抽出します。<br>
-抽出できるエラーがない場合は戻り値としてfalseが返されます。
+最後に `As()` です。
+
+本関数は、第一引数のエラーが第二引数のエラーに代入可能であれば代入し、trueを返します。<br>
+代入できない場合はfalseが返されます。
+
+第二引数はポインタ型なので、`target`に関して副作用を含む関数です。
 
 それでは内部実装を見ていきます。
 
@@ -267,49 +279,53 @@ var errorType = reflectlite.TypeOf((*error)(nil)).Elem()
 ```
 
 for文と `errors.Unwrap()` を使って <br>
-ラップされたエラーの中身を取り出していくあたりは `Is()` と同じですね。
-
-また、19行目で独自定義の `As()` を使用できるところも `Is()` と同じです。
+ラップされたエラーの中身を取り出していくあたりは `Is()` と同じですね。<br>
+加えて、19行目で独自定義の `As()` を使用できるところも `Is()` と同じです。
 
 特徴的なのは、5〜18行目の部分になります。
 
-まず、5，6行目でreflectliteを使って第2引数のエラー（target）の構造を読み取っています。<br>
+まず、5，6行目でreflectliteを使って第二引数の`target`の構造を読み取っています。<br>
 
 > reflectliteはreflectパッケージの軽量版で、<br>
 > runtimeおよびunsafe以外での使用は基本的に禁止されています。 >> [参考](https://golang.org/pkg/internal/reflectlite/#Overview)
 
-そして、targetがポインタである、かつ、nilでないことを確認します。<br>
-抽出したエラーはtargetに格納するので、targetはポインタである必要があります。<br>
-よって、ポインタかどうか確認しているのだと考えています。
+そして、`target`がポインタである、かつ、nilでないことを確認します。
 
-加えて、10行目で、interfaceである、かつ、errorType（＝error）を実装できているかをチェックします。
+本章冒頭でも述べましたが、<br>
+最終的に（代入可能であれば）第一引数の`err`は第二引数の`target`に格納します。<br>
+つまり、戻り値で`target`に格納したエラーを返すのではなく、`target`（ポインタ）経由でできあがったエラーを返します。<br>
+したがって、ポインタであることを確認する必要があります。
 
-以上で、targetがerrorを格納できる箱であるかどうかを判定しています。
+<!-- textlint-disable -->
+加えて、10行目で、interfaceである、かつ、errorType（＝error）を実装できているかチェックします。
+<!-- textlint-enable -->
+
+以上で、`target`が`error`を格納できる箱であるか（`error`インタフェースを満たしているか）どうかを判定しています。
 
 <br>
 
 続きの13行目以降で、<br>
-errがtargetに格納できる値かどうかを判定し、できるならば格納しています。（15，16行目）
+`err`が`target`に格納できる値かどうかを判定し、できるならば格納しています。（15，16行目）
 
 格納できない場合は、独自実装の `As()` 探して、実行していますね。
 
-err が target に格納できず、独自実装の `As()` もない場合は、<br>
-err を `Unwrap()` して再度同じ処理を行います。
+`err` が `target` に格納できず、独自実装の `As()` もない場合は、<br>
+`err` を `Unwrap()` して再度同じ処理を行います。
 
-そして、格納できるエラーがなかった場合は false を返すわけですね。
+それでも、格納できるエラーがなかった場合は false を返します。
 
 
 # まとめ
 
 errorsパッケージの実装を覗いてみましたが、いかがだったでしょうか？<br>
-普段使ってる標準パッケージの内部実装を追いかけるのは楽しいですね〜
+普段使ってる標準パッケージの内部実装を追いかけるのは楽しいですね👍
 
 今回はerrorsパッケージの中身を見ましたが、reflectliteパッケージが結構使われていましたね。
 
 reflectliteの動きが分からない部分もあったので、<br>
 次はreflectliteの中身も見たいなという気持ちになっています。
 
-（reflectliteを少し覗いたのですが、Goの型のデータ構造？的な話が入ってきており、ビビってます😇）
+（reflectliteを少し覗いたのですが、Goの型のデータ構造？的な話が入ってきており、かなりおもしろそう）
 
 reflectliteを一緒に読みたいって方おられたら[TwitterでDM](https://twitter.com/yyh_gl)ください！<br>
 ぜひオンラインでコードリーディング会しましょう
