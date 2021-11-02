@@ -12,7 +12,7 @@ server: ## Hugoサーバを起動
 	  -v `pwd`:/go/src/github.com/yyh-gl/tech-blog \
 	  -p 1313:1313 \
 	  tech-blog \
-	  server -D --bind 192.168.2.100 --baseURL=http://192.168.2.100/tech-blog
+	  server -D --bind 192.168.10.101 --baseURL=http://192.168.10.101/tech-blog
 
 .PHONY: lint
 lint: ## textlint実行
@@ -33,7 +33,7 @@ new: ## 記事テンプレート生成
 	@echo ''
 	open ./static/img/tech-blog/`date +"%Y/%m"`/${title}
 	@echo ''
-	open http://192.168.2.100:1313/tech-blog/
+	open http://192.168.10.101:1313/tech-blog/
 
 .PHONY: post
 post: ## 記事を投稿
