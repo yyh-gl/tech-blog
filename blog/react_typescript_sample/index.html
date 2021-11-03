@@ -1,21 +1,164 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><title>【React+TypeScript】TypeScript入門 - yyh-gl's Tech Blog</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1"><link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1"><link rel=icon type=image/png sizes=16x16 href="/tech-blog/favicon/favicon-16x16.png?v=1"><link rel=manifest href="/tech-blog/favicon/site.webmanifest?v=1"><link rel=mask-icon href="/tech-blog/favicon/safari-pinned-tab.svg?v=1" color=#ffffff><link rel="shortcut icon" href="/tech-blog/favicon/favicon.ico?v=1"><meta name=msapplication-config content="/tech-blog/favicon/browserconfig.xml?v=1"><meta name=msapplication-TileColor content="#ffffff"><meta name=theme-color content="#ffffff"><meta name=generator content="Hugo 0.84.3"><meta property="og:site_name" content="yyh-gl's Tech Blog"><meta property="og:title" content="【React+TypeScript】TypeScript入門"><meta property="og:description" content="TypeScript Advent Calendar 2019 2日目"><meta property="description" content="TypeScript Advent Calendar 2019 2日目"><meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/"><meta property="og:type" content="article"><meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/featured.webp"><meta property="og:image:alt" content="featured"><link rel=stylesheet href=/tech-blog/css/bundle.min.16c26ceb295e9a4cba91b4fe07c5f500723b27d79d07344eea6063c39156d38c.css integrity="sha256-FsJs6ylemky6kbT+B8X1AHI7J9edBzRO6mBjw5FW04w="><link rel=stylesheet href=/tech-blog/css/add-on.css><link rel=stylesheet href=/tech-blog/css/prism.css><script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script><script src=/tech-blog/js/vue.min.js></script><script src=/tech-blog/js/good-counter.js defer></script></head><body><header id=site-header><nav id=site-nav><h1 class=nav-title><a href=/tech-blog/ class=nav>Blog</a></h1><menu id=site-nav-menu class="flyout-menu menu"><a href=/tech-blog/ class="nav link"><i class="fa fa-home"></i> Home</a>
+<!doctype html><html lang=ja>
+<head>
+<meta charset=utf-8>
+<title>【React+TypeScript】TypeScript入門 - yyh-gl's Tech Blog</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1">
+<link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1">
+<link rel=icon type=image/png sizes=16x16 href="/tech-blog/favicon/favicon-16x16.png?v=1">
+<link rel=manifest href="/tech-blog/favicon/site.webmanifest?v=1">
+<link rel=mask-icon href="/tech-blog/favicon/safari-pinned-tab.svg?v=1" color=#ffffff>
+<link rel="shortcut icon" href="/tech-blog/favicon/favicon.ico?v=1">
+<meta name=msapplication-config content="/tech-blog/favicon/browserconfig.xml?v=1">
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=theme-color content="#ffffff">
+<meta name=generator content="Hugo 0.89.0"><meta property="og:site_name" content="yyh-gl's Tech Blog">
+<meta property="og:title" content="【React+TypeScript】TypeScript入門">
+<meta property="og:description" content="TypeScript Advent Calendar 2019 2日目">
+<meta property="description" content="TypeScript Advent Calendar 2019 2日目">
+<meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/featured.webp">
+<meta property="og:image:alt" content="featured">
+<link rel=stylesheet href=/tech-blog/css/bundle.min.16c26ceb295e9a4cba91b4fe07c5f500723b27d79d07344eea6063c39156d38c.css integrity="sha256-FsJs6ylemky6kbT+B8X1AHI7J9edBzRO6mBjw5FW04w="><link rel=stylesheet href=/tech-blog/css/add-on.css>
+<link rel=stylesheet href=/tech-blog/css/prism.css>
+<script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
+<script src=/tech-blog/js/vue.min.js></script>
+<script src=/tech-blog/js/good-counter.js defer></script>
+</head>
+<body>
+<header id=site-header>
+<nav id=site-nav>
+<h1 class=nav-title>
+<a href=/tech-blog/ class=nav>
+Blog
+</a>
+</h1>
+<menu id=site-nav-menu class="flyout-menu menu">
+<a href=/tech-blog/ class="nav link"><i class="fa fa-home"></i> Home</a>
 <a href=/tech-blog/about/ class="nav link"><i class="far fa-id-card"></i> About</a>
 <a href=/tech-blog/blog/ class="nav link"><i class="far fa-newspaper"></i> Blog</a>
-<a href=/tech-blog/categories/ class="nav link"><i class="fas fa-sitemap"></i> Categories</a></menu>
-<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a></nav></header><div id=wrapper><section id=site-intro><a href=/tech-blog/><img src=https://yyh-gl.github.io/tech-blog/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a><header><h1>yyh-gl's Tech Blog</h1></header><main><p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p></main><footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul></footer></section><main id=site-main><article class=post><header><div class=title><h2><a href=/tech-blog/blog/react_typescript_sample/>【React+TypeScript】TypeScript入門</a></h2><p>TypeScript Advent Calendar 2019 2日目</p></div><div class=meta><time datetime="2019-12-02 00:00:00 +0000 UTC">2019-12-02</time><p>yyh-gl</p><p>5 分で読めます</p></div></header><div id=socnet-share></div><div class=content><a href=/tech-blog/blog/react_typescript_sample/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/featured.webp alt=featured></a><h1 id=typescript-advent-calendar-2019>TypeScript Advent Calendar 2019</h1><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png width=700><p>本記事は <a href=https://qiita.com/advent-calendar/2019/typescript target=_blank rel="noopener noreferrer">TypeScript Advent Calendar 2019</a>
-の 2 日目の記事です。</p><p>内容としては、TypeScript 初級者のための TypeScript 入門です。</p><p>基礎的な内容から入り、<br>最終的には、企業や個人の技術ブログを参考に、<br>React の実プロジェクトにおいて、<br>どのように TypeScript が使われているのか紹介できればと思います。<br>（APIリクエスト周りのTypeScript活用事例を紹介）</p><p>今日の記事を読んで TypeScript に入門し、<br>今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！</p><h1 id=基礎編>基礎編</h1><h2 id=typescript-とは>TypeScript とは</h2><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/ts.png width=200><p><a href=https://www.typescriptlang.org/index.html target=_blank rel="noopener noreferrer">TypeScript</a>
+<a href=/tech-blog/categories/ class="nav link"><i class="fas fa-sitemap"></i> Categories</a>
+</menu>
+<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+</nav>
+</header>
+<div id=wrapper>
+<section id=site-intro>
+<a href=/tech-blog/><img src=https://yyh-gl.github.io/tech-blog/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a>
+<header>
+<h1>yyh-gl's Tech Blog</h1>
+</header>
+<main>
+<p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p>
+</main>
+<footer>
+<ul class=socnet-icons>
+<li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
+<li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
+<li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
+<li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li>
+</ul>
+</footer>
+</section>
+<main id=site-main>
+<article class=post>
+<header>
+<div class=title>
+<h2><a href=/tech-blog/blog/react_typescript_sample/>【React+TypeScript】TypeScript入門</a></h2>
+<p>TypeScript Advent Calendar 2019 2日目</p>
+</div>
+<div class=meta>
+<time datetime="2019-12-02 00:00:00 +0000 UTC">2019-12-02</time>
+<p>yyh-gl</p>
+<p>5 分で読めます</p>
+</div>
+</header>
+<div id=socnet-share>
+</div>
+<div class=content>
+<a href=/tech-blog/blog/react_typescript_sample/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/featured.webp')">
+<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/featured.webp alt=featured>
+</a>
+<h1 id=typescript-advent-calendar-2019>TypeScript Advent Calendar 2019</h1>
+<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png width=700>
+<p>本記事は <a href=https://qiita.com/advent-calendar/2019/typescript target=_blank rel="noopener noreferrer">TypeScript Advent Calendar 2019</a>
+の 2 日目の記事です。</p>
+<p>内容としては、TypeScript 初級者のための TypeScript 入門です。</p>
+<p>基礎的な内容から入り、<br>
+最終的には、企業や個人の技術ブログを参考に、<br>
+React の実プロジェクトにおいて、<br>
+どのように TypeScript が使われているのか紹介できればと思います。<br>
+（APIリクエスト周りのTypeScript活用事例を紹介）</p>
+<p>今日の記事を読んで TypeScript に入門し、<br>
+今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！</p>
+<h1 id=基礎編>基礎編</h1>
+<h2 id=typescript-とは>TypeScript とは</h2>
+<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/ts.png width=200>
+<p><a href=https://www.typescriptlang.org/index.html target=_blank rel="noopener noreferrer">TypeScript</a>
 は Microsoft 社によって開発され、
 現在は <a href=https://github.com/microsoft/TypeScript target=_blank rel="noopener noreferrer">OSS</a>
-として開発が進められています。</p><p>「TypeScript とは何か」を簡単に説明すると、<br><u>JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット</u> です。</p><p><a href=https://www.typescriptlang.org/ target=_blank rel="noopener noreferrer">公式サイト</a>
-はこちらで、<br>2019年12月2日現在、最新版は 3.7.2 となっています。</p><p>では、実際にコードを交えながら基礎的な部分を説明していきます。<br>ただし、実践編で使用する内容に絞って説明していきますので、<br>その点はご了承ください🙇‍<br>（足りない情報は<a href=https://www.typescriptlang.org/docs/home.html target=_blank rel="noopener noreferrer">公式ドキュメント</a>
-を参考にしてください）</p><h2 id=型>型</h2><p>では、早速、TypeScript の型に触れていきましょう。<br>TypeScript で使用できる基本的な型として以下のものがあります。</p><ul><li>Boolean</li><li>Number</li><li>String</li><li>Array</li><li>Tuple</li><li>Enum</li><li>Any</li><li>Void</li><li>Null and Undefined</li><li>Never</li><li>Object</li></ul><p>だいたいの型は他言語でも用意されているので、<br>説明がなくても理解できると思います。</p><p>Tuple や Never といった、他言語では見慣れない型もあると思いますが、<br>他サイトでたくさん説明されているので割愛します。</p><p>【参考サイト】</p><ul><li><a href=https://www.typescriptlang.org/docs/handbook/basic-types.html target=_blank rel="noopener noreferrer">公式サイト</a></li><li><a href=https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a target=_blank rel="noopener noreferrer">Qiita記事</a></li></ul><p>型の宣言方法は以下のとおりです。</p><pre class=line-numbers><code class=language-typescript>function greeter(person: string) {
+として開発が進められています。</p>
+<p>「TypeScript とは何か」を簡単に説明すると、<br>
+<u>JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット</u> です。</p>
+<p><a href=https://www.typescriptlang.org/ target=_blank rel="noopener noreferrer">公式サイト</a>
+はこちらで、<br>
+2019年12月2日現在、最新版は 3.7.2 となっています。</p>
+<p>では、実際にコードを交えながら基礎的な部分を説明していきます。<br>
+ただし、実践編で使用する内容に絞って説明していきますので、<br>
+その点はご了承ください🙇‍<br>
+（足りない情報は<a href=https://www.typescriptlang.org/docs/home.html target=_blank rel="noopener noreferrer">公式ドキュメント</a>
+を参考にしてください）</p>
+<h2 id=型>型</h2>
+<p>では、早速、TypeScript の型に触れていきましょう。<br>
+TypeScript で使用できる基本的な型として以下のものがあります。</p>
+<ul>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+<li>Array</li>
+<li>Tuple</li>
+<li>Enum</li>
+<li>Any</li>
+<li>Void</li>
+<li>Null and Undefined</li>
+<li>Never</li>
+<li>Object</li>
+</ul>
+<p>だいたいの型は他言語でも用意されているので、<br>
+説明がなくても理解できると思います。</p>
+<p>Tuple や Never といった、他言語では見慣れない型もあると思いますが、<br>
+他サイトでたくさん説明されているので割愛します。</p>
+<p>【参考サイト】</p>
+<ul>
+<li><a href=https://www.typescriptlang.org/docs/handbook/basic-types.html target=_blank rel="noopener noreferrer">公式サイト</a>
+</li>
+<li><a href=https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a target=_blank rel="noopener noreferrer">Qiita記事</a>
+</li>
+</ul>
+<p>型の宣言方法は以下のとおりです。</p>
+<pre class=line-numbers><code class=language-typescript>function greeter(person: string) {
     return &quot;Hello, &quot; + person;
 }
 
 const user: string = &quot;Jane User&quot;;
 
 document.body.textContent = greeter(user);
-</code></pre><p>1行目にて、greeter() に person という string 型の引数を渡すことが明示されています。<br>また、変数 <code>user</code> は string 型であることが明記されています。</p><p>仮に <code>greeter()</code> に string 型以外の値を渡すと、<br>コンパイル時 or IDE 上にエラーが吐かれるので、ミスに気づくことが可能です。</p><h2 id=インターフェース>インターフェース</h2><p>次にインターフェースについて見ていきます。</p><p>インターフェースは本来、JavaScript に無い機能ですが、<br>TypeScript によってその機能が追加されています。</p><p>インターフェースは、クラスやオブジェクトの規格を定義するのに使用します。<br>クラスだけでなく、オブジェクトの規格を定義できるため、<br>API のレスポンスとして返ってくるデータ（＝オブジェクト）の規格を定義することが可能です。</p><p>有用性の高い機能のひとつではないでしょうか。</p><p>定義方法は以下のとおりです。</p><pre class=line-numbers><code class=language-typescript>interface LabeledValue {
+</code></pre>
+<p>1行目にて、greeter() に person という string 型の引数を渡すことが明示されています。<br>
+また、変数 <code>user</code> は string 型であることが明記されています。</p>
+<p>仮に <code>greeter()</code> に string 型以外の値を渡すと、<br>
+コンパイル時 or IDE 上にエラーが吐かれるので、ミスに気づくことが可能です。</p>
+<h2 id=インターフェース>インターフェース</h2>
+<p>次にインターフェースについて見ていきます。</p>
+<p>インターフェースは本来、JavaScript に無い機能ですが、<br>
+TypeScript によってその機能が追加されています。</p>
+<p>インターフェースは、クラスやオブジェクトの規格を定義するのに使用します。<br>
+クラスだけでなく、オブジェクトの規格を定義できるため、<br>
+API のレスポンスとして返ってくるデータ（＝オブジェクト）の規格を定義することが可能です。</p>
+<p>有用性の高い機能のひとつではないでしょうか。</p>
+<p>定義方法は以下のとおりです。</p>
+<pre class=line-numbers><code class=language-typescript>interface LabeledValue {
     label: string;
 }
 
@@ -25,7 +168,15 @@ function printLabel(labeledObj: LabeledValue) {
 
 let myObj = {size: 10, label: &quot;Size 10 Object&quot;};
 printLabel(myObj);
-</code></pre><p>上記コードは、<code>LabeledValue</code> というインターフェースと、<br>そのインターフェースを満たす <code>myObj</code> というオブジェクトを定義しています。<br>加えて、<code>printLabel()</code> という <code>LabeledValue</code> インターフェースを受け取る関数が用意されています。</p><p><code>myObj</code> は <code>label</code> を持っているので、<code>LabeledValue</code> インターフェースを満たしており、<br><code>printLabel()</code> に引数として渡すことが可能です。</p><p>クラスの規格定義としてのインターフェースは以下のとおりです。<br>こちらは他言語でよく見る形なので詳細な説明は省略します。</p><pre class=line-numbers><code class=language-typescript>interface ClockInterface {
+</code></pre>
+<p>上記コードは、<code>LabeledValue</code> というインターフェースと、<br>
+そのインターフェースを満たす <code>myObj</code> というオブジェクトを定義しています。<br>
+加えて、<code>printLabel()</code> という <code>LabeledValue</code> インターフェースを受け取る関数が用意されています。</p>
+<p><code>myObj</code> は <code>label</code> を持っているので、<code>LabeledValue</code> インターフェースを満たしており、<br>
+<code>printLabel()</code> に引数として渡すことが可能です。</p>
+<p>クラスの規格定義としてのインターフェースは以下のとおりです。<br>
+こちらは他言語でよく見る形なので詳細な説明は省略します。</p>
+<pre class=line-numbers><code class=language-typescript>interface ClockInterface {
     currentTime: Date;
     setTime(d: Date): void;
 }
@@ -37,7 +188,12 @@ class Clock implements ClockInterface {
     }
     constructor(h: number, m: number) { }
 }
-</code></pre><p>なお、クラスという概念は JavaScript（ES6） に組み込まれているクラスの機能を<br>ES6 以前の JavaScript でも使えるようにしたものです。</p><h2 id=入門時の落とし穴>入門時の落とし穴</h2><p>僕が TypeScript を初めて触ったときに戸惑ったのが以下のエラーでした。</p><pre class=line-numbers><code class=language-zsh>Could not find a declaration file for module 'react-router-config'. '/hoge/index.js' implicitly has an 'any' type.
+</code></pre>
+<p>なお、クラスという概念は JavaScript（ES6） に組み込まれているクラスの機能を<br>
+ES6 以前の JavaScript でも使えるようにしたものです。</p>
+<h2 id=入門時の落とし穴>入門時の落とし穴</h2>
+<p>僕が TypeScript を初めて触ったときに戸惑ったのが以下のエラーでした。</p>
+<pre class=line-numbers><code class=language-zsh>Could not find a declaration file for module 'react-router-config'. '/hoge/index.js' implicitly has an 'any' type.
   Try `npm install @types/react-router-config` if it exists or add a new declaration (.d.ts) file containing `declare module 'react-router-config';`  TS7016
 
     1 | import React from 'react';
@@ -46,13 +202,43 @@ class Clock implements ClockInterface {
     3 | import './App.css';
     4 | 
     5 | const App: React.FC&lt;RouteConfigComponentProps&gt; = ({ route }) =&gt; {
-</code></pre><p>このエラーが何を言っているかと言うと、<br>「ライブラリで使用する関数や変数に関する型宣言情報がないから、どう解釈したらいいか分からん！」<br>ってことです。</p><p>ライブラリは TypeScript のためではなく、JavaScript のためのものなので、<br>インポートしたライブラリの中には、TypeScript 対応していないものがあるのは当然ですよね。</p><p>では、どうするかですが、<br><code>@types</code> を使ってやればOKです。</p><h2 id=types>@types</h2><p><code>@types</code> を使用することで、提供されている型定義ファイルを取得することができます。</p><p><a href=https://typescript-jp.gitbook.io/deep-dive/type-system/types target=_blank rel="noopener noreferrer">本サイト</a>
-によると、<br>JavaScriptライブラリの90%に対応しているんだとか。<br>すごすぎる。。。</p><p>例えば、さきほどのエラーに対応する場合は、<br><code>npm install @types/react-router-config</code> を実行してやることで、<br>react-router-config ライブラリの型に関する定義を取得できます。</p><h2 id=型定義ファイル>型定義ファイル</h2><p>もし型定義ファイルが提供されていない場合は、
+</code></pre>
+<p>このエラーが何を言っているかと言うと、<br>
+「ライブラリで使用する関数や変数に関する型宣言情報がないから、どう解釈したらいいか分からん！」<br>
+ってことです。</p>
+<p>ライブラリは TypeScript のためではなく、JavaScript のためのものなので、<br>
+インポートしたライブラリの中には、TypeScript 対応していないものがあるのは当然ですよね。</p>
+<p>では、どうするかですが、<br>
+<code>@types</code> を使ってやればOKです。</p>
+<h2 id=types>@types</h2>
+<p><code>@types</code> を使用することで、提供されている型定義ファイルを取得することができます。</p>
+<p><a href=https://typescript-jp.gitbook.io/deep-dive/type-system/types target=_blank rel="noopener noreferrer">本サイト</a>
+によると、<br>
+JavaScriptライブラリの90%に対応しているんだとか。<br>
+すごすぎる。。。</p>
+<p>例えば、さきほどのエラーに対応する場合は、<br>
+<code>npm install @types/react-router-config</code> を実行してやることで、<br>
+react-router-config ライブラリの型に関する定義を取得できます。</p>
+<h2 id=型定義ファイル>型定義ファイル</h2>
+<p>もし型定義ファイルが提供されていない場合は、
 自分で型定義ファイルを作る必要があります。
 作るときは<a href=https://qiita.com/Nossa/items/726cc3e67527e896ed1e#2-%E5%9E%8B%E5%AE%9A%E7%BE%A9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB-dts-%E3%82%92%E8%87%AA%E4%BD%9C%E3%81%99%E3%82%8B target=_blank rel="noopener noreferrer">本サイト</a>
-が参考になると思います。</p><p>（<a href=https://qiita.com/Nossa/items/726cc3e67527e896ed1e#3-require-%E3%81%A7%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80 target=_blank rel="noopener noreferrer">こんな技</a>
-もあるようですが…）</p><h1 id=実践編>実践編</h1><p>では、（かなりざっくりと）基本的なことはお話したので、<br>実践的な内容に入っていきます。</p><p>今回は、React + TypeScript を使用します。</p><p>ソースは<a href=https://github.com/yyh-gl/react-typescript-sample target=_blank rel="noopener noreferrer">GitHub</a>
-上にあげています。</p><h2 id=react--typescript-環境のセットアップ>React ＋ TypeScript 環境のセットアップ</h2><p>React ＋ TypeScript の開発環境は下記コマンドひとつで揃います。<br><code>$ npx create-react-app my-app --typescript</code></p><p>ここから、src配下のディレクトリ構成を少し変更していきます。<br>今回は下記のようなディレクトリ構成を取りました。<br>Webのフロントエンド開発においてよく見られる形ではないでしょうか？</p><pre class=line-numbers><code class=language-zsh>$ tree react-typescript-sample
+が参考になると思います。</p>
+<p>（<a href=https://qiita.com/Nossa/items/726cc3e67527e896ed1e#3-require-%E3%81%A7%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80 target=_blank rel="noopener noreferrer">こんな技</a>
+もあるようですが…）</p>
+<h1 id=実践編>実践編</h1>
+<p>では、（かなりざっくりと）基本的なことはお話したので、<br>
+実践的な内容に入っていきます。</p>
+<p>今回は、React + TypeScript を使用します。</p>
+<p>ソースは<a href=https://github.com/yyh-gl/react-typescript-sample target=_blank rel="noopener noreferrer">GitHub</a>
+上にあげています。</p>
+<h2 id=react--typescript-環境のセットアップ>React ＋ TypeScript 環境のセットアップ</h2>
+<p>React ＋ TypeScript の開発環境は下記コマンドひとつで揃います。<br>
+<code>$ npx create-react-app my-app --typescript</code></p>
+<p>ここから、src配下のディレクトリ構成を少し変更していきます。<br>
+今回は下記のようなディレクトリ構成を取りました。<br>
+Webのフロントエンド開発においてよく見られる形ではないでしょうか？</p>
+<pre class=line-numbers><code class=language-zsh>$ tree react-typescript-sample
 react-typescript-sample
 ├── package-lock.json
 ├── package.json
@@ -78,8 +264,31 @@ react-typescript-sample
 │   └── serviceWorker.ts
 ├── tsconfig.json
 └── yarn.lock
-</code></pre><p>なお、今回は説明しやすくするために、<br><code>components</code> および <code>layouts</code> は使用していません。</p><p>本来であれば、<code>pages</code> は <code>components</code> 配下のコンポーネントを組み合わせることにより表現します。<br><code>components</code> 配下は、Atomic Design に沿ったディレクトリ構成が取られることが多い気がします。</p><p>また、ページのレイアウト（ヘッダーやフッター、メインコンテンツの位置など）は、<br><code>layouts</code> 配下のコンポーネントによって表現します。</p><h2 id=api-リクエスト>API リクエスト</h2><p>最近のフロントエンドでは、<br>フロントから API リクエストを行うシーンが多くあると思います。</p><p>そのさいに、API のレスポンスが<br>どういったフィールドを持っているのかが定義されていれば、<br>以下のようなメリットがあります。</p><ul><li>レスポンス内容がフロントのコードから読み取れる<ul><li>存在しないパラメータにアクセスしようとするといった凡ミスを無くせる</li></ul></li><li>IDE による補完が効く</li></ul><p>では、実際にどうやって API のレスポンスを定義するのか見ていきます。</p><p>今回は、例としてユーザ情報を受け取る API を用意しました。
-下記のような JSON を取得します。</p><pre class=line-numbers><code class=language-json>GET https://localhost:3000/api/v1/users
+</code></pre>
+<p>なお、今回は説明しやすくするために、<br>
+<code>components</code> および <code>layouts</code> は使用していません。</p>
+<p>本来であれば、<code>pages</code> は <code>components</code> 配下のコンポーネントを組み合わせることにより表現します。<br>
+<code>components</code> 配下は、Atomic Design に沿ったディレクトリ構成が取られることが多い気がします。</p>
+<p>また、ページのレイアウト（ヘッダーやフッター、メインコンテンツの位置など）は、<br>
+<code>layouts</code> 配下のコンポーネントによって表現します。</p>
+<h2 id=api-リクエスト>API リクエスト</h2>
+<p>最近のフロントエンドでは、<br>
+フロントから API リクエストを行うシーンが多くあると思います。</p>
+<p>そのさいに、API のレスポンスが<br>
+どういったフィールドを持っているのかが定義されていれば、<br>
+以下のようなメリットがあります。</p>
+<ul>
+<li>レスポンス内容がフロントのコードから読み取れる
+<ul>
+<li>存在しないパラメータにアクセスしようとするといった凡ミスを無くせる</li>
+</ul>
+</li>
+<li>IDE による補完が効く</li>
+</ul>
+<p>では、実際にどうやって API のレスポンスを定義するのか見ていきます。</p>
+<p>今回は、例としてユーザ情報を受け取る API を用意しました。
+下記のような JSON を取得します。</p>
+<pre class=line-numbers><code class=language-json>GET https://localhost:3000/api/v1/users
 
 [
     {
@@ -98,14 +307,21 @@ react-typescript-sample
         &quot;last_name&quot;: &quot;明智&quot;
     }
 ]
-</code></pre><h2 id=1-interface-を定義>1. interface を定義</h2><p>まずは、ユーザ情報がどういった形式で送られてくるのか、<br>interfaceを使って表現します。</p><pre class=line-numbers><code class=language-typescript>// /src/models/user.ts
+</code></pre>
+<h2 id=1-interface-を定義>1. interface を定義</h2>
+<p>まずは、ユーザ情報がどういった形式で送られてくるのか、<br>
+interfaceを使って表現します。</p>
+<pre class=line-numbers><code class=language-typescript>// /src/models/user.ts
 
 export interface User {
     id: number;
     firstName: string;
     lastName: string;
 }
-</code></pre><h2 id=2-api-クライアントを実装>2. API クライアントを実装</h2><p>次は API リクエストを送る Axios クライアントを作っていきます。</p><pre class=line-numbers><code class=language-typescript>// /src/api/client.js
+</code></pre>
+<h2 id=2-api-クライアントを実装>2. API クライアントを実装</h2>
+<p>次は API リクエストを送る Axios クライアントを作っていきます。</p>
+<pre class=line-numbers><code class=language-typescript>// /src/api/client.js
 
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import camelCaseKeys from 'camelcase-keys';
@@ -125,7 +341,29 @@ client.interceptors.response.use(
         return { ...response.data, data };
     }
 );
-</code></pre><p>ここで注目すべき点が2つあります。</p><p>1つ目は、Axios をインポートするさいに型情報も合わせて取得している点です。<br>3行目にて、<code>axios</code> 以外に <code>AxiosInstance</code> と <code>AxiosResponse</code> を取得しています。</p><p>この <code>AxiosInstance</code> と <code>AxiosResponse</code> こそが Axios ライブラリで使用する型情報です。<br>それぞれ 6行目 と 16行目 で使用しています。</p><p>2つ目は、<code>camelcase-keys</code> というライブラリを使用している点です。<br>JavaScript のコーディング規約では、変数名にキャメルケースを使用します。<br>しかしながら、 JSON のキー名は多くの場合でスネークケースです。</p><p>つまり、普通に JSON を受け取ると、<br><code>resposen.first_name</code> のようにしてデータを取り出します。</p><p>しかし、これでは JavaScript の命名規則的に気持ち悪いですね。<br>加えて、<code>User</code> モデル（interface）は <code>firstName</code> として定義しているため、<br><code>first_name</code> として受け取るのはよろしくありません。</p><p>ここで <code>camelcase-keys</code> ライブラリの登場です。<br>スネークケースのキー名をキャメルケースに変換するためのもので、<br>本ライブラリを用いて、受け取った JSON データのキー名を全てをキャメルケースに変換しています。</p><p>TypeScript の話から少し脱線しましたが、<br>これで User インターフェースどおりのオブジェクトを受け取ることが可能になりました。</p><h2 id=3-ユーザ一覧取得-api-リクエストを実装>3. ユーザ一覧取得 API リクエストを実装</h2><p>では、さきほど実装した Axios クライアントを使って、<br>API サーバにユーザ情報をもらうリクエストをします。</p><pre class=line-numbers><code class=language-typescript>// /src/api/user.ts
+</code></pre>
+<p>ここで注目すべき点が2つあります。</p>
+<p>1つ目は、Axios をインポートするさいに型情報も合わせて取得している点です。<br>
+3行目にて、<code>axios</code> 以外に <code>AxiosInstance</code> と <code>AxiosResponse</code> を取得しています。</p>
+<p>この <code>AxiosInstance</code> と <code>AxiosResponse</code> こそが Axios ライブラリで使用する型情報です。<br>
+それぞれ 6行目 と 16行目 で使用しています。</p>
+<p>2つ目は、<code>camelcase-keys</code> というライブラリを使用している点です。<br>
+JavaScript のコーディング規約では、変数名にキャメルケースを使用します。<br>
+しかしながら、 JSON のキー名は多くの場合でスネークケースです。</p>
+<p>つまり、普通に JSON を受け取ると、<br>
+<code>resposen.first_name</code> のようにしてデータを取り出します。</p>
+<p>しかし、これでは JavaScript の命名規則的に気持ち悪いですね。<br>
+加えて、<code>User</code> モデル（interface）は <code>firstName</code> として定義しているため、<br>
+<code>first_name</code> として受け取るのはよろしくありません。</p>
+<p>ここで <code>camelcase-keys</code> ライブラリの登場です。<br>
+スネークケースのキー名をキャメルケースに変換するためのもので、<br>
+本ライブラリを用いて、受け取った JSON データのキー名を全てをキャメルケースに変換しています。</p>
+<p>TypeScript の話から少し脱線しましたが、<br>
+これで User インターフェースどおりのオブジェクトを受け取ることが可能になりました。</p>
+<h2 id=3-ユーザ一覧取得-api-リクエストを実装>3. ユーザ一覧取得 API リクエストを実装</h2>
+<p>では、さきほど実装した Axios クライアントを使って、<br>
+API サーバにユーザ情報をもらうリクエストをします。</p>
+<pre class=line-numbers><code class=language-typescript>// /src/api/user.ts
 
 import { AxiosPromise } from 'axios';
 
@@ -133,7 +371,13 @@ import client from './client';
 import { User } from '../models/user';
 
 export const fetchUsers = (): AxiosPromise&lt;User[]&gt; =&gt; client.get(`/users`);
-</code></pre><p>8行目にて、<code>User[]</code> を受け取ることを明示しています。</p><h2 id=4-ユーザ一覧を取得表示>4. ユーザ一覧を取得＆表示</h2><p>では、受け取ったユーザ情報を表示してみます。<br>なお、冒頭で説明したとおり、<br>簡略化のために、表示に関する全実装を <code>pages</code> コンポーネント内で行います。</p><pre class=line-numbers><code class=language-typescript>// /src/pages/users.tsx
+</code></pre>
+<p>8行目にて、<code>User[]</code> を受け取ることを明示しています。</p>
+<h2 id=4-ユーザ一覧を取得表示>4. ユーザ一覧を取得＆表示</h2>
+<p>では、受け取ったユーザ情報を表示してみます。<br>
+なお、冒頭で説明したとおり、<br>
+簡略化のために、表示に関する全実装を <code>pages</code> コンポーネント内で行います。</p>
+<pre class=line-numbers><code class=language-typescript>// /src/pages/users.tsx
 
 import React, { useEffect, useState } from 'react';
 
@@ -174,11 +418,55 @@ const Users: React.FC = () =&gt; {
 };
 
 export default Users;
-</code></pre><p>まず初めに登場する型は、<code>React.FC</code>（8行目）です。<br>この型は React Functional Component を意味します。</p><p>次に登場するのは、9行目の <code>useState&lt;User[] | undefined></code> ですね。<br>この定義は、<code>userList</code> の型が User[] または undefined であることを示します。</p><p>あとは、useEffect() でさきほど実装した API リクエストを行い、<br>取得したユーザ情報を <code>userList</code> にセットしています。</p><br><p>このとき、33行目のユーザ情報表示処理では、<br>User インターフェースを定義しているため、<br>IDE において、どういったキーが存在するかが補完候補として出てきます！ ↓</p><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/complement.png width=700><p>型がちゃんと定義されているので、<br>取得したデータに対して、どういった処理ができる（どのメソッドを適用できる）かが明確になり、<br>凡ミスを減らすことができますし、コードの可読性向上にも繋がります。</p><p>いいですね！</p><p>実践編は以上です。<br>API リクエスト部分だけかよというツッコミはどうかご勘弁を😇</p><p>最後に TypeScript を使う上での注意点と最新版で追加された機能を少し紹介して終わりにしたいと思います。</p><h1 id=typescriptを使う上での注意点>TypeScriptを使う上での注意点</h1><h2 id=typescript-の型情報はなくなる>TypeScript の型情報はなくなる</h2><p>TypeScript で型を定義していたとしても、最終的にそのコードは JavaScript に変換されます。</p><p>ご存知のとおり、JavaScript には型などありません。<br>したがって、実際に動くコードには型情報はついていません。</p><p>あくまで開発段階で型の整合性チェックや補完などができるだけであること、<br>ちゃんと理解しておくことが、とても重要だと思います。</p><h2 id=create-react-app-では使えない機能がある>create-react-app では使えない機能がある</h2><p>create-react-app の最新版 3.2.0 では、<br>TypeScript 3.7 から使用できる一部機能にまだ対応していません。</p><p>本内容については、次章にて詳細に話します。</p><h1 id=最新安定版-37-で追加された機能>最新安定版 3.7 で追加された機能</h1><p>2019年11月7日にメジャーアップデートが行われ、バージョン 3.7 がリリースされました。<br>今回は以下の新機能をついて紹介します。</p><h2 id=optional-chaininghttpswwwtypescriptlangorgdocshandbookrelease-notestypescript-3-7htmloptional-chaining><a href=https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#optional-chaining target=_blank rel="noopener noreferrer">Optional Chaining</a></h2><p>Kotlin を書いたことがある人は、見覚えのある文法ではないでしょうか？</p><pre class=line-numbers><code class=language-typescript>let x = foo?.bar.baz();
-</code></pre><p>このように書けば、<code>foo</code> が null または undefined じゃない場合にのみ <code>foo.bar.baz()</code> を実行します。<br>下記のコードと同義です。</p><pre class=line-numbers><code class=language-typescript>let x = (foo === null || foo === undefined) ?
+</code></pre>
+<p>まず初めに登場する型は、<code>React.FC</code>（8行目）です。<br>
+この型は React Functional Component を意味します。</p>
+<p>次に登場するのは、9行目の <code>useState&lt;User[] | undefined></code> ですね。<br>
+この定義は、<code>userList</code> の型が User[] または undefined であることを示します。</p>
+<p>あとは、useEffect() でさきほど実装した API リクエストを行い、<br>
+取得したユーザ情報を <code>userList</code> にセットしています。</p>
+<br>
+<p>このとき、33行目のユーザ情報表示処理では、<br>
+User インターフェースを定義しているため、<br>
+IDE において、どういったキーが存在するかが補完候補として出てきます！ ↓</p>
+<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/complement.png width=700>
+<p>型がちゃんと定義されているので、<br>
+取得したデータに対して、どういった処理ができる（どのメソッドを適用できる）かが明確になり、<br>
+凡ミスを減らすことができますし、コードの可読性向上にも繋がります。</p>
+<p>いいですね！</p>
+<p>実践編は以上です。<br>
+API リクエスト部分だけかよというツッコミはどうかご勘弁を😇</p>
+<p>最後に TypeScript を使う上での注意点と最新版で追加された機能を少し紹介して終わりにしたいと思います。</p>
+<h1 id=typescriptを使う上での注意点>TypeScriptを使う上での注意点</h1>
+<h2 id=typescript-の型情報はなくなる>TypeScript の型情報はなくなる</h2>
+<p>TypeScript で型を定義していたとしても、最終的にそのコードは JavaScript に変換されます。</p>
+<p>ご存知のとおり、JavaScript には型などありません。<br>
+したがって、実際に動くコードには型情報はついていません。</p>
+<p>あくまで開発段階で型の整合性チェックや補完などができるだけであること、<br>
+ちゃんと理解しておくことが、とても重要だと思います。</p>
+<h2 id=create-react-app-では使えない機能がある>create-react-app では使えない機能がある</h2>
+<p>create-react-app の最新版 3.2.0 では、<br>
+TypeScript 3.7 から使用できる一部機能にまだ対応していません。</p>
+<p>本内容については、次章にて詳細に話します。</p>
+<h1 id=最新安定版-37-で追加された機能>最新安定版 3.7 で追加された機能</h1>
+<p>2019年11月7日にメジャーアップデートが行われ、バージョン 3.7 がリリースされました。<br>
+今回は以下の新機能をついて紹介します。</p>
+<h2 id=optional-chaininghttpswwwtypescriptlangorgdocshandbookrelease-notestypescript-3-7htmloptional-chaining><a href=https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#optional-chaining target=_blank rel="noopener noreferrer">Optional Chaining</a>
+</h2>
+<p>Kotlin を書いたことがある人は、見覚えのある文法ではないでしょうか？</p>
+<pre class=line-numbers><code class=language-typescript>let x = foo?.bar.baz();
+</code></pre>
+<p>このように書けば、<code>foo</code> が null または undefined じゃない場合にのみ <code>foo.bar.baz()</code> を実行します。<br>
+下記のコードと同義です。</p>
+<pre class=line-numbers><code class=language-typescript>let x = (foo === null || foo === undefined) ?
     undefined :
     foo.bar.baz();
-</code></pre><br><p>ここで、さきほど、最新版の create-react-app では 最新版 TypeScript の一部機能が使えないと言いましたが、<br>その機能がこの Optional Chaining です。</p><p>本機能を使用しようとすると、</p><pre class=line-numbers><code class=language-zsh>./src/pages/users.tsx
+</code></pre>
+<br>
+<p>ここで、さきほど、最新版の create-react-app では 最新版 TypeScript の一部機能が使えないと言いましたが、<br>
+その機能がこの Optional Chaining です。</p>
+<p>本機能を使用しようとすると、</p>
+<pre class=line-numbers><code class=language-zsh>./src/pages/users.tsx
 SyntaxError: /Users/yyh-gl/workspaces/React/react-typescript-sample/src/pages/users.tsx: Support for the experimental syntax 'optionalChaining' isn't currently enabled (29:25):
 
   27 |             &lt;h1&gt;User List&lt;/h1&gt;
@@ -190,11 +478,133 @@ SyntaxError: /Users/yyh-gl/workspaces/React/react-typescript-sample/src/pages/us
   32 |                     );
 
 Add @babel/plugin-proposal-optional-chaining (https://git.io/vb4Sk) to the 'plugins' section of your Babel config to enable transformation.
-</code></pre><p>このようにエラーが出て、<br>Babel（TypeScript を JavaScript に変換するやつ）の設定ファイルに<br><code>@babel/plugin-proposal-optional-chaining</code> を追加しろと言われます。</p><p>しかしながら、現在、Babel の設定ファイルである <code>.babelrc</code> や <code>babel.config.js</code> に create-react-app（厳密には <code>react-scripts</code>）が対応しておらず、読み込むことができません。</p><p>本件については、すでに Issue が出されて、PRもマージ済みということなので、<br>今後のリリースに期待ですね。。。</p><p><a href=https://qiita.com/Nkzn/items/e76b5fad43f238e76fb9#%E7%B4%A0%E3%81%AEcra%E3%81%A7%E3%81%AF%E4%BD%BF%E3%81%88%E3%81%AA%E3%81%84 target=_blank rel="noopener noreferrer">参考サイト</a></p><p>なお、Optional Chaining は本家 JavaScript にも組み込まれる予定です！<br>TypeScript は、JavaScript の Class のように、<br>JavaScriptのバージョンを上げないと使えない機能を<br>ライブラリレベルで使えるようにしてくれるのでいいですね👍</p><h2 id=nullish-coalescinghttpswwwtypescriptlangorgdocshandbookrelease-notestypescript-3-7htmlnullish-coalescing><a href=https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#nullish-coalescing target=_blank rel="noopener noreferrer">Nullish Coalescing</a></h2><p>Nullish Coalescing をコードで表すと下記のようになります。</p><pre class=line-numbers><code class=language-typescript>let x = foo ?? bar();
-</code></pre><p><code>foo</code> が null または undefined でなければ、 <code>foo</code> が代入されます。<br>null または undefined であれば、<code>bar()</code> が実行されます。</p><p>下記のコードと同義です。</p><pre class=line-numbers><code class=language-typescript>let x = (foo !== null &amp;&amp; foo !== undefined) ?
+</code></pre>
+<p>このようにエラーが出て、<br>
+Babel（TypeScript を JavaScript に変換するやつ）の設定ファイルに <br>
+<code>@babel/plugin-proposal-optional-chaining </code> を追加しろと言われます。</p>
+<p>しかしながら、現在、Babel の設定ファイルである <code>.babelrc</code> や <code>babel.config.js</code> に create-react-app（厳密には <code>react-scripts</code>）が対応しておらず、読み込むことができません。</p>
+<p>本件については、すでに Issue が出されて、PRもマージ済みということなので、<br>
+今後のリリースに期待ですね。。。</p>
+<p><a href=https://qiita.com/Nkzn/items/e76b5fad43f238e76fb9#%E7%B4%A0%E3%81%AEcra%E3%81%A7%E3%81%AF%E4%BD%BF%E3%81%88%E3%81%AA%E3%81%84 target=_blank rel="noopener noreferrer">参考サイト</a>
+</p>
+<p>なお、Optional Chaining は本家 JavaScript にも組み込まれる予定です！<br>
+TypeScript は、JavaScript の Class のように、<br>
+JavaScriptのバージョンを上げないと使えない機能を<br>
+ライブラリレベルで使えるようにしてくれるのでいいですね👍</p>
+<h2 id=nullish-coalescinghttpswwwtypescriptlangorgdocshandbookrelease-notestypescript-3-7htmlnullish-coalescing><a href=https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#nullish-coalescing target=_blank rel="noopener noreferrer">Nullish Coalescing</a>
+</h2>
+<p>Nullish Coalescing をコードで表すと下記のようになります。</p>
+<pre class=line-numbers><code class=language-typescript>let x = foo ?? bar();
+</code></pre>
+<p><code>foo</code> が null または undefined でなければ、 <code>foo</code> が代入されます。<br>
+null または undefined であれば、<code>bar()</code> が実行されます。</p>
+<p>下記のコードと同義です。</p>
+<pre class=line-numbers><code class=language-typescript>let x = (foo !== null &amp;&amp; foo !== undefined) ?
     foo :
     bar();
-</code></pre><p>コードの記述量が減っていいですね👍</p><h1 id=まとめ>まとめ</h1><p>TypeScript 入門 いかがでしたでしょうか？</p><p>詳細な説明を飛ばしたところもありましたが、<br>TypeScript がどんな感じなのか、少しでも感じてもらえたならば幸いです。</p><p>TypeScript は型に注目がいきがちですが、<br>他にも様々な便利機能があるので、どんどん使い倒していきたいですね！</p><p>明日からのアドベントカレンダー記事も楽しみです😃</p><br><p>TypeScript Advent Calendar 2019、<br>明日は <a href=https://qiita.com/kimromi target=_blank rel="noopener noreferrer">kimromi</a>
+</code></pre>
+<p>コードの記述量が減っていいですね👍</p>
+<h1 id=まとめ>まとめ</h1>
+<p>TypeScript 入門 いかがでしたでしょうか？</p>
+<p>詳細な説明を飛ばしたところもありましたが、<br>
+TypeScript がどんな感じなのか、少しでも感じてもらえたならば幸いです。</p>
+<p>TypeScript は型に注目がいきがちですが、<br>
+他にも様々な便利機能があるので、どんどん使い倒していきたいですね！</p>
+<p>明日からのアドベントカレンダー記事も楽しみです😃</p>
+<br>
+<p>TypeScript Advent Calendar 2019、<br>
+明日は <a href=https://qiita.com/kimromi target=_blank rel="noopener noreferrer">kimromi</a>
 さんの『<a href=https://kimromi.hatenablog.jp/entry/2019/12/03/134214 target=_blank rel="noopener noreferrer">FlowからTypeScriptに段階的に移行する</a>
-』です🛫</p></div><footer><div class=stats><ul class=categories><li><a class=article-terms-link href=/tech-blog/categories/react/>React</a></li><li><a class=article-terms-link href=/tech-blog/categories/typescript/>TypeScript</a></li><li><a class=article-terms-link href=/tech-blog/categories/advent-calendar/>Advent Calendar</a></li></ul><div><good-counter url=/tech-blog/blog/react_typescript_sample/></good-counter></div></div></footer><div class=fix><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e3%80%90React%2bTypeScript%e3%80%91TypeScript%e5%85%a5%e9%96%80』" target=_blank rel="noopener noreferrer">修正提案</a></div></article><div class=pagination><a href=/tech-blog/blog/golang-vcr/ class="button left"><span>【Go+VCR】外部APIとの通信を保存してテストに使用する話</span></a>
-<a href=/tech-blog/blog/denago_3/ class="button right"><span>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</span></a></div></main><section id=site-sidebar><section id=recent-posts><header><h1>最近の投稿</h1></header><article class=mini-post><a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2><time class=published datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time></header></article><article class=mini-post><a href=/tech-blog/blog/profile-readme-updater/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/profile-readme-updater/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/profile-readme-updater/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/profile-readme-updater/>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</a></h2><time class=published datetime="2021-02-19 09:53:19 +0000 UTC">2021-02-19</time></header></article><article class=mini-post><a href=/tech-blog/blog/uncredible-codes-from-go-spec/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/12/uncredible-codes-from-go-spec/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/12/uncredible-codes-from-go-spec/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/uncredible-codes-from-go-spec/>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</a></h2><time class=published datetime="2020-12-08 00:00:00 +0900 +0900">2020-12-08</time></header></article><footer><a href=/tech-blog/blog/ class=button>続きを見る</a></footer></section><section id=categories><header><h1><a href=/tech-blog/categories>Categories</a></h1></header><ul><li><a href=/tech-blog/categories/go/>go<span class=count>19</span></a><li><a href=/tech-blog/categories/%E5%8B%89%E5%BC%B7%E4%BC%9A/>勉強会<span class=count>7</span></a><li><a href=/tech-blog/categories/ddd/>ddd<span class=count>5</span></a><li><a href=/tech-blog/categories/advent-calendar/>advent-calendar<span class=count>4</span></a><li><a href=/tech-blog/categories/web-api/>web-api<span class=count>3</span></a><li><a href=/tech-blog/categories/web%E5%85%A8%E8%88%AC/>web全般<span class=count>3</span></a><li><a href=/tech-blog/categories/%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/>アーキテクチャ<span class=count>3</span></a><li><a href=/tech-blog/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/>読書まとめ<span class=count>3</span></a><li><a href=/tech-blog/categories/github/>github<span class=count>2</span></a><li><a href=/tech-blog/categories/html/css/>html/css<span class=count>2</span></a><li><a href=/tech-blog/categories/react/>react<span class=count>2</span></a><li><a href=/tech-blog/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/>セキュリティ<span class=count>2</span></a><li><a href=/tech-blog/categories/%E3%83%86%E3%82%B9%E3%83%88/>テスト<span class=count>2</span></a><li><a href=/tech-blog/categories/android/>android<span class=count>1</span></a><li><a href=/tech-blog/categories/aws/>aws<span class=count>1</span></a><li><a href=/tech-blog/categories/ci/cd/>ci/cd<span class=count>1</span></a><li><a href=/tech-blog/categories/ecs/>ecs<span class=count>1</span></a><li><a href=/tech-blog/categories/firebase/>firebase<span class=count>1</span></a><li><a href=/tech-blog/categories/github-actions/>github-actions<span class=count>1</span></a><li><a href=/tech-blog/categories/kotlin/>kotlin<span class=count>1</span></a><li><a href=/tech-blog/categories/lint/>lint<span class=count>1</span></a><li><a href=/tech-blog/categories/podcast/>podcast<span class=count>1</span></a><li><a href=/tech-blog/categories/rds/>rds<span class=count>1</span></a><li><a href=/tech-blog/categories/terraform/>terraform<span class=count>1</span></a><li><a href=/tech-blog/categories/typescript/>typescript<span class=count>1</span></a><li><a href=/tech-blog/categories/vue.js/>vue.js<span class=count>1</span></a><li><a href=/tech-blog/categories/%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/>アクティビティ<span class=count>1</span></a><li><a href=/tech-blog/categories/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0/>スクラム<span class=count>1</span></a><li><a href=/tech-blog/categories/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88/>チームマネジメント<span class=count>1</span></a><li><a href=/tech-blog/categories/%E3%83%9D%E3%82%A8%E3%83%A0/>ポエム<span class=count>1</span></a><li><a href=/tech-blog/categories/%E5%85%A5%E9%96%80/>入門<span class=count>1</span></a><li><a href=/tech-blog/categories/%E7%B0%A1%E5%8D%98%E3%81%BE%E3%81%A8%E3%82%81/>簡単まとめ<span class=count>1</span></a><li><a href=/tech-blog/categories/%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B/>自己紹介<span class=count>1</span></a></li></ul></section><section id=mini-bio><header><h1>About</h1></header><p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p><footer><a href=/tech-blog/about class=button>もっと詳しく知る</a></footer></section></section><footer id=site-footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul><p class=copyright>© 2021 yyh-gl's Tech Blog<br>Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.84.3 target=_blank rel=noopener>Hugo</a></p></footer><a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a><script src=/tech-blog/js/bundle.min.46b5c799bb202b44f06d6c49843e9138d3f305706eeab59aa43df2a4e0920cf7.js integrity="sha256-RrXHmbsgK0TwbWxJhD6RONPzBXBu6rWapD3ypOCSDPc="></script><script src=/tech-blog/js/add-on.js></script><script src=/tech-blog/js/prism.js></script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-140914324-1','auto'),ga('send','pageview'))</script><script async src=https://www.google-analytics.com/analytics.js></script></div></body></html>
+』です🛫</p>
+</div>
+<footer>
+<div class=stats>
+<ul class=categories>
+<li><a class=article-terms-link href=/tech-blog/categories/react/>React</a></li>
+<li><a class=article-terms-link href=/tech-blog/categories/typescript/>TypeScript</a></li>
+<li><a class=article-terms-link href=/tech-blog/categories/advent-calendar/>Advent Calendar</a></li>
+</ul>
+<div>
+<good-counter url=/tech-blog/blog/react_typescript_sample/></good-counter>
+</div>
+</div>
+</footer>
+<div class=fix>
+<a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e3%80%90React%2bTypeScript%e3%80%91TypeScript%e5%85%a5%e9%96%80』" target=_blank rel="noopener noreferrer">
+修正提案
+</a>
+</div>
+</article>
+<div class=pagination>
+<a href=/tech-blog/blog/golang-vcr/ class="button left"><span>【Go+VCR】外部APIとの通信を保存してテストに使用する話</span></a>
+<a href=/tech-blog/blog/denago_3/ class="button right"><span>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</span></a>
+</div>
+</main>
+<section id=site-sidebar>
+<section id=recent-posts>
+<header>
+<h1>最近の投稿</h1>
+</header>
+<article class=mini-post>
+<a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')">
+<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured>
+</a>
+<header>
+<h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2>
+<time class=published datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time>
+</header>
+</article>
+<article class=mini-post>
+<a href=/tech-blog/blog/profile-readme-updater/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/profile-readme-updater/featured.webp')">
+<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/profile-readme-updater/featured.webp alt=featured>
+</a>
+<header>
+<h2><a href=/tech-blog/blog/profile-readme-updater/>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</a></h2>
+<time class=published datetime="2021-02-19 09:53:19 +0000 UTC">2021-02-19</time>
+</header>
+</article>
+<article class=mini-post>
+<a href=/tech-blog/blog/uncredible-codes-from-go-spec/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/12/uncredible-codes-from-go-spec/featured.webp')">
+<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/12/uncredible-codes-from-go-spec/featured.webp alt=featured>
+</a>
+<header>
+<h2><a href=/tech-blog/blog/uncredible-codes-from-go-spec/>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</a></h2>
+<time class=published datetime="2020-12-08 00:00:00 +0900 +0900">2020-12-08</time>
+</header>
+</article>
+<footer>
+<a href=/tech-blog/blog/ class=button>続きを見る</a>
+</footer>
+</section>
+<section id=mini-bio>
+<header>
+<h1>About</h1>
+</header>
+<p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p>
+<footer>
+<a href=/tech-blog/about class=button>もっと詳しく知る</a>
+</footer>
+</section>
+</section>
+<footer id=site-footer>
+<ul class=socnet-icons>
+<li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
+<li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
+<li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
+<li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li>
+</ul>
+<p class=copyright>
+© 2021 yyh-gl's Tech Blog
+<br>
+Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.89.0 target=_blank rel=noopener>Hugo</a>
+</p>
+</footer>
+<a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a>
+<script src=/tech-blog/js/bundle.min.a2a773c2e0e07f69b603aa1005699cd705a4f1b9d9a30fc03b920aa4948ee39e.js integrity="sha256-oqdzwuDgf2m2A6oQBWmc1wWk8bnZow/AO5IKpJSO454="></script>
+<script src=/tech-blog/js/add-on.js></script>
+<script src=/tech-blog/js/prism.js></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-140914324-1','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+</div>
+</body>
+</html>

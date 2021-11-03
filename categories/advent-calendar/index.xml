@@ -3,8 +3,7 @@ Go Language Specification輪読会 現在、Go Language Specification輪読会 �
 今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
 （振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
 ちなみに、だいたいのコードは現場で使うと怒られそうです😇 （いや、まず間違いなく怒られる）
-1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5
-まずはこちら。
+1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5 まずはこちら。
 変な位置にコメントが挿入されています。
 コメント部分を消すとvara = 1となるのでエラーになりそうです。
 しかし、実行してみると、すんなりと変数aを表示してくれます。

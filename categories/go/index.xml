@@ -10,8 +10,7 @@ Go Language Specification輪読会 現在、Go Language Specification輪読会 �
 今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
 （振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
 ちなみに、だいたいのコードは現場で使うと怒られそうです😇 （いや、まず間違いなく怒られる）
-1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5
-まずはこちら。
+1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5 まずはこちら。
 変な位置にコメントが挿入されています。
 コメント部分を消すとvara = 1となるのでエラーになりそうです。
 しかし、実行してみると、すんなりと変数aを表示してくれます。
@@ -119,16 +118,7 @@ The State of Go 2020 Twitterで『The State of Go 2020 』というタイトル�
 Go1.12から変わったところに焦点を当て、
 Go1.13でどのような機能が追加されているのか、 Go1.14でどのような機能が追加される予定なのかまとめてあります。
 今回は、完全主観で自分が興味のある内容をハイライトします〜😇
-完全主観ハイライト ▼ 数値まわりの表現方法が増える https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7
-▼ interfaceにおける関数の重複が許可される（例外あり） https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17
-▼ エラーハンドリングが変わる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=26
-▼ testingパッケージに CleanUp() が追加 https://speakerdeck.com/campoy/the-state-of-go-2020?slide=39
-▼ go modules https://speakerdeck.com/campoy/the-state-of-go-2020?slide=43
-▼ 配列・スライスにおける範囲外指定時のエラーが親切になった https://speakerdeck.com/campoy/the-state-of-go-2020?slide=50
-▼ deferが速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=51
-▼ json関連の処理が速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52
-▼ 他にもいろいろ速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53
-▼ GopherConの参加者が増えていく様子がえもい https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
+完全主観ハイライト ▼ 数値まわりの表現方法が増える https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7 ▼ interfaceにおける関数の重複が許可される（例外あり） https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17 ▼ エラーハンドリングが変わる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=26 ▼ testingパッケージに CleanUp() が追加 https://speakerdeck.com/campoy/the-state-of-go-2020?slide=39 ▼ go modules https://speakerdeck.com/campoy/the-state-of-go-2020?slide=43 ▼ 配列・スライスにおける範囲外指定時のエラーが親切になった https://speakerdeck.com/campoy/the-state-of-go-2020?slide=50 ▼ deferが速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=51 ▼ json関連の処理が速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52 ▼ 他にもいろいろ速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53 ▼ GopherConの参加者が増えていく様子がえもい https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
 私は現在、DMM.com の CDS というチームに所属し、
 主にユーザレビュー基盤 のバックエンドを開発しています。
 今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、
