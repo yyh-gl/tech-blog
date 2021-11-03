@@ -68,8 +68,8 @@ disableLanguages       = []
   [params.sidebar]
     about                = "東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。"
     postAmount           = 3
-    categories           = true
-    categoriesByCount    = true
+    categories           = false
+    categoriesByCount    = false
 
   [params.footer]
     rssFooter            = true
