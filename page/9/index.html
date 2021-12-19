@@ -1,7 +1,7 @@
 <!doctype html><html lang=ja>
 <head>
 <meta charset=utf-8>
-<title>アクティビティ - yyh-gl's Tech Blog</title>
+<title>yyh-gl's Tech Blog</title>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1">
 <link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1">
@@ -13,11 +13,11 @@
 <meta name=msapplication-TileColor content="#ffffff">
 <meta name=theme-color content="#ffffff">
 <meta name=generator content="Hugo 0.91.0"><meta property="og:site_name" content="yyh-gl's Tech Blog">
-<meta property="og:title" content="アクティビティ">
+<meta property="og:title" content="yyh-gl's Tech Blog">
 <meta property="og:description" content="技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。">
 <meta property="description" content="技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。">
-<meta property="og:url" content="https://yyh-gl.github.io/tech-blog/categories/%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/">
-<meta property="og:type" content="article">
+<meta property="og:url" content="https://yyh-gl.github.io/tech-blog/">
+<meta property="og:type" content="website">
 <meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/main/logo.webp">
 <link rel=stylesheet href=/tech-blog/css/bundle.min.16c26ceb295e9a4cba91b4fe07c5f500723b27d79d07344eea6063c39156d38c.css integrity="sha256-FsJs6ylemky6kbT+B8X1AHI7J9edBzRO6mBjw5FW04w="><link rel=stylesheet href=/tech-blog/css/add-on.css>
 <link rel=stylesheet href=/tech-blog/css/prism.css>
@@ -26,11 +26,39 @@
 <script src=/tech-blog/js/good-counter.js defer></script>
 </head>
 <body>
+<div id=theme-message style="background-color:#3c3b3b;color:#f4f4f4;margin:auto;padding:.25em 2em;width:75%">
+<p style=text-align:center>This message, related to the development of the theme, only displays on the
+<code>localhost</code> homepage to notify you of any important theme changes.</p>
+<hr>
+<h5 style=color:#f4f4f4;text-align:center><i class="fas fa-exclamation-triangle"></i>Version 2.0.0 - July 20, 2020<i class="fas fa-exclamation-triangle"></i></h5>
+<p>Below are the following changes that <em>could</em> be breaking changes for your site. For more details on any change, please refer to <a href=https://github.com/pacollins/hugo-future-imperfect-slim/pull/154>PR #154</a>.</p>
+<p>The major breaking change is:</p>
+<ol>
+<li>Users that have front matter that utilize <code>images</code> (backwards compatibility for <code>featured</code> and associated parameters still remains) <em>will</em> need to adjust from <code>[images]="SRC"</code> to the new format.</li>
+</ol>
+<pre><code>[[images]]
+    src = &quot;&quot; // Link to image
+    alt = &quot;&quot; // Alt text for image
+    stretch = // Optional: See screenshots for referenced values and outcomes
+</code></pre>
+<p>If you utilize any of the following, there <em>might</em> be a breaking:</p>
+<ol>
+<li>User custom templates <em>may</em> require adjustment.</li>
+<li>User custom i18n languages, or custom templates referencing i18n translations <em>may</em> require adjustment.</li>
+<li>User custom template for comments <em>will</em> require adjustment <em>if</em> it uses the theme&rsquo;s CSS and/or JS.</li>
+<li>User custom CSS <em>may</em> need to adjust due to a variety of class name changes and specificity changes.</li>
+</ol>
+<p>While I realize this is inconvenient, I hope that it is worth it to you in the long run. Thanks for using the theme, and feel free to submit issues as needed.</p>
+<div style=text-align:center>
+<button onclick=removeBox() class=button style=color:#f4f4f4;margin-bottom:1em>Close Notification Until Next Update</button>
+</div>
+<script>(window.location.href.indexOf('localhost:')<1||window.localStorage.getItem('HFIS-version')=='2.0.0')&&document.getElementsByTagName("body")[0].removeChild(document.getElementById("theme-message"));function removeBox(){window.localStorage.setItem('HFIS-version','2.0.0'),document.getElementsByTagName("body")[0].removeChild(document.getElementById("theme-message"))}</script>
+</div>
 <header id=site-header>
 <nav id=site-nav>
 <h1 class=nav-title>
 <a href=/tech-blog/ class=nav>
-Categories
+yyh-gl's Tech Blog
 </a>
 </h1>
 <menu id=site-nav-menu class="flyout-menu menu">
@@ -53,7 +81,7 @@ Categories
 </main>
 <footer>
 <ul class=socnet-icons>
-<li><a href=/tech-blog/categories/%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/index.xml type=application/rss+xml target=_blank title=RSS class="fas fa-rss"></a></li>
+<li><a href=/tech-blog/index.xml type=application/rss+xml target=_blank title=RSS class="fas fa-rss"></a></li>
 <li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
 <li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
 <li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
@@ -65,34 +93,34 @@ Categories
 <article class=post>
 <header>
 <div class=title>
-<h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2>
-<p>今さらではありますが</p>
+<h2><a href=/tech-blog/blog/hello_world/>Hello Wolrd</a></h2>
+<p>【一文まとめ】技術ブログはじめます</p>
 </div>
 <div class=meta>
-<time datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time>
+<time datetime="2019-05-22 00:00:00 +0000 UTC">2019-05-22</time>
 <p>yyh-gl</p>
-<p>3 分で読めます</p>
+<p>1 分で読めます</p>
 </div>
 </header>
 <div class=content>
-<a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured>
+<a href=/tech-blog/blog/hello_world/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/hello_world/featured.webp')">
+<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/hello_world/featured.webp alt=featured>
 </a>
 </div>
 <footer>
-<a href=/tech-blog/blog/activity-2020/ class="button big">続きを読む</a>
+<a href=/tech-blog/blog/hello_world/ class="button big">続きを読む</a>
 <div class=stats>
 <ul class=categories>
-<li><a class=article-terms-link href=/tech-blog/categories/%e5%8b%89%e5%bc%b7%e4%bc%9a/>勉強会</a></li>
-<li><a class=article-terms-link href=/tech-blog/categories/%e3%82%a2%e3%82%af%e3%83%86%e3%82%a3%e3%83%93%e3%83%86%e3%82%a3/>アクティビティ</a></li>
+<li><a class=article-terms-link href=/tech-blog/categories/%e8%87%aa%e5%b7%b1%e7%b4%b9%e4%bb%8b/>自己紹介</a></li>
 </ul>
 <div>
-<good-counter url=/tech-blog/blog/activity-2020/></good-counter>
+<good-counter url=/tech-blog/blog/hello_world/></good-counter>
 </div>
 </div>
 </footer>
 </article>
 <div class=pagination>
+<a href=/tech-blog/page/8/ class="button left"><span>前のページ</span></a>
 </div>
 </main>
 <section id=site-sidebar>
@@ -143,7 +171,7 @@ Categories
 </section>
 <footer id=site-footer>
 <ul class=socnet-icons>
-<li><a href=/tech-blog/categories/%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/index.xml type=application/rss+xml target=_blank title=RSS class="fas fa-rss"></a></li>
+<li><a href=/tech-blog/index.xml type=application/rss+xml target=_blank title=RSS class="fas fa-rss"></a></li>
 <li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
 <li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
 <li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>

@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/blog/</link><description>Recent content in Blog on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 23 Feb 2021 09:41:54 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>【2020年】アクティビティまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/activity-2020/</link><pubDate>Tue, 23 Feb 2021 09:41:54 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/activity-2020/</guid><description>LAPRASでおもしろい機能を見つけた LAPRAS に2020年のアクティビティをまとめてくれる機能がありました。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/blog/</link><description>Recent content in Blog on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 19 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://yyh-gl.github.io/tech-blog/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
+はじめに Goには標準で便利なコマンドがたくさんあります。
+有名どころで言えば、
+generate fmt vet などがあります。
+中でも、Goのコードをコンパイルするためのbuildコマンドは、 みなさんも日頃の開発で使用しているのではないでしょうか。
+buildは特に難しいことをしなければ、とてもシンプルに使えるコマンドです。
+よって、直感的に「こうすればコンパイルできるんでしょー」くらいの感覚で、 ドキュメントを注視しなくても使い始められるでしょう。
+しかし、buildは深く見ていくと意外と奥が深いコマンドです。
+今回はそんなbuildについて深ぼっていこうと思います。
+buildコマンドとは まずはbuildとはどういったコマンドなのか見ていきましょう。
+helpを使って調べてみます。
+$ go help build Build compiles the packages named by the import paths, along with their dependencies, but it does not install the results. &amp;lt;省略&amp;gt; When compiling packages, build ignores files that end in '_test.go'. &amp;lt;省略&amp;gt; When compiling multiple packages or a single non-main package, build compiles the packages but discards the resulting object, serving only as a check that the packages can be built.</description></item><item><title>【2020年】アクティビティまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/activity-2020/</link><pubDate>Tue, 23 Feb 2021 09:41:54 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/activity-2020/</guid><description>LAPRASでおもしろい機能を見つけた LAPRAS に2020年のアクティビティをまとめてくれる機能がありました。
 今回はその機能を使って（今さらながら）去年のアクティビティをメモしておきたいと思います。
 以下、LAPRASで出力されたアクティビティを転記したものです。
 ・
