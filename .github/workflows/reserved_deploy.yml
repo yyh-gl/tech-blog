@@ -2,11 +2,8 @@ name: Reserved Deploy
 
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: '0 12 1 1 *'
-
-env: 
-  TARGET: hoge
+  schedule:
+    - cron: '40 14 18 12 *'
 
 jobs:
   deploy:
@@ -16,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ env.TARGET }}
+          ref: reserved
           fetch-depth: 2
           submodules: true
       - name: Setup Hugo
@@ -30,9 +27,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-      - name: Delete branch
-        run: |
-          git push origin :${{ env.TARGET }}
 
   success_notification:
     name: Success notification
