@@ -33,7 +33,7 @@ new: ## 記事テンプレート生成
 	@echo ''
 	open ./static/img/tech-blog/`date +"%Y/%m"`/${title}
 	@echo ''
-	open http://192.168.10.101:1313/tech-blog/
+	open http://$(shell ipconfig getifaddr en0):1313/tech-blog/
 
 .PHONY: post
 post: ## 記事を投稿
