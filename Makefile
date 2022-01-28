@@ -6,6 +6,10 @@ help: ## helpを表示
 	@echo ''
 	@grep -E '^[%/a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-22s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: setup
+setup: ## Hugoサーバをセットアップ
+	docker build . -t tech-blog 
+
 .PHONY: server
 server: ## Hugoサーバを起動
 	docker run --rm -it --name tech-blog \
