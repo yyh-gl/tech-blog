@@ -1,6 +1,7 @@
 FROM klakegg/hugo:ext-alpine
 
 WORKDIR /go/src/github.com/yyh-gl/tech-blog
+COPY . .
 
 RUN apk add --no-cache libwebp-tools
 RUN npm install
