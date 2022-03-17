@@ -1,143 +1,18 @@
-<!doctype html><html lang=ja>
-<head>
-<meta charset=utf-8>
-<title>GolangCI-Lintの設定ファイルを理解する - yyh-gl's Tech Blog</title>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1">
-<link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1">
-<link rel=icon type=image/png sizes=16x16 href="/tech-blog/favicon/favicon-16x16.png?v=1">
-<link rel=manifest href="/tech-blog/favicon/site.webmanifest?v=1">
-<link rel=mask-icon href="/tech-blog/favicon/safari-pinned-tab.svg?v=1" color=#ffffff>
-<link rel="shortcut icon" href="/tech-blog/favicon/favicon.ico?v=1">
-<meta name=msapplication-config content="/tech-blog/favicon/browserconfig.xml?v=1">
-<meta name=msapplication-TileColor content="#ffffff">
-<meta name=theme-color content="#ffffff">
-<meta name=generator content="Hugo 0.92.1"><meta property="og:site_name" content="yyh-gl's Tech Blog">
-<meta property="og:title" content="GolangCI-Lintの設定ファイルを理解する">
-<meta property="og:description" content="DMM Advent Calendar 2019 9日目">
-<meta property="description" content="DMM Advent Calendar 2019 9日目">
-<meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/featured.webp">
-<meta property="og:image:alt" content="featured">
-<link rel=stylesheet href=/tech-blog/css/bundle.min.b3b210b14743bef0baf37fbaaa81e2f4cd1365a34bd4a475a59f83d587fd7edc.css integrity="sha256-s7IQsUdDvvC683+6qoHi9M0TZaNL1KR1pZ+D1Yf9ftw="><link rel=stylesheet href=/tech-blog/css/add-on.css>
-<link rel=stylesheet href=/tech-blog/css/prism.css>
-<script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
+<!doctype html><html lang=ja><head><meta charset=utf-8><title>GolangCI-Lintの設定ファイルを理解する - yyh-gl's Tech Blog</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1"><link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1"><link rel=icon type=image/png sizes=16x16 href="/tech-blog/favicon/favicon-16x16.png?v=1"><link rel=manifest href="/tech-blog/favicon/site.webmanifest?v=1"><link rel=mask-icon href="/tech-blog/favicon/safari-pinned-tab.svg?v=1" color=#ffffff><link rel="shortcut icon" href="/tech-blog/favicon/favicon.ico?v=1"><meta name=msapplication-config content="/tech-blog/favicon/browserconfig.xml?v=1"><meta name=msapplication-TileColor content="#ffffff"><meta name=theme-color content="#ffffff"><meta name=generator content="Hugo 0.94.2"><meta property="og:site_name" content="yyh-gl's Tech Blog"><meta property="og:title" content="GolangCI-Lintの設定ファイルを理解する"><meta property="og:description" content="DMM Advent Calendar 2019 9日目"><meta property="description" content="DMM Advent Calendar 2019 9日目"><meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/"><meta property="og:type" content="article"><meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/featured.webp"><meta property="og:image:alt" content="featured"><link rel=stylesheet href=/tech-blog/css/bundle.min.b3b210b14743bef0baf37fbaaa81e2f4cd1365a34bd4a475a59f83d587fd7edc.css integrity="sha256-s7IQsUdDvvC683+6qoHi9M0TZaNL1KR1pZ+D1Yf9ftw="><link rel=stylesheet href=/tech-blog/css/add-on.css><link rel=stylesheet href=/tech-blog/css/prism.css><script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
 <script src=/tech-blog/js/vue.min.js></script>
-<script src=/tech-blog/js/good-counter.js defer></script>
-</head>
-<body>
-<header id=site-header>
-<nav id=site-nav>
-<h1 class=nav-title>
-<a href=/tech-blog/ class=nav>
-Blog
-</a>
-</h1>
-<menu id=site-nav-menu class="flyout-menu menu">
-<a href=/tech-blog/ class="nav link"><i class="fa fa-home"></i> Home</a>
+<script src=/tech-blog/js/good-counter.js defer></script></head><body><header id=site-header><nav id=site-nav><h1 class=nav-title><a href=/tech-blog/ class=nav>Blog</a></h1><menu id=site-nav-menu class="flyout-menu menu"><a href=/tech-blog/ class="nav link"><i class="fa fa-home"></i> Home</a>
 <a href=/tech-blog/about/ class="nav link"><i class="far fa-id-card"></i> About</a>
 <a href=/tech-blog/blog/ class="nav link"><i class="far fa-newspaper"></i> Blog</a>
-<a href=/tech-blog/categories/ class="nav link"><i class="fas fa-sitemap"></i> Categories</a>
-</menu>
-<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
-</nav>
-</header>
-<div id=wrapper>
-<section id=site-intro>
-<a href=/tech-blog/><img src=https://yyh-gl.github.io/tech-blog/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a>
-<header>
-<h1>yyh-gl's Tech Blog</h1>
-</header>
-<main>
-<p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p>
-</main>
-<footer>
-<ul class=socnet-icons>
-<li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
-<li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
-<li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
-<li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li>
-</ul>
-</footer>
-</section>
-<main id=site-main>
-<article class=post>
-<header>
-<div class=title>
-<h2><a href=/tech-blog/blog/golangci-lint-custom-settings/>GolangCI-Lintの設定ファイルを理解する</a></h2>
-<p>DMM Advent Calendar 2019 9日目</p>
-</div>
-<div class=meta>
-<time datetime="2019-12-09 00:00:00 +0000 UTC">2019-12-09</time>
-<p>yyh-gl</p>
-<p>4 分で読めます</p>
-</div>
-</header>
-<div id=socnet-share>
-</div>
-<div class=content>
-<a href=/tech-blog/blog/golangci-lint-custom-settings/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/featured.webp alt=featured>
-</a>
-<h1 id=dmm-advent-calendar-2019>DMM Advent Calendar 2019</h1>
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png width=700>
-<p>本記事は <a href=https://qiita.com/advent-calendar/2019/dmm target=_blank rel="noopener noreferrer">DMM Advent Calendar 2019</a>
-の 9日目 の記事です。</p>
-<br>
-<p>私は現在、DMM.com の CDS というチームに所属し、<br>
-主に<a href=https://inside.dmm.com/archive/category/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC target=_blank rel="noopener noreferrer">ユーザレビュー基盤</a>
-のバックエンドを開発しています。</p>
-<br>
-<p>今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、<br>
-GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。</p>
-<h1 id=linter-導入していますか>Linter 導入していますか？</h1>
-<p>突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？</p>
-<p>私の所属するチームでは、<br>
-<u>コーディング規約違反</u> および <u>コンパイラでは見つけられないエラー</u> を検知するために、<br>
-ローカルと CI において Linter を回すようにしています。</p>
-<h1 id=goにおけるlinter>GoにおけるLinter</h1>
-<p>Goの場合、Linterがデフォルトで用意されているうえに、<br>
-ライブラリとして公開されているものも多く存在します。</p>
-<p>なかでも有名なものに以下のようなものがあります。</p>
-<ul>
-<li>govet：GoデフォルトのLinter</li>
-<li>errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる</li>
-<li>unused：未使用の定義をチェックしてくれる</li>
-<li>goimports：未使用のimportを消してくれたり、フォーマット修正してくれる</li>
-<li>gosimple：コードをシンプルにしてくれる</li>
-</ul>
-<br>
-<p>しかしながら、多すぎるがゆえに <u>どれを選択すればいいのか分からなくなりがちです</u>。<br>
-加えて、導入する Linter が増えれば、その分だけ <u>導入・管理コストが増加</u> します。</p>
-<p>この問題を解決してくれるツールが <b>GolangCI-Lint</b> です。</p>
-<h1 id=golangci-lint>GolangCI-Lint</h1>
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/golangci-lint-logo.png width=200>
-<p>勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、<br>
-ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。</p>
-<br>
-<p><a href=https://github.com/golangci/golangci-lint target=_blank rel="noopener noreferrer">GolangCI-Lint</a>
+<a href=/tech-blog/categories/ class="nav link"><i class="fas fa-sitemap"></i> Categories</a></menu>
+<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a></nav></header><div id=wrapper><section id=site-intro><a href=/tech-blog/><img src=https://yyh-gl.github.io/tech-blog/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a><header><h1>yyh-gl's Tech Blog</h1></header><main><p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p></main><footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul></footer></section><main id=site-main><article class=post><header><div class=title><h2><a href=/tech-blog/blog/golangci-lint-custom-settings/>GolangCI-Lintの設定ファイルを理解する</a></h2><p>DMM Advent Calendar 2019 9日目</p></div><div class=meta><time datetime="2019-12-09 00:00:00 +0000 UTC">2019-12-09</time><p>yyh-gl</p><p>4 分で読めます</p></div></header><div id=socnet-share></div><div class=content><a href=/tech-blog/blog/golangci-lint-custom-settings/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/featured.webp alt=featured></a><h1 id=dmm-advent-calendar-2019>DMM Advent Calendar 2019</h1><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png width=700><p>本記事は <a href=https://qiita.com/advent-calendar/2019/dmm target=_blank rel="noopener noreferrer">DMM Advent Calendar 2019</a>
+の 9日目 の記事です。</p><br><p>私は現在、DMM.com の CDS というチームに所属し、<br>主に<a href=https://inside.dmm.com/archive/category/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC target=_blank rel="noopener noreferrer">ユーザレビュー基盤</a>
+のバックエンドを開発しています。</p><br><p>今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、<br>GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。</p><h1 id=linter-導入していますか>Linter 導入していますか？</h1><p>突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？</p><p>私の所属するチームでは、<br><u>コーディング規約違反</u> および <u>コンパイラでは見つけられないエラー</u> を検知するために、<br>ローカルと CI において Linter を回すようにしています。</p><h1 id=goにおけるlinter>GoにおけるLinter</h1><p>Goの場合、Linterがデフォルトで用意されているうえに、<br>ライブラリとして公開されているものも多く存在します。</p><p>なかでも有名なものに以下のようなものがあります。</p><ul><li>govet：GoデフォルトのLinter</li><li>errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる</li><li>unused：未使用の定義をチェックしてくれる</li><li>goimports：未使用のimportを消してくれたり、フォーマット修正してくれる</li><li>gosimple：コードをシンプルにしてくれる</li></ul><br><p>しかしながら、多すぎるがゆえに <u>どれを選択すればいいのか分からなくなりがちです</u>。<br>加えて、導入する Linter が増えれば、その分だけ <u>導入・管理コストが増加</u> します。</p><p>この問題を解決してくれるツールが <b>GolangCI-Lint</b> です。</p><h1 id=golangci-lint>GolangCI-Lint</h1><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/golangci-lint-logo.png width=200><p>勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、<br>ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。</p><br><p><a href=https://github.com/golangci/golangci-lint target=_blank rel="noopener noreferrer">GolangCI-Lint</a>
 とは、
-GoのLinterを一元管理するためのツールです。<br>
-開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。</p>
-<p>したがって、Linter の導入・管理コストが一気に下がりますし、<br>
-運用していく過程で不要だと感じた Linter は、簡単に無効化することもできるので、<br>
-気軽に Linter を試用することができます。</p>
-<p>対応 Linter は<a href=https://github.com/golangci/golangci-lint#supported-linters target=_blank rel="noopener noreferrer">こちら</a>
-に一覧が載っています。</p>
-<p>似たようなツールに <a href=https://github.com/alecthomas/gometalinter target=_blank rel="noopener noreferrer">gometalinter</a>
-というのがあったのですが、<br>
-<a href=https://github.com/alecthomas/gometalinter/issues/590 target=_blank rel="noopener noreferrer">こちらの議論</a>
-の結果、なくなることが決定しました。<br>
-<b>今後の主流は GolangCI-Lint です</b>。</p>
-<br>
-<p>（…ロゴいいですよね👍）</p>
-<h1 id=使ってみる>使ってみる</h1>
-<h2 id=導入>導入</h2>
-<p><a href=https://github.com/golangci/golangci-lint#install target=_blank rel="noopener noreferrer">こちら</a>
-に導入方法が書いてあります。</p>
-<p>Binary のインストール方法を紹介しておくと、下記のようになります。</p>
-<pre class=line-numbers><code class=language-zsh># $(go env GOPATH)/bin ディレクトリ配下にインストールする方法
+GoのLinterを一元管理するためのツールです。<br>開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。</p><p>したがって、Linter の導入・管理コストが一気に下がりますし、<br>運用していく過程で不要だと感じた Linter は、簡単に無効化することもできるので、<br>気軽に Linter を試用することができます。</p><p>対応 Linter は<a href=https://github.com/golangci/golangci-lint#supported-linters target=_blank rel="noopener noreferrer">こちら</a>
+に一覧が載っています。</p><p>似たようなツールに <a href=https://github.com/alecthomas/gometalinter target=_blank rel="noopener noreferrer">gometalinter</a>
+というのがあったのですが、<br><a href=https://github.com/alecthomas/gometalinter/issues/590 target=_blank rel="noopener noreferrer">こちらの議論</a>
+の結果、なくなることが決定しました。<br><b>今後の主流は GolangCI-Lint です</b>。</p><br><p>（…ロゴいいですよね👍）</p><h1 id=使ってみる>使ってみる</h1><h2 id=導入>導入</h2><p><a href=https://github.com/golangci/golangci-lint#install target=_blank rel="noopener noreferrer">こちら</a>
+に導入方法が書いてあります。</p><p>Binary のインストール方法を紹介しておくと、下記のようになります。</p><pre class=line-numbers><code class=language-zsh># $(go env GOPATH)/bin ディレクトリ配下にインストールする方法
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.21.0
 
 # ./bin ディレクトリ配下にインストールする方法
@@ -145,180 +20,29 @@ curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/insta
 
 # alpine linux 用のインストール方法
 wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.21.0
-</code></pre>
-<p>もちろん <code>go get</code> でもインストールできますし、<br>
-他にも brew や Docker イメージとしても提供されています。</p>
-<p><a href=https://github.com/golangci/golangci-lint#editor-integration target=_blank rel="noopener noreferrer">IDEやエディタ上で実行する方法も紹介</a>
-されており、サポートが手厚いです。</p>
-<p>弊チームでは、ローカル用コンテナイメージのビルド時に <code>go get</code> してインストールしています。</p>
-<h2 id=実行>実行</h2>
-<p><code>$ golangci-lint run</code> コマンドで実行できます。<br>
-テストファイルにも Lint をかけたい場合は、<code>--tests</code> オプションを付与します。</p>
-<p>何も設定しない状態では、<a href=https://github.com/golangci/golangci-lint#enabled-by-default-linters target=_blank rel="noopener noreferrer">こちら</a>
-に記載のある Linter が実行されます。</p>
-<p>では、実際に動かしてみます。</p>
-<pre class=line-numbers><code class=language-zsh>$ docker-compose exec -T app golangci-lint run --tests ./...
+</code></pre><p>もちろん <code>go get</code> でもインストールできますし、<br>他にも brew や Docker イメージとしても提供されています。</p><p><a href=https://github.com/golangci/golangci-lint#editor-integration target=_blank rel="noopener noreferrer">IDEやエディタ上で実行する方法も紹介</a>
+されており、サポートが手厚いです。</p><p>弊チームでは、ローカル用コンテナイメージのビルド時に <code>go get</code> してインストールしています。</p><h2 id=実行>実行</h2><p><code>$ golangci-lint run</code> コマンドで実行できます。<br>テストファイルにも Lint をかけたい場合は、<code>--tests</code> オプションを付与します。</p><p>何も設定しない状態では、<a href=https://github.com/golangci/golangci-lint#enabled-by-default-linters target=_blank rel="noopener noreferrer">こちら</a>
+に記載のある Linter が実行されます。</p><p>では、実際に動かしてみます。</p><pre class=line-numbers><code class=language-zsh>$ docker-compose exec -T app golangci-lint run --tests ./...
 handler/rest/blog.go:82:27: Error return value of `(*encoding/json.Encoder).Encode` is not checked (errcheck)
 	json.NewEncoder(w).Encode(res)
 	                         ^
 domain/model/task/task.go:9:2: structtag: struct field tag `json:&quot;title&quot;,&quot;hoge&quot;` not compatible with reflect.StructTag.Get: key:&quot;value&quot; pairs not separated by spaces (govet)
 	Title         string      `json:&quot;title&quot;,&quot;hoge&quot;`
 	^
-</code></pre>
-<p>エラーが出ました。<br>
-2行目と5行目の最後に括弧書きでエラーを発見した Linter の名前が書いてあります。<br>
-（厳密には Lint で出力された内容はエラーではありませんが、CIがこけるという意味で「エラー」と呼ぶことにします）<br>
-今回の場合だと、errcheck と govet がエラーを発見したようですね。</p>
-<h1 id=golangci-lint-には検知できないエラーがある>GolangCI-Lint には検知できないエラーがある…？🧐</h1>
-<p>では、ここから本記事の主題に入っていきたいと思います。<br>
-実際に GolangCI-Lint を導入しようとしてハマったポイントです。</p>
-<p>といっても、GolangCI-Lint の README はとても詳細に書かれているので、<br>
-なにかあっても README を見ればすぐ解決できます👍</p>
-<p>・<br>
-・<br>
-・<br></p>
-<p>そんなこんなでいきなりですが、同じソースコードに対して、<br>
-GolangCI-Lint を使わずに golint を単体で走らせてみます。</p>
-<pre class=line-numbers><code class=language-zsh>$ golint ./...
+</code></pre><p>エラーが出ました。<br>2行目と5行目の最後に括弧書きでエラーを発見した Linter の名前が書いてあります。<br>（厳密には Lint で出力された内容はエラーではありませんが、CIがこけるという意味で「エラー」と呼ぶことにします）<br>今回の場合だと、errcheck と govet がエラーを発見したようですね。</p><h1 id=golangci-lint-には検知できないエラーがある>GolangCI-Lint には検知できないエラーがある…？🧐</h1><p>では、ここから本記事の主題に入っていきたいと思います。<br>実際に GolangCI-Lint を導入しようとしてハマったポイントです。</p><p>といっても、GolangCI-Lint の README はとても詳細に書かれているので、<br>なにかあっても README を見ればすぐ解決できます👍</p><p>・<br>・<br>・<br></p><p>そんなこんなでいきなりですが、同じソースコードに対して、<br>GolangCI-Lint を使わずに golint を単体で走らせてみます。</p><pre class=line-numbers><code class=language-zsh>$ golint ./...
 domain/model/task/task.go:7:1: comment on exported type Task should be of the form &quot;Task ...&quot; (with optional leading article)
-</code></pre>
-<p>！？<br>
-さきほどの GolangCI-Lint にはなかったエラーが出力されました。</p>
-<p>なんとなく分かってきた方もおられると思いますが、<br>
-GolangCI-Lint はデフォルト設定だと、いくつかのエラーを無視するようになっています。</p>
-<p>例えば、今回の例だと、コメントの記述形式についてのエラーですが、<br>
-そこまで厳密に守らなくてもいい内容ですね。（僕は守りたい派ですが。。。）<br>
-したがって、GolangCI-Lint が気を利かせて無視するようにしてくれています。</p>
-<h2 id=デフォルトで無視されるルール>デフォルトで無視されるルール</h2>
-<p>デフォルト設定だと無視されるルールは <br>
-<a href=https://github.com/golangci/golangci-lint#command-line-options target=_blank rel="noopener noreferrer">こちら</a>
-の<code>--exclude-use-default</code>オプションの説明のところに記載があります。<br>
-抜粋してくると以下のとおりです。<br></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Linter名</th>
-<th>無視されるエラー（Linterが出力する内容）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>errcheck</td>
-<td><code>Error return value of .((os\.)?std(out|err)\..*|.*Close|.*Flush|os\.Remove(All)?|.*printf?|os\.(Un)?Setenv). is not checked</code></td>
-</tr>
-<tr>
-<td>2</td>
-<td>golint</td>
-<td><code>(comment on exported (method|function|type|const)|should have( a package)? comment|comment should be of the form)</code></td>
-</tr>
-<tr>
-<td>3</td>
-<td>golint</td>
-<td>test系パッケージにおける <code>func name will be used as test\.Test.* by other packages, and that stutters; consider calling this</code></td>
-</tr>
-<tr>
-<td>4</td>
-<td>govet</td>
-<td><code>(possible misuse of unsafe.Pointer|should have signature)</code></td>
-</tr>
-<tr>
-<td>5</td>
-<td>staticcheck</td>
-<td><code>ineffective break statement. Did you mean to break out of the outer loop</code></td>
-</tr>
-<tr>
-<td>6</td>
-<td>gosec</td>
-<td><code>Use of unsafe calls should be audited</code></td>
-</tr>
-<tr>
-<td>7</td>
-<td>gosec</td>
-<td><code>Subprocess launch(ed with variable|ing should be audited)</code></td>
-</tr>
-<tr>
-<td>8</td>
-<td>gosec</td>
-<td>errcheckと重複するエラーチェック <code>G104</code></td>
-</tr>
-<tr>
-<td>9</td>
-<td>gosec</td>
-<td><code>(Expect directory permissions to be 0750 or less|Expect file permissions to be 0600 or less)</code></td>
-</tr>
-<tr>
-<td>10</td>
-<td>gosec</td>
-<td><code>Potential file inclusion via variable</code></td>
-</tr>
-</tbody>
-</table>
-<br>
-<p>さきほど例に挙げていた、golint のコメント記述形式に関するエラーは、表中2番のエラーです。<br>
-だから、GolangCI-Lint では検知されなかったんですね。</p>
-<p>このルール、人によっては「これ無視しちゃだめだろ」と思われるものもあると思いますが、<br>
-投稿日時点ではこのようなルールがデフォルトで無視されるようになっています。</p>
-<h1 id=設定ファイル-golangciyml>設定ファイル .golangci.yml</h1>
-<p>気を利かせてくれているのは分かりますが、無視しないで欲しいときもありますよね。<br>
-逆にこのエラーは無視してほしいっていうニーズもあると思います。</p>
-<p>そこで登場するのが <b>.golangci.yml</b> です。<br>
-<code>.golangci.yml</code> により、GolangCI-Lint の細かな設定が可能になります。<br></p>
-<p>CLIのオプションでも指定できますが、チームで共有するなら設定ファイルの方がいいでしょう。<br>
-また、後述しますが、CLIのオプションでは指定できない設定もあるので注意が必要です。</p>
-<h2 id=設定方法httpsgithubcomgolangcigolangci-lintconfig-file><a href=https://github.com/golangci/golangci-lint#config-file target=_blank rel="noopener noreferrer">設定方法</a>
-</h2>
-<p>設定ファイルとして <code>.golangci.yml</code> を紹介しましたが、他にも下記の拡張子が使用できます。</p>
-<ul>
-<li><code>.golangci.toml</code></li>
-<li><code>.golangci.json</code></li>
-</ul>
-<p>今回は<code>.golangci.yml</code>を使用します。</p>
-<p>設定ファイルのサンプルが<a href=https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml target=_blank rel="noopener noreferrer">GitHub上に公開</a>
-されています。</p>
-<p>使えるオプションはCLIと同じです。<br>
-ただし、CLI では、Linter ごとの設定（<code>linters-settings</code>）ができないため、<br>
-Linter ごとに細かく設定をしたい場合は設定ファイルを書く必要があります。</p>
-<h2 id=設置場所>設置場所</h2>
-<p>次に、<code>.golangci.yml</code>をどこに置くのかという話ですが、<br>
-<u>PC のルートディレクトリからプロジェクトのルートディレクトリ内のどこか</u> であればOKです。</p>
-<p>例えば、$GOPATH が <code>/go</code> で、プロジェクトルートが <code>/go/src/github.com/yyh-gl/hoge-project</code> だった場合、<br>
-以下のディレクトリ内を見に行ってくれます。</p>
-<ul>
-<li><code>./</code></li>
-<li><code>/go/src/github.com/yyh-gl/hoge-project</code></li>
-<li><code>/go/src/github.com/yyh-gl</code></li>
-<li><code>/go/src/github.com</code></li>
-<li><code>/go/src</code></li>
-<li><code>/go</code></li>
-<li><code>/</code></li>
-</ul>
-<p>上にいくほど優先順位が高いです。（PCのルートディレクトリが一番低い）<br>
-基本的には各プロジェクトのルートに置いておけばいいでしょう。</p>
-<p>実際に読み込まれている設定ファイルは<code>-v</code>オプションで確認可能です。</p>
-<pre class=line-numbers><code class=language-zsh>$ golangci-lint run --tests -v ./...
+</code></pre><p>！？<br>さきほどの GolangCI-Lint にはなかったエラーが出力されました。</p><p>なんとなく分かってきた方もおられると思いますが、<br>GolangCI-Lint はデフォルト設定だと、いくつかのエラーを無視するようになっています。</p><p>例えば、今回の例だと、コメントの記述形式についてのエラーですが、<br>そこまで厳密に守らなくてもいい内容ですね。（僕は守りたい派ですが。。。）<br>したがって、GolangCI-Lint が気を利かせて無視するようにしてくれています。</p><h2 id=デフォルトで無視されるルール>デフォルトで無視されるルール</h2><p>デフォルト設定だと無視されるルールは<br><a href=https://github.com/golangci/golangci-lint#command-line-options target=_blank rel="noopener noreferrer">こちら</a>
+の<code>--exclude-use-default</code>オプションの説明のところに記載があります。<br>抜粋してくると以下のとおりです。<br></p><table><thead><tr><th></th><th>Linter名</th><th>無視されるエラー（Linterが出力する内容）</th></tr></thead><tbody><tr><td>1</td><td>errcheck</td><td><code>Error return value of .((os\.)?std(out|err)\..*|.*Close|.*Flush|os\.Remove(All)?|.*printf?|os\.(Un)?Setenv). is not checked</code></td></tr><tr><td>2</td><td>golint</td><td><code>(comment on exported (method|function|type|const)|should have( a package)? comment|comment should be of the form)</code></td></tr><tr><td>3</td><td>golint</td><td>test系パッケージにおける <code>func name will be used as test\.Test.* by other packages, and that stutters; consider calling this</code></td></tr><tr><td>4</td><td>govet</td><td><code>(possible misuse of unsafe.Pointer|should have signature)</code></td></tr><tr><td>5</td><td>staticcheck</td><td><code>ineffective break statement. Did you mean to break out of the outer loop</code></td></tr><tr><td>6</td><td>gosec</td><td><code>Use of unsafe calls should be audited</code></td></tr><tr><td>7</td><td>gosec</td><td><code>Subprocess launch(ed with variable|ing should be audited)</code></td></tr><tr><td>8</td><td>gosec</td><td>errcheckと重複するエラーチェック <code>G104</code></td></tr><tr><td>9</td><td>gosec</td><td><code>(Expect directory permissions to be 0750 or less|Expect file permissions to be 0600 or less)</code></td></tr><tr><td>10</td><td>gosec</td><td><code>Potential file inclusion via variable</code></td></tr></tbody></table><br><p>さきほど例に挙げていた、golint のコメント記述形式に関するエラーは、表中2番のエラーです。<br>だから、GolangCI-Lint では検知されなかったんですね。</p><p>このルール、人によっては「これ無視しちゃだめだろ」と思われるものもあると思いますが、<br>投稿日時点ではこのようなルールがデフォルトで無視されるようになっています。</p><h1 id=設定ファイル-golangciyml>設定ファイル .golangci.yml</h1><p>気を利かせてくれているのは分かりますが、無視しないで欲しいときもありますよね。<br>逆にこのエラーは無視してほしいっていうニーズもあると思います。</p><p>そこで登場するのが <b>.golangci.yml</b> です。<br><code>.golangci.yml</code> により、GolangCI-Lint の細かな設定が可能になります。<br></p><p>CLIのオプションでも指定できますが、チームで共有するなら設定ファイルの方がいいでしょう。<br>また、後述しますが、CLIのオプションでは指定できない設定もあるので注意が必要です。</p><h2 id=設定方法httpsgithubcomgolangcigolangci-lintconfig-file><a href=https://github.com/golangci/golangci-lint#config-file target=_blank rel="noopener noreferrer">設定方法</a></h2><p>設定ファイルとして <code>.golangci.yml</code> を紹介しましたが、他にも下記の拡張子が使用できます。</p><ul><li><code>.golangci.toml</code></li><li><code>.golangci.json</code></li></ul><p>今回は<code>.golangci.yml</code>を使用します。</p><p>設定ファイルのサンプルが<a href=https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml target=_blank rel="noopener noreferrer">GitHub上に公開</a>
+されています。</p><p>使えるオプションはCLIと同じです。<br>ただし、CLI では、Linter ごとの設定（<code>linters-settings</code>）ができないため、<br>Linter ごとに細かく設定をしたい場合は設定ファイルを書く必要があります。</p><h2 id=設置場所>設置場所</h2><p>次に、<code>.golangci.yml</code>をどこに置くのかという話ですが、<br><u>PC のルートディレクトリからプロジェクトのルートディレクトリ内のどこか</u> であればOKです。</p><p>例えば、$GOPATH が <code>/go</code> で、プロジェクトルートが <code>/go/src/github.com/yyh-gl/hoge-project</code> だった場合、<br>以下のディレクトリ内を見に行ってくれます。</p><ul><li><code>./</code></li><li><code>/go/src/github.com/yyh-gl/hoge-project</code></li><li><code>/go/src/github.com/yyh-gl</code></li><li><code>/go/src/github.com</code></li><li><code>/go/src</code></li><li><code>/go</code></li><li><code>/</code></li></ul><p>上にいくほど優先順位が高いです。（PCのルートディレクトリが一番低い）<br>基本的には各プロジェクトのルートに置いておけばいいでしょう。</p><p>実際に読み込まれている設定ファイルは<code>-v</code>オプションで確認可能です。</p><pre class=line-numbers><code class=language-zsh>$ golangci-lint run --tests -v ./...
 level=info msg=&quot;[config_reader] Config search paths: [./ /go/src/github.com/yyh-gl/hoge-project /go/src/github.com/yyh-gl /go/src/github.com /go/src /go /]&quot;
 level=info msg=&quot;[config_reader] Used config file .golangci.yml&quot; ← ここ
 
 &lt;省略&gt;
-</code></pre>
-<br>
-<p>では、実際に設定ファイルを変更し、<br>
-さきほどの golint が検知していたコメント記述形式に関するエラーを、<br>
-GolangCI-Lint でも検知できるようにしてみます。</p>
-<h1 id=デフォルトで無視されるルールを無視する>&ldquo;デフォルトで無視されるルール"を無視する</h1>
-<p>golint が検知していたコメント記述形式に関するエラーを検知するには、<br>
-&ldquo;デフォルトで無視されるルール"を無視する必要があります。</p>
-<p>設定自体はすごく簡単です。</p>
-<pre class=line-numbers><code class=language-yaml># .golangci.yml
+</code></pre><br><p>では、実際に設定ファイルを変更し、<br>さきほどの golint が検知していたコメント記述形式に関するエラーを、<br>GolangCI-Lint でも検知できるようにしてみます。</p><h1 id=デフォルトで無視されるルールを無視する>&ldquo;デフォルトで無視されるルール"を無視する</h1><p>golint が検知していたコメント記述形式に関するエラーを検知するには、<br>&ldquo;デフォルトで無視されるルール"を無視する必要があります。</p><p>設定自体はすごく簡単です。</p><pre class=line-numbers><code class=language-yaml># .golangci.yml
 
 issues:
   exclude-use-default: false
-</code></pre>
-<p>以上です。</p>
-<p>テストしてみましょう。</p>
-<pre class=line-numbers><code class=language-zsh>$ docker-compose exec -T app golangci-lint run --tests ./...
+</code></pre><p>以上です。</p><p>テストしてみましょう。</p><pre class=line-numbers><code class=language-zsh>$ docker-compose exec -T app golangci-lint run --tests ./...
 handler/rest/blog.go:82:27: Error return value of `(*encoding/json.Encoder).Encode` is not checked (errcheck)
 	json.NewEncoder(w).Encode(res)
 	                         ^
@@ -328,14 +52,7 @@ domain/model/task/task.go:7:1: comment on exported type Task should be of the fo
 domain/model/task/task.go:9:2: structtag: struct field tag `json:&quot;title&quot;,&quot;hoge&quot;` not compatible with reflect.StructTag.Get: key:&quot;value&quot; pairs not separated by spaces (govet)
 	Title         string      `json:&quot;title&quot;,&quot;hoge&quot;`
 	^
-</code></pre>
-<p>golint のエラーが増えましたね👍</p>
-<p>このように簡単に GolangCI-Lint の設定を変更することができます。</p>
-<h1 id=細かな設定も可能>細かな設定も可能</h1>
-<p>さきほど少し触れましたが、各 Linter ごとの細かな設定も可能です。</p>
-<h2 id=linters-settings>linters-settings</h2>
-<p>各 Linter ごとの設定は <code>linters-settings</code> によって定義できます。</p>
-<pre class=line-numbers><code class=language-yaml># .golangci.yml
+</code></pre><p>golint のエラーが増えましたね👍</p><p>このように簡単に GolangCI-Lint の設定を変更することができます。</p><h1 id=細かな設定も可能>細かな設定も可能</h1><p>さきほど少し触れましたが、各 Linter ごとの細かな設定も可能です。</p><h2 id=linters-settings>linters-settings</h2><p>各 Linter ごとの設定は <code>linters-settings</code> によって定義できます。</p><pre class=line-numbers><code class=language-yaml># .golangci.yml
 
 linters-settings:
   errcheck:
@@ -360,119 +77,10 @@ linters-settings:
     disable-all: false
   golint:
     min-confidence: 0.8
-</code></pre>
-<p>例えば、golint の min-confidence は Lint の厳しさを設定するもので、<br>
-数値が低いほど厳しいルールが適用されます。<br>
-（ちなみに、デフォルトは 0.8で、1.1 にすると何も検知しなくなります😇）</p>
-<h2 id=他の設定たち>他の設定たち</h2>
-<p>GolangCI-Lint で使用できる設定を探したい場合は、<br>
-設定ファイルのサンプルを参考にすればOKです。</p>
-<p>このファイルの中に利用可能な全ての設定とデフォルト値が記載されています👍 最高ですね</p>
-<ul>
-<li><a href=https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml target=_blank rel="noopener noreferrer">設定ファイルのサンプル</a>
-</li>
-</ul>
-<h1 id=まとめ>まとめ</h1>
-<p>GolangCI-Lint により、様々な Linter が一元管理でき、<br>
-Linter の導入・管理コストがとても低くなったと感じています。<br>
-また、いろいろな Linter を気軽に試せるようになりました。</p>
-<p>ちょっとしたコーディング規約違反を毎回人力で指摘している方や<br>
-コンパイラでは発見できないエラーを潰すのに疲弊している方などは、<br>
-ぜひ、GolangCI-Lint の導入を検討しみてはいかかでしょうか？</p>
-<p>最高の DX です🎁</p>
-<br>
-<p>DMM Advent Calendar 2019、明日は <a href=https://qiita.com/mimickn target=_blank rel="noopener noreferrer">mimickn</a>
-さんです！</p>
-</div>
-<footer>
-<div class=stats>
-<ul class=categories>
-<li><a class=article-terms-link href=/tech-blog/categories/advent-calendar/>Advent Calendar</a></li>
-<li><a class=article-terms-link href=/tech-blog/categories/%e3%83%86%e3%82%b9%e3%83%88/>テスト</a></li>
-<li><a class=article-terms-link href=/tech-blog/categories/lint/>Lint</a></li>
-<li><a class=article-terms-link href=/tech-blog/categories/go/>Go</a></li>
-</ul>
-<div>
-<good-counter url=/tech-blog/blog/golangci-lint-custom-settings/></good-counter>
-</div>
-</div>
-</footer>
-<div class=fix>
-<a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『GolangCI-Lint%e3%81%ae%e8%a8%ad%e5%ae%9a%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b』" target=_blank rel="noopener noreferrer">
-修正提案
-</a>
-</div>
-</article>
-<div class=pagination>
-<a href=/tech-blog/blog/mercari-tech-talk-idempotency/ class="button left"><span>【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会</span></a>
-<a href=/tech-blog/blog/golang-vcr/ class="button right"><span>【Go+VCR】外部APIとの通信を保存してテストに使用する話</span></a>
-</div>
-</main>
-<section id=site-sidebar>
-<section id=recent-posts>
-<header>
-<h1>最近の投稿</h1>
-</header>
-<article class=mini-post>
-<a href=/tech-blog/blog/activity-2021/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/activity-2021/>【2021年】アクティビティまとめ</a></h2>
-<time class=published datetime="2022-01-02 11:59:04 +0000 UTC">2022-01-02</time>
-</header>
-</article>
-<article class=mini-post>
-<a href=/tech-blog/blog/go-build/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/go-build/>徒然なるままに go build と build tag を見ていく</a></h2>
-<time class=published datetime="2021-12-19 00:00:00 +0000 UTC">2021-12-19</time>
-</header>
-</article>
-<article class=mini-post>
-<a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2>
-<time class=published datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time>
-</header>
-</article>
-<footer>
-<a href=/tech-blog/blog/ class=button>続きを見る</a>
-</footer>
-</section>
-<section id=mini-bio>
-<header>
-<h1>About</h1>
-</header>
-<p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p>
-<footer>
-<a href=/tech-blog/about class=button>もっと詳しく知る</a>
-</footer>
-</section>
-</section>
-<footer id=site-footer>
-<ul class=socnet-icons>
-<li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
-<li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
-<li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
-<li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li>
-</ul>
-<p class=copyright>
-© 2022 yyh-gl's Tech Blog
-<br>
-Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.92.1 target=_blank rel=noopener>Hugo</a>
-</p>
-</footer>
-<a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a>
-<script src=/tech-blog/js/bundle.min.a2a773c2e0e07f69b603aa1005699cd705a4f1b9d9a30fc03b920aa4948ee39e.js integrity="sha256-oqdzwuDgf2m2A6oQBWmc1wWk8bnZow/AO5IKpJSO454="></script>
+</code></pre><p>例えば、golint の min-confidence は Lint の厳しさを設定するもので、<br>数値が低いほど厳しいルールが適用されます。<br>（ちなみに、デフォルトは 0.8で、1.1 にすると何も検知しなくなります😇）</p><h2 id=他の設定たち>他の設定たち</h2><p>GolangCI-Lint で使用できる設定を探したい場合は、<br>設定ファイルのサンプルを参考にすればOKです。</p><p>このファイルの中に利用可能な全ての設定とデフォルト値が記載されています👍 最高ですね</p><ul><li><a href=https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml target=_blank rel="noopener noreferrer">設定ファイルのサンプル</a></li></ul><h1 id=まとめ>まとめ</h1><p>GolangCI-Lint により、様々な Linter が一元管理でき、<br>Linter の導入・管理コストがとても低くなったと感じています。<br>また、いろいろな Linter を気軽に試せるようになりました。</p><p>ちょっとしたコーディング規約違反を毎回人力で指摘している方や<br>コンパイラでは発見できないエラーを潰すのに疲弊している方などは、<br>ぜひ、GolangCI-Lint の導入を検討しみてはいかかでしょうか？</p><p>最高の DX です🎁</p><br><p>DMM Advent Calendar 2019、明日は <a href=https://qiita.com/mimickn target=_blank rel="noopener noreferrer">mimickn</a>
+さんです！</p></div><footer><div class=stats><ul class=categories><li><a class=article-terms-link href=/tech-blog/categories/advent-calendar/>Advent Calendar</a></li><li><a class=article-terms-link href=/tech-blog/categories/%e3%83%86%e3%82%b9%e3%83%88/>テスト</a></li><li><a class=article-terms-link href=/tech-blog/categories/lint/>Lint</a></li><li><a class=article-terms-link href=/tech-blog/categories/go/>Go</a></li></ul><div><good-counter rel-permalink=/tech-blog/blog/golangci-lint-custom-settings/></good-counter></div></div></footer><div class=fix><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『GolangCI-Lint%e3%81%ae%e8%a8%ad%e5%ae%9a%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b』" target=_blank rel="noopener noreferrer">修正提案</a></div></article><div class=pagination><a href=/tech-blog/blog/mercari-tech-talk-idempotency/ class="button left"><span>【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会</span></a>
+<a href=/tech-blog/blog/golang-vcr/ class="button right"><span>【Go+VCR】外部APIとの通信を保存してテストに使用する話</span></a></div></main><section id=site-sidebar><section id=recent-posts><header><h1>最近の投稿</h1></header><article class=mini-post><a href=/tech-blog/blog/activity-2021/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/activity-2021/>【2021年】アクティビティまとめ</a></h2><time class=published datetime="2022-01-02 11:59:04 +0000 UTC">2022-01-02</time></header></article><article class=mini-post><a href=/tech-blog/blog/go-build/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/go-build/>徒然なるままに go build と build tag を見ていく</a></h2><time class=published datetime="2021-12-19 00:00:00 +0000 UTC">2021-12-19</time></header></article><article class=mini-post><a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2><time class=published datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time></header></article><footer><a href=/tech-blog/blog/ class=button>続きを見る</a></footer></section><section id=mini-bio><header><h1>About</h1></header><p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p><footer><a href=/tech-blog/about class=button>もっと詳しく知る</a></footer></section></section><footer id=site-footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul><p class=copyright>© 2022 yyh-gl's Tech Blog<br>Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.94.2 target=_blank rel=noopener>Hugo</a></p></footer><a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a>
+<script src=/tech-blog/js/bundle.min.a1954149b9950c3cc64476f31a0f4adb6e38b0f1db5b587655d1e9aaf1b8a1dc.js integrity="sha256-oZVBSbmVDDzGRHbzGg9K2244sPHbW1h2VdHpqvG4odw="></script>
 <script src=/tech-blog/js/add-on.js></script>
 <script src=/tech-blog/js/prism.js></script>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-140914324-1','auto'),ga('send','pageview'))</script>
-<script async src=https://www.google-analytics.com/analytics.js></script>
-</div>
-</body>
-</html>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-140914324-1","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script></div></body></html>

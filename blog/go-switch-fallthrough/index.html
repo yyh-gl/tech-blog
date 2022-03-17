@@ -1,92 +1,12 @@
-<!doctype html><html lang=ja>
-<head>
-<meta charset=utf-8>
-<title>【Go】Switch文のfallthroughに関するまとめ - yyh-gl's Tech Blog</title>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1">
-<link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1">
-<link rel=icon type=image/png sizes=16x16 href="/tech-blog/favicon/favicon-16x16.png?v=1">
-<link rel=manifest href="/tech-blog/favicon/site.webmanifest?v=1">
-<link rel=mask-icon href="/tech-blog/favicon/safari-pinned-tab.svg?v=1" color=#ffffff>
-<link rel="shortcut icon" href="/tech-blog/favicon/favicon.ico?v=1">
-<meta name=msapplication-config content="/tech-blog/favicon/browserconfig.xml?v=1">
-<meta name=msapplication-TileColor content="#ffffff">
-<meta name=theme-color content="#ffffff">
-<meta name=generator content="Hugo 0.92.1"><meta property="og:site_name" content="yyh-gl's Tech Blog">
-<meta property="og:title" content="【Go】Switch文のfallthroughに関するまとめ">
-<meta property="og:description" content="忘れがちじゃないですか？？">
-<meta property="description" content="忘れがちじゃないですか？？">
-<meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/10/go-switch-fallthrough/featured.webp">
-<meta property="og:image:alt" content="featured">
-<link rel=stylesheet href=/tech-blog/css/bundle.min.b3b210b14743bef0baf37fbaaa81e2f4cd1365a34bd4a475a59f83d587fd7edc.css integrity="sha256-s7IQsUdDvvC683+6qoHi9M0TZaNL1KR1pZ+D1Yf9ftw="><link rel=stylesheet href=/tech-blog/css/add-on.css>
-<link rel=stylesheet href=/tech-blog/css/prism.css>
-<script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
+<!doctype html><html lang=ja><head><meta charset=utf-8><title>【Go】Switch文のfallthroughに関するまとめ - yyh-gl's Tech Blog</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1"><link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1"><link rel=icon type=image/png sizes=16x16 href="/tech-blog/favicon/favicon-16x16.png?v=1"><link rel=manifest href="/tech-blog/favicon/site.webmanifest?v=1"><link rel=mask-icon href="/tech-blog/favicon/safari-pinned-tab.svg?v=1" color=#ffffff><link rel="shortcut icon" href="/tech-blog/favicon/favicon.ico?v=1"><meta name=msapplication-config content="/tech-blog/favicon/browserconfig.xml?v=1"><meta name=msapplication-TileColor content="#ffffff"><meta name=theme-color content="#ffffff"><meta name=generator content="Hugo 0.94.2"><meta property="og:site_name" content="yyh-gl's Tech Blog"><meta property="og:title" content="【Go】Switch文のfallthroughに関するまとめ"><meta property="og:description" content="忘れがちじゃないですか？？"><meta property="description" content="忘れがちじゃないですか？？"><meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/"><meta property="og:type" content="article"><meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/10/go-switch-fallthrough/featured.webp"><meta property="og:image:alt" content="featured"><link rel=stylesheet href=/tech-blog/css/bundle.min.b3b210b14743bef0baf37fbaaa81e2f4cd1365a34bd4a475a59f83d587fd7edc.css integrity="sha256-s7IQsUdDvvC683+6qoHi9M0TZaNL1KR1pZ+D1Yf9ftw="><link rel=stylesheet href=/tech-blog/css/add-on.css><link rel=stylesheet href=/tech-blog/css/prism.css><script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
 <script src=/tech-blog/js/vue.min.js></script>
-<script src=/tech-blog/js/good-counter.js defer></script>
-</head>
-<body>
-<header id=site-header>
-<nav id=site-nav>
-<h1 class=nav-title>
-<a href=/tech-blog/ class=nav>
-Blog
-</a>
-</h1>
-<menu id=site-nav-menu class="flyout-menu menu">
-<a href=/tech-blog/ class="nav link"><i class="fa fa-home"></i> Home</a>
+<script src=/tech-blog/js/good-counter.js defer></script></head><body><header id=site-header><nav id=site-nav><h1 class=nav-title><a href=/tech-blog/ class=nav>Blog</a></h1><menu id=site-nav-menu class="flyout-menu menu"><a href=/tech-blog/ class="nav link"><i class="fa fa-home"></i> Home</a>
 <a href=/tech-blog/about/ class="nav link"><i class="far fa-id-card"></i> About</a>
 <a href=/tech-blog/blog/ class="nav link"><i class="far fa-newspaper"></i> Blog</a>
-<a href=/tech-blog/categories/ class="nav link"><i class="fas fa-sitemap"></i> Categories</a>
-</menu>
-<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
-</nav>
-</header>
-<div id=wrapper>
-<section id=site-intro>
-<a href=/tech-blog/><img src=https://yyh-gl.github.io/tech-blog/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a>
-<header>
-<h1>yyh-gl's Tech Blog</h1>
-</header>
-<main>
-<p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p>
-</main>
-<footer>
-<ul class=socnet-icons>
-<li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
-<li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
-<li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
-<li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li>
-</ul>
-</footer>
-</section>
-<main id=site-main>
-<article class=post>
-<header>
-<div class=title>
-<h2><a href=/tech-blog/blog/go-switch-fallthrough/>【Go】Switch文のfallthroughに関するまとめ</a></h2>
-<p>忘れがちじゃないですか？？</p>
-</div>
-<div class=meta>
-<time datetime="2020-10-03 00:00:00 +0000 UTC">2020-10-03</time>
-<p>yyh-gl</p>
-<p>1 分で読めます</p>
-</div>
-</header>
-<div id=socnet-share>
-</div>
-<div class=content>
-<a href=/tech-blog/blog/go-switch-fallthrough/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/10/go-switch-fallthrough/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/10/go-switch-fallthrough/featured.webp alt=featured>
-</a>
-<h1 id=fallthrough-とは>fallthrough とは</h1>
-<p>GoではSwitch文でfallthroughという<a href=https://golang.org/ref/spec#Keywords target=_blank rel="noopener noreferrer">キーワード</a>
-が使用可能です。</p>
-<p>機能としては、処理を次の節（caseやdefault）に進めます。（<a href=https://github.com/golang/go/wiki/Switch#fall-through target=_blank rel="noopener noreferrer">参考</a>
-）<br>
-言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。</p>
-<pre class=line-numbers><code class=language-go>package main
+<a href=/tech-blog/categories/ class="nav link"><i class="fas fa-sitemap"></i> Categories</a></menu>
+<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a></nav></header><div id=wrapper><section id=site-intro><a href=/tech-blog/><img src=https://yyh-gl.github.io/tech-blog/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a><header><h1>yyh-gl's Tech Blog</h1></header><main><p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p></main><footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul></footer></section><main id=site-main><article class=post><header><div class=title><h2><a href=/tech-blog/blog/go-switch-fallthrough/>【Go】Switch文のfallthroughに関するまとめ</a></h2><p>忘れがちじゃないですか？？</p></div><div class=meta><time datetime="2020-10-03 00:00:00 +0000 UTC">2020-10-03</time><p>yyh-gl</p><p>1 分で読めます</p></div></header><div id=socnet-share></div><div class=content><a href=/tech-blog/blog/go-switch-fallthrough/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/10/go-switch-fallthrough/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/10/go-switch-fallthrough/featured.webp alt=featured></a><h1 id=fallthrough-とは>fallthrough とは</h1><p>GoではSwitch文でfallthroughという<a href=https://golang.org/ref/spec#Keywords target=_blank rel="noopener noreferrer">キーワード</a>
+が使用可能です。</p><p>機能としては、処理を次の節（caseやdefault）に進めます。（<a href=https://github.com/golang/go/wiki/Switch#fall-through target=_blank rel="noopener noreferrer">参考</a>
+）<br>言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。</p><pre class=line-numbers><code class=language-go>package main
 
 import &quot;fmt&quot;
 
@@ -107,101 +27,10 @@ func main() {
 
 // 実行結果：
 // I am yyh-gl.
-</code></pre>
-<p><a href=https://play.golang.org/p/FBJKDxbVw5n target=_blank rel="noopener noreferrer">Playground</a>
-</p>
-<p><a href=https://play.golang.org/p/VmfdVwngNGi target=_blank rel="noopener noreferrer">defaultにも飛べるという例</a>
-</p>
-<br>
-<p><code>fallthrough</code>は、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(<a href=https://github.com/go-gorm/gorm/blob/26dd4c980a62d47c990a05da9e5566bff3b2b00c/finisher_api.go#L94 target=_blank rel="noopener noreferrer">使用箇所</a>
-)<br></p>
-</div>
-<footer>
-<div class=stats>
-<ul class=categories>
-<li><a class=article-terms-link href=/tech-blog/categories/go/>Go</a></li>
-</ul>
-<div>
-<good-counter url=/tech-blog/blog/go-switch-fallthrough/></good-counter>
-</div>
-</div>
-</footer>
-<div class=fix>
-<a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e3%80%90Go%e3%80%91Switch%e6%96%87%e3%81%aefallthrough%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e3%81%be%e3%81%a8%e3%82%81』" target=_blank rel="noopener noreferrer">
-修正提案
-</a>
-</div>
-</article>
-<div class=pagination>
-<a href=/tech-blog/blog/support-webp/ class="button left"><span>ブログの画像をWebPに変えた話とSafariで表示されない件について</span></a>
-<a href=/tech-blog/blog/podcast-matome-texta-200827/ class="button right"><span>texta.fm #1 まとめ</span></a>
-</div>
-</main>
-<section id=site-sidebar>
-<section id=recent-posts>
-<header>
-<h1>最近の投稿</h1>
-</header>
-<article class=mini-post>
-<a href=/tech-blog/blog/activity-2021/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/activity-2021/>【2021年】アクティビティまとめ</a></h2>
-<time class=published datetime="2022-01-02 11:59:04 +0000 UTC">2022-01-02</time>
-</header>
-</article>
-<article class=mini-post>
-<a href=/tech-blog/blog/go-build/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/go-build/>徒然なるままに go build と build tag を見ていく</a></h2>
-<time class=published datetime="2021-12-19 00:00:00 +0000 UTC">2021-12-19</time>
-</header>
-</article>
-<article class=mini-post>
-<a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2>
-<time class=published datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time>
-</header>
-</article>
-<footer>
-<a href=/tech-blog/blog/ class=button>続きを見る</a>
-</footer>
-</section>
-<section id=mini-bio>
-<header>
-<h1>About</h1>
-</header>
-<p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p>
-<footer>
-<a href=/tech-blog/about class=button>もっと詳しく知る</a>
-</footer>
-</section>
-</section>
-<footer id=site-footer>
-<ul class=socnet-icons>
-<li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
-<li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
-<li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
-<li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li>
-</ul>
-<p class=copyright>
-© 2022 yyh-gl's Tech Blog
-<br>
-Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.92.1 target=_blank rel=noopener>Hugo</a>
-</p>
-</footer>
-<a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a>
-<script src=/tech-blog/js/bundle.min.a2a773c2e0e07f69b603aa1005699cd705a4f1b9d9a30fc03b920aa4948ee39e.js integrity="sha256-oqdzwuDgf2m2A6oQBWmc1wWk8bnZow/AO5IKpJSO454="></script>
+</code></pre><p><a href=https://play.golang.org/p/FBJKDxbVw5n target=_blank rel="noopener noreferrer">Playground</a></p><p><a href=https://play.golang.org/p/VmfdVwngNGi target=_blank rel="noopener noreferrer">defaultにも飛べるという例</a></p><br><p><code>fallthrough</code>は、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(<a href=https://github.com/go-gorm/gorm/blob/26dd4c980a62d47c990a05da9e5566bff3b2b00c/finisher_api.go#L94 target=_blank rel="noopener noreferrer">使用箇所</a>
+)<br></p></div><footer><div class=stats><ul class=categories><li><a class=article-terms-link href=/tech-blog/categories/go/>Go</a></li></ul><div><good-counter rel-permalink=/tech-blog/blog/go-switch-fallthrough/></good-counter></div></div></footer><div class=fix><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e3%80%90Go%e3%80%91Switch%e6%96%87%e3%81%aefallthrough%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e3%81%be%e3%81%a8%e3%82%81』" target=_blank rel="noopener noreferrer">修正提案</a></div></article><div class=pagination><a href=/tech-blog/blog/support-webp/ class="button left"><span>ブログの画像をWebPに変えた話とSafariで表示されない件について</span></a>
+<a href=/tech-blog/blog/podcast-matome-texta-200827/ class="button right"><span>texta.fm #1 まとめ</span></a></div></main><section id=site-sidebar><section id=recent-posts><header><h1>最近の投稿</h1></header><article class=mini-post><a href=/tech-blog/blog/activity-2021/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/activity-2021/>【2021年】アクティビティまとめ</a></h2><time class=published datetime="2022-01-02 11:59:04 +0000 UTC">2022-01-02</time></header></article><article class=mini-post><a href=/tech-blog/blog/go-build/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/go-build/>徒然なるままに go build と build tag を見ていく</a></h2><time class=published datetime="2021-12-19 00:00:00 +0000 UTC">2021-12-19</time></header></article><article class=mini-post><a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2><time class=published datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time></header></article><footer><a href=/tech-blog/blog/ class=button>続きを見る</a></footer></section><section id=mini-bio><header><h1>About</h1></header><p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p><footer><a href=/tech-blog/about class=button>もっと詳しく知る</a></footer></section></section><footer id=site-footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul><p class=copyright>© 2022 yyh-gl's Tech Blog<br>Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.94.2 target=_blank rel=noopener>Hugo</a></p></footer><a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a>
+<script src=/tech-blog/js/bundle.min.a1954149b9950c3cc64476f31a0f4adb6e38b0f1db5b587655d1e9aaf1b8a1dc.js integrity="sha256-oZVBSbmVDDzGRHbzGg9K2244sPHbW1h2VdHpqvG4odw="></script>
 <script src=/tech-blog/js/add-on.js></script>
 <script src=/tech-blog/js/prism.js></script>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-140914324-1','auto'),ga('send','pageview'))</script>
-<script async src=https://www.google-analytics.com/analytics.js></script>
-</div>
-</body>
-</html>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-140914324-1","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script></div></body></html>

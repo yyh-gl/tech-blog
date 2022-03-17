@@ -1,109 +1,13 @@
-<!doctype html><html lang=ja>
-<head>
-<meta charset=utf-8>
-<title>徒然なるままに go build と build tag を見ていく - yyh-gl's Tech Blog</title>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1">
-<link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1">
-<link rel=icon type=image/png sizes=16x16 href="/tech-blog/favicon/favicon-16x16.png?v=1">
-<link rel=manifest href="/tech-blog/favicon/site.webmanifest?v=1">
-<link rel=mask-icon href="/tech-blog/favicon/safari-pinned-tab.svg?v=1" color=#ffffff>
-<link rel="shortcut icon" href="/tech-blog/favicon/favicon.ico?v=1">
-<meta name=msapplication-config content="/tech-blog/favicon/browserconfig.xml?v=1">
-<meta name=msapplication-TileColor content="#ffffff">
-<meta name=theme-color content="#ffffff">
-<meta name=generator content="Hugo 0.92.1"><meta property="og:site_name" content="yyh-gl's Tech Blog">
-<meta property="og:title" content="徒然なるままに go build と build tag を見ていく">
-<meta property="og:description" content="Go #1 Advent Calendar 2021 19日目">
-<meta property="description" content="Go #1 Advent Calendar 2021 19日目">
-<meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/go-build/">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp">
-<meta property="og:image:alt" content="featured">
-<link rel=stylesheet href=/tech-blog/css/bundle.min.b3b210b14743bef0baf37fbaaa81e2f4cd1365a34bd4a475a59f83d587fd7edc.css integrity="sha256-s7IQsUdDvvC683+6qoHi9M0TZaNL1KR1pZ+D1Yf9ftw="><link rel=stylesheet href=/tech-blog/css/add-on.css>
-<link rel=stylesheet href=/tech-blog/css/prism.css>
-<script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
+<!doctype html><html lang=ja><head><meta charset=utf-8><title>徒然なるままに go build と build tag を見ていく - yyh-gl's Tech Blog</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=apple-touch-icon sizes=180x180 href="/tech-blog/favicon/apple-touch-icon.png?v=1"><link rel=icon type=image/png sizes=32x32 href="/tech-blog/favicon/favicon-32x32.png?v=1"><link rel=icon type=image/png sizes=16x16 href="/tech-blog/favicon/favicon-16x16.png?v=1"><link rel=manifest href="/tech-blog/favicon/site.webmanifest?v=1"><link rel=mask-icon href="/tech-blog/favicon/safari-pinned-tab.svg?v=1" color=#ffffff><link rel="shortcut icon" href="/tech-blog/favicon/favicon.ico?v=1"><meta name=msapplication-config content="/tech-blog/favicon/browserconfig.xml?v=1"><meta name=msapplication-TileColor content="#ffffff"><meta name=theme-color content="#ffffff"><meta name=generator content="Hugo 0.94.2"><meta property="og:site_name" content="yyh-gl's Tech Blog"><meta property="og:title" content="徒然なるままに go build と build tag を見ていく"><meta property="og:description" content="Go #1 Advent Calendar 2021 19日目"><meta property="description" content="Go #1 Advent Calendar 2021 19日目"><meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/go-build/"><meta property="og:type" content="article"><meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp"><meta property="og:image:alt" content="featured"><link rel=stylesheet href=/tech-blog/css/bundle.min.b3b210b14743bef0baf37fbaaa81e2f4cd1365a34bd4a475a59f83d587fd7edc.css integrity="sha256-s7IQsUdDvvC683+6qoHi9M0TZaNL1KR1pZ+D1Yf9ftw="><link rel=stylesheet href=/tech-blog/css/add-on.css><link rel=stylesheet href=/tech-blog/css/prism.css><script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
 <script src=/tech-blog/js/vue.min.js></script>
-<script src=/tech-blog/js/good-counter.js defer></script>
-</head>
-<body>
-<header id=site-header>
-<nav id=site-nav>
-<h1 class=nav-title>
-<a href=/tech-blog/ class=nav>
-Blog
-</a>
-</h1>
-<menu id=site-nav-menu class="flyout-menu menu">
-<a href=/tech-blog/ class="nav link"><i class="fa fa-home"></i> Home</a>
+<script src=/tech-blog/js/good-counter.js defer></script></head><body><header id=site-header><nav id=site-nav><h1 class=nav-title><a href=/tech-blog/ class=nav>Blog</a></h1><menu id=site-nav-menu class="flyout-menu menu"><a href=/tech-blog/ class="nav link"><i class="fa fa-home"></i> Home</a>
 <a href=/tech-blog/about/ class="nav link"><i class="far fa-id-card"></i> About</a>
 <a href=/tech-blog/blog/ class="nav link"><i class="far fa-newspaper"></i> Blog</a>
-<a href=/tech-blog/categories/ class="nav link"><i class="fas fa-sitemap"></i> Categories</a>
-</menu>
-<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
-</nav>
-</header>
-<div id=wrapper>
-<section id=site-intro>
-<a href=/tech-blog/><img src=https://yyh-gl.github.io/tech-blog/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a>
-<header>
-<h1>yyh-gl's Tech Blog</h1>
-</header>
-<main>
-<p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p>
-</main>
-<footer>
-<ul class=socnet-icons>
-<li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
-<li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
-<li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
-<li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li>
-</ul>
-</footer>
-</section>
-<main id=site-main>
-<article class=post>
-<header>
-<div class=title>
-<h2><a href=/tech-blog/blog/go-build/>徒然なるままに go build と build tag を見ていく</a></h2>
-<p>Go #1 Advent Calendar 2021 19日目</p>
-</div>
-<div class=meta>
-<time datetime="2021-12-19 00:00:00 +0000 UTC">2021-12-19</time>
-<p>yyh-gl</p>
-<p>3 分で読めます</p>
-</div>
-</header>
-<div id=socnet-share>
-</div>
-<div class=content>
-<a href=/tech-blog/blog/go-build/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp alt=featured>
-</a>
-<br>
-<p>本記事は『<a href=https://qiita.com/advent-calendar/2021/go target=_blank rel="noopener noreferrer">Go #1 Advent Calendar 2021 19日目</a>
-』の記事です。</p>
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/advent_calendar_2021.webp width=500>
-<h1 id=はじめに>はじめに</h1>
-<p>Goには標準で便利なコマンドがたくさんあります。</p>
-<p>有名どころで言えば、</p>
-<ul>
-<li><code>generate</code></li>
-<li><code>fmt</code></li>
-<li><code>vet</code></li>
-</ul>
-<p>などがあります。</p>
-<p>中でも、Goのコードをコンパイルするための<code>build</code>コマンドは、
-みなさんも日頃の開発で使用しているのではないでしょうか。</p>
-<p><code>build</code>は特に難しいことをしなければ、とてもシンプルに使えるコマンドです。<br>
-よって、直感的に「こうすればコンパイルできるんでしょー」くらいの感覚で、
-ドキュメントを注視しなくても使い始められるでしょう。</p>
-<p>しかし、<code>build</code>は深く見ていくと意外と奥が深いコマンドです。<br>
-今回はそんな<code>build</code>について深ぼっていこうと思います。</p>
-<h1 id=buildコマンドとは><code>build</code>コマンドとは</h1>
-<p>まずは<code>build</code>とはどういったコマンドなのか見ていきましょう。</p>
-<p><code>help</code>を使って調べてみます。</p>
-<pre class=line-numbers><code class=language-shell>$ go help build
+<a href=/tech-blog/categories/ class="nav link"><i class="fas fa-sitemap"></i> Categories</a></menu>
+<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a></nav></header><div id=wrapper><section id=site-intro><a href=/tech-blog/><img src=https://yyh-gl.github.io/tech-blog/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a><header><h1>yyh-gl's Tech Blog</h1></header><main><p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p></main><footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul></footer></section><main id=site-main><article class=post><header><div class=title><h2><a href=/tech-blog/blog/go-build/>徒然なるままに go build と build tag を見ていく</a></h2><p>Go #1 Advent Calendar 2021 19日目</p></div><div class=meta><time datetime="2021-12-19 00:00:00 +0000 UTC">2021-12-19</time><p>yyh-gl</p><p>3 分で読めます</p></div></header><div id=socnet-share></div><div class=content><a href=/tech-blog/blog/go-build/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp alt=featured></a><br><p>本記事は『<a href=https://qiita.com/advent-calendar/2021/go target=_blank rel="noopener noreferrer">Go #1 Advent Calendar 2021 19日目</a>
+』の記事です。</p><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/advent_calendar_2021.webp width=500><h1 id=はじめに>はじめに</h1><p>Goには標準で便利なコマンドがたくさんあります。</p><p>有名どころで言えば、</p><ul><li><code>generate</code></li><li><code>fmt</code></li><li><code>vet</code></li></ul><p>などがあります。</p><p>中でも、Goのコードをコンパイルするための<code>build</code>コマンドは、
+みなさんも日頃の開発で使用しているのではないでしょうか。</p><p><code>build</code>は特に難しいことをしなければ、とてもシンプルに使えるコマンドです。<br>よって、直感的に「こうすればコンパイルできるんでしょー」くらいの感覚で、
+ドキュメントを注視しなくても使い始められるでしょう。</p><p>しかし、<code>build</code>は深く見ていくと意外と奥が深いコマンドです。<br>今回はそんな<code>build</code>について深ぼっていこうと思います。</p><h1 id=buildコマンドとは><code>build</code>コマンドとは</h1><p>まずは<code>build</code>とはどういったコマンドなのか見ていきましょう。</p><p><code>help</code>を使って調べてみます。</p><pre class=line-numbers><code class=language-shell>$ go help build
 
 Build compiles the packages named by the import paths,
 along with their dependencies, but it does not install the results.
@@ -128,120 +32,46 @@ serving only as a check that the packages can be built.
 		is deprecated but still recognized.)
 
 &lt;省略&gt;
-</code></pre>
-<p><code>build</code>はコンパイルするやつですよという文章から始まり、
-いろいろ書かれていますが、今回は以下の4点について見てみます。</p>
-<ul>
-<li><code>build</code>はインストールを行わない</li>
-<li>コンパイル時に<code>_test.go</code>ファイルは無視する</li>
-<li>複数パッケージor単一の非mainパッケージのコンパイル時は結果のオブジェクトを破棄する</li>
-<li>build tagについて</li>
-</ul>
-<h1 id=buildはインストールを行わない><code>build</code>はインストールを行わない</h1>
-<p><code>build</code>はコンパイルだけを行い、インストールは行いません。</p>
-<p>「え、そりゃそうでしょ」「インストール？」ってなる人も多いのではないでしょうか。<br>
-当たり前と言われればそうですが、ヘルプにて丁寧に説明されています。</p>
-<br>
-<p>まず、インストールとはなにかを理解するために、<code>build</code>と<code>insatll</code>の挙動の違いを見てみましょう。<br></p>
-<p>なぜ、<code>install</code>と比較するかと言うと、下記のとおり<code>install</code>はコンパイルとインストールを行うコマンドだからです。</p>
-<pre class=line-numbers><code class=language-shell>$ go help install
+</code></pre><p><code>build</code>はコンパイルするやつですよという文章から始まり、
+いろいろ書かれていますが、今回は以下の4点について見てみます。</p><ul><li><code>build</code>はインストールを行わない</li><li>コンパイル時に<code>_test.go</code>ファイルは無視する</li><li>複数パッケージor単一の非mainパッケージのコンパイル時は結果のオブジェクトを破棄する</li><li>build tagについて</li></ul><h1 id=buildはインストールを行わない><code>build</code>はインストールを行わない</h1><p><code>build</code>はコンパイルだけを行い、インストールは行いません。</p><p>「え、そりゃそうでしょ」「インストール？」ってなる人も多いのではないでしょうか。<br>当たり前と言われればそうですが、ヘルプにて丁寧に説明されています。</p><br><p>まず、インストールとはなにかを理解するために、<code>build</code>と<code>insatll</code>の挙動の違いを見てみましょう。<br></p><p>なぜ、<code>install</code>と比較するかと言うと、下記のとおり<code>install</code>はコンパイルとインストールを行うコマンドだからです。</p><pre class=line-numbers><code class=language-shell>$ go help install
 usage: go install [build flags] [packages]
 
 Install compiles and installs the packages named by the import paths.
-</code></pre>
-<br>
-<p>まずは<code>build</code>してみます。<br>
-（インストール物は<code>GOBIN</code>配下に配置されます）</p>
-<pre class=line-numbers><code class=language-shell>$ go build main.go
+</code></pre><br><p>まずは<code>build</code>してみます。<br>（インストール物は<code>GOBIN</code>配下に配置されます）</p><pre class=line-numbers><code class=language-shell>$ go build main.go
 $ ls -l $GOBIN/
 total 33832
 -rwxr-xr-x  1 yyh-gl  staff  13989584  8 17 02:05 go
 -rwxr-xr-x  1 yyh-gl  staff   3326080  8 17 02:05 gofmt
-</code></pre>
-<p><code>main.go</code>のコンパイル&インストールしたものがないですね。</p>
-<p>次に<code>install</code>してみます。</p>
-<pre class=line-numbers><code class=language-shell>$ go install main.go
+</code></pre><p><code>main.go</code>のコンパイル&インストールしたものがないですね。</p><p>次に<code>install</code>してみます。</p><pre class=line-numbers><code class=language-shell>$ go install main.go
 $ ls -l $GOBIN/
 total 37488
 -rwxr-xr-x  1 yyh-gl  staff  13989584  8 17 02:05 go
 -rwxr-xr-x  1 yyh-gl  staff   3326080  8 17 02:05 gofmt
 -rwxr-xr-x  1 yyh-gl  staff   1869456 12 17 22:30 main
-</code></pre>
-<p><code>main.go</code>のコンパイル物である<code>main</code>が<code>GOBIN</code>配下に設置されています。<br>
-つまり、インストールが行われています。</p>
-<p><code>build</code>と<code>install</code>には上記のような差があります。</p>
-<br>
-<p>両者の使い分けについては、以下の記事などを参考にすると良いのではないでしょうか。</p>
-<ul>
-<li><a href=https://esola.co/posts/2016/go-build-vs-go-install target=_blank rel="noopener noreferrer">go build vs go install</a>
-</li>
-<li><a href=https://peter.bourgon.org/go-best-practices-2016/#build-and-deploy target=_blank rel="noopener noreferrer">Go best practices, six years in</a>
-<ul>
-<li>翻訳記事：<a href=https://postd.cc/go-best-practices-2016/#build-and-deploy target=_blank rel="noopener noreferrer">6年間におけるGoのベストプラクティス</a>
-</li>
-</ul>
-</li>
-</ul>
-<p>僕は、自プロジェクトの開発物のコンパイルには<code>build</code>を使い、ツールのインストールには<code>install</code>を使うようにしています。<br>
-開発物のコンパイル結果は<code>GOBIN</code>配下より、そのプロジェクト配下に入れておいた方がなにかと便利だからです。
-コンパイル物を動かす場所がローカルではない場合、そもそも<code>GOBIN</code>配下にある必要もないですしね。<br>
-逆にツール系は特に理由がないかぎりは、<code>GOBIN</code>配下にあった方がPATHが通っているので使い勝手がいいですよね。</p>
-<h1 id=コンパイル時に_testgoファイルは無視する>コンパイル時に<code>_test.go</code>ファイルは無視する</h1>
-<p>これは知っている人も多いと思います。<br>
-システムを動かす上でテストコードは不要ですし、無視されるのも納得ですね。</p>
-<p>実際に挙動を見てみます。<br>
-<code>invalid_test.go</code>（<a href=https://go.dev/play/p/aeFBAGvTQR3 target=_blank rel="noopener noreferrer">Go Playground</a>
-）というコンパイルエラーになるテストファイルを対象に<code>build</code>を実行してみます。</p>
-<pre class=line-numbers><code class=language-shell>$ go build invalid_test.go
+</code></pre><p><code>main.go</code>のコンパイル物である<code>main</code>が<code>GOBIN</code>配下に設置されています。<br>つまり、インストールが行われています。</p><p><code>build</code>と<code>install</code>には上記のような差があります。</p><br><p>両者の使い分けについては、以下の記事などを参考にすると良いのではないでしょうか。</p><ul><li><a href=https://esola.co/posts/2016/go-build-vs-go-install target=_blank rel="noopener noreferrer">go build vs go install</a></li><li><a href=https://peter.bourgon.org/go-best-practices-2016/#build-and-deploy target=_blank rel="noopener noreferrer">Go best practices, six years in</a><ul><li>翻訳記事：<a href=https://postd.cc/go-best-practices-2016/#build-and-deploy target=_blank rel="noopener noreferrer">6年間におけるGoのベストプラクティス</a></li></ul></li></ul><p>僕は、自プロジェクトの開発物のコンパイルには<code>build</code>を使い、ツールのインストールには<code>install</code>を使うようにしています。<br>開発物のコンパイル結果は<code>GOBIN</code>配下より、そのプロジェクト配下に入れておいた方がなにかと便利だからです。
+コンパイル物を動かす場所がローカルではない場合、そもそも<code>GOBIN</code>配下にある必要もないですしね。<br>逆にツール系は特に理由がないかぎりは、<code>GOBIN</code>配下にあった方がPATHが通っているので使い勝手がいいですよね。</p><h1 id=コンパイル時に_testgoファイルは無視する>コンパイル時に<code>_test.go</code>ファイルは無視する</h1><p>これは知っている人も多いと思います。<br>システムを動かす上でテストコードは不要ですし、無視されるのも納得ですね。</p><p>実際に挙動を見てみます。<br><code>invalid_test.go</code>（<a href=https://go.dev/play/p/aeFBAGvTQR3 target=_blank rel="noopener noreferrer">Go Playground</a>
+）というコンパイルエラーになるテストファイルを対象に<code>build</code>を実行してみます。</p><pre class=line-numbers><code class=language-shell>$ go build invalid_test.go
 &lt;正常終了するのでなにも表示されない&gt;
-</code></pre>
-<p>このように正常終了します。<br>
-つまり、ビルド対象に含まれていないため、そもそもコンパイルされておらず、エラーが出ません。</p>
-<p>同じファイルを<code>invalid_test2.go</code>という名前に変更し、もう一度<code>build</code>してみます。</p>
-<pre class=line-numbers><code class=language-shell>$ go build invalid_test2.go
+</code></pre><p>このように正常終了します。<br>つまり、ビルド対象に含まれていないため、そもそもコンパイルされておらず、エラーが出ません。</p><p>同じファイルを<code>invalid_test2.go</code>という名前に変更し、もう一度<code>build</code>してみます。</p><pre class=line-numbers><code class=language-shell>$ go build invalid_test2.go
 # command-line-arguments
 ./invalid_test2.go:4:1: syntax error: unexpected EOF, expecting name or (
-</code></pre>
-<p>コンパイルエラーが出ましたね。<br>
-今度はビルド対象に含まれたようです。</p>
-<br>
-<p><code>_test.go</code>という命名を基にビルド対象か否かを判定していることが分かります。</p>
-<h1 id=複数パッケージor単一の非mainパッケージのコンパイル時は結果のオブジェクトを破棄する>複数パッケージor単一の非mainパッケージのコンパイル時は結果のオブジェクトを破棄する</h1>
-<p><code>help</code>で言うと下記の記述に関しての内容です。</p>
-<pre class=line-numbers><code class=language-txt>When compiling multiple packages or a single non-main package,
+</code></pre><p>コンパイルエラーが出ましたね。<br>今度はビルド対象に含まれたようです。</p><br><p><code>_test.go</code>という命名を基にビルド対象か否かを判定していることが分かります。</p><h1 id=複数パッケージor単一の非mainパッケージのコンパイル時は結果のオブジェクトを破棄する>複数パッケージor単一の非mainパッケージのコンパイル時は結果のオブジェクトを破棄する</h1><p><code>help</code>で言うと下記の記述に関しての内容です。</p><pre class=line-numbers><code class=language-txt>When compiling multiple packages or a single non-main package,
 build compiles the packages but discards the resulting object,
 serving only as a check that the packages can be built.
-</code></pre>
-<p>実際にmainパッケージではない<code>not_main.go</code>（<a href=https://go.dev/play/p/vZX_f2qMhcO target=_blank rel="noopener noreferrer">Go Playground</a>
-）に対して<code>build</code>を実行してみます。</p>
-<pre class=line-numbers><code class=language-shell>$ go build not_main.go
+</code></pre><p>実際にmainパッケージではない<code>not_main.go</code>（<a href=https://go.dev/play/p/vZX_f2qMhcO target=_blank rel="noopener noreferrer">Go Playground</a>
+）に対して<code>build</code>を実行してみます。</p><pre class=line-numbers><code class=language-shell>$ go build not_main.go
 $ ls -l
 total 8
 -rw-r--r--  1 yyh-gl  staff  65 12 17 23:14 not_main.go
-</code></pre>
-<p>このようにビルド自体は正常終了しますが、生成物がありません。</p>
-<p>次に、<code>not_main.go</code>にエラーを仕込んでみます。<br>
-（<a href=https://go.dev/play/p/JrP55PnPYGI target=_blank rel="noopener noreferrer">Go Playground</a>
-）</p>
-<pre class=line-numbers><code class=language-shell>$ go build not_main.go
+</code></pre><p>このようにビルド自体は正常終了しますが、生成物がありません。</p><p>次に、<code>not_main.go</code>にエラーを仕込んでみます。<br>（<a href=https://go.dev/play/p/JrP55PnPYGI target=_blank rel="noopener noreferrer">Go Playground</a>
+）</p><pre class=line-numbers><code class=language-shell>$ go build not_main.go
 # command-line-arguments
 ./not_main.go:4:2: undefined: fmt
 $ ls -l
 total 8
 -rw-r--r--  1 yyh-gl  staff  51 12 17 23:16 not_main.go
-</code></pre>
-<p>エラーが出ました。<br>
-もちろん生成物はありません。</p>
-<blockquote>
-<p>serving only as a check that the packages can be built.<br>
-ビルド可能かどうかのチェックだけを行う</p>
-</blockquote>
-<p>ヘルプに記載のあるとおりですね。</p>
-<br>
-<p>複数パッケージに対してビルドをかけてみても、同様に生成物はありませんでした。<br>
-（<a href=https://go.dev/play/p/mscomS3W0d7 target=_blank rel="noopener noreferrer">Go Playground</a>
-）</p>
-<pre class=line-numbers><code class=language-shell>$ go build ./...
+</code></pre><p>エラーが出ました。<br>もちろん生成物はありません。</p><blockquote><p>serving only as a check that the packages can be built.<br>ビルド可能かどうかのチェックだけを行う</p></blockquote><p>ヘルプに記載のあるとおりですね。</p><br><p>複数パッケージに対してビルドをかけてみても、同様に生成物はありませんでした。<br>（<a href=https://go.dev/play/p/mscomS3W0d7 target=_blank rel="noopener noreferrer">Go Playground</a>
+）</p><pre class=line-numbers><code class=language-shell>$ go build ./...
 $ ls -l
 total 24
 drwxr-xr-x  3 yyh-gl  staff    96 12 18 18:27 foo
@@ -249,31 +79,14 @@ drwxr-xr-x  3 yyh-gl  staff    96 12 18 18:27 foo
 -rw-r--r--  1 yyh-gl  staff  1526 12 17 23:41 go.sum
 drwxr-xr-x  3 yyh-gl  staff    96 12 18 18:26 hoge
 -rw-r--r--  1 yyh-gl  staff   145 12 18 18:28 main.go
-</code></pre>
-<p><code>hoge</code>と<code>foo</code>はディレクトリだから拡張子がないだけで実行ファイルではありません。</p>
-<h1 id=build-tagについて>build tagについて</h1>
-<p>最後にbuild tagについて見て終わろうと思います。</p>
-<h2 id=build-tag-とは>build tag とは</h2>
-<p><code>//go:build</code></p>
-<p>↑コードの先頭付近に記載されているこんなやつです。<br>
-<a href=https://pkg.go.dev/cmd/go#hdr-Build_constraints target=_blank rel="noopener noreferrer">公式Doc</a>
-</p>
-<p>ビルド対象を切り分けるのに使います。</p>
-<p>実際に試してみます。</p>
-<p>まずは以下のようなコードを用意します。<br>
-<a href=https://go.dev/play/p/7C_jC-oc6-5 target=_blank rel="noopener noreferrer">Go Playground</a>
-</p>
-<p><code>main.go</code></p>
-<pre class=line-numbers><code class=language-go>package main
+</code></pre><p><code>hoge</code>と<code>foo</code>はディレクトリだから拡張子がないだけで実行ファイルではありません。</p><h1 id=build-tagについて>build tagについて</h1><p>最後にbuild tagについて見て終わろうと思います。</p><h2 id=build-tag-とは>build tag とは</h2><p><code>//go:build</code></p><p>↑コードの先頭付近に記載されているこんなやつです。<br><a href=https://pkg.go.dev/cmd/go#hdr-Build_constraints target=_blank rel="noopener noreferrer">公式Doc</a></p><p>ビルド対象を切り分けるのに使います。</p><p>実際に試してみます。</p><p>まずは以下のようなコードを用意します。<br><a href=https://go.dev/play/p/7C_jC-oc6-5 target=_blank rel="noopener noreferrer">Go Playground</a></p><p><code>main.go</code></p><pre class=line-numbers><code class=language-go>package main
 
 import &quot;github.com/yyh-gl/go-playground/src&quot;
 
 func main() {
 	src.Hoge()
 }
-</code></pre>
-<p><code>src/hoge1.go</code></p>
-<pre class=line-numbers><code class=language-go>//go:build hoge
+</code></pre><p><code>src/hoge1.go</code></p><pre class=line-numbers><code class=language-go>//go:build hoge
 
 package src
 
@@ -282,9 +95,7 @@ import &quot;fmt&quot;
 func Hoge() {
 	fmt.Println(&quot;hoge1: //go:build hoge&quot;)
 }
-</code></pre>
-<p><code>src/hoge2.go</code></p>
-<pre class=line-numbers><code class=language-go>//go:build !hoge
+</code></pre><p><code>src/hoge2.go</code></p><pre class=line-numbers><code class=language-go>//go:build !hoge
 
 package src
 
@@ -293,150 +104,24 @@ import &quot;fmt&quot;
 func Hoge() {
 	fmt.Println(&quot;hoge2: //go:build !hoge&quot;)
 }
-</code></pre>
-<p>これらのファイルに対して、
-<code>-tags</code>オプションを使い、ビルド対象を指定した上で<code>build</code>を実行してみます。</p>
-<pre class=line-numbers><code class=language-shell>$ go build -tags hoge main.go
+</code></pre><p>これらのファイルに対して、
+<code>-tags</code>オプションを使い、ビルド対象を指定した上で<code>build</code>を実行してみます。</p><pre class=line-numbers><code class=language-shell>$ go build -tags hoge main.go
 $ ./main
 hoge1: //go:build hoge
-</code></pre>
-<p><code>//go:build hoge</code>を持つ<code>hoge1.go</code>の内容が実行されましたね。<br>
-逆に<code>//go:build !hoge</code>を持つ<code>hoge2.go</code>は無視されました。</p>
-<p>今回は<code>-tags hoge</code>を指定したので、build tagとして<code>hoge</code>を指定したファイルがビルド対象となりました。</p>
-<br>
-<p>逆に<code>//go:build !hoge</code>は<code>hoge</code>が指定されていないときにビルド対象になることを意味するので、
-今回は無視されました。（<code>!</code>が否定を意味します）</p>
-<p><code>hoge2.go</code>をビルド対象としたい場合は以下のようにすればできます。</p>
-<pre class=line-numbers><code class=language-shell>$ go build -tags foo main.go
+</code></pre><p><code>//go:build hoge</code>を持つ<code>hoge1.go</code>の内容が実行されましたね。<br>逆に<code>//go:build !hoge</code>を持つ<code>hoge2.go</code>は無視されました。</p><p>今回は<code>-tags hoge</code>を指定したので、build tagとして<code>hoge</code>を指定したファイルがビルド対象となりました。</p><br><p>逆に<code>//go:build !hoge</code>は<code>hoge</code>が指定されていないときにビルド対象になることを意味するので、
+今回は無視されました。（<code>!</code>が否定を意味します）</p><p><code>hoge2.go</code>をビルド対象としたい場合は以下のようにすればできます。</p><pre class=line-numbers><code class=language-shell>$ go build -tags foo main.go
 $ ./main
 hoge2: //go:build !hoge
-</code></pre>
-<pre class=line-numbers><code class=language-shell>$ go build main.go
+</code></pre><pre class=line-numbers><code class=language-shell>$ go build main.go
 $ ./main
 hoge2: //go:build !hoge
-</code></pre>
-<p>特筆すべき点は<code>-tags</code>を指定しない場合もビルド対象になる点です。</p>
-<br>
-<p>AND条件やOR条件も使用できるので、できることはいろいろとありそうですね。<br>
-<a href=https://pkg.go.dev/cmd/go#hdr-Build_constraints target=_blank rel="noopener noreferrer">参考</a>
-</p>
-<h3 id=build-tag-が使われている例>build tag が使われている例</h3>
-<p>最後に build tag が実際どこで使われているのか紹介して終わります。</p>
-<p>Googleが作成したツールで、<code>Wire</code>というDIツールがあります。<br>
-<a href=https://github.com/google/wire target=_blank rel="noopener noreferrer">google/wire</a>
-</p>
-<br>
-<p>Wireでは、依存関係を定義したGoファイル（<code>wire.go</code>）を見て、
-依存関係を解決し、必要なコード郡（<code>wire_gen.go</code>）を生成します。</p>
-<p>システムを動かすにあたって必要になるコードは<code>wire_gen.go</code>のみです。<br>
-<code>wire.go</code>はコード生成時には必要ですが、システムを動かすときには必要ありません。<br>
-したがって、各ファイルのbuild tagは以下のようになっています。</p>
-<ul>
-<li><code>wire.go</code>: <code>wireinject</code></li>
-<li><code>wire_gen.go</code>: <code>!wireinject</code></li>
-</ul>
-<p>すなわち、build tagの指定なしで<code>build</code>を実行すると、
-<code>wire.go</code>は無視して<code>wire_gen.go</code>だけを見るようになっています。</p>
-<p>ちなみに、<code>wireinject</code>タグはWireによるコード生成時にのみ指定されます。<br>
-<a href=https://github.com/google/wire/blob/v0.5.0/internal/wire/parse.go#L358 target=_blank rel="noopener noreferrer">参考コード</a>
-</p>
-<p>よって、コード生成時には、逆に<code>wire_gen.go</code>は無視して<code>wire.go</code>だけを見るようになっています。</p>
-<br>
-<p><a href=https://github.com/google/wire/blob/main/_tutorial/README.md#using-wire-to-generate-code target=_blank rel="noopener noreferrer">Wire公式チュートリアル</a>
-にbuild tagに関する言及があるのであわせてご覧ください。</p>
-<h1 id=さいごに>さいごに</h1>
-<p>今回は、僕が普段何気なく使っていた<code>build</code>について深ぼってみました。<br>
-ただ、<code>build</code>にはまだ他にもオプションがあるので、
-一度調べてみると「こんなことできたんだ」という発見に繋がるかもしれません。</p>
-<p>みなさんもぜひ一度、Goコマンドについて深ぼってみてはいかかでしょうか。</p>
-</div>
-<footer>
-<div class=stats>
-<ul class=categories>
-<li><a class=article-terms-link href=/tech-blog/categories/go/>Go</a></li>
-<li><a class=article-terms-link href=/tech-blog/categories/advent-calendar/>Advent Calendar</a></li>
-</ul>
-<div>
-<good-counter url=/tech-blog/blog/go-build/></good-counter>
-</div>
-</div>
-</footer>
-<div class=fix>
-<a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e5%be%92%e7%84%b6%e3%81%aa%e3%82%8b%e3%81%be%e3%81%be%e3%81%ab%20go%20build%20%e3%81%a8%20build%20tag%20%e3%82%92%e8%a6%8b%e3%81%a6%e3%81%84%e3%81%8f』" target=_blank rel="noopener noreferrer">
-修正提案
-</a>
-</div>
-</article>
-<div class=pagination>
-<a href=/tech-blog/blog/activity-2021/ class="button left"><span>【2021年】アクティビティまとめ</span></a>
-<a href=/tech-blog/blog/activity-2020/ class="button right"><span>【2020年】アクティビティまとめ</span></a>
-</div>
-</main>
-<section id=site-sidebar>
-<section id=recent-posts>
-<header>
-<h1>最近の投稿</h1>
-</header>
-<article class=mini-post>
-<a href=/tech-blog/blog/activity-2021/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/activity-2021/>【2021年】アクティビティまとめ</a></h2>
-<time class=published datetime="2022-01-02 11:59:04 +0000 UTC">2022-01-02</time>
-</header>
-</article>
-<article class=mini-post>
-<a href=/tech-blog/blog/go-build/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/go-build/>徒然なるままに go build と build tag を見ていく</a></h2>
-<time class=published datetime="2021-12-19 00:00:00 +0000 UTC">2021-12-19</time>
-</header>
-</article>
-<article class=mini-post>
-<a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')">
-<img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured>
-</a>
-<header>
-<h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2>
-<time class=published datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time>
-</header>
-</article>
-<footer>
-<a href=/tech-blog/blog/ class=button>続きを見る</a>
-</footer>
-</section>
-<section id=mini-bio>
-<header>
-<h1>About</h1>
-</header>
-<p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p>
-<footer>
-<a href=/tech-blog/about class=button>もっと詳しく知る</a>
-</footer>
-</section>
-</section>
-<footer id=site-footer>
-<ul class=socnet-icons>
-<li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li>
-<li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li>
-<li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li>
-<li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li>
-</ul>
-<p class=copyright>
-© 2022 yyh-gl's Tech Blog
-<br>
-Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.92.1 target=_blank rel=noopener>Hugo</a>
-</p>
-</footer>
-<a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a>
-<script src=/tech-blog/js/bundle.min.a2a773c2e0e07f69b603aa1005699cd705a4f1b9d9a30fc03b920aa4948ee39e.js integrity="sha256-oqdzwuDgf2m2A6oQBWmc1wWk8bnZow/AO5IKpJSO454="></script>
+</code></pre><p>特筆すべき点は<code>-tags</code>を指定しない場合もビルド対象になる点です。</p><br><p>AND条件やOR条件も使用できるので、できることはいろいろとありそうですね。<br><a href=https://pkg.go.dev/cmd/go#hdr-Build_constraints target=_blank rel="noopener noreferrer">参考</a></p><h3 id=build-tag-が使われている例>build tag が使われている例</h3><p>最後に build tag が実際どこで使われているのか紹介して終わります。</p><p>Googleが作成したツールで、<code>Wire</code>というDIツールがあります。<br><a href=https://github.com/google/wire target=_blank rel="noopener noreferrer">google/wire</a></p><br><p>Wireでは、依存関係を定義したGoファイル（<code>wire.go</code>）を見て、
+依存関係を解決し、必要なコード郡（<code>wire_gen.go</code>）を生成します。</p><p>システムを動かすにあたって必要になるコードは<code>wire_gen.go</code>のみです。<br><code>wire.go</code>はコード生成時には必要ですが、システムを動かすときには必要ありません。<br>したがって、各ファイルのbuild tagは以下のようになっています。</p><ul><li><code>wire.go</code>: <code>wireinject</code></li><li><code>wire_gen.go</code>: <code>!wireinject</code></li></ul><p>すなわち、build tagの指定なしで<code>build</code>を実行すると、
+<code>wire.go</code>は無視して<code>wire_gen.go</code>だけを見るようになっています。</p><p>ちなみに、<code>wireinject</code>タグはWireによるコード生成時にのみ指定されます。<br><a href=https://github.com/google/wire/blob/v0.5.0/internal/wire/parse.go#L358 target=_blank rel="noopener noreferrer">参考コード</a></p><p>よって、コード生成時には、逆に<code>wire_gen.go</code>は無視して<code>wire.go</code>だけを見るようになっています。</p><br><p><a href=https://github.com/google/wire/blob/main/_tutorial/README.md#using-wire-to-generate-code target=_blank rel="noopener noreferrer">Wire公式チュートリアル</a>
+にbuild tagに関する言及があるのであわせてご覧ください。</p><h1 id=さいごに>さいごに</h1><p>今回は、僕が普段何気なく使っていた<code>build</code>について深ぼってみました。<br>ただ、<code>build</code>にはまだ他にもオプションがあるので、
+一度調べてみると「こんなことできたんだ」という発見に繋がるかもしれません。</p><p>みなさんもぜひ一度、Goコマンドについて深ぼってみてはいかかでしょうか。</p></div><footer><div class=stats><ul class=categories><li><a class=article-terms-link href=/tech-blog/categories/go/>Go</a></li><li><a class=article-terms-link href=/tech-blog/categories/advent-calendar/>Advent Calendar</a></li></ul><div><good-counter rel-permalink=/tech-blog/blog/go-build/></good-counter></div></div></footer><div class=fix><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e5%be%92%e7%84%b6%e3%81%aa%e3%82%8b%e3%81%be%e3%81%be%e3%81%ab%20go%20build%20%e3%81%a8%20build%20tag%20%e3%82%92%e8%a6%8b%e3%81%a6%e3%81%84%e3%81%8f』" target=_blank rel="noopener noreferrer">修正提案</a></div></article><div class=pagination><a href=/tech-blog/blog/activity-2021/ class="button left"><span>【2021年】アクティビティまとめ</span></a>
+<a href=/tech-blog/blog/activity-2020/ class="button right"><span>【2020年】アクティビティまとめ</span></a></div></main><section id=site-sidebar><section id=recent-posts><header><h1>最近の投稿</h1></header><article class=mini-post><a href=/tech-blog/blog/activity-2021/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/01/activity-2021/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/activity-2021/>【2021年】アクティビティまとめ</a></h2><time class=published datetime="2022-01-02 11:59:04 +0000 UTC">2022-01-02</time></header></article><article class=mini-post><a href=/tech-blog/blog/go-build/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/go-build/>徒然なるままに go build と build tag を見ていく</a></h2><time class=published datetime="2021-12-19 00:00:00 +0000 UTC">2021-12-19</time></header></article><article class=mini-post><a href=/tech-blog/blog/activity-2020/ class=image style="--bg-image:url('https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp')"><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/activity-2020/featured.webp alt=featured></a><header><h2><a href=/tech-blog/blog/activity-2020/>【2020年】アクティビティまとめ</a></h2><time class=published datetime="2021-02-23 09:41:54 +0000 UTC">2021-02-23</time></header></article><footer><a href=/tech-blog/blog/ class=button>続きを見る</a></footer></section><section id=mini-bio><header><h1>About</h1></header><p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p><footer><a href=/tech-blog/about class=button>もっと詳しく知る</a></footer></section></section><footer id=site-footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul><p class=copyright>© 2022 yyh-gl's Tech Blog<br>Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.94.2 target=_blank rel=noopener>Hugo</a></p></footer><a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a>
+<script src=/tech-blog/js/bundle.min.a1954149b9950c3cc64476f31a0f4adb6e38b0f1db5b587655d1e9aaf1b8a1dc.js integrity="sha256-oZVBSbmVDDzGRHbzGg9K2244sPHbW1h2VdHpqvG4odw="></script>
 <script src=/tech-blog/js/add-on.js></script>
 <script src=/tech-blog/js/prism.js></script>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-140914324-1','auto'),ga('send','pageview'))</script>
-<script async src=https://www.google-analytics.com/analytics.js></script>
-</div>
-</body>
-</html>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-140914324-1","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script></div></body></html>
