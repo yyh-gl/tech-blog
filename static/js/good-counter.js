@@ -1,5 +1,5 @@
 Vue.component('good-counter', {
-  props: ['url'],
+  props: ['relPermalink'],
   template: '<button v-on:click="addCount" v-bind:disabled="already">' +
     '<span v-html="display_button_name"></span>　{{ good_count }}' +
     '</button>',
@@ -11,20 +11,18 @@ Vue.component('good-counter', {
     }
   },
   mounted () {
-    // Props経由で受け取ったパスから記事情報を取得
-    let paths = this.url.split('/');
-    // URLのタイトル部分のみを抽出
-    let title = paths[paths.length - 2]
+    // Props経由で受け取ったPermalink（相対パス）からタイトル情報を取得
+    const parts = this.relPermalink.split('/')
+    let title = parts[parts.length - 2]
     // いいね数取得リクエストURLを作成
     let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + title;
 
-    paths = location.pathname.split('/');
     // ページカテゴリー取得（例：about, blog, category など）
-    let page_category = paths[paths.length - 3]
+    let pageCategory = parts[parts.length - 3]
 
     // いいね済みかどうか判定
     // （記事詳細画面以外では常にtrue）
-    this.already = page_category !== "blog" || !!localStorage.getItem(`${title}`);
+    this.already = pageCategory !== "blog" || !!localStorage.getItem(`${title}`);
     if (this.already) {
       this.display_button_name = '<i class="fas fa-heart"></i>';
     }
