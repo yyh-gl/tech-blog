@@ -50,7 +50,7 @@ post: ## 記事を投稿
 	git merge ${title}
 	git push origin main
 	git br -d ${title}
-	git push origin :${title}
+	-@git push origin :${title}
 
 .PHONY: create-ogp
 create-ogp: ## OGP画像を生成
