@@ -8,7 +8,7 @@ tags = ["Tech"]
 date = 2022-03-18T15:55:40Z
 description = "知識として知っているだけで実際に使ったことはない←"
 type = "post"
-draft = true
+draft = false
 [[images]]
   src = "img/tech-blog/2022/03/docker-compose-override/featured.webp"
   alt = "featured"
@@ -52,7 +52,7 @@ services:
 `docker compose -f docker-compose.yml up`でコンテナを起動した後に、
 ブラウザを開いて`http://localhost/`にアクセスしてみます。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2022/03/docker-compose-override/result1.webp" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/03/docker-compose-override/result1.webp" width="600">
 
 Webサイトにアクセスできませんでした。
 
@@ -77,7 +77,7 @@ services:
 
 では、`http://localhost/`にアクセスしてみます。
 
-<img src="http://localhost:1313/tech-blog/img/tech-blog/2022/03/docker-compose-override/result2.webp" width="600">
+<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/03/docker-compose-override/result2.webp" width="600">
 
 今度は無事にアクセスできました。
 
@@ -203,8 +203,9 @@ test-app-1 exited with code 0
 
 以上、2つの検証から分かったことをまとめると、以下のとおりです。
 
-元々のサービス = 先に指定した設定ファイルの内容<br>
-ローカルのサービス = 後から指定した設定ファイルの内容
+- 元々のサービスの値はローカルのサービスの値によって上書きされる
+  - 元々のサービス = 先に指定した設定ファイルの内容
+  - ローカルのサービス = 後から指定した設定ファイルの内容
 
 
 # ユースケース
@@ -220,4 +221,4 @@ OSによる差分で困るといったこともなかったので使ったこと
 
 Docker Composeの設定ファイルは複数指定することで、設定の追加や上書きが可能です。
 
-重複した設定の上書きについては、先に指定した設定ファイルの内容が後に指定した設定ファイルの内容で上書かれます。
+重複している設定内容については、先に指定した設定ファイルの内容が後に指定した設定ファイルの内容で上書きされます。
