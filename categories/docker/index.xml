@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/docker/</link><description>Recent content in Docker on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 18 Mar 2022 15:55:40 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる</title><link>https://yyh-gl.github.io/tech-blog/blog/docker-compose-override/</link><pubDate>Fri, 18 Mar 2022 15:55:40 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/docker-compose-override/</guid><description>要約 Docker Composeの設定ファイルは複数指定できて、設定の追加や上書きができる。
+早速詳細に見ていきましょう↓
+docker-compose.ymlは複数指定可能 docker compose up実行時に-fオプションを使うことで、 参照するdocker-compose.ymlファイル（設定ファイル）を指定できることは、ご存知の方も多いと思います。
+しかし、複数の設定ファイルを指定できることはあまり知られていないと思います（勝手な決めつけ）。
+Docker-docs-ja では、以下のページで説明がされています。
+『ファイル間、プロジェクト間での Compose 設定の共有 』 実際の動きを見てみる 以下のようなdocker-compose.ymlを用意します。
+docker-compose.yml
+version: '3' services: web: image: &amp;quot;nginx:latest&amp;quot; docker compose -f docker-compose.yml upでコンテナを起動した後に、 ブラウザを開いてhttp://localhost/にアクセスしてみます。
+Webサイトにアクセスできませんでした。
+ポートを公開していないので当然の結果ですね。
+次に、以下のようなdocker-compose.override.ymlを用意します。
+docker-compose.override.yml
+version: '3' services: web: ports: - &amp;quot;80:80&amp;quot; そして、今度は以下のようにして、複数の設定ファイルを指定します。
+docker compose -f docker-compose.yml -f docker-compose.override.yml up
+では、http://localhost/にアクセスしてみます。
+今度は無事にアクセスできました。
+ポート公開がうまくできているようです。
+上記の挙動を見ることで、docker-compose.ymlで使用イメージの指定ができており、なおかつ、 docker-compose.override.ymlでポート公開の設定ができていることが分かります。
+すなわち、Docker Composeは追加で設定ファイルを指定することで、設定を追加できます。
+なお、今回はサンプルを省きましたが、追加だけではなく、上書きも可能です。
+（後ほど出てくるサンプルを見れば、上書きの挙動も分かると思います）
+重複した設定項目がある場合はどちらが優先される？ 前章の最後に、「追加だけではなく、上書きも可能です」と書きました。
+本章では、複数の設定ファイルを指定したさいに、 例えば、同じ環境変数名に対して異なる値を設定していた場合どちらの設定が優先されるのかを解説します。
+はじめに、ドキュメントを読んでみます。
+『設定の追加と上書き』 の章に、
+設定オプションが元々のサービスとローカルのサービスの両方にて定義されていた場合は、 元のサービスの値はローカルの値によって置き換えられるか、あるいは拡張されます。</description></item></channel></rss>
