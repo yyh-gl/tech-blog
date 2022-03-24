@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>React on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/react/</link><description>Recent content in React on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 02 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/react/index.xml" rel="self" type="application/rss+xml"/><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>React on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/react/</link><description>Recent content in React on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 02 Dec 2019 00:00:00 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/react/index.xml" rel="self" type="application/rss+xml"/><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
 内容としては、TypeScript 初級者のための TypeScript 入門です。
 基礎的な内容から入り、
 最終的には、企業や個人の技術ブログを参考に、
@@ -18,7 +18,7 @@ JavaScript に対して、省略も可能な静的型付けとクラスベース
 （足りない情報は公式ドキュメント を参考にしてください）
 型 では、早速、TypeScript の型に触れていきましょう。
 TypeScript で使用できる基本的な型として以下のものがあります。
-Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、</description></item><item><title>React.memo について調べたのでメモを残しておく</title><link>https://yyh-gl.github.io/tech-blog/blog/react_memo/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_memo/</guid><description>React.memo とは 公式ドキュメント を見ると、
+Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、</description></item><item><title>React.memo について調べたのでメモを残しておく</title><link>https://yyh-gl.github.io/tech-blog/blog/react_memo/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_memo/</guid><description>React.memo とは 公式ドキュメント を見ると、
 これは React.PureComponent に似ていますが、クラスではなく関数コンポーネント用です。
 とあります。
 つまり、 React.PureComponent を関数コンポーネントで実現するための手段らしいです。

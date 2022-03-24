@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DDD on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/ddd/</link><description>Recent content in DDD on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/ddd/index.xml" rel="self" type="application/rss+xml"/><item><title>texta.fm #1 まとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DDD on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/ddd/</link><description>Recent content in DDD on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/ddd/index.xml" rel="self" type="application/rss+xml"/><item><title>texta.fm #1 まとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
 エヴァンス本を読む前に知っておいた方がいい時代背景、そして、意識すべき点を知ることができるので、
 時間があればぜひ実際に聞きに行ってみてください。
 話者：
@@ -34,12 +34,12 @@ DDDが解決したかった問題 &amp;lt;6分30秒ぐらいから&amp;gt;
 ここを意識して学ぼう！
 &amp;lt;33分00秒ぐらいから&amp;gt;
 デザインパターンの部分（2部、3部あたり）はもちろん大事であるが、
-エヴァンス本の本質的な部分ではない。</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。
+エヴァンス本の本質的な部分ではない。</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。
 このプロジェクトでは、DDDの考え方や設計パターンも取り入れています。
 今回はDDDの設計パターンの中でもEntityとValue Object（VO）について、
 僕がGoでどうやって実装しているのか紹介していきます。
 実装例 兎にも角にも、まずはコードを示します。
-// animal/dog/dog.go package dog type Dog struct { name Name } func New(name string) (*Dog, error) { n, err := newName(name) if err != nil { return nil, err } return &amp;amp;Dog{ name: *n, }, nil } // animal/dog/name.go package dog import ( &amp;quot;errors&amp;quot; &amp;quot;unicode/utf8&amp;quot; ) type Name string func newName(v string) (*Name, error) { // 名前は3文字以上というビジネスロジック if utf8.RuneCountInString(v) &amp;lt; 3 { return nil, errors.</description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://yyh-gl.github.io/tech-blog/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/ddd-aggregates-transaction/</guid><description>簡単まとめシリーズ 今回は 集約とトランザクション境界 について、
+// animal/dog/dog.go package dog type Dog struct { name Name } func New(name string) (*Dog, error) { n, err := newName(name) if err != nil { return nil, err } return &amp;amp;Dog{ name: *n, }, nil } // animal/dog/name.go package dog import ( &amp;quot;errors&amp;quot; &amp;quot;unicode/utf8&amp;quot; ) type Name string func newName(v string) (*Name, error) { // 名前は3文字以上というビジネスロジック if utf8.RuneCountInString(v) &amp;lt; 3 { return nil, errors.</description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://yyh-gl.github.io/tech-blog/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/ddd-aggregates-transaction/</guid><description>簡単まとめシリーズ 今回は 集約とトランザクション境界 について、
 自分のわからないところを調べたので、メモとして残しておきます。
 集約 集約の説明を『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』 から拝借すると、
 「データを変更するための単位として扱われるオブジェクトの集まりを集約といいます」とのこと。
@@ -56,7 +56,7 @@ DDDではエンティティと値オブジェクトというものがありま�
 → 参考例 こういうときにどうするか、上記リンクでもいくつかの方法が挙げられています。
 他のサイトも調べてみましたが、だいたい同じような方法が出てきました。
 結果整合性 主流っぽい いろいろなサイト、書籍の中で紹介されていました 整合性を担保するための仕組みづくりが必要 整合性をチェックするためのバッチ など 集約をまたいでトランザクションを貼る 下記理由のためにあまり推奨されない ロック範囲が大きくなってしまう 守るべき「データの一貫性の境界」をコード上で表現できなくなる 参考サイト 複数の集約をさらにまとめた集約をつくる ロック範囲が大きくなってしまうため、あまり推奨されない 結果整合性 結果整合性については、
-『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』 の 12章3説「集約の大きさと操作の単位」で言及されているので、もう少しだけ詳しく調べました。</description></item><item><title>【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
+『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』 の 12章3説「集約の大きさと操作の単位」で言及されているので、もう少しだけ詳しく調べました。</description></item><item><title>【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
 この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
 今回やること Goのディレクトリ構成についていろいろと調べる中で、
 こちらの資料 がとても分かりやすかったので、
@@ -81,7 +81,7 @@ DDD の文脈だと アプリケーション層 と呼ばれますが、
 本プロジェクトでは ユースケース という単語を使用します。
 とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 DDD を意識して Web API を実装していこうと思います。
 （意識だけして、実践できずに終わりましたが😇）
-レイヤードアーキテクチャ における各層の依存関係 について説明します。</description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://yyh-gl.github.io/tech-blog/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/evans_ddd_1/</guid><description>DDD の勉強始めます 新卒研修を受ける中で DDD が出てきて、勉強したくなったので、
+レイヤードアーキテクチャ における各層の依存関係 について説明します。</description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://yyh-gl.github.io/tech-blog/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 00:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/evans_ddd_1/</guid><description>DDD の勉強始めます 新卒研修を受ける中で DDD が出てきて、勉強したくなったので、
 『エリック・エヴァンスのドメイン駆動設計』（エリック・エヴァンス著，今関 剛 監訳，和智 右桂、牧野 祐子 訳） を読んでいこうと思います。
 今回は第1部「ドメインモデルを機能させる」の 1章 と 2章 をまとめます。
 注意： 僕の理解をそのままメモとして書き連ねていきます。
