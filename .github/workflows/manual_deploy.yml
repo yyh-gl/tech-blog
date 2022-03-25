@@ -20,10 +20,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-#      - name: Lint
-#        run: |
-#          npm install
-#          git diff --name-only HEAD~ | xargs $(npm bin)/textlint
+      - name: Lint
+        run: |
+          npm install
+          git diff --name-only HEAD~ | xargs $(npm bin)/textlint
   
   deploy:
     name: Deploy
