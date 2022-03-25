@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["チームマネジメント", "読書まとめ"]
 tags = ["Tech"]
-date = "2019-05-25T00:00:00Z"
+date = 2019-05-25T09:00:00+09:00
 description = ""
 title =  "【エンジニアリング組織論への招待】メンタリングの技術"
 type = "post"

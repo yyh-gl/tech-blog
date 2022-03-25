@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
-date = "2020-04-26T00:00:00Z"
+date = 2020-04-26T09:00:00+09:00
 description = ""
 title = "【Go】jsonパッケージの知っておくと便利な機能"
 type = "post"

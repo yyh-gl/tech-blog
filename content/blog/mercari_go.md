@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Go", "勉強会"]
 tags = ["Tech"]
-date = "2019-06-15T00:00:00Z"
+date = 2019-06-15T09:00:00+09:00
 description = ""
 title = "【mercari.go #8】メルカリのGoに関する勉強会メモ"
 type = "post"

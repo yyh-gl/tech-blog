@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["勉強会", "セキュリティ"]
 tags = ["Tech"]
-date = "2019-08-21T00:00:00Z"
+date = 2019-08-21T09:00:00+09:00
 description = "実は2日連続でメルカリ行ってた"
 title = "【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた"
 type = "post"

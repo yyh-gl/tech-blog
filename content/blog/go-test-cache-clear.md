@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
-date = "2020-04-30T00:00:00Z"
+date = 2020-04-30T09:00:00+09:00
 description = "知っておくと便利"
 title = "go test におけるキャッシュの消し方"
 type = "post"

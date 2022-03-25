@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Android", "Kotlin", "Firebase"]
 tags = ["Tech"]
-date = "2019-05-30T00:00:00Z"
+date = 2019-05-30T09:00:00+09:00
 description = ""
 title = "【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた"
 type = "post"

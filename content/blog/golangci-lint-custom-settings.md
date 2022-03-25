@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Advent Calendar", "テスト", "Lint", "Go"]
 tags = ["Tech"]
-date = "2019-12-09T00:00:00Z"
+date = 2019-12-09T09:00:00+09:00
 description = "DMM Advent Calendar 2019 9日目"
 title = "GolangCI-Lintの設定ファイルを理解する"
 type = "post"

@@ -4,7 +4,7 @@
 author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
-date = "2020-10-03T00:00:00Z"
+date = 2020-10-03T09:00:00+09:00
 description = "忘れがちじゃないですか？？"
 title = "【Go】Switch文のfallthroughに関するまとめ"
 type = "post"

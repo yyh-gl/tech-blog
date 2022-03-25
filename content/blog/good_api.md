@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Web API", "Vue.js", "HTML/CSS"]
 tags = ["Tech"]
-date = "2019-06-08T00:00:00Z"
+date = 2019-06-08T09:00:00+09:00
 description = "いいね機能つけました"
 title = "【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた"
 type = "post"

@@ -1,5 +1,7 @@
 FROM klakegg/hugo:ext-alpine
 
+ENV TZ="Asia/Tokyo"
+
 WORKDIR /go/src/github.com/yyh-gl/tech-blog
 COPY . .
 

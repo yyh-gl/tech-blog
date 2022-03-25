@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Go", "勉強会"]
 tags = ["Tech"]
-date = "2019-08-06T00:00:00Z"
+date = 2019-08-06T09:00:00+09:00
 description = "CyberAgent ＆ merpay 主催のGo勉強会"
 title = "【Go同miniConf】Goの勉強会に参加してきた話"
 type = "post"

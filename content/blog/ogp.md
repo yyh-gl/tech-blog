@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Web全般"]
 tags = ["Tech"]
-date = "2019-06-17T00:00:00Z"
+date = 2019-06-17T09:00:00+09:00
 description = "OGP大事"
 title = "【OGP】リンク先のサムネイル画像を表示できるようにした話"
 type = "post"

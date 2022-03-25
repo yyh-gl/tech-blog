@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
-date = "2020-06-14T00:00:00Z"
+date = 2020-06-14T09:00:00+09:00
 description = "Goでは全てが値渡し"
 title = "Goの参照渡しについて調べてみた"
 type = "post"

@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["勉強会"]
 tags = ["Tech"]
-date = "2019-12-20T00:00:00Z"
+date = 2019-12-20T09:00:00+09:00
 description = "冪等性 is 大事"
 title = "【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会"
 type = "post"

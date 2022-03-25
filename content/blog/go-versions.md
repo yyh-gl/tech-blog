@@ -4,7 +4,7 @@
 author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
-date = "2020-03-03T00:00:00Z"
+date = 2020-03-03T09:00:00+09:00
 description = "地味にいろいろとあってややこしい"
 title = "Goのバージョン管理について"
 type = "post"

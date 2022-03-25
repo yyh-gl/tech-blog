@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Go", "勉強会"]
 tags = ["Tech"]
-date = "2019-10-07T00:00:00Z"
+date = 2019-10-07T09:00:00+09:00
 description = "めちゃくちゃためになった"
 title = "【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー"
 type = "post"

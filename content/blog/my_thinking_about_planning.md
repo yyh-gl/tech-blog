@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["ポエム"]
 tags = ["Tech"]
-date = "2019-06-18T00:00:00Z"
+date = 2019-06-18T09:00:00+09:00
 description = "サービス発案って難しい…"
 title = "【徒然なるままに】サービス発案における主観と客観のバランスについて"
 type = "post"

@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["自己紹介"]
 tags = ["Tech"]
-date = "2019-05-22T00:00:00Z"
+date = 2019-05-22T09:00:00+09:00
 description = "【一文まとめ】技術ブログはじめます"
 title = "Hello Wolrd"
 type = "post"

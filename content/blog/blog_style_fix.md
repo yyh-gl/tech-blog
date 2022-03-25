@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["HTML/CSS", "Web全般"]
 tags = ["Tech"]
-date = "2019-06-16T00:00:00Z"
+date = 2019-06-16T09:00:00+09:00
 description = ""
 title = "【HTML + CSS + Prism.js】ブログの見た目を整えた話"
 type = "post"

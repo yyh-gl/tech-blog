@@ -4,7 +4,7 @@
 author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
-date = "2020-03-09T00:00:00Z"
+date = 2020-03-09T09:00:00+09:00
 description = "今回は Unwrap()，Is()，As() についてお届け"
 title = "【Go】errorsパッケージの中身覗いてみた"
 type = "post"

@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["スクラム", "入門"]
 tags = ["Tech"]
-date = "2019-06-05T00:00:00Z"
+date = 2019-06-05T09:00:00+09:00
 description = ""
 title = "スクラムについて学んだ話"
 type = "post"

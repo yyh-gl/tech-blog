@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
-date = "2020-03-10T00:00:00Z"
+date = 2020-03-10T09:00:00+09:00
 description = "errorに関するちょっとしたメモ"
 title = "【Go】errorの同値性と表示について調べた"
 type = "post"

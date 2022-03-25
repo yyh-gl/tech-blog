@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["アーキテクチャ", "DDD"]
 tags = ["Tech"]
-date = "2020-02-18T00:00:00Z"
+date = 2020-02-18T09:00:00+09:00
 description = "「データの一貫性の境界」を見極めよう！"
 title = "【DDD】集約とトランザクション境界について調べたことメモ"
 type = "post"

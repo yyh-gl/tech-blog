@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["Go"]
 tags = ["Tech"]
-date = "2019-06-13T00:00:00Z"
+date = 2019-06-13T09:00:00+09:00
 description = ""
 title = "【goenv】GOPATH が変わらないときの対処法"
 type = "post"

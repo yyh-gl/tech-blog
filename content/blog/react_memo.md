@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["React"]
 tags = ["Tech"]
-date = "2019-09-18T00:00:00Z"
+date = 2019-09-18T09:00:00+09:00
 description = "React Hooks 楽しい"
 title = "React.memo について調べたのでメモを残しておく"
 type = "post"

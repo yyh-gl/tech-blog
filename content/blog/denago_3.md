@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["勉強会", "Go"]
 tags = ["Tech"]
-date = "2019-11-01T00:00:00Z"
+date = 2019-11-01T09:00:00+09:00
 description = "DeNAさん主催のGo勉強会"
 title = "【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた"
 type = "post"

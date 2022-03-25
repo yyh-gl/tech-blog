@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["読書まとめ"]
 tags = ["Tech"]
-date = "2019-06-10T00:00:00Z"
+date = 2019-06-10T09:00:00+09:00
 description = ""
 title = "【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた"
 type = "post"

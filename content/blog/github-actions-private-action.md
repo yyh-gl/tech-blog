@@ -2,7 +2,7 @@
 author = "yyh-gl"
 categories = ["CI/CD", "GitHub"]
 tags = ["Tech"]
-date = "2019-10-22T00:00:00Z"
+date = 2019-10-22T09:00:00+09:00
 description = "HCLではなくてyml版です"
 title = "【GitHub Actions】プライベートアクションを使ってみた"
 type = "post"
