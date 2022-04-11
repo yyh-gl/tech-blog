@@ -45,7 +45,7 @@ post: ## 記事を投稿
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	curl -X POST https://super.hobigon.work/api/v1/blogs -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}"
+	curl -X POST https://hobigon-api-ingress-hobigon-yyh-gl.cloud.okteto.net/api/v1/blogs -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}"
 	@echo ''
 	git merge ${title}
 	git push origin main
