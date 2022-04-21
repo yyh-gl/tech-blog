@@ -48,6 +48,10 @@ Vue.component('good-counter', {
       let paths = location.pathname.split('/');
       // URLのタイトル部分のみを抽出
       let title = paths[paths.length - 2]
+
+      // トップ画面ではAPIリクエストを実行しない
+      if (title === 'tech-blog') return
+
       // いいね+1リクエストURLを作成
       let reqUrl = 'https://hobigon-api-ingress-hobigon-yyh-gl.cloud.okteto.net/api/v1/blogs/' + title+ '/like';
 
