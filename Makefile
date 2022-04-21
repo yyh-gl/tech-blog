@@ -18,6 +18,10 @@ server: ## Hugoサーバを起動
 	  tech-blog \
 	  server -D --bind $(shell ipconfig getifaddr en0) --baseURL=http://$(shell ipconfig getifaddr en0)/tech-blog --buildFuture
 
+.PHONY: login
+login: ## Hugoサーバ用コンテナにログイン
+	docker exec -it tech-blog /bin/bash
+
 .PHONY: lint
 lint: ## textlint実行
 	@git diff --name-only HEAD~ | xargs docker exec tech-blog /go/src/github.com/yyh-gl/tech-blog/node_modules/.bin/textlint
