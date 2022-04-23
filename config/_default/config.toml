@@ -151,7 +151,7 @@ disableLanguages       = []
   wordpress        = ""
   medium           = ""
   # Professional/Business Oriented Communities
-  linkedin         = ""
+  linkedin         = "yyh-gl"
   linkedin_company = ""
   foursquare       = ""
   xing             = ""
