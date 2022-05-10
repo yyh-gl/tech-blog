@@ -15,7 +15,7 @@ Vue.component('good-counter', {
     const parts = this.relPermalink.split('/')
     let title = parts[parts.length - 2]
     // いいね数取得リクエストURLを作成
-    let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + title;
+    let reqUrl = 'https://hobigon-api-ingress-hobigon-yyh-gl.cloud.okteto.net/api/v1/blogs/' + title;
 
     // ページカテゴリー取得（例：about, blog, category など）
     let pageCategory = parts[parts.length - 3]
@@ -53,7 +53,7 @@ Vue.component('good-counter', {
       if (title === 'tech-blog') return
 
       // いいね+1リクエストURLを作成
-      let reqUrl = 'https://super.hobigon.work/api/v1/blogs/' + title+ '/like';
+      let reqUrl = 'https://hobigon-api-ingress-hobigon-yyh-gl.cloud.okteto.net/api/v1/blogs/' + title+ '/like';
 
       if(event) {
         axios
