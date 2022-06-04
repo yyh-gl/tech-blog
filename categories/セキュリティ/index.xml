@@ -7,7 +7,16 @@ RFCに書いてあるものと大差ないので、今回は マイクロサー�
 Gateway から Authority Service にくる Authority Service を認証基盤チームが管理
 外部からのリクエスト検証と内部通信用のトークンを生成している 内部トークンは毎リクエストごとに生成
 マイクロサービス間で使用されるトークンはリクエスト単位で同一 内部トークン用のSDKを提供
-Goのみ対応 SDKを使うといろいろとよしなにしてくれる クレームをいい感じに取得 SubjectID のパースとかをいい感じにしてくれる マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる</description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
+Goのみ対応 SDKを使うといろいろとよしなにしてくれる クレームをいい感じに取得 SubjectID のパースとかをいい感じにしてくれる マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる
+2. パネルディスカッション 登壇者：
+Keigo Watanabe さん @kazegusuri @nerocrux @pospome パネルディスカッションのはずがほとんど質疑で終わりましたｗ
+質疑は さきほどの 発表 に対するものが主でした。
+したがって、以下、上記発表に関する質問と回答になります。
+Q. 第三パーティーにスコープを指定させるのではなく、外部スコープと内部スコープのマッピングを行ったのはなぜか A.
+ユースケースベースでスコープを提供した方が第三パーティーの開発者がわかりやすい。
+リソースベースだとどれが必要なスコープなのかが分かりづらい。
+（yyh-gl 感想） AWSのポリシーがリソースベースだと思うんだけど、どのポリシーが必要か分かりづらいもんねー
+Q. JWT（内部トークン）の保持期間（消すタイミング、有効期限） A. 保存していない</description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
 「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
 さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。
 しかし、この2つのトークンの違いについて、
@@ -32,4 +41,4 @@ OAuth 2.0 で認証を行うことの問題点については、
 「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。
 つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。
 （トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）
-「OAuth 2.</description></item></channel></rss>
+「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。 説明しやすくするためにこういった言葉を使っています。</description></item></channel></rss>

@@ -16,4 +16,5 @@ govet：GoデフォルトのLinter errcheck：ちゃんとエラーハンドリ�
 GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、
 ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
 GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
-開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。</description></item></channel></rss>
+開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
+したがって、Linter の導入・管理コストが一気に下がりますし、</description></item></channel></rss>

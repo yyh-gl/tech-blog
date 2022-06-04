@@ -41,7 +41,8 @@ govet：GoデフォルトのLinter errcheck：ちゃんとエラーハンドリ�
 GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、
 ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
 GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
-開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
+したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
 ではでは、早速本題に入っていきます。
 モック使ってますか？ みなさんモックコードは書いていますか？
 テストコードを書いているなら、ほぼ必ず登場するあのモックです。
@@ -61,7 +62,8 @@ rpcreplay は google-cloud-go に包含されるパッケージであり、安�
 ただし、gRPC 用なので、その点は注意が必要です。
 GoDocはこちら です。
 今回は REST API を使って説明していくので、go-vcr を使用します。
-go-vcr は、vcr-go と govcr よりスター数が多いです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
+go-vcr は、vcr-go と govcr よりスター数が多いです。
+Ruby 製の vcr というライブラリがもとになっているようです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
 内容としては、TypeScript 初級者のための TypeScript 入門です。
 基礎的な内容から入り、
 最終的には、企業や個人の技術ブログを参考に、

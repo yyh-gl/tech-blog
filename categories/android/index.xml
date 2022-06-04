@@ -10,4 +10,9 @@ Firebaseにプロジェクト作成 プロジェクト登録ページ でプロ�
 Mac/Linux
 keytool -list -v \ -alias androiddebugkey -keystore ~/.android/debug.keystore Windows
 keytool -list -v \ -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore パスワード入力
-パスワードは android です。</description></item></channel></rss>
+パスワードは android です。
+表示される SHA-1 をメモ
+ひととおり作業が進むと、↓このような画面が表示されます。
+自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。
+エミュレータでもちゃんと通信してくれるか不安だったのですが大丈夫でした。
+Firebase 関連のライブラリを追加 アプリ情報の登録工程において、 app/build.</description></item></channel></rss>

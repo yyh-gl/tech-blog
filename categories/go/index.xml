@@ -49,7 +49,10 @@ package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { 
 For instance, passing an int value to a function makes a copy of the int, and passing a pointer value makes a copy of the pointer, but not the data it points to.
 たとえば、int値を関数に渡すとintのコピーが作成され、ポインター値を渡すとポインターのコピーが作成されますが、ポインターが指すデータは作成されません。
 つまり、
-値渡し：値のコピーが作成される 参照渡し：ポインタのコピーは作成されるが、ポインタが指すデータ（値）のコピーは作成しない といった差があります。</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。
+値渡し：値のコピーが作成される 参照渡し：ポインタのコピーは作成されるが、ポインタが指すデータ（値）のコピーは作成しない といった差があります。
+図にすると以下のとおりです。
+同じ色の箱はアドレスが同じだと考えてください。
+（図が下手なところはほっといてあげてください🙇‍♂️）</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。
 このプロジェクトでは、DDDの考え方や設計パターンも取り入れています。
 今回はDDDの設計パターンの中でもEntityとValue Object（VO）について、
 僕がGoでどうやって実装しているのか紹介していきます。
@@ -63,7 +66,9 @@ $ go clean -testcache $ go test ./... ok github.com/oxequa/realize 0.086s ok git
 $ go test ./... -count=1 ok github.com/oxequa/realize 0.076s ok github.com/oxequa/realize/realize 0.384s ここからは上記コマンドが一体なにをしてくれたのか、
 もう少し詳細に話していきます。
 go clean とは こちら にドキュメントがあります。
-Clean removes object files from package source directories.</description></item><item><title>【Go】jsonパッケージの知っておくと便利な機能</title><link>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</guid><description>jsonパッケージ Goを触ってる人ならだれもが一度はお世話になるであろう パッケージ「json 」
+Clean removes object files from package source directories.
+go clean は上記のとおりファイルを消してくれるわけですね。
+-testcache オプションをつけると、</description></item><item><title>【Go】jsonパッケージの知っておくと便利な機能</title><link>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</guid><description>jsonパッケージ Goを触ってる人ならだれもが一度はお世話になるであろう パッケージ「json 」
 今回はそんな json パッケージについて、
 知っておくと便利な機能を2つ紹介します。
 （比較的有名なものしかないですが🙏）
@@ -71,7 +76,8 @@ Clean removes object files from package source directories.</description></item>
 ある構造体（Human）のフィールドを外部公開したくない場合、
 jsonパッケージの Unmarshal()，Marshal() が使えません。
 （上記関数は外部公開されたフィールドのみ変換できる）
-type Human struct { // フィールドを外部公開したくない name string age int } func main() { h := Human{ name: &amp;quot;Taro&amp;quot;, age: 21, } // 構造体 → JSON j, _ := json.Marshal(h) fmt.Println(string(j)) // {} // JSON → 構造体 var uh Human _ = json.Unmarshal(j, &amp;amp;uh) fmt.Printf(&amp;quot;%+v\n&amp;quot;, uh) // {name: age:0} } playgroud 実際に実行してみると、うまく変換できていないことが分かると思います。</description></item><item><title>【Go】errorの同値性と表示について調べた</title><link>https://yyh-gl.github.io/tech-blog/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/error_questions/</guid><description>errorについて疑問があった Goのコードを書いてて、ふと気になったことがあったので調べてみました。
+type Human struct { // フィールドを外部公開したくない name string age int } func main() { h := Human{ name: &amp;quot;Taro&amp;quot;, age: 21, } // 構造体 → JSON j, _ := json.Marshal(h) fmt.Println(string(j)) // {} // JSON → 構造体 var uh Human _ = json.Unmarshal(j, &amp;amp;uh) fmt.Printf(&amp;quot;%+v\n&amp;quot;, uh) // {name: age:0} } playgroud 実際に実行してみると、うまく変換できていないことが分かると思います。
+さて、このときどうすれば正しく変換できるかというと、</description></item><item><title>【Go】errorの同値性と表示について調べた</title><link>https://yyh-gl.github.io/tech-blog/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/error_questions/</guid><description>errorについて疑問があった Goのコードを書いてて、ふと気になったことがあったので調べてみました。
 errorの同値性 1つ目の疑問は、下記コードで e1 と e2 がイコールではないことです。 （同値性なんて仰々しく言ってすみません。たったこれだけの疑問です😇🙇‍♂️）
 func main() { e1 := errors.New(&amp;quot;error1&amp;quot;) e2 := errors.New(&amp;quot;error1&amp;quot;) e3 := e1 fmt.Println(e1 == e2) // false fmt.Println(e1 == e3) // true } Playground 結論（errorの同値性） errors.New() が返しているのがポインタでした。
 つまり、さきほどのコードの6行目はポインタの値を比較しているので、そりゃfalseになりますね。
@@ -123,7 +129,9 @@ bash や zsh の設定でエイリアスでも貼ってやればOKですね。
 最新バージョンのインストール方法についても言及しておきます。
 特に新しいことはなくいろんなサイトで紹介されているのでさらっと流していきます。
 ▼ Homebrew $ brew install go 以上です。
-標準出力にて「必要ならパスの設定してね」と言われます。</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
+標準出力にて「必要ならパスの設定してね」と言われます。
+言われたとおりにやればOKです。
+▼ ソースからのインストール こちらの方法はHomebrewでのインストールと比べると、少しややこしくなります。</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
 今回は Go1.12からの変更点 についてです。
 The State of Go 2020 Twitterで『The State of Go 2020 』というタイトルのスライドを見つけました。
 Go1.12から変わったところに焦点を当て、
@@ -147,7 +155,8 @@ govet：GoデフォルトのLinter errcheck：ちゃんとエラーハンドリ�
 GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、
 ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
 GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
-開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
+したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
 ではでは、早速本題に入っていきます。
 モック使ってますか？ みなさんモックコードは書いていますか？
 テストコードを書いているなら、ほぼ必ず登場するあのモックです。
@@ -167,7 +176,8 @@ rpcreplay は google-cloud-go に包含されるパッケージであり、安�
 ただし、gRPC 用なので、その点は注意が必要です。
 GoDocはこちら です。
 今回は REST API を使って説明していくので、go-vcr を使用します。
-go-vcr は、vcr-go と govcr よりスター数が多いです。</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！
+go-vcr は、vcr-go と govcr よりスター数が多いです。
+Ruby 製の vcr というライブラリがもとになっているようです。</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！
 ビールとお弁当もらいました。
 そしてなんとなんと k8sの技術書をいただいちゃいました！！！
 もちろんステッカーもありましたよ👍
@@ -179,7 +189,11 @@ Goのフレームワーク GoのWAF（Web Application Framework）には
 この辺の話は、僕の旧ブログ にもいろいろ書いているのでどうぞー
 DeNAではフルスタック・MVCを選択
 GoにおけるフルスタックなWAF Beego：採用！ Revel：開発が止まってきている Iris：プロジェクトの運用がうまくいっていないようだった Beego フルスタックのMVCフレームワーク ORMまでついてる セッション管理、ロガー、キャッシュなどのライブラリがいろいろついてるけど、全てモジュール化されていて、部分的に他のライブラリを使うことができる Railsライクなフレームワーク Railsのbefore/after_actionに相当するものもある（Prepare(), Finish()） ライブラリ 使用ライブラリはこちら こういうの教えてくれるのめっちゃ嬉しい
-ORM：GORM ロガー：logrus PDF生成：gopdf → 日本語もきれいにでるので最高にクール 画像生成：gg バーコード生成：Barcode 2. WebシステムのパフォーマンスとGo （写真撮り忘れた…）</description></item><item><title>【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー</title><link>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</link><pubDate>Mon, 07 Oct 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</guid><description>mercari.go #11 connpass： リンク ハッシュタグ： &amp;lt;code&amp;gt;#mercarigo&amp;lt;/code&amp;gt; 今回もお弁当とドリンクがありました！ありがたや
+ORM：GORM ロガー：logrus PDF生成：gopdf → 日本語もきれいにでるので最高にクール 画像生成：gg バーコード生成：Barcode 2. WebシステムのパフォーマンスとGo （写真撮り忘れた…）
+登壇者：（@karupanerura） ゲーム・エンターテインメント事業本部ゲーム事業部Publish統括部共通基盤部アライアンスシステムグループ
+スライド Webシステムにおけるパフォーマンスとは たくさんリクエスト処理できる かつ リソース消費が少ないのが システム全体で見たときの理想的なパフォーマンス
+パフォーマンスチューニングのいろいろ 詳しいチューニング方法はこちら この中で初めて知ったものをピックアップ↓
+◎ Server Sent Events HTTPコネクションを持続させる WebSocketより扱いが簡単らしい バファリングの諸注意 結局リソースを消費していることに違わないので、メモリ管理はちゃんとしないといけない</description></item><item><title>【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー</title><link>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</link><pubDate>Mon, 07 Oct 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</guid><description>mercari.go #11 connpass： リンク ハッシュタグ： &amp;lt;code&amp;gt;#mercarigo&amp;lt;/code&amp;gt; 今回もお弁当とドリンクがありました！ありがたや
 [追記：2019年10月12日]
 [Mercari Engineering Blog](https://tech.mercari.com/entry/2019/10/11/160000) にて、本イベントの記事が公開されました。
 発表資料が載せてあります。ありがたや🙏 1. About error handling in Go 登壇者：jd さん（@JehandadKamal）
@@ -192,12 +206,17 @@ Connpass情報 ハッシュタグ：#godo_miniconf （写真撮るの忘れた�
 1. マイクロサービスとMonoRepo 登壇者：江頭 宏亮さん（@_hiro511） 発表スライド リポジトリ管理について WinTicket というサービス開発・運用中
 36個のマイクロサービスで動いている
 マルチリポジトリ：マイクロサービスごとにリポジトリが別れている モノリポジトリ：ひとつのリポジトリ。WinTicket ではこっち モノリポジトリ Google, FB, Tiwtter, Uberが採用 メリット 依存管理をシンプルにできる マルチリポジトリの場合、複数のリポジトリに変更を加える必要があるし、変更を取り込むのが面倒 モノレポだとすべてのコードが一箇所にあるので変更が楽 一貫性のある変更 複数のサービスにまたがる変更においても、アトミックなコミットが可能 コードの共有と再利用が用意 common ディレクトリがあればできる 大きなリファクタリングが容易 ビルドとテストを効率良くしたいという モノリポジトリだと、ビルドとテストに時間がかかる ので、効率よくビルドとテストしたい
-Bazel（ベイゼル）：ビルド・テストツール Go, Andoroid, iOSなど様々な言語に対応 Googleが使っている（Googleの自社ツールがOSS化） 必要箇所だけビルド・テストする 速い スケーラブル 拡張可能 StarDarkという独自言語で設定定義 WinTicketではDockerビルドもこれ Go with Bazel Bazel のインストール by brew WORKSPACEファイルの作成 外部の依存関係を記述 BUILDファイルを作成 ビルド方法を示したもの Gazzelを利用して自動生成可能 ディレクトリ構成例</description></item><item><title>【mercari.go #8】メルカリのGoに関する勉強会メモ</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</guid><description>mercari.go #8 connpass： リンク ハッシュタグ： &amp;lt;code&amp;gt;#mercarigo&amp;lt;/code&amp;gt; 独自ルール： 懇親会のGルール 懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！ 雰囲気 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
+Bazel（ベイゼル）：ビルド・テストツール Go, Andoroid, iOSなど様々な言語に対応 Googleが使っている（Googleの自社ツールがOSS化） 必要箇所だけビルド・テストする 速い スケーラブル 拡張可能 StarDarkという独自言語で設定定義 WinTicketではDockerビルドもこれ Go with Bazel Bazel のインストール by brew WORKSPACEファイルの作成 外部の依存関係を記述 BUILDファイルを作成 ビルド方法を示したもの Gazzelを利用して自動生成可能 ディレクトリ構成例
+. ├BUILD.bazel ├WORKSPACE └cmd └main.go Gazzelは Go Modules と dep に対応 go.</description></item><item><title>【mercari.go #8】メルカリのGoに関する勉強会メモ</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</guid><description>mercari.go #8 connpass： リンク ハッシュタグ： &amp;lt;code&amp;gt;#mercarigo&amp;lt;/code&amp;gt; 独自ルール： 懇親会のGルール 懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！ 雰囲気 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
 以降、自分用のメモを書き連ねます。
 詳細はスライドの方をご覧ください。
 1. Goで学ぶKnative 登壇者： @toshi0607 さん
 スライドリンク Knative Knative ＝ 最新のサーバーレス ワークロードをビルド、デプロイ、管理できる Kubernetes ベースのプラットフォーム AWS の Lmabda に近いことを k8s 上でできると解釈 登壇者含め、会場内で Knative を本番に導入している人はなし。
-まだ時期尚早っぽい k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供 k8s 上にのっかる。 Knative の構成 Serving Build Eventing 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠 登壇者は 機能実装に一層集中するための基盤 として注目している yml ファイルで定義した内容に基づいて コード生成 感想 終盤、 Knative の内部処理を コードリーディング していたのですが、</description></item><item><title>【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
+まだ時期尚早っぽい k8s のリソースを抽象化し、独自のPaaS/FaaSを構築するためのパーツを提供 k8s 上にのっかる。 Knative の構成 Serving Build Eventing 現状、一部、Istio に依存してしまっているので、Istioの導入が必要不可欠 登壇者は 機能実装に一層集中するための基盤 として注目している yml ファイルで定義した内容に基づいて コード生成 感想 終盤、 Knative の内部処理を コードリーディング していたのですが、
+見入ってしまいメモを忘れていました。。。
+Knative 初めて聞いたのですが、おもしろそうだなという感想。
+k8s の勉強しないとな。
+2. Gotham GoとGopherCon EUに参加してきました 登壇者： @tenntenn</description></item><item><title>【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
 この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
 今回やること Goのディレクトリ構成についていろいろと調べる中で、
 こちらの資料 がとても分かりやすかったので、
@@ -222,7 +241,9 @@ DDD の文脈だと アプリケーション層 と呼ばれますが、
 本プロジェクトでは ユースケース という単語を使用します。
 とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 DDD を意識して Web API を実装していこうと思います。
 （意識だけして、実践できずに終わりましたが😇）
-レイヤードアーキテクチャ における各層の依存関係 について説明します。</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://yyh-gl.github.io/tech-blog/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
+レイヤードアーキテクチャ における各層の依存関係 について説明します。
+依存関係の図は下記のとおりです。
+矢印は依存の方向を示しています。</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://yyh-gl.github.io/tech-blog/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
 $ export GOPATH=/Users/yyh-gl/workspaces/Go $ echo $GOPATH /Users/yyh-gl/workspaces/Go $ go env GOPATH /Users/yyh-gl/go/1.12.5 GOPATH が書き換わらない。
 解決方法 社内Slack で適当につぶやいたら、同期が助けてくれた（神）
 画像にある Qiita のリンクが こちら ちなみに僕の環境の goenv は バージョン 1.12.5 だったので、2系に上げなくても発生する模様。

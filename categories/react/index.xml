@@ -38,4 +38,6 @@ PureComonentはprops及びstateの変更を検出した場合のみレンダリ�
 さきほどの参考記事 にて説明されていました。
 浅い比較というのは、簡潔に述べるとオブジェクトの参照先が同じであれば等しいと見なすことです。
 参照先しか見ていないので、中身は見ていないということですね。
-（このような実装なのは、React の思想として、props や state といったデータは immutable であるべきだとしているからだと思います）</description></item></channel></rss>
+（このような実装なのは、React の思想として、props や state といったデータは immutable であるべきだとしているからだと思います）
+ちなみに ミューテート（変更）せずに新しいオブジェクトを作るには下記のようにして、新しいオブジェクトを作って返してやればいいようです。（参考 ）
+Object.assign({}, prevState, {color: 'blue'}); React.</description></item></channel></rss>
