@@ -17,5 +17,5 @@ draft = true
 
 <!-- textlint-enable -->
 
-<img src="http://localhost:1313/tech-blog/img/2021/02//.webp" width="600">
+<img src="http://localhost:1313/img/2021/02//.webp" width="600">
 <img src="https://tech.yyh-gl.dev/img/2021/02//.webp" width="600">

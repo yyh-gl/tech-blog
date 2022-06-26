@@ -3,7 +3,7 @@
   {{- $alt := "" -}}
   {{- $stretch := .Site.Params.imageStretch -}}
   {{- if .Params.featured -}}
-    {{- $src = (path.Join "img/tech-blog" (cond (eq .Params.featuredpath "date") (.Page.Date.Format "2006/01") (.Params.featuredpath)) .Params.featured) | absURL -}}
+    {{- $src = (path.Join "img" (cond (eq .Params.featuredpath "date") (.Page.Date.Format "2006/01") (.Params.featuredpath)) .Params.featured) | absURL -}}
     {{- $alt = .Params.featuredalt -}}
     {{- with .Params.featuredstretch -}}
       {{- $stretch = . -}}

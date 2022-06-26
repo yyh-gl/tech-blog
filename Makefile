@@ -37,11 +37,11 @@ new: ## 記事テンプレート生成
 	@echo ''
 	docker exec tech-blog hugo new blog/${title}.md
 	@echo ''
-	mkdir -p ./static/img/tech-blog/`date +"%Y/%m"`/${title}
+	mkdir -p ./static/img/`date +"%Y/%m"`/${title}
 	@echo ''
-	open ./static/img/tech-blog/`date +"%Y/%m"`/${title}
+	open ./static/img/`date +"%Y/%m"`/${title}
 	@echo ''
-	open http://$(shell ipconfig getifaddr en0):1313/tech-blog/
+	open http://$(shell ipconfig getifaddr en0):1313/
 
 .PHONY: post
 post: ## 記事を投稿
@@ -63,8 +63,8 @@ create-ogp: ## OGP画像を生成
 		exit 1; \
 	fi
 	docker exec tech-blog /tmp/go/bin/tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png content/blog/${title}.md
-	docker exec tech-blog cwebp static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png -o static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.webp
-	rm -f static/img/tech-blog/`date +"%Y/%m"`/${title}/featured.png
+	docker exec tech-blog cwebp static/img/`date +"%Y/%m"`/${title}/featured.png -o static/img/`date +"%Y/%m"`/${title}/featured.webp
+	rm -f static/img/`date +"%Y/%m"`/${title}/featured.png
 
 .PHONY: convert-to-webp
 convert-to-webp: ## 画像をwebp形式に変換
@@ -72,13 +72,13 @@ convert-to-webp: ## 画像をwebp形式に変換
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	ls static/img/tech-blog/`date +"%Y/%m"`/${title} | \
+	ls static/img/`date +"%Y/%m"`/${title} | \
 	grep -v .webp | \
 	grep .png | \
 	xargs -I{} basename {} .png | \
-	xargs -I{} docker exec tech-blog cwebp static/img/tech-blog/`date +"%Y/%m"`/${title}/{}.png -o static/img/tech-blog/`date +"%Y/%m"`/${title}/{}.webp
-	ls static/img/tech-blog/`date +"%Y/%m"`/${title} | \
+	xargs -I{} docker exec tech-blog cwebp static/img/`date +"%Y/%m"`/${title}/{}.png -o static/img/`date +"%Y/%m"`/${title}/{}.webp
+	ls static/img/`date +"%Y/%m"`/${title} | \
 	grep -v .webp | \
 	grep .jpg | \
 	xargs -I{} basename {} .jpg | \
-	xargs -I{} docker exec tech-blog cwebp static/img/tech-blog/`date +"%Y/%m"`/${title}/{}.jpg -o static/img/tech-blog/`date +"%Y/%m"`/${title}/{}.webp
+	xargs -I{} docker exec tech-blog cwebp static/img/`date +"%Y/%m"`/${title}/{}.jpg -o static/img/`date +"%Y/%m"`/${title}/{}.webp
