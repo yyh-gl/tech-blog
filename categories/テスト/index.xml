@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>テスト on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/categories/%E3%83%86%E3%82%B9%E3%83%88/</link><description>Recent content in テスト on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 09 Dec 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/categories/%E3%83%86%E3%82%B9%E3%83%88/index.xml" rel="self" type="application/rss+xml"/><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>テスト on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/categories/%E3%83%86%E3%82%B9%E3%83%88/</link><description>Recent content in テスト on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 09 Dec 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/categories/%E3%83%86%E3%82%B9%E3%83%88/index.xml" rel="self" type="application/rss+xml"/><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
 私は現在、DMM.com の CDS というチームに所属し、
 主にユーザレビュー基盤 のバックエンドを開発しています。
 今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、
@@ -17,7 +17,7 @@ GolangCI-Lint 勉強会でもよく耳にするようになってきている＋
 ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
 GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
 開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
-したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
 ではでは、早速本題に入っていきます。
 モック使ってますか？ みなさんモックコードは書いていますか？
 テストコードを書いているなら、ほぼ必ず登場するあのモックです。

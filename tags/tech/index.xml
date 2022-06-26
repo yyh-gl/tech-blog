@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tech-blog/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 19 Mar 2022 00:55:40 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tech-blog/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる</title><link>https://yyh-gl.github.io/tech-blog/blog/docker-compose-override/</link><pubDate>Sat, 19 Mar 2022 00:55:40 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/docker-compose-override/</guid><description>要約 Docker Composeの設定ファイルは複数指定できて、設定の追加や上書きができる。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 19 Mar 2022 00:55:40 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる</title><link>https://yyh-gl.github.io/blog/docker-compose-override/</link><pubDate>Sat, 19 Mar 2022 00:55:40 +0900</pubDate><guid>https://yyh-gl.github.io/blog/docker-compose-override/</guid><description>要約 Docker Composeの設定ファイルは複数指定できて、設定の追加や上書きができる。
 早速詳細に見ていきましょう↓
 docker-compose.ymlは複数指定可能 docker compose up実行時に-fオプションを使うことで、 参照するdocker-compose.ymlファイル（設定ファイル）を指定できることは、ご存知の方も多いと思います。
 しかし、複数の設定ファイルを指定できることはあまり知られていないと思います（勝手な決めつけ）。
@@ -25,14 +25,14 @@ docker compose -f docker-compose.yml -f docker-compose.override.yml up
 『設定の追加と上書き』 の章に、
 設定オプションが元々のサービスとローカルのサービスの両方にて定義されていた場合は、 元のサービスの値はローカルの値によって置き換えられるか、あるいは拡張されます。
 とありますが、元のサービスってどっち？となります。
-なので、実際に動作を見てみます。</description></item><item><title>【2021年】アクティビティまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/activity-2021/</link><pubDate>Sun, 02 Jan 2022 20:59:04 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/activity-2021/</guid><description>今年も… 昨年に引き続き 、 今年もLAPRAS で1年間のアクティビティを出してみました。
+なので、実際に動作を見てみます。</description></item><item><title>【2021年】アクティビティまとめ</title><link>https://yyh-gl.github.io/blog/activity-2021/</link><pubDate>Sun, 02 Jan 2022 20:59:04 +0900</pubDate><guid>https://yyh-gl.github.io/blog/activity-2021/</guid><description>今年も… 昨年に引き続き 、 今年もLAPRAS で1年間のアクティビティを出してみました。
 コロナ禍真っ只中でも、オンラインでたくさんの勉強会に参加できました。
 今年は良い出会いが特に多く、運営側として関わったものも増えました。
 来年もさらに良い年になるように、多方面で頑張っていきます！
 では、本題の2021年のアクティビティです↓
 2021年アクティビティ 2021年のアウトプットと参加イベントを振り返ると
 アウトプットしたものや参加したイベントなどをまとめてみました。
-connpass 2021/12/08 ユースケース駆動開発をやってみた 2021/12/01 Go Language Specification 輪読会 #32 2021/11/25 merpay Tech Talk 〜 決済基盤の未来〜 2021/11/17 Go Language Specification 輪読会 #31 2021/11/03 Go 1.18&amp;#43; 言語仕様勉強会 #3 【Generics】 2021/10/30 ライブモデリングとコーディングで理解するDDD (DDD勉強会2021#1) 2021/10/21 mercari.go #17 オンライン開催 2021/10/20 Go Language Specification 輪読会 #30 2021/10/06 Go Language Specification 輪読会 #29 2021/09/22 Go 1.18&amp;#43; 言語仕様勉強会 #2 【Generics】 2021/09/11 DDD質問箱のつまみ喰い - 1軒目 2021/09/08 Go Language Specification 輪読会 #28 2021/09/07 モデリングの学び方：座談会 2021/09/01 LAPRAS公開設計レビュー 「t_wadaさんにこのテストでサバンナを生き抜けるか聞いてみた」 2021/08/25 Go Language Specification 輪読会 #27 2021/08/22 Kyoto.</description></item><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://yyh-gl.github.io/tech-blog/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
+connpass 2021/12/08 ユースケース駆動開発をやってみた 2021/12/01 Go Language Specification 輪読会 #32 2021/11/25 merpay Tech Talk 〜 決済基盤の未来〜 2021/11/17 Go Language Specification 輪読会 #31 2021/11/03 Go 1.18&amp;#43; 言語仕様勉強会 #3 【Generics】 2021/10/30 ライブモデリングとコーディングで理解するDDD (DDD勉強会2021#1) 2021/10/21 mercari.go #17 オンライン開催 2021/10/20 Go Language Specification 輪読会 #30 2021/10/06 Go Language Specification 輪読会 #29 2021/09/22 Go 1.18&amp;#43; 言語仕様勉強会 #2 【Generics】 2021/09/11 DDD質問箱のつまみ喰い - 1軒目 2021/09/08 Go Language Specification 輪読会 #28 2021/09/07 モデリングの学び方：座談会 2021/09/01 LAPRAS公開設計レビュー 「t_wadaさんにこのテストでサバンナを生き抜けるか聞いてみた」 2021/08/25 Go Language Specification 輪読会 #27 2021/08/22 Kyoto.</description></item><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://yyh-gl.github.io/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
 はじめに Goには標準で便利なコマンドがたくさんあります。
 有名どころで言えば、
 generate fmt vet などがあります。
@@ -43,21 +43,21 @@ buildは特に難しいことをしなければ、とてもシンプルに使え
 今回はそんなbuildについて深ぼっていこうと思います。
 buildコマンドとは まずはbuildとはどういったコマンドなのか見ていきましょう。
 helpを使って調べてみます。
-$ go help build Build compiles the packages named by the import paths, along with their dependencies, but it does not install the results. &amp;lt;省略&amp;gt; When compiling packages, build ignores files that end in '_test.go'. &amp;lt;省略&amp;gt; When compiling multiple packages or a single non-main package, build compiles the packages but discards the resulting object, serving only as a check that the packages can be built.</description></item><item><title>【2020年】アクティビティまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/activity-2020/</link><pubDate>Tue, 23 Feb 2021 18:41:54 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/activity-2020/</guid><description>LAPRASでおもしろい機能を見つけた LAPRAS に2020年のアクティビティをまとめてくれる機能がありました。
+$ go help build Build compiles the packages named by the import paths, along with their dependencies, but it does not install the results. &amp;lt;省略&amp;gt; When compiling packages, build ignores files that end in '_test.go'. &amp;lt;省略&amp;gt; When compiling multiple packages or a single non-main package, build compiles the packages but discards the resulting object, serving only as a check that the packages can be built.</description></item><item><title>【2020年】アクティビティまとめ</title><link>https://yyh-gl.github.io/blog/activity-2020/</link><pubDate>Tue, 23 Feb 2021 18:41:54 +0900</pubDate><guid>https://yyh-gl.github.io/blog/activity-2020/</guid><description>LAPRASでおもしろい機能を見つけた LAPRAS に2020年のアクティビティをまとめてくれる機能がありました。
 今回はその機能を使って（今さらながら）去年のアクティビティをメモしておきたいと思います。
 以下、LAPRASで出力されたアクティビティを転記したものです。
 ・
 ・
 ・
 2020年のアウトプットと参加イベントを振り返ると 今年アウトプットしたものや参加したイベントなどをまとめてみました。
-connpass 2020/12/23 サーバーレスアンチパターン今昔物語 第八夜 サーバーレスゆく年くる年2020/2021 2020/12/22 merpay Tech Talk｜QAx DevOps/マイクロサービス/Backend vol.2 2020/12/21 Software Design 1月号［第1特集］Goプログラミングスキルをレベルアップ執筆者座談会 2020/12/19 エリック・エヴァンスのドメイン駆動設計 輪読会「第7章 言語を使用する：応用例」 2020/12/16 Go Language Specification輪読会 #12 2020/12/15 Front-End Study #2「Performance Tuning in depth（仮）」 2020/12/09 Go Language Specification輪読会 #11 2020/12/05 エリック・エヴァンスのドメイン駆動設計 輪読会「第6章 ドメインオブジェクトのライフサイクル」後編 2020/12/03 merpay Tech Talk ~ 決済基盤（Payment Platform）Backend裏話 2020/11/30 DMM meetup #22 〜DMMのプラットフォームが目指す経済圏とパーソナライズ戦略〜 2020/11/27 Sandbox Live 第2回目 〜ゲスト: ミノ駆動さん と とーますさん〜 2020/11/27 サーバーレスアンチパターン今昔物語 第七夜 2020/11/26 merpay Tech Talk〜DevOpsxQA、マイクロサービスxQA、BackendxQA〜 2020/11/21 エリック・エヴァンスのドメイン駆動設計 輪読会「第6章 ドメインオブジェクトのライフサイクル」前編 2020/11/18 開発ライブ実況 #7 高難易度Goクイズ大会 2020/11/14 Umeda.</description></item><item><title>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</title><link>https://yyh-gl.github.io/tech-blog/blog/profile-readme-updater/</link><pubDate>Fri, 19 Feb 2021 18:53:19 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/profile-readme-updater/</guid><description>おもしろいツイートを見つけた GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした pic.twitter.com/o47E7YHSsx
+connpass 2020/12/23 サーバーレスアンチパターン今昔物語 第八夜 サーバーレスゆく年くる年2020/2021 2020/12/22 merpay Tech Talk｜QAx DevOps/マイクロサービス/Backend vol.2 2020/12/21 Software Design 1月号［第1特集］Goプログラミングスキルをレベルアップ執筆者座談会 2020/12/19 エリック・エヴァンスのドメイン駆動設計 輪読会「第7章 言語を使用する：応用例」 2020/12/16 Go Language Specification輪読会 #12 2020/12/15 Front-End Study #2「Performance Tuning in depth（仮）」 2020/12/09 Go Language Specification輪読会 #11 2020/12/05 エリック・エヴァンスのドメイン駆動設計 輪読会「第6章 ドメインオブジェクトのライフサイクル」後編 2020/12/03 merpay Tech Talk ~ 決済基盤（Payment Platform）Backend裏話 2020/11/30 DMM meetup #22 〜DMMのプラットフォームが目指す経済圏とパーソナライズ戦略〜 2020/11/27 Sandbox Live 第2回目 〜ゲスト: ミノ駆動さん と とーますさん〜 2020/11/27 サーバーレスアンチパターン今昔物語 第七夜 2020/11/26 merpay Tech Talk〜DevOpsxQA、マイクロサービスxQA、BackendxQA〜 2020/11/21 エリック・エヴァンスのドメイン駆動設計 輪読会「第6章 ドメインオブジェクトのライフサイクル」前編 2020/11/18 開発ライブ実況 #7 高難易度Goクイズ大会 2020/11/14 Umeda.</description></item><item><title>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</title><link>https://yyh-gl.github.io/blog/profile-readme-updater/</link><pubDate>Fri, 19 Feb 2021 18:53:19 +0900</pubDate><guid>https://yyh-gl.github.io/blog/profile-readme-updater/</guid><description>おもしろいツイートを見つけた GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした pic.twitter.com/o47E7YHSsx
 &amp;mdash; mikkame (@mikkameee) February 14, 2021 とても便利そうだったので僕もやってみました。
 作った ↑こんな感じで Recent posts - Blog 📝 に直近5個のブログ記事を表示するようにして、
 なおかつ自動で更新されるようにしました。
 コードはこちら に置いてあります。
 やっていることはとてもシンプルで、
 Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。
-興味あったらコードを覗いてみてください。</description></item><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://yyh-gl.github.io/tech-blog/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 8日目 』の記事です。
+興味あったらコードを覗いてみてください。</description></item><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://yyh-gl.github.io/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 8日目 』の記事です。
 Go Language Specification輪読会 現在、Go Language Specification輪読会 という、 Goの言語仕様 を読んでいく会に参加しています。
 今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
 （振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
@@ -71,7 +71,7 @@ A general comment containing no newlines acts like a space.
 改行を含まないgeneral commentはスペースのように作用する。
 （general commentとは/**/で囲われたコメントのことを指します）
 よって、先程のコードは以下と同じということです。
-package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://yyh-gl.github.io/tech-blog/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
+package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://yyh-gl.github.io/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://yyh-gl.github.io/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
 まずはサムネ画像をWebPに変えてみました。
 WebPとは、Googleが開発しているオープンな静止画像フォーマットで、
 トラフィック量軽減と表示速度短縮を目的しています。 （wikiから拝借 ）
@@ -87,10 +87,10 @@ WebPを採用した結果 以下のツイートのとおりです。
 リリースノート Safariのwebp対応ってバージョン14からだったんだ😇
 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
 &amp;mdash; hon-D (@yyh_gl) November 26, 2020 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
-嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワード が使用可能です。
+嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://yyh-gl.github.io/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワード が使用可能です。
 機能としては、処理を次の節（caseやdefault）に進めます。（参考 ）
 言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。
-package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground defaultにも飛べるという例 fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所 )</description></item><item><title>texta.fm #1 まとめ</title><link>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
+package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground defaultにも飛べるという例 fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所 )</description></item><item><title>texta.fm #1 まとめ</title><link>https://yyh-gl.github.io/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
 エヴァンス本を読む前に知っておいた方がいい時代背景、そして、意識すべき点を知ることができるので、
 時間があればぜひ実際に聞きに行ってみてください。
 話者：
@@ -126,7 +126,7 @@ DDDが解決したかった問題 &amp;lt;6分30秒ぐらいから&amp;gt;
 ここを意識して学ぼう！
 &amp;lt;33分00秒ぐらいから&amp;gt;
 デザインパターンの部分（2部、3部あたり）はもちろん大事であるが、
-エヴァンス本の本質的な部分ではない。</description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-always-passing-by-value/</guid><description>Goにおける参照渡し＝ポインタの値渡し Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。
+エヴァンス本の本質的な部分ではない。</description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://yyh-gl.github.io/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go-always-passing-by-value/</guid><description>Goにおける参照渡し＝ポインタの値渡し Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。
 （C派生の言語はすべてそうらしいです）
 じゃあ、参照渡しって何？ってなりますよね。
 参照渡し＝ポインタの値渡しです。
@@ -145,12 +145,12 @@ For instance, passing an int value to a function makes a copy of the int, and pa
 値渡し：値のコピーが作成される 参照渡し：ポインタのコピーは作成されるが、ポインタが指すデータ（値）のコピーは作成しない といった差があります。
 図にすると以下のとおりです。
 同じ色の箱はアドレスが同じだと考えてください。
-（図が下手なところはほっといてあげてください🙇‍♂️）</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。
+（図が下手なところはほっといてあげてください🙇‍♂️）</description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://yyh-gl.github.io/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go-ddd-entity-vo/</guid><description>GoでDDD 今担当しているプロジェクトでは、GoでAPIを作っています。
 このプロジェクトでは、DDDの考え方や設計パターンも取り入れています。
 今回はDDDの設計パターンの中でもEntityとValue Object（VO）について、
 僕がGoでどうやって実装しているのか紹介していきます。
 実装例 兎にも角にも、まずはコードを示します。
-// animal/dog/dog.go package dog type Dog struct { name Name } func New(name string) (*Dog, error) { n, err := newName(name) if err != nil { return nil, err } return &amp;amp;Dog{ name: *n, }, nil } // animal/dog/name.go package dog import ( &amp;quot;errors&amp;quot; &amp;quot;unicode/utf8&amp;quot; ) type Name string func newName(v string) (*Name, error) { // 名前は3文字以上というビジネスロジック if utf8.RuneCountInString(v) &amp;lt; 3 { return nil, errors.</description></item><item><title>go test におけるキャッシュの消し方</title><link>https://yyh-gl.github.io/tech-blog/blog/go-test-cache-clear/</link><pubDate>Thu, 30 Apr 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-test-cache-clear/</guid><description>go test のキャッシュを消すのは簡単 $ go clean -testcache
+// animal/dog/dog.go package dog type Dog struct { name Name } func New(name string) (*Dog, error) { n, err := newName(name) if err != nil { return nil, err } return &amp;amp;Dog{ name: *n, }, nil } // animal/dog/name.go package dog import ( &amp;quot;errors&amp;quot; &amp;quot;unicode/utf8&amp;quot; ) type Name string func newName(v string) (*Name, error) { // 名前は3文字以上というビジネスロジック if utf8.RuneCountInString(v) &amp;lt; 3 { return nil, errors.</description></item><item><title>go test におけるキャッシュの消し方</title><link>https://yyh-gl.github.io/blog/go-test-cache-clear/</link><pubDate>Thu, 30 Apr 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go-test-cache-clear/</guid><description>go test のキャッシュを消すのは簡単 $ go clean -testcache
 以上です！
 $ go test ./... ok github.com/oxequa/realize (cached) ok github.com/oxequa/realize/realize (cached) このように (cached) となっていたものが、、、
 $ go clean -testcache $ go test ./... ok github.com/oxequa/realize 0.086s ok github.com/oxequa/realize/realize 0.389s このように、実行時間が表示されており、キャッシュが消えていることが分かりますね。
@@ -161,7 +161,7 @@ $ go test ./... -count=1 ok github.com/oxequa/realize 0.076s ok github.com/oxequ
 go clean とは こちら にドキュメントがあります。
 Clean removes object files from package source directories.
 go clean は上記のとおりファイルを消してくれるわけですね。
--testcache オプションをつけると、</description></item><item><title>【Go】jsonパッケージの知っておくと便利な機能</title><link>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-json-tips/</guid><description>jsonパッケージ Goを触ってる人ならだれもが一度はお世話になるであろう パッケージ「json 」
+-testcache オプションをつけると、</description></item><item><title>【Go】jsonパッケージの知っておくと便利な機能</title><link>https://yyh-gl.github.io/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go-json-tips/</guid><description>jsonパッケージ Goを触ってる人ならだれもが一度はお世話になるであろう パッケージ「json 」
 今回はそんな json パッケージについて、
 知っておくと便利な機能を2つ紹介します。
 （比較的有名なものしかないですが🙏）
@@ -170,7 +170,7 @@ go clean は上記のとおりファイルを消してくれるわけですね�
 jsonパッケージの Unmarshal()，Marshal() が使えません。
 （上記関数は外部公開されたフィールドのみ変換できる）
 type Human struct { // フィールドを外部公開したくない name string age int } func main() { h := Human{ name: &amp;quot;Taro&amp;quot;, age: 21, } // 構造体 → JSON j, _ := json.Marshal(h) fmt.Println(string(j)) // {} // JSON → 構造体 var uh Human _ = json.Unmarshal(j, &amp;amp;uh) fmt.Printf(&amp;quot;%+v\n&amp;quot;, uh) // {name: age:0} } playgroud 実際に実行してみると、うまく変換できていないことが分かると思います。
-さて、このときどうすれば正しく変換できるかというと、</description></item><item><title>【Go】errorの同値性と表示について調べた</title><link>https://yyh-gl.github.io/tech-blog/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/error_questions/</guid><description>errorについて疑問があった Goのコードを書いてて、ふと気になったことがあったので調べてみました。
+さて、このときどうすれば正しく変換できるかというと、</description></item><item><title>【Go】errorの同値性と表示について調べた</title><link>https://yyh-gl.github.io/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/error_questions/</guid><description>errorについて疑問があった Goのコードを書いてて、ふと気になったことがあったので調べてみました。
 errorの同値性 1つ目の疑問は、下記コードで e1 と e2 がイコールではないことです。 （同値性なんて仰々しく言ってすみません。たったこれだけの疑問です😇🙇‍♂️）
 func main() { e1 := errors.New(&amp;quot;error1&amp;quot;) e2 := errors.New(&amp;quot;error1&amp;quot;) e3 := e1 fmt.Println(e1 == e2) // false fmt.Println(e1 == e3) // true } Playground 結論（errorの同値性） errors.New() が返しているのがポインタでした。
 つまり、さきほどのコードの6行目はポインタの値を比較しているので、そりゃfalseになりますね。
@@ -178,7 +178,7 @@ errorの表示 2つ目の疑問は、下記コードで e1 を表示すると、
 errors.New()の戻り値である構造体の値ではなく、エラー文言が表示されることです。
 package main import ( &amp;quot;fmt&amp;quot; &amp;quot;errors&amp;quot; ) func main() { e1 := errors.New(&amp;quot;error1&amp;quot;) fmt.Println(e1) // error1 } Playground errors.New()が返しているのは構造体なので、
 下記コードのように構造体の内容が表示されないのはなんでだ？ってなったわけです。
-package main import &amp;quot;fmt&amp;quot; func Hoge() interface{} { type hoge struct { s string } return &amp;amp;hoge{s: &amp;quot;hoge&amp;quot;} } func main() { h := Hoge() fmt.</description></item><item><title>【Go】errorsパッケージの中身覗いてみた</title><link>https://yyh-gl.github.io/tech-blog/blog/errors_package/</link><pubDate>Mon, 09 Mar 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/errors_package/</guid><description>errorsパッケージに興味持った v1.13からerrorsパッケージに Unwrap() Is() As() といった関数が追加されました。
+package main import &amp;quot;fmt&amp;quot; func Hoge() interface{} { type hoge struct { s string } return &amp;amp;hoge{s: &amp;quot;hoge&amp;quot;} } func main() { h := Hoge() fmt.</description></item><item><title>【Go】errorsパッケージの中身覗いてみた</title><link>https://yyh-gl.github.io/blog/errors_package/</link><pubDate>Mon, 09 Mar 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/errors_package/</guid><description>errorsパッケージに興味持った v1.13からerrorsパッケージに Unwrap() Is() As() といった関数が追加されました。
 （もう1.14もリリースされているのに今さらですね😇）
 今回はこれら3つの関数について、内部実装を追いかけていきます。
 と、その前に、errorsパッケージの概要と関連パッケージについて軽く説明しておきます。
@@ -198,7 +198,7 @@ v1.13にて標準パッケージに取り込まれました。
 なお、Goのコードはv1.14.0を参照しています。
 Unwrap() ラップされたエラーから中身のエラーを取り出す関数です。
 処理としては下記のようになっています。
-func Unwrap(err error) error { u, ok := err.</description></item><item><title>Goのバージョン管理について</title><link>https://yyh-gl.github.io/tech-blog/blog/go-versions/</link><pubDate>Tue, 03 Mar 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go-versions/</guid><description>Goのバージョン管理 注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。 注意2：基本的にMacユーザを対象にしています。（WindowsとLinuxももちろん好きです）
+func Unwrap(err error) error { u, ok := err.</description></item><item><title>Goのバージョン管理について</title><link>https://yyh-gl.github.io/blog/go-versions/</link><pubDate>Tue, 03 Mar 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go-versions/</guid><description>Goのバージョン管理 注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。 注意2：基本的にMacユーザを対象にしています。（WindowsとLinuxももちろん好きです）
 開発において言語のバージョン管理はつきものだと思います。
 そのニーズは高く、rbenv や nodenv といったバージョン管理ツールが普及しています。
 ただし、Goの場合は少し話が変わってきます。
@@ -224,7 +224,7 @@ bash や zsh の設定でエイリアスでも貼ってやればOKですね。
 ▼ Homebrew $ brew install go 以上です。
 標準出力にて「必要ならパスの設定してね」と言われます。
 言われたとおりにやればOKです。
-▼ ソースからのインストール こちらの方法はHomebrewでのインストールと比べると、少しややこしくなります。</description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://yyh-gl.github.io/tech-blog/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/ddd-aggregates-transaction/</guid><description>簡単まとめシリーズ 今回は 集約とトランザクション境界 について、
+▼ ソースからのインストール こちらの方法はHomebrewでのインストールと比べると、少しややこしくなります。</description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://yyh-gl.github.io/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/ddd-aggregates-transaction/</guid><description>簡単まとめシリーズ 今回は 集約とトランザクション境界 について、
 自分のわからないところを調べたので、メモとして残しておきます。
 集約 集約の説明を『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』 から拝借すると、
 「データを変更するための単位として扱われるオブジェクトの集まりを集約といいます」とのこと。
@@ -249,13 +249,13 @@ DDDではエンティティと値オブジェクトというものがありま�
 まとめ 設計周りの話は、唯一無二の答えがあるわけではありません。
 よって、今回の話においても「データの一貫性の境界」を意識し、
 ちゃんとメリットとデメリットを理解した上で最善の解を選択する必要がありますね。
-参考資料 ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本 DDDにおいて、なぜ複数の集約にまたがってトランザクションをかけてはいけないのか（multiple aggregates in one transaction） 集約とトランザクション境界に関するメモ 集約の境界と整合性の維持の仕方に悩んで2ヶ月ぐらい結論を出せていない話 集約の境界と整合性問題に関する感想</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
+参考資料 ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本 DDDにおいて、なぜ複数の集約にまたがってトランザクションをかけてはいけないのか（multiple aggregates in one transaction） 集約とトランザクション境界に関するメモ 集約の境界と整合性の維持の仕方に悩んで2ヶ月ぐらい結論を出せていない話 集約の境界と整合性問題に関する感想</description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://yyh-gl.github.io/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
 今回は Go1.12からの変更点 についてです。
 The State of Go 2020 Twitterで『The State of Go 2020 』というタイトルのスライドを見つけました。
 Go1.12から変わったところに焦点を当て、
 Go1.13でどのような機能が追加されているのか、 Go1.14でどのような機能が追加される予定なのかまとめてあります。
 今回は、完全主観で自分が興味のある内容をハイライトします〜😇
-完全主観ハイライト ▼ 数値まわりの表現方法が増える https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7 ▼ interfaceにおける関数の重複が許可される（例外あり） https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17 ▼ エラーハンドリングが変わる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=26 ▼ testingパッケージに CleanUp() が追加 https://speakerdeck.com/campoy/the-state-of-go-2020?slide=39 ▼ go modules https://speakerdeck.com/campoy/the-state-of-go-2020?slide=43 ▼ 配列・スライスにおける範囲外指定時のエラーが親切になった https://speakerdeck.com/campoy/the-state-of-go-2020?slide=50 ▼ deferが速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=51 ▼ json関連の処理が速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52 ▼ 他にもいろいろ速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53 ▼ GopherConの参加者が増えていく様子がえもい https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64</description></item><item><title>【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari-tech-talk-idempotency/</link><pubDate>Fri, 20 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari-tech-talk-idempotency/</guid><description>Tech Talk vol.2 Backend Engineer 〜マイクロサービスの冪等性〜 connpass ハッシュタグ：#merpay_techtalk 質問板 merpay社で開催された勉強会です。
+完全主観ハイライト ▼ 数値まわりの表現方法が増える https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7 ▼ interfaceにおける関数の重複が許可される（例外あり） https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17 ▼ エラーハンドリングが変わる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=26 ▼ testingパッケージに CleanUp() が追加 https://speakerdeck.com/campoy/the-state-of-go-2020?slide=39 ▼ go modules https://speakerdeck.com/campoy/the-state-of-go-2020?slide=43 ▼ 配列・スライスにおける範囲外指定時のエラーが親切になった https://speakerdeck.com/campoy/the-state-of-go-2020?slide=50 ▼ deferが速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=51 ▼ json関連の処理が速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52 ▼ 他にもいろいろ速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53 ▼ GopherConの参加者が増えていく様子がえもい https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64</description></item><item><title>【merpay Tech Talk】マイクロサービスの冪等性に関する勉強会</title><link>https://yyh-gl.github.io/blog/mercari-tech-talk-idempotency/</link><pubDate>Fri, 20 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/mercari-tech-talk-idempotency/</guid><description>Tech Talk vol.2 Backend Engineer 〜マイクロサービスの冪等性〜 connpass ハッシュタグ：#merpay_techtalk 質問板 merpay社で開催された勉強会です。
 参加者のツイートも含めてメモを残しておきます。
 かなり雑なのでコンテキストが読み取れないところもあると思いますが、
 なにかの参考になれば幸いです。
@@ -277,7 +277,7 @@ DeleteなしでCRUのみ
 決済の進捗状態を保持するDBを用意し、状態を管理 → Pending、Authorized、Captured
 メルペイのコード決済では、
 Cloud Pub/Subを使ってAuthorizedまでを同期処理、Captureは非同期処理で行っている。
-同期処理の責務を最小限に抑えて、処理自体もシンプルにするのが狙い。</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
+同期処理の責務を最小限に抑えて、処理自体もシンプルにするのが狙い。</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
 私は現在、DMM.com の CDS というチームに所属し、
 主にユーザレビュー基盤 のバックエンドを開発しています。
 今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、
@@ -296,7 +296,7 @@ GolangCI-Lint 勉強会でもよく耳にするようになってきている＋
 ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
 GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
 開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
-したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
 ではでは、早速本題に入っていきます。
 モック使ってますか？ みなさんモックコードは書いていますか？
 テストコードを書いているなら、ほぼ必ず登場するあのモックです。
@@ -317,7 +317,7 @@ rpcreplay は google-cloud-go に包含されるパッケージであり、安�
 GoDocはこちら です。
 今回は REST API を使って説明していくので、go-vcr を使用します。
 go-vcr は、vcr-go と govcr よりスター数が多いです。
-Ruby 製の vcr というライブラリがもとになっているようです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
+Ruby 製の vcr というライブラリがもとになっているようです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
 内容としては、TypeScript 初級者のための TypeScript 入門です。
 基礎的な内容から入り、
 最終的には、企業や個人の技術ブログを参考に、
@@ -337,7 +337,7 @@ JavaScript に対して、省略も可能な静的型付けとクラスベース
 （足りない情報は公式ドキュメント を参考にしてください）
 型 では、早速、TypeScript の型に触れていきましょう。
 TypeScript で使用できる基本的な型として以下のものがあります。
-Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/tech-blog/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！
+Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、</description></item><item><title>【DeNA.go #3】Go活用事例やパフォーマンスチューニングの話聞いてきた</title><link>https://yyh-gl.github.io/blog/denago_3/</link><pubDate>Fri, 01 Nov 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/denago_3/</guid><description>DeNA.go #3 connpass ハッシュタグ：#DeNAgo 初参加です！
 ビールとお弁当もらいました。
 そしてなんとなんと k8sの技術書をいただいちゃいました！！！
 もちろんステッカーもありましたよ👍
@@ -353,20 +353,20 @@ ORM：GORM ロガー：logrus PDF生成：gopdf → 日本語もきれいにで�
 登壇者：（@karupanerura） ゲーム・エンターテインメント事業本部ゲーム事業部Publish統括部共通基盤部アライアンスシステムグループ
 スライド Webシステムにおけるパフォーマンスとは たくさんリクエスト処理できる かつ リソース消費が少ないのが システム全体で見たときの理想的なパフォーマンス
 パフォーマンスチューニングのいろいろ 詳しいチューニング方法はこちら この中で初めて知ったものをピックアップ↓
-◎ Server Sent Events HTTPコネクションを持続させる WebSocketより扱いが簡単らしい バファリングの諸注意 結局リソースを消費していることに違わないので、メモリ管理はちゃんとしないといけない</description></item><item><title>【GitHub Actions】プライベートアクションを使ってみた</title><link>https://yyh-gl.github.io/tech-blog/blog/github-actions-private-action/</link><pubDate>Tue, 22 Oct 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/github-actions-private-action/</guid><description>プライベートアクションとは GitHub Actions では、開発者がアクション（Lint やテストといったジョブなど）を作って、公開することができます。 この公開されたアクションは、世界中の人が使えるため、もちろん自分のプロジェクトに持ってきて使用できます。 この公開されたアクションのことを パブリックアクション といいます。
+◎ Server Sent Events HTTPコネクションを持続させる WebSocketより扱いが簡単らしい バファリングの諸注意 結局リソースを消費していることに違わないので、メモリ管理はちゃんとしないといけない</description></item><item><title>【GitHub Actions】プライベートアクションを使ってみた</title><link>https://yyh-gl.github.io/blog/github-actions-private-action/</link><pubDate>Tue, 22 Oct 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/github-actions-private-action/</guid><description>プライベートアクションとは GitHub Actions では、開発者がアクション（Lint やテストといったジョブなど）を作って、公開することができます。 この公開されたアクションは、世界中の人が使えるため、もちろん自分のプロジェクトに持ってきて使用できます。 この公開されたアクションのことを パブリックアクション といいます。
 パブリックアクションが溢れた世界を想像するだけでワクワクしますね👍 （野良 Docker イメージと同様に、ほいそれとは使えないでしょうが…）
 今回、とりあげるのはパブリックアクションの正反対にあるものです。 つまり、公開しない（できない）アクション ＝ プライベートアクション です。 プライベートアクションを使うための準備 ディレクトリ構成は以下のとおりです。
 .github ├── actions │ └── golang-test │ ├── Dockerfile │ ├── action.yml │ └── entrypoint.sh └── workflows └── golang.yml /actions ディレクトリ配下に golang-test という、Lint とテストを実行するアクションを作ってみます。
 /workflow ディレクトリ配下には、golang 用のワークフロー定義ファイルを置いています。
 では、次から各ファイルの定義を見ていきます。
-プライベートアクションの定義 # /actions/golang-test/action.yml name: 'Golang Lint and Test Action' description: 'Lint and Test for Golang' author: 'yyh-gl' runs: # Docker を使って実行することを宣言 using: 'docker' # 使用する Docker イメージを指定 image: 'Dockerfile' アクションの定義は上記のとおりです。 公式ドキュメント を参考にしました。</description></item><item><title>【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー</title><link>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</link><pubDate>Mon, 07 Oct 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercarigo_11/</guid><description>mercari.go #11 connpass： リンク ハッシュタグ： &amp;lt;code&amp;gt;#mercarigo&amp;lt;/code&amp;gt; 今回もお弁当とドリンクがありました！ありがたや
+プライベートアクションの定義 # /actions/golang-test/action.yml name: 'Golang Lint and Test Action' description: 'Lint and Test for Golang' author: 'yyh-gl' runs: # Docker を使って実行することを宣言 using: 'docker' # 使用する Docker イメージを指定 image: 'Dockerfile' アクションの定義は上記のとおりです。 公式ドキュメント を参考にしました。</description></item><item><title>【mercari.go #11】エラーハンドリング ＋ singleflight ＋ ISUCON ベンチマーカー</title><link>https://yyh-gl.github.io/blog/mercarigo_11/</link><pubDate>Mon, 07 Oct 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/mercarigo_11/</guid><description>mercari.go #11 connpass： リンク ハッシュタグ： &amp;lt;code&amp;gt;#mercarigo&amp;lt;/code&amp;gt; 今回もお弁当とドリンクがありました！ありがたや
 [追記：2019年10月12日]
 [Mercari Engineering Blog](https://tech.mercari.com/entry/2019/10/11/160000) にて、本イベントの記事が公開されました。
 発表資料が載せてあります。ありがたや🙏 1. About error handling in Go 登壇者：jd さん（@JehandadKamal）
 資料 （正式に共有されたものでないので、発表の内容が少し異なります）
 Errors are values ”Errors are values ” という考え方。
 Goでよくあるエラー処理パターン エラーをラップしてより詳細な情報を付与する 専用構造体を作る スタックトレースを構成する ”Error is your domain” Domain Error Struct を作成する。
-type Error struct { Op Op Kind Kind Serverity zapcore.ErrorLevel Err error } Op：Operation → 関数名とか Kind：エラー種別 → NotAvailable, NotFound といったもの Serverity：エラーレベル Err：エラー内容 上記のような構造体を作る理由 error を比較するときは、基本的に文字列の比較になるため取り回しが悪い → ”NotFound” という文字列を比較するとかとか</description></item><item><title>React.memo について調べたのでメモを残しておく</title><link>https://yyh-gl.github.io/tech-blog/blog/react_memo/</link><pubDate>Wed, 18 Sep 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/react_memo/</guid><description>React.memo とは 公式ドキュメント を見ると、
+type Error struct { Op Op Kind Kind Serverity zapcore.ErrorLevel Err error } Op：Operation → 関数名とか Kind：エラー種別 → NotAvailable, NotFound といったもの Serverity：エラーレベル Err：エラー内容 上記のような構造体を作る理由 error を比較するときは、基本的に文字列の比較になるため取り回しが悪い → ”NotFound” という文字列を比較するとかとか</description></item><item><title>React.memo について調べたのでメモを残しておく</title><link>https://yyh-gl.github.io/blog/react_memo/</link><pubDate>Wed, 18 Sep 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/react_memo/</guid><description>React.memo とは 公式ドキュメント を見ると、
 これは React.PureComponent に似ていますが、クラスではなく関数コンポーネント用です。
 とあります。
 つまり、 React.PureComponent を関数コンポーネントで実現するための手段らしいです。
@@ -388,7 +388,7 @@ PureComonentはprops及びstateの変更を検出した場合のみレンダリ�
 参照先しか見ていないので、中身は見ていないということですね。
 （このような実装なのは、React の思想として、props や state といったデータは immutable であるべきだとしているからだと思います）
 ちなみに ミューテート（変更）せずに新しいオブジェクトを作るには下記のようにして、新しいオブジェクトを作って返してやればいいようです。（参考 ）
-Object.assign({}, prevState, {color: 'blue'}); React.</description></item><item><title>【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_meetup_for_backend_engineers_1/</link><pubDate>Wed, 21 Aug 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_meetup_for_backend_engineers_1/</guid><description>Backend Engineer’s meetup ~マイクロサービスにおける認証認可基盤~ connpass ハッシュタグ：#merpay_meetup メルカリさん恒例のオリジナルドリンクもらいました
+Object.assign({}, prevState, {color: 'blue'}); React.</description></item><item><title>【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた</title><link>https://yyh-gl.github.io/blog/mercari_meetup_for_backend_engineers_1/</link><pubDate>Wed, 21 Aug 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/mercari_meetup_for_backend_engineers_1/</guid><description>Backend Engineer’s meetup ~マイクロサービスにおける認証認可基盤~ connpass ハッシュタグ：#merpay_meetup メルカリさん恒例のオリジナルドリンクもらいました
 1. マイクロサービスの内部通信における認証について 登壇者：@pospome さん
 スライド （日本語が消えてしまっていますが、ダウンロードしたら見れました）
 上記スライドの簡易メモ アカウント管理とログイン処理はそれぞれのチームに任せている
@@ -406,14 +406,14 @@ Q. 第三パーティーにスコープを指定させるのではなく、外�
 ユースケースベースでスコープを提供した方が第三パーティーの開発者がわかりやすい。
 リソースベースだとどれが必要なスコープなのかが分かりづらい。
 （yyh-gl 感想） AWSのポリシーがリソースベースだと思うんだけど、どのポリシーが必要か分かりづらいもんねー
-Q. JWT（内部トークン）の保持期間（消すタイミング、有効期限） A. 保存していない</description></item><item><title>【Go同miniConf】Goの勉強会に参加してきた話</title><link>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</link><pubDate>Tue, 06 Aug 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/godo_miniconf/</guid><description>概要 CyberAgent ＆ merpay が共催したGoのイベント
+Q. JWT（内部トークン）の保持期間（消すタイミング、有効期限） A. 保存していない</description></item><item><title>【Go同miniConf】Goの勉強会に参加してきた話</title><link>https://yyh-gl.github.io/blog/godo_miniconf/</link><pubDate>Tue, 06 Aug 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/godo_miniconf/</guid><description>概要 CyberAgent ＆ merpay が共催したGoのイベント
 Connpass情報 ハッシュタグ：#godo_miniconf （写真撮るの忘れた…）
 以下、発表まとめ
 1. マイクロサービスとMonoRepo 登壇者：江頭 宏亮さん（@_hiro511） 発表スライド リポジトリ管理について WinTicket というサービス開発・運用中
 36個のマイクロサービスで動いている
 マルチリポジトリ：マイクロサービスごとにリポジトリが別れている モノリポジトリ：ひとつのリポジトリ。WinTicket ではこっち モノリポジトリ Google, FB, Tiwtter, Uberが採用 メリット 依存管理をシンプルにできる マルチリポジトリの場合、複数のリポジトリに変更を加える必要があるし、変更を取り込むのが面倒 モノレポだとすべてのコードが一箇所にあるので変更が楽 一貫性のある変更 複数のサービスにまたがる変更においても、アトミックなコミットが可能 コードの共有と再利用が用意 common ディレクトリがあればできる 大きなリファクタリングが容易 ビルドとテストを効率良くしたいという モノリポジトリだと、ビルドとテストに時間がかかる ので、効率よくビルドとテストしたい
 Bazel（ベイゼル）：ビルド・テストツール Go, Andoroid, iOSなど様々な言語に対応 Googleが使っている（Googleの自社ツールがOSS化） 必要箇所だけビルド・テストする 速い スケーラブル 拡張可能 StarDarkという独自言語で設定定義 WinTicketではDockerビルドもこれ Go with Bazel Bazel のインストール by brew WORKSPACEファイルの作成 外部の依存関係を記述 BUILDファイルを作成 ビルド方法を示したもの Gazzelを利用して自動生成可能 ディレクトリ構成例
-. ├BUILD.bazel ├WORKSPACE └cmd └main.go Gazzelは Go Modules と dep に対応 go.</description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
+. ├BUILD.bazel ├WORKSPACE └cmd └main.go Gazzelは Go Modules と dep に対応 go.</description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://yyh-gl.github.io/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
 「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
 さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。
 しかし、この2つのトークンの違いについて、
@@ -438,7 +438,7 @@ OAuth 2.0 で認証を行うことの問題点については、
 「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。
 つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。
 （トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）
-「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。 説明しやすくするためにこういった言葉を使っています。</description></item><item><title>【徒然なるままに】サービス発案における主観と客観のバランスについて</title><link>https://yyh-gl.github.io/tech-blog/blog/my_thinking_about_planning/</link><pubDate>Tue, 18 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/my_thinking_about_planning/</guid><description>研修での サービス発案 をやった 新卒研修で サービス発案 について学び、実際に
+「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。 説明しやすくするためにこういった言葉を使っています。</description></item><item><title>【徒然なるままに】サービス発案における主観と客観のバランスについて</title><link>https://yyh-gl.github.io/blog/my_thinking_about_planning/</link><pubDate>Tue, 18 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/my_thinking_about_planning/</guid><description>研修での サービス発案 をやった 新卒研修で サービス発案 について学び、実際に
 問題提議 ソリューション検討 サービスに落とし込む など、チームで作業しました。
 （今回考えたサービスを、今後チームで開発していきます）
 そして、一日考えたサービスをターゲット層となる人たちに 「こんなサービスどうですか？あったら欲しいですか？」といったアンケートを行いました。 返ってきた答えは「欲しくない」 が過半数でした。
@@ -478,7 +478,7 @@ OAuth 2.0 で認証を行うことの問題点については、
 主観的意見もある程度は受け入れてもらえるんです。
 そして、そこがそのサービスのユニークな機能になると思います。
 しかし、主観的意見が多くなりすぎると、誰にも求められないサービスができあがってしまう。
-いかに、この 主観 と 客観 を両立するのか。</description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://yyh-gl.github.io/tech-blog/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/ogp/</guid><description>Twitter のリンクにサムネイル画像が表示されない このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
+いかに、この 主観 と 客観 を両立するのか。</description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://yyh-gl.github.io/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/ogp/</guid><description>Twitter のリンクにサムネイル画像が表示されない このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
 はてなブログをやっていたときは、何もしなくてもサムネイルが表示されていました。
 トップ画像をよしなにサムネイルにしてくれるのかなぁっと思っていましたが違ったんですね…。
 どうやったらサムネイル画像が表示されるか Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、
@@ -490,7 +490,7 @@ og:title og:type og:url og:description og:image これらを HTML に meta タ�
 &amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; こんな感じですね。
 これを head タグ内に埋め込みます。
 ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。
-したがって、今回は og:image を追加で設定しました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
+したがって、今回は og:image を追加で設定しました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://yyh-gl.github.io/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
 正確には対応していない言語が（めちゃくちゃ）ありました。
 このとおり、 Goにも対応していませんでした…。
 もともと、このブログのテーマは Hugo Themes （Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
@@ -511,7 +511,7 @@ line-numbers というクラスを付与してあげるだけでOKです。
 このようになぜか リスト表示（箇条書き）の行間が異様に広くなり、文字が折り返されずはみ出ています。
 まさかと思い、prism.css を無効にすると…
 直った！
-ということで、なにかしらのスタイルが悪さをしている模様。</description></item><item><title>【mercari.go #8】メルカリのGoに関する勉強会メモ</title><link>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/mercari_go/</guid><description>mercari.go #8 connpass： リンク ハッシュタグ： &amp;lt;code&amp;gt;#mercarigo&amp;lt;/code&amp;gt; 独自ルール： 懇親会のGルール 懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！ 雰囲気 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
+ということで、なにかしらのスタイルが悪さをしている模様。</description></item><item><title>【mercari.go #8】メルカリのGoに関する勉強会メモ</title><link>https://yyh-gl.github.io/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/mercari_go/</guid><description>mercari.go #8 connpass： リンク ハッシュタグ： &amp;lt;code&amp;gt;#mercarigo&amp;lt;/code&amp;gt; 独自ルール： 懇親会のGルール 懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！ 雰囲気 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
 以降、自分用のメモを書き連ねます。
 詳細はスライドの方をご覧ください。
 1. Goで学ぶKnative 登壇者： @toshi0607 さん
@@ -520,7 +520,7 @@ line-numbers というクラスを付与してあげるだけでOKです。
 見入ってしまいメモを忘れていました。。。
 Knative 初めて聞いたのですが、おもしろそうだなという感想。
 k8s の勉強しないとな。
-2. Gotham GoとGopherCon EUに参加してきました 登壇者： @tenntenn</description></item><item><title>【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる</title><link>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
+2. Gotham GoとGopherCon EUに参加してきました 登壇者： @tenntenn</description></item><item><title>【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる</title><link>https://yyh-gl.github.io/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
 この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
 今回やること Goのディレクトリ構成についていろいろと調べる中で、
 こちらの資料 がとても分かりやすかったので、
@@ -547,7 +547,7 @@ DDD の文脈だと アプリケーション層 と呼ばれますが、
 （意識だけして、実践できずに終わりましたが😇）
 レイヤードアーキテクチャ における各層の依存関係 について説明します。
 依存関係の図は下記のとおりです。
-矢印は依存の方向を示しています。</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://yyh-gl.github.io/tech-blog/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
+矢印は依存の方向を示しています。</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://yyh-gl.github.io/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
 $ export GOPATH=/Users/yyh-gl/workspaces/Go $ echo $GOPATH /Users/yyh-gl/workspaces/Go $ go env GOPATH /Users/yyh-gl/go/1.12.5 GOPATH が書き換わらない。
 解決方法 社内Slack で適当につぶやいたら、同期が助けてくれた（神）
 画像にある Qiita のリンクが こちら ちなみに僕の環境の goenv は バージョン 1.12.5 だったので、2系に上げなくても発生する模様。
@@ -558,7 +558,7 @@ goenv の管理から外してやるには GOENV_DISABLE_GOPATH=1 にしてや�
 僕は zshrc に以下のとおり追記しました。
 export GOENV_DISABLE_GOPATH=1
 （zshrc の読み込み直しを忘れずに）
-結果 $ go env GOPATH /Users/yyh-gl/workspaces/Go 変わった。よかった</description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://yyh-gl.github.io/tech-blog/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/evans_ddd_1/</guid><description>DDD の勉強始めます 新卒研修を受ける中で DDD が出てきて、勉強したくなったので、
+結果 $ go env GOPATH /Users/yyh-gl/workspaces/Go 変わった。よかった</description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://yyh-gl.github.io/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/evans_ddd_1/</guid><description>DDD の勉強始めます 新卒研修を受ける中で DDD が出てきて、勉強したくなったので、
 『エリック・エヴァンスのドメイン駆動設計』（エリック・エヴァンス著，今関 剛 監訳，和智 右桂、牧野 祐子 訳） を読んでいこうと思います。
 今回は第1部「ドメインモデルを機能させる」の 1章 と 2章 をまとめます。
 注意： 僕の理解をそのままメモとして書き連ねていきます。
@@ -581,7 +581,7 @@ export GOENV_DISABLE_GOPATH=1
 通訳はコミュニケーションを鈍らせ、知識のかみ砕きを沈滞させる。
 共通言語としてのモデル 通訳をなくすために、 モデルを言語の骨格として使用 する。
 ドメインエキスパートと開発者のコミュニケーションやコード、ドキュメント、図など 全てにおいて、その言語を使用する。
-ここで、モデルはドメインエキスパートと開発者のコミュニケーションから生まれることを思い出す。</description></item><item><title>【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた</title><link>https://yyh-gl.github.io/tech-blog/blog/bigdata_processing/</link><pubDate>Mon, 10 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/bigdata_processing/</guid><description>はじめに 社内で伊藤 直也さんと田中 慎司さんが書かれた
+ここで、モデルはドメインエキスパートと開発者のコミュニケーションから生まれることを思い出す。</description></item><item><title>【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた</title><link>https://yyh-gl.github.io/blog/bigdata_processing/</link><pubDate>Mon, 10 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/bigdata_processing/</guid><description>はじめに 社内で伊藤 直也さんと田中 慎司さんが書かれた
 『Web開発者のための大規模サービス技術入門』 を輪読しました。
 今回は、僕が担当した 第5回の「大規模データ処理[実践]入門」についてまとめます。
 なお、本書は2010年に出版された本であるため、
@@ -609,7 +609,7 @@ export GOENV_DISABLE_GOPATH=1
 すなわち 用途特化型インデクシング を使う方が圧倒的に速くなります。
 ★ 先ほど言っていた Fluentd を用いたログ解析システム は ログ解析用にチューニングしたものと言えるでしょうか。
 用途特化型インデクシングの使用例： 全文検索エンジン 全文検索エンジンでは、以下3点の要求をどう満たすか 考える必要があります。
-大量のデータから検索したい 高速に検索したい 「いい感じ」の文書を上位に持ってきたい 特に難しいのが 「いい感じ」を持ってくるところ。</description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/good_api/</guid><description>いいねボタンがないブログ 本ブログ、いいねボタンが ありませんでした。
+大量のデータから検索したい 高速に検索したい 「いい感じ」の文書を上位に持ってきたい 特に難しいのが 「いい感じ」を持ってくるところ。</description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://yyh-gl.github.io/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/good_api/</guid><description>いいねボタンがないブログ 本ブログ、いいねボタンが ありませんでした。
 だから、作っちゃいました。っていう記事です。
 構成 上図のように
 記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。
@@ -620,7 +620,7 @@ APIサーバ Rails で APIサーバを建てる方法に関しては、
 以前に Qiita で 入門記事 書いたのでそちらをご覧ください。
 （少し古い記事ですが、そんなに問題はないはずです）
 DB にテーブル作成 今回、ブログ記事を管理するために、下記のテーブルを作成しました。
-mysql&amp;gt; describe blog_posts; +------------+--------------+------+-----+---------+----------------+ | Field | Type | Null | Key | Default | Extra | +------------+--------------+------+-----+---------+----------------+ | id | bigint(20) | NO | PRI | NULL | auto_increment | | title | varchar(255) | NO | | NULL | | | count | varchar(255) | NO | | 0 | | | created_at | datetime | NO | | NULL | | | updated_at | datetime | NO | | NULL | | +------------+--------------+------+-----+---------+----------------+ 5 rows in set (0.</description></item><item><title>スクラムについて学んだ話</title><link>https://yyh-gl.github.io/tech-blog/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/scrum_entry/</guid><description>スクラムとは 概要 変化に対し柔軟に開発を運用するためのアジャイルフレームワーク
+mysql&amp;gt; describe blog_posts; +------------+--------------+------+-----+---------+----------------+ | Field | Type | Null | Key | Default | Extra | +------------+--------------+------+-----+---------+----------------+ | id | bigint(20) | NO | PRI | NULL | auto_increment | | title | varchar(255) | NO | | NULL | | | count | varchar(255) | NO | | 0 | | | created_at | datetime | NO | | NULL | | | updated_at | datetime | NO | | NULL | | +------------+--------------+------+-----+---------+----------------+ 5 rows in set (0.</description></item><item><title>スクラムについて学んだ話</title><link>https://yyh-gl.github.io/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/scrum_entry/</guid><description>スクラムとは 概要 変化に対し柔軟に開発を運用するためのアジャイルフレームワーク
 開発に常に優先度をつける
 仕事を進めることを主眼に考え、そのために改善を常に行う
 ロールが3つあり、協調しあい開発する
@@ -646,7 +646,7 @@ mysql&amp;gt; describe blog_posts; +------------+--------------+------+-----+---
 チームが良しとするならばOK。
 はじめから参加することは基本的にない。
 開発チーム 役割
-具体的な開発を遂行 リリース可能なプロダクトバックログアイテムを完成させる 何をどのように作るか決定する（POは実現したいものを言うが、どうやって作り上げるかは開発チームに委ねる） 求められる力</description></item><item><title>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/terraform_ecs/</link><pubDate>Tue, 04 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/terraform_ecs/</guid><description>Terraform とは 最近流行りの IaC です。
+具体的な開発を遂行 リリース可能なプロダクトバックログアイテムを完成させる 何をどのように作るか決定する（POは実現したいものを言うが、どうやって作り上げるかは開発チームに委ねる） 求められる力</description></item><item><title>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた</title><link>https://yyh-gl.github.io/blog/terraform_ecs/</link><pubDate>Tue, 04 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/terraform_ecs/</guid><description>Terraform とは 最近流行りの IaC です。
 つまり、コードベースでインフラリソースを管理するためのツールです。
 中でもTerraform はクラウドに特化した IaC ツールという立ち位置です。
 AWSやGCP, Azure などの他に様々なクラウドプラットフォーム に対応しています。
@@ -661,7 +661,7 @@ ECS でデプロイされるサービスは ECR から引っ張ってくるよ�
 自動構築プロセス全体で使用する共通設定を定義 まず、 main.tf を作成し、以下のとおり共通設定を定義していきます。
 # AWS を利用することを明示 provider &amp;quot;aws&amp;quot; { # リージョンを設定 region = &amp;quot;ap-northeast-1&amp;quot; } # これから作成するリソースに付与する名前のプリフィックスを設定 # グローバル変数的な立ち位置で定義 variable &amp;quot;prefix&amp;quot; { default = &amp;quot;sample-project&amp;quot; } provider で使用するクラウドを指定することができます。
 variable は変数定義です。
-${var.prefix} と書くことで default で指定した内容が展開されます。</description></item><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://yyh-gl.github.io/tech-blog/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/android_push/</guid><description>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので
+${var.prefix} と書くことで default で指定した内容が展開されます。</description></item><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://yyh-gl.github.io/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/android_push/</guid><description>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので
 なにか困ったときはそこを一度見てみてください。
 tl;dr Firebase使ってAndroidアプリにプッシュ通知を実装した フォアグラウンドとバックグラウンドで表示方法が異なる めちゃくちゃ簡単 開発環境 macOS Mojave 10.14.4 Android Studio 3.4.1 Gradle 3.4.1 Java 1.8.0_202 Kotlin 1.3.21 Firebaseに登録 Firebaseを使用するためには登録が必要です。
 Googleアカウントを持っている方なら公式サイト から簡単に登録できます
@@ -678,7 +678,7 @@ keytool -list -v \ -alias androiddebugkey -keystore %USERPROFILE%\.android\debug
 ひととおり作業が進むと、↓このような画面が表示されます。
 自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。
 エミュレータでもちゃんと通信してくれるか不安だったのですが大丈夫でした。
-Firebase 関連のライブラリを追加 アプリ情報の登録工程において、 app/build.</description></item><item><title>【エンジニアリング組織論への招待】メンタリングの技術</title><link>https://yyh-gl.github.io/tech-blog/blog/engineering_organization_theory_mentoring/</link><pubDate>Sat, 25 May 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/engineering_organization_theory_mentoring/</guid><description>概要 今回は、広木 大地さんが書かれた 『エンジニアリング組織論への招待 不確実性に向き合う思考と組織のリファクタリング』 という本から、
+Firebase 関連のライブラリを追加 アプリ情報の登録工程において、 app/build.</description></item><item><title>【エンジニアリング組織論への招待】メンタリングの技術</title><link>https://yyh-gl.github.io/blog/engineering_organization_theory_mentoring/</link><pubDate>Sat, 25 May 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/engineering_organization_theory_mentoring/</guid><description>概要 今回は、広木 大地さんが書かれた 『エンジニアリング組織論への招待 不確実性に向き合う思考と組織のリファクタリング』 という本から、
 2章「メンタリングの技術」についてまとめます。
 （初投稿の内容が技術系じゃなくてチームマネジメント系かよとか言わないでくださいね）
 最初に覚えておいてほしいこと メンタリングは、自律的な人材を育むために行う。
@@ -706,7 +706,7 @@ Firebase 関連のライブラリを追加 アプリ情報の登録工程にお�
 自立型人材 自ら問題を発見し、解決することができる 問題について、自分ごととして捉えている 問題の根本的原因は自分にあると考える 改善のために行動できる 依存型人材 問題を与えられてから考える 問題と解決策を渡されてから動ける 問題の根本的原因は他人にあると考える 改善のために行動できず、他人のせいにしてしまう 両人材の境界線 多くの人は時には自立型人材、しかし、ある場面では依存型人材になってしまう。
 それが普通である。
 大事なのは、 上司と部下という関係における期待値を合わせておくこと。
-つまり、上司が 「ここまでは自律的に考えるのが自分の仕事だ」と考える期待値と、</description></item><item><title>Hello Wolrd</title><link>https://yyh-gl.github.io/tech-blog/blog/hello_world/</link><pubDate>Wed, 22 May 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/tech-blog/blog/hello_world/</guid><description>技術ブログはじめます 不定期で学んだことをアウトプットしていきます。
+つまり、上司が 「ここまでは自律的に考えるのが自分の仕事だ」と考える期待値と、</description></item><item><title>Hello Wolrd</title><link>https://yyh-gl.github.io/blog/hello_world/</link><pubDate>Wed, 22 May 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/hello_world/</guid><description>技術ブログはじめます 不定期で学んだことをアウトプットしていきます。
 サーバサイドのネタを中心に、フロントやインフラ（クラウド）の話も書いていく予定です。
 まさかり大歓迎です。
 自己紹介 19新卒として社会人1年目を始めたエンジニアです。
