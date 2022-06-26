@@ -8,7 +8,7 @@ title = "【Go】jsonパッケージの知っておくと便利な機能"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/04/go-json-tips/featured.webp"
+  src = "img/2020/04/go-json-tips/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

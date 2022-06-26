@@ -8,7 +8,7 @@ description = "2020年8月27日放送分のまとめです"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/10/podcast-matome-texta-200827/featured.webp"
+  src = "img/2020/10/podcast-matome-texta-200827/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

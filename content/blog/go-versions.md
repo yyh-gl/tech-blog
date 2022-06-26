@@ -10,7 +10,7 @@ title = "Goのバージョン管理について"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/03/go-versions/featured.webp"
+  src = "img/2020/03/go-versions/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -52,7 +52,7 @@ draft = false
 <u>$GOPATHが変わらなくなってしまうという問題</u>です。
 
 本件に関しては以前、僕のブログで対処法を書いているので、<br>
-[こちら](https://yyh-gl.github.io/tech-blog/blog/gopath/)を参考にしてみてください。
+[こちら](https://tech.yyh-gl.dev/blog/gopath/)を参考にしてみてください。
 
 ## ▼ go get（公式サイトに記載のある方法）
 

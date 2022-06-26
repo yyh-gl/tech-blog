@@ -10,7 +10,7 @@ description = "技術的な説明はなく、ただの独り言です"
 type = "post"
 draft = false
 [[images]]
-src = "img/tech-blog/2021/02/profile-readme-updater/featured.webp"
+src = "img/2021/02/profile-readme-updater/featured.webp"
 alt = "featured"
 stretch = "stretchH"
 +++
@@ -26,7 +26,7 @@ stretch = "stretchH"
 
 # 作った
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/02/profile-readme-updater/profile.webp" width="600">
+<img src="https://tech.yyh-gl.dev/img/2021/02/profile-readme-updater/profile.webp" width="600">
 
 ↑こんな感じで `Recent posts - Blog 📝` に直近5個のブログ記事を表示するようにして、<br>
 なおかつ自動で更新されるようにしました。

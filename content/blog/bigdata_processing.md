@@ -8,7 +8,7 @@ title = "【大規模サービス技術入門 5章】大規模データの処理
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/bigdata_processing/featured.webp"
+  src = "img/2019/06/bigdata_processing/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -65,7 +65,7 @@ draft = false
 
 イメージとしては下図のようになります。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/bigdata_processing/web_api_version.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/bigdata_processing/web_api_version.png" width="600">
 
 
 # 用途特化型のインデクシング

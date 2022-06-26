@@ -8,7 +8,7 @@ title = "React.memo について調べたのでメモを残しておく"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/09/react_memo/featured.webp"
+  src = "img/2019/09/react_memo/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

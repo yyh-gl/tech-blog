@@ -8,7 +8,7 @@ title = "【HTML + CSS + Prism.js】ブログの見た目を整えた話"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/blog_style_fix/featured.webp"
+  src = "img/2019/06/blog_style_fix/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -18,7 +18,7 @@ draft = false
 
 正確には対応していない言語が（めちゃくちゃ）ありました。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/blog_style_fix/syntax_highlight_before.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/syntax_highlight_before.png" width="600">
 
 このとおり、 Goにも対応していませんでした…。
 
@@ -52,7 +52,7 @@ draft = false
 
 ## 導入後
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/blog_style_fix/syntax_highlight_after.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/syntax_highlight_after.png" width="600">
 
 きれいですねー
 
@@ -86,13 +86,13 @@ line-numbers というクラスを付与してあげるだけでOKです。
 
 Prism.js 導入後…
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/blog_style_fix/li_incorrect.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/li_incorrect.png" width="600">
 
 このようになぜか リスト表示（箇条書き）の行間が異様に広くなり、文字が折り返されずはみ出ています。
 
 まさかと思い、prism.css を無効にすると…
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/blog_style_fix/li_correct.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/li_correct.png" width="600">
 
 直った！
 
@@ -150,7 +150,7 @@ Prism.js 導入後…
 
 こうすることで、 コードスニペット部分だけに line-numbers を適用することができました。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/blog_style_fix/li_after.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/li_after.png" width="600">
 
 行間もシンタックスハイライト&行番号 もいい具合に表示できています。
 

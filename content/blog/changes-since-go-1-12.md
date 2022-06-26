@@ -8,7 +8,7 @@ title = "【簡単まとめシリーズ】Go1.12からの変更点"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/02/changes-since-go-1-12/featured.webp"
+  src = "img/2020/02/changes-since-go-1-12/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

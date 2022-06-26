@@ -8,7 +8,7 @@ title = "go test におけるキャッシュの消し方"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/04/go-test-cache-clear/featured.webp"
+  src = "img/2020/04/go-test-cache-clear/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

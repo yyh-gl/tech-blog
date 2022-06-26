@@ -10,7 +10,7 @@ description = "Go #1 Advent Calendar 2021 19日目"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2021/12/go-build/featured.webp"
+  src = "img/2021/12/go-build/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -21,7 +21,7 @@ draft = false
 
 本記事は『[Go #1 Advent Calendar 2021 19日目](https://qiita.com/advent-calendar/2021/go)』の記事です。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2021/12/go-build/advent_calendar_2021.webp" width="500">
+<img src="https://tech.yyh-gl.dev/img/2021/12/go-build/advent_calendar_2021.webp" width="500">
 
 
 # はじめに

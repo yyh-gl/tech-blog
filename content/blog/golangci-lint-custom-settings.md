@@ -8,7 +8,7 @@ title = "GolangCI-Lintの設定ファイルを理解する"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/12/golangci-lint-custom-settings/featured.webp"
+  src = "img/2019/12/golangci-lint-custom-settings/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -16,7 +16,7 @@ draft = false
 
 # DMM Advent Calendar 2019
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
+<img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
 
 本記事は [DMM Advent Calendar 2019](https://qiita.com/advent-calendar/2019/dmm) の 9日目 の記事です。
 
@@ -63,7 +63,7 @@ Goの場合、Linterがデフォルトで用意されているうえに、<br>
 
 # GolangCI-Lint
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golangci-lint-custom-settings/golangci-lint-logo.png" width="200">
+<img src="https://tech.yyh-gl.dev/img/2019/12/golangci-lint-custom-settings/golangci-lint-logo.png" width="200">
 
 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、<br>
 ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。

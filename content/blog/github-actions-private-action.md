@@ -8,7 +8,7 @@ title = "【GitHub Actions】プライベートアクションを使ってみた
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/10/github-actions-private-action/featured.webp"
+  src = "img/2019/10/github-actions-private-action/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -238,7 +238,7 @@ GitHub が公開している公式アクションの中に、[actions/checkout](
 <br>
 下記のとおり、ワークフローが実行されました🎉
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/10/github-actions-private-action/result.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/10/github-actions-private-action/result.png" width="600">
 
 ログを見ると、Dockerfile からアクションが組み立てられていることが、なんとなく読み取れると思います。
 

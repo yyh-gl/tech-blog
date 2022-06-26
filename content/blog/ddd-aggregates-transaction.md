@@ -8,7 +8,7 @@ title = "【DDD】集約とトランザクション境界について調べた�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/02/ddd-aggregates-transaction/featured.webp"
+  src = "img/2020/02/ddd-aggregates-transaction/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

@@ -8,7 +8,7 @@ title = "【goenv】GOPATH が変わらないときの対処法"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/gopath/featured.webp"
+  src = "img/2019/06/gopath/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -33,7 +33,7 @@ GOPATH が書き換わらない。
 
 # 解決方法
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/gopath/help.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/gopath/help.png" width="600">
 
 
 社内Slack で適当につぶやいたら、同期が助けてくれた（神）

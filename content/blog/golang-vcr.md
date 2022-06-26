@@ -8,7 +8,7 @@ title = "【Go+VCR】外部APIとの通信を保存してテストに使用す�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/12/golang-vcr/featured.webp"
+  src = "img/2019/12/golang-vcr/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -16,7 +16,7 @@ draft = false
 
 # Go3 Advent Calendar 2019
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
+<img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
 
 本記事は [Go3 Advent Calendar 2019](https://qiita.com/advent-calendar/2019/go3) の 8日目 の記事です。
 
@@ -146,7 +146,7 @@ $ go run main.go
 
 今回のサンプルは簡単なコードですがテストを書くことにします。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/golang-vcr/test-lion.jpeg" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/12/golang-vcr/test-lion.jpeg" width="600">
 
 ・<br>
 ・<br>
@@ -491,7 +491,7 @@ interactions:
     method: GET
   response:
     body: "{\"description\":\"東京でエンジニアしてます／CLI名刺 $ npx yyh-gl／メインは個人ブログです\U0001F4DD\",\"facebook_id\":\"\",\"followees_count\":19,\"followers_count\":18,\"github_login_name\":\"yyh-gl\",\"id\":\"yyh-gl\",\"items_count\":11,\"linkedin_id\":\"\",\"location\":\"Tokyo,
-      Japan\",\"name\":\"\",\"organization\":\"\",\"permanent_id\":119088,\"profile_image_url\":\"https://qiita-image-store.s3.amazonaws.com/0/119088/profile-images/1535528464\",\"team_only\":false,\"twitter_screen_name\":null,\"website_url\":\"https://yyh-gl.github.io/tech-blog/\"}"
+      Japan\",\"name\":\"\",\"organization\":\"\",\"permanent_id\":119088,\"profile_image_url\":\"https://qiita-image-store.s3.amazonaws.com/0/119088/profile-images/1535528464\",\"team_only\":false,\"twitter_screen_name\":null,\"website_url\":\"https://tech.yyh-gl.dev/\"}"
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate

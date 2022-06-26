@@ -16,7 +16,7 @@ server: ## Hugoサーバを起動
 	  -v `pwd`:/go/src/github.com/yyh-gl/tech-blog \
 	  -p 1313:1313 \
 	  tech-blog \
-	  server -D --bind $(shell ipconfig getifaddr en0) --baseURL=http://$(shell ipconfig getifaddr en0)/tech-blog --buildFuture
+	  server -D --bind $(shell ipconfig getifaddr en0) --baseURL=http://$(shell ipconfig getifaddr en0) --buildFuture
 
 .PHONY: login
 login: ## Hugoサーバ用コンテナにログイン

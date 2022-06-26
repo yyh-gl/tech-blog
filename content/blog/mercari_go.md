@@ -8,7 +8,7 @@ title = "【mercari.go #8】メルカリのGoに関する勉強会メモ"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/mercari_go/featured.webp"
+  src = "img/2019/06/mercari_go/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -22,7 +22,7 @@ draft = false
    懇親会のときに登壇者を囲んでもいいけど、自分たち以外にもう一人入ってこれるスペースを常に開けておこうねっていうルール。とてもよい！
 - 雰囲気
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/mercari_go/goods.JPG" height="300">
+<img src="https://tech.yyh-gl.dev/img/2019/06/mercari_go/goods.JPG" height="300">
 
 ビール以外にもおいしそうなご飯もありましたが、写真を撮るの忘れ…
    

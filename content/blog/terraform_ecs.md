@@ -8,7 +8,7 @@ title = "【Terraform + ECS + RDS】Terraform で ECS環境構築してみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/terraform_ecs/featured.webp"
+  src = "img/2019/06/terraform_ecs/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -32,7 +32,7 @@ AWSやGCP, Azure などの他に[様々なクラウドプラットフォーム](
 
 Terraform で AWS 上に下記のような環境を自動構築します。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/architecture.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/architecture.png" width="600">
 
 <br>
 
@@ -971,7 +971,7 @@ terraform コマンドが入ってない人は brew やらなんやらでイン�
 実行して（かなり時間がかかりますが）下記のように出力されたら成功です！
 
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/terraform_apply_success.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/terraform_apply_success.png" width="600">
 
 <br>
 
@@ -981,7 +981,7 @@ terraform コマンドが入ってない人は brew やらなんやらでイン�
 
 こちらもかなり時間がかかりますが、下記のようにリソースが削除されると思います。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/terraform_ecs/terraform_destroy_success.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/terraform_destroy_success.png" width="600">
 
 
 ## tfファイルの実行順

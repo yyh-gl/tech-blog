@@ -10,7 +10,7 @@ description = "Go 5 Advent Calendar 2020 8日目"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/12/uncredible-codes-from-go-spec/featured.webp"
+  src = "img/2020/12/uncredible-codes-from-go-spec/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

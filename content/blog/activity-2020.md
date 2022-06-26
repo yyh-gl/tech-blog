@@ -10,7 +10,7 @@ description = "今さらではありますが"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2021/02/activity-2020/featured.webp"
+  src = "img/2021/02/activity-2020/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

@@ -8,7 +8,7 @@ title = "【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/id_token_and_access_token/featured.webp"
+  src = "img/2019/06/id_token_and_access_token/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

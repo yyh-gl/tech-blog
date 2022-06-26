@@ -8,7 +8,7 @@ title = "【徒然なるままに】サービス発案における主観と客�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/my_thinking_about_planning/featured.webp"
+  src = "img/2019/06/my_thinking_about_planning/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -37,7 +37,7 @@ draft = false
 
 # そのとき僕たちは
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/my_thinking_about_planning/sad.png" width="400">
+<img src="https://tech.yyh-gl.dev/img/2019/06/my_thinking_about_planning/sad.png" width="400">
 
 正直、意気消沈しました。
 
@@ -80,7 +80,7 @@ draft = false
 どういった解決方法を取ろうとしているのか、熱量を持って伝えると、<br>
 相手方が理解して、共感・納得してくれることがありました。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/my_thinking_about_planning/talking.png" width="400">
+<img src="https://tech.yyh-gl.dev/img/2019/06/my_thinking_about_planning/talking.png" width="400">
 
 
 # つまり…

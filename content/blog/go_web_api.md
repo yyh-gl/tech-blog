@@ -8,7 +8,7 @@ title = "【Go + レイヤードアーキテクチャー】DDDを意識してWeb
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/go_web_api/featured.webp"
+  src = "img/2019/06/go_web_api/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -84,7 +84,7 @@ DDD の文脈だと アプリケーション層 と呼ばれますが、<br>
 
 依存関係の図は下記のとおりです。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/architecture.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/architecture.png" width="600">
 
 矢印は依存の方向を示しています。<br>
 例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。
@@ -100,7 +100,7 @@ DDD の文脈だと アプリケーション層 と呼ばれますが、<br>
 オニオンアーキテクチャーやクリーンアーキテクチャのように、<br>
 依存が中心方向に <u>のみ</u> 向いていることがわかります。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction1.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/dependency_direction1.png" width="600">
 
 <u>すべての依存が中心に向かっているこの状態が理想です</u>。
 
@@ -121,7 +121,7 @@ DDD の文脈だと アプリケーション層 と呼ばれますが、<br>
 
 ここで、ユーザから APIリクエスト があった場合を考えてみます。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction2.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/dependency_direction2.png" width="600">
 
 
 ユーザからのリクエストは Handler で受け取られ、 UseCase を使って処理が行われます。<br>
@@ -159,7 +159,7 @@ Infra が interface の実装を行っているので、ちゃんとDBアクセ�
 
 ここで、 Infra は interface を実装しているので、依存が interface 、すなわち Domain に向いています。 
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_direction3.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/dependency_direction3.png" width="600">
 
 依存性が逆転し、すべての依存関係が中心に向かうようになりましたね。
 
@@ -282,7 +282,7 @@ type BookRepository interface {
 今定義した Domain層 は他の層のコードを一切利用していません。<br>
 つまり、<u>下図の赤枠の中で依存関係が完結しています</u>。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_domain.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/dependency_domain.png" width="600">
 
 
 ## Infra 層
@@ -346,7 +346,7 @@ Domain層と Infra層 でパッケージ名が被ってしまうため、やむ�
 
 先ほどと同様に 依存関係 を確認します。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_infra.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/dependency_infra.png" width="600">
 
 Infra層 は Domain層 で作った `/domain/repository/book.go` のインターフェース（BookRepository）を実装しています。<br>
 
@@ -427,7 +427,7 @@ func (bu bookUseCase) GetAll(ctx context.Context) (books []*model.Book, err erro
 
 UseCase層 の依存関係も見てみましょう。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_usecase.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/dependency_usecase.png" width="600">
 
 UseCase層 は `/domain/repository` を呼び出しています。<br>
 したがって、 UseCase層 は Domain層 に依存しています。
@@ -542,7 +542,7 @@ func (bh bookHandler) Index(w http.ResponseWriter, r *http.Request, pr httproute
 
 依存関係は以下のとおりです。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/dependency_handler.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/dependency_handler.png" width="600">
 
 57行目で UseCase を使用するので、UseCase層に依存しています。
 

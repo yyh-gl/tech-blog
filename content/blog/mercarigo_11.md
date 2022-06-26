@@ -8,7 +8,7 @@ title = "【mercari.go #11】エラーハンドリング ＋ singleflight ＋ IS
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/10/mercarigo_11/featured.webp"
+  src = "img/2019/10/mercarigo_11/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

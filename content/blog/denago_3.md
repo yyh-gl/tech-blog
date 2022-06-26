@@ -8,7 +8,7 @@ title = "【DeNA.go #3】Go活用事例やパフォーマンスチューニン�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/11/denago_3/featured.webp"
+  src = "img/2019/11/denago_3/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -21,17 +21,17 @@ draft = false
 初参加です！<br>
 ビールとお弁当もらいました。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/dinner.JPG" width="450">
+<img src="https://tech.yyh-gl.dev/img/2019/11/denago_3/dinner.JPG" width="450">
 
 そしてなんとなんと <br>
 k8sの技術書をいただいちゃいました！！！<br>
 もちろんステッカーもありましたよ👍
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/k8s.JPG" width="450">
+<img src="https://tech.yyh-gl.dev/img/2019/11/denago_3/k8s.JPG" width="450">
 
 
 # 1. [Go活用事例]安全運転支援サービスを支える運用サイト
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/11/denago_3/session1.JPG" width="450">
+<img src="https://tech.yyh-gl.dev/img/2019/11/denago_3/session1.JPG" width="450">
 
 登壇者：@suhirotaka さん <br>
 オートモーティブ事業本部スマートドライビング部システム開発グループ

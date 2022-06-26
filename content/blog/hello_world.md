@@ -8,7 +8,7 @@ title = "Hello Wolrd"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/05/hello_world/featured.webp"
+  src = "img/2019/05/hello_world/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

@@ -8,7 +8,7 @@ title = "スクラムについて学んだ話"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/scrum_entry/featured.webp"
+  src = "img/2019/06/scrum_entry/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -132,7 +132,7 @@ draft = false
 
 ## 関係図
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/scrum_entry/relationship.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/scrum_entry/relationship.png" width="600">
 
 
 <br>

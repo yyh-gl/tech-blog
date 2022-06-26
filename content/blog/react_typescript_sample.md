@@ -8,7 +8,7 @@ title = "【React+TypeScript】TypeScript入門"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/12/react_typescript_sample/featured.webp"
+  src = "img/2019/12/react_typescript_sample/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -16,7 +16,7 @@ draft = false
 
 # TypeScript Advent Calendar 2019
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
+<img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
 
 本記事は [TypeScript Advent Calendar 2019](https://qiita.com/advent-calendar/2019/typescript) の 2 日目の記事です。
 
@@ -36,7 +36,7 @@ React の実プロジェクトにおいて、<br>
 
 ## TypeScript とは
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/ts.png" width="200">
+<img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/ts.png" width="200">
 
 [TypeScript](https://www.typescriptlang.org/index.html) は Microsoft 社によって開発され、 
 現在は [OSS](https://github.com/microsoft/TypeScript) として開発が進められています。
@@ -460,7 +460,7 @@ export default Users;
 User インターフェースを定義しているため、<br>
 IDE において、どういったキーが存在するかが補完候補として出てきます！ ↓
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/12/react_typescript_sample/complement.png" width="700">
+<img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/complement.png" width="700">
 
 型がちゃんと定義されているので、<br>
 取得したデータに対して、どういった処理ができる（どのメソッドを適用できる）かが明確になり、<br>

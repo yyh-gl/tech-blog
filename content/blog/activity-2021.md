@@ -10,7 +10,7 @@ description = "今年もいろいろと勉強会参加したなぁ"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2022/01/activity-2021/featured.webp"
+  src = "img/2022/01/activity-2021/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -19,7 +19,7 @@ draft = false
 
 # 今年も…
 
-[昨年に引き続き](https://yyh-gl.github.io/tech-blog/blog/activity-2020/)、
+[昨年に引き続き](https://tech.yyh-gl.dev/blog/activity-2020/)、
 今年も[LAPRAS](https://lapras.com/)で1年間のアクティビティを出してみました。
 
 コロナ禍真っ只中でも、オンラインでたくさんの勉強会に参加できました。

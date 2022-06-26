@@ -8,7 +8,7 @@ title = "【Go】errorの同値性と表示について調べた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/03/error_questions/featured.webp"
+  src = "img/2020/03/error_questions/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

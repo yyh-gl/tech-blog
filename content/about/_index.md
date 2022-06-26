@@ -237,7 +237,7 @@ APIサーバおよびWebフロントの開発に参加
 
 # アクティビティ
 
-- [2020年](https://yyh-gl.github.io/tech-blog/blog/activity-2020)
+- [2020年](https://tech.yyh-gl.dev/blog/activity-2020)
 
 
 # 余談：学生時代の研究

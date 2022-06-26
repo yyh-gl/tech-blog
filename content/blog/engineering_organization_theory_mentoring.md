@@ -8,7 +8,7 @@ title =  "【エンジニアリング組織論への招待】メンタリング�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/05/engineering_organization_theory_mentoring/featured.webp"
+  src = "img/2019/05/engineering_organization_theory_mentoring/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -460,7 +460,7 @@ draft = false
 
 
 # 心理的安全性と責任
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/engineering_organization_theory_mentoring/psychological_safety_and_responsibility.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/05/engineering_organization_theory_mentoring/psychological_safety_and_responsibility.png" width="600">
 <br>
 
 メンタリングにおいて重要なのは <u>ラーニングゾーン</u> である。
@@ -578,7 +578,7 @@ Youメッセージは相手に誤解を生みやすいメッセージである�
 
 
 # ジョハリの窓
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/engineering_organization_theory_mentoring/johari_window.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/05/engineering_organization_theory_mentoring/johari_window.png" width="600">
 
 <br>
 <br>
@@ -639,7 +639,7 @@ Youメッセージは相手に誤解を生みやすいメッセージである�
 
 
 # 能力と習慣をコントロールする
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/05/engineering_organization_theory_mentoring/growth_cycle.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/05/engineering_organization_theory_mentoring/growth_cycle.png" width="600">
 
 <br>
 <br>

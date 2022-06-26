@@ -10,7 +10,7 @@ title = "【Go】errorsパッケージの中身覗いてみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/03/errors_package/featured.webp"
+  src = "img/2020/03/errors_package/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

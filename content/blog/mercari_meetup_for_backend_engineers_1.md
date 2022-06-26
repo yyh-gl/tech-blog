@@ -8,7 +8,7 @@ title = "【Backend Engineer’s meetup】メルカリ社主催 バックエン�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/08/mercari_meetup_for_backend_engineers_1/featured.webp"
+  src = "img/2019/08/mercari_meetup_for_backend_engineers_1/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -22,7 +22,7 @@ draft = false
 
 メルカリさん恒例のオリジナルドリンクもらいました
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/08/mercari_meetup_for_backend_engineers_1/original_drink.jpeg" height="400">
+<img src="https://tech.yyh-gl.dev/img/2019/08/mercari_meetup_for_backend_engineers_1/original_drink.jpeg" height="400">
 
 
 # 1. マイクロサービスの内部通信における認証について

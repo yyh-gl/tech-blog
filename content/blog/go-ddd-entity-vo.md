@@ -8,7 +8,7 @@ title = "【Go+DDD】エンティティと値オブジェクトの実装方法�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/05/go-ddd-entity-vo/featured.webp"
+  src = "img/2020/05/go-ddd-entity-vo/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

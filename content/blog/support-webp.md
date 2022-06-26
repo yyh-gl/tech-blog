@@ -8,7 +8,7 @@ description = "Safariはv14からじゃないと表示できない😇"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/11/support-webp/featured.webp"
+  src = "img/2020/11/support-webp/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

@@ -8,7 +8,7 @@ title = "【OGP】リンク先のサムネイル画像を表示できるよう�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/ogp/featured.webp"
+  src = "img/2019/06/ogp/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -16,7 +16,7 @@ draft = false
 
 # Twitter のリンクにサムネイル画像が表示されない
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/ogp/before.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/ogp/before.png" width="600">
 
 このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
 
@@ -50,9 +50,9 @@ OGP の設定項目には以下のものがあります。
 ```html
 <meta property="og:title" content="【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://yyh-gl.github.io/tech-blog/blog/go_web_api/">
+<meta property="og:url" content="https://tech.yyh-gl.dev/blog/go_web_api/">
 <meta property="og:description" content="hoge">
-<meta property="og:image" content="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/go_web_api/featured.png">
+<meta property="og:image" content="https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png">
 ```
 
 こんな感じですね。<br>
@@ -109,7 +109,7 @@ OGP が正しく設定できているかは 以下のサイトを使って確か
 
 僕は Twitter にしか共有する気がなかったので、 Card validator を使用してデバッグしました。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/ogp/debug.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/ogp/debug.png" width="600">
 
 こんな感じで確かめることができます。
  
@@ -117,7 +117,7 @@ OGP が正しく設定できているかは 以下のサイトを使って確か
 
 最後に、Twitter 上でどのように表示されているか確認します。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/ogp/after.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/ogp/after.png" width="600">
 
 少しサイズがずれちゃっていますが、ちゃんと表示できていますね👍
 

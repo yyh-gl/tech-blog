@@ -8,7 +8,7 @@ title = "【Web API（Rails） + Vue.js】ブログのいいねボタン自作�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/good_api/featured.webp"
+  src = "img/2019/06/good_api/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -22,7 +22,7 @@ draft = false
 
 # 構成
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/good_api/architecture.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2019/06/good_api/architecture.png" width="600">
 
 <br>
 

@@ -8,7 +8,7 @@ title = "【merpay Tech Talk】マイクロサービスの冪等性に関する�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/12/mercari-tech-talk-idempotency/featured.webp"
+  src = "img/2019/12/mercari-tech-talk-idempotency/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

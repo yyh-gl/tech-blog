@@ -8,7 +8,7 @@ title = "【Go同miniConf】Goの勉強会に参加してきた話"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/08/godo_miniconf/featured.webp"
+  src = "img/2019/08/godo_miniconf/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

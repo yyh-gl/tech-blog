@@ -8,7 +8,7 @@ title = "【エリック・エヴァンスのドメイン駆動設計】DDD入�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2019/06/evans_ddd_1/featured.webp"
+  src = "img/2019/06/evans_ddd_1/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++

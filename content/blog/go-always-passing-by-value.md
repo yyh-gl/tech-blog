@@ -8,7 +8,7 @@ title = "Goの参照渡しについて調べてみた"
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2020/06/go-always-passing-by-value/featured.webp"
+  src = "img/2020/06/go-always-passing-by-value/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -60,9 +60,9 @@ draft = false
 同じ色の箱はアドレスが同じだと考えてください。<br>
 （図が下手なところはほっといてあげてください🙇‍♂️）
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/06/go-always-passing-by-value/passing-by-value.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2020/06/go-always-passing-by-value/passing-by-value.png" width="600">
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2020/06/go-always-passing-by-value/passing-by-reference.png" width="600">
+<img src="https://tech.yyh-gl.dev/img/2020/06/go-always-passing-by-value/passing-by-reference.png" width="600">
 
 大きな差がありますね。
 

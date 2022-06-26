@@ -10,7 +10,7 @@ description = "知識として知っているだけで実際に使ったこと�
 type = "post"
 draft = false
 [[images]]
-  src = "img/tech-blog/2022/03/docker-compose-override/featured.webp"
+  src = "img/2022/03/docker-compose-override/featured.webp"
   alt = "featured"
   stretch = "stretchH"
 +++
@@ -52,7 +52,7 @@ services:
 `docker compose -f docker-compose.yml up`でコンテナを起動した後に、
 ブラウザを開いて`http://localhost/`にアクセスしてみます。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/03/docker-compose-override/result1.webp" width="600">
+<img src="https://tech.yyh-gl.dev/img/2022/03/docker-compose-override/result1.webp" width="600">
 
 Webサイトにアクセスできませんでした。
 
@@ -77,7 +77,7 @@ services:
 
 では、`http://localhost/`にアクセスしてみます。
 
-<img src="https://yyh-gl.github.io/tech-blog/img/tech-blog/2022/03/docker-compose-override/result2.webp" width="600">
+<img src="https://tech.yyh-gl.dev/img/2022/03/docker-compose-override/result2.webp" width="600">
 
 今度は無事にアクセスできました。
 
