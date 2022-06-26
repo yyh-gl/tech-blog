@@ -11,7 +11,7 @@ $ echo $GOPATH
 
 $ go env GOPATH
 /Users/yyh-gl/go/1.12.5
-</code></pre><p>GOPATH が書き換わらない。</p><h1 id=解決方法>解決方法</h1><img src=https://yyh-gl.github.io/tech-blog/img/tech-blog/2019/06/gopath/help.png width=600><p>社内Slack で適当につぶやいたら、同期が助けてくれた（神）</p><p>画像にある Qiita のリンクが <a href=https://qiita.com/gimKondo/items/add08298e24ae400505e target=_blank rel="noopener noreferrer">こちら</a></p><p>ちなみに僕の環境の goenv は バージョン 1.12.5 だったので、2系に上げなくても発生する模様。</p><blockquote><p>（追記：19/06/14）またまた同期が教えてくれました。<br><a href=https://blog.ast.moe/blog/2019-03-26/ target=_blank rel="noopener noreferrer">こちらの記事</a>
+</code></pre><p>GOPATH が書き換わらない。</p><h1 id=解決方法>解決方法</h1><img src=https://tech.yyh-gl.dev/img/tech-blog/2019/06/gopath/help.png width=600><p>社内Slack で適当につぶやいたら、同期が助けてくれた（神）</p><p>画像にある Qiita のリンクが <a href=https://qiita.com/gimKondo/items/add08298e24ae400505e target=_blank rel="noopener noreferrer">こちら</a></p><p>ちなみに僕の環境の goenv は バージョン 1.12.5 だったので、2系に上げなくても発生する模様。</p><blockquote><p>（追記：19/06/14）またまた同期が教えてくれました。<br><a href=https://blog.ast.moe/blog/2019-03-26/ target=_blank rel="noopener noreferrer">こちらの記事</a>
 によると、
 goenv による管理は バージョン 1.12 からとのこと。</p></blockquote><br><p>結論：<u>goenv が GOPATH を管理しようとしてた</u></p><br><p>goenv の管理から外してやるには <code>GOENV_DISABLE_GOPATH=1</code> にしてやればOK。</p><p>僕は <code>zshrc</code> に以下のとおり追記しました。</p><p><code>export GOENV_DISABLE_GOPATH=1</code></p><p>（zshrc の読み込み直しを忘れずに）</p><h1 id=結果>結果</h1><pre class=line-numbers><code>$ go env GOPATH
 /Users/yyh-gl/workspaces/Go
