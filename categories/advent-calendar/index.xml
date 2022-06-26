@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Advent Calendar on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/categories/advent-calendar/</link><description>Recent content in Advent Calendar on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 19 Dec 2021 09:00:00 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/categories/advent-calendar/index.xml" rel="self" type="application/rss+xml"/><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://yyh-gl.github.io/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Advent Calendar on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/advent-calendar/</link><description>Recent content in Advent Calendar on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 19 Dec 2021 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/advent-calendar/index.xml" rel="self" type="application/rss+xml"/><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://tech.yyh-gl.dev/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
 はじめに Goには標準で便利なコマンドがたくさんあります。
 有名どころで言えば、
 generate fmt vet などがあります。
@@ -9,7 +9,7 @@ buildは特に難しいことをしなければ、とてもシンプルに使え
 今回はそんなbuildについて深ぼっていこうと思います。
 buildコマンドとは まずはbuildとはどういったコマンドなのか見ていきましょう。
 helpを使って調べてみます。
-$ go help build Build compiles the packages named by the import paths, along with their dependencies, but it does not install the results. &amp;lt;省略&amp;gt; When compiling packages, build ignores files that end in '_test.go'. &amp;lt;省略&amp;gt; When compiling multiple packages or a single non-main package, build compiles the packages but discards the resulting object, serving only as a check that the packages can be built.</description></item><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://yyh-gl.github.io/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 8日目 』の記事です。
+$ go help build Build compiles the packages named by the import paths, along with their dependencies, but it does not install the results. &amp;lt;省略&amp;gt; When compiling packages, build ignores files that end in '_test.go'. &amp;lt;省略&amp;gt; When compiling multiple packages or a single non-main package, build compiles the packages but discards the resulting object, serving only as a check that the packages can be built.</description></item><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 8日目 』の記事です。
 Go Language Specification輪読会 現在、Go Language Specification輪読会 という、 Goの言語仕様 を読んでいく会に参加しています。
 今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
 （振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
@@ -23,7 +23,7 @@ A general comment containing no newlines acts like a space.
 改行を含まないgeneral commentはスペースのように作用する。
 （general commentとは/**/で囲われたコメントのことを指します）
 よって、先程のコードは以下と同じということです。
-package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://yyh-gl.github.io/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
+package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
 私は現在、DMM.com の CDS というチームに所属し、
 主にユーザレビュー基盤 のバックエンドを開発しています。
 今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、
@@ -42,7 +42,7 @@ GolangCI-Lint 勉強会でもよく耳にするようになってきている＋
 ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
 GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
 開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
-したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://yyh-gl.github.io/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
+したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://tech.yyh-gl.dev/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
 ではでは、早速本題に入っていきます。
 モック使ってますか？ みなさんモックコードは書いていますか？
 テストコードを書いているなら、ほぼ必ず登場するあのモックです。
@@ -63,7 +63,7 @@ rpcreplay は google-cloud-go に包含されるパッケージであり、安�
 GoDocはこちら です。
 今回は REST API を使って説明していくので、go-vcr を使用します。
 go-vcr は、vcr-go と govcr よりスター数が多いです。
-Ruby 製の vcr というライブラリがもとになっているようです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://yyh-gl.github.io/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
+Ruby 製の vcr というライブラリがもとになっているようです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://tech.yyh-gl.dev/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
 内容としては、TypeScript 初級者のための TypeScript 入門です。
 基礎的な内容から入り、
 最終的には、企業や個人の技術ブログを参考に、

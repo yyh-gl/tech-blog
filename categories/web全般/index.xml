@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web全般 on yyh-gl's Tech Blog</title><link>https://yyh-gl.github.io/categories/web%E5%85%A8%E8%88%AC/</link><description>Recent content in Web全般 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 26 Nov 2020 13:50:31 +0900</lastBuildDate><atom:link href="https://yyh-gl.github.io/categories/web%E5%85%A8%E8%88%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://yyh-gl.github.io/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://yyh-gl.github.io/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web全般 on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/web%E5%85%A8%E8%88%AC/</link><description>Recent content in Web全般 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 26 Nov 2020 13:50:31 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/web%E5%85%A8%E8%88%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://tech.yyh-gl.dev/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
 まずはサムネ画像をWebPに変えてみました。
 WebPとは、Googleが開発しているオープンな静止画像フォーマットで、
 トラフィック量軽減と表示速度短縮を目的しています。 （wikiから拝借 ）
@@ -14,7 +14,7 @@ WebPを採用した結果 以下のツイートのとおりです。
 リリースノート Safariのwebp対応ってバージョン14からだったんだ😇
 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
 &amp;mdash; hon-D (@yyh_gl) November 26, 2020 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
-嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://yyh-gl.github.io/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/ogp/</guid><description>Twitter のリンクにサムネイル画像が表示されない このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
+嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://tech.yyh-gl.dev/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ogp/</guid><description>Twitter のリンクにサムネイル画像が表示されない このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
 はてなブログをやっていたときは、何もしなくてもサムネイルが表示されていました。
 トップ画像をよしなにサムネイルにしてくれるのかなぁっと思っていましたが違ったんですね…。
 どうやったらサムネイル画像が表示されるか Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、
@@ -26,7 +26,7 @@ og:title og:type og:url og:description og:image これらを HTML に meta タ�
 &amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; こんな感じですね。
 これを head タグ内に埋め込みます。
 ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。
-したがって、今回は og:image を追加で設定しました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://yyh-gl.github.io/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://yyh-gl.github.io/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
+したがって、今回は og:image を追加で設定しました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
 正確には対応していない言語が（めちゃくちゃ）ありました。
 このとおり、 Goにも対応していませんでした…。
 もともと、このブログのテーマは Hugo Themes （Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
