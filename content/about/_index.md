@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2022年7月1日】
+【最終更新日：2022年7月13日】
 
 
 # いま
@@ -53,7 +53,7 @@ DMM.com で働くエンジニアです。
 ## フロントエンド
 
 - React，Next.js
-- Vue，Nuxt
+- Vue.js，Nuxt.js
 - HTML + CSS + JavaScript
 
 
@@ -191,7 +191,7 @@ APIサーバおよびWebフロントの開発を担当しているWebチーム�
 ## ・AWSエンジニア採用サービスの開発：2021年3月〜現在
 
 - ロール：エンジニア（バックエンド、フロントエンド）
-- 言語：Go，JavaScript（Nuxt，TypeScript）
+- 言語：Go，JavaScript（Nuxt.js，TypeScript）
 
 APIサーバおよびWebフロントの開発に参加
 
