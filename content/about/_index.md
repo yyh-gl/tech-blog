@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2022年8月3日】
+【最終更新日：2022年9月10日】
 
 
 # いま
@@ -223,6 +223,10 @@ APIサーバおよびWebフロントの開発に参加
 
 - [DMM.go](https://dmm.connpass.com/event/157222/)
 - [入門Go言語仕様輪読会](https://gospecreading.connpass.com/event/202388/)
+
+# 書籍（同人誌含む）
+
+- [DMM PointClub Tech Book #1](https://techbookfest.org/product/8ckqypHhSCaakQ1nM1E4JS)
 
 
 # 登壇歴
