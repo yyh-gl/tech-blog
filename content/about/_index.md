@@ -9,24 +9,14 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2022年9月10日】
+【最終更新日：2023年1月15日】
 
 
 # いま
 
-DMM.com で働くエンジニアです。
+LINE Digital Frontierで働くエンジニアです。
 
-2021年からはチームリーダーとして、開発だけでなく、タスク管理やヒューマンマネジメントなどもやっています。
-
-直近の開発業務内容は以下のとおりです。
-
-- Go を使ったバックエンド開発
-- React を使ったフロントエンド開発
-- AWS（CloudFormation） を使ったインフラ構築
-
-バックエンド開発を主軸に置きつつも、分野問わずにいろいろと触っています。
-
-開発以外にも、施策を考えることが好きで、よくデータとにらめっこしています。
+2023年1月15日に入ったばかりなので、もう少し働いたら何をやっているか書きます。
 
 
 # 技術スタック
@@ -40,6 +30,8 @@ DMM.com で働くエンジニアです。
   - Echo
   - Goa
   - mux
+- Kotlin
+  - Spring Boot
 - Java
   - Spring Boot
 - PHP
@@ -99,21 +91,65 @@ DDDについては、戦略および戦術の両方に興味があり、日々�
 コアドメイン難しい。
 
 
-# OSS
-
-細かなコントリビュートばかりですが🙋‍♂️
-
-- [goadesign/goa.design](https://github.com/goadesign/goa.design/graphs/contributors)
-- [oxequa/realize](https://github.com/oxequa/realize/graphs/contributors)
-- [Ladicle/tcardgen](https://github.com/Ladicle/tcardgen/graphs/contributors)
-- [pacollins/hugo-future-imperfect-slim](https://github.com/pacollins/hugo-future-imperfect-slim/graphs/contributors)
-- [ent/ent](https://github.com/ent/ent)（[ドキュメントの日本語訳](https://crowdin.com/project/ent/ja#)）
-  <details><summary><b>詳細</b></summary><div>
-    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">A big shoutout to the awesome people who are helping us translate ent documentation to Chinese and Japanese. Thanks a lot for your contributions! <a href="https://twitter.com/mattn_jp?ref_src=twsrc%5Etfw">@mattn_jp</a> <a href="https://twitter.com/uta_mory?ref_src=twsrc%5Etfw">@uta_mory</a> <a href="https://twitter.com/mengyx1?ref_src=twsrc%5Etfw">@mengyx1</a> <a href="https://twitter.com/re_yuzuy?ref_src=twsrc%5Etfw">@re_yuzuy</a> <a href="https://twitter.com/yyh_gl?ref_src=twsrc%5Etfw">@yyh_gl</a> <a href="https://twitter.com/CreatorQsF?ref_src=twsrc%5Etfw">@CreatorQsF</a> <a href="https://t.co/rxPWLXzMG9">pic.twitter.com/rxPWLXzMG9</a></p>&mdash; ent (@entgo_io) <a href="https://twitter.com/entgo_io/status/1379443233835606020?ref_src=twsrc%5Etfw">April 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </details>
-
-
 # 経歴（参加プロジェクト）
+
+<details><summary><b>2023年〜（LINE Digital Frontier）</b></summary><div>
+
+LINE Digital Frontierに入社しました。
+
+## ・LINEマンガの開発/運用：2023年1月〜現在
+
+- ロール：
+  - バックエンドエンジニア
+- 言語：Kotlin（Spring Boot）
+- インフラ：社内インフラ（クラウド）
+
+もう少し経ったら追記します。
+
+</div></details>
+
+<details><summary><b>2019年〜（DMM.com）</b></summary><div>
+
+DMM.comに入社しました。
+
+
+## ・レビュー基盤のリプレイス/運用：2019年7月〜2021年2月
+
+- ロール：エンジニア（バックエンド，フロントエンド，インフラ）
+- 言語：Go（Echo），JavaScript（React）
+- インフラ：AWS
+- IaC：CloudFormation
+
+DMMのサービス全般で使用される商品レビュー基盤システム（PHP）のリプレイスおよび運用をしていました。
+
+## ・通知配信基盤の新規開発/運用：2020年11月〜2021年3月
+
+- ロール：エンジニア（バックエンド、フロントエンド、インフラ）
+- 言語：Go（Echo），JavaScript（React）
+- インフラ：AWS
+- IaC：CloudFormation
+
+約3500万人いるDMM会員に向けて、DMMに関する様々なお知らせを配信する基盤システムの新規開発および運用。
+
+## ・DMMポイントクラブの新規開発/運用：2020年1月〜2022年12月
+
+- ロール：
+  - Webチームのチームリーダー兼エンジニア（プレイングマネージャー）
+- 言語：Go（Goa），JavaScript（React，TypeScript）
+- インフラ：AWS，GCP
+- IaC：CloudFormation
+
+DMMポイントを管理・運用するためのサービスであるDMMポイントクラブの新規開発および運用をしています。
+
+APIサーバおよびWebフロントの開発を担当しているWebチームにおいてチームリーダー兼エンジニアとして、
+プロジェクト管理およびヒューマンマネジメントをしながら、開発業務に従事しています。
+
+本プロジェクトでは各エンジニアが開発だけでなく、施策検討やデザインといった業務にも積極的に参加しています。<br>
+僕も開発だけでなく、施策検討→実装→データ計測→学習→次の施策検討というループを回しています。
+
+上記のようなチーム環境もあり、本プロジェクトでは事業を成長させるために技術を活用する力が大きく成長したと考えています。
+
+</div></details>
 
 <details><summary><b>〜2018年（学生時代）</b></summary><div>
 
@@ -136,51 +172,6 @@ DDDについては、戦略および戦術の両方に興味があり、日々�
 
 - ロール：エンジニア（バックエンド）
 - 技術：Java（SpringBoot）
-
-</div></details>
-
-<br>
-
-<details><summary><b>2019年〜（DMM.com）</b></summary><div>
-
-DMM.comに入社しました。
-
-
-## ・レビュー基盤のリプレイス/運用：2019年7月〜2021年2月
-
-- ロール：エンジニア（バックエンド，フロントエンド，インフラ）
-- 言語：Go（Echo），JavaScript（React）
-- インフラ：AWS
-- IaC：CloudFormation
-
-DMMのサービス全般で使用される商品レビュー基盤システム（PHP）のリプレイスおよび運用をしていました。
-
-## ・DMMポイントクラブの新規開発/運用：2020年1月〜現在
-
-- ロール：
-  - Webチームのチームリーダ兼エンジニア（プレイングマネージャ）
-- 言語：Go（Goa），JavaScript（React，TypeScript）
-- インフラ：AWS，GCP
-- IaC：CloudFormation
-
-DMMポイントを管理・運用するためのサービスであるDMMポイントクラブの新規開発および運用をしています。
-
-APIサーバおよびWebフロントの開発を担当しているWebチームにおいてチームリーダ兼エンジニアとして、
-プロジェクト管理およびヒューマンマネジメントをしながら、開発業務に従事しています。
-
-本プロジェクトでは各エンジニアが開発だけでなく、施策検討やデザインといった業務にも積極的に参加しています。<br>
-僕も開発だけでなく、施策検討→実装→データ計測→学習→次の施策検討というループを回しています。
-
-上記のようなチーム環境もあり、本プロジェクトでは事業を成長させるために技術を活用する力が大きく成長したと考えています。
-
-## ・通知配信基盤の新規開発/運用：2020年11月〜2021年3月
-
-- ロール：エンジニア（バックエンド、フロントエンド、インフラ）
-- 言語：Go（Echo），JavaScript（React）
-- インフラ：AWS
-- IaC：CloudFormation
-
-約3500万人いるDMM会員に向けて、DMMに関する様々なお知らせを配信する基盤システムの新規開発および運用。
 
 </div></details>
 
@@ -221,7 +212,7 @@ APIサーバおよびWebフロントの開発に参加
 
 # コミュニティ運営
 
-- [DMM.go](https://dmm.connpass.com/event/157222/)
+- [DMM.go（引退済み）](https://dmm.connpass.com/event/157222/)
 - [入門Go言語仕様輪読会](https://gospecreading.connpass.com/event/202388/)
 
 # 書籍（同人誌含む）
@@ -231,26 +222,40 @@ APIサーバおよびWebフロントの開発に参加
 
 # 登壇歴
 
-- [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
-- [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
-- [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜『事業をグロースさせるためにエンジニアができること』](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
 - Assignability（入門Go言語仕様輪読会）
   - [go-talks](https://go-talks.appspot.com/github.com/yyh-gl/slide-decks/210318_gospecreading_assignability.slide)
   - [Speaker Deck](https://speakerdeck.com/yyh_gl/go-language-specification-assignability)
+- [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜『事業をグロースさせるためにエンジニアができること』](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
+- [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
+- [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
 
 
 # 記事
 
-- [『よんでますよ、本田さん #5』](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
-  - DMM社内でのGoに関する取り組みについて
 - [『ドキュメントとコードが乖離しないようにDMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた』](https://logmi.jp/tech/articles/323091)
   - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事
-  
+- [『よんでますよ、本田さん #5』](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
+  - DMM社内でのGoに関する取り組みについて
+
 
 # アクティビティ
 
-- [2020年](https://tech.yyh-gl.dev/blog/activity-2020)
 - [2021年](https://tech.yyh-gl.dev/blog/activity-2021)
+- [2020年](https://tech.yyh-gl.dev/blog/activity-2020)
+
+
+# OSS
+
+細かなコントリビュートばかりですが🙋‍♂️
+
+- [Ladicle/tcardgen](https://github.com/Ladicle/tcardgen/graphs/contributors)
+- [pacollins/hugo-future-imperfect-slim](https://github.com/pacollins/hugo-future-imperfect-slim/graphs/contributors)
+- [ent/ent](https://github.com/ent/ent)（[ドキュメントの日本語訳](https://crowdin.com/project/ent/ja#)）
+  <details><summary><b>詳細</b></summary><div>
+    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">A big shoutout to the awesome people who are helping us translate ent documentation to Chinese and Japanese. Thanks a lot for your contributions! <a href="https://twitter.com/mattn_jp?ref_src=twsrc%5Etfw">@mattn_jp</a> <a href="https://twitter.com/uta_mory?ref_src=twsrc%5Etfw">@uta_mory</a> <a href="https://twitter.com/mengyx1?ref_src=twsrc%5Etfw">@mengyx1</a> <a href="https://twitter.com/re_yuzuy?ref_src=twsrc%5Etfw">@re_yuzuy</a> <a href="https://twitter.com/yyh_gl?ref_src=twsrc%5Etfw">@yyh_gl</a> <a href="https://twitter.com/CreatorQsF?ref_src=twsrc%5Etfw">@CreatorQsF</a> <a href="https://t.co/rxPWLXzMG9">pic.twitter.com/rxPWLXzMG9</a></p>&mdash; ent (@entgo_io) <a href="https://twitter.com/entgo_io/status/1379443233835606020?ref_src=twsrc%5Etfw">April 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </details>
+- [goadesign/goa.design](https://github.com/goadesign/goa.design/graphs/contributors)
+- [oxequa/realize](https://github.com/oxequa/realize/graphs/contributors)
 
 
 # 余談：学生時代の研究
