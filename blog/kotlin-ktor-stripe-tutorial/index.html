@@ -1,0 +1,458 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><title>KtorとStripeでECサイトを作ってみた - yyh-gl's Tech Blog</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=apple-touch-icon sizes=180x180 href="/favicon/apple-touch-icon.png?v=1"><link rel=icon type=image/png sizes=32x32 href="/favicon/favicon-32x32.png?v=1"><link rel=icon type=image/png sizes=16x16 href="/favicon/favicon-16x16.png?v=1"><link rel=manifest href="/favicon/site.webmanifest?v=1"><link rel=mask-icon href="/favicon/safari-pinned-tab.svg?v=1" color=#ffffff><link rel="shortcut icon" href="/favicon/favicon.ico?v=1"><meta name=msapplication-config content="/favicon/browserconfig.xml?v=1"><meta name=msapplication-TileColor content="#ffffff"><meta name=theme-color content="#ffffff"><meta name=generator content="Hugo 0.108.0"><meta property="og:site_name" content="yyh-gl's Tech Blog"><meta property="og:title" content="KtorとStripeでECサイトを作ってみた"><meta property="og:description" content="Stripeすごい"><meta property="description" content="Stripeすごい"><meta property="og:url" content="https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/"><meta property="og:type" content="article"><meta property="og:image" content="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/featured.webp"><meta property="og:image:alt" content="featured"><link rel=stylesheet href=/css/bundle.min.eecc4098b778083eae3bb22681e71b028b3fcaeb1e2d9aa074ac7327cd7ecea0.css integrity="sha256-7sxAmLd4CD6uO7ImgecbAos/yuseLZqgdKxzJ81+zqA="><link rel=stylesheet href=/css/add-on.css><link rel=stylesheet href=/css/prism.css><link rel=alternate type=application/atom+xml title=Atom href=/index.xml><script src=https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js></script>
+<script src=/js/vue.min.js></script>
+<script src=/js/good-counter.js defer></script></head><body><header id=site-header><nav id=site-nav><h1 class=nav-title><a href=/ class=nav>Blog</a></h1><menu id=site-nav-menu class="flyout-menu menu"><a href=/ class="nav link"><i class='fa fa-home'></i> Home</a>
+<a href=/about/ class="nav link"><i class='far fa-id-card'></i> About</a>
+<a href=/blog/ class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+<a href=/categories/ class="nav link"><i class='fas fa-sitemap'></i> Categories</a></menu>
+<a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a></nav></header><div id=wrapper><section id=site-intro><a href=/><img src=https://tech.yyh-gl.dev/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a><header><h1>yyh-gl's Tech Blog</h1></header><main><p>技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。</p></main><footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//www.linkedin.com/in/yyh-gl target=_blank rel=noopener title=LinkedIn class="fab fa-linkedin"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul></footer></section><main id=site-main><article class=post><header><div class=title><h2><a href=/blog/kotlin-ktor-stripe-tutorial/>KtorとStripeでECサイトを作ってみた</a></h2><p>Stripeすごい</p></div><div class=meta><time datetime="2022-12-21 00:00:00 +0900 +0900">2022-12-21</time><p>yyh-gl</p><p>7 分で読めます</p></div></header><div id=socnet-share></div><div class=content><a href=/blog/kotlin-ktor-stripe-tutorial/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/featured.webp alt=featured></a><h1 id=kotlin-advent-calendar-2022>Kotlin Advent Calendar 2022</h1><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/qiita_advent_calendar_2022.webp width=700><p>本記事は<a href=https://qiita.com/advent-calendar/2022/kotlin target=_blank rel="noopener noreferrer">Kotlin Advent Calendar 2022</a>
+の21日目の記事です。</p><h1 id=概要>概要</h1><p>クリスマスといえばプレゼント。<br>ということでECサイトを作ってみます。</p><p>ECサイトと言いつつもあまり複雑なことはせずに、Stripeから取得した商品情報を表示する画面を作るところまでやります。<br>本画面を実装する過程で、APIを経由した情報のやりとり→受け取った情報を画面に表示するところまで触れます。<br>よって、本記事を読めばKotlinで外部API（主にStripe）を使ったシステムの実装イメージをざっくり掴めると思います。</p><br><p>ただただKotlinで作るだけではなくて、個人的にこれまで触ったことないフレームワークやサービスを使ってみたいと思っています。</p><blockquote><p>個人的にこれまで触ったことない</p></blockquote><p>あたかもKotlinは触ったことあるような言い方ですが、私はこれまでGo中心のエンジニア人生でした。<br>したがって、そもそもKotlin自体あまり触ったことがないです←<br>Kotlinのお作法を守れていないところもあると思いますが、こんな感じで作れるのかぁとイメージしてもらえると幸いです。</p><br><p>では、採用技術を紹介したら、さっそくECサイトを作っていこうと思います。<br></p><br><p>⚠️ 本記事内に記載するコードは<code>package</code>や<code>import</code>周りのコードを省略しています。<br>コード全体を見たい場合は以下のリポジトリにコードを置いているのでこちらを参照ください。<br><a href=https://github.com/yyh-gl/ktor-shop/ target=_blank rel="noopener noreferrer">https://github.com/yyh-gl/ktor-shop/</a></p><h1 id=採用技術>採用技術</h1><ul><li>Webフレームワーク：<a href=https://ktor.io/ target=_blank rel="noopener noreferrer">Ktor</a></li><li>テンプレートエンジン：<a href=https://freemarker.apache.org/ target=_blank rel="noopener noreferrer">FreeMarker</a></li><li>決済および商品管理：<a href=https://stripe.com/jp target=_blank rel="noopener noreferrer">Stripe</a></li><li>DI：<a href=https://insert-koin.io/ target=_blank rel="noopener noreferrer">Koin</a></li></ul><h1 id=hello-world>Hello World</h1><p>まずは「Hello World」していきます。</p><p>プロジェクトの作成は下記公式サイトに記載の手順を参考にしてください。</p><p><a href=https://ktor.io/docs/intellij-idea.html#create_ktor_project target=_blank rel="noopener noreferrer">https://ktor.io/docs/intellij-idea.html#create_ktor_project</a></p><br><p>インストールしたプラグインは以下のとおりです。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/dependency.webp width=700><p><br><br></p><p>コードがひととおりできあがったら下記コマンドを実行しサーバーを起動します。</p><p><code>$ ./gradlew run</code></p><p>サーバーが起動したら <code>http://localhost:8080/</code> にアクセスします。<br></p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/hello_world.webp width=500><p>「Hello World!」を表示できました。</p><h2 id=auto-reloadの有効化>Auto-reloadの有効化</h2><p>開発していく上ではAuto-reloadがあった方が便利なのでAuto-reloadを有効にしていきます。</p><p>Auto-reloadを有効化する手順は以下のとおりです。</p><ol><li>developmentモードを有効化</li><li>継続的なビルドを実行<br><code>$ ./gradlew -t build</code></li><li>サーバーを起動<br><code>$ ./gradlew run</code></li></ol><p>サーバー起動手順がHello Worldのときよりも2つ増えています。<br>詳しく見てみましょう。</p><p><a href=https://github.com/yyh-gl/ktor-shop/commit/76a363e79e91e8c7f5cb6d924f1aa2b7540d7328 target=_blank rel="noopener noreferrer">参考コミット</a></p><h3 id=1-developmentモードを有効化>1. developmentモードを有効化</h3><p>developmentモードを有効にする方法はいくつかあります。<br>今回は<code>EngineMain</code>を使った方法を紹介します。<br></p><p>生成されたコードでは<code>embeddedServer</code>を使ってサーバーを起動しているので<code>EngineMain</code>に変更します。<br>（<code>EngineMain</code>および<code>embeddedServer</code>の違いは<a href=https://ktor.io/docs/create-server.html#embedded target=_blank rel="noopener noreferrer">こちら</a>
+）</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/Application.kt
+
+fun main(args: Array&lt;String&gt;): Unit = EngineMain.main(args)
+
+fun Application.module() {
+    configureRouting()
+}
+</code></pre><p>続いて設定ファイルを追加します。<br><code>src/main/resources</code>配下に<code>application.conf</code>を設置します。</p><pre class=line-numbers><code class=language-conf>// ktor-shop/src/main/resources/application.conf
+
+ktor {
+    application {
+        modules = [ com.example.ApplicationKt.module ]
+    }
+
+    development = true
+    deployment {
+        port = 8080
+        watch = [ classes, resources ]
+    }
+}
+</code></pre><p><code>embeddedServer</code>に渡していた設定情報と同様にモジュールやポートなどの設定が記載されています。<br>特筆すべきは<code>development = true</code>および<code>watch = [ classes, resources ]</code>です。</p><p><code>development = true</code>でdevelopmentモードを有効化しています。<br>developmentモードが無効だとAuto-reloadは有効になりません。</p><p><code>watch = [ classes, resources ]</code>はAuto-reloadの監視対象を指定しています。<br>（<a href=https://ktor.io/docs/auto-reload.html#watch-paths target=_blank rel="noopener noreferrer">参考</a>
+）</p><br><p><code>EngineMain</code>はデフォルトで
+<code>resources</code>ディレクトリ配下の<code>application.conf</code>または<code>application.yaml</code>を参照するので、
+以上の作業でdevelopmentモードが有効になります。<br>（<a href=https://ktor.io/docs/create-server.html#engine-main target=_blank rel="noopener noreferrer">参考</a>
+）</p><h3 id=2-継続的なビルドを実行--gradlew--t-build>2. 継続的なビルドを実行 <code>$ ./gradlew -t build</code></h3><p>多くのWebフレームワークは設定をいじれば簡単にAuto-reloadが有効になりますが、<br>Ktorではもうひと作業必要になります。</p><p>それが継続的なビルドです。</p><p>作業としてはシンプルで下記コマンドを実行するだけです。</p><p><code>$ ./gradlew -t build</code></p><p><code>-t</code>が継続的なビルドを有効にするオプションです。</p><p>コードに変更があるたびにビルドし直すから「継続的なビルド」です。</p><p><br><br></p><p>ここまでできたら再度サーバーを起動してみましょう。</p><p><code>$ ./gradlew run</code><br>（<code>./gradlew -t build</code>も実行したまま）</p><p>「Hello World!」が表示されているはずです。</p><p>コードを変更してみましょう。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/plugins/Routing.kt
+
+fun Application.configureRouting() {
+
+  routing {
+    get(&quot;/&quot;) {
+      call.respondText(&quot;Hello World2!&quot;)
+    }
+  }
+}
+</code></pre><p>ブラウザをリロードしてみると以下の通り表示が変化しました。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/autoreload.webp width=500><p>うまくAuto-reloadできていますね。</p><h1 id=実装物のイメージを共有>実装物のイメージを共有</h1><p>テンプレートエンジンの<a href=https://freemarker.apache.org/ target=_blank rel="noopener noreferrer">FreeMarker</a>
+を使いながら<br>これから作ろうとしているもののイメージを共有します。</p><p><a href=https://github.com/yyh-gl/ktor-shop/commit/3003aadda191599ccbed9148ba2f8cbb54b47e7f target=_blank rel="noopener noreferrer">参考コミット</a></p><p>まずはテンプレートを作成します。</p><pre class=line-numbers><code class=language-freemarker>// ktor-shop/src/main/resources/templates/contents.ftl
+
+&lt;html&gt;
+  &lt;body&gt;
+  &lt;#list contents as content&gt;
+    &lt;div&gt;
+      ${content.id}
+      ${content.name}
+      ${content.price}
+    &lt;/div&gt;
+  &lt;/#list&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><code>&lt;#list contents as content></code>でテンプレートに渡した<code>contents</code>の中身をひとつずつ取り出します。<br>そして</p><pre class=line-numbers><code>${content.id}
+${content.name}
+${content.price}
+</code></pre><p>にて<code>id</code>, <code>name</code>, <code>price</code>情報を表示します。</p><p>次にテンプレートに値を渡します。<br><code>Routing.kt</code>を以下の通り変更します。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/plugins/Routing.kt
+
+data class Content(val id: Int, val name: String, val price: Int)
+
+fun Application.configureRouting() {
+  routing {
+    get(&quot;/&quot;) {
+      val contents: List&lt;Content&gt; = listOf(
+        Content(1, &quot;赤ペン&quot;, 100),
+        Content(2, &quot;青ペン&quot;, 200),
+      )
+      call.respond(FreeMarkerContent(&quot;contents.ftl&quot;, mapOf(&quot;contents&quot; to contents)))
+    }
+  }
+}
+</code></pre><p>商品情報（<code>contents</code>）は一旦ハードコーディングしておきます。<br></p><p><code>call.respond(FreeMarkerContent("contents.ftl", mapOf("contents" to contents)))</code>にて<br><code>contents.ftl</code>に<code>contents</code>を渡した上でレスポンスを処理しています。</p><p>結果として表示されるのが以下の画面です。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/contents_by_freemarker.webp width=600><p>商品情報がひとつずつ表示されています。</p><p>今回はこれ以上UIにこだわることはしません←</p><p><br><br></p><p>ここまででベースとなるコードおよび開発しやすい環境が整い、
+これから作っていくもののイメージを共有しました。<br>次章からStripe経由で商品情報を取得できるようにしていきます。</p><h1 id=商品登録stripe>商品登録（Stripe）</h1><p>Stripeに販売する商品の情報を登録します。<br>（アカウント登録は省略します）</p><br><p>『商品』ページから『商品を追加』をクリックし</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/add_content1.webp width=600><p>商品情報を入力して『商品を保存』すると</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/add_content2.webp width=600><p>登録した商品が追加されます。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/add_content3.webp width=600><p>商品登録は以上でOKです。</p><p>ではさっそくコードを変更していきましょう。</p><h1 id=商品情報の取得>商品情報の取得</h1><p>今回はただ実装するだけでなく、ある程度レイヤーを分けて実装してみようと思います。<br>各層を順に作っていき、最終的に商品情報をStripeから取得できるようにします。</p><p>ディレクトリ構成は以下のとおりです。<br>（<code>src</code>配下だけ表示）</p><pre class=line-numbers><code>src
+└── main
+    ├── kotlin
+    │   └── com
+    │       └── example
+    │           ├── Application.kt
+    │           ├── contoroller
+    │           ├── domain
+    │           ├── infrastructure
+    │           ├── plugins
+    │           └── usecase
+    └── resources
+</code></pre><p><code>controller</code>を<code>ui</code>、<code>usecase</code>を<code>application</code>などとしているところもあると思いますが、
+比較的よく見かけるレイヤー分けかなと思います。</p><p>レイヤーごとにモジュールを分ける構成（マルチモジュール）もありますが、
+今回はディレクトリを分けることでレイヤーを分離しています。</p><p>下記の記事はマルチモジュールが本題ではないのですが、
+マルチモジュール化の手順や要点などが載っているのでおすすめです。<br><a href=https://zenn.dev/loglass/articles/6c449ab8a750f2#%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%8C%96 target=_blank rel="noopener noreferrer">『なんとなく使わないGradle｜マルチモジュール化』</a><br>（今年のアドベントカレンダー記事ということもあって参照）</p><h2 id=controller層を追加>Controller層を追加</h2><p>『実装物のイメージを共有』の章ではルーティング処理で全ての処理を完結させていました。<br>このままではルーティング処理がすごく見づらくなってしまうので、まずはそこを直していこうと思います。</p><p><a href=https://github.com/yyh-gl/ktor-shop/commit/91aefa329186651c9cd3802cce0a05da285b066e target=_blank rel="noopener noreferrer">参考コミット</a></p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/plugins/Routing.kt
+
+fun Application.configureRouting() {
+    routing {
+        get(&quot;/&quot;) {
+            val contentController = ContentController()
+            val contents: List&lt;Content&gt; = contentController.list()
+            call.respond(FreeMarkerContent(&quot;contents.ftl&quot;, mapOf(&quot;contents&quot; to contents)))
+        }
+    }
+}
+</code></pre><p>処理の一部をController層に移動しました。<br></p><p>ルーティング処理は今はまだ行数が少ないので見た目の変化が少ないですが、
+必要なデータを受け取ってテンプレートに渡すだけになり、若干処理が見やすくなりました。</p><p>Controller層を実装していきましょう。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/contoroller/contents/ContentController.kt
+
+data class Content(val id: Int, val name: String, val price: Int)
+
+class ContentController() {
+    fun list(): List&lt;Content&gt; {
+        return listOf(
+            Content(1, &quot;赤ペン&quot;, 100),
+            Content(2, &quot;青ペン&quot;, 200),
+            Content(3, &quot;黄ペン&quot;, 300),
+        )
+    }
+}
+</code></pre><p>Controllerは画面表示に必要な情報を適切な形式で返します。</p><p>ここでも商品情報は一旦ハードコーディングです。</p><p>では、画面を見てみます。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/add_controller.webp width=600><p>黄ペンが増えており、Controllerからデータを返せていることが確認できました。</p><h2 id=usecase層およびdomain層を追加>UseCase層およびDomain層を追加</h2><p>次にドメイン知識を分離した上で、ユースケース単位で処理を分離していきます。<br>なお、今回のサンプルではドメイン知識といえる「なにか」を見いだせませんでした。<br>よって、エンティティはただのデータの詰め物となっています。</p><p><a href=https://github.com/yyh-gl/ktor-shop/commit/a047294f1911fa45f11f481b8a835ceb62a80032 target=_blank rel="noopener noreferrer">参考コミット</a></p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/contoroller/contents/ContentController.kt
+
+data class ContentView(
+    val id: Int,
+    val name: String,
+    val price: Int
+) {
+    companion object {
+        fun of(content: Content): ContentView {
+            return ContentView(
+                id = content.id,
+                name = content.name,
+                price = content.price,
+            )
+        }
+    }
+}
+
+data class ContentsView(
+    val values: List&lt;ContentView&gt;,
+) {
+    companion object {
+        fun of(contents: List&lt;Content&gt;): ContentsView {
+            return ContentsView(
+                values = contents.map { ContentView.of(it) }
+            )
+        }
+    }
+}
+
+class ContentController(
+    private val listContentUseCase: ListContentUseCase
+) {
+    fun list(): ContentsView {
+        return ContentsView.of(listContentUseCase.execute())
+    }
+}
+</code></pre><p>Controllerを変更してみました。<br>以下の通りUseCase経由でデータを取得しています。</p><pre class=line-numbers><code class=language-kotlin>fun list(): ContentsView {
+    return ContentsView.of(listContentUseCase.execute())
+}
+</code></pre><p>戻り値はViewのために用意したdata classに置き換えています。<br></p><p>こうすることで表示のために必要なデータがUseCase以降のデータ構造（や処理）に不必要に依存することを防ぎます。<br>（逆もしかり）</p><p>UseCaseを実装していきます。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/usecase/ListContentUseCase.kt
+
+class ListContentUseCase {
+    fun execute(): List&lt;Content&gt; {
+        return listOf(
+            Content(1, &quot;赤ペン&quot;, 100),
+            Content(2, &quot;青ペン&quot;, 200),
+            Content(3, &quot;黄ペン&quot;, 300),
+        )
+    }
+}
+</code></pre><p>今回UseCaseの戻り値には後ほど示す<code>Content</code>エンティティを使用しています。<br>UseCase層の戻り値用にdata classを用意するやり方もあると思いますが、
+今回は詰め替えのコードを省略するためにこうしました。</p><p>詳細な実装は後の章に任せます。</p><p><code>Content</code>エンティティは以下のとおりです。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/domain/entity/Content.kt
+
+class Content (
+    val id: Int,
+    val name: String,
+    val price: Int,
+)
+</code></pre><p>ドメイン知識をなにも表現できていないので良くない実装ですが、
+全体的な実装のイメージを共有することが目的なのでこれでOKとします。</p><p>最後に依存関係を解決します。<br>DIまわりのライブラリは一旦使用せず、愚直に依存関係を解決していきます。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/plugins/Routing.kt
+
+fun Application.configureRouting() {
+    routing {
+        get(&quot;/&quot;) {
+            val listContentUseCase = ListContentUseCase()
+            val contentController = ContentController(
+                listContentUseCase = listContentUseCase
+            )
+            val contents: ContentsView = contentController.list()
+            call.respond(FreeMarkerContent(&quot;contents.ftl&quot;, mapOf(&quot;contents&quot; to contents.values)))
+        }
+    }
+}
+</code></pre><p>ここまで来たら画面を確認してみます。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/add_controller.webp width=600><p>前回確認時と同じレスポンスを受け取ることができました。</p><h2 id=infrastructure層を追加>Infrastructure層を追加</h2><p>最後にInfrastructure層を実装していきます。<br>まずはStripeとの通信を省いて簡略化した処理を実装していきます。</p><p><a href=https://github.com/yyh-gl/ktor-shop/commit/f241f9943d2b8540ae94eef86ea36b6aba0ce095 target=_blank rel="noopener noreferrer">参考コミット</a></p><p>UseCase層を以下のとおり変更します。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/usecase/ListContentUseCase.kt
+
+class ListContentUseCase(
+    private val contentRepository: ContentRepository,
+) {
+    fun execute(): List&lt;Content&gt; {
+        return contentRepository.listAll()
+    }
+}
+</code></pre><p>Repository経由でデータを取得するようにしました。<br>Repositoryは以下のとおりです。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/domain/repository/ContentRepository.kt
+
+interface ContentRepository {
+    fun listAll(): List&lt;Content&gt;
+}
+</code></pre><p>Domain層にはInterfaceだけ置き、実装は次に示すとおりInfrastructure層に置きます。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/infrastructure/dao/ContentRepositoryImpl.kt
+
+class ContentRepositoryImpl: ContentRepository {
+    override fun listAll(): List&lt;Content&gt; {
+        return listOf(
+            Content(1, &quot;赤ペン&quot;, 100),
+            Content(2, &quot;青ペン&quot;, 200),
+            Content(3, &quot;黄ペン&quot;, 300),
+        )
+    }
+}
+</code></pre><p>Interfaceをかましているのは依存の方向を逆転させるためです。<br>この辺は下記の記事で詳細を説明していますので、興味があればご参照ください。<br><a href="https://tech.yyh-gl.dev/blog/go_web_api/#:~:text=%E3%81%93%E3%81%93%E3%81%A7%E3%80%81%E3%83%A6%E3%83%BC%E3%82%B6%E3%81%8B%E3%82%89%20API%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%20%E3%81%8C%E3%81%82%E3%81%A3%E3%81%9F%E5%A0%B4%E5%90%88%E3%82%92%E8%80%83%E3%81%88%E3%81%A6%E3%81%BF%E3%81%BE%E3%81%99%E3%80%82" target=_blank rel="noopener noreferrer">『【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる』</a></p><br><p>手抜きDIして準備完了です。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/plugins/Routing.kt
+
+fun Application.configureRouting() {
+    routing {
+        get(&quot;/&quot;) {
+            val contentRepository = ContentRepositoryImpl()
+            val listContentUseCase = ListContentUseCase(contentRepository)
+            val contentController = ContentController(
+                listContentUseCase =  listContentUseCase
+            )
+            val contents: ContentsView = contentController.list()
+            call.respond(FreeMarkerContent(&quot;contents.ftl&quot;, mapOf(&quot;contents&quot; to contents.values)))
+        }
+    }
+}
+</code></pre><p>画面を確認してみます。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/add_controller.webp width=600><p>これまでと同様にデータを表示できています。</p><h2 id=infrastructure層を本実装>Infrastructure層を本実装</h2><p>お待たせしました。<br>Stripeから商品情報を取得していきます。</p><p><a href=https://github.com/yyh-gl/ktor-shop/commit/b2b0902583a5f712ca36962a7491422e9f9adb86 target=_blank rel="noopener noreferrer">参考コミット</a></p><p>まずはStripe APIのクライアントを実装します。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/infrastructure/api/StripeClient.kt
+
+@Serializable
+data class ListProductsResponse(
+    val url: String,
+    @SerialName(&quot;object&quot;) val obj: String,
+    @SerialName(&quot;has_more&quot;) val hasMore: Boolean,
+    val data: List&lt;ContentDTO&gt;,
+)
+
+@Serializable
+data class ContentDTO(
+    val id: String,
+    @SerialName(&quot;object&quot;) val datumObject: String,
+    val name: String,
+    val url: String? = null,
+    val active: Boolean,
+    val attributes: List&lt;String?&gt;,
+    @SerialName(&quot;default_price&quot;) val defaultPrice: String,
+    val description: String? = null,
+    val images: List&lt;String&gt;,
+    val livemode: Boolean,
+    val metadata: Map&lt;String, String&gt;,
+    @SerialName(&quot;package_dimensions&quot;) val packageDimensions: String? = null,
+    val shippable: Boolean? = null,
+    @SerialName(&quot;statement_descriptor&quot;) val statementDescriptor: String? = null,
+    @SerialName(&quot;tax_code&quot;) val taxCode: String? = null,
+    val type: String,
+    @SerialName(&quot;unit_label&quot;) val unitLabel: String? = null,
+    val created: Long,
+    val updated: Long,
+)
+
+@Serializable
+data class ListPricesResponse(
+    val url: String,
+    @SerialName(&quot;object&quot;) val obj: String,
+    @SerialName(&quot;has_more&quot;) val hasMore: Boolean,
+    val data: List&lt;PriceDTO&gt;,
+)
+
+@Serializable
+data class PriceDTO(
+    @SerialName(&quot;product&quot;) val productId: String,
+    @SerialName(&quot;unit_amount&quot;) val unitAmount: Int,
+    val active: Boolean,
+)
+
+class StripeClient {
+    private val client = OkHttpClient()
+    private val baseRequest =
+        Request.Builder()
+            .addHeader(&quot;Authorization&quot;, &quot;Bearer ${System.getenv(&quot;STRIPE_SECRET_KEY&quot;)}&quot;)
+            .addHeader(&quot;ContentType&quot;, &quot;application/x-www-form-urlencoded&quot;)
+    private val jsonDecoder = Json { ignoreUnknownKeys = true }
+
+    private fun baseUrl(): HttpUrl.Builder {
+        return HttpUrl.Builder().scheme(&quot;https&quot;).host(&quot;api.stripe.com&quot;).addPathSegment(&quot;v1&quot;)
+    }
+
+    fun listAllProducts(): List&lt;Content&gt; {
+        val listProductsRequest =
+            baseRequest.url(baseUrl().addPathSegment(&quot;products&quot;).build()).get().build()
+        val listProductsResponseBody = client.newCall(listProductsRequest).execute().body
+        val contents =
+            jsonDecoder
+                .decodeFromString&lt;ListProductsResponse&gt;(listProductsResponseBody!!.string())
+                .data
+
+        val productIds = contents.map { it.id }
+        val priceMap = listActivePriceMapByProductIDs(productIds)
+
+        return contents.map { Content(id = it.id, name = it.name, price = priceMap[it.id]!!) }
+    }
+
+    private fun listActivePriceMapByProductIDs(productIds: List&lt;String&gt;): Map&lt;String, Int&gt; {
+        var productQuery = &quot;&quot;
+        productIds.forEachIndexed { i, id -&gt;
+            productQuery += &quot;product:'${id}'&quot;
+            if (i &lt; productIds.size - 1) {
+                productQuery += &quot; OR &quot;
+            }
+        }
+
+        val listPricesRequest =
+            baseRequest
+                .url(
+                    baseUrl()
+                        .addPathSegment(&quot;prices&quot;)
+                        .addPathSegment(&quot;search&quot;)
+                        .addEncodedQueryParameter(&quot;query&quot;, productQuery)
+                        .build()
+                )
+                .get()
+                .build()
+        val listPricesResponseBody = client.newCall(listPricesRequest).execute().body
+        val prices =
+            jsonDecoder.decodeFromString&lt;ListPricesResponse&gt;(listPricesResponseBody!!.string()).data
+
+        val priceMap: MutableMap&lt;String, Int&gt; = mutableMapOf()
+        prices.forEach { price -&gt;
+            if (price.active) {
+                priceMap[price.productId] = price.unitAmount
+            }
+        }
+        return priceMap
+    }
+}
+</code></pre><p>全商品情報を取得する<code>listAllProducts</code>と
+指定商品に紐づく価格情報を取得する<code>listActivePriceMapByProductIDs</code>を用意しました。<br></p><p>注意点として、Stripeにおける商品情報と価格情報は1:Nの関係です。<br>しかし、今回は有効な価格情報が1つしかないという前提のもとに実装しています。</p><br><p>APIリクエスト処理はokhttp3を使って実装しています。<br>okhttp3は有名なHTTPクライアントライブラリなので知っている方も多いでしょう。</p><p><code>Authorization</code>ヘッダーの値は環境変数から取得するようにしています。
+（環境変数設定方法は後ほど）</p><p>Stripeから受け取ったレスポンス（JSON）は
+<a href=https://kotlinlang.org/docs/serialization.html#example-json-serialization target=_blank rel="noopener noreferrer">Kotlin Serialization</a>
+を使ってdata classに変換しています。</p><p>シリアライズ対象のdata classには<code>Serializable</code>アノテーションを付与します。<br>フィールド名とキー名が一致しない（機械的にマッピングできない）場合は、
+<code>SerialName</code>アノテーションを使ってマッピング方法を指定します。</p><br><p>コードの変更を続けます。<br>okhttp3およびKotlin Serializationを使うために<code>build.gradle.kts</code>を変更します。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/build.gradle.kts
+
+plugins {
+  application
+  kotlin(&quot;jvm&quot;) version &quot;1.7.21&quot;
+  kotlin(&quot;plugin.serialization&quot;) version &quot;1.7.21&quot;
+  id(&quot;io.ktor.plugin&quot;) version &quot;2.1.3&quot;
+}
+
+&lt;省略&gt;
+
+dependencies {
+  implementation(&quot;io.ktor:ktor-server-core-jvm:$ktor_version&quot;)
+  implementation(&quot;io.ktor:ktor-server-freemarker-jvm:$ktor_version&quot;)
+  implementation(&quot;io.ktor:ktor-server-netty-jvm:$ktor_version&quot;)
+  implementation(&quot;ch.qos.logback:logback-classic:$logback_version&quot;)
+  implementation(&quot;com.squareup.okhttp3:okhttp:4.10.0&quot;)
+  implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1&quot;)
+  testImplementation(&quot;io.ktor:ktor-server-tests-jvm:$ktor_version&quot;)
+  testImplementation(&quot;org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version&quot;)
+}
+</code></pre><p>Infrastructure層の処理も変更します。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/infrastructure/dao/ContentRepositoryImpl.kt
+
+class ContentRepositoryImpl(
+    private val stripeClient: StripeClient,
+) : ContentRepository {
+    override fun listAll(): List&lt;Content&gt; {
+
+        val contents = stripeClient.listAllProducts()
+        return contents.map {
+            Content(
+                id = it.id,
+                name = it.name,
+                price = it.price,
+            )
+        }
+    }
+}
+</code></pre><p>Stripe API経由でデータを取得するようにしました。</p><p>DI周りも変更です。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/plugins/Routing.kt
+
+fun Application.configureRouting() {
+    routing {
+        get(&quot;/&quot;) {
+            val stripeClient = StripeClient()
+            val contentRepository = ContentRepositoryImpl(stripeClient)
+            val listContentUseCase = ListContentUseCase(contentRepository)
+            val contentController = ContentController(listContentUseCase = listContentUseCase)
+            val contents: ContentsView = contentController.list()
+            call.respond(FreeMarkerContent(&quot;contents.ftl&quot;, mapOf(&quot;contents&quot; to contents.values)))
+        }
+    }
+}
+</code></pre><p><code>Content</code>エンティティの一部型定義を間違っていたので修正します🙏</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/domain/entity/Content.kt
+
+class Content(
+    val id: String,
+    val name: String,
+    val price: Int,
+)
+</code></pre><p>以上で修正は完了です。</p><p>実際に動かしてみましょう。<br>実行コマンドが少し変わります。</p><p><code>$ STRIPE_SECRET_KEY=xxx ./gradlew run</code><br>（<code>./gradlew -t build</code>はそのまま実行したまま）</p><p>さきほど説明を後回しにしましたが、
+Stripe APIに渡す<code>Authorization</code>ヘッダーの値（<code>STRIPE_SECRET_KEY</code>）はここで設定しています。<br>設定する値は<a href=https://dashboard.stripe.com/test/apikeys target=_blank rel="noopener noreferrer">『APIキー画面』</a>
+に
+記載があるシークレットキーの値です。</p><p>では、画面を確認します。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/contents_from_stripe.webp width=600><p>表示内容がStripeで登録した商品情報に変わりました。</p><p>以上で当初の目的であった<br>Stripeからの商品情報取得→表示までを実装できました。</p><p><br><br></p><p>せっかくなのでDIをきちんとやっておきます。</p><h2 id=di>DI</h2><p>今回は<a href=https://insert-koin.io/ target=_blank rel="noopener noreferrer">Koin</a>
+を使います。</p><p><a href=https://github.com/yyh-gl/ktor-shop/commit/2d382ce90b096e97fd24ccbe23e5bb4b751cc197 target=_blank rel="noopener noreferrer">参考コミット</a></p><br><p><code>dependencies</code>にKoinを追加します。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/build.gradle.kts
+
+dependencies {
+    implementation(&quot;io.ktor:ktor-server-core-jvm:$ktor_version&quot;)
+    implementation(&quot;io.ktor:ktor-server-freemarker-jvm:$ktor_version&quot;)
+    implementation(&quot;io.ktor:ktor-server-netty-jvm:$ktor_version&quot;)
+    implementation(&quot;ch.qos.logback:logback-classic:$logback_version&quot;)
+    implementation(&quot;com.squareup.okhttp3:okhttp:4.10.0&quot;)
+    implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1&quot;)
+    implementation(&quot;io.insert-koin:koin-ktor:3.2.2&quot;)
+    implementation(&quot;io.insert-koin:koin-logger-slf4j:3.2.2&quot;)
+    testImplementation(&quot;io.ktor:ktor-server-tests-jvm:$ktor_version&quot;)
+    testImplementation(&quot;org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version&quot;)
+}
+</code></pre><p>Koinによる依存解決方法を記述します。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/plugins/Koin.kt
+
+fun Application.configureKoin() {
+    install(Koin) { modules(appModule) }
+}
+
+val appModule = module {
+    single { StripeClient() }
+    single { ContentRepositoryImpl(get()) as ContentRepository }
+    single { ListContentUseCase(get()) }
+    single { ContentController(get()) }
+}
+</code></pre><p><code>single { Xxx() }</code>を使ってインスタンスをどのように作るかを指定しています。</p><p>なお<code>single { ContentRepositoryImpl(get()) as ContentRepository }</code>だけ少し記述が違います。<br>これは<code>ContentRepository</code>（Interface）の実体として<code>ContentRepositoryImpl</code>を指定しているためです。</p><br><p>作成した<code>Application.configureKoin()</code>を呼び出します。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/Application.kt
+
+fun main(args: Array&lt;String&gt;): Unit = EngineMain.main(args)
+
+fun Application.module() {
+  configureKoin()
+  configureTemplating()
+  configureRouting()
+}
+</code></pre><p>手動でDIしていた箇所をKoinを使ったDIに置き換えます。</p><pre class=line-numbers><code class=language-kotlin>// ktor-shop/src/main/kotlin/com/example/plugins/Routing.kt
+
+fun Application.configureRouting() {
+    val contentController by inject&lt;ContentController&gt;()
+
+    routing {
+        get(&quot;/&quot;) {
+            val contents: ContentsView = contentController.list()
+            call.respond(FreeMarkerContent(&quot;contents.ftl&quot;, mapOf(&quot;contents&quot; to contents.values)))
+        }
+    }
+}
+</code></pre><p><code>val contentController by inject&lt;ContentController>()</code>で依存を注入（inject）しています。<br>今回は<code>ContentController</code>を使えればOKなので<code>ContentController</code>だけを注入します。<br></p><p>注入後は<code>contentController</code>変数にインスタンスが格納されているので、<br>修正前と同様に<code>contentController.list()</code>とすればメソッドを実行できます。</p><br><p>以上でKoinの導入が完了しました。<br>画面を確認します。</p><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/contents_from_stripe.webp width=600><p>変わらず動作しますね。</p><h1 id=todo-エラーハンドリング>TODO 〜エラーハンドリング〜</h1><p>本実装ではエラーハンドリングを全くしていません。<br>実際のシステムではしっかりとエラーハンドリングしてやり、
+ユーザーに適切なエラーレスポンスを返す必要があります。<br>エラーハンドリング周りはまた別で記事にしたいと考えているので公開までお待ちいただけると幸いです。<br>（エラーハンドリング方法が全く異なるGoと比較した記事にしたいと考えています）</p><h1 id=まとめ>まとめ</h1><p>今回はKotlin + Ktorで（とても簡易的な）ECサイトを作成しました。<br>商品情報はStripeで管理し、API経由で情報を取得し表示しています。<br></p><p>本記事の内容を理解すれば、外部APIを使用したシステムの実装イメージが掴めると思います。</p><p>私がKotlin初心者なのでよりKotlinらしい書き方ができる部分も多々あると思いますが、<br>ざっくりの実装イメージを掴んでいただけたなら幸いです。</p><br><p>明日以降のアドベントカレンダーを楽しみにしながら、今回はここで終わりたいと思います。<br>最後まで読んでいただきありがとうございました。</p></div><footer><div class=stats><ul class=categories><li><a class=article-terms-link href=/categories/kotlin/>Kotlin</a></li><li><a class=article-terms-link href=/categories/ktor/>Ktor</a></li><li><a class=article-terms-link href=/categories/stripe/>Stripe</a></li></ul><div><good-counter rel-permalink=/blog/kotlin-ktor-stripe-tutorial/></good-counter></div></div></footer><div class=fix><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『Ktor%e3%81%a8Stripe%e3%81%a7EC%e3%82%b5%e3%82%a4%e3%83%88%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f』" target=_blank rel="noopener noreferrer">修正提案</a></div></article><div class=pagination><a href=/blog/docker-compose-override/ class="button right"><span>複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる</span></a></div></main><section id=site-sidebar><section id=recent-posts><header><h1>最近の投稿</h1></header><article class=mini-post><a href=/blog/kotlin-ktor-stripe-tutorial/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/featured.webp alt=featured></a><header><h2><a href=/blog/kotlin-ktor-stripe-tutorial/>KtorとStripeでECサイトを作ってみた</a></h2><time class=published datetime="2022-12-21 00:00:00 +0900 +0900">2022-12-21</time></header></article><article class=mini-post><a href=/blog/docker-compose-override/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2022/03/docker-compose-override/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2022/03/docker-compose-override/featured.webp alt=featured></a><header><h2><a href=/blog/docker-compose-override/>複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる</a></h2><time class=published datetime="2022-03-19 00:55:40 +0900 +0900">2022-03-19</time></header></article><article class=mini-post><a href=/blog/activity-2021/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2022/01/activity-2021/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2022/01/activity-2021/featured.webp alt=featured></a><header><h2><a href=/blog/activity-2021/>【2021年】アクティビティまとめ</a></h2><time class=published datetime="2022-01-02 20:59:04 +0900 +0900">2022-01-02</time></header></article><footer><a href=/blog/ class=button>続きを見る</a></footer></section><section id=mini-bio><header><h1>About</h1></header><p>東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。</p><footer><a href=/about class=button>もっと詳しく知る</a></footer></section></section><footer id=site-footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener title=GitHub class="fab fa-github"></a></li><li><a href=//www.linkedin.com/in/yyh-gl target=_blank rel=noopener title=LinkedIn class="fab fa-linkedin"></a></li><li><a href=//twitter.com/yyh_gl target=_blank rel=noopener title=Twitter class="fab fa-twitter"></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank title="Speaker Deck" class="fab fa-speaker-deck"></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank title=Crowdin class="fas fa-pen-square"></a></li></ul><p class=copyright>© 2022 yyh-gl's Tech Blog<br>Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.108.0 target=_blank rel=noopener>Hugo</a></p></footer><a id=back-to-top href=# class="fas fa-arrow-up fa-2x"></a>
+<script src=/js/bundle.min.3ae2ce1efda88261d882e759310edb92f3f0a7186b06c5fd92aa30f8931ab94c.js integrity="sha256-OuLOHv2ogmHYgudZMQ7bkvPwpxhrBsX9kqow+JMauUw="></script>
+<script src=/js/add-on.js></script>
+<script src=/js/prism.js></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-140914324-1","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script></div></body></html>
