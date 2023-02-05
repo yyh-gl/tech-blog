@@ -43,18 +43,13 @@ new: ## 記事テンプレート生成
 	@echo ''
 	open http://$(shell ipconfig getifaddr en0):1313/
 
-.PHONY: post
-post: ## 記事を投稿
+.PHONY: init-blog-like-count
+init-blog-like-count: ## いいね数カウント用テーブルに記事登録
 	@if [ -z "${title}" ]; then \
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
 	curl -X POST https://hobigon-api-ingress-hobigon-yyh-gl.cloud.okteto.net/api/v1/blogs -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}"
-	@echo ''
-	git merge ${title}
-	git push origin main
-	git br -d ${title}
-	-@git push origin :${title}
 
 .PHONY: create-ogp
 create-ogp: ## OGP画像を生成
