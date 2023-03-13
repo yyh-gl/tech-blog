@@ -9,14 +9,14 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2023年1月15日】
+【最終更新日：2023年3月14日】
 
 
 # いま
 
 LINE Digital Frontierで働くエンジニアです。
 
-2023年1月15日に入ったばかりなので、もう少し働いたら何をやっているか書きます。
+Server-side Kotlinやってます。
 
 
 # 技術スタック
@@ -101,10 +101,10 @@ LINE Digital Frontierに入社しました。
 
 - ロール：
   - バックエンドエンジニア
-- 言語：Kotlin（Spring Boot）
+- 言語：Kotlin/Java（Spring Boot）, Perl
 - インフラ：社内インフラ（クラウド）
 
-もう少し経ったら追記します。
+LINEマンガのサーバーサイド開発および運用をしています。
 
 </div></details>
 
