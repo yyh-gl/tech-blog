@@ -25,7 +25,7 @@ jobs:
       - name: Lint
         run: |
           npm install
-          git diff --name-only HEAD~ | xargs $(npm bin)/textlint
+          git diff --name-only HEAD~ | xargs npm exec textlint
 
   success_notification:
     name: Success notification
