@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/blog/</link><description>Recent content in Blog on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 11 Jan 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>DMM.comを退職しました</title><link>https://tech.yyh-gl.dev/blog/dmm-to-line/</link><pubDate>Wed, 11 Jan 2023 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/dmm-to-line/</guid><description>DMM.comを退職しました 2019年4月1日に新卒入社し、2023年1月11日に退職しました。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/blog/</link><description>Recent content in Blog on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 09 Apr 2023 00:25:48 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>gomockのgenerics対応状況</title><link>https://tech.yyh-gl.dev/blog/gomock-generics/</link><pubDate>Sun, 09 Apr 2023 00:25:48 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/gomock-generics/</guid><description>gomock gomock はGo用のモック生成ツールです。
+今回はこのgomockのgenerics対応状況について共有します。
+gomockのgenerics対応状況 残念ながらgomockはまだgenericsに対応していません。
+ただし、generics対応がリリースされていないだけで、 すでにmainブランチには generics対応のPR がマージされています （Issueはこちら ）。 したがって、go install github.com/golang/mock/mockgen@mainとすればgenerics対応したgomockを利用可能です。
+いつリリース？ v1.7.0としてリリース予定らしく、すでにタグは作成されています。 https://github.com/golang/mock/releases/tag/v1.7.0-rc.1 ただ、タグが作成されてからもうすぐ1年が経とうとしています…
+無事リリースされることを祈りましょう。
+（タグがあるのでgo install github.com/golang/mock/mockgen@v1.7.0-rc.1でもOKですね）
+まとめ generics対応したgomockを使いたい場合は、 go install github.com/golang/mock/mockgen@mainか go install github.com/golang/mock/mockgen@v1.7.0-rc.1を実行しましょう。</description></item><item><title>DMM.comを退職しました</title><link>https://tech.yyh-gl.dev/blog/dmm-to-line/</link><pubDate>Wed, 11 Jan 2023 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/dmm-to-line/</guid><description>DMM.comを退職しました 2019年4月1日に新卒入社し、2023年1月11日に退職しました。
 4年弱お世話になりました。
 節目なのでDMM入社前〜退職までをまとめておきます。
 メインは自分の振り返りのためですが、DMMに興味がある方の参考になると幸いです。

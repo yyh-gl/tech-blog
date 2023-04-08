@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/go/</link><description>Recent content in Go on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 19 Dec 2021 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/go/index.xml" rel="self" type="application/rss+xml"/><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://tech.yyh-gl.dev/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/go/</link><description>Recent content in Go on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 09 Apr 2023 00:25:48 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/go/index.xml" rel="self" type="application/rss+xml"/><item><title>gomockのgenerics対応状況</title><link>https://tech.yyh-gl.dev/blog/gomock-generics/</link><pubDate>Sun, 09 Apr 2023 00:25:48 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/gomock-generics/</guid><description>gomock gomock はGo用のモック生成ツールです。
+今回はこのgomockのgenerics対応状況について共有します。
+gomockのgenerics対応状況 残念ながらgomockはまだgenericsに対応していません。
+ただし、generics対応がリリースされていないだけで、 すでにmainブランチには generics対応のPR がマージされています （Issueはこちら ）。 したがって、go install github.com/golang/mock/mockgen@mainとすればgenerics対応したgomockを利用可能です。
+いつリリース？ v1.7.0としてリリース予定らしく、すでにタグは作成されています。 https://github.com/golang/mock/releases/tag/v1.7.0-rc.1 ただ、タグが作成されてからもうすぐ1年が経とうとしています…
+無事リリースされることを祈りましょう。
+（タグがあるのでgo install github.com/golang/mock/mockgen@v1.7.0-rc.1でもOKですね）
+まとめ generics対応したgomockを使いたい場合は、 go install github.com/golang/mock/mockgen@mainか go install github.com/golang/mock/mockgen@v1.7.0-rc.1を実行しましょう。</description></item><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://tech.yyh-gl.dev/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
 はじめに Goには標準で便利なコマンドがたくさんあります。
 有名どころで言えば、
 generate fmt vet などがあります。
