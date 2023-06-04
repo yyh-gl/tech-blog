@@ -49,7 +49,7 @@ init-blog-like-count: ## いいね数カウント用テーブルに記事登録
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	curl -X POST https://hobigon-api-ingress-hobigon-yyh-gl.cloud.okteto.net/api/v1/blogs -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}"
+	curl -X POST https://hobigon.yyh-gl.dev/api/v1/blogs -H "Content-Type: application/json" -d "{\"title\":\"${title}\"}"
 
 .PHONY: create-ogp
 create-ogp: ## OGP画像を生成
