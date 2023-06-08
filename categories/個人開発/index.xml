@@ -8,4 +8,4 @@ Swapがオフであること。kubeletが正常に動作するためにはswap�
 このままでは手元のPCからSSHができなくなりますが、そこはTailscaleで解決しています。 Tailscaleのインストールはスクリプト内で行っています。
 スクリプト 下記リポジトリに置いています。
 yyh-gl/k8s-setup 以下のとおり実行すれば、k8sクラスターが構築されます。
-Masterノード：setup_common.sh→setup-master.shの順で実行 注意：setup-master.shの&amp;lt;Master node IP&amp;gt;部分はMasterノードのIPアドレスに置き換える必要あり Workerノード：setup_common.shを実行後にkubeadm join</description></item></channel></rss>
+Masterノード：setup_common.sh→setup-master.shの順で実行 注意：setup-master.shの&amp;lt;Master node IP&amp;gt;部分はMasterノードのIPアドレスに置き換える必要あり advertise addressの変更に使用（僕はTailscaleが払い出すIPにしたかったので） Workerノード：setup_common.shを実行後にkubeadm join</description></item></channel></rss>
