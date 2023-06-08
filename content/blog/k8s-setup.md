@@ -78,6 +78,7 @@ Tailscaleのインストールはスクリプト内で行っています。
 
 - Masterノード：`setup_common.sh`→`setup-master.sh`の順で実行
   - 注意：`setup-master.sh`の`<Master node IP>`部分はMasterノードのIPアドレスに置き換える必要あり
+    - advertise addressの変更に使用（僕はTailscaleが払い出すIPにしたかったので）
 - Workerノード：`setup_common.sh`を実行後に`kubeadm join`
 
 <img src="https://tech.yyh-gl.dev/img/2023/05/k8s-setup/nodes.webp" width="600">
