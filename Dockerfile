@@ -1,13 +1,13 @@
-FROM klakegg/hugo:ext-alpine
+FROM klakegg/hugo:ext
 
 ENV TZ="Asia/Tokyo"
 
 WORKDIR /go/src/github.com/yyh-gl/tech-blog
 COPY . .
 
-RUN apk add --no-cache libwebp-tools
+RUN apt-get update && apt-get install -y webp
 RUN npm install
-RUN go get -u github.com/Ladicle/tcardgen
+RUN go install github.com/Ladicle/tcardgen@latest
 
 EXPOSE 1313
 
