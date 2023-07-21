@@ -170,6 +170,7 @@ disableLanguages       = []
   instagram        = ""
   tumblr           = ""
   twitter          = "yyh_gl"
+  bluesky          = "yyh-gl.bsky.social"
   strava           = ""
   skype            = ""
   snapchat         = ""
