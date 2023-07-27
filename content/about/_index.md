@@ -85,6 +85,7 @@ Server-side Kotlinやってます。
 ## BI
 
 - Redash
+- [独自ツール](https://engineering.linecorp.com/ja/blog/introduce-data-platform-department)
 
 
 ## 設計
