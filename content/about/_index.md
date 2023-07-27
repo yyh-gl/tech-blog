@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2023年3月14日】
+【最終更新日：2023年7月28日】
 
 
 # いま
@@ -44,6 +44,7 @@ Server-side Kotlinやってます。
 
 ## フロントエンド
 
+- TypeScript
 - React，Next.js
 - Vue.js，Nuxt.js
 - HTML + CSS + JavaScript
@@ -60,14 +61,17 @@ Server-side Kotlinやってます。
 - MySQL
   - RDS
   - Aurora
+  - 独自クラウド
 - DynamoDB
 - Redis
+- Elasticsearch
 
 
 ## クラウド
 
 - AWS
   - CloudFormation
+  - CDK (TypeScript)
 - GCP
 
 
