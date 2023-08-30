@@ -1862,3 +1862,9 @@ figcaption {
     page-break-after: avoid;
   }
 }
+
+.column {
+  border: 1px solid $utility-gray;
+  padding: 10px;
+  margin: 20px;
+}

@@ -1598,3 +1598,8 @@ figcaption {
   h2,
   h3 {
     page-break-after: avoid; } }
+
+.column {
+  border: 1px solid #ababab;
+  padding: 10px;
+  margin: 20px; }
