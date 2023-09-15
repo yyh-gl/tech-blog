@@ -21,7 +21,7 @@ disableLanguages       = []
   home = ["html", "json", "rss"]
 
 [params]
-  enableCDN              = false
+  enableCDN              = true
   cssFiles               = ["default", "css/prism.css"]
   jsFiles                = ["default", "js/prism.js"]
   viewMorePostsLink      = "blog/"
@@ -169,7 +169,7 @@ disableLanguages       = []
     qq             = "" # User ID Number
   instagram        = ""
   tumblr           = ""
-  twitter          = "yyh_gl"
+  x                = "yyh_gl"
   bluesky          = "yyh-gl.bsky.social"
   strava           = ""
   skype            = ""
