@@ -66,7 +66,7 @@ disableLanguages       = []
     alt                  = "yyh-gl's icon"
 
   [params.sidebar]
-    about                = "東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントやインフラもさわっています。"
+    about                = "東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントエンドやインフラもさわっています。"
     postAmount           = 3
     categories           = false
     categoriesByCount    = false
