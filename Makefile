@@ -8,7 +8,7 @@ help: ## helpを表示
 
 .PHONY: setup
 setup: ## Hugoサーバをセットアップ
-	docker build . -t tech-blog 
+	docker build . -t tech-blog --no-cache
 
 .PHONY: server
 server: ## Hugoサーバを起動
