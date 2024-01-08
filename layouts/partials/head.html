@@ -75,7 +75,7 @@
   {{- if .Params.Author -}}
     {{- .Scratch.Set "Author" .Params.Author -}}
   {{- else -}}
-    {{- .Scratch.Set "Author" .Author -}}
+    {{- .Scratch.Set "Author" .Site.Params.meta.author -}}
   {{ end }}
   <link rel="alternate" type="application/atom+xml" title="Atom" href="/index.xml"/>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
