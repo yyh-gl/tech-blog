@@ -17,7 +17,7 @@ Vue.component('good-counter', {
     // いいね数取得リクエストURLを作成
     let reqUrl = 'https://hobigon.yyh-gl.dev/api/v1/blogs/' + title;
 
-    // ページカテゴリー取得（例：me, blog, category など）
+    // ページカテゴリー取得（例：about, blog, category など）
     let pageCategory = parts[parts.length - 3]
 
     // いいね済みかどうか判定
