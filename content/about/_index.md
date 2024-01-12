@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2023年9月16日】
+【最終更新日：2024年1月13日】
 
 
 # いま
@@ -59,12 +59,10 @@ Server-side Kotlinやってます。
 ## データストア
 
 - MySQL
-  - RDS
-  - Aurora
-  - 独自クラウド
+- PostgreSQL
 - DynamoDB
 - Redis
-- Elasticsearch
+- Elasticsearch（and OpenSearch）
 
 
 ## クラウド
