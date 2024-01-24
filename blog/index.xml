@@ -17,7 +17,7 @@ gomockのgenerics対応状況 残念ながらgomockはまだgenericsに対応し
 いつリリース？ v1.7.0としてリリース予定らしく、すでにタグは作成されています。 https://github.com/golang/mock/releases/tag/v1.7.0-rc.1 ただ、タグが作成されてからもうすぐ1年が経とうとしています…
 無事リリースされることを祈りましょう。
 （タグがあるのでgo install github.com/golang/mock/mockgen@v1.7.0-rc.1でもOKですね）
-まとめ generics対応したgomockを使いたい場合は、 go install github.com/golang/mock/mockgen@mainか go install github.com/golang/mock/mockgen@v1.7.0-rc.1を実行しましょう。</description></item><item><title>DMM.comを退職しました</title><link>https://tech.yyh-gl.dev/blog/dmm-to-line/</link><pubDate>Wed, 11 Jan 2023 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/dmm-to-line/</guid><description>DMM.comを退職しました 2019年4月1日に新卒入社し、2023年1月11日に退職しました。
+まとめ generics対応したgomockを使いたい場合は、 go install github.com/golang/mock/mockgen@mainか go install github.com/golang/mock/mockgen@v1.7.0-rc.1を実行しましょう。</description></item><item><title>DMM.comを退職しました</title><link>https://tech.yyh-gl.dev/blog/dmm-to-line/</link><pubDate>Wed, 11 Jan 2023 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/dmm-to-line/</guid><description>合同会社DMM.comを退職しました 2019年4月1日に新卒入社し、2023年1月11日に退職しました。
 4年弱お世話になりました。
 節目なのでDMM入社前〜退職までをまとめておきます。
 メインは自分の振り返りのためですが、DMMに興味がある方の参考になると幸いです。
