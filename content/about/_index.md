@@ -241,12 +241,6 @@ APIサーバおよびWebフロントの開発に参加
   - DMM社内でのGoに関する取り組みについて
 
 
-# アクティビティ
-
-- [2021年](https://tech.yyh-gl.dev/blog/activity-2021)
-- [2020年](https://tech.yyh-gl.dev/blog/activity-2020)
-
-
 # OSS
 
 細かなコントリビュートばかりですが🙋‍♂️
