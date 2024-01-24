@@ -18,7 +18,7 @@ draft = false
 <!-- textlint-enable -->
 
 
-# DMM.comを退職しました
+# 合同会社DMM.comを退職しました
 
 2019年4月1日に新卒入社し、2023年1月11日に退職しました。<br>
 4年弱お世話になりました。
@@ -209,7 +209,7 @@ DMMのFamily Dayに来てくれた甥っ子たち（コロナ前の懐かし写�
 
 # Next Stage
 
-『[LINE Digital Frontier](https://ldfcorp.com/ja)』に転職します。
+『[LINE Digital Frontier株式会社](https://ldfcorp.com/ja)』に転職します。
 
 リーダーとかではなく、いちエンジニアとして働きます。<br>
 スーパーエンジニアになるべく修行しつつ、

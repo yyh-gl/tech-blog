@@ -9,12 +9,12 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2024年1月13日】
+【最終更新日：2024年1月25日】
 
 
 # いま
 
-LINE Digital Frontierで働くエンジニアです。
+LINE Digital Frontier株式会社で働くエンジニアです。
 
 Server-side Kotlinやってます。
 
@@ -96,9 +96,9 @@ DDDについては、戦略および戦術の両方に興味があり、日々�
 
 # 経歴（参加プロジェクト）
 
-<details><summary><b>2023年〜（LINE Digital Frontier）</b></summary><div>
+<details><summary><b>2023年〜（LINE Digital Frontier株式会社）</b></summary><div>
 
-LINE Digital Frontierに入社しました。
+LINE Digital Frontier株式会社に入社しました。
 
 ## ・LINEマンガの開発/運用：2023年1月〜現在
 
@@ -111,9 +111,9 @@ LINEマンガのサーバーサイド開発および運用をしています。
 
 </div></details>
 
-<details><summary><b>2019年〜（DMM.com）</b></summary><div>
+<details><summary><b>2019年〜（合同会社DMM.com）</b></summary><div>
 
-DMM.comに入社しました。
+合同会社DMM.comに入社しました。
 
 
 ## ・レビュー基盤のリプレイス/運用：2019年7月〜2021年2月
