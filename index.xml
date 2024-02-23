@@ -1,166 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/</link><description>Recent content on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 08 Jan 2024 17:05:16 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>2024年もよろしゅうお願いします</title><link>https://tech.yyh-gl.dev/blog/new-year-2024/</link><pubDate>Mon, 08 Jan 2024 17:05:16 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/new-year-2024/</guid><description>転職で始まった2023年も、あっという間に終わりました。
-お世話になった方々ありがとうございました！
-今年は昨年以上に頑張っていくのでよろしくお願いします。</description></item><item><title>Indigo VPS上に個人開発用のk8sクラスターを構築する</title><link>https://tech.yyh-gl.dev/blog/k8s-setup/</link><pubDate>Thu, 04 May 2023 11:20:17 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-setup/</guid><description>概要 WebARENA Indigo でVPSを2台借りて、 個人開発用のk8sクラスターを構築したので、その手順をメモとして残します。
-k8sクラスターの構築は下記2つの公式ドキュメントを参考に進めました。
-kubeadmのインストール kubeadmを使用したクラスターの作成 ドキュメントに記載のある手順を最終的にはスクリプトにしています。 （本ブログ公開時点では自動構築スクリプトとして活用可能ですが、 k8sまわりのアップデートにより動かなくなる可能性が高いと思います）
-k8sクラスターについて Masterノード 1台, Workerノード 1台の計2台構成 個人開発なのでお金の節約のために冗長構成は取っていません サーバーOSは Ubuntu 22.04 k8sのバージョンは v1.27.1 CNIはFlannelを使用 Indigo VPS固有の内容 Swapの無効化は不要 k8sを構築するサーバーに関して、公式ドキュメントに以下の記載があります。
-Swapがオフであること。kubeletが正常に動作するためにはswapは必ずオフでなければなりません。
-参考 Indigo VPSではデフォルトでSwapが無効になっているのでこの手順は不要です。
-ファイアウォール インバウンドに対してのみ制限を設けます。 公式ドキュメントに公開しないといけないポート情報が記載されているので、こちらを参照して必要なポートだけ開けます。 公開しないといけないポート情報 ufwについては特になにもしていません。
-このままでは手元のPCからSSHができなくなりますが、そこはTailscaleで解決しています。 Tailscaleのインストールはスクリプト内で行っています。
-スクリプト 下記リポジトリに置いています。
-yyh-gl/k8s-setup 以下のとおり実行すれば、k8sクラスターが構築されます。
-Masterノード：setup_common.sh→setup-master.shの順で実行 注意：setup-master.shの&amp;lt;Master node IP&amp;gt;部分はMasterノードのIPアドレスに置き換える必要あり advertise addressの変更に使用（僕はTailscaleが払い出すIPにしたかったので） Workerノード：setup_common.shを実行後にkubeadm join</description></item><item><title>gomockのgenerics対応状況</title><link>https://tech.yyh-gl.dev/blog/gomock-generics/</link><pubDate>Sun, 09 Apr 2023 00:25:48 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/gomock-generics/</guid><description>gomock gomock はGo用のモック生成ツールです。
-今回はこのgomockのgenerics対応状況について共有します。
-gomockのgenerics対応状況 残念ながらgomockはまだgenericsに対応していません。
-ただし、generics対応がリリースされていないだけで、 すでにmainブランチには generics対応のPR がマージされています （Issueはこちら ）。 したがって、go install github.com/golang/mock/mockgen@mainとすればgenerics対応したgomockを利用可能です。
-いつリリース？ v1.7.0としてリリース予定らしく、すでにタグは作成されています。 https://github.com/golang/mock/releases/tag/v1.7.0-rc.1 ただ、タグが作成されてからもうすぐ1年が経とうとしています…
-無事リリースされることを祈りましょう。
-（タグがあるのでgo install github.com/golang/mock/mockgen@v1.7.0-rc.1でもOKですね）
-まとめ generics対応したgomockを使いたい場合は、 go install github.com/golang/mock/mockgen@mainか go install github.com/golang/mock/mockgen@v1.7.0-rc.1を実行しましょう。</description></item><item><title>DMM.comを退職しました</title><link>https://tech.yyh-gl.dev/blog/dmm-to-line/</link><pubDate>Wed, 11 Jan 2023 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/dmm-to-line/</guid><description>合同会社DMM.comを退職しました 2019年4月1日に新卒入社し、2023年1月11日に退職しました。
-4年弱お世話になりました。
-節目なのでDMM入社前〜退職までをまとめておきます。
-メインは自分の振り返りのためですが、DMMに興味がある方の参考になると幸いです。
-入社まで 私は将来起業したいと思っており、 そのために事業立ち上げを近くで見てみたいと考えていました。
-（実はリッチマンプアウーマンに影響を受けてエンジニアになってたりします）
-起業に興味がありつつも、 エンジニアとして大規模なシステム開発に携わってみたいという相反する気持ちもありました。
-どうしようかなぁと思っていたときに出会ったのがDMM.comでした。
-20年以上稼働しているシステムがある上に、新規事業が毎月のように生まれてくる会社です。
-0→1から1→10, 10→100まで全部やってみたい僕にはうってつけの場所でした。
-入社してから 新卒研修が終わり、配属となったチームでは最初はリプレイス案件を担当し、 半年ほどすると新規事業が始まりました。
-（詳しくは About にある経歴をご覧いただければと思います）
-直属の上司である石垣さん（@i35_267 ）の元で働いていたわけですが、 開発だけでなく様々な機会をいただきました。
-フルサイクルエンジニアリング の考えに則った開発から始まり、損益計算書（P/L）を読んだり、データ分析や施策検討など、 「エンジニア」という枠組みに縛られない様々な経験をしました。
-もちろんやることは増えるので忙しかったですがとても楽しかったです。
-良い経験だったと心の底から思います。
-テックリード、そして、チームリーダーへ リプレイス案件の途中からテックリードを任せてもらうことになります。
-大それたことをやっていたわけではないですが、 技術周りをリードできるように勉強してはチームに還元するといったことをしていました。
-（技術的関心とビジネス的関心のバランスを考えるのが楽しかった）
-結果として2019年度のゴールデンルーキー賞（新人賞みたいなの）をいただきました。
-自分のやってることが正しいのか分からない中で必死に突き進んでいた自分にとっては、 みんなに認めてもらえたと実感できてとても嬉しかったです。
-（自慢話に聞こえるかなと思って、今まで社外で話したことなかった）
-無事にリプレイスが完了し、次に僕がDMMで最も関わっていた『DMMポイントクラブ』プロジェクトが始まります。
-（間で他にもプロジェクトをやってましたが話の流れ的に今回は割愛）
-本プロジェクトが始まるにあたり僕はチームリーダーになりました。
-DMMにはテックリードという役職がないので、ここで初めて役職がつきました。
-肩書きにまったく興味がない僕は今までどおりがむしゃらに頑張りました。
-（さすがにもう少しどういう役職があるかは知っといた方がいいと石垣さんに言われたのも懐かしい）
-チームリーダーになると開発業務以外にメンバーのマネジメントやプロジェクト管理なども入ってきます。
-手を動かす（開発）時間が減ってしまいストレスを抱える時期もありましたが、ユーザーに価値を届けるという目標は同じであり、 十分にやりがいを持ちながら仕事していました。
-特にピープルマネジメントには正解がなく、あーでもないこーでもないと試行錯誤しながら突き進んでてきた2年でした。
-やってきたことが合っていたのかは分かりませんが、 最終出社日にチームメンバーからもらった色紙のメッセージを見て、ある程度はリーダーとしてみんなのためになれていたのかなと思いました。
-フルサイクルエンジニアリングを掲げたチームにおけるリーダー経験はとても良い経験だったと思います。
-『DMMポイントクラブ』での開発やマネジメントに関して各メンバーが意識していたことなどは 以下の動画にまとまっているので興味があれば御覧ください。
-『DMM meetup #38〜フルサイクルエンジニアリングの現場【技術書典出版記念】〜 』
-（本も書きました 『DMM PointClub Tech Book #1 』）
-10→100の開発 DMMの大黒柱といっても過言ではない動画サービス（10→100）にも少しだけ（本当に少しだけです）参加しました。
-20年以上運用されているサービスですので、いわゆる「レガシー」と呼ばれる部分もありますが、
-そこにネガティブなイメージはなく、こういう工夫によって支えてきたんだという学びが大きかったです。
-（もちろん改善も進んでいます）
-以上で、DMMでは0→1から1→10, 10→100まで、学生時代に思い描いていたやりたいことは全てできました。</description></item><item><title>KtorとStripeでECサイトを作ってみた</title><link>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</link><pubDate>Wed, 21 Dec 2022 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</guid><description>Kotlin Advent Calendar 2022 本記事はKotlin Advent Calendar 2022 の21日目の記事です。
-概要 クリスマスといえばプレゼント。
-ということでECサイトを作ってみます。
-ECサイトと言いつつもあまり複雑なことはせずに、Stripeから取得した商品情報を表示する画面を作るところまでやります。
-本画面を実装する過程で、APIを経由した情報のやりとり→受け取った情報を画面に表示するところまで触れます。
-よって、本記事を読めばKotlinで外部API（主にStripe）を使ったシステムの実装イメージをざっくり掴めると思います。
-ただただKotlinで作るだけではなくて、個人的にこれまで触ったことないフレームワークやサービスを使ってみたいと思っています。
-個人的にこれまで触ったことない
-あたかもKotlinは触ったことあるような言い方ですが、私はこれまでGo中心のエンジニア人生でした。
-したがって、そもそもKotlin自体あまり触ったことがないです←
-Kotlinのお作法を守れていないところもあると思いますが、こんな感じで作れるのかぁとイメージしてもらえると幸いです。
-では、採用技術を紹介したら、さっそくECサイトを作っていこうと思います。
-⚠️ 本記事内に記載するコードはpackageやimport周りのコードを省略しています。
-コード全体を見たい場合は以下のリポジトリにコードを置いているのでこちらを参照ください。
-https://github.com/yyh-gl/ktor-shop/ 採用技術 Webフレームワーク：Ktor テンプレートエンジン：FreeMarker 決済および商品管理：Stripe DI：Koin Hello World まずは「Hello World」していきます。
-プロジェクトの作成は下記公式サイトに記載の手順を参考にしてください。
-https://ktor.io/docs/intellij-idea.html#create_ktor_project インストールしたプラグインは以下のとおりです。
-コードがひととおりできあがったら下記コマンドを実行しサーバーを起動します。
-$ ./gradlew run
-サーバーが起動したら http://localhost:8080/ にアクセスします。
-「Hello World!」を表示できました。
-Auto-reloadの有効化 開発していく上ではAuto-reloadがあった方が便利なのでAuto-reloadを有効にしていきます。
-Auto-reloadを有効化する手順は以下のとおりです。
-developmentモードを有効化 継続的なビルドを実行
-$ ./gradlew -t build サーバーを起動
-$ ./gradlew run サーバー起動手順がHello Worldのときよりも2つ増えています。
-詳しく見てみましょう。
-参考コミット 1. developmentモードを有効化 developmentモードを有効にする方法はいくつかあります。
-今回はEngineMainを使った方法を紹介します。
-生成されたコードではembeddedServerを使ってサーバーを起動しているのでEngineMainに変更します。
-（EngineMainおよびembeddedServerの違いはこちら ）</description></item><item><title>複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる</title><link>https://tech.yyh-gl.dev/blog/docker-compose-override/</link><pubDate>Sat, 19 Mar 2022 00:55:40 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/docker-compose-override/</guid><description>要約 Docker Composeの設定ファイルは複数指定できて、設定の追加や上書きができる。
-早速詳細に見ていきましょう↓
-docker-compose.ymlは複数指定可能 docker compose up実行時に-fオプションを使うことで、 参照するdocker-compose.ymlファイル（設定ファイル）を指定できることは、ご存知の方も多いと思います。
-しかし、複数の設定ファイルを指定できることはあまり知られていないと思います（勝手な決めつけ）。
-Docker-docs-ja では、以下のページで説明がされています。
-『ファイル間、プロジェクト間での Compose 設定の共有 』 実際の動きを見てみる 以下のようなdocker-compose.ymlを用意します。
-docker-compose.yml
-version: '3' services: web: image: &amp;quot;nginx:latest&amp;quot; docker compose -f docker-compose.yml upでコンテナを起動した後に、 ブラウザを開いてhttp://localhost/にアクセスしてみます。
-Webサイトにアクセスできませんでした。
-ポートを公開していないので当然の結果ですね。
-次に、以下のようなdocker-compose.override.ymlを用意します。
-docker-compose.override.yml
-version: '3' services: web: ports: - &amp;quot;80:80&amp;quot; そして、今度は以下のようにして、複数の設定ファイルを指定します。
-docker compose -f docker-compose.yml -f docker-compose.override.yml up
-では、http://localhost/にアクセスしてみます。
-今度は無事にアクセスできました。
-ポート公開がうまくできているようです。
-上記の挙動を見ることで、docker-compose.ymlで使用イメージの指定ができており、なおかつ、 docker-compose.override.ymlでポート公開の設定ができていることが分かります。
-すなわち、Docker Composeは追加で設定ファイルを指定することで、設定を追加できます。
-なお、今回はサンプルを省きましたが、追加だけではなく、上書きも可能です。
-（後ほど出てくるサンプルを見れば、上書きの挙動も分かると思います）
-重複した設定項目がある場合はどちらが優先される？ 前章の最後に、「追加だけではなく、上書きも可能です」と書きました。
-本章では、複数の設定ファイルを指定したさいに、 例えば、同じ環境変数名に対して異なる値を設定していた場合どちらの設定が優先されるのかを解説します。
-はじめに、ドキュメントを読んでみます。
-『設定の追加と上書き』 の章に、
-設定オプションが元々のサービスとローカルのサービスの両方にて定義されていた場合は、 元のサービスの値はローカルの値によって置き換えられるか、あるいは拡張されます。
-とありますが、元のサービスってどっち？となります。
-なので、実際に動作を見てみます。</description></item><item><title>【2021年】アクティビティまとめ</title><link>https://tech.yyh-gl.dev/blog/activity-2021/</link><pubDate>Sun, 02 Jan 2022 20:59:04 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/activity-2021/</guid><description>今年も… 昨年に引き続き 、 今年もLAPRAS で1年間のアクティビティを出してみました。
-コロナ禍真っ只中でも、オンラインでたくさんの勉強会に参加できました。
-今年は良い出会いが特に多く、運営側として関わったものも増えました。
-来年もさらに良い年になるように、多方面で頑張っていきます！
-では、本題の2021年のアクティビティです↓
-2021年アクティビティ 2021年のアウトプットと参加イベントを振り返ると
-アウトプットしたものや参加したイベントなどをまとめてみました。
-connpass 2021/12/08 ユースケース駆動開発をやってみた 2021/12/01 Go Language Specification 輪読会 #32 2021/11/25 merpay Tech Talk 〜 決済基盤の未来〜 2021/11/17 Go Language Specification 輪読会 #31 2021/11/03 Go 1.18&amp;#43; 言語仕様勉強会 #3 【Generics】 2021/10/30 ライブモデリングとコーディングで理解するDDD (DDD勉強会2021#1) 2021/10/21 mercari.go #17 オンライン開催 2021/10/20 Go Language Specification 輪読会 #30 2021/10/06 Go Language Specification 輪読会 #29 2021/09/22 Go 1.18&amp;#43; 言語仕様勉強会 #2 【Generics】 2021/09/11 DDD質問箱のつまみ喰い - 1軒目 2021/09/08 Go Language Specification 輪読会 #28 2021/09/07 モデリングの学び方：座談会 2021/09/01 LAPRAS公開設計レビュー 「t_wadaさんにこのテストでサバンナを生き抜けるか聞いてみた」 2021/08/25 Go Language Specification 輪読会 #27 2021/08/22 Kyoto.</description></item><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://tech.yyh-gl.dev/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
-はじめに Goには標準で便利なコマンドがたくさんあります。
-有名どころで言えば、
-generate fmt vet などがあります。
-中でも、Goのコードをコンパイルするためのbuildコマンドは、 みなさんも日頃の開発で使用しているのではないでしょうか。
-buildは特に難しいことをしなければ、とてもシンプルに使えるコマンドです。
-よって、直感的に「こうすればコンパイルできるんでしょー」くらいの感覚で、 ドキュメントを注視しなくても使い始められるでしょう。
-しかし、buildは深く見ていくと意外と奥が深いコマンドです。
-今回はそんなbuildについて深ぼっていこうと思います。
-buildコマンドとは まずはbuildとはどういったコマンドなのか見ていきましょう。
-helpを使って調べてみます。
-$ go help build Build compiles the packages named by the import paths, along with their dependencies, but it does not install the results. &amp;lt;省略&amp;gt; When compiling packages, build ignores files that end in '_test.go'. &amp;lt;省略&amp;gt; When compiling multiple packages or a single non-main package, build compiles the packages but discards the resulting object, serving only as a check that the packages can be built.</description></item><item><title>【2020年】アクティビティまとめ</title><link>https://tech.yyh-gl.dev/blog/activity-2020/</link><pubDate>Tue, 23 Feb 2021 18:41:54 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/activity-2020/</guid><description>LAPRASでおもしろい機能を見つけた LAPRAS に2020年のアクティビティをまとめてくれる機能がありました。
-今回はその機能を使って（今さらながら）去年のアクティビティをメモしておきたいと思います。
-以下、LAPRASで出力されたアクティビティを転記したものです。
-・
-・
-・
-2020年のアウトプットと参加イベントを振り返ると 今年アウトプットしたものや参加したイベントなどをまとめてみました。
-connpass 2020/12/23 サーバーレスアンチパターン今昔物語 第八夜 サーバーレスゆく年くる年2020/2021 2020/12/22 merpay Tech Talk｜QAx DevOps/マイクロサービス/Backend vol.2 2020/12/21 Software Design 1月号［第1特集］Goプログラミングスキルをレベルアップ執筆者座談会 2020/12/19 エリック・エヴァンスのドメイン駆動設計 輪読会「第7章 言語を使用する：応用例」 2020/12/16 Go Language Specification輪読会 #12 2020/12/15 Front-End Study #2「Performance Tuning in depth（仮）」 2020/12/09 Go Language Specification輪読会 #11 2020/12/05 エリック・エヴァンスのドメイン駆動設計 輪読会「第6章 ドメインオブジェクトのライフサイクル」後編 2020/12/03 merpay Tech Talk ~ 決済基盤（Payment Platform）Backend裏話 2020/11/30 DMM meetup #22 〜DMMのプラットフォームが目指す経済圏とパーソナライズ戦略〜 2020/11/27 Sandbox Live 第2回目 〜ゲスト: ミノ駆動さん と とーますさん〜 2020/11/27 サーバーレスアンチパターン今昔物語 第七夜 2020/11/26 merpay Tech Talk〜DevOpsxQA、マイクロサービスxQA、BackendxQA〜 2020/11/21 エリック・エヴァンスのドメイン駆動設計 輪読会「第6章 ドメインオブジェクトのライフサイクル」前編 2020/11/18 開発ライブ実況 #7 高難易度Goクイズ大会 2020/11/14 Umeda.</description></item><item><title>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</title><link>https://tech.yyh-gl.dev/blog/profile-readme-updater/</link><pubDate>Fri, 19 Feb 2021 18:53:19 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/profile-readme-updater/</guid><description>おもしろいツイートを見つけた GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした pic.twitter.com/o47E7YHSsx
-&amp;mdash; mikkame (@mikkameee) February 14, 2021 とても便利そうだったので僕もやってみました。
-作った ↑こんな感じで Recent posts - Blog 📝 に直近5個のブログ記事を表示するようにして、
-なおかつ自動で更新されるようにしました。
-コードはこちら に置いてあります。
-やっていることはとてもシンプルで、
-Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。
-興味あったらコードを覗いてみてください。</description></item><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 8日目 』の記事です。
-Go Language Specification輪読会 現在、Go Language Specification輪読会 という、 Goの言語仕様 を読んでいく会に参加しています。
-今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
-（振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
-ちなみに、だいたいのコードは現場で使うと怒られそうです😇 （いや、まず間違いなく怒られる）
-1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5 まずはこちら。
-変な位置にコメントが挿入されています。
-コメント部分を消すとvara = 1となるのでエラーになりそうです。
-しかし、実行してみると、すんなりと変数aを表示してくれます。
-解説 Spec を参照すると以下の一文があります。
-A general comment containing no newlines acts like a space.
-改行を含まないgeneral commentはスペースのように作用する。
-（general commentとは/**/で囲われたコメントのことを指します）
-よって、先程のコードは以下と同じということです。
-package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://tech.yyh-gl.dev/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/</link><description>Recent content on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 26 Nov 2020 13:50:31 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://tech.yyh-gl.dev/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/support-webp/</guid><description>画像の形式をWebPに変えた 本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、
 まずはサムネ画像をWebPに変えてみました。
 WebPとは、Googleが開発しているオープンな静止画像フォーマットで、
 トラフィック量軽減と表示速度短縮を目的しています。 （wikiから拝借 ）
@@ -176,10 +14,7 @@ WebPを採用した結果 以下のツイートのとおりです。
 リリースノート Safariのwebp対応ってバージョン14からだったんだ😇
 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
 &amp;mdash; hon-D (@yyh_gl) November 26, 2020 自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←
-嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://tech.yyh-gl.dev/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-switch-fallthrough/</guid><description>fallthrough とは GoではSwitch文でfallthroughというキーワード が使用可能です。
-機能としては、処理を次の節（caseやdefault）に進めます。（参考 ）
-言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。
-package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl. Playground defaultにも飛べるという例 fallthroughは、Go言語のORMライブラリとして有名な『GORM』でも使用されています。(使用箇所 )</description></item><item><title>texta.fm #1 まとめ</title><link>https://tech.yyh-gl.dev/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
+嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>texta.fm #1 まとめ</title><link>https://tech.yyh-gl.dev/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
 エヴァンス本を読む前に知っておいた方がいい時代背景、そして、意識すべき点を知ることができるので、
 時間があればぜひ実際に聞きに行ってみてください。
 話者：
@@ -267,53 +102,7 @@ errorの表示 2つ目の疑問は、下記コードで e1 を表示すると、
 errors.New()の戻り値である構造体の値ではなく、エラー文言が表示されることです。
 package main import ( &amp;quot;fmt&amp;quot; &amp;quot;errors&amp;quot; ) func main() { e1 := errors.New(&amp;quot;error1&amp;quot;) fmt.Println(e1) // error1 } Playground errors.New()が返しているのは構造体なので、
 下記コードのように構造体の内容が表示されないのはなんでだ？ってなったわけです。
-package main import &amp;quot;fmt&amp;quot; func Hoge() interface{} { type hoge struct { s string } return &amp;amp;hoge{s: &amp;quot;hoge&amp;quot;} } func main() { h := Hoge() fmt.</description></item><item><title>【Go】errorsパッケージの中身覗いてみた</title><link>https://tech.yyh-gl.dev/blog/errors_package/</link><pubDate>Mon, 09 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/errors_package/</guid><description>errorsパッケージに興味持った v1.13からerrorsパッケージに Unwrap() Is() As() といった関数が追加されました。
-（もう1.14もリリースされているのに今さらですね😇）
-今回はこれら3つの関数について、内部実装を追いかけていきます。
-と、その前に、errorsパッケージの概要と関連パッケージについて軽く説明しておきます。
-errorsパッケージと関連パッケージ errorsパッケージ 名前の通り、エラー関連の処理がまとまっているパッケージですね。
-Goの標準パッケージです。
-→ GoDoc v1.13にて、先述の Unwrap() Is() As() という関数たちが追加されました。
-errorを扱うパッケージとして、もうひとつ有名なパッケージがあります。
-xerrorsパッケージです。
-xerrorsパッケージ xerrors とは、 Goのサブリポジトリ で開発が進められているパッケージです。
-（準標準パッケージといった感じでしょうか）
-xerrorsのGoDoc に下記の記述がある通り、
-These functions were incorporated into the standard library&amp;rsquo;s errors package in Go 1.13: - Is - As - Unwrap
-もともとは本パッケージに Unwrap() Is() As() が実装されていましたが、
-v1.13にて標準パッケージに取り込まれました。
-さて、軽くerror関連のパッケージについて触れたところで、
-早速、Unwrap() Is() As() の内部実装を見ていきたいと思います。
-なお、Goのコードはv1.14.0を参照しています。
-Unwrap() ラップされたエラーから中身のエラーを取り出す関数です。
-処理としては下記のようになっています。
-func Unwrap(err error) error { u, ok := err.</description></item><item><title>Goのバージョン管理について</title><link>https://tech.yyh-gl.dev/blog/go-versions/</link><pubDate>Tue, 03 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-versions/</guid><description>Goのバージョン管理 注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。 注意2：基本的にMacユーザを対象にしています。（WindowsとLinuxももちろん好きです）
-開発において言語のバージョン管理はつきものだと思います。
-そのニーズは高く、rbenv や nodenv といったバージョン管理ツールが普及しています。
-ただし、Goの場合は少し話が変わってきます。
-もちろんGoでも goenv が用意されていますが、
-（今のところ）Goは後方互換性が担保されているので、基本的に最新バージョンに上げ続ければOKです。
-…と言いつつも、GAEを使用するといった場合に、どうしてもバージョン管理したくなることがあると思います。
-そこで今回はまずGoのバージョン管理ツールの紹介をした後で、
-最新バージョンをインストールする方法を紹介していきたいと思います。
-Goのバージョン管理ツール ▼ goenv ◯◯env系は有名ですよね。
-言語のバージョン管理といえばこれです。
-導入手順は公式の手順 通りなので省略します。
-1点はまりどころがあります。
-$GOPATHが変わらなくなってしまうという問題です。
-本件に関しては以前、僕のブログで対処法を書いているので、
-こちら を参考にしてみてください。
-▼ go get（公式サイトに記載のある方法） （バージョン管理&amp;quot;ツール&amp;quot;とは言えませんが…）
-本方法は公式サイト に 記載されている方法です。
-$ go get golang.org/dl/goX.Y.Z $ goX.Y.Z download $ goX.Y.Z version go version goX.Y.Z linux/amd64 コマンド打つたびに、バージョンまで打つのがめんどくさいという方は、
-bash や zsh の設定でエイリアスでも貼ってやればOKですね。
-最新バージョンのインストール方法 冒頭で「基本的に最新バージョンに上げ続ければOK」と述べていたので、
-最新バージョンのインストール方法についても言及しておきます。
-特に新しいことはなくいろんなサイトで紹介されているのでさらっと流していきます。
-▼ Homebrew $ brew install go 以上です。
-標準出力にて「必要ならパスの設定してね」と言われます。
-言われたとおりにやればOKです。
-▼ ソースからのインストール こちらの方法はHomebrewでのインストールと比べると、少しややこしくなります。</description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</guid><description>簡単まとめシリーズ 今回は 集約とトランザクション境界 について、
+package main import &amp;quot;fmt&amp;quot; func Hoge() interface{} { type hoge struct { s string } return &amp;amp;hoge{s: &amp;quot;hoge&amp;quot;} } func main() { h := Hoge() fmt.</description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</guid><description>簡単まとめシリーズ 今回は 集約とトランザクション境界 について、
 自分のわからないところを調べたので、メモとして残しておきます。
 集約 集約の説明を『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』 から拝借すると、
 「データを変更するための単位として扱われるオブジェクトの集まりを集約といいます」とのこと。
@@ -805,4 +594,134 @@ ECサービスやスマホゲームのバックエンドなどを開発してい
 （メインはサーバサイド）
 学んだことをアウトプットする場として
 本ブログを始めました。
-頑張ります</description></item><item><title>Contact</title><link>https://tech.yyh-gl.dev/contact/_index.fr/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/contact/_index.fr/</guid><description/></item></channel></rss>
+頑張ります</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/activity-2020/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/activity-2020/</guid><description>+++ title = &amp;ldquo;【2020年】アクティビティまとめ&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;勉強会&amp;rdquo;, &amp;ldquo;アクティビティ&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2021-02-23T18:41:54+09:00 description = &amp;ldquo;今さらではありますが&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2021/02/activity-2020/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+LAPRASでおもしろい機能を見つけた LAPRAS に2020年のアクティビティをまとめてくれる機能がありました。
+今回はその機能を使って（今さらながら）去年のアクティビティをメモしておきたいと思います。
+以下、LAPRASで出力されたアクティビティを転記したものです。
+・
+・
+・
+2020年のアウトプットと参加イベントを振り返ると 今年アウトプットしたものや参加したイベントなどをまとめてみました。
+connpass 2020/12/23 サーバーレスアンチパターン今昔物語 第八夜 サーバーレスゆく年くる年2020/2021 2020/12/22 merpay Tech Talk｜QAx DevOps/マイクロサービス/Backend vol.2 2020/12/21 Software Design 1月号［第1特集］Goプログラミングスキルをレベルアップ執筆者座談会 2020/12/19 エリック・エヴァンスのドメイン駆動設計 輪読会「第7章 言語を使用する：応用例」 2020/12/16 Go Language Specification輪読会 #12 2020/12/15 Front-End Study #2「Performance Tuning in depth（仮）」 2020/12/09 Go Language Specification輪読会 #11 2020/12/05 エリック・エヴァンスのドメイン駆動設計 輪読会「第6章 ドメインオブジェクトのライフサイクル」後編 2020/12/03 merpay Tech Talk ~ 決済基盤（Payment Platform）Backend裏話 2020/11/30 DMM meetup #22 〜DMMのプラットフォームが目指す経済圏とパーソナライズ戦略〜 2020/11/27 Sandbox Live 第2回目 〜ゲスト: ミノ駆動さん と とーますさん〜 2020/11/27 サーバーレスアンチパターン今昔物語 第七夜 2020/11/26 merpay Tech Talk〜DevOpsxQA、マイクロサービスxQA、BackendxQA〜 2020/11/21 エリック・エヴァンスのドメイン駆動設計 輪読会「第6章 ドメインオブジェクトのライフサイクル」前編 2020/11/18 開発ライブ実況 #7 高難易度Goクイズ大会 2020/11/14 Umeda.</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/activity-2021/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/activity-2021/</guid><description>+++ title = &amp;ldquo;【2021年】アクティビティまとめ&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;勉強会&amp;rdquo;, &amp;ldquo;アクティビティ&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2022-01-02T20:59:04+09:00 description = &amp;ldquo;今年もいろいろと勉強会参加したなぁ&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2022/01/activity-2021/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+今年も… 昨年に引き続き 、 今年もLAPRAS で1年間のアクティビティを出してみました。
+コロナ禍真っ只中でも、オンラインでたくさんの勉強会に参加できました。
+今年は良い出会いが特に多く、運営側として関わったものも増えました。
+来年もさらに良い年になるように、多方面で頑張っていきます！
+では、本題の2021年のアクティビティです↓
+2021年アクティビティ 2021年のアウトプットと参加イベントを振り返ると
+アウトプットしたものや参加したイベントなどをまとめてみました。
+connpass 2021/12/08 ユースケース駆動開発をやってみた 2021/12/01 Go Language Specification 輪読会 #32 2021/11/25 merpay Tech Talk 〜 決済基盤の未来〜 2021/11/17 Go Language Specification 輪読会 #31 2021/11/03 Go 1.</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/dmm-to-line/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/dmm-to-line/</guid><description>+++ title = &amp;ldquo;DMM.comを退職しました&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;日記&amp;rdquo;, &amp;ldquo;退職ブログ&amp;rdquo;] tags = [&amp;ldquo;日記&amp;rdquo;] date = 2023-01-11T00:00:00+09:00 description = &amp;ldquo;4年弱お世話になりました&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2023/01/dmm-to-line/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+合同会社DMM.comを退職しました 2019年4月1日に新卒入社し、2023年1月11日に退職しました。
+4年弱お世話になりました。
+節目なのでDMM入社前〜退職までをまとめておきます。
+メインは自分の振り返りのためですが、DMMに興味がある方の参考になると幸いです。
+入社まで 私は将来起業したいと思っており、 そのために事業立ち上げを近くで見てみたいと考えていました。
+（実はリッチマンプアウーマンに影響を受けてエンジニアになってたりします）
+起業に興味がありつつも、 エンジニアとして大規模なシステム開発に携わってみたいという相反する気持ちもありました。
+どうしようかなぁと思っていたときに出会ったのがDMM.comでした。
+20年以上稼働しているシステムがある上に、新規事業が毎月のように生まれてくる会社です。
+0→1から1→10, 10→100まで全部やってみたい僕にはうってつけの場所でした。
+入社してから 新卒研修が終わり、配属となったチームでは最初はリプレイス案件を担当し、 半年ほどすると新規事業が始まりました。
+（詳しくは About にある経歴をご覧いただければと思います）
+直属の上司である石垣さん（@i35_267 ）の元で働いていたわけですが、 開発だけでなく様々な機会をいただきました。
+フルサイクルエンジニアリング の考えに則った開発から始まり、損益計算書（P/L）を読んだり、データ分析や施策検討など、 「エンジニア」という枠組みに縛られない様々な経験をしました。
+もちろんやることは増えるので忙しかったですがとても楽しかったです。
+良い経験だったと心の底から思います。
+テックリード、そして、チームリーダーへ リプレイス案件の途中からテックリードを任せてもらうことになります。
+大それたことをやっていたわけではないですが、 技術周りをリードできるように勉強してはチームに還元するといったことをしていました。</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/docker-compose-override/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/docker-compose-override/</guid><description>+++ title = &amp;ldquo;複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;Docker&amp;rdquo;, &amp;ldquo;Docker Compose&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2022-03-19T00:55:40+09:00 description = &amp;ldquo;知識として知っているだけで実際に使ったことはない←&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2022/03/docker-compose-override/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+要約 Docker Composeの設定ファイルは複数指定できて、設定の追加や上書きができる。
+早速詳細に見ていきましょう↓
+docker-compose.ymlは複数指定可能 docker compose up実行時に-fオプションを使うことで、 参照するdocker-compose.ymlファイル（設定ファイル）を指定できることは、ご存知の方も多いと思います。
+しかし、複数の設定ファイルを指定できることはあまり知られていないと思います（勝手な決めつけ）。
+Docker-docs-ja では、以下のページで説明がされています。
+『ファイル間、プロジェクト間での Compose 設定の共有 』 実際の動きを見てみる 以下のようなdocker-compose.ymlを用意します。
+docker-compose.yml
+version: '3' services: web: image: &amp;quot;nginx:latest&amp;quot; docker compose -f docker-compose.yml upでコンテナを起動した後に、 ブラウザを開いてhttp://localhost/にアクセスしてみます。</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/errors_package/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/errors_package/</guid><description>+++ author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;Go&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2020-03-09T09:00:00+09:00 description = &amp;ldquo;今回は Unwrap()，Is()，As() についてお届け&amp;rdquo; title = &amp;ldquo;【Go】errorsパッケージの中身覗いてみた&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2020/03/errors_package/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+errorsパッケージに興味持った v1.13からerrorsパッケージに Unwrap() Is() As() といった関数が追加されました。
+（もう1.14もリリースされているのに今さらですね😇）
+今回はこれら3つの関数について、内部実装を追いかけていきます。
+と、その前に、errorsパッケージの概要と関連パッケージについて軽く説明しておきます。
+errorsパッケージと関連パッケージ errorsパッケージ 名前の通り、エラー関連の処理がまとまっているパッケージですね。
+Goの標準パッケージです。
+→ GoDoc v1.13にて、先述の Unwrap() Is() As() という関数たちが追加されました。
+errorを扱うパッケージとして、もうひとつ有名なパッケージがあります。
+xerrorsパッケージです。
+xerrorsパッケージ xerrors とは、 Goのサブリポジトリ で開発が進められているパッケージです。
+（準標準パッケージといった感じでしょうか）
+xerrorsのGoDoc に下記の記述がある通り、
+These functions were incorporated into the standard library&amp;rsquo;s errors package in Go 1.</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/go-build/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-build/</guid><description>+++ title = &amp;ldquo;徒然なるままに go build と build tag を見ていく&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;Go&amp;rdquo;, &amp;ldquo;Advent Calendar&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2021-12-19T09:00:00+09:00 description = &amp;ldquo;Go #1 Advent Calendar 2021 19日目&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2021/12/go-build/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
+はじめに Goには標準で便利なコマンドがたくさんあります。
+有名どころで言えば、
+generate fmt vet などがあります。
+中でも、Goのコードをコンパイルするためのbuildコマンドは、 みなさんも日頃の開発で使用しているのではないでしょうか。
+buildは特に難しいことをしなければ、とてもシンプルに使えるコマンドです。
+よって、直感的に「こうすればコンパイルできるんでしょー」くらいの感覚で、 ドキュメントを注視しなくても使い始められるでしょう。
+しかし、buildは深く見ていくと意外と奥が深いコマンドです。</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/go-switch-fallthrough/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-switch-fallthrough/</guid><description>+++ author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;Go&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2020-10-03T09:00:00+09:00 description = &amp;ldquo;忘れがちじゃないですか？？&amp;rdquo; title = &amp;ldquo;【Go】Switch文のfallthroughに関するまとめ&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2020/10/go-switch-fallthrough/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+fallthrough とは GoではSwitch文でfallthroughというキーワード が使用可能です。
+機能としては、処理を次の節（caseやdefault）に進めます。（参考 ）
+言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。
+package main import &amp;quot;fmt&amp;quot; func main() { num := 1 switch num { case 1: fmt.Print(&amp;quot;I &amp;quot;) fallthrough case 2: fmt.Print(&amp;quot;am &amp;quot;) fallthrough case 3: fmt.Println(&amp;quot;yyh-gl.&amp;quot;) // fallthrough // 次の節がなければコンパイルエラー } } // 実行結果： // I am yyh-gl.</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/go-versions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-versions/</guid><description>+++ author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;Go&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2020-03-03T09:00:00+09:00 description = &amp;ldquo;地味にいろいろとあってややこしい&amp;rdquo; title = &amp;ldquo;Goのバージョン管理について&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2020/03/go-versions/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+Goのバージョン管理 注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。 注意2：基本的にMacユーザを対象にしています。（WindowsとLinuxももちろん好きです）
+開発において言語のバージョン管理はつきものだと思います。
+そのニーズは高く、rbenv や nodenv といったバージョン管理ツールが普及しています。
+ただし、Goの場合は少し話が変わってきます。
+もちろんGoでも goenv が用意されていますが、
+（今のところ）Goは後方互換性が担保されているので、基本的に最新バージョンに上げ続ければOKです。
+…と言いつつも、GAEを使用するといった場合に、どうしてもバージョン管理したくなることがあると思います。
+そこで今回はまずGoのバージョン管理ツールの紹介をした後で、
+最新バージョンをインストールする方法を紹介していきたいと思います。
+Goのバージョン管理ツール ▼ goenv ◯◯env系は有名ですよね。
+言語のバージョン管理といえばこれです。
+導入手順は公式の手順 通りなので省略します。
+1点はまりどころがあります。
+$GOPATHが変わらなくなってしまうという問題です。
+本件に関しては以前、僕のブログで対処法を書いているので、
+こちら を参考にしてみてください。
+▼ go get（公式サイトに記載のある方法） （バージョン管理&amp;quot;ツール&amp;quot;とは言えませんが…）</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/gomock-generics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/gomock-generics/</guid><description>+++ title = &amp;ldquo;gomockのgenerics対応状況&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;Go&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2023-04-09T00:25:48+09:00 description = &amp;ldquo;対応されているがリリースはまだ&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2023/04/gomock-generics/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+gomock gomock はGo用のモック生成ツールです。
+今回はこのgomockのgenerics対応状況について共有します。
+gomockのgenerics対応状況 残念ながらgomockはまだgenericsに対応していません。
+ただし、generics対応がリリースされていないだけで、 すでにmainブランチには generics対応のPR がマージされています （Issueはこちら ）。 したがって、go install github.com/golang/mock/mockgen@mainとすればgenerics対応したgomockを利用可能です。
+いつリリース？ v1.7.0としてリリース予定らしく、すでにタグは作成されています。 https://github.com/golang/mock/releases/tag/v1.7.0-rc.1 ただ、タグが作成されてからもうすぐ1年が経とうとしています…
+無事リリースされることを祈りましょう。
+（タグがあるのでgo install github.com/golang/mock/mockgen@v1.7.0-rc.1でもOKですね）
+まとめ generics対応したgomockを使いたい場合は、 go install github.com/golang/mock/mockgen@mainか go install github.com/golang/mock/mockgen@v1.7.0-rc.1を実行しましょう。</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/k8s-setup/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-setup/</guid><description>+++ title = &amp;ldquo;Indigo VPS上に個人開発用のk8sクラスターを構築する&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;k8s&amp;rdquo;, &amp;ldquo;個人開発&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2023-05-04T11:20:17+09:00 description = &amp;ldquo;kubeadmがとても便利&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2023/05/k8s-setup/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+概要 WebARENA Indigo でVPSを2台借りて、 個人開発用のk8sクラスターを構築したので、その手順をメモとして残します。
+k8sクラスターの構築は下記2つの公式ドキュメントを参考に進めました。
+kubeadmのインストール kubeadmを使用したクラスターの作成 ドキュメントに記載のある手順を最終的にはスクリプトにしています。 （本ブログ公開時点では自動構築スクリプトとして活用可能ですが、 k8sまわりのアップデートにより動かなくなる可能性が高いと思います）
+k8sクラスターについて Masterノード 1台, Workerノード 1台の計2台構成 個人開発なのでお金の節約のために冗長構成は取っていません サーバーOSは Ubuntu 22.04 k8sのバージョンは v1.27.1 CNIはFlannelを使用 Indigo VPS固有の内容 Swapの無効化は不要 k8sを構築するサーバーに関して、公式ドキュメントに以下の記載があります。
+Swapがオフであること。kubeletが正常に動作するためにはswapは必ずオフでなければなりません。
+参考 Indigo VPSではデフォルトでSwapが無効になっているのでこの手順は不要です。</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</guid><description>+++ title = &amp;ldquo;KtorとStripeでECサイトを作ってみた&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;Kotlin&amp;rdquo;, &amp;ldquo;Ktor&amp;rdquo;, &amp;ldquo;Stripe&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2022-12-21T00:00:00+09:00 description = &amp;ldquo;Stripeすごい&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2022/12/kotlin-ktor-stripe-tutorial/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+Kotlin Advent Calendar 2022 本記事はKotlin Advent Calendar 2022 の21日目の記事です。
+概要 クリスマスといえばプレゼント。
+ということでECサイトを作ってみます。
+ECサイトと言いつつもあまり複雑なことはせずに、Stripeから取得した商品情報を表示する画面を作るところまでやります。
+本画面を実装する過程で、APIを経由した情報のやりとり→受け取った情報を画面に表示するところまで触れます。
+よって、本記事を読めばKotlinで外部API（主にStripe）を使ったシステムの実装イメージをざっくり掴めると思います。
+ただただKotlinで作るだけではなくて、個人的にこれまで触ったことないフレームワークやサービスを使ってみたいと思っています。
+個人的にこれまで触ったことない
+あたかもKotlinは触ったことあるような言い方ですが、私はこれまでGo中心のエンジニア人生でした。
+したがって、そもそもKotlin自体あまり触ったことがないです←
+Kotlinのお作法を守れていないところもあると思いますが、こんな感じで作れるのかぁとイメージしてもらえると幸いです。
+では、採用技術を紹介したら、さっそくECサイトを作っていこうと思います。
+⚠️ 本記事内に記載するコードはpackageやimport周りのコードを省略しています。
+コード全体を見たい場合は以下のリポジトリにコードを置いているのでこちらを参照ください。
+https://github.com/yyh-gl/ktor-shop/ 採用技術 Webフレームワーク：Ktor テンプレートエンジン：FreeMarker 決済および商品管理：Stripe DI：Koin Hello World まずは「Hello World」していきます。</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/new-year-2024/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/new-year-2024/</guid><description>+++ title = &amp;ldquo;2024年もよろしゅうお願いします&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;日記&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2024-01-08T17:05:16+09:00 description = &amp;quot;&amp;quot; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2024/01/new-year-2024/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+転職で始まった2023年も、あっという間に終わりました。
+お世話になった方々ありがとうございました！
+今年は昨年以上に頑張っていくのでよろしくお願いします。</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/profile-readme-updater/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/profile-readme-updater/</guid><description>+++ title = &amp;ldquo;【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;GitHub Actions&amp;rdquo;, &amp;ldquo;GitHub&amp;rdquo;, &amp;ldquo;Go&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2021-02-19T18:53:19+09:00 description = &amp;ldquo;技術的な説明はなく、ただの独り言です&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2021/02/profile-readme-updater/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+おもしろいツイートを見つけた GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした pic.twitter.com/o47E7YHSsx
+&amp;mdash; mikkame (@mikkameee) February 14, 2021 とても便利そうだったので僕もやってみました。
+作った ↑こんな感じで Recent posts - Blog 📝 に直近5個のブログ記事を表示するようにして、
+なおかつ自動で更新されるようにしました。
+コードはこちら に置いてあります。
+やっていることはとてもシンプルで、
+Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。
+興味あったらコードを覗いてみてください。</description></item><item><title/><link>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</guid><description>+++ title = &amp;ldquo;The Go Programming Language Specificationで知った「こんなことできるだ」を紹介&amp;rdquo; author = &amp;ldquo;yyh-gl&amp;rdquo; categories = [&amp;ldquo;Go&amp;rdquo;, &amp;ldquo;Advent Calendar&amp;rdquo;] tags = [&amp;ldquo;Tech&amp;rdquo;] date = 2020-12-08T09:00:00+09:00 description = &amp;ldquo;Go 5 Advent Calendar 2020 8日目&amp;rdquo; type = &amp;ldquo;post&amp;rdquo; draft = false [[images]] src = &amp;ldquo;img/2020/12/uncredible-codes-from-go-spec/featured.webp&amp;rdquo; alt = &amp;ldquo;featured&amp;rdquo; stretch = &amp;ldquo;stretchH&amp;rdquo; +++
+本記事は『Go 5 Advent Calendar 2020 8日目 』の記事です。
+Go Language Specification輪読会 現在、Go Language Specification輪読会 という、 Goの言語仕様 を読んでいく会に参加しています。
+今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
+（振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
+ちなみに、だいたいのコードは現場で使うと怒られそうです😇 （いや、まず間違いなく怒られる）
+1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.</description></item><item><title>Contact</title><link>https://tech.yyh-gl.dev/contact/_index.fr/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/contact/_index.fr/</guid><description/></item><item><title>Contact</title><link>https://tech.yyh-gl.dev/contact/_index.pl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/contact/_index.pl/</guid><description/></item></channel></rss>

@@ -1,34 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/kotlin/</link><description>Recent content in Kotlin on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 21 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>KtorとStripeでECサイトを作ってみた</title><link>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</link><pubDate>Wed, 21 Dec 2022 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</guid><description>Kotlin Advent Calendar 2022 本記事はKotlin Advent Calendar 2022 の21日目の記事です。
-概要 クリスマスといえばプレゼント。
-ということでECサイトを作ってみます。
-ECサイトと言いつつもあまり複雑なことはせずに、Stripeから取得した商品情報を表示する画面を作るところまでやります。
-本画面を実装する過程で、APIを経由した情報のやりとり→受け取った情報を画面に表示するところまで触れます。
-よって、本記事を読めばKotlinで外部API（主にStripe）を使ったシステムの実装イメージをざっくり掴めると思います。
-ただただKotlinで作るだけではなくて、個人的にこれまで触ったことないフレームワークやサービスを使ってみたいと思っています。
-個人的にこれまで触ったことない
-あたかもKotlinは触ったことあるような言い方ですが、私はこれまでGo中心のエンジニア人生でした。
-したがって、そもそもKotlin自体あまり触ったことがないです←
-Kotlinのお作法を守れていないところもあると思いますが、こんな感じで作れるのかぁとイメージしてもらえると幸いです。
-では、採用技術を紹介したら、さっそくECサイトを作っていこうと思います。
-⚠️ 本記事内に記載するコードはpackageやimport周りのコードを省略しています。
-コード全体を見たい場合は以下のリポジトリにコードを置いているのでこちらを参照ください。
-https://github.com/yyh-gl/ktor-shop/ 採用技術 Webフレームワーク：Ktor テンプレートエンジン：FreeMarker 決済および商品管理：Stripe DI：Koin Hello World まずは「Hello World」していきます。
-プロジェクトの作成は下記公式サイトに記載の手順を参考にしてください。
-https://ktor.io/docs/intellij-idea.html#create_ktor_project インストールしたプラグインは以下のとおりです。
-コードがひととおりできあがったら下記コマンドを実行しサーバーを起動します。
-$ ./gradlew run
-サーバーが起動したら http://localhost:8080/ にアクセスします。
-「Hello World!」を表示できました。
-Auto-reloadの有効化 開発していく上ではAuto-reloadがあった方が便利なのでAuto-reloadを有効にしていきます。
-Auto-reloadを有効化する手順は以下のとおりです。
-developmentモードを有効化 継続的なビルドを実行
-$ ./gradlew -t build サーバーを起動
-$ ./gradlew run サーバー起動手順がHello Worldのときよりも2つ増えています。
-詳しく見てみましょう。
-参考コミット 1. developmentモードを有効化 developmentモードを有効にする方法はいくつかあります。
-今回はEngineMainを使った方法を紹介します。
-生成されたコードではembeddedServerを使ってサーバーを起動しているのでEngineMainに変更します。
-（EngineMainおよびembeddedServerの違いはこちら ）</description></item><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://tech.yyh-gl.dev/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/android_push/</guid><description>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/kotlin/</link><description>Recent content in Kotlin on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 30 May 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://tech.yyh-gl.dev/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/android_push/</guid><description>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので
 なにか困ったときはそこを一度見てみてください。
 tl;dr Firebase使ってAndroidアプリにプッシュ通知を実装した フォアグラウンドとバックグラウンドで表示方法が異なる めちゃくちゃ簡単 開発環境 macOS Mojave 10.14.4 Android Studio 3.4.1 Gradle 3.4.1 Java 1.8.0_202 Kotlin 1.3.21 Firebaseに登録 Firebaseを使用するためには登録が必要です。
 Googleアカウントを持っている方なら公式サイト から簡単に登録できます
