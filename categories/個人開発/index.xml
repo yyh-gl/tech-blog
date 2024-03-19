@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>個人開発 on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/</link><description>Recent content in 個人開発 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 04 May 2023 11:20:17 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>Indigo VPS上に個人開発用のk8sクラスターを構築する</title><link>https://tech.yyh-gl.dev/blog/k8s-setup/</link><pubDate>Thu, 04 May 2023 11:20:17 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-setup/</guid><description>概要 WebARENA Indigo でVPSを2台借りて、 個人開発用のk8sクラスターを構築したので、その手順をメモとして残します。
+k8sクラスターの構築は下記2つの公式ドキュメントを参考に進めました。
+kubeadmのインストール kubeadmを使用したクラスターの作成 ドキュメントに記載のある手順を最終的にはスクリプトにしています。 （本ブログ公開時点では自動構築スクリプトとして活用可能ですが、 k8sまわりのアップデートにより動かなくなる可能性が高いと思います）
+k8sクラスターについて Masterノード 1台, Workerノード 1台の計2台構成 個人開発なのでお金の節約のために冗長構成は取っていません サーバーOSは Ubuntu 22.04 k8sのバージョンは v1.27.1 CNIはFlannelを使用 Indigo VPS固有の内容 Swapの無効化は不要 k8sを構築するサーバーに関して、公式ドキュメントに以下の記載があります。
+Swapがオフであること。kubeletが正常に動作するためにはswapは必ずオフでなければなりません。
+参考 Indigo VPSではデフォルトでSwapが無効になっているのでこの手順は不要です。
+ファイアウォール インバウンドに対してのみ制限を設けます。 公式ドキュメントに公開しないといけないポート情報が記載されているので、こちらを参照して必要なポートだけ開けます。 公開しないといけないポート情報 ufwについては特になにもしていません。
+このままでは手元のPCからSSHができなくなりますが、そこはTailscaleで解決しています。 Tailscaleのインストールはスクリプト内で行っています。
+スクリプト 下記リポジトリに置いています。
+yyh-gl/k8s-setup 以下のとおり実行すれば、k8sクラスターが構築されます。
+Masterノード：setup_common.sh→setup-master.shの順で実行 注意：setup-master.shの&amp;lt;Master node IP&amp;gt;部分はMasterノードのIPアドレスに置き換える必要あり advertise addressの変更に使用（僕はTailscaleが払い出すIPにしたかったので） Workerノード：setup_common.shを実行後にkubeadm join</description></item></channel></rss>
