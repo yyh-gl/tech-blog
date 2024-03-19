@@ -13,6 +13,9 @@
     }
   },
   "filters": {
-    "comments": true
+    "comments": true,
+    "whitelist": {
+      "allow": ["/^\\+{3}[\\s\\S]*?\\+{3}/m"]
+    }
   }
 }
