@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ src = "img/2021/02/profile-readme-updater/featured.webp"
 alt = "featured"
 stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # おもしろいツイートを見つけた
 

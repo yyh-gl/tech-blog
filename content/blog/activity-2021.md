@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "【2021年】アクティビティまとめ"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # 今年も…
 

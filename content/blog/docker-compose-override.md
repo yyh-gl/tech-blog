@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # 要約
 

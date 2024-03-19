@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 author = "yyh-gl"
 categories = ["Go"]
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # errorsパッケージに興味持った
 v1.13からerrorsパッケージに `Unwrap()` `Is()` `As()` といった関数が追加されました。<br>

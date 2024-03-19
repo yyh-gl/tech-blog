@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "【2020年】アクティビティまとめ"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # LAPRASでおもしろい機能を見つけた
 

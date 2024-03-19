@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "Indigo VPS上に個人開発用のk8sクラスターを構築する"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # 概要
 

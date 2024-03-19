@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "KtorとStripeでECサイトを作ってみた"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # Kotlin Advent Calendar 2022
 

@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "DMM.comを退職しました"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 
 # 合同会社DMM.comを退職しました

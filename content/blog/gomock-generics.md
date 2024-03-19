@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "gomockのgenerics対応状況"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # gomock
 

@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "徒然なるままに go build と build tag を見ていく"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 <br>
 

@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "The Go Programming Language Specificationで知った「こんなことできるだ」を紹介"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 
 本記事は『[Go 5 Advent Calendar 2020 8日目](https://qiita.com/advent-calendar/2020/go5)』の記事です。
