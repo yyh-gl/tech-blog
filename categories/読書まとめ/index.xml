@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>読書まとめ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/</link><description>Recent content in 読書まとめ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 11 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/index.xml" rel="self" type="application/rss+xml"/><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://tech.yyh-gl.dev/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/evans_ddd_1/</guid><description>DDD の勉強始めます 新卒研修を受ける中で DDD が出てきて、勉強したくなったので、
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>読書まとめ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/</link><description>Recent content in 読書まとめ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 21 May 2024 09:39:53 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/index.xml" rel="self" type="application/rss+xml"/><item><title>k8s関連書籍をいろいろ読んだ</title><link>https://tech.yyh-gl.dev/blog/k8s-books/</link><pubDate>Tue, 21 May 2024 09:39:53 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-books/</guid><description>今回読んだ本 業務でk8sを触る機会があり、事前に知識をつけるためにいくつかの本を読んだ。
+以下が今回読んだ本。
+入門 Kubernetes Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス 25章のみ Kubernetesで実践するクラウドネイティブDevOps 入門 Kubernetes 本書はk8sを触るうえで知っておくべき基本的な内容が書かれている。
+コマンド例も書いてあるので、実際に手を動かしながら、k8sの基本について学ぶことができる。
+私は趣味の開発でk8sクラスターを運用しているので基本的には復習的な意味合いで読んだ。
+とはいえ、永続化周りの知識はなんとなくでやっていたので知見が深まった。
+特にk8sを初めて触る人におすすめの一冊だと思った。
+ただし、日本語版は英語版第1版の内容なので注意が必要である。
+英語版は第3版まで出ている…。
+Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス 25章『サービスとしてのコンピュート』を読んだ。
+k8sそのものの話はあまりない。
+「コンピュート（プログラムを実際に実行するのに必要な計算能力）」リソースを、スケールする環境においていかに効率的に物理マシンに紐づけるか、という話がメインとなる。
+この話の中で、 k8sの前身であるBorgがGoogle社内でどのように生まれたのか。
+なにが課題だったか、どのように解決したのかについて語られている。
+特に以下2点が私にとっては有益な情報だった。
+k8s（やコンテナ）を触るうえでそもそもどういった問題意識があったのか 『ペット対家畜』の話 Kubernetesで実践するクラウドネイティブDevOps 読書中</description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://tech.yyh-gl.dev/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/evans_ddd_1/</guid><description>DDD の勉強始めます 新卒研修を受ける中で DDD が出てきて、勉強したくなったので、
 『エリック・エヴァンスのドメイン駆動設計』（エリック・エヴァンス著，今関 剛 監訳，和智 右桂、牧野 祐子 訳） を読んでいこうと思います。
 今回は第1部「ドメインモデルを機能させる」の 1章 と 2章 をまとめます。
 注意： 僕の理解をそのままメモとして書き連ねていきます。
