@@ -9,11 +9,11 @@
 英語版は第3版まで出ている…。
 Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス 25章『サービスとしてのコンピュート』を読んだ。
 k8sそのものの話はあまりない。
-「コンピュート（プログラムを実際に実行するのに必要な計算能力）」リソースを、スケールする環境においていかに効率的に物理マシンに紐づけるか、という話がメインとなる。
-この話の中で、 k8sの前身であるBorgがGoogle社内でどのように生まれたのか。
-なにが課題だったか、どのように解決したのかについて語られている。
+「コンピュート（プログラムを実際に実行するのに必要な計算能力）」というワードを中心に、 スケールする環境でプログラムを動かすことの大変さと、その大変さを解消するために考えるべきことを深ぼっていく。
+この話の中で、 k8sの前身であるBorgの話が出てくる。
+こういった考えのもとBorgが生まれたんだなというのがよくわかった。
 特に以下2点が私にとっては有益な情報だった。
-k8s（やコンテナ）を触るうえでそもそもどういった問題意識があったのか 『ペット対家畜』の話 Kubernetesで実践するクラウドネイティブDevOps 読書中</description></item><item><title>2024年もよろしくお願いします！</title><link>https://tech.yyh-gl.dev/blog/new-year-2024/</link><pubDate>Mon, 08 Jan 2024 17:05:16 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/new-year-2024/</guid><description>転職で始まった2023年も、あっという間に終わりました。
+スケールする環境における「コンピュート」関連の課題 『ペット対家畜』の話 Kubernetesで実践するクラウドネイティブDevOps 読書中</description></item><item><title>2024年もよろしくお願いします！</title><link>https://tech.yyh-gl.dev/blog/new-year-2024/</link><pubDate>Mon, 08 Jan 2024 17:05:16 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/new-year-2024/</guid><description>転職で始まった2023年も、あっという間に終わりました。
 お世話になった方々ありがとうございました！
 今年も精一杯頑張っていくのでよろしくお願いします。</description></item><item><title>Indigo VPS上に個人開発用のk8sクラスターを構築する</title><link>https://tech.yyh-gl.dev/blog/k8s-setup/</link><pubDate>Thu, 04 May 2023 11:20:17 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-setup/</guid><description>概要 WebARENA Indigo でVPSを2台借りて、 個人開発用のk8sクラスターを構築したので、その手順をメモとして残します。
 k8sクラスターの構築は下記2つの公式ドキュメントを参考に進めました。
