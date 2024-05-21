@@ -17,6 +17,8 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
+          # Setting to latest causes an error during build, so temporarily fixed to the version used locally.
+          hugo-version: '0.111.3'
           extended: true
       - name: Build
         run: hugo --minify
