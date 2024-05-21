@@ -8,7 +8,7 @@ tags = ["Tech"]
 date = 2024-05-21T09:39:53+09:00
 description = "k8sの読み方は「クバネティス」派"
 type = "post"
-draft = true
+draft = false
 [[images]]
   src = "img/2024/05/k8s-books/featured.webp"
   alt = "featured"
