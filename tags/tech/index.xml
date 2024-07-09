@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 21 May 2024 09:39:53 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>k8s関連書籍をいろいろ読んだ</title><link>https://tech.yyh-gl.dev/blog/k8s-books/</link><pubDate>Tue, 21 May 2024 09:39:53 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-books/</guid><description>今回読んだ本 業務でk8sを触る機会があり、事前に知識をつけるためにいくつかの本を読んだ。
 以下が今回読んだ本。
-入門 Kubernetes Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス 25章のみ Kubernetesで実践するクラウドネイティブDevOps 入門 Kubernetes 本書はk8sを触るうえで知っておくべき基本的な内容が書かれている。
+入門 Kubernetes Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス 25章のみ コンテナセキュリティ コンテナ化されたアプリケーションを保護する要素技術 入門 Kubernetes 本書はk8sを触るうえで知っておくべき基本的な内容が書かれている。
 コマンド例も書いてあるので、実際に手を動かしながら、k8sの基本について学ぶことができる。
 私は趣味の開発でk8sクラスターを運用しているので、基本的には復習的な意味合いで読んだ。
 とはいえ、永続化周りの知識はなんとなくでやっていたので知見が深まった。
@@ -13,7 +13,13 @@ k8sそのものの話はあまりない。
 この話の中で、 k8sの前身であるBorgの話が出てくる。
 こういった考えのもとBorgが生まれたんだなというのがよくわかった。
 特に以下2点が私にとっては有益な情報だった。
-スケールする環境における「コンピュート」関連の課題 『ペット対家畜』の話 Kubernetesで実践するクラウドネイティブDevOps 読書中</description></item><item><title>2024年もよろしくお願いします！</title><link>https://tech.yyh-gl.dev/blog/new-year-2024/</link><pubDate>Mon, 08 Jan 2024 17:05:16 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/new-year-2024/</guid><description>転職で始まった2023年も、あっという間に終わりました。
+スケールする環境における「コンピュート」関連の課題 『ペット対家畜』の話 コンテナセキュリティ コンテナ化されたアプリケーションを保護する要素技術 k8sのための本というわけではないが、コンテナ技術の上に成り立つk8sを触るうえで知っておくと役に立つ内容が書かれている。
+僕はこれまでコンテナ技術を触ってきたにも関わらず、 「Linuxの機能を使って実現されているんだよなぁ」という抽象的な理解しかしていなかった。
+本書を読むことで、コンテナ技術がLinuxのどういった機能によって実現されているかをきちんと理解できた。
+そして、上記の話をベースに、タイトルにもあるセキュリティの話へと繋がっていく。
+僕自身、コンテナセキュリティについては、頑張ってキャッチアップしているつもりだった。
+しかし、ベースとなるコンテナ技術について学んだ後だと、また違った角度からセキュリティについて再考できた。
+すでに実務で困らない程度にはコンテナをさわれるという方に、ぜひとも読んでほしい一冊だと思った。</description></item><item><title>2024年もよろしくお願いします！</title><link>https://tech.yyh-gl.dev/blog/new-year-2024/</link><pubDate>Mon, 08 Jan 2024 17:05:16 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/new-year-2024/</guid><description>転職で始まった2023年も、あっという間に終わりました。
 お世話になった方々ありがとうございました！
 今年も精一杯頑張っていくのでよろしくお願いします。</description></item><item><title>Indigo VPS上に個人開発用のk8sクラスターを構築する</title><link>https://tech.yyh-gl.dev/blog/k8s-setup/</link><pubDate>Thu, 04 May 2023 11:20:17 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-setup/</guid><description>概要 WebARENA Indigo でVPSを2台借りて、 個人開発用のk8sクラスターを構築したので、その手順をメモとして残します。
 k8sクラスターの構築は下記2つの公式ドキュメントを参考に進めました。
