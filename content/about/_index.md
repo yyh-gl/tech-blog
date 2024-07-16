@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2024年1月25日】
+【最終更新日：2024年7月16日】
 
 
 # いま
@@ -50,7 +50,7 @@ Server-side Kotlinやってます。
 - HTML + CSS + JavaScript
 
 
-## ローカル開発環境
+## 仮想化技術
 
 - Docker
 - Vagrant
@@ -65,12 +65,18 @@ Server-side Kotlinやってます。
 - Elasticsearch（and OpenSearch）
 
 
-## クラウド
+## インフラ
 
 - AWS
-  - CloudFormation
-  - CDK (TypeScript)
-- GCP
+  - ECS
+- k8s
+- オンプレ
+
+
+## IaC
+
+- CloudFormation
+- CDK (TypeScript)
 
 
 ## CI/CD
@@ -79,6 +85,7 @@ Server-side Kotlinやってます。
 - GitHub Actions
 - Jenkins
 - CodeDeploy
+
 
 ## BI
 
