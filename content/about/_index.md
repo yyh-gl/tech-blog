@@ -225,7 +225,7 @@ APIサーバおよびWebフロントの開発に参加
 - [DMM.go（引退済み）](https://dmm.connpass.com/event/157222/)
 - [入門Go言語仕様輪読会](https://gospecreading.connpass.com/event/202388/)
 
-# 書籍（同人誌含む）
+# 技術同人誌
 
 - [DMM PointClub Tech Book #1](https://techbookfest.org/product/8ckqypHhSCaakQ1nM1E4JS)
 
