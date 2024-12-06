@@ -223,17 +223,16 @@ Bazel（ベイゼル）：ビルド・テストツール Go, Andoroid, iOSなど
 見入ってしまいメモを忘れていました。。。
 Knative 初めて聞いたのですが、おもしろそうだなという感想。
 k8s の勉強しないとな。
-2. Gotham GoとGopherCon EUに参加してきました 登壇者： @tenntenn</description></item><item><title>【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる</title><link>https://tech.yyh-gl.dev/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
+2. Gotham GoとGopherCon EUに参加してきました 登壇者： @tenntenn</description></item><item><title>【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる</title><link>https://tech.yyh-gl.dev/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
 この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
 今回やること Goのディレクトリ構成についていろいろと調べる中で、
 こちらの資料 がとても分かりやすかったので、
 今回はこちらを参考にGoでWeb APIを作っていきたいと思います。
-加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャー を取り入れます。
+加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャ を取り入れます。
 （内容はほぼレイヤードアーキテクチャになってしまいましたが…）
 DDD については、「DDD を Go とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。
 パッケージ構成の参考になれば幸いです。
-（ですので、ドメインモデルは重度のドメイン貧血症に陥っていますｗ）
-釣りタイトルみたいになっちゃっててすみません🧝‍♀️
+（なので、ドメインモデルは重度の貧血症）
 環境 MacOS Mojave 10.14.6 Go 1.12.5 なお、今回は、Gin や Mux などといったフレームワークは使わず、
 httprouter のみで薄く作っていこうと思います。
 Mux を使った実装は 僕の前のブログで紹介している のでよければどうぞ。
@@ -243,14 +242,15 @@ Mux を使った実装は 僕の前のブログで紹介している のでよ�
 採用アーキテクチャ：レイヤードアーキテクチャ 参考記事内 で紹介されているのは レイヤードアーキテクチャ をベースに いろいろカスタマイズされたものらしいです。
 クリーンアーキテクチャに似たアーキテクチャだとか。
 ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。
-DDD の文脈だと アプリケーション層 と呼ばれますが、
+DDD の文脈では アプリケーション層 と呼ばれますが、
 アプリケーションって意味が広くて分かりづらいので、
 本プロジェクトでは ユースケース という単語を使用します。
 とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 DDD を意識して Web API を実装していこうと思います。
 （意識だけして、実践できずに終わりましたが😇）
 レイヤードアーキテクチャ における各層の依存関係 について説明します。
 依存関係の図は下記のとおりです。
-矢印は依存の方向を示しています。</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://tech.yyh-gl.dev/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
+矢印は依存の方向を示しています。
+例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。</description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://tech.yyh-gl.dev/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/gopath/</guid><description>GOPATH が変わらない… 今日こんな現象に遭遇した。
 $ export GOPATH=/Users/yyh-gl/workspaces/Go $ echo $GOPATH /Users/yyh-gl/workspaces/Go $ go env GOPATH /Users/yyh-gl/go/1.12.5 GOPATH が書き換わらない。
 解決方法 社内Slack で適当につぶやいたら、同期が助けてくれた（神）
 画像にある Qiita のリンクが こちら ちなみに僕の環境の goenv は バージョン 1.12.5 だったので、2系に上げなくても発生する模様。

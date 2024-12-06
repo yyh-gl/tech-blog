@@ -17,16 +17,14 @@ WebPを採用した結果 以下のツイートのとおりです。
 嘘です、10%ほどの方々すみません🙇‍♂ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。</description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://tech.yyh-gl.dev/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ogp/</guid><description>Twitter のリンクにサムネイル画像が表示されない このように Twitter でブログのリンクを載せても、サムネイルが表示されない。
 はてなブログをやっていたときは、何もしなくてもサムネイルが表示されていました。
 トップ画像をよしなにサムネイルにしてくれるのかなぁっと思っていましたが違ったんですね…。
-どうやったらサムネイル画像が表示されるか Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、
-Open Graph Protocol（OGP） というものを設定する必要があります。
-OGP を設定するだけで、Twitter や Facebook でサムネイル付きのリンクを表示することができます。
+どうやったらサムネイル画像が表示されるか Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、 Open Graph Protocol（OGP） というものを設定する必要があります。
+OGP を設定することで Twitter や Facebook でサムネイル付きのリンクを表示できます。
 こちらのサイト で詳細が説明されています。
-OGP の設定 OGP の設定項目には以下のものがあります。
-og:title og:type og:url og:description og:image これらを HTML に meta タグで埋め込めば OK です。
-&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; こんな感じですね。
-これを head タグ内に埋め込みます。
-ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。
-したがって、今回は og:image を追加で設定しました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
+OGP の設定 今回設定する OGP 情報は以下のとおりです。
+og:title og:type og:url og:description og:image これらの情報を head タグ内に埋め込みます。
+&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/blog/go_web_api/&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt; &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;quot;&amp;gt; ただし、僕の場合、Hugo のテーマの方で og:image 以外は設定してくれていました。
+したがって、今回は og:image だけを追加で設定します。
+og:image の設定 下記のような og:image の設定を /themes/&amp;lt;your-theme-name&amp;gt;/layouts/partials/meta.html に追加しました。</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
 正確には対応していない言語が（めちゃくちゃ）ありました。
 このとおり、 Goにも対応していませんでした…。
 もともと、このブログのテーマは Hugo Themes （Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
