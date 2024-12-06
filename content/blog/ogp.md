@@ -48,7 +48,7 @@ OGP の設定項目には以下のものがあります。
 これらを HTML に meta タグで埋め込めば OK です。
 
 ```html
-<meta property="og:title" content="【Go + レイヤードアーキテクチャー】DDDを意識してWeb APIを実装してみる">
+<meta property="og:title" content="【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://tech.yyh-gl.dev/blog/go_web_api/">
 <meta property="og:description" content="hoge">
