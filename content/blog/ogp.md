@@ -27,17 +27,19 @@ draft = false
 
 # どうやったらサムネイル画像が表示されるか
 
-Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、<br>
+<!-- textlint-disable ja-technical-writing/sentence-length -->
+Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、
 <u>Open Graph Protocol（OGP）</u> というものを設定する必要があります。
+<!-- textlint-enable ja-technical-writing/sentence-length -->
 
-OGP を設定するだけで、Twitter や Facebook でサムネイル付きのリンクを表示することができます。
+OGP を設定することで Twitter や Facebook でサムネイル付きのリンクを表示できます。
 
 [こちらのサイト](https://digitalidentity.co.jp/blog/seo/ogp-share-setting.html) で詳細が説明されています。
 
 
 # OGP の設定
 
-OGP の設定項目には以下のものがあります。
+今回設定する OGP 情報は以下のとおりです。
 
 - og:title
 - og:type
@@ -45,7 +47,7 @@ OGP の設定項目には以下のものがあります。
 - og:description
 - og:image
 
-これらを HTML に meta タグで埋め込めば OK です。
+これらの情報を head タグ内に埋め込みます。
 
 ```html
 <meta property="og:title" content="【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる">
@@ -55,11 +57,8 @@ OGP の設定項目には以下のものがあります。
 <meta property="og:image" content="https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png">
 ```
 
-こんな感じですね。<br>
-これを head タグ内に埋め込みます。
-
-ただし、僕の場合、Hugo のテーマの方で、 og:image 以外は設定してくれていました。<br>
-したがって、今回は og:image を追加で設定しました。
+ただし、僕の場合、Hugo のテーマの方で og:image 以外は設定してくれていました。<br>
+したがって、今回は og:image だけを追加で設定します。
 
 ## og:image の設定
 
