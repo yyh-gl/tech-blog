@@ -8,7 +8,7 @@ tags = ["Tech"]
 date = 2024-12-28T20:08:33+09:00
 description = ""
 type = "post"
-draft = true
+draft = false
 [[images]]
   src = "img/2024/12/unique-ids-in-distributed-systems/featured.webp"
   alt = "featured"
