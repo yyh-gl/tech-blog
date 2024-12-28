@@ -20,7 +20,7 @@ draft = false
 # はじめに
 
  分散システムにおいて重複しないID採番方法について気になったので調べたときのメモ。<br>
-調査の中で興味出たのがSnowflakeだったので、ほぼSnowflakeの話。
+調査の中で興味を持ったのがSnowflakeだったので、ほぼSnowflakeの話。
 
 # Snowflake
 
