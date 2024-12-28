@@ -36,11 +36,17 @@ https://en.wikipedia.org/wiki/Snowflake_ID
 timestampを含むので、時刻情報に基づいたソートが可能。<br>
 高い衝突体制を持つ。
 
+<!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
+<!-- textlint-disable ja-technical-writing/sentence-length -->
+
 timestampを含んでいることからも分かるとおり、SnowflakeはSystem Clockに依存している。<br>
 よって、時間が巻き戻ったりするとIDが重複する可能性がある。<br>
 ただし、時刻が巻き戻った場合にはID生成をストップする機構が組み込まれている。<br>
 （最後に生成したIDが示す時刻を超えるまで生成ストップ）<br>
 https://github.com/twitter-archive/snowflake/tree/snowflake-2010?tab=readme-ov-file#system-clock-dependency
+
+<!-- textlint-enable ja-technical-writing/no-doubled-joshi -->
+<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 Xでも使われている（[参考](https://developer.x.com/ja/docs/basics/twitter-ids)）。<br>
 現行のコードではないもののコードは[こちら](https://github.com/twitter-archive/snowflake/tree/snowflake-2010)。<br>
