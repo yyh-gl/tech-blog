@@ -15,4 +15,4 @@ jobs:
                -H 'Content-type: application/json' \
                -d "{
                      \"text\": \"GitHub Pages のビルド&デプロイが完了しました。\nワークフロー名: ${{ github.workflow }}\nリポジトリ: ${{ github.repository }}\nステータス: ${{ job.status }}\"
-                   }" ${{ secrets.SLACK_WEBHOOK_URL_TO_50 }}
+                   }" ${{ secrets.SLACK_WEBHOOK_51 }}
