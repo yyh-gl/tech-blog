@@ -1,17 +1,19 @@
-name: Manual Deploy
+name: Reserved Deployment
 
 on:
   workflow_dispatch:
+#  schedule:
+#    - cron: '00 15 10 1 *'
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/heads/main')
     steps:
-      - name: Checkout  
+      - name: Checkout
         uses: actions/checkout@v2
         with:
+          ref: reserved
           fetch-depth: 2
           submodules: true
       - name: Setup Hugo
