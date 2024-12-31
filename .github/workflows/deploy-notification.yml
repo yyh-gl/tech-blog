@@ -14,5 +14,5 @@ jobs:
           curl -X POST ${{ secrets.SLACK_WEBHOOK_51 }}\
                -H 'Content-type: application/json' \
                -d "{
-                 \"text\": \"技術ブログ更新完了！\nCommit: $GITHUB_SHA\"
+                 \"text\": \"技術ブログ更新完了:memo:\nCommit: [${{ github.sha }}](https://github.com/yyh-gl/tech-blog/commit/${{ github.sha }})\"
                }"
