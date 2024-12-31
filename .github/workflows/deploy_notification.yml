@@ -1,0 +1,18 @@
+name: Deployment notification
+
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify
+        run: |
+          curl -X POST \
+               -H 'Content-type: application/json' \
+               -d "{
+                     \"text\": \"GitHub Pages のビルド&デプロイが完了しました。\nワークフロー名: ${{ github.workflow }}\nリポジトリ: ${{ github.repository }}\nステータス: ${{ job.status }}\"
+                   }" ${{ secrets.SLACK_WEBHOOK_URL_TO_50 }}
