@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: Notify
         run: |
-          curl -X POST \
+          curl -X POST ${{ secrets.SLACK_WEBHOOK_51 }}\
                -H 'Content-type: application/json' \
                -d "{
-                     \"text\": \"GitHub Pages のビルド&デプロイが完了しました。\nワークフロー名: ${{ github.workflow }}\nリポジトリ: ${{ github.repository }}\nステータス: ${{ job.status }}\"
-                   }" ${{ secrets.SLACK_WEBHOOK_51 }}
+                 \"text\": \"技術ブログ更新完了！\nCommit: ${{ GITHUB_SHA }}\"
+               }"
