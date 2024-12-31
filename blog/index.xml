@@ -23,7 +23,7 @@ k8s もともと個人開発で使っていたk8s。
 https://tech.yyh-gl.dev/blog/k8s-setup/ 個人開発 個人でサービスを作りたいと考えて動き出している。
 来年リリースを目指して頑張る。
 まとめ がんばる↓
-なんといっても「仕事」。一番大事 資格取る CKAD LPIC always 読書 ブログでアウトプット</description></item><item><title>分散システムにおけるID採番の勉強メモ</title><link>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</link><pubDate>Sat, 28 Dec 2024 20:08:33 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</guid><description>はじめに 分散システムにおけるID採番方法について気になったので調べたときのメモ。
+なんといっても「仕事」。一番大事 開発以外でも活躍する 資格取る CKAD LPIC always 読書 ブログでアウトプット</description></item><item><title>分散システムにおけるID採番の勉強メモ</title><link>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</link><pubDate>Sat, 28 Dec 2024 20:08:33 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</guid><description>はじめに 分散システムにおけるID採番方法について気になったので調べたときのメモ。
 （UUIDおよびULIDはスキップ）
 調査の中で興味を持ったのがSnowflakeだったので、ほぼSnowflakeの話。
 Snowflake 分散システムにおけるID採番方式として有名なもののひとつ。
