@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 28 Dec 2024 20:08:33 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>分散システムにおけるID採番の勉強メモ</title><link>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</link><pubDate>Sat, 28 Dec 2024 20:08:33 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</guid><description>はじめに 分散システムにおけるID採番方法について気になったので調べたときのメモ。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 31 Dec 2024 20:53:11 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>2024年を振り返る</title><link>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</link><pubDate>Tue, 31 Dec 2024 20:53:11 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</guid><description>仕事 本業：LINEマンガ 弊社の親会社であるWEBTOON EntertainmentがNASDAQに上場 LINEマンガが5000万DLを突破 ユーザーが増え、より大規模なサービスになってきた。
+求められる品質もさらに高くなってきており、技術的な課題も多くなってきた。
+k8sを本格的に使用し始めたので、k8s周りの知識を深めている最中。
+資格（CKAD） の取得を目指しているが、一番の壁は受験料。
+今まで資格というものに興味がなかったけど、少し興味が出てきた今日このごろ。
+LPIC の取得も頑張ってみようか迷ってる。
+開発以外に採用にも参加し始めた2024年。
+来年で3年目に突入するので、開発以外の部分でももっと活躍できるようにしていく。
+副業 4年弱携わった案件が一段落した。
+本業とは全く異なる特性を持つサービスだったので様々な知見を得ることができた。
+引き続き同社の別サービスの開発に従事していくので頑張っていきたい。
+個人的な活動 読書 読書をたくさんしている。
+AIに聞けば高い精度で答えてくれる時代になったとはいえ、まだ間違った回答もある。
+正当性を判断するためにも地力をつけたい。
+だから、信頼できるソースからのインプットを増やそうと考えた結果、読書に力を入れ始めた。
+最近は常に読書中の本がある状態を維持している。
+来年も続けていく。
+ブログ インプット（読書）するだけじゃなくて、ちゃんと知識として定着させたい。
+なので、得た知識はブログとしてアウトプットする。
+k8s もともと個人開発で使っていたk8s。
+本業でもk8sを使うようになり、ちょうど良いplaygroundとして稼働してくれている。
+とても助かる。k8sクラスターを構築してくれていた過去の自分に感謝。
+https://tech.yyh-gl.dev/blog/k8s-setup/ 個人開発 個人でサービスを作りたいと考えて動き出している。
+来年リリースを目指して頑張る。
+まとめ がんばる↓
+なんといっても「仕事」。一番大事 資格取る CKAD LPIC always 読書 ブログでアウトプット</description></item><item><title>分散システムにおけるID採番の勉強メモ</title><link>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</link><pubDate>Sat, 28 Dec 2024 20:08:33 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</guid><description>はじめに 分散システムにおけるID採番方法について気になったので調べたときのメモ。
 （UUIDおよびULIDはスキップ）
 調査の中で興味を持ったのがSnowflakeだったので、ほぼSnowflakeの話。
 Snowflake 分散システムにおけるID採番方式として有名なもののひとつ。
