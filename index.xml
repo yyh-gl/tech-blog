@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/</link><description>Recent content on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 31 Dec 2024 20:53:11 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>2024年を振り返る</title><link>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</link><pubDate>Tue, 31 Dec 2024 20:53:11 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</guid><description>仕事 本業：LINEマンガ 弊社の親会社であるWEBTOON EntertainmentがNASDAQに上場 LINEマンガが5000万DLを突破 ユーザーが増え、より大規模なサービスになってきた。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/</link><description>Recent content on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 09 Jan 2025 21:40:02 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>『データ指向アプリケーションデザイン』を読んで</title><link>https://tech.yyh-gl.dev/blog/designing-data-intensive-applications/</link><pubDate>Thu, 09 Jan 2025 21:40:02 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/designing-data-intensive-applications/</guid><description>はじめに 『データ指向アプリケーションデザイン ―信頼性、拡張性、保守性の高い分散システム設計の原理 』を読んだ。
+会社で輪読会をして、全部読みきった。
+期待以上の良書に出会った感動をそのまま殴り書いているだけ。
+とりとめもない文章なので、得られる知見はないと思いますが、感動を共有したいので書いた。
+感想 心の底から読んでよかったと思える一冊だった。
+シンプルなリレーショナルデータベースの話だけでなく、NoSQLや分散ストレージ、ストリーム処理（Kafkaとか）など、データベースに関する話が幅広く書かれている。
+データ構造の話（log-structuredやBツリー）やトランザクションの話もすごいおもしろかった。
+これまで何気なく使っていたデータベース。裏側のロジックを知ることで実際の開発でもいろいろ考慮できるようになった。
+難しい話も多いけど、今までおまじない的にやっていたことが、こういう仕組だからこうしてたのか、という理解につながった。
+データベースに関するおすすめの本を聞かれたら、絶対にこの本をすすめる。
+（初心者におすすめする本ではないと思う）
+具体的にどういったことが書かれているかは、他の人が書いている記事がたくさんあるので、そちらを見てください。
+というかぜひ本書を手にとっていただきたい。
+もとから評価の高い本だったので、ある程度期待はしていたものの良い意味で裏切られた。
+学びが多く、本当に感動したので、この記事をなぐり書きしておく。</description></item><item><title>2024年を振り返る</title><link>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</link><pubDate>Tue, 31 Dec 2024 20:53:11 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</guid><description>仕事 本業：LINEマンガ 弊社の親会社であるWEBTOON EntertainmentがNASDAQに上場 LINEマンガが5000万DLを突破 ユーザーが増え、より大規模なサービスになってきた。
 求められる品質がさらに高くなってきており、いちエンジニアとしてとても楽しい。
 k8sを本格的に使用し始めたので、k8s周りの知識を深めている最中。
 資格（CKAD） の取得を目指しているが、一番の壁は受験料。
