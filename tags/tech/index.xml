@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 09 Jan 2025 21:40:02 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>『データ指向アプリケーションデザイン』を読んで</title><link>https://tech.yyh-gl.dev/blog/designing-data-intensive-applications/</link><pubDate>Thu, 09 Jan 2025 21:40:02 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/designing-data-intensive-applications/</guid><description>はじめに 『データ指向アプリケーションデザイン ―信頼性、拡張性、保守性の高い分散システム設計の原理 』を読んだ。
 会社で輪読会をして、全部読みきった。
 期待以上の良書に出会った感動をそのまま殴り書いているだけ。
-とりとめもない文章なので、得られる知見はないと思いますが、感動を共有したいので書いた。
+とりとめもない文章なので、得られる知見はないと思うけど、感動を共有したいので書いた。
 感想 心の底から読んでよかったと思える一冊だった。
 シンプルなリレーショナルデータベースの話だけでなく、NoSQLや分散ストレージ、ストリーム処理（Kafkaとか）など、データベースに関する話が幅広く書かれている。
 データ構造の話（log-structuredやBツリー）やトランザクションの話もすごいおもしろかった。
@@ -9,7 +9,7 @@
 難しい話も多いけど、今までおまじない的にやっていたことが、こういう仕組だからこうしてたのか、という理解につながった。
 データベースに関するおすすめの本を聞かれたら、絶対にこの本をすすめる。
 （初心者におすすめする本ではないと思う）
-具体的にどういったことが書かれているかは、他の人が書いている記事がたくさんあるので、そちらを見てください。
+具体的にどういったことが書かれているかは、他の人が書いている記事がたくさんあるので、そちらを参照のこと。
 というかぜひ本書を手にとっていただきたい。
 もとから評価の高い本だったので、ある程度期待はしていたものの良い意味で裏切られた。
 学びが多く、本当に感動したので、この記事をなぐり書きしておく。</description></item><item><title>2024年を振り返る</title><link>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</link><pubDate>Tue, 31 Dec 2024 20:53:11 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</guid><description>仕事 本業：LINEマンガ 弊社の親会社であるWEBTOON EntertainmentがNASDAQに上場 LINEマンガが5000万DLを突破 ユーザーが増え、より大規模なサービスになってきた。
