@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VS Code on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/vs-code/</link><description>Recent content in VS Code on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 10 Jan 2025 19:34:56 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/vs-code/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Codeのeditor.quickSuggestionsについて調べたメモ</title><link>https://tech.yyh-gl.dev/blog/vs-code-settings-editor-quick-suggestions/</link><pubDate>Fri, 10 Jan 2025 19:34:56 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/vs-code-settings-editor-quick-suggestions/</guid><description>はじめに VS Codeの設定にeditor.quickSuggestionsというものがある。
+サジェストを出すかどうかを設定できる。
+サジェストというのは以下のようなやつ。
+この設定項目について調べたのでメモを残す。
+editor.quickSuggestions editor.quickSuggestionsは以下のような設定ができる。
+&amp;quot;editor.quickSuggestions&amp;quot;: { &amp;quot;other&amp;quot;: &amp;quot;on&amp;quot;, &amp;quot;comments&amp;quot;: &amp;quot;off&amp;quot;, &amp;quot;strings&amp;quot;: &amp;quot;off&amp;quot; }, ref: https://code.visualstudio.com/docs/getstarted/settings other, comments, strings の意味がわからず、調べた内容をメモする。
+なお、公式Docsから各項目に関する説明を見つけられなかったので、 ChatGPTにざっくりした説明を聞いたうえで、実際に設定をon/offして挙動を確認した。
+よって、後述の説明はあくまで自分の解釈であることに注意。
+おそらく文字どおりの意味だから説明がない…？
+公式Docsの説明を見つけたら更新する。
+（ChatGPTからの回答で「VS Codeドキュメントによると」って言われたんだけどね）
+comments コメント内でのサジェスト有効/無効を設定できる。
+strings 文字列内でのサジェスト有効/無効を設定できる。
+other その他の場所におけるサジェスト有効/無効を設定できる。
+コード書いてるときに出てくるサジェストの大半はこれに該当するはず。
+調査背景 自分はMarkdown編集時に改行や強調などのHTMLタグをよく使う。
+HTMLやReact, Vueなどのコードを書いているときのようにHTMLタグをサジェストしてほしい。
+（&amp;lt;や&amp;gt;、閉じタグを打つのめんどくさいし）
+よって、Markdown編集時によく使うHTMLタグは、snippetに登録し、サジェストされるようにしている。
+しかし、VS Codeのデフォルト設定では、Markdownに関するサジェストが出ないようになっている。
+Markdownに関するサジェストを有効にできないか調べているとeditor.quickSuggestionsにたどり着いた。</description></item></channel></rss>
