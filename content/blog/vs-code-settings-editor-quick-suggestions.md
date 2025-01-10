@@ -59,7 +59,7 @@ ChatGPTにざっくりした説明を聞いたうえで、実際に設定をon/o
 
 ## strings
 
-文字列内でのサジェスト有効/無効を設定できる。
+文字列リテラル内でのサジェスト有効/無効を設定できる。
 
 <img src="https://tech.yyh-gl.dev/img/2025/01/vs-code-settings-editor-quick-suggestions/suggest_in_strings.webp" width="600">
 
