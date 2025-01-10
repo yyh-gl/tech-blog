@@ -8,7 +8,7 @@ tags = ["Tech"]
 date = 2025-01-10T19:34:56+09:00
 description = ""
 type = "post"
-draft = true
+draft = false
 [[images]]
   src = "img/2025/01/vs-code-settings-editor-quick-suggestions/featured.webp"
   alt = "featured"
