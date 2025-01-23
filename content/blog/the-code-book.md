@@ -8,7 +8,7 @@ tags = ["Tech"]
 date = 2025-01-24T00:30:40+09:00
 description = ""
 type = "post"
-draft = true
+draft = false
 [[images]]
   src = "img/2025/01/the-code-book/featured.webp"
   alt = "featured"
