@@ -38,7 +38,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
-          SLACK_TITLE: Review Success
+          SLACK_TITLE: "[tech-blog] Review Success"
         if: env.WORKFLOW_CONCLUSION == 'success'
 
   failure_notification:
@@ -52,6 +52,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
-          SLACK_TITLE: Review Failure
+          SLACK_TITLE: "[tech-blog] Review Failure"
           SLACK_COLOR: danger
         if: env.WORKFLOW_CONCLUSION == 'failure'

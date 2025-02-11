@@ -41,7 +41,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
-          SLACK_TITLE: Deploy Success
+          SLACK_TITLE: "[tech-blog] Deploy Success"
         if: env.WORKFLOW_CONCLUSION == 'success'
 
   failure_notification:
@@ -55,6 +55,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_51 }}
-          SLACK_TITLE: Deploy Failure
+          SLACK_TITLE: "[tech-blog] Deploy Failure"
           SLACK_COLOR: danger
         if: env.WORKFLOW_CONCLUSION == 'failure'
