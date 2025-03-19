@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2025年3月18日】
+【最終更新日：2025年3月19日】
 
 
 # いま
@@ -243,7 +243,7 @@ APIサーバおよびWebフロントの開発に参加
 
 # 記事
 
-- [職種の垣根を越え議論しながら開発できる環境｜LM Server DevチームHondaさん](https://blog.ldfcorp.com/n/n8df97747e414)
+- [『職種の垣根を越え議論しながら開発できる環境｜LM Server DevチームHondaさん』](https://blog.ldfcorp.com/n/n8df97747e414)
   - LINE Digital Frontier株式会社の社員インタビューを受けました
 - [『ドキュメントとコードが乖離しないようにDMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた』](https://logmi.jp/tech/articles/323091)
   - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事
