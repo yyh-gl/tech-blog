@@ -11,18 +11,15 @@ date = "2020-04-04"
 
 【最終更新日：2025年3月23日】
 
-
 # いま
 
 LINE Digital Frontier株式会社で働くエンジニアです。
 
 Server-side Kotlinやってます。
 
-
 # 技術スタック
 
 実務で触ったことのある技術を列挙しています。
-
 
 ## バックエンド
 
@@ -41,7 +38,6 @@ Server-side Kotlinやってます。
 - Perl
 - ShellScript
 
-
 ## フロントエンド
 
 - TypeScript
@@ -49,12 +45,10 @@ Server-side Kotlinやってます。
 - Vue.js，Nuxt.js
 - HTML + CSS + JavaScript
 
-
 ## 仮想化技術
 
 - Docker
 - Vagrant
-
 
 ## データストア
 
@@ -64,7 +58,6 @@ Server-side Kotlinやってます。
 - Redis
 - Elasticsearch（and OpenSearch）
 
-
 ## インフラ（アプリケーション稼働環境）
 
 - AWS
@@ -73,12 +66,11 @@ Server-side Kotlinやってます。
   - k8s
 - オンプレ
 
-
 ## IaC
 
 - CloudFormation
 - CDK (TypeScript)
-
+- Ansible
 
 ## CI/CD
 
@@ -87,16 +79,10 @@ Server-side Kotlinやってます。
 - Jenkins
 - CodeDeploy
 
-
-## Automation
-- Ansible
-
-
 ## BI
 
 - Redash
 - [独自ツール](https://engineering.linecorp.com/ja/blog/introduce-data-platform-department)
-
 
 ## 設計
 
@@ -104,7 +90,6 @@ Server-side Kotlinやってます。
 
 DDDについては、戦略および戦術の両方に興味があり、日々勉強中です。<br>
 コアドメイン難しい。
-
 
 # 経歴（参加プロジェクト）
 
@@ -126,7 +111,6 @@ LINEマンガのサーバーサイド開発および運用をしています。
 <details><summary><b>2019年〜（合同会社DMM.com）</b></summary><div>
 
 合同会社DMM.comに入社しました。
-
 
 ## ・レビュー基盤のリプレイス/運用：2019年7月〜2021年2月
 
@@ -170,18 +154,15 @@ APIサーバおよびWebフロントの開発を担当しているWebチーム�
 
 アルバイトでの開発です。
 
-
 ## ・スマホゲームの開発/運用：2018年3月〜2019年3月
 
 - ロール：エンジニア（バックエンド）
 - 技術：PHP（CakePHP，Laravel）
 
-
 ## ・ECサイトの開発/運用：2018年9月〜2019年10月
 
 - ロール：エンジニア（バックエンド）
 - 技術：PHP（FuelPHP，Laravel）
-
 
 ## ・ECサイトの新規開発/運用：2018年1月〜2019年3月
 
@@ -224,7 +205,6 @@ APIサーバおよびWebフロントの開発に参加
 
 </div></details>
 
-
 # コミュニティ運営
 
 - [DMM.go（引退済み）](https://dmm.connpass.com/event/157222/)
@@ -233,7 +213,6 @@ APIサーバおよびWebフロントの開発に参加
 # 技術同人誌
 
 - [DMM PointClub Tech Book #1](https://techbookfest.org/product/8ckqypHhSCaakQ1nM1E4JS)
-
 
 # 登壇歴
 
@@ -244,7 +223,6 @@ APIサーバおよびWebフロントの開発に参加
 - [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
 - [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
 
-
 # 記事
 
 - [『職種の垣根を越え議論しながら開発できる環境｜LM Server DevチームHondaさん』](https://blog.ldfcorp.com/n/n8df97747e414)
@@ -253,7 +231,6 @@ APIサーバおよびWebフロントの開発に参加
   - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事
 - [『よんでますよ、本田さん #5』](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
   - DMM社内でのGoに関する取り組みについて
-
 
 # OSS
 
@@ -268,7 +245,6 @@ APIサーバおよびWebフロントの開発に参加
 - [goadesign/goa.design](https://github.com/goadesign/goa.design/graphs/contributors)
 - [oxequa/realize](https://github.com/oxequa/realize/graphs/contributors)
 
-
 # 学生時代
 
 ## 大学&大学院
@@ -281,4 +257,3 @@ APIサーバおよびWebフロントの開発に参加
 主に無線センサネットワークに関する研究をしていました。<br>
 研究を通して、低レイヤの知識やリソースが少ないハードウェアに対する効率的なプログラムの書き方などを学びました。<br>
 触っていた技術は TinyOS や nesC などです。
-
