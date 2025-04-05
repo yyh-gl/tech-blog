@@ -12,6 +12,9 @@
     "url": "https://github.com/yyh-gl/tech-blog/issues"
   },
   "homepage": "https://github.com/yyh-gl/tech-blog#readme",
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions"
+  },
   "dependencies": {
     "ajv": "^6.12.3",
     "minimist": "^1.2.6",
