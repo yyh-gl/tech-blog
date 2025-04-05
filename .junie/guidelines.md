@@ -5,7 +5,7 @@ This is a personal tech blog built with Hugo, a fast and modern static site gene
 
 ## Tech Stack
 - **Hugo**: v0.111.3 (extended version) - Static Site Generator
-- **Go**: v1.19.9 - Required for some tooling
+- **Go**: v1.24.1 - Required for some tooling
 - **Node.js**: Package management and dependencies
 - **Docker**: Development and deployment environment
 - **GitHub Pages**: Hosting platform
@@ -15,7 +15,7 @@ This is a personal tech blog built with Hugo, a fast and modern static site gene
 ### Prerequisites
 - Docker
 - Node.js
-- Go 1.19.9
+- Go 1.24.1
 
 ### Development Environment
 The project uses Docker for consistent development environment:
