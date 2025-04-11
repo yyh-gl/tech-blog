@@ -89,6 +89,58 @@ disableLanguages       = []
     siteKey              = ""
     encryptedKey         = ""
 
+  [params.social]
+    github           = "yyh-gl"
+    gitlab           = ""
+    stackoverflow    = "" # User Number
+    bitbucket        = ""
+    jsfiddle         = ""
+    codepen          = ""
+    # Visual Art Communities
+    deviantart       = ""
+    flickr           = ""
+    behance          = ""
+    dribbble         = ""
+    # Publishing Communities
+    wordpress        = ""
+    medium           = ""
+    # Professional/Business Oriented Communities
+    linkedin         = "yyh-gl"
+    linkedin_company = ""
+    foursquare       = ""
+    xing             = ""
+    slideshare       = ""
+    # Social Networks
+    facebook         = ""
+    googleplus       = ""
+    reddit           = ""
+    quora            = ""
+    youtube          = ""
+    vimeo            = ""
+    whatsapp         = "" # WhatsApp Number
+    # WeChat and QQ need testing.
+    wechat         = ""
+    qq             = "" # User ID Number
+    instagram        = ""
+    tumblr           = ""
+    x                = "yyh_gl"
+    bluesky          = "yyh-gl.bsky.social"
+    strava           = ""
+    skype            = ""
+    snapchat         = ""
+    pinterest        = ""
+    telegram         = ""
+    vine             = ""
+    googlescholar    = ""
+    orcid            = ""
+    researchgate     = ""
+    keybase          = ""
+    mastodon         = ""
+    # Email
+    email            = ""
+    speaker_deck     = "yyh_gl"
+    crowdin          = "yyh-gl"
+
 [menu]
   [[menu.main]]
     name       = "Home"
@@ -135,56 +187,3 @@ disableLanguages       = []
     languageCode = "en"
     LanguageName = "English"
     weight       = 2
-
-[social]
-  # Coding Communities
-  github           = "yyh-gl"
-  gitlab           = ""
-  stackoverflow    = "" # User Number
-  bitbucket        = ""
-  jsfiddle         = ""
-  codepen          = ""
-  # Visual Art Communities
-  deviantart       = ""
-  flickr           = ""
-  behance          = ""
-  dribbble         = ""
-  # Publishing Communities
-  wordpress        = ""
-  medium           = ""
-  # Professional/Business Oriented Communities
-  linkedin         = "yyh-gl"
-  linkedin_company = ""
-  foursquare       = ""
-  xing             = ""
-  slideshare       = ""
-  # Social Networks
-  facebook         = ""
-  googleplus       = ""
-  reddit           = ""
-  quora            = ""
-  youtube          = ""
-  vimeo            = ""
-  whatsapp         = "" # WhatsApp Number
-    # WeChat and QQ need testing.
-    wechat         = ""
-    qq             = "" # User ID Number
-  instagram        = ""
-  tumblr           = ""
-  x                = "yyh_gl"
-  bluesky          = "yyh-gl.bsky.social"
-  strava           = ""
-  skype            = ""
-  snapchat         = ""
-  pinterest        = ""
-  telegram         = ""
-  vine             = ""
-  googlescholar    = ""
-  orcid            = ""
-  researchgate     = ""
-  keybase          = ""
-  mastodon         = ""
-  # Email
-  email            = ""
-  speaker_deck     = "yyh_gl"
-  crowdin          = "yyh-gl"
