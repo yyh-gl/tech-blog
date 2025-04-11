@@ -4,11 +4,13 @@ baseurl                = "https://tech.yyh-gl.dev/"
 DefaultContentLanguage = "ja"
 title                  = "yyh-gl's Tech Blog"
 theme                  = "hugo-future-imperfect-slim"
-paginate               = 5
 disqusShortname        = ""
 googleAnalytics        = ""
 pluralizeListTitles    = false
 disableLanguages       = []
+
+[pagination]
+  pagerSize = 5
 
 [markup]
   [markup.highlight]
