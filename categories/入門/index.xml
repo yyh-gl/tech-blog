@@ -1,27 +1,135 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>入門 on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E5%85%A5%E9%96%80/</link><description>Recent content in 入門 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 05 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E5%85%A5%E9%96%80/index.xml" rel="self" type="application/rss+xml"/><item><title>スクラムについて学んだ話</title><link>https://tech.yyh-gl.dev/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/scrum_entry/</guid><description>スクラムとは 概要 変化に対し柔軟に開発を運用するためのアジャイルフレームワーク
-開発に常に優先度をつける
-仕事を進めることを主眼に考え、そのために改善を常に行う
-ロールが3つあり、協調しあい開発する
-プロダクトオーナー スクラムチーム 開発チーム POが満足するアウトプットがあったかのみを検証
-5つのイベントがある（後述）
-2つのアウトプット（成果物）がある（後述）
-特徴 非常にシンプルなフレームワーク
-定められたルールが他の手法より少なくアレンジが容易 実践的で経験主義
-世界的に普及している
-アジャイル開発とは アジャイルとスクラムの違い スクラムとはアジャイル開発手法のひとつ
-他にもXPとかがある
-アジャイルソフトウェア開発宣言 ここ にいろいろな言語で宣言されています
-この宣言では以下のことを重要視している
-個人と対話 動くソフトウェア 顧客との協調 変化への対応 スクラムとウォータフォールの違い ウォータフォール
-計画、設計、実装、テストが一方向に進む リリース直前の実装や仕様に漏れがあると最悪の場合プロジェクトがぽしゃる 運用・保守には強い。新規案件向けではない スクラム
-開発期間中に計画、設計、実装、テストのリサイクルを何度も回す 細かいスパンでリリースするので、大きな手戻りが少ない スクラムで登場するロール（役割） あくまでテンプレの内容を紹介
-自分のチームに合わせて変えてOK（むしろカスタマイズすることが重要）
-プロダクトオーナー（PO） 役割
-プロダクトのビジネス価値に責任を持つ リリース判断をすることができる 優先度の判断役 求められる力
-情報アウトプット（見える化、透明性） → 実現したいことをちゃんと伝える力 クライアントとチームを繋ぐハブ役 スクラムマスター（SM） 役割
-スクラム開発に関わる全ての人を支援し、成功に導く POのビジネス的な相談を受けたり、開発チームの技術的な相談を受けたり などなど スクラムの理論や価値を関係者全員に教え、理解してもらう 開発チームへの障害や外部干渉を取り除き、防ぐ 求められる力
-サーヴァントリーダシップ（奉仕型リーダー） 下からみんなを持ち上げるようなリーダー 理解と実行の話づくりと良きファシリテーター SMが開発に加わるのはOK？
-チームが良しとするならばOK。
-はじめから参加することは基本的にない。
-開発チーム 役割
-具体的な開発を遂行 リリース可能なプロダクトバックログアイテムを完成させる 何をどのように作るか決定する（POは実現したいものを言うが、どうやって作り上げるかは開発チームに委ねる） 求められる力</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>入門 on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E5%85%A5%E9%96%80/</link><description>Recent content in 入門 on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 05 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E5%85%A5%E9%96%80/index.xml" rel="self" type="application/rss+xml"/><item><title>スクラムについて学んだ話</title><link>https://tech.yyh-gl.dev/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/scrum_entry/</guid><description>&lt;h1 id="スクラムとは">スクラムとは&lt;/h1>
+&lt;h2 id="概要">概要&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;u>変化に対し柔軟に開発を運用するためのアジャイルフレームワーク&lt;/u>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>開発に常に優先度をつける&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>仕事を進めることを主眼に考え、そのために改善を常に行う&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ロールが3つあり、協調しあい開発する&lt;/p>
+&lt;ul>
+&lt;li>プロダクトオーナー&lt;/li>
+&lt;li>スクラムチーム&lt;/li>
+&lt;li>開発チーム&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>POが満足するアウトプットがあったかのみを検証&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>5つのイベントがある（後述）&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>2つのアウトプット（成果物）がある（後述）&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="特徴">特徴&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>非常にシンプルなフレームワーク&lt;/p>
+&lt;ul>
+&lt;li>定められたルールが他の手法より少なくアレンジが容易&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>実践的で経験主義&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>世界的に普及している&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="アジャイル開発とは">アジャイル開発とは&lt;/h1>
+&lt;h2 id="アジャイルとスクラムの違い">アジャイルとスクラムの違い&lt;/h2>
+&lt;p>スクラムとはアジャイル開発手法のひとつ&lt;/p>
+&lt;p>他にもXPとかがある&lt;/p>
+&lt;h1 id="アジャイルソフトウェア開発宣言">アジャイルソフトウェア開発宣言&lt;/h1>
+&lt;p>&lt;a href="https://agilemanifesto.org/iso/ja/manifesto.html" target="_blank" rel="noopener noreferrer">ここ&lt;/a>
+にいろいろな言語で宣言されています&lt;/p>
+&lt;p>この宣言では以下のことを重要視している&lt;/p>
+&lt;ul>
+&lt;li>個人と対話&lt;/li>
+&lt;li>動くソフトウェア&lt;/li>
+&lt;li>顧客との協調&lt;/li>
+&lt;li>変化への対応&lt;/li>
+&lt;/ul>
+&lt;h1 id="スクラムとウォータフォールの違い">スクラムとウォータフォールの違い&lt;/h1>
+&lt;ul>
+&lt;li>
+&lt;p>ウォータフォール&lt;/p>
+&lt;ul>
+&lt;li>計画、設計、実装、テストが一方向に進む&lt;/li>
+&lt;li>リリース直前の実装や仕様に漏れがあると最悪の場合プロジェクトがぽしゃる&lt;/li>
+&lt;li>運用・保守には強い。新規案件向けではない&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>スクラム&lt;/p>
+&lt;ul>
+&lt;li>開発期間中に計画、設計、実装、テストのリサイクルを何度も回す&lt;/li>
+&lt;li>細かいスパンでリリースするので、大きな手戻りが少ない&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="スクラムで登場するロール役割">スクラムで登場するロール（役割）&lt;/h1>
+&lt;p>あくまでテンプレの内容を紹介&lt;/p>
+&lt;p>自分のチームに合わせて変えてOK（むしろカスタマイズすることが重要）&lt;/p>
+&lt;h2 id="プロダクトオーナーpo">プロダクトオーナー（PO）&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>役割&lt;/p>
+&lt;ul>
+&lt;li>プロダクトのビジネス価値に責任を持つ&lt;/li>
+&lt;li>リリース判断をすることができる&lt;/li>
+&lt;li>優先度の判断役&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>求められる力&lt;/p>
+&lt;ul>
+&lt;li>情報アウトプット（見える化、透明性） → 実現したいことをちゃんと伝える力&lt;/li>
+&lt;li>クライアントとチームを繋ぐハブ役&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="スクラムマスターsm">スクラムマスター（SM）&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>役割&lt;/p>
+&lt;ul>
+&lt;li>スクラム開発に関わる全ての人を支援し、成功に導く
+&lt;ul>
+&lt;li>POのビジネス的な相談を受けたり、開発チームの技術的な相談を受けたり などなど&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>スクラムの理論や価値を関係者全員に教え、理解してもらう&lt;/li>
+&lt;li>開発チームへの障害や外部干渉を取り除き、防ぐ&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>求められる力&lt;/p>
+&lt;ul>
+&lt;li>サーヴァントリーダシップ（奉仕型リーダー）
+&lt;ul>
+&lt;li>下からみんなを持ち上げるようなリーダー&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>理解と実行の話づくりと良きファシリテーター&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;blockquote>
+&lt;p>&lt;u>SMが開発に加わるのはOK？&lt;/u>&lt;/p>&lt;/blockquote>
+&lt;blockquote>
+&lt;p>チームが良しとするならばOK。&lt;/p>&lt;/blockquote>
+&lt;blockquote>
+&lt;p>はじめから参加することは基本的にない。&lt;/p>&lt;/blockquote>
+&lt;h2 id="開発チーム">開発チーム&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>役割&lt;/p></description></item></channel></rss>

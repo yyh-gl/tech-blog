@@ -1,41 +1,84 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>テスト on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E3%83%86%E3%82%B9%E3%83%88/</link><description>Recent content in テスト on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 09 Dec 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%83%86%E3%82%B9%E3%83%88/index.xml" rel="self" type="application/rss+xml"/><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
-私は現在、DMM.com の CDS というチームに所属し、
-主にユーザレビュー基盤 のバックエンドを開発しています。
-今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、
-GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
-Linter 導入していますか？ 突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？
-私の所属するチームでは、
-コーディング規約違反 および コンパイラでは見つけられないエラー を検知するために、
-ローカルと CI において Linter を回すようにしています。
-GoにおけるLinter Goの場合、Linterがデフォルトで用意されているうえに、
-ライブラリとして公開されているものも多く存在します。
-なかでも有名なものに以下のようなものがあります。
-govet：GoデフォルトのLinter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。
-加えて、導入する Linter が増えれば、その分だけ 導入・管理コストが増加 します。
-この問題を解決してくれるツールが GolangCI-Lint です。
-GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、
-ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
-GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
-開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
-したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://tech.yyh-gl.dev/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
-ではでは、早速本題に入っていきます。
-モック使ってますか？ みなさんモックコードは書いていますか？
-テストコードを書いているなら、ほぼ必ず登場するあのモックです。
-DB処理や関数のモックなどいろいろありますよね。
-そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？
-モックだからといって雑なコードになっていませんか？
-今回は、外部API通信のモック化にフォーカスし、
-モックコードの作成・管理コストを軽減する VCR ライブラリ を紹介します。
-VCR ライブラリ とは？ VCR（Video Cassette Recorder）とは、通信を保存し、再生するライブラリです。
-つまり、APIリクエストの初回通信の内容を保存し、
-次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。
-言い換えれば、外部APIのモックを自動生成してくれるということですね！
-VCR ライブラリ in Go World Go用のVCRライブラリはいろいろあります 。
-スター数が多いのは以下のものです。
-go-vcr vcr-go govcr rpcreplay go-vcr および vcr-go，govcr の開発は盛んではないようです。
-rpcreplay は google-cloud-go に包含されるパッケージであり、安心して使えそうです。
-ただし、gRPC 用なので、その点は注意が必要です。
-GoDocはこちら です。
-今回は REST API を使って説明していくので、go-vcr を使用します。
-go-vcr は、vcr-go と govcr よりスター数が多いです。
-Ruby 製の vcr というライブラリがもとになっているようです。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>テスト on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E3%83%86%E3%82%B9%E3%83%88/</link><description>Recent content in テスト on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 09 Dec 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%83%86%E3%82%B9%E3%83%88/index.xml" rel="self" type="application/rss+xml"/><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</guid><description>&lt;h1 id="dmm-advent-calendar-2019">DMM Advent Calendar 2019&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
+&lt;p>本記事は &lt;a href="https://qiita.com/advent-calendar/2019/dmm" target="_blank" rel="noopener noreferrer">DMM Advent Calendar 2019&lt;/a>
+の 9日目 の記事です。&lt;/p>
+&lt;br>
+&lt;p>私は現在、DMM.com の CDS というチームに所属し、&lt;br>
+主に&lt;a href="https://inside.dmm.com/archive/category/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC" target="_blank" rel="noopener noreferrer">ユーザレビュー基盤&lt;/a>
+のバックエンドを開発しています。&lt;/p>
+&lt;br>
+&lt;p>今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、&lt;br>
+GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。&lt;/p>
+&lt;h1 id="linter-導入していますか">Linter 導入していますか？&lt;/h1>
+&lt;p>突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？&lt;/p>
+&lt;p>私の所属するチームでは、&lt;br>
+&lt;u>コーディング規約違反&lt;/u> および &lt;u>コンパイラでは見つけられないエラー&lt;/u> を検知するために、&lt;br>
+ローカルと CI において Linter を回すようにしています。&lt;/p>
+&lt;h1 id="goにおけるlinter">GoにおけるLinter&lt;/h1>
+&lt;p>Goの場合、Linterがデフォルトで用意されているうえに、&lt;br>
+ライブラリとして公開されているものも多く存在します。&lt;/p>
+&lt;p>なかでも有名なものに以下のようなものがあります。&lt;/p>
+&lt;ul>
+&lt;li>govet：GoデフォルトのLinter&lt;/li>
+&lt;li>errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる&lt;/li>
+&lt;li>unused：未使用の定義をチェックしてくれる&lt;/li>
+&lt;li>goimports：未使用のimportを消してくれたり、フォーマット修正してくれる&lt;/li>
+&lt;li>gosimple：コードをシンプルにしてくれる&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;p>しかしながら、多すぎるがゆえに &lt;u>どれを選択すればいいのか分からなくなりがちです&lt;/u>。&lt;br>
+加えて、導入する Linter が増えれば、その分だけ &lt;u>導入・管理コストが増加&lt;/u> します。&lt;/p>
+&lt;p>この問題を解決してくれるツールが &lt;b>GolangCI-Lint&lt;/b> です。&lt;/p>
+&lt;h1 id="golangci-lint">GolangCI-Lint&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/golangci-lint-custom-settings/golangci-lint-logo.png" width="200">
+&lt;p>勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、&lt;br>
+ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。&lt;/p>
+&lt;br>
+&lt;p>&lt;a href="https://github.com/golangci/golangci-lint" target="_blank" rel="noopener noreferrer">GolangCI-Lint&lt;/a>
+とは、
+GoのLinterを一元管理するためのツールです。&lt;br>
+開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。&lt;/p></description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://tech.yyh-gl.dev/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golang-vcr/</guid><description>&lt;h1 id="go3-advent-calendar-2019">Go3 Advent Calendar 2019&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
+&lt;p>本記事は &lt;a href="https://qiita.com/advent-calendar/2019/go3" target="_blank" rel="noopener noreferrer">Go3 Advent Calendar 2019&lt;/a>
+の 8日目 の記事です。&lt;/p>
+&lt;p>ではでは、早速本題に入っていきます。&lt;/p>
+&lt;h1 id="モック使ってますか">モック使ってますか？&lt;/h1>
+&lt;p>みなさんモックコードは書いていますか？&lt;/p>
+&lt;p>テストコードを書いているなら、ほぼ必ず登場するあのモックです。&lt;br>
+DB処理や関数のモックなどいろいろありますよね。&lt;/p>
+&lt;p>そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？&lt;br>
+モックだからといって雑なコードになっていませんか？&lt;/p>
+&lt;br>
+&lt;p>今回は、外部API通信のモック化にフォーカスし、&lt;br>
+モックコードの作成・管理コストを軽減する &lt;br>
+&lt;u>VCR ライブラリ&lt;/u> を紹介します。&lt;/p>
+&lt;h1 id="vcr-ライブラリ-とは">VCR ライブラリ とは？&lt;/h1>
+&lt;p>VCR（Video Cassette Recorder）とは、&lt;u>通信を保存し、再生するライブラリ&lt;/u>です。&lt;br>&lt;/p>
+&lt;p>つまり、APIリクエストの初回通信の内容を保存し、&lt;br>
+次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。&lt;/p>
+&lt;p>言い換えれば、外部APIのモックを自動生成してくれるということですね！&lt;/p>
+&lt;h2 id="vcr-ライブラリ-in-go-world">VCR ライブラリ in Go World&lt;/h2>
+&lt;p>Go用のVCRライブラリは&lt;a href="https://github.com/search?l=Go&amp;amp;q=vcr&amp;amp;type=Repositories" target="_blank" rel="noopener noreferrer">いろいろあります&lt;/a>
+。&lt;br>
+スター数が多いのは以下のものです。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/dnaeon/go-vcr" target="_blank" rel="noopener noreferrer">go-vcr&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://github.com/ComboStrikeHQ/vcr-go" target="_blank" rel="noopener noreferrer">vcr-go&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://github.com/seborama/govcr" target="_blank" rel="noopener noreferrer">govcr&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://github.com/googleapis/google-cloud-go/tree/master/rpcreplay" target="_blank" rel="noopener noreferrer">rpcreplay&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;p>go-vcr および vcr-go，govcr の開発は盛んではないようです。&lt;/p>
+&lt;p>rpcreplay は &lt;a href="https://github.com/googleapis/google-cloud-go" target="_blank" rel="noopener noreferrer">google-cloud-go&lt;/a>
+に包含されるパッケージであり、安心して使えそうです。&lt;br>
+ただし、gRPC 用なので、その点は注意が必要です。&lt;br>
+&lt;a href="https://godoc.org/cloud.google.com/go/rpcreplay" target="_blank" rel="noopener noreferrer">GoDocはこちら&lt;/a>
+です。&lt;/p>
+&lt;br>
+&lt;p>今回は REST API を使って説明していくので、go-vcr を使用します。&lt;br>&lt;/p>
+&lt;p>go-vcr は、vcr-go と govcr よりスター数が多いです。&lt;br>
+Ruby 製の &lt;a href="https://github.com/vcr/vcr" target="_blank" rel="noopener noreferrer">vcr&lt;/a>
+というライブラリがもとになっているようです。&lt;/p></description></item></channel></rss>

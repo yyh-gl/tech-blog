@@ -1,7 +1,41 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>簡単まとめ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E7%B0%A1%E5%8D%98%E3%81%BE%E3%81%A8%E3%82%81/</link><description>Recent content in 簡単まとめ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 03 Feb 2020 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E7%B0%A1%E5%8D%98%E3%81%BE%E3%81%A8%E3%82%81/index.xml" rel="self" type="application/rss+xml"/><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://tech.yyh-gl.dev/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/changes-since-go-1-12/</guid><description>簡単まとめシリーズ 『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝
-今回は Go1.12からの変更点 についてです。
-The State of Go 2020 Twitterで『The State of Go 2020 』というタイトルのスライドを見つけました。
-Go1.12から変わったところに焦点を当て、
-Go1.13でどのような機能が追加されているのか、 Go1.14でどのような機能が追加される予定なのかまとめてあります。
-今回は、完全主観で自分が興味のある内容をハイライトします〜😇
-完全主観ハイライト ▼ 数値まわりの表現方法が増える https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7 ▼ interfaceにおける関数の重複が許可される（例外あり） https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17 ▼ エラーハンドリングが変わる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=26 ▼ testingパッケージに CleanUp() が追加 https://speakerdeck.com/campoy/the-state-of-go-2020?slide=39 ▼ go modules https://speakerdeck.com/campoy/the-state-of-go-2020?slide=43 ▼ 配列・スライスにおける範囲外指定時のエラーが親切になった https://speakerdeck.com/campoy/the-state-of-go-2020?slide=50 ▼ deferが速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=51 ▼ json関連の処理が速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52 ▼ 他にもいろいろ速くなる https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53 ▼ GopherConの参加者が増えていく様子がえもい https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>簡単まとめ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E7%B0%A1%E5%8D%98%E3%81%BE%E3%81%A8%E3%82%81/</link><description>Recent content in 簡単まとめ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 03 Feb 2020 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E7%B0%A1%E5%8D%98%E3%81%BE%E3%81%A8%E3%82%81/index.xml" rel="self" type="application/rss+xml"/><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://tech.yyh-gl.dev/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/changes-since-go-1-12/</guid><description>&lt;h1 id="簡単まとめシリーズ">簡単まとめシリーズ&lt;/h1>
+&lt;p>『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝&lt;/p>
+&lt;p>今回は &lt;b>Go1.12からの変更点&lt;/b> についてです。&lt;/p>
+&lt;h1 id="the-state-of-go-2020">The State of Go 2020&lt;/h1>
+&lt;p>Twitterで『&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020" target="_blank" rel="noopener noreferrer">The State of Go 2020&lt;/a>
+』というタイトルのスライドを見つけました。&lt;/p>
+&lt;p>Go1.12から変わったところに焦点を当て、&lt;br>
+Go1.13でどのような機能が追加されているのか、 &lt;br>
+Go1.14でどのような機能が追加される予定なのかまとめてあります。&lt;/p>
+&lt;p>今回は、完全主観で自分が興味のある内容をハイライトします〜😇&lt;/p>
+&lt;h1 id="完全主観ハイライト">完全主観ハイライト&lt;/h1>
+&lt;h3 id="-数値まわりの表現方法が増える">▼ 数値まわりの表現方法が増える&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=7&lt;/a>
+&lt;/p>
+&lt;h3 id="-interfaceにおける関数の重複が許可される例外あり">▼ interfaceにおける関数の重複が許可される（例外あり）&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=17&lt;/a>
+&lt;/p>
+&lt;h3 id="-エラーハンドリングが変わる">▼ エラーハンドリングが変わる&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=26" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=26&lt;/a>
+&lt;/p>
+&lt;h3 id="-testingパッケージに-cleanup-が追加">▼ testingパッケージに &lt;code>CleanUp()&lt;/code> が追加&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=39" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=39&lt;/a>
+&lt;/p>
+&lt;h3 id="-go-modules">▼ go modules&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=43" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=43&lt;/a>
+&lt;/p>
+&lt;h3 id="-配列スライスにおける範囲外指定時のエラーが親切になった">▼ 配列・スライスにおける範囲外指定時のエラーが親切になった&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=50" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=50&lt;/a>
+&lt;/p>
+&lt;h3 id="-deferが速くなる">▼ deferが速くなる&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=51" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=51&lt;/a>
+&lt;/p>
+&lt;h3 id="-json関連の処理が速くなる">▼ json関連の処理が速くなる&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=52&lt;/a>
+&lt;/p>
+&lt;h3 id="-他にもいろいろ速くなる">▼ 他にもいろいろ速くなる&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=53&lt;/a>
+&lt;/p>
+&lt;h3 id="-gopherconの参加者が増えていく様子がえもい">▼ GopherConの参加者が増えていく様子がえもい&lt;/h3>
+&lt;p>&lt;a href="https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64" target="_blank" rel="noopener noreferrer">https://speakerdeck.com/campoy/the-state-of-go-2020?slide=64&lt;/a>
+&lt;/p></description></item></channel></rss>

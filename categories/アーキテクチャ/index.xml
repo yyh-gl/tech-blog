@@ -1,76 +1,180 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>アーキテクチャ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/</link><description>Recent content in アーキテクチャ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 18 Feb 2020 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/index.xml" rel="self" type="application/rss+xml"/><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</guid><description>簡単まとめシリーズ 今回は 集約とトランザクション境界 について、
-自分のわからないところを調べたので、メモとして残しておきます。
-集約 集約の説明を『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』 から拝借すると、
-「データを変更するための単位として扱われるオブジェクトの集まりを集約といいます」とのこと。
-↓ もうすこし具体的に言うと
-DDDではエンティティと値オブジェクトというものがありますが、
-値オブジェクトを直接触らず、 エンティティ経由でしか変更しないようにするというものですね。
-このような制限をかけることで、
-ひとまとまりにされたオブジェクト間で維持されるべき不変条件を守ることができます。
-トランザクション境界 基本的な考えとしては、集約ごとにトランザクションを貼ります。
-↑この基本を守るためにも、理想としては正しいモデリングにより、
-正しいトランザクション境界を見つけることが大事です。
-正しいトランザクション境界を見つけることは、不用意に大きなDBロックの発生を防止します。
-しかしながら、集約をまたいでトランザクション制御したくなるときもあります。
-→ 参考例 こういうときにどうするか、上記リンクでもいくつかの方法が挙げられています。
-他のサイトも調べてみましたが、だいたい同じような方法が出てきました。
-結果整合性 主流っぽい いろいろなサイト、書籍の中で紹介されていました 整合性を担保するための仕組みづくりが必要 整合性をチェックするためのバッチ など 集約をまたいでトランザクションを貼る 下記理由のためにあまり推奨されない ロック範囲が大きくなってしまう 守るべき「データの一貫性の境界」をコード上で表現できなくなる 参考サイト 複数の集約をさらにまとめた集約をつくる ロック範囲が大きくなってしまうため、あまり推奨されない 結果整合性 結果整合性については、
-『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』 の 12章3説「集約の大きさと操作の単位」で言及されているので、もう少しだけ詳しく調べました。
-結果整合性とは、最終的に整合性の取れていればOKという考え方。
-したがって、整合性が取れていない状況が起こり得るが、それは許容する。
-「最終的に整合性を取る」ってどうやるの？
-→ こちら が参考になる。
-まとめ 設計周りの話は、唯一無二の答えがあるわけではありません。
-よって、今回の話においても「データの一貫性の境界」を意識し、
-ちゃんとメリットとデメリットを理解した上で最善の解を選択する必要がありますね。
-参考資料 ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本 DDDにおいて、なぜ複数の集約にまたがってトランザクションをかけてはいけないのか（multiple aggregates in one transaction） 集約とトランザクション境界に関するメモ 集約の境界と整合性の維持の仕方に悩んで2ヶ月ぐらい結論を出せていない話 集約の境界と整合性問題に関する感想</description></item><item><title>【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる</title><link>https://tech.yyh-gl.dev/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
-この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
-今回やること Goのディレクトリ構成についていろいろと調べる中で、
-こちらの資料 がとても分かりやすかったので、
-今回はこちらを参考にGoでWeb APIを作っていきたいと思います。
-加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャ を取り入れます。
-（内容はほぼレイヤードアーキテクチャになってしまいましたが…）
-DDD については、「DDD を Go とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。
-パッケージ構成の参考になれば幸いです。
-（なので、ドメインモデルは重度の貧血症）
-環境 MacOS Mojave 10.14.6 Go 1.12.5 なお、今回は、Gin や Mux などといったフレームワークは使わず、
-httprouter のみで薄く作っていこうと思います。
-Mux を使った実装は 僕の前のブログで紹介している のでよければどうぞ。
-・ ・
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>アーキテクチャ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/</link><description>Recent content in アーキテクチャ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 18 Feb 2020 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/index.xml" rel="self" type="application/rss+xml"/><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</guid><description>&lt;h1 id="簡単まとめシリーズ">簡単まとめシリーズ&lt;/h1>
+&lt;p>今回は &lt;b>集約とトランザクション境界&lt;/b> について、&lt;br>
+自分のわからないところを調べたので、メモとして残しておきます。&lt;/p>
+&lt;h1 id="集約">集約&lt;/h1>
+&lt;p>集約の説明を&lt;a href="https://www.amazon.co.jp/gp/product/479815072X" target="_blank" rel="noopener noreferrer">『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』&lt;/a>
+から拝借すると、&lt;br>
+「データを変更するための単位として扱われるオブジェクトの集まりを集約といいます」とのこと。&lt;/p>
+&lt;p>↓ もうすこし具体的に言うと&lt;/p>
+&lt;p>DDDではエンティティと値オブジェクトというものがありますが、&lt;br>
+値オブジェクトを直接触らず、
+エンティティ経由でしか変更しないようにするというものですね。&lt;/p>
+&lt;p>このような制限をかけることで、&lt;br>
+&lt;b>ひとまとまりにされたオブジェクト間で維持されるべき不変条件を守ることができます。&lt;/b>&lt;/p>
+&lt;h1 id="トランザクション境界">トランザクション境界&lt;/h1>
+&lt;p>基本的な考えとしては、集約ごとにトランザクションを貼ります。&lt;br>&lt;/p>
+&lt;p>↑この基本を守るためにも、理想としては正しいモデリングにより、&lt;br>
+正しいトランザクション境界を見つけることが大事です。&lt;/p>
+&lt;p>正しいトランザクション境界を見つけることは、不用意に大きなDBロックの発生を防止します。&lt;/p>
+&lt;br>
+&lt;p>しかしながら、集約をまたいでトランザクション制御したくなるときもあります。&lt;br>
+→ &lt;a href="https://kbigwheel.hateblo.jp/entry/2018/12/03/aggregate-and-consistency" target="_blank" rel="noopener noreferrer">参考例&lt;/a>
+&lt;/p>
+&lt;p>こういうときにどうするか、上記リンクでもいくつかの方法が挙げられています。&lt;br>
+他のサイトも調べてみましたが、だいたい同じような方法が出てきました。&lt;/p>
+&lt;ol>
+&lt;li>結果整合性&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>主流っぽい
+&lt;ul>
+&lt;li>いろいろなサイト、書籍の中で紹介されていました&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>整合性を担保するための仕組みづくりが必要
+&lt;ul>
+&lt;li>整合性をチェックするためのバッチ など&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>集約をまたいでトランザクションを貼る&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>下記理由のためにあまり推奨されない
+&lt;ul>
+&lt;li>ロック範囲が大きくなってしまう&lt;/li>
+&lt;li>守るべき「データの一貫性の境界」をコード上で表現できなくなる
+&lt;ul>
+&lt;li>&lt;a href="https://www.pospome.work/entry/20161023/1477206615" target="_blank" rel="noopener noreferrer">参考サイト&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>複数の集約をさらにまとめた集約をつくる&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>ロック範囲が大きくなってしまうため、あまり推奨されない&lt;/li>
+&lt;/ul>
+&lt;h1 id="結果整合性">結果整合性&lt;/h1>
+&lt;p>結果整合性については、&lt;br>
+&lt;a href="https://www.amazon.co.jp/gp/product/479815072X" target="_blank" rel="noopener noreferrer">『ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本』&lt;/a>
+の &lt;br>
+12章3説「集約の大きさと操作の単位」で言及されているので、もう少しだけ詳しく調べました。&lt;/p>
+&lt;p>結果整合性とは、最終的に整合性の取れていればOKという考え方。&lt;br>
+したがって、整合性が取れていない状況が起こり得るが、それは許容する。&lt;/p>
+&lt;p>「最終的に整合性を取る」ってどうやるの？&lt;br>
+→ &lt;a href="https://qiita.com/j5ik2o/items/ae8a4d3cdaa24afe7599#%E8%A7%A3%E6%B1%BA%E7%AD%962-%E4%B8%80%E6%99%82%E7%9A%84%E3%81%AA%E6%95%B4%E5%90%88%E6%80%A7%E3%81%AE%E7%A0%B4%E7%B6%BB%E3%82%92%E5%8F%97%E3%81%91%E5%85%A5%E3%82%8C%E7%B5%90%E6%9E%9C%E6%95%B4%E5%90%88%E6%80%A7%E3%82%92%E4%BD%BF%E3%81%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
+が参考になる。&lt;/p>
+&lt;h1 id="まとめ">まとめ&lt;/h1>
+&lt;p>設計周りの話は、唯一無二の答えがあるわけではありません。&lt;/p>
+&lt;p>よって、今回の話においても「データの一貫性の境界」を意識し、&lt;br>
+ちゃんとメリットとデメリットを理解した上で最善の解を選択する必要がありますね。&lt;br>&lt;/p>
+&lt;h1 id="参考資料">参考資料&lt;/h1>
+&lt;ul>
+&lt;li>&lt;a href="https://www.amazon.co.jp/gp/product/479815072X" target="_blank" rel="noopener noreferrer">ドメイン駆動設計入門 ボトムアップでわかる! ドメイン駆動設計の基本&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://www.pospome.work/entry/20161023/1477206615" target="_blank" rel="noopener noreferrer">DDDにおいて、なぜ複数の集約にまたがってトランザクションをかけてはいけないのか（multiple aggregates in one transaction）&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://dnskimox.hateblo.jp/entry/2018/12/22/154038" target="_blank" rel="noopener noreferrer">集約とトランザクション境界に関するメモ&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://kbigwheel.hateblo.jp/entry/2018/12/03/aggregate-and-consistency" target="_blank" rel="noopener noreferrer">集約の境界と整合性の維持の仕方に悩んで2ヶ月ぐらい結論を出せていない話&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://qiita.com/j5ik2o/items/ae8a4d3cdaa24afe7599" target="_blank" rel="noopener noreferrer">集約の境界と整合性問題に関する感想&lt;/a>
+&lt;/li>
+&lt;/ul></description></item><item><title>【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる</title><link>https://tech.yyh-gl.dev/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go_web_api/</guid><description>&lt;h1 id="更新2019年10月30日">更新（2019年10月30日）&lt;/h1>
+&lt;p>初回投稿から3ヶ月経ちました。&lt;br>
+この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。&lt;/p>
+&lt;h1 id="今回やること">今回やること&lt;/h1>
+&lt;p>Goのディレクトリ構成についていろいろと調べる中で、&lt;br>
+&lt;a href="https://www.slideshare.net/pospome/go-80591000" target="_blank" rel="noopener noreferrer">こちらの資料&lt;/a>
+がとても分かりやすかったので、&lt;br>
+今回はこちらを参考にGoでWeb APIを作っていきたいと思います。&lt;/p>
+&lt;br>
+&lt;p>加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャ を取り入れます。&lt;br>
+（内容はほぼレイヤードアーキテクチャになってしまいましたが…）&lt;/p>
+&lt;p>DDD については、「DDD を Go とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。&lt;br>
+パッケージ構成の参考になれば幸いです。&lt;br>
+（なので、ドメインモデルは重度の貧血症）&lt;/p>
+&lt;h2 id="環境">環境&lt;/h2>
+&lt;ul>
+&lt;li>MacOS Mojave 10.14.6&lt;/li>
+&lt;li>Go 1.12.5&lt;/li>
+&lt;/ul>
+&lt;p>なお、今回は、Gin や Mux などといったフレームワークは使わず、&lt;br>
+httprouter のみで薄く作っていこうと思います。&lt;/p>
+&lt;p>Mux を使った実装は &lt;a href="https://yyh-gl.hatenablog.com/entry/2019/02/08/195310" target="_blank" rel="noopener noreferrer">僕の前のブログで紹介している&lt;/a>
+のでよければどうぞ。&lt;/p>
+&lt;br>
 ・
-では、早速本題に入っていきましょう。
-採用アーキテクチャ：レイヤードアーキテクチャ 参考記事内 で紹介されているのは レイヤードアーキテクチャ をベースに いろいろカスタマイズされたものらしいです。
-クリーンアーキテクチャに似たアーキテクチャだとか。
-ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。
-DDD の文脈では アプリケーション層 と呼ばれますが、
-アプリケーションって意味が広くて分かりづらいので、
-本プロジェクトでは ユースケース という単語を使用します。
-とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 DDD を意識して Web API を実装していこうと思います。
-（意識だけして、実践できずに終わりましたが😇）
-レイヤードアーキテクチャ における各層の依存関係 について説明します。
-依存関係の図は下記のとおりです。
-矢印は依存の方向を示しています。
-例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。</description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://tech.yyh-gl.dev/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/evans_ddd_1/</guid><description>DDD の勉強始めます 新卒研修を受ける中で DDD が出てきて、勉強したくなったので、
-『エリック・エヴァンスのドメイン駆動設計』（エリック・エヴァンス著，今関 剛 監訳，和智 右桂、牧野 祐子 訳） を読んでいこうと思います。
-今回は第1部「ドメインモデルを機能させる」の 1章 と 2章 をまとめます。
-注意： 僕の理解をそのままメモとして書き連ねていきます。
-したがって、誤った理解もあると思うので、そのときはDMとかでご指摘お願いします！
-1章 知識をかみ砕く ソフトウェアを作るときに、はじめから対象を十分に理解している開発者などいない。
-対象 ＝ これから作るソフトウェアで実現する作業 ＝ ドメイン
-したがって、対象について詳しい人（ドメインエキスパート）と開発者で 十分に話し合って理解を深めることが重要である。
-理解したことはモデルとして書き出す。 そして、ドメインエキスパートは足りないところがあれば追加で説明する。
-開発者は分からないところがあれば質問する。
-上記工程を何度も繰り返し、その都度得た知識をモデルに落とし込んでいく。
-→ 継続的学習（継続的学習は開発が始まった後でも行う）
-はじめから対象を如実に表したモデルを作れることは滅多にない。
-ドメインエキスパート と 開発者 では見ている視点が違うので少し話を聞いたぐらいで 完璧なモデルを作ることができないのは当たり前である。
-だからこそ、対話を通して、互いに疑問点や不要な点を洗い出し、洗練する必要がある。
-これが 知識のかみ砕き である。
-1章 まとめ ドメインエキスパートと開発者が話し合ってドメインをモデルに落とし込んでいく 用語の説明や不足点の追加など とにかく話す ドメイン：ソフトウェア化する対象（業務やサービスなど、ソフトウェア化の対象となりうる万物） 一発で完璧なモデリングはできないから、継続的に改善していく 2章 コミュニケーションと言語の使い方 ドメインエキスパートが使う専門用語を開発者は理解できないし、
-開発者が使う専門用語をドメインエキスパートは理解できない。
-ドメインエキスパートと開発者の両者が同じ意味だと思って使っていたとしても たいていの場合、差異がある。
-このような差異があると 通訳 が必要となる。
-通訳はコミュニケーションを鈍らせ、知識のかみ砕きを沈滞させる。
-共通言語としてのモデル 通訳をなくすために、 モデルを言語の骨格として使用 する。
-ドメインエキスパートと開発者のコミュニケーションやコード、ドキュメント、図など 全てにおいて、その言語を使用する。
-ここで、モデルはドメインエキスパートと開発者のコミュニケーションから生まれることを思い出す。</description></item></channel></rss>
+&lt;p>・&lt;/p>
+&lt;p>・&lt;/p>
+&lt;p>では、早速本題に入っていきましょう。&lt;/p>
+&lt;h1 id="採用アーキテクチャレイヤードアーキテクチャ">採用アーキテクチャ：レイヤードアーキテクチャ&lt;/h1>
+&lt;p>&lt;a href="https://www.slideshare.net/pospome/go-80591000" target="_blank" rel="noopener noreferrer">参考記事内&lt;/a>
+で紹介されているのは &lt;u>レイヤードアーキテクチャ&lt;/u> をベースに &lt;br>
+いろいろカスタマイズされたものらしいです。&lt;/p>
+&lt;p>クリーンアーキテクチャに似たアーキテクチャだとか。&lt;/p>
+&lt;hr>
+&lt;p>ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。&lt;/p>
+&lt;p>DDD の文脈では アプリケーション層 と呼ばれますが、&lt;br>
+アプリケーションって意味が広くて分かりづらいので、&lt;br>
+本プロジェクトでは ユースケース という単語を使用します。&lt;/p>
+&lt;hr>
+&lt;p>とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 &lt;br>
+&lt;u>DDD を意識して&lt;/u> Web API を実装していこうと思います。&lt;/p>
+&lt;p>（意識だけして、実践できずに終わりましたが😇）&lt;/p>
+&lt;br>
+&lt;p>レイヤードアーキテクチャ における各層の依存関係 について説明します。&lt;/p>
+&lt;p>依存関係の図は下記のとおりです。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/architecture.png" width="600">
+&lt;p>矢印は依存の方向を示しています。&lt;br>
+例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。&lt;/p></description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://tech.yyh-gl.dev/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/evans_ddd_1/</guid><description>&lt;h1 id="ddd-の勉強始めます">DDD の勉強始めます&lt;/h1>
+&lt;p>新卒研修を受ける中で DDD が出てきて、勉強したくなったので、&lt;br>
+&lt;a href="https://www.amazon.co.jp/dp/B00GRKD6XU/ref=dp-kindle-redirect?_encoding=UTF8&amp;amp;btkr=1" target="_blank" rel="noopener noreferrer">『エリック・エヴァンスのドメイン駆動設計』（エリック・エヴァンス著，今関 剛 監訳，和智 右桂、牧野 祐子 訳）&lt;/a>
+を読んでいこうと思います。&lt;/p>
+&lt;p>今回は第1部「ドメインモデルを機能させる」の 1章 と 2章 をまとめます。&lt;/p>
+&lt;p>注意： 僕の理解をそのままメモとして書き連ねていきます。&lt;br>
+したがって、誤った理解もあると思うので、そのときはDMとかでご指摘お願いします！&lt;/p>
+&lt;h1 id="1章-知識をかみ砕く">1章 知識をかみ砕く&lt;/h1>
+&lt;p>&lt;u>ソフトウェアを作るときに、はじめから対象を十分に理解している開発者などいない。&lt;/u>&lt;/p>
+&lt;blockquote>
+&lt;p>対象 ＝ これから作るソフトウェアで実現する作業 ＝ ドメイン&lt;/p>&lt;/blockquote>
+&lt;p>したがって、対象について詳しい人（ドメインエキスパート）と開発者で &lt;br>
+十分に話し合って理解を深めることが重要である。&lt;/p>
+&lt;br>
+&lt;p>理解したことはモデルとして書き出す。 &lt;br>
+そして、ドメインエキスパートは足りないところがあれば追加で説明する。&lt;br>
+開発者は分からないところがあれば質問する。&lt;/p>
+&lt;p>上記工程を何度も繰り返し、その都度得た知識をモデルに落とし込んでいく。&lt;br>
+→ &lt;u>継続的学習&lt;/u>（継続的学習は開発が始まった後でも行う）&lt;/p>
+&lt;br>
+&lt;p>はじめから対象を如実に表したモデルを作れることは滅多にない。&lt;/p>
+&lt;p>ドメインエキスパート と 開発者 では見ている視点が違うので少し話を聞いたぐらいで &lt;br>
+完璧なモデルを作ることができないのは当たり前である。&lt;/p>
+&lt;p>だからこそ、対話を通して、互いに疑問点や不要な点を洗い出し、洗練する必要がある。&lt;br>
+これが &lt;u>知識のかみ砕き&lt;/u> である。&lt;/p>
+&lt;h1 id="1章-まとめ">1章 まとめ&lt;/h1>
+&lt;ul>
+&lt;li>ドメインエキスパートと開発者が話し合ってドメインをモデルに落とし込んでいく
+&lt;ul>
+&lt;li>用語の説明や不足点の追加など とにかく話す&lt;/li>
+&lt;li>ドメイン：ソフトウェア化する対象（業務やサービスなど、ソフトウェア化の対象となりうる万物）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>一発で完璧なモデリングはできないから、継続的に改善していく&lt;/li>
+&lt;/ul>
+&lt;h1 id="2章-コミュニケーションと言語の使い方">2章 コミュニケーションと言語の使い方&lt;/h1>
+&lt;p>ドメインエキスパートが使う専門用語を開発者は理解できないし、&lt;br>
+開発者が使う専門用語をドメインエキスパートは理解できない。&lt;/p>
+&lt;p>ドメインエキスパートと開発者の両者が同じ意味だと思って使っていたとしても &lt;br>
+たいていの場合、差異がある。&lt;/p>
+&lt;p>このような差異があると &lt;u>通訳&lt;/u> が必要となる。&lt;br>
+通訳はコミュニケーションを鈍らせ、知識のかみ砕きを沈滞させる。&lt;/p>
+&lt;h2 id="共通言語としてのモデル">共通言語としてのモデル&lt;/h2>
+&lt;p>通訳をなくすために、 &lt;u>モデルを言語の骨格として使用&lt;/u> する。&lt;/p>
+&lt;p>ドメインエキスパートと開発者のコミュニケーションやコード、ドキュメント、図など &lt;br>
+全てにおいて、その言語を使用する。&lt;/p></description></item></channel></rss>

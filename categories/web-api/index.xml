@@ -1,64 +1,118 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web API on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/web-api/</link><description>Recent content in Web API on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 19 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/web-api/index.xml" rel="self" type="application/rss+xml"/><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
-「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
-さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。
-しかし、この2つのトークンの違いについて、
-いまいち理解ができていなかったので、今回は両者の違いを調べてみました。
-加えて、トークンについて調べる中で、
-OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。
-2つのトークンの違い アクセストークン と IDトークン、両者は役割が大きく異なります。
-アクセストークン：認可（リソースへのアクセスコントロール＝あるリソースへの権限（readやwriteなど）を持っているかどうか確認すること） IDトークン：認証（その人が誰かを確認すること） 名前のままでした。
-認可に使うためのいろいろな情報が詰まっているのがアクセストークンで、 認証に使うためのいろいろな情報が詰まっているのがIDトークンです。
-OpenID Connectが生まれた経緯 OAuth 2.0およびOpenID Connectについて調べていると、
-「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。
-どうしてOpenID Connectが必要になったのか、
-この辺の経緯について述べていきます。
-OAuth 2.0 は 認可 の仕組み まずは、OAuth 2.0について見ていきます。
-OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない
-のですが、実際にはOAuth 2.0を認証用途で使っているシステムは多く存在します。
-OAuth 2.0 で認証を行うことの問題点については、
-こちら の記事に詳しく書いてあります。
-上記記事より、OAuth 2.0 による認証の問題点は、
-クライアント（アプリケーション）側でトークンの正当性を確かめる術がない ことであるとわかります。
-なお、ここでいう「正当性」に関して補足しておくと、
-「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。
-つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。
-（トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）
-「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。 説明しやすくするためにこういった言葉を使っています。</description></item><item><title>【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる</title><link>https://tech.yyh-gl.dev/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go_web_api/</guid><description>更新（2019年10月30日） 初回投稿から3ヶ月経ちました。
-この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。
-今回やること Goのディレクトリ構成についていろいろと調べる中で、
-こちらの資料 がとても分かりやすかったので、
-今回はこちらを参考にGoでWeb APIを作っていきたいと思います。
-加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャ を取り入れます。
-（内容はほぼレイヤードアーキテクチャになってしまいましたが…）
-DDD については、「DDD を Go とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。
-パッケージ構成の参考になれば幸いです。
-（なので、ドメインモデルは重度の貧血症）
-環境 MacOS Mojave 10.14.6 Go 1.12.5 なお、今回は、Gin や Mux などといったフレームワークは使わず、
-httprouter のみで薄く作っていこうと思います。
-Mux を使った実装は 僕の前のブログで紹介している のでよければどうぞ。
-・ ・
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web API on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/web-api/</link><description>Recent content in Web API on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 19 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/web-api/index.xml" rel="self" type="application/rss+xml"/><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</guid><description>&lt;h1 id="はじめに">はじめに&lt;/h1>
+&lt;p>Web API のセキュリティ周りについて調べていると、&lt;br>
+「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。&lt;/p>
+&lt;p>さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。&lt;/p>
+&lt;br>
+&lt;p>しかし、この2つのトークンの違いについて、&lt;br>
+いまいち理解ができていなかったので、今回は両者の違いを調べてみました。&lt;/p>
+&lt;p>加えて、トークンについて調べる中で、&lt;br>
+OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。&lt;/p>
+&lt;h1 id="2つのトークンの違い">2つのトークンの違い&lt;/h1>
+&lt;p>アクセストークン と IDトークン、両者は役割が大きく異なります。&lt;/p>
+&lt;ul>
+&lt;li>アクセストークン：認可（リソースへのアクセスコントロール＝あるリソースへの権限（readやwriteなど）を持っているかどうか確認すること）&lt;/li>
+&lt;li>IDトークン：認証（その人が誰かを確認すること）&lt;/li>
+&lt;/ul>
+&lt;p>名前のままでした。&lt;/p>
+&lt;p>認可に使うためのいろいろな情報が詰まっているのがアクセストークンで、
+認証に使うためのいろいろな情報が詰まっているのがIDトークンです。&lt;/p>
+&lt;h1 id="openid-connectが生まれた経緯">OpenID Connectが生まれた経緯&lt;/h1>
+&lt;p>OAuth 2.0およびOpenID Connectについて調べていると、&lt;br>
+「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。&lt;/p>
+&lt;p>どうしてOpenID Connectが必要になったのか、&lt;br>
+この辺の経緯について述べていきます。&lt;/p>
+&lt;h1 id="oauth-20-は-認可-の仕組み">OAuth 2.0 は 認可 の仕組み&lt;/h1>
+&lt;p>まずは、OAuth 2.0について見ていきます。&lt;/p>
+&lt;br>
+&lt;p>&lt;u>OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない&lt;/u>&lt;br>
+のですが、実際にはOAuth 2.0を認証用途で使っているシステムは多く存在します。&lt;/p>
+&lt;p>OAuth 2.0 で認証を行うことの問題点については、&lt;br>
+&lt;a href="https://www.sakimura.org/2012/02/1487/" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
+の記事に詳しく書いてあります。&lt;/p>
+&lt;p>上記記事より、OAuth 2.0 による認証の問題点は、&lt;br>
+&lt;u>クライアント（アプリケーション）側でトークンの正当性を確かめる術がない&lt;/u> ことであるとわかります。&lt;/p>
+&lt;p>なお、ここでいう「正当性」に関して補足しておくと、&lt;br>
+「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。&lt;/p>
+&lt;p>つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。&lt;br>
+（トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）&lt;/p>
+&lt;blockquote>
+&lt;p>「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。
+説明しやすくするためにこういった言葉を使っています。&lt;/p></description></item><item><title>【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる</title><link>https://tech.yyh-gl.dev/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go_web_api/</guid><description>&lt;h1 id="更新2019年10月30日">更新（2019年10月30日）&lt;/h1>
+&lt;p>初回投稿から3ヶ月経ちました。&lt;br>
+この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。&lt;/p>
+&lt;h1 id="今回やること">今回やること&lt;/h1>
+&lt;p>Goのディレクトリ構成についていろいろと調べる中で、&lt;br>
+&lt;a href="https://www.slideshare.net/pospome/go-80591000" target="_blank" rel="noopener noreferrer">こちらの資料&lt;/a>
+がとても分かりやすかったので、&lt;br>
+今回はこちらを参考にGoでWeb APIを作っていきたいと思います。&lt;/p>
+&lt;br>
+&lt;p>加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャ を取り入れます。&lt;br>
+（内容はほぼレイヤードアーキテクチャになってしまいましたが…）&lt;/p>
+&lt;p>DDD については、「DDD を Go とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。&lt;br>
+パッケージ構成の参考になれば幸いです。&lt;br>
+（なので、ドメインモデルは重度の貧血症）&lt;/p>
+&lt;h2 id="環境">環境&lt;/h2>
+&lt;ul>
+&lt;li>MacOS Mojave 10.14.6&lt;/li>
+&lt;li>Go 1.12.5&lt;/li>
+&lt;/ul>
+&lt;p>なお、今回は、Gin や Mux などといったフレームワークは使わず、&lt;br>
+httprouter のみで薄く作っていこうと思います。&lt;/p>
+&lt;p>Mux を使った実装は &lt;a href="https://yyh-gl.hatenablog.com/entry/2019/02/08/195310" target="_blank" rel="noopener noreferrer">僕の前のブログで紹介している&lt;/a>
+のでよければどうぞ。&lt;/p>
+&lt;br>
 ・
-では、早速本題に入っていきましょう。
-採用アーキテクチャ：レイヤードアーキテクチャ 参考記事内 で紹介されているのは レイヤードアーキテクチャ をベースに いろいろカスタマイズされたものらしいです。
-クリーンアーキテクチャに似たアーキテクチャだとか。
-ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。
-DDD の文脈では アプリケーション層 と呼ばれますが、
-アプリケーションって意味が広くて分かりづらいので、
-本プロジェクトでは ユースケース という単語を使用します。
-とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 DDD を意識して Web API を実装していこうと思います。
-（意識だけして、実践できずに終わりましたが😇）
-レイヤードアーキテクチャ における各層の依存関係 について説明します。
-依存関係の図は下記のとおりです。
-矢印は依存の方向を示しています。
-例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。</description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://tech.yyh-gl.dev/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/good_api/</guid><description>いいねボタンがないブログ 本ブログ、いいねボタンが ありませんでした。
-だから、作っちゃいました。っていう記事です。
-構成 上図のように
-記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。
-記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。
-APIサーバは Rails で実装しました。
-（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）
-APIサーバ Rails で APIサーバを建てる方法に関しては、
-以前に Qiita で 入門記事 書いたのでそちらをご覧ください。
-（少し古い記事ですが、そんなに問題はないはずです）
-DB にテーブル作成 今回、ブログ記事を管理するために、下記のテーブルを作成しました。
-mysql&amp;gt; describe blog_posts; +------------+--------------+------+-----+---------+----------------+ | Field | Type | Null | Key | Default | Extra | +------------+--------------+------+-----+---------+----------------+ | id | bigint(20) | NO | PRI | NULL | auto_increment | | title | varchar(255) | NO | | NULL | | | count | varchar(255) | NO | | 0 | | | created_at | datetime | NO | | NULL | | | updated_at | datetime | NO | | NULL | | +------------+--------------+------+-----+---------+----------------+ 5 rows in set (0.</description></item></channel></rss>
+&lt;p>・&lt;/p>
+&lt;p>・&lt;/p>
+&lt;p>では、早速本題に入っていきましょう。&lt;/p>
+&lt;h1 id="採用アーキテクチャレイヤードアーキテクチャ">採用アーキテクチャ：レイヤードアーキテクチャ&lt;/h1>
+&lt;p>&lt;a href="https://www.slideshare.net/pospome/go-80591000" target="_blank" rel="noopener noreferrer">参考記事内&lt;/a>
+で紹介されているのは &lt;u>レイヤードアーキテクチャ&lt;/u> をベースに &lt;br>
+いろいろカスタマイズされたものらしいです。&lt;/p>
+&lt;p>クリーンアーキテクチャに似たアーキテクチャだとか。&lt;/p>
+&lt;hr>
+&lt;p>ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。&lt;/p>
+&lt;p>DDD の文脈では アプリケーション層 と呼ばれますが、&lt;br>
+アプリケーションって意味が広くて分かりづらいので、&lt;br>
+本プロジェクトでは ユースケース という単語を使用します。&lt;/p>
+&lt;hr>
+&lt;p>とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 &lt;br>
+&lt;u>DDD を意識して&lt;/u> Web API を実装していこうと思います。&lt;/p>
+&lt;p>（意識だけして、実践できずに終わりましたが😇）&lt;/p>
+&lt;br>
+&lt;p>レイヤードアーキテクチャ における各層の依存関係 について説明します。&lt;/p>
+&lt;p>依存関係の図は下記のとおりです。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/architecture.png" width="600">
+&lt;p>矢印は依存の方向を示しています。&lt;br>
+例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。&lt;/p></description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://tech.yyh-gl.dev/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/good_api/</guid><description>&lt;h1 id="いいねボタンがないブログ">いいねボタンがないブログ&lt;/h1>
+&lt;p>本ブログ、いいねボタンが &lt;u>ありませんでした&lt;/u>。&lt;/p>
+&lt;p>だから、作っちゃいました。っていう記事です。&lt;/p>
+&lt;h1 id="構成">構成&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/good_api/architecture.png" width="600">
+&lt;br>
+&lt;p>上図のように&lt;/p>
+&lt;p>記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。&lt;/p>
+&lt;p>記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。&lt;/p>
+&lt;p>APIサーバは Rails で実装しました。&lt;/p>
+&lt;p>（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）&lt;/p>
+&lt;h1 id="apiサーバ">APIサーバ&lt;/h1>
+&lt;p>Rails で APIサーバを建てる方法に関しては、&lt;/p>
+&lt;p>以前に Qiita で &lt;a href="https://qiita.com/yyh-gl/items/30bd91c2b33fdfbe49b5" target="_blank" rel="noopener noreferrer">入門記事&lt;/a>
+書いたのでそちらをご覧ください。&lt;/p>
+&lt;p>（少し古い記事ですが、そんなに問題はないはずです）&lt;/p>
+&lt;h2 id="db-にテーブル作成">DB にテーブル作成&lt;/h2>
+&lt;p>今回、ブログ記事を管理するために、下記のテーブルを作成しました。&lt;/p>
+&lt;pre>&lt;code>mysql&amp;gt; describe blog_posts;
++------------+--------------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+----------------+
+| id | bigint(20) | NO | PRI | NULL | auto_increment |
+| title | varchar(255) | NO | | NULL | |
+| count | varchar(255) | NO | | 0 | |
+| created_at | datetime | NO | | NULL | |
+| updated_at | datetime | NO | | NULL | |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+&lt;/code>&lt;/pre>
+&lt;p>&lt;code>title&lt;/code>には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
+記事ファイル（マークダウン）の名前（本記事だと『good_api』, 拡張子抜き）が入ります。&lt;/p></description></item></channel></rss>

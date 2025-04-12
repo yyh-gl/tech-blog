@@ -1,29 +1,87 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>チームマネジメント on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88/</link><description>Recent content in チームマネジメント on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 25 May 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88/index.xml" rel="self" type="application/rss+xml"/><item><title>【エンジニアリング組織論への招待】メンタリングの技術</title><link>https://tech.yyh-gl.dev/blog/engineering_organization_theory_mentoring/</link><pubDate>Sat, 25 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/engineering_organization_theory_mentoring/</guid><description>概要 今回は、広木 大地さんが書かれた 『エンジニアリング組織論への招待 不確実性に向き合う思考と組織のリファクタリング』 という本から、
-2章「メンタリングの技術」についてまとめます。
-（初投稿の内容が技術系じゃなくてチームマネジメント系かよとか言わないでくださいね）
-最初に覚えておいてほしいこと メンタリングは、自律的な人材を育むために行う。
-そのために、下記3点の状態にメンティ自身からなれるように導く。
-自分の気がつかなかった問題に気がつくようになる 認知の歪みによる感情と問題の癒着を切り離せる 答えではなく、次の一手を生み出す行動が取れるようになる これらがとても重要です。
-以下いろいろな話が出てきますが、結局は上記3点の状態を実現するための方法です。
-ここをしっかりと意識して読んでいただければ、
-より一層理解が深まると思います。
-以下まとめ （★マークは個人的解釈・感想です）
-そもそもメンタリングとは 相手を上から押し付けるような教育方法ではない 相手の考え方を少しずつ変えることで、問題解決の力を育む手法 対話を通じて、以下の2点を行い、相手を成長させる。
-歪んだ認知を補正 次の行動を促進 メンタリングと聞くと、
-大学で何年も学ばないと身に着けられないような技術であると思いがちだが、
-体得すればだれでもできるようになる。
-エンジニアリングにおけるメンタリングの重要性 エンジニアリングは知識が全てではない エンジニアリングでは技術的な課題がよく取り上げられるが、
-技術的な課題というのは心理的な課題と密接に関係している。
-例えば、
-ソフトウェア開発はチームプレイ ★ 技術的な課題解決だけでなく、人間関係とかもあるってことかな
-各個人の開発における問題解決は、自分自身との対話によって制御するもの ★ 自身を制すものがエラーを制す
-上記のようにエンジニアリングには心理的な課題も存在する。
-プロダクト開発では 不確実性を排除する ことがとても重要である。
-したがって、不確実性のひとつである心理的な課題は排除すべき対象である。
-★ だから、メンタリングが重要なんですね。
-メンタリングは 自ら考える人材を作る ためのテクニック 自立型人材と依存型人材 自ら考える人材を自立型人材、そうでない人材を依存型人材とすると、
-それぞれ下記のような特徴がある。
-自立型人材 自ら問題を発見し、解決することができる 問題について、自分ごととして捉えている 問題の根本的原因は自分にあると考える 改善のために行動できる 依存型人材 問題を与えられてから考える 問題と解決策を渡されてから動ける 問題の根本的原因は他人にあると考える 改善のために行動できず、他人のせいにしてしまう 両人材の境界線 多くの人は時には自立型人材、しかし、ある場面では依存型人材になってしまう。
-それが普通である。
-大事なのは、 上司と部下という関係における期待値を合わせておくこと。
-つまり、上司が 「ここまでは自律的に考えるのが自分の仕事だ」と考える期待値と、</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>チームマネジメント on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88/</link><description>Recent content in チームマネジメント on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 25 May 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88/index.xml" rel="self" type="application/rss+xml"/><item><title>【エンジニアリング組織論への招待】メンタリングの技術</title><link>https://tech.yyh-gl.dev/blog/engineering_organization_theory_mentoring/</link><pubDate>Sat, 25 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/engineering_organization_theory_mentoring/</guid><description>&lt;h1 id="概要">概要&lt;/h1>
+&lt;p>今回は、広木 大地さんが書かれた
+『&lt;a href="https://www.amazon.co.jp/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E7%B5%84%E7%B9%94%E8%AB%96%E3%81%B8%E3%81%AE%E6%8B%9B%E5%BE%85-%E4%B8%8D%E7%A2%BA%E5%AE%9F%E6%80%A7%E3%81%AB%E5%90%91%E3%81%8D%E5%90%88%E3%81%86%E6%80%9D%E8%80%83%E3%81%A8%E7%B5%84%E7%B9%94%E3%81%AE%E3%83%AA%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0-%E5%BA%83%E6%9C%A8-%E5%A4%A7%E5%9C%B0/dp/4774196053/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&amp;crid=1RMF6RYJ2VXGL&amp;keywords=%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E7%B5%84%E7%B9%94%E8%AB%96%E3%81%B8%E3%81%AE%E6%8B%9B%E5%BE%85&amp;qid=1558967032&amp;s=gateway&amp;sprefix=%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%2Caps%2C244&amp;sr=8-1">エンジニアリング組織論への招待 不確実性に向き合う思考と組織のリファクタリング&lt;/a>』
+という本から、&lt;/p>
+&lt;p>2章「メンタリングの技術」についてまとめます。&lt;/p>
+&lt;p>（初投稿の内容が技術系じゃなくてチームマネジメント系かよとか言わないでくださいね）&lt;/p>
+&lt;h2 id="最初に覚えておいてほしいこと">最初に覚えておいてほしいこと&lt;/h2>
+&lt;p>メンタリングは、自律的な人材を育むために行う。&lt;/p>
+&lt;p>そのために、下記3点の状態にメンティ自身からなれるように導く。&lt;/p>
+&lt;ul>
+&lt;li>自分の気がつかなかった問題に気がつくようになる&lt;/li>
+&lt;li>認知の歪みによる感情と問題の癒着を切り離せる&lt;/li>
+&lt;li>答えではなく、次の一手を生み出す行動が取れるようになる&lt;/li>
+&lt;/ul>
+&lt;p>これらがとても重要です。&lt;/p>
+&lt;p>以下いろいろな話が出てきますが、結局は上記3点の状態を実現するための方法です。&lt;/p>
+&lt;p>ここをしっかりと意識して読んでいただければ、&lt;/p>
+&lt;p>より一層理解が深まると思います。&lt;/p>
+&lt;br>
+&lt;p>以下まとめ
+（★マークは個人的解釈・感想です）&lt;/p>
+&lt;h1 id="そもそもメンタリングとは">そもそもメンタリングとは&lt;/h1>
+&lt;ul>
+&lt;li>相手を上から押し付けるような教育方法ではない&lt;/li>
+&lt;li>相手の考え方を少しずつ変えることで、問題解決の力を育む手法&lt;/li>
+&lt;/ul>
+&lt;p>対話を通じて、以下の2点を行い、相手を成長させる。&lt;/p>
+&lt;ul>
+&lt;li>歪んだ認知を補正&lt;/li>
+&lt;li>次の行動を促進&lt;/li>
+&lt;/ul>
+&lt;p>メンタリングと聞くと、&lt;/p>
+&lt;p>大学で何年も学ばないと身に着けられないような技術であると思いがちだが、&lt;/p>
+&lt;p>&lt;u>体得すればだれでもできるようになる。&lt;/u>&lt;/p>
+&lt;h1 id="エンジニアリングにおけるメンタリングの重要性">エンジニアリングにおけるメンタリングの重要性&lt;/h1>
+&lt;h2 id="エンジニアリングは知識が全てではない">エンジニアリングは知識が全てではない&lt;/h2>
+&lt;p>エンジニアリングでは技術的な課題がよく取り上げられるが、&lt;/p>
+&lt;p>&lt;u>技術的な課題というのは心理的な課題と密接に関係&lt;/u>している。&lt;/p>
+&lt;p>例えば、&lt;/p>
+&lt;ul>
+&lt;li>ソフトウェア開発はチームプレイ&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>★ 技術的な課題解決だけでなく、人間関係とかもあるってことかな&lt;/p>&lt;/blockquote>
+&lt;ul>
+&lt;li>各個人の開発における問題解決は、自分自身との対話によって制御するもの&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>★ 自身を制すものがエラーを制す&lt;/p>&lt;/blockquote>
+&lt;p>上記のようにエンジニアリングには心理的な課題も存在する。&lt;/p>
+&lt;p>プロダクト開発では &lt;u>不確実性を排除する&lt;/u> ことがとても重要である。&lt;/p>
+&lt;p>したがって、不確実性のひとつである心理的な課題は排除すべき対象である。&lt;/p>
+&lt;blockquote>
+&lt;p>★ だから、メンタリングが重要なんですね。&lt;/p>&lt;/blockquote>
+&lt;br>
+&lt;h1 id="メンタリングは-自ら考える人材を作る-ためのテクニック">メンタリングは &lt;u>自ら考える人材を作る&lt;/u> ためのテクニック&lt;/h1>
+&lt;h2 id="自立型人材と依存型人材">自立型人材と依存型人材&lt;/h2>
+&lt;p>自ら考える人材を自立型人材、そうでない人材を依存型人材とすると、&lt;/p>
+&lt;p>それぞれ下記のような特徴がある。&lt;/p>
+&lt;ul>
+&lt;li>自立型人材
+&lt;ul>
+&lt;li>自ら問題を発見し、解決することができる&lt;/li>
+&lt;li>問題について、自分ごととして捉えている&lt;/li>
+&lt;li>問題の根本的原因は自分にあると考える
+&lt;ul>
+&lt;li>改善のために行動できる&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>依存型人材
+&lt;ul>
+&lt;li>問題を与えられてから考える&lt;/li>
+&lt;li>問題と解決策を渡されてから動ける&lt;/li>
+&lt;li>問題の根本的原因は他人にあると考える
+&lt;ul>
+&lt;li>改善のために行動できず、他人のせいにしてしまう&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="両人材の境界線">両人材の境界線&lt;/h2>
+&lt;p>多くの人は時には自立型人材、しかし、ある場面では依存型人材になってしまう。&lt;/p>
+&lt;p>それが普通である。&lt;/p>
+&lt;p>大事なのは、 &lt;u>上司と部下という関係における期待値を合わせておくこと&lt;/u>。&lt;/p></description></item></channel></rss>

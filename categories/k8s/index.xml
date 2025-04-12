@@ -1,32 +1,63 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>k8s on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/k8s/</link><description>Recent content in k8s on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 21 May 2024 09:39:53 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title>k8s関連書籍をいろいろ読んだ</title><link>https://tech.yyh-gl.dev/blog/k8s-books/</link><pubDate>Tue, 21 May 2024 09:39:53 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-books/</guid><description>今回読んだ本 業務でk8sを触る機会があり、事前に知識をつけるためにいくつかの本を読んだ。
-以下が今回読んだ本。
-入門 Kubernetes Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス 25章のみ コンテナセキュリティ コンテナ化されたアプリケーションを保護する要素技術 入門 Kubernetes 本書はk8sを触るうえで知っておくべき基本的な内容が書かれている。
-コマンド例も書いてあるので、実際に手を動かしながら、k8sの基本について学ぶことができる。
-私は趣味の開発でk8sクラスターを運用しているので、基本的には復習的な意味合いで読んだ。
-とはいえ、永続化周りの知識はなんとなくでやっていたので知見が深まった。
-特にk8sを初めて触る人におすすめの一冊だと思った。
-注意点としては、原書は第3版まで出ており、いくつか加筆がある。
-日本語版は加筆部分がないので、最新の情報を知りたい場合は原書を読むことをおすすめする。
-Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス 25章『サービスとしてのコンピュート』を読んだ。
-k8sそのものの話はあまりない。
-「コンピュート（プログラムを実際に実行するのに必要な計算能力）」というワードを中心に、 スケールする環境でプログラムを動かすことの大変さと、その大変さを解消するために考えるべきことを深ぼっていく。
-この話の中で、 k8sの前身であるBorgの話が出てくる。
-こういった考えのもとBorgが生まれたんだなというのがよくわかった。
-特に以下2点が私にとっては有益な情報だった。
-スケールする環境における「コンピュート」関連の課題 『ペット対家畜』の話 コンテナセキュリティ コンテナ化されたアプリケーションを保護する要素技術 k8sのための本というわけではないが、コンテナ技術の上に成り立つk8sを触るうえで知っておくと役に立つ内容が書かれている。
-僕はこれまでコンテナ技術を触ってきたにも関わらず、 「Linuxの機能を使って実現されているんだよなぁ」という抽象的な理解しかしていなかった。
-本書を読むことで、コンテナ技術がLinuxのどういった機能によって実現されているかをきちんと理解できた。
-そして、上記の話をベースに、タイトルにもあるセキュリティの話へと繋がっていく。
-僕自身、コンテナセキュリティについては、頑張ってキャッチアップしているつもりだった。
-しかし、ベースとなるコンテナ技術について学んだ後だと、また違った角度からセキュリティについて再考できた。
-すでに実務で困らない程度にはコンテナをさわれるという方に、ぜひとも読んでほしい一冊だと思った。</description></item><item><title>Indigo VPS上に個人開発用のk8sクラスターを構築する</title><link>https://tech.yyh-gl.dev/blog/k8s-setup/</link><pubDate>Thu, 04 May 2023 11:20:17 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-setup/</guid><description>概要 WebARENA Indigo でVPSを2台借りて、 個人開発用のk8sクラスターを構築したので、その手順をメモとして残します。
-k8sクラスターの構築は下記2つの公式ドキュメントを参考に進めました。
-kubeadmのインストール kubeadmを使用したクラスターの作成 ドキュメントに記載のある手順を最終的にはスクリプトにしています。 （本ブログ公開時点では自動構築スクリプトとして活用可能ですが、 k8sまわりのアップデートにより動かなくなる可能性が高いと思います）
-k8sクラスターについて Masterノード 1台, Workerノード 1台の計2台構成 個人開発なのでお金の節約のために冗長構成は取っていません サーバーOSは Ubuntu 22.04 k8sのバージョンは v1.27.1 CNIはFlannelを使用 Indigo VPS固有の内容 Swapの無効化は不要 k8sを構築するサーバーに関して、公式ドキュメントに以下の記載があります。
-Swapがオフであること。kubeletが正常に動作するためにはswapは必ずオフでなければなりません。
-参考 Indigo VPSではデフォルトでSwapが無効になっているのでこの手順は不要です。
-ファイアウォール インバウンドに対してのみ制限を設けます。 公式ドキュメントに公開しないといけないポート情報が記載されているので、こちらを参照して必要なポートだけ開けます。 公開しないといけないポート情報 ufwについては特になにもしていません。
-このままでは手元のPCからSSHができなくなりますが、そこはTailscaleで解決しています。 Tailscaleのインストールはスクリプト内で行っています。
-スクリプト 下記リポジトリに置いています。
-yyh-gl/k8s-setup 以下のとおり実行すれば、k8sクラスターが構築されます。
-Masterノード：setup_common.sh→setup-master.shの順で実行 注意：setup-master.shの&amp;lt;Master node IP&amp;gt;部分はMasterノードのIPアドレスに置き換える必要あり advertise addressの変更に使用（僕はTailscaleが払い出すIPにしたかったので） Workerノード：setup_common.shを実行後にkubeadm join</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>K8s on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/k8s/</link><description>Recent content in K8s on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 04 May 2023 11:20:17 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title>Indigo VPS上に個人開発用のk8sクラスターを構築する</title><link>https://tech.yyh-gl.dev/blog/k8s-setup/</link><pubDate>Thu, 04 May 2023 11:20:17 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-setup/</guid><description>&lt;h1 id="概要">概要&lt;/h1>
+&lt;p>&lt;a href="https://web.arena.ne.jp/indigo/" target="_blank" rel="noopener noreferrer">WebARENA Indigo&lt;/a>
+でVPSを2台借りて、
+個人開発用のk8sクラスターを構築したので、その手順をメモとして残します。&lt;/p>
+&lt;p>k8sクラスターの構築は下記2つの公式ドキュメントを参考に進めました。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://kubernetes.io/ja/docs/setup/production-environment/tools/kubeadm/install-kubeadm/" target="_blank" rel="noopener noreferrer">kubeadmのインストール&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/ja/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/" target="_blank" rel="noopener noreferrer">kubeadmを使用したクラスターの作成&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;p>ドキュメントに記載のある手順を最終的にはスクリプトにしています。
+&lt;br>
+（本ブログ公開時点では自動構築スクリプトとして活用可能ですが、
+k8sまわりのアップデートにより動かなくなる可能性が高いと思います）&lt;/p>
+&lt;h1 id="k8sクラスターについて">k8sクラスターについて&lt;/h1>
+&lt;ul>
+&lt;li>Masterノード 1台, Workerノード 1台の計2台構成
+&lt;ul>
+&lt;li>個人開発なのでお金の節約のために冗長構成は取っていません&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>サーバーOSは Ubuntu 22.04&lt;/li>
+&lt;li>k8sのバージョンは v1.27.1&lt;/li>
+&lt;li>CNIはFlannelを使用&lt;/li>
+&lt;/ul>
+&lt;h1 id="indigo-vps固有の内容">Indigo VPS固有の内容&lt;/h1>
+&lt;h2 id="swapの無効化は不要">Swapの無効化は不要&lt;/h2>
+&lt;p>k8sを構築するサーバーに関して、公式ドキュメントに以下の記載があります。&lt;/p>
+&lt;blockquote>
+&lt;p>Swapがオフであること。kubeletが正常に動作するためにはswapは必ずオフでなければなりません。&lt;/p>&lt;/blockquote>
+&lt;p>&lt;a href="https://kubernetes.io/ja/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#:~:text=Swap%E3%81%8C%E3%82%AA%E3%83%95%E3%81%A7%E3%81%82%E3%82%8B%E3%81%93%E3%81%A8%E3%80%82kubelet%E3%81%8C%E6%AD%A3%E5%B8%B8%E3%81%AB%E5%8B%95%E4%BD%9C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E3%81%AFswap%E3%81%AF%E5%BF%85%E3%81%9A%E3%82%AA%E3%83%95%E3%81%A7%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82" target="_blank" rel="noopener noreferrer">参考&lt;/a>
+&lt;/p>
+&lt;p>Indigo VPSではデフォルトでSwapが無効になっているのでこの手順は不要です。&lt;/p>
+&lt;h2 id="ファイアウォール">ファイアウォール&lt;/h2>
+&lt;p>インバウンドに対してのみ制限を設けます。
+&lt;br>
+公式ドキュメントに公開しないといけないポート情報が記載されているので、こちらを参照して必要なポートだけ開けます。
+&lt;br>
+&lt;a href="https://kubernetes.io/ja/docs/reference/networking/ports-and-protocols/" target="_blank" rel="noopener noreferrer">公開しないといけないポート情報&lt;/a>
+&lt;/p>
+&lt;p>ufwについては特になにもしていません。&lt;/p>
+&lt;p>このままでは手元のPCからSSHができなくなりますが、そこはTailscaleで解決しています。
+&lt;br>
+Tailscaleのインストールはスクリプト内で行っています。&lt;/p>
+&lt;h1 id="スクリプト">スクリプト&lt;/h1>
+&lt;p>下記リポジトリに置いています。&lt;/p>
+&lt;p>&lt;a href="https://github.com/yyh-gl/k8s-setup" target="_blank" rel="noopener noreferrer">yyh-gl/k8s-setup&lt;/a>
+&lt;/p>
+&lt;p>以下のとおり実行すれば、k8sクラスターが構築されます。&lt;/p>
+&lt;ul>
+&lt;li>Masterノード：&lt;code>setup_common.sh&lt;/code>→&lt;code>setup-master.sh&lt;/code>の順で実行
+&lt;ul>
+&lt;li>注意：&lt;code>setup-master.sh&lt;/code>の&lt;code>&amp;lt;Master node IP&amp;gt;&lt;/code>部分はMasterノードのIPアドレスに置き換える必要あり
+&lt;ul>
+&lt;li>advertise addressの変更に使用（僕はTailscaleが払い出すIPにしたかったので）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Workerノード：&lt;code>setup_common.sh&lt;/code>を実行後に&lt;code>kubeadm join&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;img src="https://tech.yyh-gl.dev/img/2023/05/k8s-setup/nodes.webp" width="600"></description></item></channel></rss>

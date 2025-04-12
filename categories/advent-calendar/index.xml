@@ -1,86 +1,216 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Advent Calendar on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/advent-calendar/</link><description>Recent content in Advent Calendar on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 19 Dec 2021 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/advent-calendar/index.xml" rel="self" type="application/rss+xml"/><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://tech.yyh-gl.dev/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-build/</guid><description>本記事は『Go #1 Advent Calendar 2021 19日目 』の記事です。
-はじめに Goには標準で便利なコマンドがたくさんあります。
-有名どころで言えば、
-generate fmt vet などがあります。
-中でも、Goのコードをコンパイルするためのbuildコマンドは、 みなさんも日頃の開発で使用しているのではないでしょうか。
-buildは特に難しいことをしなければ、とてもシンプルに使えるコマンドです。
-よって、直感的に「こうすればコンパイルできるんでしょー」くらいの感覚で、 ドキュメントを注視しなくても使い始められるでしょう。
-しかし、buildは深く見ていくと意外と奥が深いコマンドです。
-今回はそんなbuildについて深ぼっていこうと思います。
-buildコマンドとは まずはbuildとはどういったコマンドなのか見ていきましょう。
-helpを使って調べてみます。
-$ go help build Build compiles the packages named by the import paths, along with their dependencies, but it does not install the results. &amp;lt;省略&amp;gt; When compiling packages, build ignores files that end in '_test.go'. &amp;lt;省略&amp;gt; When compiling multiple packages or a single non-main package, build compiles the packages but discards the resulting object, serving only as a check that the packages can be built.</description></item><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</guid><description>本記事は『Go 5 Advent Calendar 2020 8日目 』の記事です。
-Go Language Specification輪読会 現在、Go Language Specification輪読会 という、 Goの言語仕様 を読んでいく会に参加しています。
-今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。
-（振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）
-ちなみに、だいたいのコードは現場で使うと怒られそうです😇 （いや、まず間違いなく怒られる）
-1. Comments package main import ( &amp;quot;fmt&amp;quot; ) func main() { var/*comment*/a = 1 fmt.Println(a) } https://play.golang.org/p/9Dun0LiT5N5 まずはこちら。
-変な位置にコメントが挿入されています。
-コメント部分を消すとvara = 1となるのでエラーになりそうです。
-しかし、実行してみると、すんなりと変数aを表示してくれます。
-解説 Spec を参照すると以下の一文があります。
-A general comment containing no newlines acts like a space.
-改行を含まないgeneral commentはスペースのように作用する。
-（general commentとは/**/で囲われたコメントのことを指します）
-よって、先程のコードは以下と同じということです。
-package main import ( &amp;quot;fmt&amp;quot; ) func main() { var a = 1 fmt.</description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</guid><description>DMM Advent Calendar 2019 本記事は DMM Advent Calendar 2019 の 9日目 の記事です。
-私は現在、DMM.com の CDS というチームに所属し、
-主にユーザレビュー基盤 のバックエンドを開発しています。
-今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、
-GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。
-Linter 導入していますか？ 突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？
-私の所属するチームでは、
-コーディング規約違反 および コンパイラでは見つけられないエラー を検知するために、
-ローカルと CI において Linter を回すようにしています。
-GoにおけるLinter Goの場合、Linterがデフォルトで用意されているうえに、
-ライブラリとして公開されているものも多く存在します。
-なかでも有名なものに以下のようなものがあります。
-govet：GoデフォルトのLinter errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる unused：未使用の定義をチェックしてくれる goimports：未使用のimportを消してくれたり、フォーマット修正してくれる gosimple：コードをシンプルにしてくれる しかしながら、多すぎるがゆえに どれを選択すればいいのか分からなくなりがちです。
-加えて、導入する Linter が増えれば、その分だけ 導入・管理コストが増加 します。
-この問題を解決してくれるツールが GolangCI-Lint です。
-GolangCI-Lint 勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、
-ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。
-GolangCI-Lint とは、 GoのLinterを一元管理するためのツールです。
-開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。
-したがって、Linter の導入・管理コストが一気に下がりますし、</description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://tech.yyh-gl.dev/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golang-vcr/</guid><description>Go3 Advent Calendar 2019 本記事は Go3 Advent Calendar 2019 の 8日目 の記事です。
-ではでは、早速本題に入っていきます。
-モック使ってますか？ みなさんモックコードは書いていますか？
-テストコードを書いているなら、ほぼ必ず登場するあのモックです。
-DB処理や関数のモックなどいろいろありますよね。
-そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？
-モックだからといって雑なコードになっていませんか？
-今回は、外部API通信のモック化にフォーカスし、
-モックコードの作成・管理コストを軽減する VCR ライブラリ を紹介します。
-VCR ライブラリ とは？ VCR（Video Cassette Recorder）とは、通信を保存し、再生するライブラリです。
-つまり、APIリクエストの初回通信の内容を保存し、
-次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。
-言い換えれば、外部APIのモックを自動生成してくれるということですね！
-VCR ライブラリ in Go World Go用のVCRライブラリはいろいろあります 。
-スター数が多いのは以下のものです。
-go-vcr vcr-go govcr rpcreplay go-vcr および vcr-go，govcr の開発は盛んではないようです。
-rpcreplay は google-cloud-go に包含されるパッケージであり、安心して使えそうです。
-ただし、gRPC 用なので、その点は注意が必要です。
-GoDocはこちら です。
-今回は REST API を使って説明していくので、go-vcr を使用します。
-go-vcr は、vcr-go と govcr よりスター数が多いです。
-Ruby 製の vcr というライブラリがもとになっているようです。</description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://tech.yyh-gl.dev/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/react_typescript_sample/</guid><description>TypeScript Advent Calendar 2019 本記事は TypeScript Advent Calendar 2019 の 2 日目の記事です。
-内容としては、TypeScript 初級者のための TypeScript 入門です。
-基礎的な内容から入り、
-最終的には、企業や個人の技術ブログを参考に、
-React の実プロジェクトにおいて、
-どのように TypeScript が使われているのか紹介できればと思います。
-（APIリクエスト周りのTypeScript活用事例を紹介）
-今日の記事を読んで TypeScript に入門し、
-今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！
-基礎編 TypeScript とは TypeScript は Microsoft 社によって開発され、 現在は OSS として開発が進められています。
-「TypeScript とは何か」を簡単に説明すると、
-JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット です。
-公式サイト はこちらで、
-2019年12月2日現在、最新版は 3.7.2 となっています。
-では、実際にコードを交えながら基礎的な部分を説明していきます。
-ただし、実践編で使用する内容に絞って説明していきますので、
-その点はご了承ください🙇‍
-（足りない情報は公式ドキュメント を参考にしてください）
-型 では、早速、TypeScript の型に触れていきましょう。
-TypeScript で使用できる基本的な型として以下のものがあります。
-Boolean Number String Array Tuple Enum Any Void Null and Undefined Never Object だいたいの型は他言語でも用意されているので、</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Advent Calendar on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/advent-calendar/</link><description>Recent content in Advent Calendar on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 19 Dec 2021 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/advent-calendar/index.xml" rel="self" type="application/rss+xml"/><item><title>徒然なるままに go build と build tag を見ていく</title><link>https://tech.yyh-gl.dev/blog/go-build/</link><pubDate>Sun, 19 Dec 2021 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-build/</guid><description>&lt;br>
+&lt;p>本記事は『&lt;a href="https://qiita.com/advent-calendar/2021/go" target="_blank" rel="noopener noreferrer">Go #1 Advent Calendar 2021 19日目&lt;/a>
+』の記事です。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2021/12/go-build/advent_calendar_2021.webp" width="500">
+&lt;h1 id="はじめに">はじめに&lt;/h1>
+&lt;p>Goには標準で便利なコマンドがたくさんあります。&lt;/p>
+&lt;p>有名どころで言えば、&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>generate&lt;/code>&lt;/li>
+&lt;li>&lt;code>fmt&lt;/code>&lt;/li>
+&lt;li>&lt;code>vet&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>などがあります。&lt;/p>
+&lt;p>中でも、Goのコードをコンパイルするための&lt;code>build&lt;/code>コマンドは、
+みなさんも日頃の開発で使用しているのではないでしょうか。&lt;/p>
+&lt;p>&lt;code>build&lt;/code>は特に難しいことをしなければ、とてもシンプルに使えるコマンドです。&lt;br>
+よって、直感的に「こうすればコンパイルできるんでしょー」くらいの感覚で、
+ドキュメントを注視しなくても使い始められるでしょう。&lt;/p>
+&lt;p>しかし、&lt;code>build&lt;/code>は深く見ていくと意外と奥が深いコマンドです。&lt;br>
+今回はそんな&lt;code>build&lt;/code>について深ぼっていこうと思います。&lt;/p>
+&lt;h1 id="buildコマンドとは">&lt;code>build&lt;/code>コマンドとは&lt;/h1>
+&lt;p>まずは&lt;code>build&lt;/code>とはどういったコマンドなのか見ていきましょう。&lt;/p>
+&lt;p>&lt;code>help&lt;/code>を使って調べてみます。&lt;/p>
+&lt;pre>&lt;code class="language-shell">$ go help build
+Build compiles the packages named by the import paths,
+along with their dependencies, but it does not install the results.
+&amp;lt;省略&amp;gt;
+When compiling packages, build ignores files that end in '_test.go'.
+&amp;lt;省略&amp;gt;
+When compiling multiple packages or a single non-main package,
+build compiles the packages but discards the resulting object,
+serving only as a check that the packages can be built.
+&amp;lt;省略&amp;gt;
+-tags tag,list
+a comma-separated list of build tags to consider satisfied during the
+build. For more information about build tags, see the description of
+build constraints in the documentation for the go/build package.
+(Earlier versions of Go used a space-separated list, and that form
+is deprecated but still recognized.)
+&amp;lt;省略&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;p>&lt;code>build&lt;/code>はコンパイルするやつですよという文章から始まり、
+いろいろ書かれていますが、今回は以下の4点について見てみます。&lt;/p></description></item><item><title>The Go Programming Language Specificationで知った「こんなことできるだ」を紹介</title><link>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</link><pubDate>Tue, 08 Dec 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/uncredible-codes-from-go-spec/</guid><description>&lt;p>本記事は『&lt;a href="https://qiita.com/advent-calendar/2020/go5" target="_blank" rel="noopener noreferrer">Go 5 Advent Calendar 2020 8日目&lt;/a>
+』の記事です。&lt;/p>
+&lt;h1 id="go-language-specification輪読会">Go Language Specification輪読会&lt;/h1>
+&lt;p>現在、&lt;a href="https://gospecreading.connpass.com/" target="_blank" rel="noopener noreferrer">Go Language Specification輪読会&lt;/a>
+という、
+&lt;a href="https://golang.org/ref/spec" target="_blank" rel="noopener noreferrer">Goの言語仕様&lt;/a>
+を読んでいく会に参加しています。&lt;/p>
+&lt;p>今回は、そんな輪読会で「こんなことできるんだ」と驚いたコードを紹介します。&lt;br>
+（振り返ると結構たくさんあったので、今回はその中から5個選んで紹介します）&lt;/p>
+&lt;p>&lt;strong>ちなみに、だいたいのコードは現場で使うと怒られそうです😇&lt;/strong> &lt;br>
+（いや、まず間違いなく怒られる）&lt;/p>
+&lt;h1 id="1-comments">1. Comments&lt;/h1>
+&lt;pre>&lt;code class="language-go">package main
+import (
+&amp;quot;fmt&amp;quot;
+)
+func main() {
+var/*comment*/a = 1
+fmt.Println(a)
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;a href="https://play.golang.org/p/9Dun0LiT5N5" target="_blank" rel="noopener noreferrer">https://play.golang.org/p/9Dun0LiT5N5&lt;/a>
+&lt;/p>
+&lt;p>まずはこちら。&lt;br>
+変な位置にコメントが挿入されています。&lt;br>
+コメント部分を消すと&lt;code>vara = 1&lt;/code>となるのでエラーになりそうです。&lt;/p>
+&lt;p>しかし、実行してみると、すんなりと変数&lt;code>a&lt;/code>を表示してくれます。&lt;/p>
+&lt;h2 id="解説">解説&lt;/h2>
+&lt;p>&lt;a href="https://golang.org/ref/spec#Comments" target="_blank" rel="noopener noreferrer">Spec&lt;/a>
+を参照すると以下の一文があります。&lt;/p>
+&lt;blockquote>
+&lt;p>A general comment containing no newlines acts like a space.&lt;/p>
+&lt;p>改行を含まないgeneral commentはスペースのように作用する。&lt;/p>&lt;/blockquote>
+&lt;p>（general commentとは&lt;code>/**/&lt;/code>で囲われたコメントのことを指します）&lt;/p>
+&lt;p>よって、先程のコードは以下と同じということです。&lt;/p>
+&lt;pre>&lt;code class="language-go">package main
+import (
+&amp;quot;fmt&amp;quot;
+)
+func main() {
+var a = 1
+fmt.Println(a)
+}
+&lt;/code>&lt;/pre>
+&lt;p>こうして変換してみると、エラーでないことは明白ですね。&lt;/p></description></item><item><title>GolangCI-Lintの設定ファイルを理解する</title><link>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</link><pubDate>Mon, 09 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golangci-lint-custom-settings/</guid><description>&lt;h1 id="dmm-advent-calendar-2019">DMM Advent Calendar 2019&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
+&lt;p>本記事は &lt;a href="https://qiita.com/advent-calendar/2019/dmm" target="_blank" rel="noopener noreferrer">DMM Advent Calendar 2019&lt;/a>
+の 9日目 の記事です。&lt;/p>
+&lt;br>
+&lt;p>私は現在、DMM.com の CDS というチームに所属し、&lt;br>
+主に&lt;a href="https://inside.dmm.com/archive/category/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC" target="_blank" rel="noopener noreferrer">ユーザレビュー基盤&lt;/a>
+のバックエンドを開発しています。&lt;/p>
+&lt;br>
+&lt;p>今回は、Go用Linterである GolangCI-Lint を軽く紹介した後に、&lt;br>
+GolangCI-Lint のハマリポイントとその解決策である設定周りの話をします。&lt;/p>
+&lt;h1 id="linter-導入していますか">Linter 導入していますか？&lt;/h1>
+&lt;p>突然ですが、みなさんの開発環境には Linter が導入されているでしょうか？&lt;/p>
+&lt;p>私の所属するチームでは、&lt;br>
+&lt;u>コーディング規約違反&lt;/u> および &lt;u>コンパイラでは見つけられないエラー&lt;/u> を検知するために、&lt;br>
+ローカルと CI において Linter を回すようにしています。&lt;/p>
+&lt;h1 id="goにおけるlinter">GoにおけるLinter&lt;/h1>
+&lt;p>Goの場合、Linterがデフォルトで用意されているうえに、&lt;br>
+ライブラリとして公開されているものも多く存在します。&lt;/p>
+&lt;p>なかでも有名なものに以下のようなものがあります。&lt;/p>
+&lt;ul>
+&lt;li>govet：GoデフォルトのLinter&lt;/li>
+&lt;li>errcheck：ちゃんとエラーハンドリングしているかチェックしてくれる&lt;/li>
+&lt;li>unused：未使用の定義をチェックしてくれる&lt;/li>
+&lt;li>goimports：未使用のimportを消してくれたり、フォーマット修正してくれる&lt;/li>
+&lt;li>gosimple：コードをシンプルにしてくれる&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;p>しかしながら、多すぎるがゆえに &lt;u>どれを選択すればいいのか分からなくなりがちです&lt;/u>。&lt;br>
+加えて、導入する Linter が増えれば、その分だけ &lt;u>導入・管理コストが増加&lt;/u> します。&lt;/p>
+&lt;p>この問題を解決してくれるツールが &lt;b>GolangCI-Lint&lt;/b> です。&lt;/p>
+&lt;h1 id="golangci-lint">GolangCI-Lint&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/golangci-lint-custom-settings/golangci-lint-logo.png" width="200">
+&lt;p>勉強会でもよく耳にするようになってきている＋多くの紹介記事があるので、&lt;br>
+ここで詳しく説明する必要もないかもしれませんが、いちおう少しだけ触れておきます。&lt;/p>
+&lt;br>
+&lt;p>&lt;a href="https://github.com/golangci/golangci-lint" target="_blank" rel="noopener noreferrer">GolangCI-Lint&lt;/a>
+とは、
+GoのLinterを一元管理するためのツールです。&lt;br>
+開発者は GolangCI-Lint を導入するだけで様々な Linter を実行することができます。&lt;/p></description></item><item><title>【Go+VCR】外部APIとの通信を保存してテストに使用する話</title><link>https://tech.yyh-gl.dev/blog/golang-vcr/</link><pubDate>Sun, 08 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/golang-vcr/</guid><description>&lt;h1 id="go3-advent-calendar-2019">Go3 Advent Calendar 2019&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
+&lt;p>本記事は &lt;a href="https://qiita.com/advent-calendar/2019/go3" target="_blank" rel="noopener noreferrer">Go3 Advent Calendar 2019&lt;/a>
+の 8日目 の記事です。&lt;/p>
+&lt;p>ではでは、早速本題に入っていきます。&lt;/p>
+&lt;h1 id="モック使ってますか">モック使ってますか？&lt;/h1>
+&lt;p>みなさんモックコードは書いていますか？&lt;/p>
+&lt;p>テストコードを書いているなら、ほぼ必ず登場するあのモックです。&lt;br>
+DB処理や関数のモックなどいろいろありますよね。&lt;/p>
+&lt;p>そんなモックコードですが、作ったり管理するのめんどくさいなぁとか思ってないですか？&lt;br>
+モックだからといって雑なコードになっていませんか？&lt;/p>
+&lt;br>
+&lt;p>今回は、外部API通信のモック化にフォーカスし、&lt;br>
+モックコードの作成・管理コストを軽減する &lt;br>
+&lt;u>VCR ライブラリ&lt;/u> を紹介します。&lt;/p>
+&lt;h1 id="vcr-ライブラリ-とは">VCR ライブラリ とは？&lt;/h1>
+&lt;p>VCR（Video Cassette Recorder）とは、&lt;u>通信を保存し、再生するライブラリ&lt;/u>です。&lt;br>&lt;/p>
+&lt;p>つまり、APIリクエストの初回通信の内容を保存し、&lt;br>
+次回以降その保存内容（レスポンス）を使いまわしてくれるというものです。&lt;/p>
+&lt;p>言い換えれば、外部APIのモックを自動生成してくれるということですね！&lt;/p>
+&lt;h2 id="vcr-ライブラリ-in-go-world">VCR ライブラリ in Go World&lt;/h2>
+&lt;p>Go用のVCRライブラリは&lt;a href="https://github.com/search?l=Go&amp;amp;q=vcr&amp;amp;type=Repositories" target="_blank" rel="noopener noreferrer">いろいろあります&lt;/a>
+。&lt;br>
+スター数が多いのは以下のものです。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/dnaeon/go-vcr" target="_blank" rel="noopener noreferrer">go-vcr&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://github.com/ComboStrikeHQ/vcr-go" target="_blank" rel="noopener noreferrer">vcr-go&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://github.com/seborama/govcr" target="_blank" rel="noopener noreferrer">govcr&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://github.com/googleapis/google-cloud-go/tree/master/rpcreplay" target="_blank" rel="noopener noreferrer">rpcreplay&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;p>go-vcr および vcr-go，govcr の開発は盛んではないようです。&lt;/p>
+&lt;p>rpcreplay は &lt;a href="https://github.com/googleapis/google-cloud-go" target="_blank" rel="noopener noreferrer">google-cloud-go&lt;/a>
+に包含されるパッケージであり、安心して使えそうです。&lt;br>
+ただし、gRPC 用なので、その点は注意が必要です。&lt;br>
+&lt;a href="https://godoc.org/cloud.google.com/go/rpcreplay" target="_blank" rel="noopener noreferrer">GoDocはこちら&lt;/a>
+です。&lt;/p>
+&lt;br>
+&lt;p>今回は REST API を使って説明していくので、go-vcr を使用します。&lt;br>&lt;/p>
+&lt;p>go-vcr は、vcr-go と govcr よりスター数が多いです。&lt;br>
+Ruby 製の &lt;a href="https://github.com/vcr/vcr" target="_blank" rel="noopener noreferrer">vcr&lt;/a>
+というライブラリがもとになっているようです。&lt;/p></description></item><item><title>【React+TypeScript】TypeScript入門</title><link>https://tech.yyh-gl.dev/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/react_typescript_sample/</guid><description>&lt;h1 id="typescript-advent-calendar-2019">TypeScript Advent Calendar 2019&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
+&lt;p>本記事は &lt;a href="https://qiita.com/advent-calendar/2019/typescript" target="_blank" rel="noopener noreferrer">TypeScript Advent Calendar 2019&lt;/a>
+の 2 日目の記事です。&lt;/p>
+&lt;p>内容としては、TypeScript 初級者のための TypeScript 入門です。&lt;/p>
+&lt;p>基礎的な内容から入り、&lt;br>
+最終的には、企業や個人の技術ブログを参考に、&lt;br>
+React の実プロジェクトにおいて、&lt;br>
+どのように TypeScript が使われているのか紹介できればと思います。&lt;br>
+（APIリクエスト周りのTypeScript活用事例を紹介）&lt;/p>
+&lt;p>今日の記事を読んで TypeScript に入門し、&lt;br>
+今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！&lt;/p>
+&lt;h1 id="基礎編">基礎編&lt;/h1>
+&lt;h2 id="typescript-とは">TypeScript とは&lt;/h2>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/ts.png" width="200">
+&lt;p>&lt;a href="https://www.typescriptlang.org/index.html" target="_blank" rel="noopener noreferrer">TypeScript&lt;/a>
+は Microsoft 社によって開発され、
+現在は &lt;a href="https://github.com/microsoft/TypeScript" target="_blank" rel="noopener noreferrer">OSS&lt;/a>
+として開発が進められています。&lt;/p>
+&lt;p>「TypeScript とは何か」を簡単に説明すると、&lt;br>
+&lt;u>JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット&lt;/u> です。&lt;/p>
+&lt;p>&lt;a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">公式サイト&lt;/a>
+はこちらで、&lt;br>
+2019年12月2日現在、最新版は 3.7.2 となっています。&lt;/p>
+&lt;p>では、実際にコードを交えながら基礎的な部分を説明していきます。&lt;br>
+ただし、実践編で使用する内容に絞って説明していきますので、&lt;br>
+その点はご了承ください🙇‍&lt;br>
+（足りない情報は&lt;a href="https://www.typescriptlang.org/docs/home.html" target="_blank" rel="noopener noreferrer">公式ドキュメント&lt;/a>
+を参考にしてください）&lt;/p>
+&lt;h2 id="型">型&lt;/h2>
+&lt;p>では、早速、TypeScript の型に触れていきましょう。&lt;br>
+TypeScript で使用できる基本的な型として以下のものがあります。&lt;/p>
+&lt;ul>
+&lt;li>Boolean&lt;/li>
+&lt;li>Number&lt;/li>
+&lt;li>String&lt;/li>
+&lt;li>Array&lt;/li>
+&lt;li>Tuple&lt;/li>
+&lt;li>Enum&lt;/li>
+&lt;li>Any&lt;/li>
+&lt;li>Void&lt;/li>
+&lt;li>Null and Undefined&lt;/li>
+&lt;li>Never&lt;/li>
+&lt;li>Object&lt;/li>
+&lt;/ul>
+&lt;p>だいたいの型は他言語でも用意されているので、&lt;br>
+説明がなくても理解できると思います。&lt;/p></description></item></channel></rss>

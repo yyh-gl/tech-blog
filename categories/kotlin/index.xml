@@ -1,48 +1,113 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/kotlin/</link><description>Recent content in Kotlin on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 21 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>KtorとStripeでECサイトを作ってみた</title><link>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</link><pubDate>Wed, 21 Dec 2022 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</guid><description>Kotlin Advent Calendar 2022 本記事はKotlin Advent Calendar 2022 の21日目の記事です。
-概要 クリスマスといえばプレゼント。
-ということでECサイトを作ってみます。
-ECサイトと言いつつもあまり複雑なことはせずに、Stripeから取得した商品情報を表示する画面を作るところまでやります。
-本画面を実装する過程で、APIを経由した情報のやりとり→受け取った情報を画面に表示するところまで触れます。
-よって、本記事を読めばKotlinで外部API（主にStripe）を使ったシステムの実装イメージをざっくり掴めると思います。
-ただただKotlinで作るだけではなくて、個人的にこれまで触ったことないフレームワークやサービスを使ってみたいと思っています。
-個人的にこれまで触ったことない
-あたかもKotlinは触ったことあるような言い方ですが、私はこれまでGo中心のエンジニア人生でした。
-したがって、そもそもKotlin自体あまり触ったことがないです←
-Kotlinのお作法を守れていないところもあると思いますが、こんな感じで作れるのかぁとイメージしてもらえると幸いです。
-では、採用技術を紹介したら、さっそくECサイトを作っていこうと思います。
-⚠️ 本記事内に記載するコードはpackageやimport周りのコードを省略しています。
-コード全体を見たい場合は以下のリポジトリにコードを置いているのでこちらを参照ください。
-https://github.com/yyh-gl/ktor-shop/ 採用技術 Webフレームワーク：Ktor テンプレートエンジン：FreeMarker 決済および商品管理：Stripe DI：Koin Hello World まずは「Hello World」していきます。
-プロジェクトの作成は下記公式サイトに記載の手順を参考にしてください。
-https://ktor.io/docs/intellij-idea.html#create_ktor_project インストールしたプラグインは以下のとおりです。
-コードがひととおりできあがったら下記コマンドを実行しサーバーを起動します。
-$ ./gradlew run
-サーバーが起動したら http://localhost:8080/ にアクセスします。
-「Hello World!」を表示できました。
-Auto-reloadの有効化 開発していく上ではAuto-reloadがあった方が便利なのでAuto-reloadを有効にしていきます。
-Auto-reloadを有効化する手順は以下のとおりです。
-developmentモードを有効化 継続的なビルドを実行
-$ ./gradlew -t build サーバーを起動
-$ ./gradlew run サーバー起動手順がHello Worldのときよりも2つ増えています。
-詳しく見てみましょう。
-参考コミット 1. developmentモードを有効化 developmentモードを有効にする方法はいくつかあります。
-今回はEngineMainを使った方法を紹介します。
-生成されたコードではembeddedServerを使ってサーバーを起動しているのでEngineMainに変更します。
-（EngineMainおよびembeddedServerの違いはこちら ）</description></item><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://tech.yyh-gl.dev/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/android_push/</guid><description>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので
-なにか困ったときはそこを一度見てみてください。
-tl;dr Firebase使ってAndroidアプリにプッシュ通知を実装した フォアグラウンドとバックグラウンドで表示方法が異なる めちゃくちゃ簡単 開発環境 macOS Mojave 10.14.4 Android Studio 3.4.1 Gradle 3.4.1 Java 1.8.0_202 Kotlin 1.3.21 Firebaseに登録 Firebaseを使用するためには登録が必要です。
-Googleアカウントを持っている方なら公式サイト から簡単に登録できます
-Firebaseにプロジェクト作成 プロジェクト登録ページ でプロジェクトを登録します。
-プロジェクト名は特に指定はありません。ご自由にどうぞ。
-アプリ情報を登録する プロジェクト選択後のホーム画面より 「Project Overview」 をクリック。
-画面の指示に従って進めていてください。
-デバッグ用の署名証明書 SHA-1 の取得方法 以下コマンドを実行
-Mac/Linux
-keytool -list -v \ -alias androiddebugkey -keystore ~/.android/debug.keystore Windows
-keytool -list -v \ -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore パスワード入力
-パスワードは android です。
-表示される SHA-1 をメモ
-ひととおり作業が進むと、↓このような画面が表示されます。
-自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。
-エミュレータでもちゃんと通信してくれるか不安だったのですが大丈夫でした。
-Firebase 関連のライブラリを追加 アプリ情報の登録工程において、 app/build.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/kotlin/</link><description>Recent content in Kotlin on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 21 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>KtorとStripeでECサイトを作ってみた</title><link>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</link><pubDate>Wed, 21 Dec 2022 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</guid><description>&lt;h1 id="kotlin-advent-calendar-2022">Kotlin Advent Calendar 2022&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/qiita_advent_calendar_2022.webp" width="700">
+&lt;p>本記事は&lt;a href="https://qiita.com/advent-calendar/2022/kotlin" target="_blank" rel="noopener noreferrer">Kotlin Advent Calendar 2022&lt;/a>
+の21日目の記事です。&lt;/p>
+&lt;h1 id="概要">概要&lt;/h1>
+&lt;p>クリスマスといえばプレゼント。&lt;br>
+ということでECサイトを作ってみます。&lt;/p>
+&lt;p>ECサイトと言いつつもあまり複雑なことはせずに、Stripeから取得した商品情報を表示する画面を作るところまでやります。&lt;br>
+本画面を実装する過程で、APIを経由した情報のやりとり→受け取った情報を画面に表示するところまで触れます。&lt;br>
+よって、本記事を読めばKotlinで外部API（主にStripe）を使ったシステムの実装イメージをざっくり掴めると思います。&lt;/p>
+&lt;br>
+&lt;p>ただただKotlinで作るだけではなくて、個人的にこれまで触ったことないフレームワークやサービスを使ってみたいと思っています。&lt;/p>
+&lt;blockquote>
+&lt;p>個人的にこれまで触ったことない&lt;/p>&lt;/blockquote>
+&lt;p>あたかもKotlinは触ったことあるような言い方ですが、私はこれまでGo中心のエンジニア人生でした。&lt;br>
+したがって、そもそもKotlin自体あまり触ったことがないです←&lt;br>
+Kotlinのお作法を守れていないところもあると思いますが、こんな感じで作れるのかぁとイメージしてもらえると幸いです。&lt;/p>
+&lt;br>
+&lt;p>では、採用技術を紹介したら、さっそくECサイトを作っていこうと思います。&lt;br>&lt;/p>
+&lt;br>
+&lt;p>⚠️ 本記事内に記載するコードは&lt;code>package&lt;/code>や&lt;code>import&lt;/code>周りのコードを省略しています。&lt;br>
+コード全体を見たい場合は以下のリポジトリにコードを置いているのでこちらを参照ください。&lt;br>
+&lt;a href="https://github.com/yyh-gl/ktor-shop/" target="_blank" rel="noopener noreferrer">https://github.com/yyh-gl/ktor-shop/&lt;/a>
+&lt;/p>
+&lt;h1 id="採用技術">採用技術&lt;/h1>
+&lt;ul>
+&lt;li>Webフレームワーク：&lt;a href="https://ktor.io/" target="_blank" rel="noopener noreferrer">Ktor&lt;/a>
+&lt;/li>
+&lt;li>テンプレートエンジン：&lt;a href="https://freemarker.apache.org/" target="_blank" rel="noopener noreferrer">FreeMarker&lt;/a>
+&lt;/li>
+&lt;li>決済および商品管理：&lt;a href="https://stripe.com/jp" target="_blank" rel="noopener noreferrer">Stripe&lt;/a>
+&lt;/li>
+&lt;li>DI：&lt;a href="https://insert-koin.io/" target="_blank" rel="noopener noreferrer">Koin&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="hello-world">Hello World&lt;/h1>
+&lt;p>まずは「Hello World」していきます。&lt;/p>
+&lt;p>プロジェクトの作成は下記公式サイトに記載の手順を参考にしてください。&lt;/p>
+&lt;p>&lt;a href="https://ktor.io/docs/intellij-idea.html#create_ktor_project" target="_blank" rel="noopener noreferrer">https://ktor.io/docs/intellij-idea.html#create_ktor_project&lt;/a>
+&lt;/p>
+&lt;br>
+&lt;p>インストールしたプラグインは以下のとおりです。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/dependency.webp" width="700">
+&lt;p>&lt;br>&lt;br>&lt;/p>
+&lt;p>コードがひととおりできあがったら下記コマンドを実行しサーバーを起動します。&lt;/p>
+&lt;p>&lt;code>$ ./gradlew run&lt;/code>&lt;/p>
+&lt;p>サーバーが起動したら &lt;code>http://localhost:8080/&lt;/code> にアクセスします。&lt;br>&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/hello_world.webp" width="500">
+&lt;p>「Hello World!」を表示できました。&lt;/p>
+&lt;h2 id="auto-reloadの有効化">Auto-reloadの有効化&lt;/h2>
+&lt;!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
+&lt;p>開発していく上ではAuto-reloadがあった方が便利なのでAuto-reloadを有効にしていきます。&lt;/p>
+&lt;!-- textlint-enable ja-technical-writing/no-doubled-joshi -->
+&lt;p>Auto-reloadを有効化する手順は以下のとおりです。&lt;/p>
+&lt;ol>
+&lt;li>developmentモードを有効化&lt;/li>
+&lt;li>継続的なビルドを実行&lt;br>&lt;code>$ ./gradlew -t build&lt;/code>&lt;/li>
+&lt;li>サーバーを起動&lt;br>&lt;code>$ ./gradlew run&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>サーバー起動手順がHello Worldのときよりも2つ増えています。&lt;br>
+詳しく見てみましょう。&lt;/p></description></item><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://tech.yyh-gl.dev/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/android_push/</guid><description>&lt;p>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので&lt;/p>
+&lt;p>なにか困ったときはそこを一度見てみてください。&lt;/p>
+&lt;h1 id="tldr">tl;dr&lt;/h1>
+&lt;ul>
+&lt;li>Firebase使ってAndroidアプリにプッシュ通知を実装した&lt;/li>
+&lt;li>フォアグラウンドとバックグラウンドで表示方法が異なる&lt;/li>
+&lt;li>めちゃくちゃ簡単&lt;/li>
+&lt;/ul>
+&lt;h1 id="開発環境">開発環境&lt;/h1>
+&lt;ul>
+&lt;li>macOS Mojave 10.14.4&lt;/li>
+&lt;li>Android Studio 3.4.1&lt;/li>
+&lt;li>Gradle 3.4.1&lt;/li>
+&lt;li>Java 1.8.0_202&lt;/li>
+&lt;li>Kotlin 1.3.21&lt;/li>
+&lt;/ul>
+&lt;h1 id="firebaseに登録">Firebaseに登録&lt;/h1>
+&lt;p>Firebaseを使用するためには登録が必要です。&lt;/p>
+&lt;p>Googleアカウントを持っている方なら&lt;a href="https://firebase.google.com/?hl=ja" target="_blank" rel="noopener noreferrer">公式サイト&lt;/a>
+から簡単に登録できます&lt;/p>
+&lt;h1 id="firebaseにプロジェクト作成">Firebaseにプロジェクト作成&lt;/h1>
+&lt;p>&lt;a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer">プロジェクト登録ページ&lt;/a>
+でプロジェクトを登録します。&lt;/p>
+&lt;p>プロジェクト名は特に指定はありません。ご自由にどうぞ。&lt;/p>
+&lt;h1 id="アプリ情報を登録する">アプリ情報を登録する&lt;/h1>
+&lt;p>プロジェクト選択後のホーム画面より 「Project Overview」 をクリック。&lt;/p>
+&lt;p>画面の指示に従って進めていてください。&lt;/p>
+&lt;h2 id="デバッグ用の署名証明書-sha-1-の取得方法">デバッグ用の署名証明書 SHA-1 の取得方法&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>以下コマンドを実行&lt;/p>
+&lt;p>Mac/Linux&lt;/p>
+&lt;pre>&lt;code>keytool -list -v \
+-alias androiddebugkey -keystore ~/.android/debug.keystore
+&lt;/code>&lt;/pre>
+&lt;p>Windows&lt;/p>
+&lt;pre>&lt;code>keytool -list -v \
+-alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>パスワード入力&lt;/p>
+&lt;p>パスワードは &lt;code>android&lt;/code> です。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>表示される SHA-1 をメモ&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;br>
+&lt;hr>
+&lt;p>ひととおり作業が進むと、↓このような画面が表示されます。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/05/android_push/app-registering-complete.png" width="750">
+&lt;p>自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。&lt;/p></description></item></channel></rss>

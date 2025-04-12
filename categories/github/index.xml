@@ -1,14 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitHub on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/github/</link><description>Recent content in GitHub on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 19 Feb 2021 18:53:19 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/github/index.xml" rel="self" type="application/rss+xml"/><item><title>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</title><link>https://tech.yyh-gl.dev/blog/profile-readme-updater/</link><pubDate>Fri, 19 Feb 2021 18:53:19 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/profile-readme-updater/</guid><description>おもしろいツイートを見つけた GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした pic.twitter.com/o47E7YHSsx
-&amp;mdash; mikkame (@mikkameee) February 14, 2021 とても便利そうだったので僕もやってみました。
-作った ↑こんな感じで Recent posts - Blog 📝 に直近5個のブログ記事を表示するようにして、
-なおかつ自動で更新されるようにしました。
-コードはこちら に置いてあります。
-やっていることはとてもシンプルで、
-Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。
-興味あったらコードを覗いてみてください。</description></item><item><title>【GitHub Actions】プライベートアクションを使ってみた</title><link>https://tech.yyh-gl.dev/blog/github-actions-private-action/</link><pubDate>Tue, 22 Oct 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/github-actions-private-action/</guid><description>プライベートアクションとは GitHub Actions では、開発者がアクション（Lint やテストといったジョブなど）を作って、公開することができます。 この公開されたアクションは、世界中の人が使えるため、もちろん自分のプロジェクトに持ってきて使用できます。 この公開されたアクションのことを パブリックアクション といいます。
-パブリックアクションが溢れた世界を想像するだけでワクワクしますね👍 （野良 Docker イメージと同様に、ほいそれとは使えないでしょうが…）
-今回、とりあげるのはパブリックアクションの正反対にあるものです。 つまり、公開しない（できない）アクション ＝ プライベートアクション です。 プライベートアクションを使うための準備 ディレクトリ構成は以下のとおりです。
-.github ├── actions │ └── golang-test │ ├── Dockerfile │ ├── action.yml │ └── entrypoint.sh └── workflows └── golang.yml /actions ディレクトリ配下に golang-test という、Lint とテストを実行するアクションを作ってみます。
-/workflow ディレクトリ配下には、golang 用のワークフロー定義ファイルを置いています。
-では、次から各ファイルの定義を見ていきます。
-プライベートアクションの定義 # /actions/golang-test/action.yml name: 'Golang Lint and Test Action' description: 'Lint and Test for Golang' author: 'yyh-gl' runs: # Docker を使って実行することを宣言 using: 'docker' # 使用する Docker イメージを指定 image: 'Dockerfile' アクションの定義は上記のとおりです。 公式ドキュメント を参考にしました。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitHub on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/github/</link><description>Recent content in GitHub on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 19 Feb 2021 18:53:19 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/github/index.xml" rel="self" type="application/rss+xml"/><item><title>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</title><link>https://tech.yyh-gl.dev/blog/profile-readme-updater/</link><pubDate>Fri, 19 Feb 2021 18:53:19 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/profile-readme-updater/</guid><description>&lt;h1 id="おもしろいツイートを見つけた">おもしろいツイートを見つけた&lt;/h1>
+&lt;blockquote class="twitter-tweet">&lt;p lang="ja" dir="ltr">GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした &lt;a href="https://t.co/o47E7YHSsx">pic.twitter.com/o47E7YHSsx&lt;/a>&lt;/p>&amp;mdash; mikkame (@mikkameee) &lt;a href="https://twitter.com/mikkameee/status/1360887240587571201?ref_src=twsrc%5Etfw">February 14, 2021&lt;/a>&lt;/blockquote> &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>とても便利そうだったので僕もやってみました。&lt;/p>
+&lt;h1 id="作った">作った&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2021/02/profile-readme-updater/profile.webp" width="600">
+&lt;p>↑こんな感じで &lt;code>Recent posts - Blog 📝&lt;/code> に直近5個のブログ記事を表示するようにして、&lt;br>
+なおかつ自動で更新されるようにしました。&lt;/p>
+&lt;p>コードは&lt;a href="https://github.com/yyh-gl/yyh-gl" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
+に置いてあります。&lt;/p>
+&lt;p>やっていることはとてもシンプルで、&lt;br>
+Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。&lt;/p>
+&lt;p>興味あったらコードを覗いてみてください。&lt;/p></description></item><item><title>【GitHub Actions】プライベートアクションを使ってみた</title><link>https://tech.yyh-gl.dev/blog/github-actions-private-action/</link><pubDate>Tue, 22 Oct 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/github-actions-private-action/</guid><description>&lt;h1 id="プライベートアクションとは">プライベートアクションとは&lt;/h1>
+&lt;p>GitHub Actions では、開発者がアクション（Lint やテストといったジョブなど）を作って、公開することができます。
+&lt;br>
+この公開されたアクションは、世界中の人が使えるため、もちろん自分のプロジェクトに持ってきて使用できます。
+&lt;br>
+この公開されたアクションのことを &lt;u>パブリックアクション&lt;/u> といいます。&lt;/p>
+&lt;p>パブリックアクションが溢れた世界を想像するだけでワクワクしますね👍
+&lt;br>
+（野良 Docker イメージと同様に、ほいそれとは使えないでしょうが…）&lt;/p>
+&lt;br>
+今回、とりあげるのはパブリックアクションの正反対にあるものです。
+&lt;br>
+つまり、公開しない（できない）アクション ＝ &lt;u>プライベートアクション&lt;/u> です。
+&lt;h1 id="プライベートアクションを使うための準備">プライベートアクションを使うための準備&lt;/h1>
+&lt;p>ディレクトリ構成は以下のとおりです。&lt;/p>
+&lt;pre>&lt;code>.github
+├── actions
+│   └── golang-test
+│   ├── Dockerfile
+│   ├── action.yml
+│   └── entrypoint.sh
+└── workflows
+└── golang.yml
+&lt;/code>&lt;/pre>
+&lt;p>&lt;code>/actions&lt;/code> ディレクトリ配下に golang-test という、Lint とテストを実行するアクションを作ってみます。&lt;/p>
+&lt;p>&lt;code>/workflow&lt;/code> ディレクトリ配下には、golang 用のワークフロー定義ファイルを置いています。&lt;/p>
+&lt;p>では、次から各ファイルの定義を見ていきます。&lt;/p>
+&lt;h1 id="プライベートアクションの定義">プライベートアクションの定義&lt;/h1>
+&lt;pre>&lt;code class="language-yml"># /actions/golang-test/action.yml
+name: 'Golang Lint and Test Action'
+description: 'Lint and Test for Golang'
+author: 'yyh-gl'
+runs:
+# Docker を使って実行することを宣言
+using: 'docker'
+# 使用する Docker イメージを指定
+image: 'Dockerfile'
+&lt;/code>&lt;/pre>
+&lt;p>アクションの定義は上記のとおりです。
+&lt;br>
+&lt;a href="https://help.github.com/ja/github/automating-your-workflow-with-github-actions/creating-a-docker-container-action#create-an-action-metadata-file" target="_blank" rel="noopener noreferrer">公式ドキュメント&lt;/a>
+を参考にしました。&lt;/p></description></item></channel></rss>

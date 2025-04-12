@@ -1,33 +1,88 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HTML/CSS on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/html/css/</link><description>Recent content in HTML/CSS on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://tech.yyh-gl.dev/categories/html/css/index.xml" rel="self" type="application/rss+xml"/><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>シンタックスハイライト導入 このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。
-正確には対応していない言語が（めちゃくちゃ）ありました。
-このとおり、 Goにも対応していませんでした…。
-もともと、このブログのテーマは Hugo Themes （Hugo 公式 テーマショップ的なの）に あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、
-シンタックスハイライト部分だけ個別に導入することにしました。
-Prism.js さっそく、「HTML シンタックスハイライト」で調べてみました。
-そしたら、だいたい以下の3つが出てきました。
-Prism.js highlight.js Google code-prettify どれにしようか迷ったのですが、見た目が一番好みだった Prism.js を使うことにしました。
-導入 導入方法については記事がたくさんあるので、そちらをご覧ください。
-公式ダウンロードページ 導入 参考記事 導入 参考記事 導入 参考記事 導入後 きれいですねー
-今回導入した Prism.js のプラグインは、
-Line Highlight：行指定した箇所をハイライトする機能（上記画像内では使用していません） Line Numbers：行番号を表示する機能 Show Language：右上に 言語名 を表示している機能 の3つです。
-困ったこと 行番号が表示されない 行番号を表示するには、
-&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt; コード &amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; 上記コードのように、表示するコードスニペットに対して、
-line-numbers というクラスを付与してあげるだけでOKです。
-…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。
-したがって、prism.css を修正して行番号が他の要素の上に来るようにしました。
-リスト表示の行間が異様に広い Prism.js 導入後…
-このようになぜか リスト表示（箇条書き）の行間が異様に広くなり、文字が折り返されずはみ出ています。
-まさかと思い、prism.css を無効にすると…
-直った！
-ということで、なにかしらのスタイルが悪さをしている模様。</description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://tech.yyh-gl.dev/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/good_api/</guid><description>いいねボタンがないブログ 本ブログ、いいねボタンが ありませんでした。
-だから、作っちゃいました。っていう記事です。
-構成 上図のように
-記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。
-記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。
-APIサーバは Rails で実装しました。
-（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）
-APIサーバ Rails で APIサーバを建てる方法に関しては、
-以前に Qiita で 入門記事 書いたのでそちらをご覧ください。
-（少し古い記事ですが、そんなに問題はないはずです）
-DB にテーブル作成 今回、ブログ記事を管理するために、下記のテーブルを作成しました。
-mysql&amp;gt; describe blog_posts; +------------+--------------+------+-----+---------+----------------+ | Field | Type | Null | Key | Default | Extra | +------------+--------------+------+-----+---------+----------------+ | id | bigint(20) | NO | PRI | NULL | auto_increment | | title | varchar(255) | NO | | NULL | | | count | varchar(255) | NO | | 0 | | | created_at | datetime | NO | | NULL | | | updated_at | datetime | NO | | NULL | | +------------+--------------+------+-----+---------+----------------+ 5 rows in set (0.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HTML/CSS on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/html/css/</link><description>Recent content in HTML/CSS on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 16 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/html/css/index.xml" rel="self" type="application/rss+xml"/><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>&lt;h1 id="シンタックスハイライト導入">シンタックスハイライト導入&lt;/h1>
+&lt;p>このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。&lt;/p>
+&lt;p>正確には対応していない言語が（めちゃくちゃ）ありました。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/syntax_highlight_before.png" width="600">
+&lt;p>このとおり、 Goにも対応していませんでした…。&lt;/p>
+&lt;br>
+&lt;p>もともと、このブログのテーマは &lt;a href="https://themes.gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo Themes&lt;/a>
+（Hugo 公式 テーマショップ的なの）に &lt;br>
+あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、&lt;br>
+シンタックスハイライト部分だけ個別に導入することにしました。&lt;/p>
+&lt;h1 id="prismjs">Prism.js&lt;/h1>
+&lt;p>さっそく、「HTML シンタックスハイライト」で調べてみました。&lt;/p>
+&lt;p>そしたら、だいたい以下の3つが出てきました。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://prismjs.com/" target="_blank" rel="noopener noreferrer">Prism.js&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://highlightjs.org/" target="_blank" rel="noopener noreferrer">highlight.js&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://github.com/google/code-prettify" target="_blank" rel="noopener noreferrer">Google code-prettify&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;p>どれにしようか迷ったのですが、見た目が一番好みだった Prism.js を使うことにしました。&lt;/p>
+&lt;h2 id="導入">導入&lt;/h2>
+&lt;p>導入方法については記事がたくさんあるので、そちらをご覧ください。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://prismjs.com/download.html#themes=prism&amp;amp;languages=markup&amp;#43;css&amp;#43;clike&amp;#43;javascript" target="_blank" rel="noopener noreferrer">公式ダウンロードページ&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://mndangler.net/2017/04/syntaxhighlighter_prism-js/" target="_blank" rel="noopener noreferrer">導入 参考記事&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://thk.kanzae.net/net/wordpress/t1171/" target="_blank" rel="noopener noreferrer">導入 参考記事&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://niwaka-web.com/prism_js/" target="_blank" rel="noopener noreferrer">導入 参考記事&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="導入後">導入後&lt;/h2>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/syntax_highlight_after.png" width="600">
+&lt;p>きれいですねー&lt;/p>
+&lt;p>今回導入した Prism.js のプラグインは、&lt;/p>
+&lt;ul>
+&lt;li>Line Highlight：行指定した箇所をハイライトする機能（上記画像内では使用していません）&lt;/li>
+&lt;li>Line Numbers：行番号を表示する機能&lt;/li>
+&lt;li>Show Language：右上に 言語名 を表示している機能&lt;/li>
+&lt;/ul>
+&lt;p>の3つです。&lt;/p>
+&lt;h1 id="困ったこと">困ったこと&lt;/h1>
+&lt;h2 id="行番号が表示されない">行番号が表示されない&lt;/h2>
+&lt;p>行番号を表示するには、&lt;/p>
+&lt;pre>&lt;code class="language-html">&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt;
+コード
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;p>上記コードのように、表示するコードスニペットに対して、&lt;br>
+line-numbers というクラスを付与してあげるだけでOKです。&lt;/p>
+&lt;p>…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。&lt;br>
+したがって、prism.css を修正して行番号が他の要素の上に来るようにしました。&lt;/p>
+&lt;h2 id="リスト表示の行間が異様に広い">リスト表示の行間が異様に広い&lt;/h2>
+&lt;p>Prism.js 導入後…&lt;/p></description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://tech.yyh-gl.dev/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/good_api/</guid><description>&lt;h1 id="いいねボタンがないブログ">いいねボタンがないブログ&lt;/h1>
+&lt;p>本ブログ、いいねボタンが &lt;u>ありませんでした&lt;/u>。&lt;/p>
+&lt;p>だから、作っちゃいました。っていう記事です。&lt;/p>
+&lt;h1 id="構成">構成&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/good_api/architecture.png" width="600">
+&lt;br>
+&lt;p>上図のように&lt;/p>
+&lt;p>記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。&lt;/p>
+&lt;p>記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。&lt;/p>
+&lt;p>APIサーバは Rails で実装しました。&lt;/p>
+&lt;p>（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）&lt;/p>
+&lt;h1 id="apiサーバ">APIサーバ&lt;/h1>
+&lt;p>Rails で APIサーバを建てる方法に関しては、&lt;/p>
+&lt;p>以前に Qiita で &lt;a href="https://qiita.com/yyh-gl/items/30bd91c2b33fdfbe49b5" target="_blank" rel="noopener noreferrer">入門記事&lt;/a>
+書いたのでそちらをご覧ください。&lt;/p>
+&lt;p>（少し古い記事ですが、そんなに問題はないはずです）&lt;/p>
+&lt;h2 id="db-にテーブル作成">DB にテーブル作成&lt;/h2>
+&lt;p>今回、ブログ記事を管理するために、下記のテーブルを作成しました。&lt;/p>
+&lt;pre>&lt;code>mysql&amp;gt; describe blog_posts;
++------------+--------------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+----------------+
+| id | bigint(20) | NO | PRI | NULL | auto_increment |
+| title | varchar(255) | NO | | NULL | |
+| count | varchar(255) | NO | | 0 | |
+| created_at | datetime | NO | | NULL | |
+| updated_at | datetime | NO | | NULL | |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+&lt;/code>&lt;/pre>
+&lt;p>&lt;code>title&lt;/code>には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
+記事ファイル（マークダウン）の名前（本記事だと『good_api』, 拡張子抜き）が入ります。&lt;/p></description></item></channel></rss>

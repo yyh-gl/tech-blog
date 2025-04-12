@@ -1,37 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Podcast on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/podcast/</link><description>Recent content in Podcast on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 01 Oct 2020 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/podcast/index.xml" rel="self" type="application/rss+xml"/><item><title>texta.fm #1 まとめ</title><link>https://tech.yyh-gl.dev/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/podcast-matome-texta-200827/</guid><description>texta.fm texta.fm #1（2020年8月27日放送分） を聞いて、特にDDDについて学びが多かったのでまとめました。
-エヴァンス本を読む前に知っておいた方がいい時代背景、そして、意識すべき点を知ることができるので、
-時間があればぜひ実際に聞きに行ってみてください。
-話者：
-@_yasaichi さん @t_wada さん 以降、勉強になった点を抜き出していきます。
-なお、&amp;lt;&amp;gt;内に記載している時間は、記述内容が実際に話されている時間を示しています。
-DDDが解決したかった問題 &amp;lt;6分30秒ぐらいから&amp;gt;
-エリック・エヴァンスがDDDで解決しようとしていた問題は以下の2点
-分析モデルとコード間の乖離：詳細は後述 ビジネス側と開発側の乖離：ビジネス側の言葉と開発側の言葉が異なることによる開発の複雑化 分析モデルとコード間の乖離ってなに？ &amp;lt;9分45秒ぐらいから&amp;gt;
-2000年代前半はフェーズで区切ったソフトウェア開発が主流だった。
-そして、その区切られたフェーズのひとつである「モデリングフェーズ」では、
-分析や設計を通してモデルを作り上げていくのであるが、
-開発の対象領域をきちんと写し取った抽象的なモデル（分析モデル）を作ることが最大の目的であった。
-しかし、開発フェーズに入った時、分析モデルでは不完全なことが多かった。
-よって、開発で使えるように修正が加えられ、最終的には分析モデルとは全く異なるモデルができあがる。
-コードを書かないと分からないこと、実際にシステムが使われ始めないと分からないことがたくさんあるので、当然の結果である。
-解決策：改善のループを回そう &amp;lt;17分20秒ぐらいから&amp;gt;
-分析モデルとコード間の乖離を解決するために、
-分析モデル→開発時のモデルの一方通行ではなく、
-開発時のモデル↔分析モデルのように両方向にフィードバックする。
-そして、フィードバックをもとに改善のループを回していくことが重要。
-（＝アジャイルソフトウェア開発時代の改善ループの回し方）
-今はあまり分析モデルとコード間の乖離が問題にならない &amp;lt;25分00秒ぐらいから&amp;gt;
-現在ではあまり分析モデルとコード間の乖離が問題にならない。
-理由としては、分析モデルの作成フェーズ（モデリングフェーズ）と開発フェーズを担当する人が同じになってきたから。
-昨今の開発ではこうした開発体制が普通になっているので、
-そもそも今いる大半のエンジニアにはイメージがつきにくい事象である。
-したがって、現在は、DDDと言われるとビジネス側と開発側の乖離に注目が行きがち。
-エヴァンス本から学ぶべき大事なこと &amp;lt;21分40秒ぐらいから&amp;gt;
-コードとドメイン知識間の乖離を無くし、
-一致させ続ける反復的作業こそが大事であると訴えたことがとても良かった。
-つまり、先述したとおり、
-フィードバックが 分析モデル→開発時のモデルの一方通行 だったものを 開発時のモデル↔分析モデルのような両方向 にしようと提唱したことこそが最重要。
-ここを意識して学ぼう！
-&amp;lt;33分00秒ぐらいから&amp;gt;
-デザインパターンの部分（2部、3部あたり）はもちろん大事であるが、
-エヴァンス本の本質的な部分ではない。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Podcast on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/podcast/</link><description>Recent content in Podcast on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 01 Oct 2020 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/podcast/index.xml" rel="self" type="application/rss+xml"/><item><title>texta.fm #1 まとめ</title><link>https://tech.yyh-gl.dev/blog/podcast-matome-texta-200827/</link><pubDate>Thu, 01 Oct 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/podcast-matome-texta-200827/</guid><description>&lt;h1 id="textafm">texta.fm&lt;/h1>
+&lt;p>&lt;a href="https://open.spotify.com/episode/1Ka5Fnoe89SyRLPea5twPA" target="_blank" rel="noopener noreferrer">texta.fm #1（2020年8月27日放送分）&lt;/a>
+を聞いて、特にDDDについて学びが多かったのでまとめました。&lt;/p>
+&lt;p>エヴァンス本を読む前に知っておいた方がいい時代背景、そして、意識すべき点を知ることができるので、&lt;br>
+時間があればぜひ実際に聞きに行ってみてください。&lt;/p>
+&lt;p>話者：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://twitter.com/_yasaichi" target="_blank" rel="noopener noreferrer">@_yasaichi&lt;/a>
+さん&lt;/li>
+&lt;li>&lt;a href="https://twitter.com/t_wada" target="_blank" rel="noopener noreferrer">@t_wada&lt;/a>
+さん&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;p>以降、勉強になった点を抜き出していきます。&lt;br>
+なお、&lt;code>&amp;lt;&amp;gt;&lt;/code>内に記載している時間は、記述内容が実際に話されている時間を示しています。&lt;/p>
+&lt;h1 id="dddが解決したかった問題">DDDが解決したかった問題&lt;/h1>
+&lt;p>&amp;lt;6分30秒ぐらいから&amp;gt;&lt;/p>
+&lt;p>エリック・エヴァンスがDDDで解決しようとしていた問題は以下の2点&lt;/p>
+&lt;ul>
+&lt;li>分析モデルとコード間の乖離：詳細は後述&lt;/li>
+&lt;li>ビジネス側と開発側の乖離：ビジネス側の言葉と開発側の言葉が異なることによる開発の複雑化&lt;/li>
+&lt;/ul>
+&lt;h1 id="分析モデルとコード間の乖離ってなに">分析モデルとコード間の乖離ってなに？&lt;/h1>
+&lt;p>&amp;lt;9分45秒ぐらいから&amp;gt;&lt;/p>
+&lt;p>2000年代前半はフェーズで区切ったソフトウェア開発が主流だった。&lt;br>
+そして、その区切られたフェーズのひとつである「モデリングフェーズ」では、&lt;br>
+分析や設計を通してモデルを作り上げていくのであるが、&lt;br>
+開発の対象領域をきちんと写し取った抽象的なモデル（分析モデル）を作ることが最大の目的であった。&lt;/p>
+&lt;p>しかし、開発フェーズに入った時、分析モデルでは不完全なことが多かった。&lt;br>
+よって、開発で使えるように修正が加えられ、最終的には分析モデルとは全く異なるモデルができあがる。&lt;/p>
+&lt;p>コードを書かないと分からないこと、実際にシステムが使われ始めないと分からないことがたくさんあるので、当然の結果である。&lt;br>&lt;/p>
+&lt;h1 id="解決策改善のループを回そう">解決策：改善のループを回そう&lt;/h1>
+&lt;p>&amp;lt;17分20秒ぐらいから&amp;gt;&lt;/p>
+&lt;p>分析モデルとコード間の乖離を解決するために、&lt;br>
+&lt;b>分析モデル→開発時のモデルの一方通行ではなく、&lt;br>
+開発時のモデル↔分析モデルのように両方向にフィードバックする。&lt;/b>&lt;br>
+そして、フィードバックをもとに改善のループを回していくことが重要。&lt;br>
+（＝アジャイルソフトウェア開発時代の改善ループの回し方）&lt;/p>
+&lt;h1 id="今はあまり分析モデルとコード間の乖離が問題にならない">今はあまり分析モデルとコード間の乖離が問題にならない&lt;/h1>
+&lt;p>&amp;lt;25分00秒ぐらいから&amp;gt;&lt;/p>
+&lt;p>現在ではあまり分析モデルとコード間の乖離が問題にならない。&lt;br>
+理由としては、分析モデルの作成フェーズ（モデリングフェーズ）と開発フェーズを担当する人が同じになってきたから。&lt;br>&lt;/p>
+&lt;p>昨今の開発ではこうした開発体制が普通になっているので、&lt;br>
+そもそも今いる大半のエンジニアにはイメージがつきにくい事象である。&lt;/p>
+&lt;p>したがって、現在は、DDDと言われるとビジネス側と開発側の乖離に注目が行きがち。&lt;/p>
+&lt;h1 id="エヴァンス本から学ぶべき大事なこと">エヴァンス本から学ぶべき大事なこと&lt;/h1>
+&lt;p>&amp;lt;21分40秒ぐらいから&amp;gt;&lt;/p>
+&lt;p>コードとドメイン知識間の乖離を無くし、&lt;br>
+一致させ続ける反復的作業こそが大事であると訴えたことがとても良かった。&lt;/p>
+&lt;p>つまり、先述したとおり、&lt;br>
+フィードバックが &lt;b>分析モデル→開発時のモデルの一方通行&lt;/b> だったものを &lt;br>
+&lt;b>開発時のモデル↔分析モデルのような両方向&lt;/b> にしようと提唱したことこそが最重要。&lt;/p>
+&lt;p>ここを意識して学ぼう！&lt;/p>
+&lt;br>
+&lt;p>&amp;lt;33分00秒ぐらいから&amp;gt;&lt;/p>
+&lt;p>デザインパターンの部分（2部、3部あたり）はもちろん大事であるが、&lt;br>
+エヴァンス本の本質的な部分ではない。&lt;/p>
+&lt;br></description></item></channel></rss>

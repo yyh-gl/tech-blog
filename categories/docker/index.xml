@@ -1,28 +1,49 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/docker/</link><description>Recent content in Docker on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 19 Mar 2022 00:55:40 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる</title><link>https://tech.yyh-gl.dev/blog/docker-compose-override/</link><pubDate>Sat, 19 Mar 2022 00:55:40 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/docker-compose-override/</guid><description>要約 Docker Composeの設定ファイルは複数指定できて、設定の追加や上書きができる。
-早速詳細に見ていきましょう↓
-docker-compose.ymlは複数指定可能 docker compose up実行時に-fオプションを使うことで、 参照するdocker-compose.ymlファイル（設定ファイル）を指定できることは、ご存知の方も多いと思います。
-しかし、複数の設定ファイルを指定できることはあまり知られていないと思います（勝手な決めつけ）。
-Docker-docs-ja では、以下のページで説明がされています。
-『ファイル間、プロジェクト間での Compose 設定の共有 』 実際の動きを見てみる 以下のようなdocker-compose.ymlを用意します。
-docker-compose.yml
-version: '3' services: web: image: &amp;quot;nginx:latest&amp;quot; docker compose -f docker-compose.yml upでコンテナを起動した後に、 ブラウザを開いてhttp://localhost/にアクセスしてみます。
-Webサイトにアクセスできませんでした。
-ポートを公開していないので当然の結果ですね。
-次に、以下のようなdocker-compose.override.ymlを用意します。
-docker-compose.override.yml
-version: '3' services: web: ports: - &amp;quot;80:80&amp;quot; そして、今度は以下のようにして、複数の設定ファイルを指定します。
-docker compose -f docker-compose.yml -f docker-compose.override.yml up
-では、http://localhost/にアクセスしてみます。
-今度は無事にアクセスできました。
-ポート公開がうまくできているようです。
-上記の挙動を見ることで、docker-compose.ymlで使用イメージの指定ができており、なおかつ、 docker-compose.override.ymlでポート公開の設定ができていることが分かります。
-すなわち、Docker Composeは追加で設定ファイルを指定することで、設定を追加できます。
-なお、今回はサンプルを省きましたが、追加だけではなく、上書きも可能です。
-（後ほど出てくるサンプルを見れば、上書きの挙動も分かると思います）
-重複した設定項目がある場合はどちらが優先される？ 前章の最後に、「追加だけではなく、上書きも可能です」と書きました。
-本章では、複数の設定ファイルを指定したさいに、 例えば、同じ環境変数名に対して異なる値を設定していた場合どちらの設定が優先されるのかを解説します。
-はじめに、ドキュメントを読んでみます。
-『設定の追加と上書き』 の章に、
-設定オプションが元々のサービスとローカルのサービスの両方にて定義されていた場合は、 元のサービスの値はローカルの値によって置き換えられるか、あるいは拡張されます。
-とありますが、元のサービスってどっち？となります。
-なので、実際に動作を見てみます。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/docker/</link><description>Recent content in Docker on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 19 Mar 2022 00:55:40 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>複数のdocker-compose.ymlを使って、設定の追加や上書きをやってみる</title><link>https://tech.yyh-gl.dev/blog/docker-compose-override/</link><pubDate>Sat, 19 Mar 2022 00:55:40 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/docker-compose-override/</guid><description>&lt;h1 id="要約">要約&lt;/h1>
+&lt;p>Docker Composeの設定ファイルは複数指定できて、設定の追加や上書きができる。&lt;/p>
+&lt;br>
+&lt;br>
+&lt;p>早速詳細に見ていきましょう↓&lt;/p>
+&lt;h1 id="docker-composeymlは複数指定可能">&lt;code>docker-compose.yml&lt;/code>は複数指定可能&lt;/h1>
+&lt;p>&lt;code>docker compose up&lt;/code>実行時に&lt;code>-f&lt;/code>オプションを使うことで、
+参照する&lt;code>docker-compose.yml&lt;/code>ファイル（設定ファイル）を指定できることは、ご存知の方も多いと思います。&lt;br>
+しかし、複数の設定ファイルを指定できることはあまり知られていないと思います（勝手な決めつけ）。&lt;/p>
+&lt;p>&lt;a href="https://docs.docker.jp/index.html" target="_blank" rel="noopener noreferrer">Docker-docs-ja&lt;/a>
+では、以下のページで説明がされています。&lt;/p>
+&lt;p>&lt;a href="https://docs.docker.jp/compose/extends.html" target="_blank" rel="noopener noreferrer">『ファイル間、プロジェクト間での Compose 設定の共有 』&lt;/a>
+&lt;/p>
+&lt;h1 id="実際の動きを見てみる">実際の動きを見てみる&lt;/h1>
+&lt;p>以下のような&lt;code>docker-compose.yml&lt;/code>を用意します。&lt;/p>
+&lt;p>&lt;code>docker-compose.yml&lt;/code>&lt;/p>
+&lt;pre>&lt;code class="language-docker-compose">version: '3'
+services:
+web:
+image: &amp;quot;nginx:latest&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>&lt;code>docker compose -f docker-compose.yml up&lt;/code>でコンテナを起動した後に、
+ブラウザを開いて&lt;code>http://localhost/&lt;/code>にアクセスしてみます。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2022/03/docker-compose-override/result1.webp" width="600">
+&lt;p>Webサイトにアクセスできませんでした。&lt;/p>
+&lt;p>ポートを公開していないので当然の結果ですね。&lt;/p>
+&lt;br>
+&lt;p>次に、以下のような&lt;code>docker-compose.override.yml&lt;/code>を用意します。&lt;/p>
+&lt;p>&lt;code>docker-compose.override.yml&lt;/code>&lt;/p>
+&lt;pre>&lt;code class="language-docker-compose">version: '3'
+services:
+web:
+ports:
+- &amp;quot;80:80&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>そして、今度は以下のようにして、複数の設定ファイルを指定します。&lt;/p>
+&lt;p>&lt;code>docker compose -f docker-compose.yml -f docker-compose.override.yml up&lt;/code>&lt;/p>
+&lt;p>では、&lt;code>http://localhost/&lt;/code>にアクセスしてみます。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2022/03/docker-compose-override/result2.webp" width="600">
+&lt;p>今度は無事にアクセスできました。&lt;/p>
+&lt;p>ポート公開がうまくできているようです。&lt;br>&lt;/p>
+&lt;!-- textlint-disable ja-technical-writing/sentence-length -->
+&lt;p>上記の挙動を見ることで、&lt;code>docker-compose.yml&lt;/code>で使用イメージの指定ができており、なおかつ、
+&lt;code>docker-compose.override.yml&lt;/code>でポート公開の設定ができていることが分かります。&lt;/p>
+&lt;!-- textlint-enable ja-technical-writing/sentence-length -->
+&lt;br>
+&lt;p>すなわち、Docker Composeは追加で設定ファイルを指定することで、設定を追加できます。&lt;/p>
+&lt;p>なお、今回はサンプルを省きましたが、追加だけではなく、上書きも可能です。&lt;br>
+（後ほど出てくるサンプルを見れば、上書きの挙動も分かると思います）&lt;/p></description></item></channel></rss>

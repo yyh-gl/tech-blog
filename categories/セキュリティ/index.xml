@@ -1,44 +1,120 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>セキュリティ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/</link><description>Recent content in セキュリティ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 21 Aug 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/index.xml" rel="self" type="application/rss+xml"/><item><title>【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた</title><link>https://tech.yyh-gl.dev/blog/mercari_meetup_for_backend_engineers_1/</link><pubDate>Wed, 21 Aug 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/mercari_meetup_for_backend_engineers_1/</guid><description>Backend Engineer’s meetup ~マイクロサービスにおける認証認可基盤~ connpass ハッシュタグ：#merpay_meetup メルカリさん恒例のオリジナルドリンクもらいました
-1. マイクロサービスの内部通信における認証について 登壇者：@pospome さん
-スライド （日本語が消えてしまっていますが、ダウンロードしたら見れました）
-上記スライドの簡易メモ アカウント管理とログイン処理はそれぞれのチームに任せている
-SubjectID という 全サービス共通のID に変換して扱う メルカリでは、OIDCベースの認可の仕組みを採用
-RFCに書いてあるものと大差ないので、今回は マイクロサービスの内部通信における認証 について話す 全サービスは Gatwway を経由
-Gateway から Authority Service にくる Authority Service を認証基盤チームが管理
-外部からのリクエスト検証と内部通信用のトークンを生成している 内部トークンは毎リクエストごとに生成
-マイクロサービス間で使用されるトークンはリクエスト単位で同一 内部トークン用のSDKを提供
-Goのみ対応 SDKを使うといろいろとよしなにしてくれる クレームをいい感じに取得 SubjectID のパースとかをいい感じにしてくれる マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる
-2. パネルディスカッション 登壇者：
-Keigo Watanabe さん @kazegusuri @nerocrux @pospome パネルディスカッションのはずがほとんど質疑で終わりましたｗ
-質疑は さきほどの 発表 に対するものが主でした。
-したがって、以下、上記発表に関する質問と回答になります。
-Q. 第三パーティーにスコープを指定させるのではなく、外部スコープと内部スコープのマッピングを行ったのはなぜか A.
-ユースケースベースでスコープを提供した方が第三パーティーの開発者がわかりやすい。
-リソースベースだとどれが必要なスコープなのかが分かりづらい。
-（yyh-gl 感想） AWSのポリシーがリソースベースだと思うんだけど、どのポリシーが必要か分かりづらいもんねー
-Q. JWT（内部トークン）の保持期間（消すタイミング、有効期限） A. 保存していない</description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</guid><description>はじめに Web API のセキュリティ周りについて調べていると、
-「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。
-さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。
-しかし、この2つのトークンの違いについて、
-いまいち理解ができていなかったので、今回は両者の違いを調べてみました。
-加えて、トークンについて調べる中で、
-OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。
-2つのトークンの違い アクセストークン と IDトークン、両者は役割が大きく異なります。
-アクセストークン：認可（リソースへのアクセスコントロール＝あるリソースへの権限（readやwriteなど）を持っているかどうか確認すること） IDトークン：認証（その人が誰かを確認すること） 名前のままでした。
-認可に使うためのいろいろな情報が詰まっているのがアクセストークンで、 認証に使うためのいろいろな情報が詰まっているのがIDトークンです。
-OpenID Connectが生まれた経緯 OAuth 2.0およびOpenID Connectについて調べていると、
-「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。
-どうしてOpenID Connectが必要になったのか、
-この辺の経緯について述べていきます。
-OAuth 2.0 は 認可 の仕組み まずは、OAuth 2.0について見ていきます。
-OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない
-のですが、実際にはOAuth 2.0を認証用途で使っているシステムは多く存在します。
-OAuth 2.0 で認証を行うことの問題点については、
-こちら の記事に詳しく書いてあります。
-上記記事より、OAuth 2.0 による認証の問題点は、
-クライアント（アプリケーション）側でトークンの正当性を確かめる術がない ことであるとわかります。
-なお、ここでいう「正当性」に関して補足しておくと、
-「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。
-つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。
-（トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）
-「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。 説明しやすくするためにこういった言葉を使っています。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>セキュリティ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/</link><description>Recent content in セキュリティ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 21 Aug 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/index.xml" rel="self" type="application/rss+xml"/><item><title>【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた</title><link>https://tech.yyh-gl.dev/blog/mercari_meetup_for_backend_engineers_1/</link><pubDate>Wed, 21 Aug 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/mercari_meetup_for_backend_engineers_1/</guid><description>&lt;h1 id="backend-engineers-meetup-マイクロサービスにおける認証認可基盤">Backend Engineer’s meetup &lt;del>マイクロサービスにおける認証認可基盤&lt;/del>&lt;/h1>
+&lt;ul>
+&lt;li>&lt;a href="https://mercari.connpass.com/event/142624/" target="_blank" rel="noopener noreferrer">connpass&lt;/a>
+&lt;/li>
+&lt;li>ハッシュタグ：&lt;a href="https://twitter.com/hashtag/merpay_meetup" target="_blank" rel="noopener noreferrer">#merpay_meetup&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;p>メルカリさん恒例のオリジナルドリンクもらいました&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2019/08/mercari_meetup_for_backend_engineers_1/original_drink.jpeg" height="400">
+&lt;h1 id="1-マイクロサービスの内部通信における認証について">1. マイクロサービスの内部通信における認証について&lt;/h1>
+&lt;p>登壇者：@pospome さん&lt;/p>
+&lt;p>&lt;a href="https://www.slideshare.net/pospome/ss-165369557/pospome/ss-165369557" target="_blank" rel="noopener noreferrer">スライド&lt;/a>
+（日本語が消えてしまっていますが、ダウンロードしたら見れました）&lt;/p>
+&lt;h2 id="上記スライドの簡易メモ">上記スライドの簡易メモ&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>アカウント管理とログイン処理はそれぞれのチームに任せている&lt;/p>
+&lt;ul>
+&lt;li>SubjectID という 全サービス共通のID に変換して扱う&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>メルカリでは、OIDCベースの認可の仕組みを採用&lt;/p>
+&lt;ul>
+&lt;li>RFCに書いてあるものと大差ないので、今回は &lt;code>マイクロサービスの内部通信における認証&lt;/code> について話す&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>全サービスは Gatwway を経由&lt;/p>
+&lt;ul>
+&lt;li>Gateway から Authority Service にくる&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Authority Service を認証基盤チームが管理&lt;/p>
+&lt;ul>
+&lt;li>外部からのリクエスト検証と内部通信用のトークンを生成している&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>内部トークンは毎リクエストごとに生成&lt;/p>
+&lt;ul>
+&lt;li>マイクロサービス間で使用されるトークンはリクエスト単位で同一&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>内部トークン用のSDKを提供&lt;/p>
+&lt;ul>
+&lt;li>Goのみ対応&lt;/li>
+&lt;li>SDKを使うといろいろとよしなにしてくれる
+&lt;ul>
+&lt;li>クレームをいい感じに取得&lt;/li>
+&lt;li>SubjectID のパースとかをいい感じにしてくれる&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="2-パネルディスカッション">2. パネルディスカッション&lt;/h1>
+&lt;p>登壇者：&lt;/p>
+&lt;ul>
+&lt;li>Keigo Watanabe さん&lt;/li>
+&lt;li>@kazegusuri&lt;/li>
+&lt;li>@nerocrux&lt;/li>
+&lt;li>@pospome&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;p>パネルディスカッションのはずがほとんど質疑で終わりましたｗ&lt;/p>
+&lt;p>質疑は さきほどの &lt;a href="https://www.slideshare.net/pospome/ss-165369557/pospome/ss-165369557" target="_blank" rel="noopener noreferrer">発表&lt;/a>
+に対するものが主でした。&lt;/p>
+&lt;p>したがって、以下、上記発表に関する質問と回答になります。&lt;/p>
+&lt;h3 id="q-第三パーティーにスコープを指定させるのではなく外部スコープと内部スコープのマッピングを行ったのはなぜか">Q. 第三パーティーにスコープを指定させるのではなく、外部スコープと内部スコープのマッピングを行ったのはなぜか&lt;/h3>
+&lt;p>A.&lt;/p>
+&lt;p>ユースケースベースでスコープを提供した方が第三パーティーの開発者がわかりやすい。&lt;/p>
+&lt;p>リソースベースだとどれが必要なスコープなのかが分かりづらい。&lt;/p>
+&lt;br>
+（yyh-gl 感想）
+&lt;p>AWSのポリシーがリソースベースだと思うんだけど、どのポリシーが必要か分かりづらいもんねー&lt;/p></description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</guid><description>&lt;h1 id="はじめに">はじめに&lt;/h1>
+&lt;p>Web API のセキュリティ周りについて調べていると、&lt;br>
+「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。&lt;/p>
+&lt;p>さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。&lt;/p>
+&lt;br>
+&lt;p>しかし、この2つのトークンの違いについて、&lt;br>
+いまいち理解ができていなかったので、今回は両者の違いを調べてみました。&lt;/p>
+&lt;p>加えて、トークンについて調べる中で、&lt;br>
+OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。&lt;/p>
+&lt;h1 id="2つのトークンの違い">2つのトークンの違い&lt;/h1>
+&lt;p>アクセストークン と IDトークン、両者は役割が大きく異なります。&lt;/p>
+&lt;ul>
+&lt;li>アクセストークン：認可（リソースへのアクセスコントロール＝あるリソースへの権限（readやwriteなど）を持っているかどうか確認すること）&lt;/li>
+&lt;li>IDトークン：認証（その人が誰かを確認すること）&lt;/li>
+&lt;/ul>
+&lt;p>名前のままでした。&lt;/p>
+&lt;p>認可に使うためのいろいろな情報が詰まっているのがアクセストークンで、
+認証に使うためのいろいろな情報が詰まっているのがIDトークンです。&lt;/p>
+&lt;h1 id="openid-connectが生まれた経緯">OpenID Connectが生まれた経緯&lt;/h1>
+&lt;p>OAuth 2.0およびOpenID Connectについて調べていると、&lt;br>
+「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。&lt;/p>
+&lt;p>どうしてOpenID Connectが必要になったのか、&lt;br>
+この辺の経緯について述べていきます。&lt;/p>
+&lt;h1 id="oauth-20-は-認可-の仕組み">OAuth 2.0 は 認可 の仕組み&lt;/h1>
+&lt;p>まずは、OAuth 2.0について見ていきます。&lt;/p>
+&lt;br>
+&lt;p>&lt;u>OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない&lt;/u>&lt;br>
+のですが、実際にはOAuth 2.0を認証用途で使っているシステムは多く存在します。&lt;/p>
+&lt;p>OAuth 2.0 で認証を行うことの問題点については、&lt;br>
+&lt;a href="https://www.sakimura.org/2012/02/1487/" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
+の記事に詳しく書いてあります。&lt;/p>
+&lt;p>上記記事より、OAuth 2.0 による認証の問題点は、&lt;br>
+&lt;u>クライアント（アプリケーション）側でトークンの正当性を確かめる術がない&lt;/u> ことであるとわかります。&lt;/p>
+&lt;p>なお、ここでいう「正当性」に関して補足しておくと、&lt;br>
+「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。&lt;/p>
+&lt;p>つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。&lt;br>
+（トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）&lt;/p>
+&lt;blockquote>
+&lt;p>「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。
+説明しやすくするためにこういった言葉を使っています。&lt;/p></description></item></channel></rss>

@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitHub Actions on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/github-actions/</link><description>Recent content in GitHub Actions on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 19 Feb 2021 18:53:19 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/github-actions/index.xml" rel="self" type="application/rss+xml"/><item><title>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</title><link>https://tech.yyh-gl.dev/blog/profile-readme-updater/</link><pubDate>Fri, 19 Feb 2021 18:53:19 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/profile-readme-updater/</guid><description>おもしろいツイートを見つけた GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした pic.twitter.com/o47E7YHSsx
-&amp;mdash; mikkame (@mikkameee) February 14, 2021 とても便利そうだったので僕もやってみました。
-作った ↑こんな感じで Recent posts - Blog 📝 に直近5個のブログ記事を表示するようにして、
-なおかつ自動で更新されるようにしました。
-コードはこちら に置いてあります。
-やっていることはとてもシンプルで、
-Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。
-興味あったらコードを覗いてみてください。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitHub Actions on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/github-actions/</link><description>Recent content in GitHub Actions on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 19 Feb 2021 18:53:19 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/github-actions/index.xml" rel="self" type="application/rss+xml"/><item><title>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</title><link>https://tech.yyh-gl.dev/blog/profile-readme-updater/</link><pubDate>Fri, 19 Feb 2021 18:53:19 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/profile-readme-updater/</guid><description>&lt;h1 id="おもしろいツイートを見つけた">おもしろいツイートを見つけた&lt;/h1>
+&lt;blockquote class="twitter-tweet">&lt;p lang="ja" dir="ltr">GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした &lt;a href="https://t.co/o47E7YHSsx">pic.twitter.com/o47E7YHSsx&lt;/a>&lt;/p>&amp;mdash; mikkame (@mikkameee) &lt;a href="https://twitter.com/mikkameee/status/1360887240587571201?ref_src=twsrc%5Etfw">February 14, 2021&lt;/a>&lt;/blockquote> &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>とても便利そうだったので僕もやってみました。&lt;/p>
+&lt;h1 id="作った">作った&lt;/h1>
+&lt;img src="https://tech.yyh-gl.dev/img/2021/02/profile-readme-updater/profile.webp" width="600">
+&lt;p>↑こんな感じで &lt;code>Recent posts - Blog 📝&lt;/code> に直近5個のブログ記事を表示するようにして、&lt;br>
+なおかつ自動で更新されるようにしました。&lt;/p>
+&lt;p>コードは&lt;a href="https://github.com/yyh-gl/yyh-gl" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
+に置いてあります。&lt;/p>
+&lt;p>やっていることはとてもシンプルで、&lt;br>
+Goで書いたプロフィール（README）更新スクリプトをGitHub Actionsで実行しているだけです。&lt;/p>
+&lt;p>興味あったらコードを覗いてみてください。&lt;/p></description></item></channel></rss>
