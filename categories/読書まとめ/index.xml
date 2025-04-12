@@ -1,4 +1,112 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>読書まとめ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/</link><description>Recent content in 読書まとめ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 11 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/index.xml" rel="self" type="application/rss+xml"/><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://tech.yyh-gl.dev/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/evans_ddd_1/</guid><description>&lt;h1 id="ddd-の勉強始めます">DDD の勉強始めます&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>読書まとめ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/</link><description>Recent content in 読書まとめ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 24 Jan 2025 00:30:40 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E8%AA%AD%E6%9B%B8%E3%81%BE%E3%81%A8%E3%82%81/index.xml" rel="self" type="application/rss+xml"/><item><title>『暗号解読（上）』を読んで</title><link>https://tech.yyh-gl.dev/blog/the-code-book/</link><pubDate>Fri, 24 Jan 2025 00:30:40 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/the-code-book/</guid><description>&lt;h1 id="はじめに">はじめに&lt;/h1>
+&lt;p>『暗号解読（上）』を読んだ感想を簡単にメモしておく。&lt;br>
+なお、本記事は自分で書いた読書メモをChatGPTに整形してもらったもの。&lt;br>
+（文章としておかしい部分だけ自分で修正）&lt;/p>
+&lt;h1 id="読書メモ">読書メモ&lt;/h1>
+&lt;p>ソフトウェアエンジニアとして情報セキュリティの知識を深める目的で、サイモン・シン氏の著書『暗号解読（上）』を拝読いたしました。&lt;br>
+本書は暗号の歴史から具体的な解読手法、さらには現代の暗号理論に至るまで幅広く取り上げており、
+暗号に関わる者として学ぶところが多くありました。&lt;br>
+以下に、本書を通じて特に印象に残った点を整理します。&lt;/p>
+&lt;hr>
+&lt;h2 id="1-暗号システムの本質">1. 暗号システムの本質&lt;/h2>
+&lt;p>どれほど強固な暗号方式を用いていても、鍵が漏洩すればすべてが水泡に帰すという原則は改めて肝に銘じるべき事項です。&lt;/p>
+&lt;h2 id="2-ヌル文字の歴史的背景">2. ヌル文字の歴史的背景&lt;/h2>
+&lt;p>「ヌル文字」といえばプログラマにはおなじみですが、実は16世紀にすでに「何の意味も持たないダミー文字」として暗号の世界で使われていたそうです。歴史の長さに驚き。&lt;/p>
+&lt;h2 id="3-弱い暗号の危険性">3. 弱い暗号の危険性&lt;/h2>
+&lt;p>「弱い暗号を使うぐらいなら、最初から暗号など使わない方がましだ」という指摘は極めて重要です。
+暗号への過信は、平文なら絶対書かない内容までつい書いてしまうリスクを孕みます。セキュリティ意識の啓発においては、強固な暗号方式の採用だけでなく、その危うさを十分に理解してもらう必要があります。&lt;/p>
+&lt;h2 id="4-古典的な解読テクニック">4. 古典的な解読テクニック&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>頻度分析&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>連接特徴&lt;/strong>
+&lt;ul>
+&lt;li>例として、英語では「q」の後に必ず「u」が続く等、文字の連鎖関係を用いた分析があります。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>こうしたテクニックは一見地道ですが、歴史上多くの暗号がこれらの手法によって解読されてきました。情報理論や機械学習が普及する現代でも、基本となる考え方を学ぶ意義は大きいと感じます。&lt;/p>
+&lt;h2 id="5-ワンタイムパッドの特異性">5. ワンタイム・パッドの特異性&lt;/h2>
+&lt;p>一度きりの使い捨て鍵を用いるワンタイム・パッドは理論上解読不可能とされています。しかし、膨大な鍵の管理が必要になるため実用的ではなく、あまり使われてこなかった。ただし、ロシア大統領とアメリカ大統領のホットラインのような特殊な用途では今なお採用されている点が非常に興味深いです。&lt;/p>
+&lt;h2 id="6-エニグマと鍵交換の重要性">6. エニグマと鍵交換の重要性&lt;/h2>
+&lt;p>20世紀に登場したエニグマは極めて複雑な印象を与えますが、実際の仕組みは比較的シンプルであり、物理的にもコンパクト（34×28×15cm・12kg）であったことが紹介されています。
+打倒エニグマの歴史から、安全な鍵交換の重要性も学べます。&lt;/p>
+&lt;h2 id="7-反復は秘匿の大敵">7. 反復は秘匿の大敵&lt;/h2>
+&lt;p>暗号においてパターンや繰り返しは危険を伴います。同一のIV（初期化ベクトル）を使い回すといった行為が脆弱性を生むのは、まさにこの法則に通じるものがあります。暗号の設定や運用の細部にわたるまで注意が必要だと痛感させられます。&lt;/p>
+&lt;p>毎日決まった時間に放送される天気予報のような“当たり前”の情報でも、暗号解読のヒント（クリブ）となり得ることが紹介されています。日常に潜む定常的データが、思わぬ形で暗号解読に利用される様は、現代の情報漏洩リスクにも通じる示唆を与えてくれます。&lt;/p>
+&lt;h2 id="8-数学には論理と直感の両方が求められる">8. 数学には論理と直感の両方が求められる&lt;/h2>
+&lt;p>本書を通じて改めて印象に残ったのは、数学の問題を解くにあたっては「論理的思考」に加えて「直感」も欠かせない、という視点です。暗号の解読過程は、単なる数式の機械的処理だけではなく、数多くの仮説検証や柔軟な発想を必要とすることを本書は示唆しています。&lt;/p>
+&lt;h2 id="9-アランチューリングという天才">9. アラン・チューリングという天才&lt;/h2>
+&lt;p>エニグマの解読で中心的役割を果たしたアラン・チューリングに関する記述からは、彼の卓越した才能がいかに戦争の行方を左右したかが窺えます。計算機科学の父とも称されるチューリングの偉大さを再認識し、その業績を学ぶことは、現代のソフトウェアエンジニアにとっても大きな意義があると感じます。&lt;/p>
+&lt;h2 id="10-解読しても公表しない情報戦">10. 解読しても公表しない情報戦&lt;/h2>
+&lt;p>暗号を解読しても、あえて公表せず、相手に使い続けさせるという情報戦略があることも興味深い点です。セキュリティ技術は単なる防御策ではなく、攻撃・解析そして情報操作といった多面的な視点が求められます。&lt;/p>
+&lt;hr>
+&lt;h2 id="総括">総括&lt;/h2>
+&lt;p>『暗号解読（上）』は暗号の歴史的背景、具体的な解読技術、そして現代のセキュリティに通じる核心的な部分まで網羅的に扱っており、暗号に携わるエンジニアにとって大いに参考になる一冊です。数学が中心的な役割を果たす分野であるにもかかわらず、通史としても非常に読み応えがあるため、セキュリティ技術への関心だけでなく、歴史や論理パズルに興味がある方にも大変おすすめできます。&lt;/p>
+&lt;p>私自身、改めて鍵管理の重要性や暗号方式の運用上の落とし穴を再認識しました。本書を通じて、暗号技術はあくまで“手段”であり、それをいかに適切に設計・運用するかが要であると痛感します。今後もセキュリティへの関心を高めつつ、情報保護に対する責任と慎重さを持って業務にあたっていきたいと思います。&lt;/p></description></item><item><title>『データ指向アプリケーションデザイン』を読んで</title><link>https://tech.yyh-gl.dev/blog/designing-data-intensive-applications/</link><pubDate>Thu, 09 Jan 2025 21:40:02 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/designing-data-intensive-applications/</guid><description>&lt;h1 id="はじめに">はじめに&lt;/h1>
+&lt;p>『&lt;a href="https://www.oreilly.co.jp/books/9784873118703/" target="_blank" rel="noopener noreferrer">データ指向アプリケーションデザイン ―信頼性、拡張性、保守性の高い分散システム設計の原理&lt;/a>
+』を読んだ。&lt;/p>
+&lt;p>会社で輪読会をして、全部読みきった。&lt;/p>
+&lt;p>期待以上の良書に出会った感動をそのまま殴り書いているだけ。&lt;br>
+とりとめもない文章なので、得られる知見はないと思うけど、感動を共有したいので書いた。&lt;/p>
+&lt;h1 id="感想">感想&lt;/h1>
+&lt;p>心の底から読んでよかったと思える一冊だった。&lt;/p>
+&lt;p>シンプルなリレーショナルデータベースの話だけでなく、NoSQLや分散ストレージ、ストリーム処理（Kafkaとか）など、データベースに関する話が幅広く書かれている。&lt;br>
+データ構造の話（log-structuredやBツリー）やトランザクションの話もすごいおもしろかった。&lt;/p>
+&lt;br>
+&lt;p>難しい話も多いけど、ふわっとしていた理解がだいぶ具体化された。&lt;br>
+これまで何気なく使っていたデータベース。裏側のロジックを知ることで実際の開発でもいろいろ考慮できるようになった。&lt;/p>
+&lt;br>
+&lt;p>データベースに関するおすすめの本を聞かれたら、絶対にこの本を薦める。&lt;br>
+（初心者におすすめする本ではないと思う）&lt;/p>
+&lt;p>具体的にどういったことが書かれているかは、他の人が書いている記事がたくさんあるので、そちらを参照のこと。&lt;br>
+というかぜひ本書を手にとっていただきたい。&lt;/p>
+&lt;p>評価の高い本だったので、読む前から期待はしていたものの良い意味で裏切られた。&lt;br>
+学びが多く、本当に感動したので、この記事をなぐり書きしておく。&lt;/p></description></item><item><title>k8s関連書籍をいろいろ読んだ</title><link>https://tech.yyh-gl.dev/blog/k8s-books/</link><pubDate>Tue, 21 May 2024 09:39:53 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/k8s-books/</guid><description>&lt;h1 id="今回読んだ本">今回読んだ本&lt;/h1>
+&lt;p>業務でk8sを触る機会があり、事前に知識をつけるためにいくつかの本を読んだ。&lt;br>
+以下が今回読んだ本。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.oreilly.co.jp/books/9784873118406/" target="_blank" rel="noopener noreferrer">入門 Kubernetes&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://www.oreilly.co.jp/books/9784873119656/" target="_blank" rel="noopener noreferrer">Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス&lt;/a>
+&lt;ul>
+&lt;li>25章のみ&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="https://book.impress.co.jp/books/1122101051" target="_blank" rel="noopener noreferrer">コンテナセキュリティ コンテナ化されたアプリケーションを保護する要素技術&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="入門-kubernetes">&lt;a href="https://www.oreilly.co.jp/books/9784873118406/" target="_blank" rel="noopener noreferrer">入門 Kubernetes&lt;/a>
+&lt;/h1>
+&lt;p>本書はk8sを触るうえで知っておくべき基本的な内容が書かれている。&lt;br>
+コマンド例も書いてあるので、実際に手を動かしながら、k8sの基本について学ぶことができる。&lt;/p>
+&lt;p>私は趣味の開発でk8sクラスターを運用しているので、基本的には復習的な意味合いで読んだ。&lt;br>
+とはいえ、永続化周りの知識はなんとなくでやっていたので知見が深まった。&lt;/p>
+&lt;p>特にk8sを初めて触る人におすすめの一冊だと思った。&lt;/p>
+&lt;p>注意点としては、原書は第3版まで出ており、いくつか加筆がある。&lt;br>
+日本語版は加筆部分がないので、最新の情報を知りたい場合は原書を読むことをおすすめする。&lt;/p>
+&lt;h1 id="googleのソフトウェアエンジニアリング-持続可能なプログラミングを支える技術文化プロセス">&lt;a href="https://www.oreilly.co.jp/books/9784873119656/" target="_blank" rel="noopener noreferrer">Googleのソフトウェアエンジニアリング ―持続可能なプログラミングを支える技術、文化、プロセス&lt;/a>
+&lt;/h1>
+&lt;p>25章『サービスとしてのコンピュート』を読んだ。&lt;/p>
+&lt;p>k8sそのものの話はあまりない。&lt;br>
+「コンピュート（プログラムを実際に実行するのに必要な計算能力）」というワードを中心に、
+スケールする環境でプログラムを動かすことの大変さと、その大変さを解消するために考えるべきことを深ぼっていく。&lt;/p>
+&lt;p>この話の中で、 k8sの前身であるBorgの話が出てくる。&lt;br>
+こういった考えのもとBorgが生まれたんだなというのがよくわかった。&lt;/p>
+&lt;p>特に以下2点が私にとっては有益な情報だった。&lt;/p>
+&lt;ul>
+&lt;li>スケールする環境における「コンピュート」関連の課題&lt;/li>
+&lt;li>『ペット対家畜』の話&lt;/li>
+&lt;/ul>
+&lt;h1 id="コンテナセキュリティ-コンテナ化されたアプリケーションを保護する要素技術">&lt;a href="https://book.impress.co.jp/books/1122101051" target="_blank" rel="noopener noreferrer">コンテナセキュリティ コンテナ化されたアプリケーションを保護する要素技術&lt;/a>
+&lt;/h1>
+&lt;p>k8sのための本というわけではないが、コンテナ技術の上に成り立つk8sを触るうえで知っておくと役に立つ内容が書かれている。&lt;/p>
+&lt;p>僕はこれまでコンテナ技術を触ってきたにも関わらず、
+「Linuxの機能を使って実現されているんだよなぁ」という抽象的な理解しかしていなかった。&lt;/p>
+&lt;p>本書を読むことで、コンテナ技術がLinuxのどういった機能によって実現されているかをきちんと理解できた。&lt;br>
+そして、上記の話をベースに、タイトルにもあるセキュリティの話へと繋がっていく。&lt;/p>
+&lt;p>僕自身、コンテナセキュリティについては、頑張ってキャッチアップしているつもりだった。&lt;br>
+しかし、ベースとなるコンテナ技術について学んだ後だと、また違った角度からセキュリティについて再考できた。&lt;/p>
+&lt;p>すでに実務で困らない程度にはコンテナをさわれるという方に、ぜひとも読んでほしい一冊だと思った。&lt;/p></description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://tech.yyh-gl.dev/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/evans_ddd_1/</guid><description>&lt;h1 id="ddd-の勉強始めます">DDD の勉強始めます&lt;/h1>
 &lt;p>新卒研修を受ける中で DDD が出てきて、勉強したくなったので、&lt;br>
 &lt;a href="https://www.amazon.co.jp/dp/B00GRKD6XU/ref=dp-kindle-redirect?_encoding=UTF8&amp;amp;btkr=1" target="_blank" rel="noopener noreferrer">『エリック・エヴァンスのドメイン駆動設計』（エリック・エヴァンス著，今関 剛 監訳，和智 右桂、牧野 祐子 訳）&lt;/a>
 を読んでいこうと思います。&lt;/p>

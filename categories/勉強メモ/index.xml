@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>勉強メモ on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E5%8B%89%E5%BC%B7%E3%83%A1%E3%83%A2/</link><description>Recent content in 勉強メモ on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 28 Dec 2024 20:08:33 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E5%8B%89%E5%BC%B7%E3%83%A1%E3%83%A2/index.xml" rel="self" type="application/rss+xml"/><item><title>分散システムにおけるID採番の勉強メモ</title><link>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</link><pubDate>Sat, 28 Dec 2024 20:08:33 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/unique-ids-in-distributed-systems/</guid><description>&lt;h1 id="はじめに">はじめに&lt;/h1>
+&lt;p>分散システムにおけるID採番方法について気になったので調べたときのメモ。&lt;br>
+（UUIDおよびULIDはスキップ）&lt;br>
+調査の中で興味を持ったのがSnowflakeだったので、ほぼSnowflakeの話。&lt;/p>
+&lt;h1 id="snowflake">Snowflake&lt;/h1>
+&lt;p>分散システムにおけるID採番方式として有名なもののひとつ。&lt;br>
+&lt;a href="https://en.wikipedia.org/wiki/Snowflake_ID" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Snowflake_ID&lt;/a>
+&lt;/p>
+&lt;p>64bitで構成されている。&lt;br>
+&lt;img src="https://tech.yyh-gl.dev/img/2024/12/unique-ids-in-distributed-systems/format.webp" width="600">
+&lt;br>
+（参照： &lt;a href="https://en.wikipedia.org/wiki/Snowflake_ID" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Snowflake_ID&lt;/a>
+）&lt;/p>
+&lt;p>基本的に、上記のフォーマットで生成されたバイナリは10進数の数値に変換される。&lt;br>
+timestampを含むので、時刻情報に基づいたソートが可能。&lt;br>
+高い衝突体制を持つ。&lt;/p>
+&lt;!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
+&lt;!-- textlint-disable ja-technical-writing/sentence-length -->
+&lt;p>timestampを含んでいることからも分かるとおり、SnowflakeはSystem Clockに依存している。&lt;br>
+よって、時間が巻き戻ったりするとIDが重複する可能性がある。&lt;br>
+ただし、時刻が巻き戻った場合にはID生成をストップする機構が組み込まれている。&lt;br>
+（最後に生成したIDが示す時刻を超えるまで生成ストップ）&lt;br>
+&lt;a href="https://github.com/twitter-archive/snowflake/tree/snowflake-2010?tab=readme-ov-file#system-clock-dependency" target="_blank" rel="noopener noreferrer">https://github.com/twitter-archive/snowflake/tree/snowflake-2010?tab=readme-ov-file#system-clock-dependency&lt;/a>
+&lt;/p>
+&lt;!-- textlint-enable ja-technical-writing/no-doubled-joshi -->
+&lt;!-- textlint-enable ja-technical-writing/sentence-length -->
+&lt;p>Xでも使われている（&lt;a href="https://developer.x.com/ja/docs/basics/twitter-ids" target="_blank" rel="noopener noreferrer">参考&lt;/a>
+）。&lt;br>
+現行のコードではないもののコードは&lt;a href="https://github.com/twitter-archive/snowflake/tree/snowflake-2010" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
+。&lt;br>
+今使われているのはSnowflakeの進化系？&lt;br>&lt;/p>
+&lt;blockquote>
+&lt;p>The Snowflake we&amp;rsquo;re using internally is a full rewrite and heavily relies on existing infrastructure at Twitter to run.&lt;/p>&lt;/blockquote>
+&lt;h1 id="snowflakeとよく比較される対象">Snowflakeとよく比較される対象&lt;/h1>
+&lt;ul>
+&lt;li>UUID&lt;/li>
+&lt;li>ULID&lt;/li>
+&lt;/ul></description></item></channel></rss>

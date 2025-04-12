@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>振り返り on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/categories/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</link><description>Recent content in 振り返り on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 31 Dec 2024 20:53:11 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/index.xml" rel="self" type="application/rss+xml"/><item><title>2024年を振り返る</title><link>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</link><pubDate>Tue, 31 Dec 2024 20:53:11 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/looking-back-on-2024/</guid><description>&lt;h1 id="仕事">仕事&lt;/h1>
+&lt;h2 id="本業lineマンガ">本業：LINEマンガ&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.oricon.co.jp/news/2333825/full/" target="_blank" rel="noopener noreferrer">弊社の親会社であるWEBTOON EntertainmentがNASDAQに上場&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="https://prtimes.jp/main/html/rd/p/000000335.000063705.html" target="_blank" rel="noopener noreferrer">LINEマンガが5000万DLを突破&lt;/a>
+&lt;/li>
+&lt;/ul>
+&lt;p>ユーザーが増え、より大規模なサービスになってきた。&lt;br>
+求められる品質がさらに高くなってきており、いちエンジニアとしてとても楽しい。&lt;/p>
+&lt;p>k8sを本格的に使用し始めたので、k8s周りの知識を深めている最中。&lt;br>
+&lt;a href="https://www.cncf.io/training/certification/ckad/" target="_blank" rel="noopener noreferrer">資格（CKAD）&lt;/a>
+の取得を目指しているが、一番の壁は受験料。&lt;/p>
+&lt;p>今まで資格というものに興味がなかったけど、少し興味が出てきた今日このごろ。&lt;br>
+&lt;a href="https://www.lpi.org/ja/our-certifications/lpic-1-overview/" target="_blank" rel="noopener noreferrer">LPIC&lt;/a>
+の取得も頑張ってみようか迷ってる。&lt;/p>
+&lt;p>開発以外に採用にも参加し始めた2024年。&lt;br>
+来年で3年目に突入するので、開発以外の部分でももっと活躍できるようにしていく。&lt;/p>
+&lt;h2 id="副業">副業&lt;/h2>
+&lt;p>4年弱携わった案件が一段落した。&lt;br>
+本業とは全く異なる特性を持つサービスだったので様々な知見を得ることができた。&lt;br>
+引き続き同社の別サービスの開発に従事していくので頑張っていきたい。&lt;/p>
+&lt;h1 id="個人的な活動">個人的な活動&lt;/h1>
+&lt;h2 id="読書">読書&lt;/h2>
+&lt;p>読書をたくさんしている。&lt;br>
+AIに聞けば高い精度で答えてくれる時代になったとはいえ、まだ間違った回答もある。&lt;br>
+正当性を判断するためにも地力をつけたい（普通に技術力を上げるという点でも頑張りたい）。&lt;br>
+だから、信頼できるソースからのインプットを増やそうと考えた結果、読書に力を入れ始めた。&lt;br>
+最近は常に読書中の本がある状態を維持している。&lt;br>
+来年も続けていく。&lt;/p>
+&lt;h3 id="ブログ">ブログ&lt;/h3>
+&lt;p>インプット（読書）するだけじゃなくて、ちゃんと知識として定着させたい。&lt;br>
+なので、得た知識はブログとしてアウトプットする。&lt;/p>
+&lt;h2 id="k8s">k8s&lt;/h2>
+&lt;p>もともと個人開発で使っていたk8s。&lt;br>
+本業でもk8sを使うようになり、ちょうど良いplaygroundとして稼働してくれている。&lt;br>
+とても助かる。k8sクラスターを構築してくれていた過去の自分に感謝。&lt;br>
+&lt;a href="https://tech.yyh-gl.dev/blog/k8s-setup/" target="_blank" rel="noopener noreferrer">https://tech.yyh-gl.dev/blog/k8s-setup/&lt;/a>
+&lt;/p>
+&lt;h2 id="個人開発">個人開発&lt;/h2>
+&lt;p>個人でサービスを作りたいと考えて動き出している。&lt;br>
+来年リリースを目指して頑張る。&lt;/p>
+&lt;h1 id="まとめ">まとめ&lt;/h1>
+&lt;p>がんばる↓&lt;/p>
+&lt;ul>
+&lt;li>なんといっても「仕事」。一番大事
+&lt;ul>
+&lt;li>開発以外でも活躍する&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>資格取る
+&lt;ul>
+&lt;li>CKAD&lt;/li>
+&lt;li>LPIC&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>always 読書
+&lt;ul>
+&lt;li>ブログでアウトプット&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>
