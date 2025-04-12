@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "『データ指向アプリケーションデザイン』を読んで"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # はじめに
 

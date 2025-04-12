@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "『暗号解読（上）』を読んで"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # はじめに
 

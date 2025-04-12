@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = ""
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = true
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 <img src="http://localhost:1313/img/2021/02//.webp" width="600">
 <img src="https://tech.yyh-gl.dev/img/2021/02//.webp" width="600">

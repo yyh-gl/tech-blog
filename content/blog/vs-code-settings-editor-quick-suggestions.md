@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "VS Codeのeditor.quickSuggestionsについて調べたメモ"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # はじめに
 

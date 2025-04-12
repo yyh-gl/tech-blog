@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "分散システムにおけるID採番の勉強メモ"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # はじめに
 

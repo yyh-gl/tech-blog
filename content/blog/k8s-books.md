@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "k8s関連書籍をいろいろ読んだ"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # 今回読んだ本
 

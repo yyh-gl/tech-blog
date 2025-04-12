@@ -1,5 +1,3 @@
-<!-- textlint-disable -->
-
 +++
 title = "2024年を振り返る"
 author = "yyh-gl"
@@ -14,8 +12,6 @@ draft = false
   alt = "featured"
   stretch = "stretchH"
 +++
-
-<!-- textlint-enable -->
 
 # 仕事
 
