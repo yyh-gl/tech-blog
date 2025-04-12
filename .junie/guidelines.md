@@ -4,7 +4,7 @@
 This is a personal tech blog built with Hugo, a fast and modern static site generator. The blog is hosted at [tech.yyh-gl.dev](https://tech.yyh-gl.dev/) and serves as a platform for sharing technical content and insights.
 
 ## Tech Stack
-- **Hugo**: v0.111.3 (extended version) - Static Site Generator
+- **Hugo**: v0.146.2 (extended version) - Static Site Generator
 - **Go**: v1.24.1 - Required for some tooling
 - **Node.js**: Package management and dependencies
 - **Docker**: Development and deployment environment
