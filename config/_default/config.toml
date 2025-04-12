@@ -5,7 +5,6 @@ DefaultContentLanguage = "ja"
 title                  = "yyh-gl's Tech Blog"
 theme                  = "hugo-future-imperfect-slim"
 disqusShortname        = ""
-googleAnalytics        = ""
 pluralizeListTitles    = false
 disableLanguages       = []
 
@@ -187,3 +186,7 @@ disableLanguages       = []
     languageCode = "en"
     LanguageName = "English"
     weight       = 2
+
+[services]
+  [services.googleAnalytics]
+    id = ''
