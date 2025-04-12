@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y webp npm
 RUN npm install
 RUN go install github.com/Ladicle/tcardgen@latest
 # TODO: Update Hugo
-RUN CGO_ENABLED=1 go install -tags extended github.com/gohugoio/hugo@latest
+RUN CGO_ENABLED=1 go install -tags extended github.com/gohugoio/hugo@v0.146.2
 
 EXPOSE 1313
 
