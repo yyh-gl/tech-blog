@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/blog/</link><description>Recent content in Blog on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 24 Jan 2025 00:30:40 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>『暗号解読（上）』を読んで</title><link>https://tech.yyh-gl.dev/blog/the-code-book/</link><pubDate>Fri, 24 Jan 2025 00:30:40 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/the-code-book/</guid><description>&lt;h1 id="はじめに">はじめに&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/blog/</link><description>Recent content in Blog on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 18 May 2025 22:30:08 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>JavaのIntegerクラスがキャッシュする範囲</title><link>https://tech.yyh-gl.dev/blog/java-integer-cache/</link><pubDate>Sun, 18 May 2025 22:30:08 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/java-integer-cache/</guid><description>&lt;h1 id="javaのintegerクラスにキャッシュがあることを知る">JavaのIntegerクラスにキャッシュがあることを知る&lt;/h1>
+&lt;p>JetBrains公式アカウントで以下のクイズがポストされていた。&lt;br>
+解答の中に以下のツイートを発見。&lt;/p>
+&lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">Not equal because they are greater than 127. 127 and below would use the integer cache and then they would be equal&lt;/p>&amp;mdash; Simon Martinelli (@simas_ch) &lt;a href="https://twitter.com/simas_ch/status/1923728106193322326?ref_src=twsrc%5Etfw">May 17, 2025&lt;/a>&lt;/blockquote> &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>&amp;ldquo;Integer cache&amp;quot;なるものがあることを知る。&lt;/p>
+&lt;h1 id="integerクラスのキャッシュとは">Integerクラスのキャッシュとは&lt;/h1>
+&lt;p>&lt;a href="https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Integer.html#valueOf%28int%29" target="_blank" rel="noopener noreferrer">ドキュメント&lt;/a>
+を見てみる。&lt;br>
+（Javaバージョン: 24）&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2025/05/java-integer-cache/docs.webp" width="600">
+&lt;blockquote>
+&lt;p>This method will always cache values in the range -128 to 127, inclusive&lt;/p>&lt;/blockquote>
+&lt;p>-128~127の範囲は常にキャッシュされるとのこと。&lt;/p>
+&lt;blockquote>
+&lt;p>and may cache other values outside of this range.&lt;/p>&lt;/blockquote>
+&lt;p>ただし、範囲は-128~127ではないときもあるらしい。&lt;br>
+どういうときに範囲が変わるのか気になったので調べた↓&lt;/p>
+&lt;h1 id="キャッシュ範囲を深ぼる">キャッシュ範囲を深ぼる&lt;/h1>
+&lt;p>&lt;a href="https://github.com/openjdk/jdk/blob/jdk-24%2B36/src/java.base/share/classes/java/lang/Integer.java#L940-L953" target="_blank" rel="noopener noreferrer">コード&lt;/a>
+を見てみると以下のとおりだった。&lt;/p></description></item><item><title>『暗号解読（上）』を読んで</title><link>https://tech.yyh-gl.dev/blog/the-code-book/</link><pubDate>Fri, 24 Jan 2025 00:30:40 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/the-code-book/</guid><description>&lt;h1 id="はじめに">はじめに&lt;/h1>
 &lt;p>『暗号解読（上）』を読んだ感想を簡単にメモしておく。&lt;br>
 なお、本記事は自分で書いた読書メモをChatGPTに整形してもらったもの。&lt;br>
 （文章としておかしい部分だけ自分で修正）&lt;/p>
