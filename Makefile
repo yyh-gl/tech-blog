@@ -62,7 +62,7 @@ create-ogp: ## OGP画像を生成
 		echo 'titleを指定してください。'; \
 		exit 1; \
 	fi
-	docker exec tech-blog /tmp/go/bin/tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/`date +"%Y/%m"`/${title}/featured.png content/blog/${title}.md
+	docker exec tech-blog /go/bin/tcardgen -c template.yaml -f static/font/kinto-master/Kinto\ Sans -o static/img/`date +"%Y/%m"`/${title}/featured.png content/blog/${title}.md
 	docker exec tech-blog cwebp static/img/`date +"%Y/%m"`/${title}/featured.png -o static/img/`date +"%Y/%m"`/${title}/featured.webp
 	rm -f static/img/`date +"%Y/%m"`/${title}/featured.png
 
