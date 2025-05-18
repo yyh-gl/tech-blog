@@ -16,7 +16,7 @@ draft = false
 # JavaのIntegerクラスにキャッシュがあることを知る
 
 JetBrains公式アカウントで以下のクイズがポストされていた。<br>
-解答の中に以下のツイートを発見。
+解答の中に以下のポストを発見。
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Not equal because they are greater than 127. 127 and below would use the integer cache and then they would be equal</p>&mdash; Simon Martinelli (@simas_ch) <a href="https://twitter.com/simas_ch/status/1923728106193322326?ref_src=twsrc%5Etfw">May 17, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
