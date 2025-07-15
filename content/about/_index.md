@@ -9,7 +9,7 @@ date = "2020-04-04"
 
 <br>
 
-【最終更新日：2025年3月23日】
+【最終更新日：2025年7月15日】
 
 # いま
 
@@ -236,6 +236,7 @@ APIサーバおよびWebフロントの開発に参加
 
 細かなコントリビュートばかりですが🙋‍♂️
 
+- [supabase/cli](https://github.com/supabase/cli/graphs/contributors)
 - [Ladicle/tcardgen](https://github.com/Ladicle/tcardgen/graphs/contributors)
 - [pacollins/hugo-future-imperfect-slim](https://github.com/pacollins/hugo-future-imperfect-slim/graphs/contributors)
 - [ent/ent](https://github.com/ent/ent)（[ドキュメントの日本語訳](https://crowdin.com/project/ent/ja#)）
