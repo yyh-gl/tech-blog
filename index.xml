@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/</link><description>Recent content on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 18 May 2025 22:30:08 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>JavaのIntegerクラスがキャッシュする範囲</title><link>https://tech.yyh-gl.dev/blog/java-integer-cache/</link><pubDate>Sun, 18 May 2025 22:30:08 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/java-integer-cache/</guid><description>&lt;h1 id="javaのintegerクラスにキャッシュがあることを知る">JavaのIntegerクラスにキャッシュがあることを知る&lt;/h1>
 &lt;p>JetBrains公式アカウントで以下のクイズがポストされていた。&lt;br>
-解答の中に以下のツイートを発見。&lt;/p>
+解答の中に以下のポストを発見。&lt;/p>
 &lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">Not equal because they are greater than 127. 127 and below would use the integer cache and then they would be equal&lt;/p>&amp;mdash; Simon Martinelli (@simas_ch) &lt;a href="https://twitter.com/simas_ch/status/1923728106193322326?ref_src=twsrc%5Etfw">May 17, 2025&lt;/a>&lt;/blockquote> &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
 &lt;p>&amp;ldquo;Integer cache&amp;quot;なるものがあることを知る。&lt;/p>
 &lt;h1 id="integerクラスのキャッシュとは">Integerクラスのキャッシュとは&lt;/h1>
