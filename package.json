@@ -24,7 +24,7 @@
     "trim": ">=0.0.3"
   },
   "devDependencies": {
-    "textlint-filter-rule-allowlist": "^2.0.0"
+    "textlint-filter-rule-allowlist": "^4.0.0"
   },
   "resolutions": {
     "glob": "^9.0.0"
