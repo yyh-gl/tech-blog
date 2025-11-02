@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sun, 18 May 2025 22:30:08 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>JavaのIntegerクラスがキャッシュする範囲</title><link>https://tech.yyh-gl.dev/blog/java-integer-cache/</link><pubDate>Sun, 18 May 2025 22:30:08 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/java-integer-cache/</guid><description>&lt;h1 id="javaのintegerクラスにキャッシュがあることを知る">JavaのIntegerクラスにキャッシュがあることを知る&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tech on yyh-gl's Tech Blog</title><link>https://tech.yyh-gl.dev/tags/tech/</link><description>Recent content in Tech on yyh-gl's Tech Blog</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Sat, 01 Nov 2025 13:20:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/tags/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>Kotlin言語仕様書への招待 @Kotlin Fest 2025</title><link>https://tech.yyh-gl.dev/blog/kotlin-fest-2025/</link><pubDate>Sat, 01 Nov 2025 13:20:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/kotlin-fest-2025/</guid><description>&lt;h1 id="kotlin-fest-2025">Kotlin Fest 2025&lt;/h1>
+&lt;p>&lt;a href="https://2025.kotlinfest.dev/" target="_blank" rel="noopener noreferrer">Kotlin Fest 2025&lt;/a>
+に参加してきました。&lt;/p>
+&lt;p>Kotlin Festには去年初めてプロポーザルを出したが落選。&lt;br>
+今年は採用してもらうことができ、Kotlin言語仕様書に関して話してきました。&lt;/p>
+&lt;h1 id="発表内容">発表内容&lt;/h1>
+&lt;p>『&lt;a href="https://2025.kotlinfest.dev/timetable/1719023400_a/" target="_blank" rel="noopener noreferrer">Kotlin言語仕様書への招待 〜コードの「なぜ」を読み解く〜&lt;/a>
+』
+というタイトルで話しました。&lt;/p>
+&lt;img src="https://tech.yyh-gl.dev/img/2025/11/kotlin-fest-2025/presentation.webp" width="600">
+&lt;iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQdjSxkIxQjQM5shtCWuRlRpHq9lmcMZ653WGOWI2hU0bc6giqD5LsZQfrUsAqNuOgVS8qakePxoCpo/pubembed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">&lt;/iframe>
+&lt;p>Xで嬉しいリアクションをたくさんいただきました。&lt;br>
+聞きに来てくださったみなさんありがとうございました！&lt;/p></description></item><item><title>JavaのIntegerクラスがキャッシュする範囲</title><link>https://tech.yyh-gl.dev/blog/java-integer-cache/</link><pubDate>Sun, 18 May 2025 22:30:08 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/java-integer-cache/</guid><description>&lt;h1 id="javaのintegerクラスにキャッシュがあることを知る">JavaのIntegerクラスにキャッシュがあることを知る&lt;/h1>
 &lt;p>JetBrains公式アカウントで以下のクイズがポストされていた。&lt;br>
 解答の中に以下のポストを発見。&lt;/p>
 &lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">Not equal because they are greater than 127. 127 and below would use the integer cache and then they would be equal&lt;/p>&amp;mdash; Simon Martinelli (@simas_ch) &lt;a href="https://twitter.com/simas_ch/status/1923728106193322326?ref_src=twsrc%5Etfw">May 17, 2025&lt;/a>&lt;/blockquote> &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
