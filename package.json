@@ -15,16 +15,14 @@
   "scripts": {
     "preinstall": "npx npm-force-resolutions"
   },
-  "dependencies": {
+  "devDependencies": {
     "ajv": "^6.12.3",
     "minimist": "^1.2.6",
     "textlint": "^15.0.0",
+    "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-preset-ja-technical-writing": "^12.0.0",
     "trim": ">=0.0.3"
-  },
-  "devDependencies": {
-    "textlint-filter-rule-allowlist": "^2.0.0"
   },
   "resolutions": {
     "glob": "^9.0.0"
