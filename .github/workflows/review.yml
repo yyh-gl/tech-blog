@@ -10,18 +10,24 @@ jobs:
   review:
     name: Review
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
           submodules: true
-      - uses: actions/cache@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          version: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
       - name: Lint
         run: |
           pnpm install
