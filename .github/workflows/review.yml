@@ -24,8 +24,8 @@ jobs:
             ${{ runner.os }}-node-
       - name: Lint
         run: |
-          npm install
-          git diff --name-only HEAD~ | xargs npm exec textlint
+          pnpm install
+          git diff --name-only HEAD~ | xargs pnpm exec textlint
 
   success_notification:
     name: Success notification
