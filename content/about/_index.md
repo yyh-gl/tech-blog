@@ -216,7 +216,9 @@ APIサーバおよびWebフロントの開発に参加
 
 # 登壇歴
 
-- [Kotlin Fest 2025 『Kotlin言語仕様書への招待 〜コードの「なぜ」を読み解く〜』](https://2025.kotlinfest.dev/timetable/1719023400_a/)
+- [Kotlin Fest 2025 『Kotlin言語仕様書への招待 〜コードの「なぜ」を読み解く〜』](https://docs.google.com/presentation/d/1ow0ofWuFuyz9BnSKNo27ZL_1NETMaQW3TJh7qC1x3jk/edit?usp=sharing)
+  - [プロポーザル](https://2025.kotlinfest.dev/timetable/1719023400_a/)
+  - [登壇動画](https://youtu.be/SdpiQTpMv_g?si=iSakiv-5dVfGbmLC)
   - 関連記事: [『Kotlin言語仕様書への招待 @Kotlin Fest 2025』](https://tech.yyh-gl.dev/blog/kotlin-fest-2025/)
 - Assignability（入門Go言語仕様輪読会）
   - [go-talks](https://go-talks.appspot.com/github.com/yyh-gl/slide-decks/210318_gospecreading_assignability.slide)
