@@ -30,6 +30,8 @@ Kotlin Festには去年初めてプロポーザルを出しました。<br>
 
 <img src="https://tech.yyh-gl.dev/img/2025/11/kotlin-fest-2025/presentation.webp" width="600">
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SdpiQTpMv_g?si=cw4LhG_FrX_iMST-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQdjSxkIxQjQM5shtCWuRlRpHq9lmcMZ653WGOWI2hU0bc6giqD5LsZQfrUsAqNuOgVS8qakePxoCpo/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 Xで嬉しいリアクションをたくさんいただきました。<br>
