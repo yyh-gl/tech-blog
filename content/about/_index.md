@@ -216,16 +216,19 @@ APIサーバおよびWebフロントの開発に参加
 
 # 登壇歴
 
-- [Kotlin Fest 2025 『Kotlin言語仕様書への招待 〜コードの「なぜ」を読み解く〜』](https://docs.google.com/presentation/d/1ow0ofWuFuyz9BnSKNo27ZL_1NETMaQW3TJh7qC1x3jk/edit?usp=sharing)
-  - [プロポーザル](https://2025.kotlinfest.dev/timetable/1719023400_a/)
+- [Kotlin Fest 2025 『Kotlin言語仕様書への招待 〜コードの「なぜ」を読み解く〜』](https://2025.kotlinfest.dev/timetable/1719023400_a/)
+  - [スライド（Google Slides）](https://docs.google.com/presentation/d/1ow0ofWuFuyz9BnSKNo27ZL_1NETMaQW3TJh7qC1x3jk/edit?usp=sharing)
+  - [スライド（Speaker Deck）](https://speakerdeck.com/yyh_gl/kotlin-language-specification)
   - [登壇動画](https://youtu.be/SdpiQTpMv_g?si=iSakiv-5dVfGbmLC)
   - 関連記事: [『Kotlin言語仕様書への招待 @Kotlin Fest 2025』](https://tech.yyh-gl.dev/blog/kotlin-fest-2025/)
-- Assignability（入門Go言語仕様輪読会）
-  - [go-talks](https://go-talks.appspot.com/github.com/yyh-gl/slide-decks/210318_gospecreading_assignability.slide)
-  - [Speaker Deck](https://speakerdeck.com/yyh_gl/go-language-specification-assignability)
-- [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜『事業をグロースさせるためにエンジニアができること』](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
-- [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
-- [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
+- [入門Go言語仕様輪読会 『Assignability』](https://gospecreading.connpass.com/event/205420/)
+  - [スライド](https://speakerdeck.com/yyh_gl/go-language-specification-assignability)
+- [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜 『事業をグロースさせるためにエンジニアができること』](https://dmm.connpass.com/event/195179/)
+  - [スライド](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
+- [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://dmm.connpass.com/event/165864/)
+  - [スライド](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
+- [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://dmm.connpass.com/event/157222/)
+  - [スライド](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
 
 # 記事
 
