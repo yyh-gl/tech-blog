@@ -20,7 +20,8 @@ draft = false
 Kotlin Festには去年初めてプロポーザルを出しました。<br>
 結果は落選。
 
-今年もチャレンジした結果、採用していただきました。
+今年もチャレンジした結果、採用していただきました。<br>
+<img src="https://tech.yyh-gl.dev/img/2025/11/kotlin-fest-2025/proposal.webp" width="600">
 
 # 発表内容
 
