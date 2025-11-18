@@ -58,19 +58,20 @@
 /* テーブルスタイル */
 .chart-container {
   overflow-x: auto;
+  background: transparent;
 }
 
 .stats-table {
   width: 100%;
   border-collapse: collapse;
-  background: transparent;
+  background: transparent !important;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(160, 160, 160, 0.3);
 }
 
 .stats-table thead {
-  background: rgba(160, 160, 160, 0.1);
+  background: rgba(160, 160, 160, 0.1) !important;
   color: inherit;
 }
 
@@ -78,15 +79,21 @@
   padding: 1rem;
   text-align: left;
   font-weight: 600;
+  background: transparent !important;
 }
 
 .stats-table td {
   padding: 0.8rem 1rem;
   border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+  background: transparent !important;
+}
+
+.stats-table tbody tr {
+  background: transparent !important;
 }
 
 .stats-table tbody tr:hover {
-  background: rgba(160, 160, 160, 0.05);
+  background: rgba(160, 160, 160, 0.05) !important;
 }
 
 .stats-table tbody tr:last-child td {
