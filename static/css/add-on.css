@@ -4,3 +4,240 @@
   is an official part of the theme (ex. Pull Requests) should be included in main.css
   and follow the formatting and style given.
 */
+
+/* 統計ページのスタイル */
+.stats-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: transparent;
+  border-radius: 8px;
+}
+
+.stats-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: inherit;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 0.5rem;
+}
+
+/* 基本統計カード */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: transparent;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: inherit;
+  margin: 0.5rem 0;
+}
+
+.stat-unit {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* テーブルスタイル */
+.chart-container {
+  overflow-x: auto;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+}
+
+.stats-table thead {
+  background: rgba(160, 160, 160, 0.1);
+  color: inherit;
+}
+
+.stats-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.stats-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+}
+
+.stats-table tbody tr:hover {
+  background: rgba(160, 160, 160, 0.05);
+}
+
+.stats-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.year-cell, .category-cell, .tag-cell, .range-cell {
+  font-weight: 500;
+}
+
+.count-cell {
+  text-align: center;
+  font-weight: 600;
+  color: inherit;
+}
+
+.percentage-cell {
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* バーグラフ */
+.bar-cell {
+  width: 40%;
+  min-width: 200px;
+}
+
+.bar-container {
+  width: 100%;
+  height: 24px;
+  background: rgba(160, 160, 160, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background: currentColor;
+  opacity: 0.6;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+/* 最近の投稿 */
+.recent-posts {
+  background: transparent;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+}
+
+.recent-post-item {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.recent-post-item:last-child {
+  border-bottom: none;
+}
+
+.recent-post-item .post-date {
+  opacity: 0.7;
+  font-size: 0.9rem;
+  min-width: 100px;
+}
+
+.recent-post-item a {
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.recent-post-item a:hover {
+  text-decoration: underline;
+}
+
+.recent-post-item .post-chars {
+  opacity: 0.6;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* ランキングリスト */
+.ranking-list {
+  background: transparent;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+}
+
+.ranking-item {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ranking-item:last-child {
+  border-bottom: none;
+}
+
+.ranking-item .rank-chars {
+  color: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-width: 100px;
+}
+
+.ranking-item a {
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ranking-item a:hover {
+  text-decoration: underline;
+}
+
+.ranking-item .post-date {
+  opacity: 0.6;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-table th,
+  .stats-table td {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .bar-cell {
+    min-width: 150px;
+  }
+
+  .recent-post-item,
+  .ranking-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+}
