@@ -192,7 +192,7 @@
     </section>
 
     <section class="stats-section">
-      <h2>📝 最近の投稿</h2>
+      <h2>🕰️ 最近の投稿</h2>
       <div class="recent-posts">
         {{ range first 10 (sort $blogPages "Date" "desc") }}
         <div class="recent-post-item">
@@ -205,7 +205,7 @@
     </section>
 
     <section class="stats-section">
-      <h2>📏 文字数ランキング (トップ10)</h2>
+      <h2>📝 文字数ランキング (トップ10)</h2>
       <div class="ranking-list">
         {{ $pageList := slice }}
         {{ range $blogPages }}
