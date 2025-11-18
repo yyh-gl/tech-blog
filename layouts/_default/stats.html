@@ -116,13 +116,17 @@
             </tr>
           </thead>
           <tbody>
+            {{ $categoryList := slice }}
             {{ range $category, $count := $categoryMap }}
-            {{ $percentage := div (mul $count 100.0) (float $totalPosts) }}
+              {{ $categoryList = $categoryList | append (dict "name" $category "count" $count) }}
+            {{ end }}
+            {{ range sort $categoryList "count" "desc" }}
+            {{ $percentage := div (mul .count 100.0) (float $totalPosts) }}
             <tr>
               <td class="category-cell">
-                <a href="{{ path.Join "categories" ($category | urlize | lower) | relLangURL }}/">{{ $category }}</a>
+                <a href="{{ path.Join "categories" (.name | urlize | lower) | relLangURL }}/">{{ .name }}</a>
               </td>
-              <td class="count-cell">{{ $count }}</td>
+              <td class="count-cell">{{ .count }}</td>
               <td class="percentage-cell">{{ printf "%.1f" $percentage }}%</td>
               <td class="bar-cell">
                 <div class="bar-container">
