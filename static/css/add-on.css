@@ -192,9 +192,14 @@
   border-bottom: none;
 }
 
-.ranking-item .rank-chars {
+.ranking-item .rank-number {
   color: inherit;
   font-weight: 600;
+  min-width: 28px;
+}
+
+.ranking-item .rank-chars {
+  color: inherit;
   font-size: 0.9rem;
   min-width: 100px;
 }

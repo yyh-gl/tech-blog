@@ -207,12 +207,17 @@
     <section class="stats-section">
       <h2>📏 文字数ランキング (トップ10)</h2>
       <div class="ranking-list">
-        {{ $sortedByChars := sort $blogPages ".Plain" "desc" }}
-        {{ range first 10 $sortedByChars }}
+        {{ $pageList := slice }}
+        {{ range $blogPages }}
+          {{ $pageList = $pageList | append (dict "page" . "chars" (len .Plain)) }}
+        {{ end }}
+        {{ $sortedByChars := sort $pageList "chars" "desc" }}
+        {{ range $index, $item := first 10 $sortedByChars }}
         <div class="ranking-item">
-          <span class="rank-chars">{{ len .Plain }} 文字</span>
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+          <span class="rank-number">{{ add $index 1 }}位</span>
+          <span class="rank-chars">{{ $item.chars }} 文字</span>
+          <a href="{{ $item.page.RelPermalink }}">{{ $item.page.Title }}</a>
+          <span class="post-date">{{ $item.page.Date.Format "2006-01-02" }}</span>
         </div>
         {{ end }}
       </div>
