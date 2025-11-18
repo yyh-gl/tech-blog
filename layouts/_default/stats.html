@@ -192,19 +192,6 @@
     </section>
 
     <section class="stats-section">
-      <h2>🕰️ 最近の投稿</h2>
-      <div class="recent-posts">
-        {{ range first 10 (sort $blogPages "Date" "desc") }}
-        <div class="recent-post-item">
-          <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          <span class="post-chars">({{ len .Plain }} 文字)</span>
-        </div>
-        {{ end }}
-      </div>
-    </section>
-
-    <section class="stats-section">
       <h2>📝 文字数ランキング (トップ10)</h2>
       <div class="ranking-list">
         {{ $pageList := slice }}
