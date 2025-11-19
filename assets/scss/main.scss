@@ -2072,3 +2072,47 @@ figcaption {
     font-size: 2rem;
   }
 }
+
+/* statsページ専用: ドロップダウン無効化 */
+.stats-table {
+  thead {
+    display: table-header-group !important;
+  }
+
+  tbody tr td {
+    display: table-cell !important;
+    opacity: 1 !important;
+    position: relative !important;
+    text-align: center !important;
+    z-index: 0 !important;
+    border-bottom: 1px solid rgba(160, 160, 160, 0.2) !important;
+
+    &[data-header]::before {
+      display: none !important;
+    }
+
+    &:first-child {
+      text-align: left !important;
+
+      &::after {
+        display: none !important;
+      }
+    }
+
+    &[align="left"] {
+      text-align: left !important;
+    }
+    &[align="center"] {
+      text-align: center !important;
+    }
+    &[align="right"] {
+      text-align: right !important;
+    }
+  }
+
+  tbody tr {
+    &:nth-child(even) {
+      background: rgba(160, 160, 160, 0.05) !important;
+    }
+  }
+}
