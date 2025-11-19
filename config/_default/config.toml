@@ -169,12 +169,12 @@ disableLanguages       = []
     pre        = "<i class='fas fa-sitemap'></i>"
     weight     = 4
 
-#  [[menu.main]]
-#    name       = "Stats"
-#    identifier = "stats"
-#    url        = "stats/"
-#    pre        = "<i class='fas fa-chart-bar'></i>"
-#    weight     = 5
+  [[menu.main]]
+    name       = "Stats"
+    identifier = "stats"
+    url        = "stats/"
+    pre        = "<i class='fas fa-chart-bar'></i>"
+    weight     = 5
 
 #  [[menu.main]]
 #    name       = "Contact"
