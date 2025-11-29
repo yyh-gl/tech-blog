@@ -9,7 +9,7 @@
       {{ .Content | replaceRE "<pre" "<pre class=\"line-numbers\"" | safeHTML }}
     </div>
     <footer>
-      {{ .Render "stats" }}
+      {{ .Render "blog-stats" }}
     </footer>
     <div class="fix">
       <a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『{{ .Page.Title }}』" target="_blank" rel="noopener noreferrer">
