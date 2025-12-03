@@ -16,7 +16,7 @@
     "preinstall": "npx npm-force-resolutions"
   },
   "devDependencies": {
-    "ajv": "^6.12.3",
+    "ajv": "^8.0.0",
     "minimist": "^1.2.6",
     "textlint": "^15.0.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
