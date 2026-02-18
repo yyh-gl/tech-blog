@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /business/
+Sitemap: https://tech.yyh-gl.dev/sitemap.xml
