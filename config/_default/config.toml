@@ -1,180 +1,181 @@
 # For a description of these parameters, please visit the theme wiki.
 # https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
-baseurl                = "https://tech.yyh-gl.dev/"
+baseurl = "https://tech.yyh-gl.dev/"
 DefaultContentLanguage = "ja"
-title                  = "yyh-gl's Tech Blog"
-theme                  = "hugo-future-imperfect-slim"
-disqusShortname        = ""
-pluralizeListTitles    = false
-disableLanguages       = []
+title = "yyh-gl's Tech Blog"
+theme = "hugo-future-imperfect-slim"
+disqusShortname = ""
+pluralizeListTitles = false
+disableLanguages = []
+enableRobotsTXT = true
 
 [pagination]
-  pagerSize = 5
+pagerSize = 5
 
 [markup]
-  [markup.highlight]
-    codeFences = false
+[markup.highlight]
+codeFences = false
 
-  [markup.goldmark.renderer]
-    unsafe = true
+[markup.goldmark.renderer]
+unsafe = true
 
 [outputs]
-  home = ["html", "json", "rss"]
+home = ["html", "json", "rss"]
 
 [params]
-  enableCDN              = true
-  cssFiles               = ["default", "css/prism.css"]
-  jsFiles                = ["default", "js/prism.js"]
-  viewMorePostsLink      = "blog/"
-  readingTime            = true
-  imageStretch           = ""
-  removeBlur             = false
-  # FIXME: Permalink が取得できるようになったら Twitter と Facebook を追加
-  socialShare            = []
-  #["twitter", "facebook", "reddit", "linkedin", "stumbleupon", "pinterest", "email"]
-  hideEmptyStats         = false
-  mainSections           = ["post"]
+enableCDN = true
+cssFiles = ["default", "css/prism.css"]
+jsFiles = ["default", "js/prism.js"]
+viewMorePostsLink = "blog/"
+readingTime = true
+imageStretch = ""
+removeBlur = false
+# FIXME: Permalink が取得できるようになったら Twitter と Facebook を追加
+socialShare = []
+#["twitter", "facebook", "reddit", "linkedin", "stumbleupon", "pinterest", "email"]
+hideEmptyStats = false
+mainSections = ["post"]
 
-  [params.meta]
-    description          = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
-    author               = "yyh-gl"
-    favicon              = true
-    svg                  = true
-    faviconVersion       = "1"
-    msColor              = "#ffffff"
-    iOSColor             = "#ffffff"
+[params.meta]
+description = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
+author = "yyh-gl"
+favicon = true
+svg = true
+faviconVersion = "1"
+msColor = "#ffffff"
+iOSColor = "#ffffff"
 
-  [params.header]
-    navbarTitle          = "yyh-gl's Tech Blog"
-    dynamicTitles        = true
-    searchMenu           = false
-    shareMenu            = false
-    # TODO: そのうち英語記事始めたいなぁ
-    languageMenu         = false
+[params.header]
+navbarTitle = "yyh-gl's Tech Blog"
+dynamicTitles = true
+searchMenu = false
+shareMenu = false
+# TODO: そのうち英語記事始めたいなぁ
+languageMenu = false
 
-  [params.intro]
-    header               = "yyh-gl's Tech Blog"
-    paragraph            = "技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"
-    rssIntro             = true
-    socialIntro          = true
-    hideWhenSingleColumn = false
-    alwaysOnHomepage     = false
+[params.intro]
+header = "yyh-gl's Tech Blog"
+paragraph = "技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"
+rssIntro = true
+socialIntro = true
+hideWhenSingleColumn = false
+alwaysOnHomepage = false
 
-  [params.intro.pic]
-    src                  = "img/main/logo.webp"
-    shape                = "circle"
-    width                = "80"
-    alt                  = "yyh-gl's icon"
+[params.intro.pic]
+src = "img/main/logo.webp"
+shape = "circle"
+width = "80"
+alt = "yyh-gl's icon"
 
-  [params.sidebar]
-    about                = "東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントエンドやインフラもさわっています。"
-    postAmount           = 3
-    categories           = false
-    categoriesByCount    = false
+[params.sidebar]
+about = "東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントエンドやインフラもさわっています。"
+postAmount = 3
+categories = false
+categoriesByCount = false
 
-  [params.footer]
-    rssFooter            = true
-    socialFooter         = true
+[params.footer]
+rssFooter = true
+socialFooter = true
 
-  [params.staticman]
-    enabled              = true
-    api                  = ""  # No Trailing Slash
-    gitProvider          = ""
-    username             = ""
-    repo                 = ""
-    branch               = ""
+[params.staticman]
+enabled = true
+api = ""  # No Trailing Slash
+gitProvider = ""
+username = ""
+repo = ""
+branch = ""
 
-  [params.staticman.recaptcha]
-    siteKey              = ""
-    encryptedKey         = ""
+[params.staticman.recaptcha]
+siteKey = ""
+encryptedKey = ""
 
-  [params.social]
-    github           = "yyh-gl"
-    gitlab           = ""
-    stackoverflow    = "" # User Number
-    bitbucket        = ""
-    jsfiddle         = ""
-    codepen          = ""
-    # Visual Art Communities
-    deviantart       = ""
-    flickr           = ""
-    behance          = ""
-    dribbble         = ""
-    # Publishing Communities
-    wordpress        = ""
-    medium           = ""
-    # Professional/Business Oriented Communities
-    linkedin         = "yyh-gl"
-    linkedin_company = ""
-    foursquare       = ""
-    xing             = ""
-    slideshare       = ""
-    # Social Networks
-    facebook         = ""
-    googleplus       = ""
-    reddit           = ""
-    quora            = ""
-    youtube          = ""
-    vimeo            = ""
-    whatsapp         = "" # WhatsApp Number
-    # WeChat and QQ need testing.
-    wechat         = ""
-    qq             = "" # User ID Number
-    instagram        = ""
-    tumblr           = ""
-    x                = "yyh_gl"
-    bluesky          = "yyh-gl.bsky.social"
-    strava           = ""
-    skype            = ""
-    snapchat         = ""
-    pinterest        = ""
-    telegram         = ""
-    vine             = ""
-    googlescholar    = ""
-    orcid            = ""
-    researchgate     = ""
-    keybase          = ""
-    mastodon         = ""
-    # Email
-    email            = ""
-    speaker_deck     = "yyh_gl"
-    crowdin          = "yyh-gl"
+[params.social]
+github = "yyh-gl"
+gitlab = ""
+stackoverflow = "" # User Number
+bitbucket = ""
+jsfiddle = ""
+codepen = ""
+# Visual Art Communities
+deviantart = ""
+flickr = ""
+behance = ""
+dribbble = ""
+# Publishing Communities
+wordpress = ""
+medium = ""
+# Professional/Business Oriented Communities
+linkedin = "yyh-gl"
+linkedin_company = ""
+foursquare = ""
+xing = ""
+slideshare = ""
+# Social Networks
+facebook = ""
+googleplus = ""
+reddit = ""
+quora = ""
+youtube = ""
+vimeo = ""
+whatsapp = "" # WhatsApp Number
+# WeChat and QQ need testing.
+wechat = ""
+qq = "" # User ID Number
+instagram = ""
+tumblr = ""
+x = "yyh_gl"
+bluesky = "yyh-gl.bsky.social"
+strava = ""
+skype = ""
+snapchat = ""
+pinterest = ""
+telegram = ""
+vine = ""
+googlescholar = ""
+orcid = ""
+researchgate = ""
+keybase = ""
+mastodon = ""
+# Email
+email = ""
+speaker_deck = "yyh_gl"
+crowdin = "yyh-gl"
 
 [menu]
-  [[menu.main]]
-    name       = "Home"
-    identifier = "home"
-    url        = ""
-    pre        = "<i class='fa fa-home'></i>"
-    weight     = 1
+[[menu.main]]
+name = "Home"
+identifier = "home"
+url = ""
+pre = "<i class='fa fa-home'></i>"
+weight = 1
 
-  [[menu.main]]
-    name       = "About"
-    identifier = "about"
-    url        = "about/"
-    pre        = "<i class='far fa-id-card'></i>"
-    weight     = 2
+[[menu.main]]
+name = "About"
+identifier = "about"
+url = "about/"
+pre = "<i class='far fa-id-card'></i>"
+weight = 2
 
-  [[menu.main]]
-    name       = "Blog"
-    identifier = "blog"
-    url        = "blog/"
-    pre        = "<i class='far fa-newspaper'></i>"
-    weight     = 3
+[[menu.main]]
+name = "Blog"
+identifier = "blog"
+url = "blog/"
+pre = "<i class='far fa-newspaper'></i>"
+weight = 3
 
-  [[menu.main]]
-    name       = "Categories"
-    identifier = "categories"
-    url        = "categories/"
-    pre        = "<i class='fas fa-sitemap'></i>"
-    weight     = 4
+[[menu.main]]
+name = "Categories"
+identifier = "categories"
+url = "categories/"
+pre = "<i class='fas fa-sitemap'></i>"
+weight = 4
 
-  [[menu.main]]
-    name       = "Stats"
-    identifier = "stats"
-    url        = "stats/"
-    pre        = "<i class='fas fa-chart-bar'></i>"
-    weight     = 5
+[[menu.main]]
+name = "Stats"
+identifier = "stats"
+url = "stats/"
+pre = "<i class='fas fa-chart-bar'></i>"
+weight = 5
 
 #  [[menu.main]]
 #    name       = "Contact"
@@ -184,16 +185,16 @@ disableLanguages       = []
 #    weight     = 6
 
 [Languages]
-  [Languages.ja]
-    languageCode = "ja"
-    LanguageName = "Japanese"
-    weight       = 1
+[Languages.ja]
+languageCode = "ja"
+LanguageName = "Japanese"
+weight = 1
 
-  [Languages.en]
-    languageCode = "en"
-    LanguageName = "English"
-    weight       = 2
+#[Languages.en]
+#languageCode = "en"
+#LanguageName = "English"
+#weight = 2
 
 [services]
-  [services.googleAnalytics]
-    id = ''
+[services.googleAnalytics]
+id = ''
