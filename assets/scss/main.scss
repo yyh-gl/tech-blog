@@ -22,7 +22,7 @@
 
 /* Base Color */
 
-:root{
+:root {
   @media (prefers-color-scheme: no-preference) {
     --background-main: hsl(0, 0%, 100%);
     --background-sub: hsl(0, 0%, 96%);
@@ -30,7 +30,7 @@
     --body-font-color: hsl(0, 0%, 20%);
     --heder-border-color: hsla(0, 0%, 70%);
   }
-  
+
   @media (prefers-color-scheme: light) {
     --background-main: hsl(0, 0%, 100%);
     --background-sub: hsl(0, 0%, 96%);
@@ -38,7 +38,7 @@
     --body-font-color: hsl(0, 0%, 20%);
     --heder-border-color: hsla(0, 0%, 70%);
   }
-  
+
   @media (prefers-color-scheme: dark) {
     --background-main: hsl(0, 2%, 15%);
     --background-sub: hsl(0, 2%, 20%);
@@ -55,7 +55,7 @@ $body-font: "Source Sans Pro", Helvetica, sans-serif;
 $code-font: "Courier New", monospace;
 $fa-free-font: "Font Awesome 5 Free";
 $fa-brands-font: "Font Awesome 5 Brands";
-$header-color: 	var(--header-font-color);
+$header-color: var(--header-font-color);
 $accent-color: hsl(211, 79%, 43%);
 $accent-hover: hsla(175, 60%, 45%, 0.25);
 $warning-color: hsl(332, 60%, 45%);
@@ -83,53 +83,53 @@ $headerbg-color: hsl(0, 0%, 93%);
 $avatar-size: 3.75em;
 $hover: 0.2s ease-in-out;
 $hover-slow: 0.35s ease-in-out;
-$shadow-1: 0 3px 6px hsla(0, 0%, 0%, 0.16), 0 3px 6px hsla(0, 0% , 0%, 0.23);
+$shadow-1: 0 3px 6px hsla(0, 0%, 0%, 0.16), 0 3px 6px hsla(0, 0%, 0%, 0.23);
 $shadow-2: 0 10px 20px hsla(0, 0%, 0%, 0.19), 0 6px 6px hsla(0, 0%, 0%, 0.23);
 $shadow-3: 0 14px 28px hsla(0, 0%, 0%, 0.25), 0 10px 10px hsla(0, 0%, 0%, 0.22);
-$shadow-4: 0 19px 38px hsla(0, 0%, 0%, 0.30), 0 15px 12px hsla(0, 0%, 0% ,0.22);
+$shadow-4: 0 19px 38px hsla(0, 0%, 0%, 0.30), 0 15px 12px hsla(0, 0%, 0%, 0.22);
 $shadow-scroll: inset 0 0 6px hsla(0, 0%, 0%, 0.3);
 
 /* Maps */
 
 // name, color(hsl), unicode, font[opt], weight[opt]
 $brands: (
-  (twitter, hsl(197, 100%, 47%), "\f099"),
-  (facebook, hsl(221, 44%, 41%), "\f09a"),
-  (linkedin, hsl(201, 100%, 35%), "\f08c"),
-  (pinterest, hsl(357, 70%, 46%), "\f0d2"),
-  (reddit, hsl(20, 100%, 50%), "\f281"),
-  (email, hsl(0, 0%, 27%), "\f0e0", $fa-free-font, 900)
+                (twitter, hsl(197, 100%, 47%), "\f099"),
+                (facebook, hsl(221, 44%, 41%), "\f09a"),
+                (linkedin, hsl(201, 100%, 35%), "\f08c"),
+                (pinterest, hsl(357, 70%, 46%), "\f0d2"),
+                (reddit, hsl(20, 100%, 50%), "\f281"),
+                (email, hsl(0, 0%, 27%), "\f0e0", $fa-free-font, 900)
 );
 
 /* Thanks to https://bennettfeely.com/clippy/ for $masks */
 
 // name, clip mask
 $masks: (
-  (triangle, polygon(0 100%, 100% 100%, 50% 0)),
-  (trapezoid, polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)),
-  (parallelogram, polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)),
-  (rhombus, polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)),
-  (pentagon, polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)),
-  (hexagon, polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)),
-  (heptagon, polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%)),
-  (octagon, polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)),
-  (nonagon, polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%)),
-  (decagon, polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%)),
-  (bevel, polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)),
-  (rabbet, polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%)),
-  (left-arrow, polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%)),
-  (right-arrow, polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%)),
-  (left-point, polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%)),
-  (right-point, polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%)),
-  (left-cheveron, polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%)),
-  (right-cheveron, polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)),
-  (star, polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)),
-  (cross, polygon(10% 25%, 35% 25%, 35% 0%, 65% 0%, 65% 25%, 90% 25%, 90% 50%, 65% 50%, 65% 100%, 35% 100%, 35% 50%, 10% 50%)),
-  (message, polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)),
-  (close, polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)),
-  (circle, circle(50% at 50% 50%)),
-  (vertical-ellipse, ellipse(25% 40% at 50% 50%)),
-  (horizontal-ellipse, ellipse(40% 25% at 50% 50%))
+                (triangle, polygon(0 100%, 100% 100%, 50% 0)),
+                (trapezoid, polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)),
+                (parallelogram, polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)),
+                (rhombus, polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)),
+                (pentagon, polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)),
+                (hexagon, polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)),
+                (heptagon, polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%)),
+                (octagon, polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)),
+                (nonagon, polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%)),
+                (decagon, polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%)),
+                (bevel, polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)),
+                (rabbet, polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%)),
+                (left-arrow, polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%)),
+                (right-arrow, polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%)),
+                (left-point, polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%)),
+                (right-point, polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%)),
+                (left-cheveron, polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%)),
+                (right-cheveron, polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)),
+                (star, polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)),
+                (cross, polygon(10% 25%, 35% 25%, 35% 0%, 65% 0%, 65% 25%, 90% 25%, 90% 50%, 65% 50%, 65% 100%, 35% 100%, 35% 50%, 10% 50%)),
+                (message, polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)),
+                (close, polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)),
+                (circle, circle(50% at 50% 50%)),
+                (vertical-ellipse, ellipse(25% 40% at 50% 50%)),
+                (horizontal-ellipse, ellipse(40% 25% at 50% 50%))
 );
 
 /* ==========================================================================
@@ -140,13 +140,12 @@ $masks: (
   $prefixes: ('webkit', 'moz', 'ms', 'o');
   @if ($vendors) {
     @each $vendor in $vendors {
-      @if index($prefixes, $vendor){
+      @if index($prefixes, $vendor) {
         -#{$vendor}-#{$property}: #{$value};
       }
     }
     #{$property}: #{$value};
-  }
-  @else {
+  } @else {
     @each $prefix in $prefixes {
       -#{$prefix}-#{$property}: #{$value};
     }
@@ -337,6 +336,7 @@ a {
   color: inherit;
   text-decoration: none;
   transition: border-bottom-color $hover, color $hover;
+
   &:hover {
     border-bottom-color: transparent;
     color: $accent-color;
@@ -353,6 +353,7 @@ h6 {
   font-family: $header-font;
   letter-spacing: 0.25em;
   line-height: 1.65;
+
   a {
     border-bottom: 0;
   }
@@ -363,7 +364,7 @@ h6 {
     border-bottom: double 0.3em $border-color;
     margin-top: 2.5em;
   }
-  
+
   h2, h3, h4, h5, h6 {
     margin-top: 2em;
   }
@@ -375,7 +376,7 @@ h6 {
       border-bottom: none;
     }
   }
-  
+
   h1 {
     border-bottom: solid 0.1em $header-border-color;
     margin-top: 2.5em;
@@ -400,12 +401,15 @@ code {
   margin: 0 0.25em;
   padding: 0.25em 0.65em;
   overflow-x: auto;
+
   &::-webkit-scrollbar {
     height: 0.25em;
   }
+
   &::-webkit-scrollbar-track {
     -webkit-box-shadow: $shadow-scroll;
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: $utility-gray;
     outline: 1px solid $utility-gray-2;
@@ -419,6 +423,7 @@ pre {
   table-layout: fixed;
   line-height: 1.25;
   width: 100%;
+
   code {
     display: block;
     padding: 1em 1.5em;
@@ -434,6 +439,7 @@ hr {
 
 cite {
   margin: 1em 0;
+
   sup {
     left: .5em
   }
@@ -460,9 +466,11 @@ input[type="button"],
   text-align: center;
   text-transform: uppercase;
   width: fit-content;
+
   &:hover {
     border: 1px solid $accent-color;
     color: $accent-color !important;
+
     &:active {
       background-color: $active-color;
     }
@@ -487,11 +495,13 @@ textarea {
   padding: 0 1em;
   width: 100%;
   transition: border-color $hover;
+
   &:hover {
     &:not(:disabled) {
       border-color: $accent-color;
     }
   }
+
   &:focus,
   &:active {
     &:not(:disabled) {
@@ -531,6 +541,7 @@ table {
   @include for-laptop-up {
     width: 90%;
   }
+
   > thead {
     display: none;
     @include for-laptop-up {
@@ -538,6 +549,7 @@ table {
       display: table-header-group;
     }
   }
+
   > tbody {
     > tr {
       border-bottom: 1px solid $utility-white;
@@ -551,11 +563,13 @@ table {
           background-color: $accent-hover;
         }
       }
+
       > td {
         display: block;
         @include for-laptop-up {
           display: table-cell;
         }
+
         &[data-header]::before {
           color: $utility-gray-2;
           content: attr(data-header);
@@ -567,6 +581,7 @@ table {
             display: none;
           }
         }
+
         &:first-child {
           background-color: $headerbg-color;
           font-weight: bold;
@@ -575,6 +590,7 @@ table {
             background-color: unset;
             text-align: center;
           }
+
           &::after {
             content: "\f078";
             float: right;
@@ -587,6 +603,7 @@ table {
             }
           }
         }
+
         &:not(:first-child) {
           border-bottom: 1px solid $utility-white;
           opacity: 0;
@@ -602,6 +619,7 @@ table {
             z-index: 0;
           }
         }
+
         @include for-laptop-up {
           &[align="left"] {
             text-align: left;
@@ -614,30 +632,35 @@ table {
           }
         }
       }
+
       &.active > td {
         &:first-child {
           &::after {
             transform: rotateX(180deg);
           }
         }
+
         &:not(:first-child) {
           opacity: 1;
           position: relative;
           transition: all $hover;
           z-index: auto;
         }
+
         &:last-child {
           border-bottom: 0;
         }
       }
     }
   }
+
   > tfoot {
     display: none;
     @include for-laptop-up {
       display: table-footer-group;
     }
   }
+
   > thead > tr > th,
   > tbody > tr > th,
   > tfoot > tr > th,
@@ -650,15 +673,17 @@ table {
 }
 
 figure {
-  background:	$white;
+  background: $white;
   box-shadow: $shadow-1;
   margin: 10px auto;
   max-width: 85%;
   padding: 0.5em 0.5em 0 0.5em;
   width: fit-content;
+
   a {
     border: 0;
   }
+
   img {
     max-width: 100%;
   }
@@ -676,10 +701,11 @@ figcaption {
    ========================================================================== */
 
 .post {
-  background:	$white;
+  background: $white;
   margin: 1.5em auto;
   padding: 1em;
   max-width: 55em;
+
   > header {
     border-bottom: $primary-border;
     margin: -1em -1em 0 -1em;
@@ -690,23 +716,28 @@ figcaption {
       justify-content: space-between;
       text-align: left;
     }
+
     div {
       padding-bottom: 1em;
       @include for-laptop-up {
         padding: 1.5em;
       }
     }
+
     p {
       margin: -1em 0 0 0;
     }
   }
+
   > div > p,
   > p {
     text-align: justify;
   }
+
   footer {
     @include display-flex;
     flex-direction: column;
+
     .button {
       margin: 1em auto;
       width: 100%;
@@ -722,21 +753,26 @@ figcaption {
   overflow: hidden;
   padding-bottom: 33%;
   @include prefix(transform, perspective(1000px), (webkit, ms));
+
   img {
     position: absolute;
     max-height: 100%;
     transition: transform $hover-slow;
+
     &.stretchV {
       height: 100%;
     }
+
     &.stretchH {
       width: 100%;
     }
+
     &.cover {
       object-fit: cover;
       width: 100%;
     }
   }
+
   &[style]::before {
     content: "";
     position: absolute;
@@ -747,6 +783,7 @@ figcaption {
     @include prefix(filter, blur(8px), webkit);
     @include prefix(transform, scale(1.1), (webkit, ms));
   }
+
   &:hover {
     img {
       @include prefix(transform, scale(1.05), (webkit, ms));
@@ -775,6 +812,7 @@ figcaption {
     text-align: right;
     width: 25%;
   }
+
   time {
     font-size: 1.2em;
     font-weight: 800;
@@ -788,6 +826,7 @@ figcaption {
     flex-direction: row;
     justify-content: space-around;
   }
+
   ul {
     @include display-flex;
     flex-wrap: wrap;
@@ -800,6 +839,7 @@ figcaption {
       max-width: 50%;
       justify-content: center;
     }
+
     &::before {
       width: 40px;
       padding-right: 1em;
@@ -815,14 +855,17 @@ figcaption {
         text-align: center;
       }
     }
+
     li { // Fix Wrap Small
       font-family: $header-font;
       font-size: 0.6em;
       font-weight: 400;
       letter-spacing: 0.25em;
+
       &:not(:first-child) {
         margin-left: 1em;
       }
+
       a {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -849,6 +892,7 @@ figcaption {
   margin: 1.5em auto;
   padding: 1em;
   max-width: 55em;
+
   .button {
     margin: 1em;
     width: 50%;
@@ -866,6 +910,7 @@ figcaption {
       white-space: nowrap;
     }
   }
+
   &::before {
     font-family: $fa-free-font;
     font-weight: 900;
@@ -913,13 +958,16 @@ figcaption {
   top: 0;
   transition: $hover-slow;
   z-index: 20;
+
   &.active {
     box-shadow: $shadow-2;
     right: 0 !important;
+
     a {
       border-left: 0;
     }
   }
+
   h1 {
     font-size: 1em;
   }
@@ -930,9 +978,11 @@ figcaption {
   display: block;
   flex-basis: 100%;
   order: 2;
+
   &:hover {
     border-bottom: $secondary-border;
   }
+
   @include for-desktop-up {
     border-bottom: none;
     display: inline;
@@ -951,6 +1001,7 @@ figcaption {
   @include display-flex;
   flex-grow: 1;
   margin: 0;
+
   a {
     border: 0;
     font-size: 0.35em;
@@ -958,11 +1009,13 @@ figcaption {
     margin-left: 1.5em;
     opacity: 1;
     padding: 0;
+
     img {
       height: 4.8em;
       width: 12.6em;
     }
   }
+
   @include for-desktop-up {
     flex-grow: 0;
     &::after {
@@ -975,6 +1028,7 @@ figcaption {
     }
     a {
       min-width: 12.5em;
+
       img {
         margin-top: -0.2em;
       }
@@ -990,7 +1044,7 @@ figcaption {
     text-align: center;
     width: 61px;
     i {
-     vertical-align: middle;
+      vertical-align: middle;
     }
   }
 }
@@ -1001,6 +1055,7 @@ figcaption {
   @include for-desktop-up {
     display: none;
   }
+
   i {
     vertical-align: middle;
   }
@@ -1014,6 +1069,7 @@ figcaption {
   transition: $hover-slow;
   width: 300px;
   z-index: -1;
+
   &.active {
     opacity: 1;
     height: 50px;
@@ -1027,10 +1083,12 @@ figcaption {
   line-height: 1.75em;
   transition: $hover-slow;
   z-index: -1;
+
   &.active {
     opacity: 1;
     z-index: 0;
   }
+
   flex-direction: column;
   align-items: center;
   max-height: calc(100vh - 9.4em);
@@ -1038,6 +1096,7 @@ figcaption {
   margin-top: 1em;
   padding-bottom: 1em;
   width: 100%;
+
   .mini-post {
     box-shadow: $shadow-2;
     width: 90%;
@@ -1047,14 +1106,17 @@ figcaption {
     @include for-laptop-up {
       width: 50%
     }
+
     a {
       border-bottom: 0;
+
       &:hover {
-        color:inherit;
+        color: inherit;
         box-shadow: $shadow-3;
         transition: box-shadow $hover;
       }
     }
+
     header {
       @include for-laptop-up {
         @include display-flex;
@@ -1066,6 +1128,7 @@ figcaption {
         }
       }
     }
+
     main {
       padding: 0 1.25em .1em;
     }
@@ -1085,6 +1148,7 @@ figcaption {
   @include for-desktop-up {
     width: 100%;
   }
+
   header {
     min-height: 4em;
     padding: 0.5em 1.25em;
@@ -1095,9 +1159,11 @@ figcaption {
     @include for-desktop-up {
       border: 0;
     }
+
     h2 {
       font-size: 0.7em;
     }
+
     time {
       font-family: $header-font;
       font-size: 0.6em;
@@ -1105,6 +1171,7 @@ figcaption {
       text-transform: uppercase;
     }
   }
+
   .image {
     margin: 0;
   }
@@ -1128,10 +1195,12 @@ figcaption {
   flex-wrap: wrap;
   justify-content: center;
   padding-left: 0;
+
   li {
     margin: 0 0.5em;
     min-width: 20px;
     list-style-type: none;
+
     a {
       opacity: 0.6;
       border: none;
@@ -1170,6 +1239,7 @@ figcaption {
   align-items: center;
   @include display-flex;
   justify-content: space-between;
+
   .flyout-menu {
     right: -177px;
     width: 177px;
@@ -1194,17 +1264,20 @@ figcaption {
         outline: 1px solid $utility-gray-2;
       }
     }
+
     &.active {
       flex-wrap: wrap;
       @include for-desktop-up {
         box-shadow: none;
       }
     }
+
     .search-toggle {
       display: inline-flex;
       flex-basis: 100%;
       order: 1;
     }
+
     .share-toggle, .search-toggle {
       display: block;
       flex-basis: 100%;
@@ -1227,16 +1300,20 @@ figcaption {
   &.flyout-menu {
     right: -177px;
     width: 177px;
+
     a {
       border-left: 0;
     }
+
     .link {
       border-bottom: $secondary-border;
       display: block;
     }
+
     .no-lang {
       cursor: not-allowed;
       opacity: 0.25;
+
       span {
         &:hover {
           box-shadow: none;
@@ -1251,13 +1328,16 @@ figcaption {
   flex-direction: column;
   justify-content: flex-start;
   text-align: center;
+
   &.flyout-menu {
     width: 177px;
     right: -177px;
     padding: 1em;
+
     h1 {
       font-size: 0.9em;
     }
+
     h1,
     a {
       margin: 0.25em 0.25em;
@@ -1265,11 +1345,14 @@ figcaption {
         margin: 0 0.25em 0.75em 0;
       }
     }
+
     a p {
       visibility: hidden;
     }
+
     .share-btn {
       height: 50px;
+
       i {
         font-size: 1.5em;
       }
@@ -1285,18 +1368,22 @@ figcaption {
   margin-top: 0.5em;
   padding: 1em;
   text-align: center;
+
   a {
     border: 0;
   }
+
   p {
     opacity: 0.6;
   }
+
   header {
     h1 {
       font-size: 1.25em;
       margin-bottom: 0;
     }
   }
+
   main {
     p {
       font-size: 0.7em;
@@ -1310,27 +1397,32 @@ figcaption {
 
 #site-sidebar {
   grid-area: sidebar;
+
   header h1 {
     font-size: 1em;
   }
+
   > * {
     border-top: $primary-border;
     margin: 3em 2em 0 2em;
     padding-top: 3em;
   }
+
   > *:first-child {
     @include for-desktop-up {
       margin-top: 0;
     }
   }
-    ul {
-      font-family: $header-font;
-      font-size: 0.9em;
-      letter-spacing: 0.25em;
-      line-height: 1.65;
-      list-style: none;
-      padding: 0;
-    }
+
+  ul {
+    font-family: $header-font;
+    font-size: 0.9em;
+    letter-spacing: 0.25em;
+    line-height: 1.65;
+    list-style: none;
+    padding: 0;
+  }
+
   footer {
     margin: auto;
     width: max-content;
@@ -1344,6 +1436,7 @@ figcaption {
   @include display-flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
   > header {
     -webkit-box-flex: 1;
     @include prefix(flex, 1 1 100%, (ms, webkit));
@@ -1377,6 +1470,7 @@ figcaption {
   right: 15px;
   border: 0;
   transition: color $hover, transform $hover;
+
   &:hover {
     color: $accent-color !important;
     transform: translateY(-10px);
@@ -1391,6 +1485,7 @@ figcaption {
   @include for-laptop-up {
     justify-content: flex-start;
   }
+
   a {
     margin-bottom: 0.5em;
     padding: 0.5em;
@@ -1398,10 +1493,12 @@ figcaption {
     @include for-laptop-up {
       margin-right: 0.25em;
     }
+
     i {
       font-size: 1em;
     }
   }
+
   p {
     display: none;
   }
@@ -1430,6 +1527,7 @@ figcaption {
     grid-template-rows: auto auto auto 1fr;
     padding: 0 2.5em;
   }
+
   &.overlay {
     opacity: 0.25;
   }
@@ -1454,12 +1552,14 @@ figcaption {
   &.loading {
     opacity: 0.5;
   }
+
   .reply-notice {
     .comment-avatar {
       width: 2em;
       height: 2em;
       margin: 0 0.6em;
     }
+
     .reply-close-btn {
       padding: unset;
       border: none;
@@ -1467,12 +1567,15 @@ figcaption {
       font-size: 1em;
       line-height: 0;
       height: 0;
+
       &:hover {
         border: none;
       }
     }
+
     .reply-name {
       vertical-align: middle;
+
       &::before {
         font-family: $fa-free-font;
         font-weight: 900;
@@ -1488,6 +1591,7 @@ figcaption {
   border: 1px solid $accent-color;
   background: $accent-hover;
 }
+
 .submit-failed {
   border: 1px solid $warning-color;
   background: $warning-hover;
@@ -1504,6 +1608,7 @@ figcaption {
     @include for-mobile-l-up {
       border-radius: 0;
     }
+
     div {
       @include display-flex;
       flex-direction: column;
@@ -1514,6 +1619,7 @@ figcaption {
       }
     }
   }
+
   &.comment-reply {
     margin-left: $avatar-size/2;
     @include for-mobile-l-up {
@@ -1562,6 +1668,7 @@ figcaption {
 
 .comment-reply-btn {
   border: 0;
+
   &::before {
     font-family: $fa-free-font;
     font-weight: 900;
@@ -1569,6 +1676,7 @@ figcaption {
     margin-right: .5em;
     width: 20px;
   }
+
   @include for-mobile-l-up {
     margin-right: 1.5em;
   }
@@ -1610,12 +1718,14 @@ figcaption {
   color: $white;
   text-align: center;
   transition: background-color $hover;
+
   &:active {
     position: relative;
     top: 2px;
     box-shadow: none;
     color: $dark-white;
   }
+
   &:hover {
     color: $white;
   }
@@ -1629,16 +1739,18 @@ figcaption {
     @if $font-weight {
       font-weight: $font-weight;
     }
+
     &:hover {
       background-color: darken($color, 10%);
     }
+
     &::before {
-    @if $font-family {
-      font-family: $font-family;
-    } @else {
-      font-family: $fa-brands-font;
-    }
-    content: $icon;
+      @if $font-family {
+        font-family: $font-family;
+      } @else {
+        font-family: $fa-brands-font;
+      }
+      content: $icon;
     }
   }
 }
@@ -1745,9 +1857,9 @@ figcaption {
 }
 
 @media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 
@@ -2065,9 +2177,11 @@ figcaption {
     &[align="left"] {
       text-align: left !important;
     }
+
     &[align="center"] {
       text-align: center !important;
     }
+
     &[align="right"] {
       text-align: right !important;
     }
@@ -2076,6 +2190,54 @@ figcaption {
   tbody tr {
     &:nth-child(even) {
       background: rgba(160, 160, 160, 0.05) !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   Business Page Styles
+   ========================================================================== */
+
+.no-bottom-border {
+  border-bottom: none;
+}
+
+/* 特定商取引法の表のスタイル改善 */
+.post .content table {
+  > thead {
+    display: table-header-group !important;
+    background-color: transparent !important;
+
+    > tr > th {
+      background-color: transparent !important;
+      color: var(--body-font-color) !important;
+      border: 1px solid hsl(0, 0%, 100%) !important;
+    }
+  }
+
+  > tbody > tr {
+    > td {
+      display: table-cell !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 0 !important;
+      border-bottom: 1px solid hsl(0, 0%, 100%) !important;
+      text-align: left !important;
+
+      &[data-header]::before {
+        display: none !important;
+      }
+
+      &:first-child {
+        background-color: transparent !important;
+        font-weight: normal !important;
+        color: var(--body-font-color) !important;
+        text-align: left !important;
+
+        &::after {
+          display: none !important;
+        }
+      }
     }
   }
 }
