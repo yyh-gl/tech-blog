@@ -24,17 +24,17 @@ Server-side Kotlinやってます。
 ## バックエンド
 
 - Go
-  - Echo
-  - Goa
-  - mux
+    - Echo
+    - Goa
+    - mux
 - Kotlin
-  - Spring Boot
+    - Spring Boot
 - Java
-  - Spring Boot
+    - Spring Boot
 - PHP
-  - Laravel
-  - FuelPHP
-  - CakePHP
+    - Laravel
+    - FuelPHP
+    - CakePHP
 - Perl
 - ShellScript
 
@@ -42,7 +42,7 @@ Server-side Kotlinやってます。
 
 - TypeScript
 - React，Next.js
-- Vue.js，Nuxt.js
+- Vue.js，Nuxt
 - HTML + CSS + JavaScript
 
 ## 仮想化技術
@@ -61,9 +61,9 @@ Server-side Kotlinやってます。
 ## インフラ（アプリケーション稼働環境）
 
 - AWS
-  - ECS
+    - ECS
 - プライベートクラウド
-  - k8s
+    - k8s
 - オンプレ
 
 ## IaC
@@ -100,7 +100,7 @@ LINE Digital Frontier株式会社に入社しました。
 ## ・LINEマンガの開発/運用：2023年1月〜現在
 
 - ロール：
-  - バックエンドエンジニア
+    - バックエンドエンジニア
 - 言語：Kotlin/Java（Spring Boot）, Perl
 - インフラ：社内インフラ（クラウド）
 
@@ -133,7 +133,7 @@ DMMのサービス全般で使用される商品レビュー基盤システム�
 ## ・DMMポイントクラブの新規開発/運用：2020年1月〜2022年12月
 
 - ロール：
-  - Webチームのチームリーダー兼エンジニア（プレイングマネージャー）
+    - Webチームのチームリーダー兼エンジニア（プレイングマネージャー）
 - 言語：Go（Goa），JavaScript（React，TypeScript）
 - インフラ：AWS，GCP
 - IaC：CloudFormation
@@ -217,27 +217,28 @@ APIサーバおよびWebフロントの開発に参加
 # 登壇歴
 
 - [Kotlin Fest 2025 『Kotlin言語仕様書への招待 〜コードの「なぜ」を読み解く〜』](https://2025.kotlinfest.dev/timetable/1719023400_a/)
-  - [スライド（Google Slides）](https://docs.google.com/presentation/d/1ow0ofWuFuyz9BnSKNo27ZL_1NETMaQW3TJh7qC1x3jk/edit?usp=sharing)
-  - [スライド（Speaker Deck）](https://speakerdeck.com/yyh_gl/kotlin-language-specification)
-  - [登壇動画](https://youtu.be/SdpiQTpMv_g?si=iSakiv-5dVfGbmLC)
-  - 関連記事: [『Kotlin言語仕様書への招待 @Kotlin Fest 2025』](https://tech.yyh-gl.dev/blog/kotlin-fest-2025/)
+    - [スライド（Google Slides）](https://docs.google.com/presentation/d/1ow0ofWuFuyz9BnSKNo27ZL_1NETMaQW3TJh7qC1x3jk/edit?usp=sharing)
+    - [スライド（Speaker Deck）](https://speakerdeck.com/yyh_gl/kotlin-language-specification)
+    - [登壇動画](https://youtu.be/SdpiQTpMv_g?si=iSakiv-5dVfGbmLC)
+    -
+    関連記事: [『Kotlin言語仕様書への招待 @Kotlin Fest 2025』](https://tech.yyh-gl.dev/blog/kotlin-fest-2025/)
 - [入門Go言語仕様輪読会 『Assignability』](https://gospecreading.connpass.com/event/205420/)
-  - [スライド](https://speakerdeck.com/yyh_gl/go-language-specification-assignability)
+    - [スライド](https://speakerdeck.com/yyh_gl/go-language-specification-assignability)
 - [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜 『事業をグロースさせるためにエンジニアができること』](https://dmm.connpass.com/event/195179/)
-  - [スライド](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
+    - [スライド](https://speakerdeck.com/yyh_gl/what-engineers-can-do-to-grow-a-business)
 - [DMM.go #2 『Goaを使ってAPIサーバ開発してみた』](https://dmm.connpass.com/event/165864/)
-  - [スライド](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
+    - [スライド](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)
 - [DMM.go #1 『VCR in Go：モック自動生成で楽しちゃう話』](https://dmm.connpass.com/event/157222/)
-  - [スライド](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
+    - [スライド](https://speakerdeck.com/yyh_gl/vcr-in-go-motukuzi-dong-sheng-cheng-dele-sitiyauhua)
 
 # 記事
 
 - [『職種の垣根を越え議論しながら開発できる環境｜LM Server DevチームHondaさん』](https://blog.ldfcorp.com/n/n8df97747e414)
-  - LINE Digital Frontier株式会社の社員インタビューを受けました
+    - LINE Digital Frontier株式会社の社員インタビューを受けました
 - [『ドキュメントとコードが乖離しないようにDMM.com のエンジニアが教えるGoaを使ったAPIサーバーの作りかた』](https://logmi.jp/tech/articles/323091)
-  - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事
+    - [DMM.go #2 発表内容](https://speakerdeck.com/yyh_gl/develop-api-server-by-goa)の書き起こし記事
 - [『よんでますよ、本田さん #5』](https://inside.dmm.com/entry/2020/03/23/yondemasu05)
-  - DMM社内でのGoに関する取り組みについて
+    - DMM社内でのGoに関する取り組みについて
 
 # OSS
 
