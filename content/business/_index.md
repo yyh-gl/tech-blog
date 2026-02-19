@@ -46,7 +46,7 @@ Webアプリケーションのバックエンド・フロントエンド開発�
 ### [urLogs（ユアログ）](https://ur-logs.yyh-gl.dev/)
 
 <a class="no-bottom-border" href="https://ur-logs.yyh-gl.dev/">
-  <img src="https://tech.yyh-gl.dev/img/business/urlogs.png" width="200" alt="urLogs（ユアログ）" >
+  <img src="https://tech.yyh-gl.dev/img/business/urlogs.webp" width="200" alt="urLogs（ユアログ）" >
 </a>
 
 **「時間を可視化し、人生を豊かに」**
