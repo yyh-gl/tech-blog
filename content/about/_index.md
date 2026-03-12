@@ -216,6 +216,9 @@ APIサーバおよびWebフロントの開発に参加
 
 # 登壇歴
 
+- [Kotlinで挑む3社3様の技術課題 〜DDDによるリプレイス、モバイル基盤、大規模トラフィック〜](https://asken.connpass.com/event/384559/)
+    - [スライド（Google Slides）](https://docs.google.com/presentation/d/1GhH-gb2mbuQvKv3EgFAiBFmNsF0zMahdCwemrJmAmhM/edit?usp=sharing)
+    - [スライド（Speaker Deck）](https://speakerdeck.com/yyh_gl/coroutine-in-line-manga)
 - [Kotlin Fest 2025 『Kotlin言語仕様書への招待 〜コードの「なぜ」を読み解く〜』](https://2025.kotlinfest.dev/timetable/1719023400_a/)
     - [スライド（Google Slides）](https://docs.google.com/presentation/d/1ow0ofWuFuyz9BnSKNo27ZL_1NETMaQW3TJh7qC1x3jk/edit?usp=sharing)
     - [スライド（Speaker Deck）](https://speakerdeck.com/yyh_gl/kotlin-language-specification)
