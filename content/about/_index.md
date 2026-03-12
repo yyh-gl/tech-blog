@@ -223,8 +223,7 @@ APIサーバおよびWebフロントの開発に参加
     - [スライド（Google Slides）](https://docs.google.com/presentation/d/1ow0ofWuFuyz9BnSKNo27ZL_1NETMaQW3TJh7qC1x3jk/edit?usp=sharing)
     - [スライド（Speaker Deck）](https://speakerdeck.com/yyh_gl/kotlin-language-specification)
     - [登壇動画](https://youtu.be/SdpiQTpMv_g?si=iSakiv-5dVfGbmLC)
-    -
-    関連記事: [『Kotlin言語仕様書への招待 @Kotlin Fest 2025』](https://tech.yyh-gl.dev/blog/kotlin-fest-2025/)
+    - 関連記事: [『Kotlin言語仕様書への招待 @Kotlin Fest 2025』](https://tech.yyh-gl.dev/blog/kotlin-fest-2025/)
 - [入門Go言語仕様輪読会 『Assignability』](https://gospecreading.connpass.com/event/205420/)
     - [スライド](https://speakerdeck.com/yyh_gl/go-language-specification-assignability)
 - [DMM meetup#22〜DMMのプラットフォームを支える総合トップとDMM PointClub〜 『事業をグロースさせるためにエンジニアができること』](https://dmm.connpass.com/event/195179/)
