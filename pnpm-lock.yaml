@@ -7,6 +7,10 @@ settings:
 overrides:
   glob: ^13.0.0
   js-yaml: ^4.1.1
+  '@modelcontextprotocol/sdk': '>=1.26.0'
+  minimatch: '>=9.0.7'
+  lodash: '>=4.17.23'
+  qs: '>=6.14.2'
 
 importers:
 
