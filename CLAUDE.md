@@ -74,6 +74,12 @@ textlint with `textlint-rule-preset-ja-technical-writing` enforces Japanese writ
 
 Uses `tcardgen` tool inside the Docker container, configured by `template.yaml`. Outputs WebP to `static/img/YYYY/MM/<slug>/featured.webp`.
 
+### Theme
+
+**NEVER modify files under `themes/hugo-future-imperfect-slim/`.** This directory is a third-party theme and must not be changed.
+
+All UI customizations must be done in `layouts/` (Hugo's template override mechanism).
+
 ### Config
 
 Hugo config is in `config/_default/config.toml`. Environment-specific overrides in `config/production/`.

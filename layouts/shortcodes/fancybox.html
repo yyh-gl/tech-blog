@@ -18,35 +18,28 @@
 -->
 {{ $numOfParams := len .Params}}
 {{ if and (ge $numOfParams 2) (le $numOfParams 4) }}
+  {{ $path := "" }}
+  {{ $file := "" }}
+  {{ $caption := "" }}
+  {{ $gallery := "" }}
   {{ if .IsNamedParams }}
-    {{ $.Scratch.Set "path" (.Get "path") }}
-    {{ $.Scratch.Set "file" (.Get "file") }}
-    {{ $.Scratch.Set "caption"  (.Get "caption") }}
-    {{ $.Scratch.Set "gallery" (.Get "gallery") }}
+    {{ $path = .Get "path" }}
+    {{ $file = .Get "file" }}
+    {{ $caption = .Get "caption" }}
+    {{ $gallery = .Get "gallery" }}
   {{ else }}
-    {{ $.Scratch.Set "path" (.Get 0) }}
-    {{ $.Scratch.Set "file" (.Get 1) }}
+    {{ $path = .Get 0 }}
+    {{ $file = .Get 1 }}
     {{ if ge $numOfParams 3 }}
-      {{ $.Scratch.Set "caption" (.Get 2) }}
-    {{ else }}
-      {{ $.Scratch.Set "caption" "" }}
+      {{ $caption = .Get 2 }}
     {{ end }}
     {{ if ge $numOfParams 4 }}
-      {{ $.Scratch.Set "gallery" (.Get 3) }}
-    {{ else }}
-      {{ $.Scratch.Set "gallery" ""}}
+      {{ $gallery = .Get 3 }}
     {{ end }}
   {{ end }}
-  {{ $.Scratch.Set "structType" "shortcode" }}
-  {{ $path := $.Scratch.Get "path" }}
   {{ if eq $path "date" }}
-    {{ $.Scratch.Set "path" "/img/" }}
-    {{ $.Scratch.Add "path" (.Page.Date.Format "2006/01") }}
+    {{ $path = printf "/img/%s" (.Page.Date.Format "2006/01") }}
   {{ end }}
-  {{ $path := $.Scratch.Get "path" }}
-  {{ $file := $.Scratch.Get "file" }}
-  {{ $caption  := $.Scratch.Get "caption" }}
-  {{ $gallery := $.Scratch.Get "gallery" }}
   {{ $imgRelPath := path.Join $path $file }}
   {{ $fsPath := path.Join "static" $imgRelPath }}
   {{ $width := 0 }}

@@ -12,7 +12,7 @@ module.exports = {
       defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
       safelist: {
         // Fancybox が動的に付与するクラスを保持
-        patterns: [/^fancybox/, /^is-/, /^has-/, /^fb-/],
+        patterns: [/^fancybox/, /^is-/, /^has-/, /^fb-/, /compensate-for-scrollbar/],
       },
     }),
   ],
