@@ -1,0 +1,3 @@
+{{ with .OutputFormats.Get "RSS" }}
+    <li><a href="{{ .RelPermalink }}" type="application/rss+xml" target="_blank" aria-label="RSS"><i class="fas fa-rss" aria-hidden="true"></i></a></li>
+{{ end }}

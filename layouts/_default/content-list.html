@@ -4,7 +4,7 @@
     {{ .Render "featured" }}
   </div>
   <footer>
-    <a href="{{ .RelPermalink }}" class="button big">{{ i18n "read_more" }}</a>
+    {{ $readMore := i18n "read_more" }}<a href="{{ .RelPermalink }}" class="button big" aria-label="{{ .Title }} - {{ $readMore }}">{{ $readMore }}</a>
     {{ .Render "blog-stats" }}
   </footer>
 </article>
