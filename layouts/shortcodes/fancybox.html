@@ -1,0 +1,60 @@
+<!--
+    Inside Double Brackets:
+    fancybox path="path" file="file" caption="caption" gallery="gallery"
+    fancybox "path" "file" "caption" "gallery"
+    # of Params: 2-4
+    Positional or Named
+    position 0, name: path
+        Can pass in the following values:
+            title: will use /img/LinkTitle as the path
+            date: will use /img/Year/Month as the path
+            /path/to/img: can pass in explicit path to the image
+    position 1, name: file
+        Name of the file including the file extension
+    position 2, name: caption
+        Text for the caption of the image
+    position 3, name: gallery
+        Name of the gallery the image should be included in
+-->
+{{ $numOfParams := len .Params}}
+{{ if and (ge $numOfParams 2) (le $numOfParams 4) }}
+  {{ $path := "" }}
+  {{ $file := "" }}
+  {{ $caption := "" }}
+  {{ $gallery := "" }}
+  {{ if .IsNamedParams }}
+    {{ $path = .Get "path" }}
+    {{ $file = .Get "file" }}
+    {{ $caption = .Get "caption" }}
+    {{ $gallery = .Get "gallery" }}
+  {{ else }}
+    {{ $path = .Get 0 }}
+    {{ $file = .Get 1 }}
+    {{ if ge $numOfParams 3 }}
+      {{ $caption = .Get 2 }}
+    {{ end }}
+    {{ if ge $numOfParams 4 }}
+      {{ $gallery = .Get 3 }}
+    {{ end }}
+  {{ end }}
+  {{ if eq $path "date" }}
+    {{ $path = printf "/img/%s" (.Page.Date.Format "2006/01") }}
+  {{ end }}
+  {{ $imgRelPath := path.Join $path $file }}
+  {{ $fsPath := path.Join "static" $imgRelPath }}
+  {{ $width := 0 }}
+  {{ $height := 0 }}
+  {{ if os.FileExists $fsPath }}
+    {{ $cfg := imageConfig $fsPath }}
+    {{ $width = $cfg.Width }}
+    {{ $height = $cfg.Height }}
+  {{ end }}
+  <figure>
+    {{ if and $width $height }}
+    <a data-fancybox="{{ $gallery }}" href="{{ $imgRelPath | relURL }}" data-caption="{{ $caption }}"><img src="{{ $imgRelPath | relURL }}" width="{{ $width }}" height="{{ $height }}"></a>
+    {{ else }}
+    <a data-fancybox="{{ $gallery }}" href="{{ $imgRelPath | relURL }}" data-caption="{{ $caption }}"><img src="{{ $imgRelPath | relURL }}"></a>
+    {{ end }}
+    <figcaption>{{ $caption }}</figcaption>
+  </figure>
+{{ end }}

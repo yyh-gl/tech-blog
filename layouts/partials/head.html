@@ -27,9 +27,11 @@
       {{- if eq . "default" -}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.6/css/academicons.min.css">
+        {{- $academicons := resources.Get "css/academicons.css" | css.PostCSS | minify | fingerprint -}}
+        <link rel="stylesheet" href="{{ $academicons.RelPermalink }}" integrity="{{ $academicons.Data.Integrity }}">
         <script src="https://kit.fontawesome.com/04f97481a8.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+        {{- $fancybox := resources.Get "css/fancybox.css" | css.PostCSS | minify | fingerprint -}}
+        <link rel="stylesheet" href="{{ $fancybox.RelPermalink }}" integrity="{{ $fancybox.Data.Integrity }}">
         {{- $mainCSSOptions := (dict "targetPath" "css/main.min.css" "outputStyle" "compressed") -}}
         {{- $main := resources.Get "scss/main.scss" | css.Sass $mainCSSOptions | resources.Fingerprint -}}
         <link rel="stylesheet" href="{{ $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}">
