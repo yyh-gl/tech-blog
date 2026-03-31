@@ -80,7 +80,6 @@
     {{- .Scratch.Set "Author" .Site.Params.meta.author -}}
   {{ end }}
   <link rel="alternate" type="application/atom+xml" title="Atom" href="/index.xml"/>
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.14.0/dist/axios.min.js"></script>
   <script src="{{ "js/vue.min.js" | relURL }}"></script>
   <script src="{{ "js/good-counter.js" | relURL }}" defer></script>
   {{ partial "google_analytics.html" . }}
