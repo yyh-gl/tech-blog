@@ -27,15 +27,15 @@ Vue.component('good-counter', {
       this.display_button_name = '<i class="fas fa-heart"></i>';
     }
 
-    axios
-      .get(reqUrl, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {}
-      })
-      .then(response => {
-        this.good_count = response.data.count;
+    fetch(reqUrl, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.good_count = data.count;
       })
   },
   methods: {
@@ -56,10 +56,12 @@ Vue.component('good-counter', {
       let reqUrl = 'https://hobigon.yyh-gl.dev/api/v1/blogs/' + title+ '/like';
 
       if(event) {
-        axios
-          .post(reqUrl)
-          .then(response => {
-            this.good_count = response.data.count;
+        fetch(reqUrl, {
+          method: 'POST',
+        })
+          .then(response => response.json())
+          .then(data => {
+            this.good_count = data.count;
 
             // ローカルストレージにいいねされたことを保存
             localStorage.setItem(`${title}`, 'like');
