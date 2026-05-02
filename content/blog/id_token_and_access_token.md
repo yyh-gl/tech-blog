@@ -6,7 +6,7 @@ date = 2019-06-19T09:00:00+09:00
 description = ""
 title = "【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史"
 type = "post"
-draft = false
+draft = true
 [[images]]
 src = "img/2019/06/id_token_and_access_token/featured.webp"
 alt = "featured"
