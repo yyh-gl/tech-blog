@@ -2929,46 +2929,7 @@ Messageコンポーネントではmessage propsの変更を察知し、必要分
 └main.go
 &lt;/code>&lt;/pre>
 &lt;h2 id="gazzelは-go-modules-と-dep-に対応">Gazzelは Go Modules と dep に対応&lt;/h2>
-&lt;p>go.mod, Gopkg.lockファイルから依存パッケージを取りこみWORKSPACEファイルに書き込んでくれる&lt;/p></description></item><item><title>【OAuth 2.0 / OIDC】アクセストークンとIDトークンの違い ＋ OIDC誕生の歴史</title><link>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</link><pubDate>Wed, 19 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/id_token_and_access_token/</guid><description>&lt;h1 id="はじめに">はじめに&lt;/h1>
-&lt;p>Web API のセキュリティ周りについて調べていると、&lt;br>
-「OAuth 2.0」や「OpenID Connect」という単語をよく見かけると思います。&lt;/p>
-&lt;p>さらに調べると、「アクセストークン」と「IDトークン」という単語に出会いました。&lt;/p>
-&lt;br>
-&lt;p>しかし、この2つのトークンの違いについて、&lt;br>
-いまいち理解ができていなかったので、今回は両者の違いを調べてみました。&lt;/p>
-&lt;p>加えて、トークンについて調べる中で、&lt;br>
-OpenID Connectが生まれた経緯も知ることができたのでメモしておきます。&lt;/p>
-&lt;h1 id="2つのトークンの違い">2つのトークンの違い&lt;/h1>
-&lt;p>アクセストークン と IDトークン、両者は役割が大きく異なります。&lt;/p>
-&lt;ul>
-&lt;li>アクセストークン：認可（リソースへのアクセスコントロール＝あるリソースへの権限（readやwriteなど）を持っているかどうか確認すること）&lt;/li>
-&lt;li>IDトークン：認証（その人が誰かを確認すること）&lt;/li>
-&lt;/ul>
-&lt;p>名前のままでした。&lt;/p>
-&lt;p>認可に使うためのいろいろな情報が詰まっているのがアクセストークンで、
-認証に使うためのいろいろな情報が詰まっているのがIDトークンです。&lt;/p>
-&lt;h1 id="openid-connectが生まれた経緯">OpenID Connectが生まれた経緯&lt;/h1>
-&lt;p>OAuth 2.0およびOpenID Connectについて調べていると、&lt;br>
-「OpenID Connect は OAuth 2.0 を拡張した仕様」であるという記述を見かけました。&lt;/p>
-&lt;p>どうしてOpenID Connectが必要になったのか、&lt;br>
-この辺の経緯について述べていきます。&lt;/p>
-&lt;h1 id="oauth-20-は-認可-の仕組み">OAuth 2.0 は 認可 の仕組み&lt;/h1>
-&lt;p>まずは、OAuth 2.0について見ていきます。&lt;/p>
-&lt;br>
-&lt;p>&lt;u>OAuth 2.0 は 認可 の仕組みであり、 認証 の仕組みではない&lt;/u>&lt;br>
-のですが、実際にはOAuth 2.0を認証用途で使っているシステムは多く存在します。&lt;/p>
-&lt;p>OAuth 2.0 で認証を行うことの問題点については、&lt;br>
-&lt;a href="https://www.sakimura.org/2012/02/1487/" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
-の記事に詳しく書いてあります。&lt;/p>
-&lt;p>上記記事より、OAuth 2.0 による認証の問題点は、&lt;br>
-&lt;u>クライアント（アプリケーション）側でトークンの正当性を確かめる術がない&lt;/u> ことであるとわかります。&lt;/p>
-&lt;p>なお、ここでいう「正当性」に関して補足しておくと、&lt;br>
-「正当なトークン」とは、クライントが受け取ったトークンがそのクライアントのために用意されたものであることを意味します。&lt;/p>
-&lt;p>つまり、クライアント側でトークンの正当性を確かめる術がない＝クライアントが自身のためのトークンであることを検証する術がないという意味です。&lt;br>
-（トークンの改ざん検知うんぬんの話ではありませんのでご注意ください）&lt;/p>
-&lt;blockquote>
-&lt;p>「OAuth 2.0 による認証の問題点」という言葉を使っていますが、先述のとおりOAuth 2.0は認可のための仕組みなので、厳密には「認証の問題」なんて存在しません。
-説明しやすくするためにこういった言葉を使っています。&lt;/p></description></item><item><title>【徒然なるままに】サービス発案における主観と客観のバランスについて</title><link>https://tech.yyh-gl.dev/blog/my_thinking_about_planning/</link><pubDate>Tue, 18 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/my_thinking_about_planning/</guid><description>&lt;h1 id="研修での-サービス発案-をやった">研修での サービス発案 をやった&lt;/h1>
+&lt;p>go.mod, Gopkg.lockファイルから依存パッケージを取りこみWORKSPACEファイルに書き込んでくれる&lt;/p></description></item><item><title>【徒然なるままに】サービス発案における主観と客観のバランスについて</title><link>https://tech.yyh-gl.dev/blog/my_thinking_about_planning/</link><pubDate>Tue, 18 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/my_thinking_about_planning/</guid><description>&lt;h1 id="研修での-サービス発案-をやった">研修での サービス発案 をやった&lt;/h1>
 &lt;p>新卒研修で サービス発案 について学び、実際に&lt;/p>
 &lt;ul>
 &lt;li>問題提議&lt;/li>
