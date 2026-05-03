@@ -1953,37 +1953,7 @@ fmt.Println(&amp;quot;yyh-gl.&amp;quot;)
 &lt;p>&amp;lt;33分00秒ぐらいから&amp;gt;&lt;/p>
 &lt;p>デザインパターンの部分（2部、3部あたり）はもちろん大事であるが、&lt;br>
 エヴァンス本の本質的な部分ではない。&lt;/p>
-&lt;br></description></item><item><title>Goの参照渡しについて調べてみた</title><link>https://tech.yyh-gl.dev/blog/go-always-passing-by-value/</link><pubDate>Sun, 14 Jun 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-always-passing-by-value/</guid><description>&lt;h1 id="goにおける参照渡しポインタの値渡し">Goにおける参照渡し＝ポインタの値渡し&lt;/h1>
-&lt;p>&lt;u>Goでは関数にパラメータを渡すとき、全て値渡しで実現されています。&lt;/u>&lt;br>
-（C派生の言語はすべてそうらしいです）&lt;/p>
-&lt;p>じゃあ、参照渡しって何？ってなりますよね。&lt;/p>
-&lt;p>&lt;u>参照渡し＝ポインタの値渡し&lt;/u>です。&lt;br>
-つまり、ポインタそのものを渡しているわけではなく、ポインタのコピーを渡しています。&lt;br>&lt;/p>
-&lt;br>
-&lt;p>値渡しと参照渡しの差は、内部の値をコピーするかどうかです。&lt;br>
-こちらについては後ほど例を交えて説明します。&lt;/p>
-&lt;br>
-&lt;p>今回の内容はGo公式ドキュメントの&lt;a href="https://golang.org/doc/faq#Pointers" target="_blank" rel="noopener noreferrer">『Pointers and Allocation』&lt;/a>
-の章に &lt;br>
-詳細な記載があります。&lt;/p>
-&lt;p>本記事では、&lt;a href="https://golang.org/doc/faq#Pointers" target="_blank" rel="noopener noreferrer">『Pointers and Allocation』&lt;/a>
-から要点を抜粋して紹介します。&lt;/p>
-&lt;h1 id="値渡しと参照渡しの違いは内部値のコピー有無">値渡しと参照渡しの違いは内部値のコピー有無&lt;/h1>
-&lt;p>まずは、先述した&lt;/p>
-&lt;blockquote>
-&lt;p>値渡しと参照渡しの差は、内部の値をコピーするかどうかです。&lt;/p>&lt;/blockquote>
-&lt;p>について詳しく見ていきます。&lt;/p>
-&lt;p>公式ドキュメント&lt;a href="https://golang.org/doc/faq#pass_by_value" target="_blank" rel="noopener noreferrer">『When are function parameters passed by value?』&lt;/a>
-の節に以下の記述があります。&lt;/p>
-&lt;blockquote>
-&lt;p>For instance, passing an int value to a function makes a copy of the int, and passing a pointer value makes a copy of the pointer, but not the data it points to.&lt;/p>
-&lt;p>たとえば、int値を関数に渡すとintのコピーが作成され、ポインター値を渡すとポインターのコピーが作成されますが、ポインターが指すデータは作成されません。&lt;/p>&lt;/blockquote>
-&lt;p>つまり、&lt;/p>
-&lt;ul>
-&lt;li>値渡し：値のコピーが作成される&lt;/li>
-&lt;li>参照渡し：ポインタのコピーは作成されるが、ポインタが指すデータ（値）のコピーは作成しない&lt;/li>
-&lt;/ul>
-&lt;p>といった差があります。&lt;/p></description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://tech.yyh-gl.dev/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-ddd-entity-vo/</guid><description>&lt;h1 id="goでddd">GoでDDD&lt;/h1>
+&lt;br></description></item><item><title>【Go+DDD】エンティティと値オブジェクトの実装方法（自己流）</title><link>https://tech.yyh-gl.dev/blog/go-ddd-entity-vo/</link><pubDate>Fri, 08 May 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-ddd-entity-vo/</guid><description>&lt;h1 id="goでddd">GoでDDD&lt;/h1>
 &lt;p>今担当しているプロジェクトでは、GoでAPIを作っています。&lt;br>
 このプロジェクトでは、DDDの考え方や設計パターンも取り入れています。&lt;/p>
 &lt;p>今回はDDDの設計パターンの中でもEntityとValue Object（VO）について、&lt;br>
