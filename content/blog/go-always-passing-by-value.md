@@ -6,7 +6,7 @@ date = 2020-06-14T09:00:00+09:00
 description = "Goでは全てが値渡し"
 title = "Goの参照渡しについて調べてみた"
 type = "post"
-draft = false
+draft = true
 [[images]]
   src = "img/2020/06/go-always-passing-by-value/featured.webp"
   alt = "featured"
