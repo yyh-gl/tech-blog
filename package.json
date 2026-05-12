@@ -12,9 +12,6 @@
     "url": "https://github.com/yyh-gl/tech-blog/issues"
   },
   "homepage": "https://github.com/yyh-gl/tech-blog#readme",
-  "scripts": {
-    "preinstall": "npx npm-force-resolutions"
-  },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^8.0.0",
     "ajv": "^8.0.0",
@@ -27,15 +24,17 @@
     "textlint-rule-preset-ja-technical-writing": "^12.0.0",
     "trim": ">=0.0.3"
   },
-  "resolutions": {
-    "glob": "^13.0.0",
-    "js-yaml": "^4.1.1",
-    "@modelcontextprotocol/sdk": ">=1.26.0",
-    "minimatch": ">=9.0.7",
-    "lodash": ">=4.17.23",
-    "qs": ">=6.14.2",
-    "flatted": ">=3.4.2",
-    "brace-expansion": ">=5.0.5",
-    "path-to-regexp": ">=8.4.0"
+  "pnpm": {
+    "overrides": {
+      "glob": "^13.0.0",
+      "js-yaml": "^4.1.1",
+      "@modelcontextprotocol/sdk": ">=1.26.0",
+      "minimatch": ">=9.0.7",
+      "lodash": ">=4.17.23",
+      "qs": ">=6.14.2",
+      "flatted": ">=3.4.2",
+      "brace-expansion": ">=5.0.5",
+      "path-to-regexp": ">=8.4.0"
+    }
   }
 }
