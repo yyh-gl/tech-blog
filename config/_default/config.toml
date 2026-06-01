@@ -54,7 +54,7 @@ languageMenu = false
 
 [params.intro]
 header = "yyh-gl's Tech Blog"
-paragraph = "技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"
+paragraph = "テックブログです。主な扱いはバックエンド技術と設計です。"
 rssIntro = true
 socialIntro = true
 hideWhenSingleColumn = false
