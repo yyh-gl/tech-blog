@@ -2,9 +2,9 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-terminal">
-      <span class="prompt">$ </span><span class="cmd">whoami</span>
+      <span class="prompt">$ </span><span class="cmd">cat title.txt</span>
     </div>
-    <h1><span class="at">@</span>yyh-gl</h1>
+    <h1>{{ .Site.Title }}</h1>
     <p class="hero-desc">{{ .Site.Params.intro.paragraph }}</p>
     <div class="hero-tags">
       <span class="hero-tag">#Backend</span>
