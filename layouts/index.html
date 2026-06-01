@@ -15,26 +15,24 @@
     </div>
     <div class="hero-social">
       {{ with .Site.Params.social.github }}
-        <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i> {{ . }}
-        </a>
+      <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> {{ . }}
+      </a>
       {{ end }}
       {{ with .Site.Params.social.x }}
-        <a href="https://x.com/{{ . }}" target="_blank" rel="noopener">
-          <i class="fab fa-x-twitter"></i> @{{ . }}
-        </a>
+      <a href="https://x.com/{{ . }}" target="_blank" rel="noopener">
+        <i class="fab fa-x-twitter"></i> @{{ . }}
+      </a>
       {{ end }}
       {{ with .Site.Params.social.bluesky }}
-        <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener">
-          <i class="fas fa-cloud"></i> {{ . }}
-        </a>
+      <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener">
+        <i class="fas fa-cloud"></i> {{ . }}
+      </a>
       {{ end }}
     </div>
   </div>
-  <div class="hero-mascot">
-    <img src="/img/mascot/capybara.png" alt="マスコットキャラ カピバラ" title="マスコットのカピバラくん"
-         onerror="this.src='/img/mascot/capybara-placeholder.svg'">
-    <span class="mascot-label">// mascot</span>
+  <div class="hero-capybara">
+    <img src="/img/site/capybara.webp" alt="妻作：カピバラ" title="妻作：カピバラ">
   </div>
 </section>
 
@@ -48,41 +46,42 @@
 
 <div class="post-grid">
   {{ range $posts }}
-    <article class="post-card">
-      {{ with .Params.images }}
-        {{ range first 1 . }}
-          <img class="post-card-img" src="/{{ .src }}" alt="{{ .alt }}" loading="lazy">
-        {{ end }}
-      {{ end }}
-      <div class="post-card-body">
-        <div class="post-card-meta">
-          <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
-          {{ with .Params.categories }}
-            <div class="post-card-cats">
-              {{ range . }}
-                <a href="/categories/{{ . | urlize }}/" class="post-card-cat">{{ . }}</a>
-              {{ end }}
-            </div>
+  <article class="post-card">
+    {{ with .Params.images }}
+    {{ range first 1 . }}
+    <img class="post-card-img" src="/{{ .src }}" alt="{{ .alt }}" loading="lazy">
+    {{ end }}
+    {{ end }}
+    <div class="post-card-body">
+      <div class="post-card-meta">
+        <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
+        {{ with .Params.categories }}
+        <div class="post-card-cats">
+          {{ range . }}
+          <a href="/categories/{{ . | urlize }}/" class="post-card-cat">{{ . }}</a>
           {{ end }}
         </div>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ with .Params.description }}
-          <p class="post-card-desc">{{ . }}</p>
         {{ end }}
-        <div class="post-card-footer">
-          <a href="{{ .RelPermalink }}" class="read-more">
-            <i class="fas fa-terminal"></i> read_more()
-          </a>
-          {{ if .Site.Params.ReadingTime }}
-            <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }}min</span>
-          {{ end }}
-        </div>
       </div>
-    </article>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      {{ with .Params.description }}
+      <p class="post-card-desc">{{ . }}</p>
+      {{ end }}
+      <div class="post-card-footer">
+        <a href="{{ .RelPermalink }}" class="read-more">
+          <i class="fas fa-terminal"></i> read_more()
+        </a>
+        {{ if .Site.Params.ReadingTime }}
+        <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }}min</span>
+        {{ end }}
+      </div>
+    </div>
+  </article>
   {{ end }}
 </div>
 
 <div class="view-more">
-  <a href="/blog/"><i class="fas fa-chevron-right"></i> {{ i18n "more_posts" | default "すべての記事を見る" }}</a>
+  <a href="/blog/"><i class="fas fa-chevron-right"></i> {{ i18n "more_posts" | default "すべての記事を見る"
+    }}</a>
 </div>
 {{ end }}
