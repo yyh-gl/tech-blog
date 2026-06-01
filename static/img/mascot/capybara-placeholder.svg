@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="200" height="240">
+  <!-- Body -->
+  <ellipse cx="100" cy="160" rx="65" ry="55" fill="#c8843a" stroke="#5a3010" stroke-width="2"/>
+  <!-- Head -->
+  <ellipse cx="100" cy="105" rx="45" ry="38" fill="#c8843a" stroke="#5a3010" stroke-width="2"/>
+  <!-- Graduation cap board -->
+  <rect x="60" y="68" width="80" height="8" rx="2" fill="#2d2d2d" stroke="#1a1a1a" stroke-width="1"/>
+  <!-- Cap top -->
+  <rect x="78" y="52" width="44" height="18" rx="3" fill="#2d2d2d"/>
+  <!-- Tassel string -->
+  <line x1="140" y1="70" x2="148" y2="88" stroke="#d4a017" stroke-width="2"/>
+  <!-- Tassel -->
+  <circle cx="148" cy="90" r="4" fill="#d4a017"/>
+  <!-- Eyes -->
+  <circle cx="86" cy="100" r="6" fill="#2d1a0a"/>
+  <circle cx="114" cy="100" r="6" fill="#2d1a0a"/>
+  <circle cx="88" cy="98" r="2" fill="white"/>
+  <circle cx="116" cy="98" r="2" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="100" cy="113" rx="8" ry="5" fill="#a06030"/>
+  <!-- Nostrils -->
+  <circle cx="96" cy="113" r="2" fill="#7a4020"/>
+  <circle cx="104" cy="113" r="2" fill="#7a4020"/>
+  <!-- Smile -->
+  <path d="M92 120 Q100 127 108 120" stroke="#5a3010" stroke-width="2" fill="none"/>
+  <!-- Belly -->
+  <ellipse cx="100" cy="168" rx="35" ry="28" fill="#d4963a" opacity="0.6"/>
+  <!-- Arms/Feet -->
+  <ellipse cx="55" cy="195" rx="18" ry="12" fill="#9a6020" stroke="#5a3010" stroke-width="1"/>
+  <ellipse cx="145" cy="195" rx="18" ry="12" fill="#9a6020" stroke="#5a3010" stroke-width="1"/>
+  <!-- Claws left -->
+  <line x1="42" y1="202" x2="38" y2="210" stroke="#5a3010" stroke-width="2"/>
+  <line x1="50" y1="205" x2="47" y2="213" stroke="#5a3010" stroke-width="2"/>
+  <line x1="58" y1="205" x2="56" y2="214" stroke="#5a3010" stroke-width="2"/>
+  <!-- Claws right -->
+  <line x1="132" y1="202" x2="128" y2="210" stroke="#5a3010" stroke-width="2"/>
+  <line x1="142" y1="205" x2="140" y2="213" stroke="#5a3010" stroke-width="2"/>
+  <line x1="152" y1="202" x2="151" y2="211" stroke="#5a3010" stroke-width="2"/>
+  <!-- Tail -->
+  <ellipse cx="165" cy="175" rx="8" ry="5" fill="#9a6020"/>
+</svg>

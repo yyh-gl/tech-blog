@@ -1,17 +1,15 @@
 {{ define "main" }}
-  <ul class="posts">
-    <header>
-      <h1>{{ i18n .Data.Plural }}</h1>
-    </header>
-    {{ range .Data.Terms.ByCount }}
-      <li>
-        <article>
-          <header>
-            <a href="{{ .Page.Permalink }}">{{ .Page.Title }}<span style="float:right; margin-right: 2em;">{{ .Count }}</span></a>
-          </header>
-        </article>
-      </li>
-    {{ end }}
-  </ul>
-  {{ $.Scratch.Set "showCategories" false }}
+<div class="list-header">
+  <h1><span class="prompt">$ </span>{{ .Title }}</h1>
+</div>
+<div class="taxonomy-grid">
+  {{ range .Data.Terms.Alphabetical }}
+    <div class="taxonomy-item">
+      <a href="{{ .Page.RelPermalink }}">
+        {{ .Page.Title }}
+        <span class="taxonomy-count">{{ .Count }}</span>
+      </a>
+    </div>
+  {{ end }}
+</div>
 {{ end }}
