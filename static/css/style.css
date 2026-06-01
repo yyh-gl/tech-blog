@@ -249,6 +249,7 @@ a:hover {
 /* ── Social badges ─────────────────────────────────── */
 .hero-social {
   display: flex;
+  flex-wrap: wrap;
   gap: .75rem;
   margin-top: .75rem;
 }
@@ -1060,6 +1061,25 @@ code[class*="language-"], pre[class*="language-"] {
 
   .nav-links a span {
     display: none;
+  }
+
+  .hero-social {
+    gap: .5rem;
+  }
+
+  .hero-social a {
+    font-size: .7rem;
+    padding: .25rem .55rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-social a .social-label {
+    display: none;
+  }
+
+  .hero-social a {
+    padding: .4rem .55rem;
   }
 }
 
