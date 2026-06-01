@@ -84,6 +84,15 @@
       {{ with .Site.Params.social.speaker_deck }}
         <a href="https://speakerdeck.com/{{ . }}" target="_blank" rel="noopener"><i class="fab fa-speaker-deck"></i> Speaker Deck</a>
       {{ end }}
+      {{ with .Site.Params.social.linkedin }}
+        <a href="https://www.linkedin.com/in/{{ . }}" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      {{ end }}
+      {{ with .Site.Params.social.crowdin }}
+        <a href="https://crowdin.com/profile/{{ . }}" target="_blank" rel="noopener"><i class="fa-solid fa-square-pen"></i> Crowdin</a>
+      {{ end }}
+      {{ with .OutputFormats.Get "RSS" }}
+        <a href="{{ .RelPermalink }}" type="application/rss+xml" target="_blank"><i class="fas fa-rss"></i> RSS</a>
+      {{ end }}
     </div>
     <p class="footer-copy">
       &copy; {{ now.Year }} yyh-gl &mdash; Built with <span class="heart">&#9829;</span> &amp; Hugo
