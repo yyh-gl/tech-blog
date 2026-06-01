@@ -1,215 +1,159 @@
 {{ define "main" }}
-<article class="post">
-  {{ .Render "header" }}
-  <div class="content">
-    {{ .Content }}
+<div class="list-header">
+  <h1><span class="prompt">$ </span>{{ .Title }}</h1>
+</div>
 
-    {{ $blogPages := where .Site.RegularPages "Section" "blog" }}
-    {{ $totalPosts := len $blogPages }}
+{{ $blogPages := where .Site.RegularPages "Section" "blog" }}
+{{ $totalPosts := len $blogPages }}
 
-    {{/* カテゴリー集計 */}}
-    {{ $categoryMap := dict }}
-    {{ range $blogPages }}
-      {{ range .Params.categories }}
-        {{ $count := index $categoryMap . | default 0 }}
-        {{ $categoryMap = merge $categoryMap (dict . (add $count 1)) }}
-      {{ end }}
-    {{ end }}
+{{/* カテゴリー集計 */}}
+{{ $categoryMap := dict }}
+{{ range $blogPages }}
+  {{ range .Params.categories }}
+    {{ $count := index $categoryMap . | default 0 }}
+    {{ $categoryMap = merge $categoryMap (dict . (add $count 1)) }}
+  {{ end }}
+{{ end }}
 
-    {{/* 年ごとの投稿数集計 */}}
-    {{ $yearMap := dict }}
-    {{ range $blogPages }}
-      {{ if .Date }}
-        {{ $year := .Date.Format "2006" }}
-        {{ $count := index $yearMap $year | default 0 }}
-        {{ $yearMap = merge $yearMap (dict $year (add $count 1)) }}
-      {{ end }}
-    {{ end }}
+{{/* 年ごとの投稿数集計 */}}
+{{ $yearMap := dict }}
+{{ range $blogPages }}
+  {{ if .Date }}
+    {{ $year := .Date.Format "2006" }}
+    {{ $count := index $yearMap $year | default 0 }}
+    {{ $yearMap = merge $yearMap (dict $year (add $count 1)) }}
+  {{ end }}
+{{ end }}
 
-    {{/* 文字数集計 */}}
-    {{ $totalChars := 0 }}
-    {{ $postWithContent := 0 }}
-    {{ range $blogPages }}
-      {{ $content := .Plain }}
-      {{ $chars := len $content }}
-      {{ if gt $chars 0 }}
-        {{ $totalChars = add $totalChars $chars }}
-        {{ $postWithContent = add $postWithContent 1 }}
-      {{ end }}
-    {{ end }}
-    {{ $avgChars := 0 }}
-    {{ if gt $postWithContent 0 }}
-      {{ $avgChars = div $totalChars $postWithContent }}
-    {{ end }}
+{{/* 文字数集計 */}}
+{{ $totalChars := 0 }}
+{{ $postWithContent := 0 }}
+{{ range $blogPages }}
+  {{ $content := .Plain }}
+  {{ $chars := len $content }}
+  {{ if gt $chars 0 }}
+    {{ $totalChars = add $totalChars $chars }}
+    {{ $postWithContent = add $postWithContent 1 }}
+  {{ end }}
+{{ end }}
+{{ $avgChars := 0 }}
+{{ if gt $postWithContent 0 }}
+  {{ $avgChars = div $totalChars $postWithContent }}
+{{ end }}
 
-    {{/* タグ集計 */}}
-    {{ $tagMap := dict }}
-    {{ range $blogPages }}
-      {{ range .Params.tags }}
-        {{ $count := index $tagMap . | default 0 }}
-        {{ $tagMap = merge $tagMap (dict . (add $count 1)) }}
-      {{ end }}
-    {{ end }}
+{{/* タグ集計 */}}
+{{ $tagMap := dict }}
+{{ range $blogPages }}
+  {{ range .Params.tags }}
+    {{ $count := index $tagMap . | default 0 }}
+    {{ $tagMap = merge $tagMap (dict . (add $count 1)) }}
+  {{ end }}
+{{ end }}
 
-    <section class="stats-section">
-      <h2>📊 基本統計</h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">総投稿数</div>
-          <div class="stat-value">{{ $totalPosts }}</div>
-          <div class="stat-unit">記事</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">平均文字数</div>
-          <div class="stat-value">{{ $avgChars }}</div>
-          <div class="stat-unit">文字</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">総文字数</div>
-          <div class="stat-value">{{ $totalChars }}</div>
-          <div class="stat-unit">文字</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="stats-section">
-      <h2>📅 年別投稿数</h2>
-      <div class="chart-container">
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>年</th>
-              <th>投稿数</th>
-              <th>割合</th>
-              <th>グラフ</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{ range $year, $count := $yearMap }}
-            {{ $percentage := div (mul $count 100.0) (float $totalPosts) }}
-            <tr>
-              <td class="year-cell">{{ $year }}</td>
-              <td class="count-cell">{{ $count }}</td>
-              <td class="percentage-cell">{{ printf "%.1f" $percentage }}%</td>
-              <td class="bar-cell">
-                <div class="bar-container">
-                  <div class="bar" style="width: {{ $percentage }}%"></div>
-                </div>
-              </td>
-            </tr>
-            {{ end }}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="stats-section">
-      <h2>📂 カテゴリー別統計</h2>
-      <div class="chart-container">
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>カテゴリー</th>
-              <th>記事数</th>
-              <th>割合</th>
-              <th>グラフ</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{ $categoryList := slice }}
-            {{ range $category, $count := $categoryMap }}
-              {{ $categoryList = $categoryList | append (dict "name" $category "count" $count) }}
-            {{ end }}
-            {{ range sort $categoryList "count" "desc" }}
-            {{ $percentage := div (mul .count 100.0) (float $totalPosts) }}
-            <tr>
-              <td class="category-cell">
-                <a href="{{ path.Join "categories" (.name | urlize | lower) | relLangURL }}/">{{ .name }}</a>
-              </td>
-              <td class="count-cell">{{ .count }}</td>
-              <td class="percentage-cell">{{ printf "%.1f" $percentage }}%</td>
-              <td class="bar-cell">
-                <div class="bar-container">
-                  <div class="bar" style="width: {{ $percentage }}%"></div>
-                </div>
-              </td>
-            </tr>
-            {{ end }}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="stats-section">
-      <h2>📈 文字数分布</h2>
-      {{ $ranges := slice
-        (dict "label" "～1000文字" "min" 0 "max" 1000)
-        (dict "label" "1001～3000文字" "min" 1001 "max" 3000)
-        (dict "label" "3001～5000文字" "min" 3001 "max" 5000)
-        (dict "label" "5001～10000文字" "min" 5001 "max" 10000)
-        (dict "label" "10001文字～" "min" 10001 "max" 999999999)
-      }}
-
-      <div class="chart-container">
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>文字数</th>
-              <th>記事数</th>
-              <th>割合</th>
-              <th>グラフ</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{ range $rangeItem := $ranges }}
-              {{ $count := 0 }}
-              {{ $minChars := $rangeItem.min }}
-              {{ $maxChars := $rangeItem.max }}
-              {{ range $blogPages }}
-                {{ $chars := len .Plain }}
-                {{ if and (ge $chars $minChars) (le $chars $maxChars) }}
-                  {{ $count = add $count 1 }}
-                {{ end }}
-              {{ end }}
-              {{ $percentage := 0.0 }}
-              {{ if gt $totalPosts 0 }}
-                {{ $percentage = div (mul $count 100.0) (float $totalPosts) }}
-              {{ end }}
-              <tr>
-                <td class="range-cell">{{ $rangeItem.label }}</td>
-                <td class="count-cell">{{ $count }}</td>
-                <td class="percentage-cell">{{ printf "%.1f" $percentage }}%</td>
-                <td class="bar-cell">
-                  <div class="bar-container">
-                    <div class="bar" style="width: {{ $percentage }}%"></div>
-                  </div>
-                </td>
-              </tr>
-            {{ end }}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="stats-section">
-      <h2>📝 文字数ランキング (トップ10)</h2>
-      <div class="ranking-list">
-        {{ $pageList := slice }}
-        {{ range $blogPages }}
-          {{ $pageList = $pageList | append (dict "page" . "chars" (len .Plain)) }}
-        {{ end }}
-        {{ $sortedByChars := sort $pageList "chars" "desc" }}
-        {{ range $index, $item := first 10 $sortedByChars }}
-        <div class="ranking-item">
-          <span class="rank-number">{{ add $index 1 }}位</span>
-          <span class="rank-chars">{{ $item.chars }} 文字</span>
-          <a href="{{ $item.page.RelPermalink }}">{{ $item.page.Title }}</a>
-          <span class="post-date">{{ $item.page.Date.Format "2006-01-02" }}</span>
-        </div>
-        {{ end }}
-      </div>
-    </section>
-
+<div class="section-header">
+  <h2><span class="cmd-prefix">$ </span><span class="cmd-text">基本統計</span></h2>
+  <div class="divider"></div>
+</div>
+<div class="stats-grid" style="margin-bottom:2.5rem;">
+  <div class="stat-card">
+    <div class="stat-value">{{ $totalPosts }}</div>
+    <div class="stat-label">// 総投稿数</div>
   </div>
-</article>
+  <div class="stat-card">
+    <div class="stat-value">{{ $avgChars }}</div>
+    <div class="stat-label">// 平均文字数</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">{{ $totalChars }}</div>
+    <div class="stat-label">// 総文字数</div>
+  </div>
+</div>
+
+<div class="section-header">
+  <h2><span class="cmd-prefix">$ </span><span class="cmd-text">年別投稿数</span></h2>
+  <div class="divider"></div>
+</div>
+<div style="overflow-x:auto;margin-bottom:2.5rem;">
+  <table style="width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:.85rem;">
+    <thead>
+      <tr>
+        <th style="text-align:left;padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">年</th>
+        <th style="text-align:right;padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">投稿数</th>
+        <th style="padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">グラフ</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $year, $count := $yearMap }}
+      {{ $percentage := div (mul $count 100.0) (float $totalPosts) }}
+      <tr>
+        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text);">{{ $year }}</td>
+        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);text-align:right;color:var(--text);">{{ $count }}</td>
+        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);">
+          <div style="background:var(--bg3);border-radius:4px;height:8px;width:200px;">
+            <div style="background:var(--blue);border-radius:4px;height:8px;width:{{ $percentage }}%;"></div>
+          </div>
+        </td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</div>
+
+<div class="section-header">
+  <h2><span class="cmd-prefix">$ </span><span class="cmd-text">カテゴリー別統計</span></h2>
+  <div class="divider"></div>
+</div>
+<div style="overflow-x:auto;margin-bottom:2.5rem;">
+  <table style="width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:.85rem;">
+    <thead>
+      <tr>
+        <th style="text-align:left;padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">カテゴリー</th>
+        <th style="text-align:right;padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">記事数</th>
+        <th style="padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">グラフ</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ $categoryList := slice }}
+      {{ range $category, $count := $categoryMap }}
+        {{ $categoryList = $categoryList | append (dict "name" $category "count" $count) }}
+      {{ end }}
+      {{ range sort $categoryList "count" "desc" }}
+      {{ $percentage := div (mul .count 100.0) (float $totalPosts) }}
+      <tr>
+        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);">
+          <a href="{{ path.Join "categories" (.name | urlize | lower) | relLangURL }}/" style="color:var(--blue);">{{ .name }}</a>
+        </td>
+        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);text-align:right;color:var(--text);">{{ .count }}</td>
+        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);">
+          <div style="background:var(--bg3);border-radius:4px;height:8px;width:200px;">
+            <div style="background:var(--blue);border-radius:4px;height:8px;width:{{ $percentage }}%;"></div>
+          </div>
+        </td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</div>
+
+<div class="section-header">
+  <h2><span class="cmd-prefix">$ </span><span class="cmd-text">文字数ランキング (Top 10)</span></h2>
+  <div class="divider"></div>
+</div>
+{{ $pageList := slice }}
+{{ range $blogPages }}
+  {{ $pageList = $pageList | append (dict "page" . "chars" (len .Plain)) }}
+{{ end }}
+{{ $sortedByChars := sort $pageList "chars" "desc" }}
+<div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem;">
+  {{ range $index, $item := first 10 $sortedByChars }}
+  <a href="{{ $item.page.RelPermalink }}"
+     style="display:flex;align-items:center;gap:1rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;transition:all .2s;text-decoration:none;"
+     onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
+    <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--blue);min-width:2rem;">#{{ add $index 1 }}</span>
+    <span style="font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);min-width:6rem;">{{ $item.chars }}文字</span>
+    <span style="flex:1;color:var(--text);font-size:.9rem;">{{ $item.page.Title }}</span>
+    <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--text-muted);">{{ $item.page.Date.Format "2006-01-02" }}</span>
+  </a>
+  {{ end }}
+</div>
 {{ end }}

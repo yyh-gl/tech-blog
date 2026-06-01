@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div class="list-header">
+  <h1>
+    <span class="prompt">$ </span>
+    {{ if .IsHome }}
+      blog
+    {{ else if .IsSection }}
+      {{ .Title }}
+    {{ else }}
+      {{ .Title }}
+    {{ end }}
+  </h1>
+  <p class="list-count">{{ i18n "posts_count" (len .Pages) | default (printf "%d posts" (len .Pages)) }}</p>
+</div>
+
+{{ if .Content }}
+  <div class="post-content" style="margin-bottom:2rem;">{{ .Content }}</div>
+{{ end }}
+
+{{ if .Pages }}
+  <div class="post-grid">
+    {{ range .Pages }}
+      <article class="post-card">
+        {{ with .Params.images }}
+          {{ range first 1 . }}
+            <img class="post-card-img" src="/{{ .src }}" alt="{{ .alt }}" loading="lazy">
+          {{ end }}
+        {{ end }}
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
+            {{ with .Params.categories }}
+              <div class="post-card-cats">
+                {{ range . }}
+                  <a href="/categories/{{ . | urlize }}/" class="post-card-cat">{{ . }}</a>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.description }}
+            <p class="post-card-desc">{{ . }}</p>
+          {{ end }}
+          <div class="post-card-footer">
+            <a href="{{ .RelPermalink }}" class="read-more">
+              <i class="fas fa-terminal"></i> read_more()
+            </a>
+            {{ if .Site.Params.ReadingTime }}
+              <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }}min</span>
+            {{ end }}
+          </div>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+
+  {{ template "_internal/pagination.html" . }}
+{{ else }}
+  <p style="color:var(--text-muted);font-family:var(--font-mono)">// No posts found</p>
+{{ end }}
+{{ end }}

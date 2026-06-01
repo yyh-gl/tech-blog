@@ -3,7 +3,6 @@
 baseurl = "https://tech.yyh-gl.dev/"
 DefaultContentLanguage = "ja"
 title = "Indexing my brain"
-theme = "hugo-future-imperfect-slim"
 disqusShortname = ""
 pluralizeListTitles = false
 disableLanguages = []

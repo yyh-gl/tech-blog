@@ -1,32 +1,71 @@
 {{ define "main" }}
-  <article class="post">
-    {{ .Render "header" }}
-    <div id="socnet-share">
-      {{ partial "share-buttons" . }}
+<article class="post-article">
+  <header class="post-header">
+    <div class="post-breadcrumb">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/blog/">Blog</a>
+      {{ with .Params.categories }}
+        {{ range first 1 . }}
+          <span class="sep">/</span>
+          <a href="/categories/{{ . | urlize }}/">{{ . }}</a>
+        {{ end }}
+      {{ end }}
     </div>
-    <div class="content">
-      {{ .Render "featured" }}
-      {{ .Content | replaceRE "<pre" "<pre class=\"line-numbers\"" | safeHTML }}
+    <h1>{{ .Title }}</h1>
+    <div class="post-meta">
+      <span class="meta-item"><i class="far fa-calendar-alt"></i> {{ .Date.Format "2006-01-02" }}</span>
+      {{ with .Params.author }}<span class="meta-item"><i class="far fa-user"></i> {{ . }}</span>{{ end }}
+      {{ if .Site.Params.ReadingTime }}<span class="meta-item"><i class="far fa-clock"></i> {{ .ReadingTime }} min read</span>{{ end }}
     </div>
-    <footer>
-      {{ .Render "blog-stats" }}
-    </footer>
-    <div class="fix">
-      <a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『{{ .Page.Title }}』" target="_blank" rel="noopener noreferrer">
-        修正提案
-      </a>
-    </div>
-  </article>
-<!-- TODO: そのうちコメント機能つけてもいいなぁ -->
-<!--  {{ if not ( eq .Params.comments false) }}-->
-<!--    {{ .Render "comments" }}-->
-<!--  {{ end }}-->
-  <div class="pagination">
-    {{ if .NextInSection }}
-      <a href="{{ .NextInSection.RelPermalink }}" class="button left"><span>{{ .NextInSection.Title }}</span></a>
+    {{ with .Params.tags }}
+      <div class="post-tags">
+        {{ range . }}<span class="post-tag">#{{ . }}</span>{{ end }}
+      </div>
     {{ end }}
-    {{ if .PrevInSection }}
-      <a href="{{ .PrevInSection.RelPermalink }}" class="button right"><span>{{ .PrevInSection.Title }}</span></a>
+  </header>
+
+  {{ with .Params.images }}
+    {{ range first 1 . }}
+      <img class="post-featured-img" src="/{{ .src }}" alt="{{ .alt }}">
     {{ end }}
+  {{ end }}
+
+  <div class="post-content">
+    {{ .Content | replaceRE "<pre" "<pre class=\"line-numbers\"" | safeHTML }}
   </div>
+
+  <footer class="post-footer">
+    {{ $blog_url := .RelPermalink }}
+    {{ $blog_title := .Title }}
+    <div id="blog-stats" style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+      <span style="font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);">
+        <i class="fas fa-eye"></i>
+        <span id="good-count-{{ .File.UniqueID }}">-</span> likes
+      </span>
+    </div>
+
+    <a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『{{ .Title }}』"
+       target="_blank" rel="noopener noreferrer" class="fix-link">
+      <i class="fas fa-code-pull-request"></i> 修正提案
+    </a>
+
+    <nav class="post-nav">
+      {{ if .NextInSection }}
+        <a href="{{ .NextInSection.RelPermalink }}" class="nav-prev">
+          <span class="nav-label"><i class="fas fa-chevron-left"></i> 前の記事</span>
+          <span class="nav-title">{{ .NextInSection.Title }}</span>
+        </a>
+      {{ else }}
+        <span></span>
+      {{ end }}
+      {{ if .PrevInSection }}
+        <a href="{{ .PrevInSection.RelPermalink }}" class="nav-next">
+          <span class="nav-label">次の記事 <i class="fas fa-chevron-right"></i></span>
+          <span class="nav-title">{{ .PrevInSection.Title }}</span>
+        </a>
+      {{ end }}
+    </nav>
+  </footer>
+</article>
 {{ end }}
