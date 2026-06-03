@@ -4,7 +4,12 @@
     <div class="hero-terminal">
       <span class="prompt">$ </span><span class="cmd">cat title.txt</span>
     </div>
-    <h1>{{ .Site.Title }}</h1>
+    <div class="hero-title-row">
+      <h1>{{ .Site.Title }}</h1>
+      <div class="hero-capybara hero-capybara--sp">
+        <img src="/img/site/capybara.webp" alt="妻作：カピバラ" title="妻作：カピバラ">
+      </div>
+    </div>
     <p class="hero-desc">{{ .Site.Params.intro.paragraph }}</p>
     <div class="hero-tags">
       <span class="hero-tag">#Backend</span>
@@ -46,7 +51,7 @@
       {{ end }}
     </div>
   </div>
-  <div class="hero-capybara">
+  <div class="hero-capybara hero-capybara--pc">
     <img src="/img/site/capybara.webp" alt="妻作：カピバラ" title="妻作：カピバラ">
   </div>
 </section>
