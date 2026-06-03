@@ -310,6 +310,7 @@ a:hover {
 }
 
 .post-card {
+  position: relative;
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -379,8 +380,24 @@ a:hover {
   color: var(--text);
 }
 
+/* カード全体をクリック可能にする (stretched link) */
+.post-card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.post-card:hover h3 a,
 .post-card h3 a:hover {
   color: var(--blue);
+}
+
+/* stretched link より前面に出して個別リンクを保つ */
+.post-card-cat,
+.read-more {
+  position: relative;
+  z-index: 1;
 }
 
 .post-card-desc {
