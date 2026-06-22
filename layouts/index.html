@@ -10,7 +10,7 @@
         <img src="{{ "/img/site/capybara.webp" | relURL }}" alt="妻作：カピバラ" title="妻作：カピバラ">
       </div>
     </div>
-    <p class="hero-desc">{{ .Site.Params.intro.paragraph }}</p>
+    <p class="hero-desc">{{ .Site.Params.intro.paragraph | safeHTML }}</p>
     <div class="hero-tags">
       {{ range .Site.Params.heroTags }}
       <span class="hero-tag">{{ . }}</span>
