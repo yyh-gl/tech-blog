@@ -68,7 +68,7 @@ width = "80"
 alt = "yyh-gl's icon"
 
 [params.sidebar]
-about = "東京で働くソフトウェアエンジニアです。バックエンドがメインですが、フロントエンドやインフラもさわっています。"
+about = "東京で働くソフトウェアエンジニアです。<br>バックエンドがメインですが、フロントエンドやインフラもさわっています。"
 postAmount = 3
 categories = false
 categoriesByCount = false
