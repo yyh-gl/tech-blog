@@ -10,7 +10,9 @@
       {{ .Title }}
     {{ end }}
   </h1>
-  <p class="list-count">{{ i18n "posts_count" (len .Pages) | default (printf "%d posts" (len .Pages)) }}</p>
+  {{ if .Pages }}
+    <p class="list-count">{{ i18n "posts_count" (len .Pages) | default (printf "%d posts" (len .Pages)) }}</p>
+  {{ end }}
 </div>
 
 {{ if .Content }}
@@ -18,8 +20,9 @@
 {{ end }}
 
 {{ if .Pages }}
+  {{ $paginator := .Paginate .Pages }}
   <div class="post-grid">
-    {{ range .Pages }}
+    {{ range $paginator.Pages }}
       <article class="post-card">
         {{ with .Params.images }}
           {{ range first 1 . }}
@@ -55,7 +58,7 @@
   </div>
 
   {{ template "_internal/pagination.html" . }}
-{{ else }}
+{{ else if not .Content }}
   <p style="color:var(--text-muted);font-family:var(--font-mono)">// No posts found</p>
 {{ end }}
 {{ end }}
