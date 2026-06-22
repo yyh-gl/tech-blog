@@ -2,7 +2,7 @@
 # https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
 baseurl = "https://tech.yyh-gl.dev/"
 DefaultContentLanguage = "ja"
-title = "yyh-gl's Tech Blog"
+title = "Indexing my brain"
 theme = "hugo-future-imperfect-slim"
 disqusShortname = ""
 pluralizeListTitles = false
@@ -46,7 +46,7 @@ msColor = "#ffffff"
 iOSColor = "#ffffff"
 
 [params.header]
-navbarTitle = "yyh-gl's Tech Blog"
+navbarTitle = "Indexing my brain"
 dynamicTitles = true
 searchMenu = false
 shareMenu = false
@@ -54,7 +54,7 @@ shareMenu = false
 languageMenu = false
 
 [params.intro]
-header = "yyh-gl's Tech Blog"
+header = "Indexing my brain"
 paragraph = "技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"
 rssIntro = true
 socialIntro = true
