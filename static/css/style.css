@@ -1,3 +1,6 @@
+/* ── Google Fonts ──────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
 /* =========================================================
    Tech Blog — Custom Theme
    Base color: #6495ED (Cornflower Blue)
@@ -60,9 +63,6 @@ a {
 a:hover {
   color: var(--blue-light);
 }
-
-/* ── Google Fonts ──────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* ── Navigation ────────────────────────────────────── */
 .site-nav {
@@ -657,6 +657,25 @@ a:hover {
   padding: 0;
   font-size: .88rem;
   color: var(--text);
+}
+
+/* Prism line-numbers: <pre> に language-* クラスが付かない構造のため、
+   行番号の絶対配置基準とコードの左余白をここで補う */
+.post-content pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+}
+
+.post-content pre.line-numbers > code {
+  position: relative;
+}
+
+.post-content pre.line-numbers .line-numbers-rows {
+  top: 0;
+  left: 0;
+  width: 3em;
+  padding: 1.25rem 0;
+  border-right: 1px solid var(--border);
 }
 
 .post-content img {
