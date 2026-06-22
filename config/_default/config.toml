@@ -34,6 +34,7 @@ socialShare = []
 #["twitter", "facebook", "reddit", "linkedin", "stumbleupon", "pinterest", "email"]
 hideEmptyStats = false
 mainSections = ["post"]
+heroTags = ["#Backend", "#Go", "#Kotlin", "#DDD", "#Architecture"]
 
 [params.meta]
 description = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
