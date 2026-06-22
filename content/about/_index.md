@@ -3,6 +3,10 @@ title = "About yyh-gl"
 date = "2020-04-04"
 +++
 
+<p align="center">
+  <img src="https://tech.yyh-gl.dev/img/main/logo.webp" width="200" alt="yyh-gl logo">
+</p>
+
 はじめまして、yyh-gl と申します💻🤓
 
 ご用のさいは [XのDM](https://x.com/yyh_gl) にお願いします🙇‍♂️
