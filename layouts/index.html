@@ -7,16 +7,14 @@
     <div class="hero-title-row">
       <h1>{{ .Site.Title }}</h1>
       <div class="hero-capybara hero-capybara--sp">
-        <img src="/img/site/capybara.webp" alt="妻作：カピバラ" title="妻作：カピバラ">
+        <img src="{{ "/img/site/capybara.webp" | relURL }}" alt="妻作：カピバラ" title="妻作：カピバラ">
       </div>
     </div>
     <p class="hero-desc">{{ .Site.Params.intro.paragraph }}</p>
     <div class="hero-tags">
-      <span class="hero-tag">#Backend</span>
-      <span class="hero-tag">#Go</span>
-      <span class="hero-tag">#Kotlin</span>
-      <span class="hero-tag">#DDD</span>
-      <span class="hero-tag">#Architecture</span>
+      {{ range .Site.Params.heroTags }}
+      <span class="hero-tag">{{ . }}</span>
+      {{ end }}
     </div>
     <div class="hero-social">
       {{ with .Site.Params.social.github }}
@@ -52,7 +50,7 @@
     </div>
   </div>
   <div class="hero-capybara hero-capybara--pc">
-    <img src="/img/site/capybara.webp" alt="妻作：カピバラ" title="妻作：カピバラ">
+    <img src="{{ "/img/site/capybara.webp" | relURL }}" alt="妻作：カピバラ" title="妻作：カピバラ">
   </div>
 </section>
 
@@ -69,7 +67,7 @@
   <article class="post-card">
     {{ with .Params.images }}
     {{ range first 1 . }}
-    <img class="post-card-img" src="/{{ .src }}" alt="{{ .alt }}" loading="lazy">
+    <img class="post-card-img" src="{{ printf "/%s" .src | relURL }}" alt="{{ .alt }}" loading="lazy">
     {{ end }}
     {{ end }}
     <div class="post-card-body">
@@ -78,7 +76,7 @@
         {{ with .Params.categories }}
         <div class="post-card-cats">
           {{ range . }}
-          <a href="/categories/{{ . | urlize }}/" class="post-card-cat">{{ . }}</a>
+          <a href="{{ printf "/categories/%s/" (. | urlize) | relURL }}" class="post-card-cat">{{ . }}</a>
           {{ end }}
         </div>
         {{ end }}
@@ -101,7 +99,7 @@
 </div>
 
 <div class="view-more">
-  <a href="/blog/"><i class="fas fa-chevron-right"></i> {{ i18n "more_posts" | default "すべての記事を見る"
+  <a href="{{ "/blog/" | relURL }}"><i class="fas fa-chevron-right"></i> {{ i18n "more_posts" | default "すべての記事を見る"
     }}</a>
 </div>
 {{ end }}

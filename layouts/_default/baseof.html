@@ -12,34 +12,41 @@
   <meta property="og:title" content="{{ .Title | default .Site.Title }}">
   <meta property="og:description" content="{{ .Description | default .Site.Params.meta.description }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:type" content="{{ cond .IsHome "website" "article" }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   {{ with or (.Params.openGraph) (.Params.images) }}
     {{ range . }}
       <meta property="og:image" content="{{ .src | absURL }}">
+      <meta property="og:image:alt" content="{{ .alt }}">
       <meta name="twitter:card" content="summary_large_image">
     {{ end }}
   {{ else }}
     <meta property="og:image" content="{{ "/img/main/logo.webp" | absURL }}">
+    <meta property="og:image:alt" content="{{ .Site.Title }}">
+    <meta name="twitter:card" content="summary_large_image">
   {{ end }}
   {{ with .Site.Params.social.x }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" href="{{ "/favicon/favicon.ico" | relURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/favicon/apple-touch-icon.png" | relURL }}">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/prism.css">
+  <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "/css/prism.css" | relURL }}">
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/04f97481a8.js" crossorigin="anonymous"></script>
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="/index.xml">
+  {{ with .OutputFormats.Get "RSS" }}
+    <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}">
+  {{ end }}
 
   <!-- Vue + good-counter -->
-  <script src="/js/vue.min.js"></script>
-  <script src="/js/good-counter.js" defer></script>
+  <script src="{{ "/js/vue.min.js" | relURL }}"></script>
+  <script src="{{ "/js/good-counter.js" | relURL }}" defer></script>
+
+  {{ template "_internal/google_analytics.html" . }}
 
   {{ block "head_extra" . }}{{ end }}
 </head>
@@ -47,7 +54,7 @@
 
 <nav class="site-nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">
+    <a href="{{ "/" | relURL }}" class="nav-logo">
       <span class="prompt">$</span>
       <span>yyh-gl</span>
       <span class="cursor"></span>
@@ -64,7 +71,7 @@
   </div>
 </nav>
 
-<main class="site-main">
+<main id="site-main" class="site-main">
   {{ block "main" . }}{{ end }}
 </main>
 
@@ -100,7 +107,7 @@
   </div>
 </footer>
 
-<script src="/js/prism.js"></script>
+<script src="{{ "/js/prism.js" | relURL }}"></script>
 {{ block "scripts" . }}{{ end }}
 </body>
 </html>

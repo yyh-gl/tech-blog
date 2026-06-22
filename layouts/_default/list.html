@@ -23,7 +23,7 @@
       <article class="post-card">
         {{ with .Params.images }}
           {{ range first 1 . }}
-            <img class="post-card-img" src="/{{ .src }}" alt="{{ .alt }}" loading="lazy">
+            <img class="post-card-img" src="{{ printf "/%s" .src | relURL }}" alt="{{ .alt }}" loading="lazy">
           {{ end }}
         {{ end }}
         <div class="post-card-body">
@@ -32,7 +32,7 @@
             {{ with .Params.categories }}
               <div class="post-card-cats">
                 {{ range . }}
-                  <a href="/categories/{{ . | urlize }}/" class="post-card-cat">{{ . }}</a>
+                  <a href="{{ printf "/categories/%s/" (. | urlize) | relURL }}" class="post-card-cat">{{ . }}</a>
                 {{ end }}
               </div>
             {{ end }}
