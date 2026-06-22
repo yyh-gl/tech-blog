@@ -3,13 +3,13 @@
   <h1><span class="prompt">$ </span>{{ .Title }}</h1>
 </div>
 <div class="taxonomy-grid">
-  {{ range .Data.Terms.Alphabetical }}
-    <div class="taxonomy-item">
-      <a href="{{ .Page.RelPermalink }}">
-        {{ .Page.Title }}
-        <span class="taxonomy-count">{{ .Count }}</span>
-      </a>
-    </div>
+  {{ range .Data.Terms.ByCount }}
+  <div class="taxonomy-item">
+    <a href="{{ .Page.RelPermalink }}">
+      {{ .Page.Title }}
+      <span class="taxonomy-count">{{ .Count }}</span>
+    </a>
+  </div>
   {{ end }}
 </div>
 {{ end }}
