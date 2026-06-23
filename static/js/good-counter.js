@@ -1,8 +1,12 @@
 Vue.component('good-counter', {
   props: ['relPermalink'],
-  template: '<button v-on:click="addCount" v-bind:disabled="already">' +
-    '<span v-html="display_button_name"></span>　{{ good_count }}' +
-    '</button>',
+  template: '<div class="like-inner">' +
+    '<span class="like-label">// like this post?</span>' +
+    '<button v-on:click="addCount" v-bind:disabled="already" v-bind:class="{\'like-btn\': true, \'liked\': already}">' +
+    '<span v-html="display_button_name"></span>' +
+    '<span class="like-count">{{ good_count }}</span>' +
+    '</button>' +
+    '</div>',
   data: function () {
     return {
       display_button_name: '<i class="far fa-heart"></i>',

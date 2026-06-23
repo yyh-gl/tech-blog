@@ -1185,28 +1185,50 @@ code[class*="language-"], pre[class*="language-"] {
 /* ── Good-counter (Like button) ────────────────────── */
 .like-section {
   margin: 1.5rem 0;
+}
+
+.like-inner {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+.like-label {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--text-muted);
+}
+
 .like-btn {
   display: inline-flex;
   align-items: center;
-  gap: .4rem;
+  gap: .5rem;
   font-family: var(--font-mono);
   font-size: .8rem;
   background: var(--bg2);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  padding: .5rem 1rem;
+  padding: .45rem 1rem;
   border-radius: var(--radius);
   cursor: pointer;
   transition: all .2s;
 }
 
-.like-btn:hover, .like-btn.liked {
+.like-btn:not(:disabled):hover {
   border-color: var(--blue);
   color: var(--blue);
   background: var(--blue-dim);
+}
+
+.like-btn.liked {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-dim);
+  cursor: default;
+}
+
+.like-count {
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  min-width: 1.5em;
 }
