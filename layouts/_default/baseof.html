@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "ja" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}{{ end }}</title>
+  <meta name="description" content="{{ .Description | default .Site.Params.meta.description }}">
+  <meta name="author" content="{{ .Params.author | default .Site.Params.meta.author }}">
+
+  <!-- OGP -->
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:title" content="{{ .Title | default .Site.Title }}">
+  <meta property="og:description" content="{{ .Description | default .Site.Params.meta.description }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  {{ with or (.Params.openGraph) (.Params.images) }}
+    {{ range . }}
+      <meta property="og:image" content="{{ .src | absURL }}">
+      <meta property="og:image:alt" content="{{ .alt }}">
+      <meta name="twitter:card" content="summary_large_image">
+    {{ end }}
+  {{ else }}
+    <meta property="og:image" content="{{ "/img/main/logo.webp" | absURL }}">
+    <meta property="og:image:alt" content="{{ .Site.Title }}">
+    <meta name="twitter:card" content="summary_large_image">
+  {{ end }}
+  {{ with .Site.Params.social.x }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{ "/favicon/favicon.ico" | relURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/favicon/apple-touch-icon.png" | relURL }}">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "/css/prism.css" | relURL }}">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/04f97481a8.js" crossorigin="anonymous"></script>
+
+  <!-- RSS -->
+  {{ with .OutputFormats.Get "RSS" }}
+    <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}">
+  {{ end }}
+
+  <!-- Vue + good-counter -->
+  <script src="{{ "/js/vue.min.js" | relURL }}"></script>
+  <script src="{{ "/js/good-counter.js" | relURL }}" defer></script>
+
+  {{ template "_internal/google_analytics.html" . }}
+
+  {{ block "head_extra" . }}{{ end }}
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="{{ "/" | relURL }}" class="nav-logo">
+      <span class="prompt">$</span>
+      <span>{{ .Site.Title }}</span>
+      <span class="cursor"></span>
+    </a>
+    <ul class="nav-links">
+      {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{ .URL | relURL }}"{{ if eq $.RelPermalink (.URL | relURL) }} class="active"{{ end }}>
+            {{ .Pre | safeHTML }}&nbsp;<span>{{ .Name }}</span>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</nav>
+
+<main id="site-main" class="site-main">
+  {{ block "main" . }}{{ end }}
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">$ yyh-gl's Tech Blog</div>
+    <div class="footer-links">
+      {{ with .Site.Params.social.github }}
+        <a href="https://github.com/{{ . }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      {{ end }}
+      {{ with .Site.Params.social.x }}
+        <a href="https://x.com/{{ . }}" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i> X</a>
+      {{ end }}
+      {{ with .Site.Params.social.bluesky }}
+        <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener"><i class="fas fa-cloud"></i> Bluesky</a>
+      {{ end }}
+      {{ with .Site.Params.social.speaker_deck }}
+        <a href="https://speakerdeck.com/{{ . }}" target="_blank" rel="noopener"><i class="fab fa-speaker-deck"></i> Speaker Deck</a>
+      {{ end }}
+      {{ with .Site.Params.social.linkedin }}
+        <a href="https://www.linkedin.com/in/{{ . }}" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      {{ end }}
+      {{ with .Site.Params.social.crowdin }}
+        <a href="https://crowdin.com/profile/{{ . }}" target="_blank" rel="noopener"><i class="fa-solid fa-square-pen"></i> Crowdin</a>
+      {{ end }}
+      {{ with .OutputFormats.Get "RSS" }}
+        <a href="{{ .RelPermalink }}" type="application/rss+xml" target="_blank"><i class="fas fa-rss"></i> RSS</a>
+      {{ end }}
+    </div>
+    <p class="footer-copy">
+      &copy; {{ now.Year }} yyh-gl &mdash; Built with <span class="heart">&#9829;</span> &amp; Hugo
+    </p>
+  </div>
+</footer>
+
+<script src="{{ "/js/prism.js" | relURL }}"></script>
+{{ block "scripts" . }}{{ end }}
+</body>
+</html>

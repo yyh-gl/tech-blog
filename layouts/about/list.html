@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div class="list-header">
+  <h1>
+    <span class="prompt">$ </span>
+    {{ .Title }}
+  </h1>
+</div>
+
+<div class="about-profile">
+  <img class="about-profile-img" src="/{{ .Site.Params.intro.pic.src }}" alt="{{ .Site.Params.intro.pic.alt }}">
+  <div class="about-profile-body">
+    <div class="about-profile-handle">@{{ .Site.Params.meta.author }}</div>
+    <div class="about-social">
+      {{ with .Site.Params.social.x }}
+      <a href="https://x.com/{{ . }}" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-x-twitter"></i><span>X (Twitter)</span>
+      </a>
+      {{ end }}
+      {{ with .Site.Params.social.github }}
+      <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i><span>GitHub</span>
+      </a>
+      {{ end }}
+      {{ with .Site.Params.social.speaker_deck }}
+      <a href="https://speakerdeck.com/{{ . }}" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-chalkboard-user"></i><span>Speaker Deck</span>
+      </a>
+      {{ end }}
+      {{ with .Site.Params.social.linkedin }}
+      <a href="https://www.linkedin.com/in/{{ . }}" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i><span>LinkedIn</span>
+      </a>
+      {{ end }}
+      {{ with .Site.Params.social.bluesky }}
+      <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-cloud"></i><span>Bluesky</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+<div class="post-content">
+  {{ .Content }}
+</div>
+{{ end }}

@@ -3,7 +3,6 @@
 baseurl = "https://tech.yyh-gl.dev/"
 DefaultContentLanguage = "ja"
 title = "Indexing my brain"
-theme = "hugo-future-imperfect-slim"
 disqusShortname = ""
 pluralizeListTitles = false
 disableLanguages = []
@@ -35,6 +34,7 @@ socialShare = []
 #["twitter", "facebook", "reddit", "linkedin", "stumbleupon", "pinterest", "email"]
 hideEmptyStats = false
 mainSections = ["post"]
+heroTags = ["#Backend", "#Go", "#Kotlin", "#DDD", "#Architecture"]
 
 [params.meta]
 description = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
@@ -142,13 +142,6 @@ speaker_deck = "yyh_gl"
 crowdin = "yyh-gl"
 
 [menu]
-[[menu.main]]
-name = "Home"
-identifier = "home"
-url = ""
-pre = "<i class='fa fa-home'></i>"
-weight = 1
-
 [[menu.main]]
 name = "About"
 identifier = "about"
