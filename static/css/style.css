@@ -693,6 +693,11 @@ a:hover {
   margin: 1.5rem auto;
 }
 
+.post-content iframe {
+  display: block;
+  margin: 1.5rem auto;
+}
+
 .post-content table {
   width: 100%;
   border-collapse: collapse;
