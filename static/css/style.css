@@ -576,6 +576,14 @@ a:hover {
 
 .post-content h1 {
   font-size: 1.6rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-content h1::before {
+  content: "# ";
+  color: var(--blue);
+  font-family: var(--font-mono);
 }
 
 .post-content h2 {
