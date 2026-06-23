@@ -876,71 +876,94 @@ a:hover {
 }
 
 /* ── About page ────────────────────────────────────── */
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 260px;
+.about-profile {
+  display: flex;
+  align-items: center;
   gap: 2rem;
-  align-items: start;
-}
-
-.about-content h1 {
-  font-family: var(--font-mono);
-  font-size: 1.5rem;
-  color: var(--blue);
-  margin-bottom: 1.5rem;
-  padding-bottom: .75rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.about-sidebar {
+  padding: 2rem;
+  margin-bottom: 2.5rem;
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.5rem;
-  text-align: center;
 }
 
-.about-sidebar img {
-  width: 140px;
-  margin-bottom: 1rem;
+.about-profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 16px rgba(100, 149, 237, .3));
+  transition: transform .3s ease, filter .3s ease;
 }
 
-.about-sidebar .handle {
+.about-profile-img:hover {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 8px 24px rgba(100, 149, 237, .5));
+}
+
+.about-profile-body {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  min-width: 0;
+}
+
+.about-profile-handle {
   font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--blue);
+  font-size: 1.2rem;
   font-weight: 700;
+  color: var(--blue);
 }
 
-.about-sidebar .bio {
-  font-size: .85rem;
+.about-profile-bio {
+  font-size: .875rem;
   color: var(--text-muted);
-  margin: .5rem 0 1rem;
 }
 
 .about-social {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: .4rem;
+  margin-top: .25rem;
 }
 
 .about-social a {
   font-family: var(--font-mono);
-  font-size: .78rem;
+  font-size: .75rem;
   color: var(--text-muted);
   display: flex;
   align-items: center;
-  gap: .5rem;
-  padding: .4rem .6rem;
+  gap: .4rem;
+  padding: .3rem .65rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: all .2s;
+}
+
+.about-social a i {
+  width: 1em;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .about-social a:hover {
   color: var(--blue);
   border-color: var(--blue);
   background: var(--blue-dim);
+}
+
+@media (max-width: 600px) {
+  .about-profile {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .about-social {
+    justify-content: center;
+  }
 }
 
 /* ── Stats page ────────────────────────────────────── */
@@ -1106,10 +1129,6 @@ code[class*="language-"], pre[class*="language-"] {
 
   .hero h1 {
     font-size: 1.6rem;
-  }
-
-  .about-layout {
-    grid-template-columns: 1fr;
   }
 
   .post-nav {
