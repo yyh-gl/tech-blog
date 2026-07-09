@@ -696,6 +696,11 @@ a:hover {
 
 .post-content iframe {
   display: block;
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin: 1.5rem 0;
 }
 
 .post-content table {
