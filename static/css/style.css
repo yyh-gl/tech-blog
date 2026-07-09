@@ -690,12 +690,11 @@ a:hover {
   border-radius: var(--radius);
   border: 1px solid var(--border);
   display: block;
-  margin: 1.5rem auto;
+  margin: 1.5rem 0;
 }
 
 .post-content iframe {
   display: block;
-  margin: 1.5rem auto;
 }
 
 .post-content table {
