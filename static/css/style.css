@@ -482,7 +482,8 @@ a:hover {
 
 /* ── Single post ───────────────────────────────────── */
 .post-article {
-  max-width: 760px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .post-header {
