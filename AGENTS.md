@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Hugo static site blog running in Docker. Hugo v0.146.2 (extended), theme: hugo-future-imperfect-slim (managed via Hugo Modules, not a git submodule).
+Hugo static site blog running in Docker. Hugo v0.146.2 (extended). The site uses **no Hugo theme** — the UI is a fully custom implementation living entirely under `layouts/` and `static/css/style.css` (the former `hugo-future-imperfect-slim` theme submodule was removed).
 
 - `main` branch: work branch
 - `gh-pages` branch: publication branch
@@ -15,9 +15,6 @@ Hugo static site blog running in Docker. Hugo v0.146.2 (extended), theme: hugo-f
 ```
 .
 ├── archetypes/          # Hugo article templates
-├── assets/              # SCSS and JavaScript sources (compiled by Hugo)
-│   ├── js/
-│   └── scss/
 ├── config/
 │   ├── _default/        # config.toml (base config)
 │   └── production/      # config.toml (Google Analytics ID only)
@@ -29,9 +26,9 @@ Hugo static site blog running in Docker. Hugo v0.146.2 (extended), theme: hugo-f
 │   └── stats/
 ├── docs/
 ├── i18n/                # ja.toml (Japanese UI strings)
-├── layouts/             # Custom template overrides (edit here, never in themes/)
+├── layouts/             # Full custom Hugo templates (no theme; all UI lives here)
 ├── static/
-│   ├── css/             # style.css, prism.css, add-on.css
+│   ├── css/             # style.css (main custom stylesheet), prism.css, add-on.css
 │   ├── favicon/
 │   ├── font/            # Kinto Sans font (used for OGP image generation)
 │   ├── img/             # Images organized by year/month/slug
@@ -41,7 +38,7 @@ Hugo static site blog running in Docker. Hugo v0.146.2 (extended), theme: hugo-f
 ├── package.json         # pnpm project (textlint, postcss, etc.)
 ├── pnpm-workspace.yaml
 ├── postcss.config.js    # PurgeCSS config
-├── staticman.yml        # Comment system config
+├── staticman.yml        # Legacy comment system config — not currently wired into templates
 └── template.yaml        # OGP image generation config (tcardgen)
 ```
 
@@ -112,15 +109,12 @@ Uses `tcardgen` tool inside the Docker container, configured by `template.yaml`.
 
 ### Theme
 
-**NEVER modify files under `themes/hugo-future-imperfect-slim/`.** This directory is a third-party theme and must not be changed.
-
-All UI customizations must be done in `layouts/` (Hugo's template override mechanism).
+The site does **not** use a Hugo theme. There is no `themes/` directory and no `theme` key in `config/_default/config.toml`. All markup lives directly under `layouts/`, and all styling lives in `static/css/style.css`.
 
 Key layout files:
-- `layouts/_default/baseof.html` — base HTML structure
+- `layouts/_default/baseof.html` — base HTML structure, including the site nav and footer (inlined directly, no header/footer partials)
 - `layouts/_default/single.html` — article detail page
 - `layouts/_default/list.html` — article list page
-- `layouts/_default/header.html` — site header
 - `layouts/_default/_markup/render-link.html` — external links open in new tab
 - `layouts/index.html` — home page (terminal-style UI with `$` prompt)
 
@@ -137,7 +131,7 @@ Key config values:
 
 - **Like counter**: Vue.js + `good-counter.js` calls external API at `https://hobigon.yyh-gl.dev/api/v1/blogs/`. State stored in `localStorage`.
 - **Syntax highlighting**: Prism.js (`static/js/prism.js`, `static/css/prism.css`).
-- **Comment system**: Staticman (`staticman.yml`), stores comments as JSON in `data/comments/`.
+- **Comment system**: removed during the UI renewal — `layouts/_default/comments.html` no longer exists and no template references it. `staticman.yml` remains in the repo but is currently inert.
 - **CSS optimization**: PostCSS + PurgeCSS (`postcss.config.js`) scans `layouts/` and `content/`.
 
 ### CI/CD (GitHub Actions)
