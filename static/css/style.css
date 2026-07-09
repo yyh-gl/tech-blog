@@ -868,29 +868,40 @@ a:hover {
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: .5rem;
   margin: 2rem 0;
+  padding: 0;
+  list-style: none;
   font-family: var(--font-mono);
   font-size: .85rem;
 }
 
-.pagination a, .pagination span {
+.pagination .page-link {
+  display: inline-flex;
+  align-items: center;
   padding: .4rem .85rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text-muted);
+  text-decoration: none;
   transition: all .2s;
 }
 
-.pagination a:hover {
+.pagination .page-link:hover {
   border-color: var(--blue);
   color: var(--blue);
 }
 
-.pagination .active {
+.pagination .active .page-link {
   border-color: var(--blue);
   color: var(--blue);
   background: var(--blue-dim);
+}
+
+.pagination .disabled .page-link {
+  opacity: .4;
+  pointer-events: none;
 }
 
 /* ── About page ────────────────────────────────────── */
