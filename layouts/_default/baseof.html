@@ -17,18 +17,22 @@
     {{ range . }}
       <meta property="og:image" content="{{ .src | absURL }}">
       <meta property="og:image:alt" content="{{ .alt }}">
-      <meta name="twitter:card" content="summary_large_image">
     {{ end }}
   {{ else }}
     <meta property="og:image" content="{{ "/img/main/logo.webp" | absURL }}">
     <meta property="og:image:alt" content="{{ .Site.Title }}">
-    <meta name="twitter:card" content="summary_large_image">
   {{ end }}
+  <meta name="twitter:card" content="summary_large_image">
   {{ with .Site.Params.social.x }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="{{ "/favicon/favicon.ico" | relURL }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "/favicon/apple-touch-icon.png" | relURL }}">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap">
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
@@ -62,7 +66,7 @@
     <ul class="nav-links">
       {{ range .Site.Menus.main }}
         <li>
-          <a href="{{ .URL | relURL }}"{{ if eq $.RelPermalink (.URL | relURL) }} class="active"{{ end }}>
+          <a href="{{ .URL | relURL }}" aria-label="{{ .Name }}"{{ if eq $.RelPermalink (.URL | relURL) }} class="active"{{ end }}>
             {{ .Pre | safeHTML }}&nbsp;<span>{{ .Name }}</span>
           </a>
         </li>
