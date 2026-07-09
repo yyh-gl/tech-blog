@@ -7,7 +7,7 @@
 </div>
 
 <div class="about-profile">
-  <img class="about-profile-img" src="/{{ .Site.Params.intro.pic.src }}" alt="{{ .Site.Params.intro.pic.alt }}">
+  <img class="about-profile-img" src="{{ printf "/%s" .Site.Params.intro.pic.src | relURL }}" alt="{{ .Site.Params.intro.pic.alt }}">
   <div class="about-profile-body">
     <div class="about-profile-handle">@{{ .Site.Params.meta.author }}</div>
     <div class="about-social">
