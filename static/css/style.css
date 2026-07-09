@@ -696,11 +696,15 @@ a:hover {
 
 .post-content iframe {
   display: block;
-  width: 100%;
   max-width: 700px;
+  margin: 1.5rem 0;
+}
+
+.post-content iframe[src*="youtube.com"],
+.post-content iframe[src*="docs.google.com/presentation"] {
+  width: 100%;
   aspect-ratio: 16 / 9;
   height: auto;
-  margin: 1.5rem 0;
 }
 
 .post-content table {
