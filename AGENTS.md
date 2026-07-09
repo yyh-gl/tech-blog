@@ -116,6 +116,9 @@ Key layout files:
 - `layouts/_default/single.html` — article detail page
 - `layouts/_default/list.html` — article list page
 - `layouts/_default/_markup/render-link.html` — external links open in new tab
+- `layouts/_default/_markup/render-codeblock.html` — adds the `line-numbers` class Prism.js expects to fenced code blocks (requires `codeFences = true` in config to fire)
+- `layouts/partials/post-card.html` — shared post card markup, used by both `index.html` and `list.html`
+- `layouts/partials/category-url.html` — single source of truth for building a category term URL from a category name string
 - `layouts/index.html` — home page (terminal-style UI with `$` prompt)
 
 ### Config
