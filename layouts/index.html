@@ -18,33 +18,33 @@
     </div>
     <div class="hero-social">
       {{ with .Site.Params.social.github }}
-      <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i><span class="social-label"> {{ . }}</span>
+      <a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub">
+        <i class="fab fa-github" aria-hidden="true"></i><span class="social-label"> {{ . }}</span>
       </a>
       {{ end }}
       {{ with .Site.Params.social.x }}
-      <a href="https://x.com/{{ . }}" target="_blank" rel="noopener">
-        <i class="fab fa-x-twitter"></i><span class="social-label"> @{{ . }}</span>
+      <a href="https://x.com/{{ . }}" target="_blank" rel="noopener" aria-label="X">
+        <i class="fab fa-x-twitter" aria-hidden="true"></i><span class="social-label"> @{{ . }}</span>
       </a>
       {{ end }}
       {{ with .Site.Params.social.bluesky }}
-      <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener">
-        <i class="fas fa-cloud"></i><span class="social-label"> {{ . }}</span>
+      <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener" aria-label="Bluesky">
+        <i class="fas fa-cloud" aria-hidden="true"></i><span class="social-label"> {{ . }}</span>
       </a>
       {{ end }}
       {{ with .Site.Params.social.linkedin }}
-      <a href="https://www.linkedin.com/in/{{ . }}" target="_blank" rel="noopener">
-        <i class="fab fa-linkedin"></i><span class="social-label"> {{ . }}</span>
+      <a href="https://www.linkedin.com/in/{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fab fa-linkedin" aria-hidden="true"></i><span class="social-label"> {{ . }}</span>
       </a>
       {{ end }}
       {{ with .Site.Params.social.crowdin }}
-      <a href="https://crowdin.com/profile/{{ . }}" target="_blank" rel="noopener">
-        <i class="fa-solid fa-square-pen"></i><span class="social-label"> {{ . }}</span>
+      <a href="https://crowdin.com/profile/{{ . }}" target="_blank" rel="noopener" aria-label="Crowdin">
+        <i class="fa-solid fa-square-pen" aria-hidden="true"></i><span class="social-label"> {{ . }}</span>
       </a>
       {{ end }}
       {{ with .OutputFormats.Get "RSS" }}
-      <a href="{{ .RelPermalink }}" type="application/rss+xml" target="_blank">
-        <i class="fas fa-rss"></i><span class="social-label"> RSS</span>
+      <a href="{{ .RelPermalink }}" type="application/rss+xml" target="_blank" aria-label="RSS">
+        <i class="fas fa-rss" aria-hidden="true"></i><span class="social-label"> RSS</span>
       </a>
       {{ end }}
     </div>
@@ -64,37 +64,7 @@
 
 <div class="post-grid">
   {{ range $posts }}
-  <article class="post-card">
-    {{ with .Params.images }}
-    {{ range first 1 . }}
-    <img class="post-card-img" src="{{ printf "/%s" .src | relURL }}" alt="{{ .alt }}" loading="lazy">
-    {{ end }}
-    {{ end }}
-    <div class="post-card-body">
-      <div class="post-card-meta">
-        <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
-        {{ with .Params.categories }}
-        <div class="post-card-cats">
-          {{ range . }}
-          <a href="{{ printf "/categories/%s/" (. | urlize) | relURL }}" class="post-card-cat">{{ . }}</a>
-          {{ end }}
-        </div>
-        {{ end }}
-      </div>
-      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-      {{ with .Params.description }}
-      <p class="post-card-desc">{{ . }}</p>
-      {{ end }}
-      <div class="post-card-footer">
-        <a href="{{ .RelPermalink }}" class="read-more">
-          <i class="fas fa-terminal"></i> read_more()
-        </a>
-        {{ if .Site.Params.ReadingTime }}
-        <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }}min</span>
-        {{ end }}
-      </div>
-    </div>
-  </article>
+    {{ partial "post-card.html" . }}
   {{ end }}
 </div>
 
