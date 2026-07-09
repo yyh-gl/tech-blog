@@ -2,13 +2,7 @@
 <div class="list-header">
   <h1>
     <span class="prompt">$ </span>
-    {{ if .IsHome }}
-      blog
-    {{ else if .IsSection }}
-      {{ .Title }}
-    {{ else }}
-      {{ .Title }}
-    {{ end }}
+    {{ .Title }}
   </h1>
   {{ if .Pages }}
     <p class="list-count">{{ i18n "posts_count" (len .Pages) | default (printf "%d posts" (len .Pages)) }}</p>
@@ -23,37 +17,7 @@
   {{ $paginator := .Paginate .Pages }}
   <div class="post-grid">
     {{ range $paginator.Pages }}
-      <article class="post-card">
-        {{ with .Params.images }}
-          {{ range first 1 . }}
-            <img class="post-card-img" src="{{ printf "/%s" .src | relURL }}" alt="{{ .alt }}" loading="lazy">
-          {{ end }}
-        {{ end }}
-        <div class="post-card-body">
-          <div class="post-card-meta">
-            <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
-            {{ with .Params.categories }}
-              <div class="post-card-cats">
-                {{ range . }}
-                  <a href="{{ printf "/categories/%s/" (. | urlize) | relURL }}" class="post-card-cat">{{ . }}</a>
-                {{ end }}
-              </div>
-            {{ end }}
-          </div>
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ with .Params.description }}
-            <p class="post-card-desc">{{ . }}</p>
-          {{ end }}
-          <div class="post-card-footer">
-            <a href="{{ .RelPermalink }}" class="read-more">
-              <i class="fas fa-terminal"></i> read_more()
-            </a>
-            {{ if .Site.Params.ReadingTime }}
-              <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }}min</span>
-            {{ end }}
-          </div>
-        </div>
-      </article>
+      {{ partial "post-card.html" . }}
     {{ end }}
   </div>
 
