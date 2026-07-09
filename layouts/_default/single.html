@@ -8,7 +8,7 @@
       {{ with .Params.categories }}
         {{ range first 1 . }}
           <span class="sep">/</span>
-          <a href="{{ printf "/categories/%s/" (. | urlize) | relURL }}">{{ . }}</a>
+          <a href="{{ partial "category-url.html" . }}">{{ . }}</a>
         {{ end }}
       {{ end }}
     </div>
@@ -32,7 +32,7 @@
   {{ end }}
 
   <div class="post-content">
-    {{ .Content | replaceRE "<pre" "<pre class=\"line-numbers\"" | safeHTML }}
+    {{ .Content }}
   </div>
 
   <footer class="post-footer">
