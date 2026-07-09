@@ -1,10 +1,6 @@
-# For a description of these parameters, please visit the theme wiki.
-# https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
 baseurl = "https://tech.yyh-gl.dev/"
 DefaultContentLanguage = "ja"
 title = "Indexing my brain"
-disqusShortname = ""
-pluralizeListTitles = false
 disableLanguages = []
 enableRobotsTXT = true
 
@@ -22,122 +18,25 @@ unsafe = true
 home = ["html", "json", "rss"]
 
 [params]
-enableCDN = true
-cssFiles = ["default", "css/prism.css"]
-jsFiles = ["default", "js/prism.js"]
-viewMorePostsLink = "blog/"
 readingTime = true
-imageStretch = ""
-removeBlur = false
-# FIXME: Permalink が取得できるようになったら Twitter と Facebook を追加
-socialShare = []
-#["twitter", "facebook", "reddit", "linkedin", "stumbleupon", "pinterest", "email"]
-hideEmptyStats = false
-mainSections = ["post"]
 heroTags = ["#Backend", "#Go", "#Kotlin", "#DDD", "#Architecture"]
 
 [params.meta]
 description = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
 author = "yyh-gl"
-favicon = true
-svg = true
-faviconVersion = "1"
-msColor = "#ffffff"
-iOSColor = "#ffffff"
-
-[params.header]
-navbarTitle = "Indexing my brain"
-dynamicTitles = true
-searchMenu = false
-shareMenu = false
-# TODO: そのうち英語記事始めたいなぁ
-languageMenu = false
 
 [params.intro]
-header = "Indexing my brain"
 paragraph = "技術ネタ中心のブログです。<br>主な扱いはバックエンド技術と設計です。"
-rssIntro = true
-socialIntro = true
-hideWhenSingleColumn = false
-alwaysOnHomepage = false
 
 [params.intro.pic]
 src = "img/main/logo.webp"
-shape = "circle"
-width = "80"
 alt = "yyh-gl's icon"
-
-[params.sidebar]
-about = "東京で働くソフトウェアエンジニアです。<br>バックエンドがメインですが、フロントエンドやインフラもさわっています。"
-postAmount = 3
-categories = false
-categoriesByCount = false
-
-[params.footer]
-rssFooter = true
-socialFooter = true
-
-[params.staticman]
-enabled = true
-api = ""  # No Trailing Slash
-gitProvider = ""
-username = ""
-repo = ""
-branch = ""
-
-[params.staticman.recaptcha]
-siteKey = ""
-encryptedKey = ""
 
 [params.social]
 github = "yyh-gl"
-gitlab = ""
-stackoverflow = "" # User Number
-bitbucket = ""
-jsfiddle = ""
-codepen = ""
-# Visual Art Communities
-deviantart = ""
-flickr = ""
-behance = ""
-dribbble = ""
-# Publishing Communities
-wordpress = ""
-medium = ""
-# Professional/Business Oriented Communities
 linkedin = "yyh-gl"
-linkedin_company = ""
-foursquare = ""
-xing = ""
-slideshare = ""
-# Social Networks
-facebook = ""
-googleplus = ""
-reddit = ""
-quora = ""
-youtube = ""
-vimeo = ""
-whatsapp = "" # WhatsApp Number
-# WeChat and QQ need testing.
-wechat = ""
-qq = "" # User ID Number
-instagram = ""
-tumblr = ""
 x = "yyh_gl"
 bluesky = "yyh-gl.bsky.social"
-strava = ""
-skype = ""
-snapchat = ""
-pinterest = ""
-telegram = ""
-vine = ""
-googlescholar = ""
-orcid = ""
-researchgate = ""
-keybase = ""
-mastodon = ""
-# Email
-email = ""
 speaker_deck = "yyh_gl"
 crowdin = "yyh-gl"
 
