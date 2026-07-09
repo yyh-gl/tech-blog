@@ -9,7 +9,7 @@ pagerSize = 5
 
 [markup]
 [markup.highlight]
-codeFences = false
+codeFences = true
 
 [markup.goldmark.renderer]
 unsafe = true
@@ -22,7 +22,7 @@ readingTime = true
 heroTags = ["#Backend", "#Go", "#Kotlin", "#DDD", "#Architecture"]
 
 [params.meta]
-description = "技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"
+description = "技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"
 author = "yyh-gl"
 
 [params.intro]
@@ -45,28 +45,28 @@ crowdin = "yyh-gl"
 name = "About"
 identifier = "about"
 url = "about/"
-pre = "<i class='far fa-id-card'></i>"
+pre = "<i class='far fa-id-card' aria-hidden='true'></i>"
 weight = 2
 
 [[menu.main]]
 name = "Blog"
 identifier = "blog"
 url = "blog/"
-pre = "<i class='far fa-newspaper'></i>"
+pre = "<i class='far fa-newspaper' aria-hidden='true'></i>"
 weight = 3
 
 [[menu.main]]
 name = "Categories"
 identifier = "categories"
 url = "categories/"
-pre = "<i class='fas fa-sitemap'></i>"
+pre = "<i class='fas fa-sitemap' aria-hidden='true'></i>"
 weight = 4
 
 [[menu.main]]
 name = "Stats"
 identifier = "stats"
 url = "stats/"
-pre = "<i class='fas fa-chart-bar'></i>"
+pre = "<i class='fas fa-chart-bar' aria-hidden='true'></i>"
 weight = 5
 
 #  [[menu.main]]
