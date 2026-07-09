@@ -1,6 +1,3 @@
-/* ── Google Fonts ──────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
-
 /* =========================================================
    Tech Blog — Custom Theme
    Base color: #6495ED (Cornflower Blue)
@@ -140,10 +137,6 @@ a:hover {
   background: var(--blue-dim);
 }
 
-.nav-links .icon {
-  font-size: .9em;
-}
-
 /* ── Layout wrapper ────────────────────────────────── */
 .site-main {
   flex: 1;
@@ -162,9 +155,6 @@ a:hover {
   padding: 3rem 0 2.5rem;
   border-bottom: 1px solid var(--border);
   margin-bottom: 2.5rem;
-}
-
-.hero-text {
 }
 
 .hero-terminal {
@@ -189,10 +179,6 @@ a:hover {
   color: var(--blue);
   line-height: 1.2;
   margin-bottom: .75rem;
-}
-
-.hero h1 .at {
-  color: var(--text-muted);
 }
 
 .hero-desc {
@@ -252,16 +238,6 @@ a:hover {
 
 .hero-capybara img:hover {
   transform: translateY(-4px) rotate(2deg);
-}
-
-.capybara-label {
-  font-family: var(--font-mono);
-  font-size: .7rem;
-  color: var(--text-muted);
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  padding: .2rem .6rem;
-  border-radius: 4px;
 }
 
 /* ── Social badges ─────────────────────────────────── */
@@ -386,7 +362,7 @@ a:hover {
   border: 1px solid rgba(100, 149, 237, .3);
 }
 
-.post-card h3 {
+.post-card-title {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
@@ -394,20 +370,20 @@ a:hover {
   flex: 1;
 }
 
-.post-card h3 a {
+.post-card-title a {
   color: var(--text);
 }
 
 /* カード全体をクリック可能にする (stretched link) */
-.post-card h3 a::after {
+.post-card-title a::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.post-card:hover h3 a,
-.post-card h3 a:hover {
+.post-card:hover .post-card-title a,
+.post-card-title a:hover {
   color: var(--blue);
 }
 
@@ -1004,7 +980,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .stat-card {
@@ -1027,6 +1003,102 @@ a:hover {
   font-size: .78rem;
   color: var(--text-muted);
   margin-top: .25rem;
+}
+
+.stats-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 2.5rem;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: .85rem;
+}
+
+.stats-table th, .stats-table td {
+  padding: .6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-table th {
+  text-align: left;
+  color: var(--blue-light);
+}
+
+.stats-table td {
+  color: var(--text);
+}
+
+.stats-table th.align-right, .stats-table td.align-right {
+  text-align: right;
+}
+
+.stats-table a {
+  color: var(--blue);
+}
+
+.stats-bar {
+  background: var(--bg3);
+  border-radius: 4px;
+  height: 8px;
+  width: 200px;
+}
+
+.stats-bar-fill {
+  background: var(--blue);
+  border-radius: 4px;
+  height: 8px;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 2rem;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .75rem 1rem;
+  transition: border-color .2s;
+  text-decoration: none;
+}
+
+.ranking-item:hover, .ranking-item:focus-visible {
+  border-color: var(--blue);
+}
+
+.ranking-rank {
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  color: var(--blue);
+  min-width: 2rem;
+}
+
+.ranking-chars {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--text-muted);
+  min-width: 6rem;
+}
+
+.ranking-title {
+  flex: 1;
+  color: var(--text);
+  font-size: .9rem;
+}
+
+.ranking-date {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--text-muted);
 }
 
 /* ── Footer ────────────────────────────────────────── */
@@ -1078,21 +1150,6 @@ a:hover {
 
 .footer-copy .heart {
   color: var(--blue);
-}
-
-/* ── Syntax highlighting ────────────────────────────── */
-.highlight {
-  margin: 1.5rem 0;
-}
-
-.highlight pre {
-  background: var(--bg2) !important;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  overflow-x: auto;
-  font-family: var(--font-mono);
-  font-size: .875rem;
 }
 
 /* prism.js overrides */
@@ -1182,7 +1239,7 @@ code[class*="language-"], pre[class*="language-"] {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   .hero-social a .social-label {
     display: none;
   }
@@ -1190,9 +1247,7 @@ code[class*="language-"], pre[class*="language-"] {
   .hero-social a {
     padding: .4rem .55rem;
   }
-}
 
-@media (max-width: 500px) {
   .post-grid {
     grid-template-columns: 1fr;
   }

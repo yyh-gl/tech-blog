@@ -54,7 +54,7 @@
   <h2><span class="cmd-prefix">$ </span><span class="cmd-text">基本統計</span></h2>
   <div class="divider"></div>
 </div>
-<div class="stats-grid" style="margin-bottom:2.5rem;">
+<div class="stats-grid">
   <div class="stat-card">
     <div class="stat-value">{{ $totalPosts }}</div>
     <div class="stat-label">// 総投稿数</div>
@@ -73,24 +73,24 @@
   <h2><span class="cmd-prefix">$ </span><span class="cmd-text">年別投稿数</span></h2>
   <div class="divider"></div>
 </div>
-<div style="overflow-x:auto;margin-bottom:2.5rem;">
-  <table style="width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:.85rem;">
+<div class="stats-table-wrap">
+  <table class="stats-table">
     <thead>
       <tr>
-        <th style="text-align:left;padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">年</th>
-        <th style="text-align:right;padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">投稿数</th>
-        <th style="padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">グラフ</th>
+        <th>年</th>
+        <th class="align-right">投稿数</th>
+        <th>グラフ</th>
       </tr>
     </thead>
     <tbody>
       {{ range $year, $count := $yearMap }}
       {{ $percentage := div (mul $count 100.0) (float $totalPosts) }}
       <tr>
-        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text);">{{ $year }}</td>
-        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);text-align:right;color:var(--text);">{{ $count }}</td>
-        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);">
-          <div style="background:var(--bg3);border-radius:4px;height:8px;width:200px;">
-            <div style="background:var(--blue);border-radius:4px;height:8px;width:{{ $percentage }}%;"></div>
+        <td>{{ $year }}</td>
+        <td class="align-right">{{ $count }}</td>
+        <td>
+          <div class="stats-bar">
+            <div class="stats-bar-fill" style="width:{{ $percentage }}%;"></div>
           </div>
         </td>
       </tr>
@@ -103,13 +103,13 @@
   <h2><span class="cmd-prefix">$ </span><span class="cmd-text">カテゴリー別統計</span></h2>
   <div class="divider"></div>
 </div>
-<div style="overflow-x:auto;margin-bottom:2.5rem;">
-  <table style="width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:.85rem;">
+<div class="stats-table-wrap">
+  <table class="stats-table">
     <thead>
       <tr>
-        <th style="text-align:left;padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">カテゴリー</th>
-        <th style="text-align:right;padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">記事数</th>
-        <th style="padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--blue-light);">グラフ</th>
+        <th>カテゴリー</th>
+        <th class="align-right">記事数</th>
+        <th>グラフ</th>
       </tr>
     </thead>
     <tbody>
@@ -120,13 +120,13 @@
       {{ range sort $categoryList "count" "desc" }}
       {{ $percentage := div (mul .count 100.0) (float $totalPosts) }}
       <tr>
-        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);">
-          <a href="{{ path.Join "categories" (.name | urlize | lower) | relLangURL }}/" style="color:var(--blue);">{{ .name }}</a>
+        <td>
+          <a href="{{ partial "category-url.html" .name }}">{{ .name }}</a>
         </td>
-        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);text-align:right;color:var(--text);">{{ .count }}</td>
-        <td style="padding:.6rem 1rem;border-bottom:1px solid var(--border);">
-          <div style="background:var(--bg3);border-radius:4px;height:8px;width:200px;">
-            <div style="background:var(--blue);border-radius:4px;height:8px;width:{{ $percentage }}%;"></div>
+        <td class="align-right">{{ .count }}</td>
+        <td>
+          <div class="stats-bar">
+            <div class="stats-bar-fill" style="width:{{ $percentage }}%;"></div>
           </div>
         </td>
       </tr>
@@ -144,15 +144,13 @@
   {{ $pageList = $pageList | append (dict "page" . "chars" (len .Plain)) }}
 {{ end }}
 {{ $sortedByChars := sort $pageList "chars" "desc" }}
-<div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem;">
+<div class="ranking-list">
   {{ range $index, $item := first 10 $sortedByChars }}
-  <a href="{{ $item.page.RelPermalink }}"
-     style="display:flex;align-items:center;gap:1rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;transition:all .2s;text-decoration:none;"
-     onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
-    <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--blue);min-width:2rem;">#{{ add $index 1 }}</span>
-    <span style="font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);min-width:6rem;">{{ $item.chars }}文字</span>
-    <span style="flex:1;color:var(--text);font-size:.9rem;">{{ $item.page.Title }}</span>
-    <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--text-muted);">{{ $item.page.Date.Format "2006-01-02" }}</span>
+  <a href="{{ $item.page.RelPermalink }}" class="ranking-item">
+    <span class="ranking-rank">#{{ add $index 1 }}</span>
+    <span class="ranking-chars">{{ $item.chars }}文字</span>
+    <span class="ranking-title">{{ $item.page.Title }}</span>
+    <span class="ranking-date">{{ $item.page.Date.Format "2006-01-02" }}</span>
   </a>
   {{ end }}
 </div>
