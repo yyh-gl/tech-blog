@@ -239,7 +239,7 @@ a:hover {
   display: none;
 }
 
-.hero-capybara--sp img {
+.hero-capybara.hero-capybara--sp img {
   width: 90px;
 }
 
@@ -1193,7 +1193,7 @@ code[class*="language-"], pre[class*="language-"] {
     grid-template-columns: 1fr;
   }
 
-  .hero-capybara--sp img {
+  .hero-capybara.hero-capybara--sp img {
     width: 70px;
   }
 }
