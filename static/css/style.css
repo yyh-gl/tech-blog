@@ -680,7 +680,7 @@ a:hover {
 
 .post-content pre.line-numbers .line-numbers-rows {
   top: 0;
-  left: 0;
+  left: -3.8em;
   width: 3em;
   padding: 1.25rem 0;
   border-right: 1px solid var(--border);
