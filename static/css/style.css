@@ -137,6 +137,37 @@ a:hover {
   background: var(--blue-dim);
 }
 
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: .4rem .6rem;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  color: var(--blue);
+  background: var(--blue-dim);
+}
+
+.nav-toggle-icon-close {
+  display: none;
+}
+
+.nav-toggle.is-active .nav-toggle-icon-open {
+  display: none;
+}
+
+.nav-toggle.is-active .nav-toggle-icon-close {
+  display: inline-block;
+}
+
 /* ── Layout wrapper ────────────────────────────────── */
 .site-main {
   flex: 1;
@@ -1225,8 +1256,36 @@ code[class*="language-"], pre[class*="language-"] {
     grid-template-columns: 1fr;
   }
 
-  .nav-links a span {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-left: 0;
+    padding: .5rem 1.5rem 1rem;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    padding: .65rem .5rem;
   }
 
   .hero-social {

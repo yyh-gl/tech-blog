@@ -56,10 +56,14 @@
   <div class="nav-inner">
     <a href="{{ "/" | relURL }}" class="nav-logo">
       <span class="prompt">$</span>
-      <span>{{ .Site.Title }}</span>
+      <span class="nav-logo-title">{{ .Site.Title }}</span>
       <span class="cursor"></span>
     </a>
-    <ul class="nav-links">
+    <button type="button" class="nav-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav-links">
+      <i class="fas fa-bars nav-toggle-icon-open" aria-hidden="true"></i>
+      <i class="fas fa-times nav-toggle-icon-close" aria-hidden="true"></i>
+    </button>
+    <ul class="nav-links" id="nav-links">
       {{ range .Site.Menus.main }}
         <li>
           <a href="{{ .URL | relURL }}" aria-label="{{ .Name }}"{{ if eq $.RelPermalink (.URL | relURL) }} class="active"{{ end }}>
@@ -108,6 +112,7 @@
 </footer>
 
 <script src="{{ "/js/prism.js" | relURL }}"></script>
+<script src="{{ "/js/nav.js" | relURL }}"></script>
 {{ block "scripts" . }}{{ end }}
 </body>
 </html>
