@@ -20,16 +20,16 @@
 さんに感謝。&lt;/p>
 &lt;h1 id="自動構築プロセス全体で使用する共通設定を定義">自動構築プロセス全体で使用する共通設定を定義&lt;/h1>
 &lt;p>まず、 &lt;code>main.tf&lt;/code> を作成し、以下のとおり共通設定を定義していきます。&lt;/p>
-&lt;pre>&lt;code># AWS を利用することを明示
-provider &amp;quot;aws&amp;quot; {
+&lt;pre class="line-numbers">&lt;code class="language-text"># AWS を利用することを明示
+provider &amp;#34;aws&amp;#34; {
 # リージョンを設定
-region = &amp;quot;ap-northeast-1&amp;quot;
+region = &amp;#34;ap-northeast-1&amp;#34;
 }
 # これから作成するリソースに付与する名前のプリフィックスを設定
 # グローバル変数的な立ち位置で定義
-variable &amp;quot;prefix&amp;quot; {
-default = &amp;quot;sample-project&amp;quot;
-}
-&lt;/code>&lt;/pre>
+variable &amp;#34;prefix&amp;#34; {
+default = &amp;#34;sample-project&amp;#34;
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;code>provider&lt;/code> で使用するクラウドを指定することができます。&lt;/p>
-&lt;p>&lt;code>variable&lt;/code> は変数定義です。&lt;/p></description></item></channel></rss>
+&lt;p>&lt;code>variable&lt;/code> は変数定義です。&lt;/p>
+&lt;p>&lt;code>${var.prefix}&lt;/code> と書くことで &lt;code>default&lt;/code> で指定した内容が展開されます。&lt;/p></description></item></channel></rss>

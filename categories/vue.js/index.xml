@@ -16,17 +16,16 @@
 &lt;p>（少し古い記事ですが、そんなに問題はないはずです）&lt;/p>
 &lt;h2 id="db-にテーブル作成">DB にテーブル作成&lt;/h2>
 &lt;p>今回、ブログ記事を管理するために、下記のテーブルを作成しました。&lt;/p>
-&lt;pre>&lt;code>mysql&amp;gt; describe blog_posts;
-+------------+--------------+------+-----+---------+----------------+
+&lt;pre class="line-numbers">&lt;code class="language-text">mysql&amp;gt; describe blog_posts;
+&amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
 | Field | Type | Null | Key | Default | Extra |
-+------------+--------------+------+-----+---------+----------------+
+&amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
 | id | bigint(20) | NO | PRI | NULL | auto_increment |
 | title | varchar(255) | NO | | NULL | |
 | count | varchar(255) | NO | | 0 | |
 | created_at | datetime | NO | | NULL | |
 | updated_at | datetime | NO | | NULL | |
-+------------+--------------+------+-----+---------+----------------+
-5 rows in set (0.00 sec)
-&lt;/code>&lt;/pre>
+&amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
+5 rows in set (0.00 sec)&lt;/code>&lt;/pre>
 &lt;p>&lt;code>title&lt;/code>には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
 記事ファイル（マークダウン）の名前（本記事だと『good_api』, 拡張子抜き）が入ります。&lt;/p></description></item></channel></rss>

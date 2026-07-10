@@ -1,69 +1,69 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた - Indexing my brain</title>
-<meta name=description content="いいね機能つけました"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=twitter:card content="summary_large_image"><meta property="og:site_name" content="Indexing my brain"><meta property="og:title" content="【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた"><meta property="og:description" content="いいね機能つけました"><meta property="og:type" content="article"><meta property="og:url" content="https://tech.yyh-gl.dev/blog/good_api/"><meta property="og:image" content="https://tech.yyh-gl.dev/img/2019/06/good_api/featured.webp"><meta property="og:image:alt" content="featured"><link rel=manifest href="/favicon/site.webmanifest?v=1"><link rel=apple-touch-icon sizes=180x180 href="/favicon/apple-touch-icon.png?v=1"><link rel=icon type=image/png sizes=32x32 href="/favicon/favicon-32x32.png?v=1"><link rel=icon type=image/png sizes=16x16 href="/favicon/favicon-16x16.png?v=1"><link rel=mask-icon href="/favicon/safari-pinned-tab.svg?v=1" color=#ffffff><link rel="shortcut icon" href="/favicon/favicon.ico?v=1"><meta name=msapplication-config content="/favicon/browserconfig.xml?v=1"><meta name=msapplication-TileColor content="#ffffff"><meta name=theme-color content="#ffffff"><meta name=generator content="Hugo 0.146.2"><meta property="og:site_name" content="Indexing my brain"><meta property="og:title" content="【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた"><meta property="og:description" content="いいね機能つけました"><meta property="description" content="いいね機能つけました"><meta property="og:url" content="https://tech.yyh-gl.dev/blog/good_api/"><meta property="og:type" content="article"><meta property="og:image" content="https://tech.yyh-gl.dev/img/2019/06/good_api/featured.webp"><meta property="og:image:alt" content="featured"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name=twitter:card content="summary_large_image"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700"><link rel=stylesheet href=/css/academicons.min.540c558e7d3a8819ddefe207faca165d21d27adaedb7e6504b13c3dc62cb9d0b.css integrity="sha256-VAxVjn06iBnd7+IH+soWXSHSetrtt+ZQSxPD3GLLnQs="><script src=https://kit.fontawesome.com/04f97481a8.js crossorigin=anonymous></script><link rel=stylesheet href=/css/fancybox.min.edda9ad80cee672789cd8c51659c8084483f04f9bd928aa0d94c017d8d2f71ec.css integrity="sha256-7dqa2AzuZyeJzYxRZZyAhEg/BPm9koqg2UwBfY0vcew="><link rel=stylesheet href=/css/main.min.0d633d4f7e2e3fa99a33d30eb27da0dc1bad3ddd6344f71f16cb5c3b3dfbbed9.css integrity="sha256-DWM9T34uP6maM9MOsn2g3ButPd1jRPcfFstcOz37vtk="><link rel=stylesheet href=/css/add-on.css><link rel=stylesheet href=/css/prism.css><link rel=alternate type=application/atom+xml title=Atom href=/index.xml><script src=/js/vue.min.js></script><script src=/js/good-counter.js defer></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3B9GBPE91"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q3B9GBPE91")}</script></head><body><header id=site-header><nav id=site-nav><h1 class=nav-title><a href=/ class=nav>Blog</a></h1><menu id=site-nav-menu class="flyout-menu menu"><a href=/ class="nav link"><i class='fa fa-home'></i> Home</a>
-<a href=/about/ class="nav link"><i class='far fa-id-card'></i> About</a>
-<a href=/blog/ class="nav link"><i class='far fa-newspaper'></i> Blog</a>
-<a href=/categories/ class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-<a href=/stats/ class="nav link"><i class='fas fa-chart-bar'></i> Stats</a></menu><a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a></nav></header><div id=wrapper><section id=site-intro><a href=/><img src=/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a><header><h1>Indexing my brain</h1></header><main><p>技術ネタ中心のブログです。<br>主な扱いはバックエンド技術と設計です。</p></main><footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener aria-label=GitHub><i class="fa-brands fa-github" aria-hidden=true></i></a></li><li><a href=//www.linkedin.com/in/yyh-gl target=_blank rel=noopener aria-label=LinkedIn><i class="fa-brands fa-linkedin" aria-hidden=true></i></a></li><li><a href=//x.com/yyh_gl target=_blank rel=noopener aria-label=X><i class="fa-brands fa-x-twitter" aria-hidden=true></i></a></li><li><a href=//bsky.app/profile/yyh-gl.bsky.social target=_blank rel=noopener aria-label=Bluesky><i class="fa-solid fa-cloud" aria-hidden=true></i></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank rel=noopener aria-label="Speaker Deck"><i class="fa-brands fa-speaker-deck" aria-hidden=true></i></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank rel=noopener aria-label=Crowdin><i class="fa-solid fa-pen-square" aria-hidden=true></i></a></li></ul></footer></section><main id=site-main><article class=post><header><div class=title><h2><a href=/blog/good_api/>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</a></h2><p>いいね機能つけました</p></div><div class=meta><time datetime="2019-06-08 09:00:00 +0900 +0900">2019-06-08</time><p>yyh-gl</p><p>2 分で読めます</p></div></header><div id=socnet-share></div><div class=content><a href=/blog/good_api/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2019/06/good_api/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2019/06/good_api/featured.webp alt=featured></a><h1 id=いいねボタンがないブログ>いいねボタンがないブログ</h1><p>本ブログ、いいねボタンが <u>ありませんでした</u>。</p><p>だから、作っちゃいました。っていう記事です。</p><h1 id=構成>構成</h1><img src=https://tech.yyh-gl.dev/img/2019/06/good_api/architecture.png width=600><br><p>上図のように</p><p>記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。</p><p>記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。</p><p>APIサーバは Rails で実装しました。</p><p>（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）</p><h1 id=apiサーバ>APIサーバ</h1><p>Rails で APIサーバを建てる方法に関しては、</p><p>以前に Qiita で <a href=https://qiita.com/yyh-gl/items/30bd91c2b33fdfbe49b5 target=_blank rel="noopener noreferrer">入門記事</a>
-書いたのでそちらをご覧ください。</p><p>（少し古い記事ですが、そんなに問題はないはずです）</p><h2 id=db-にテーブル作成>DB にテーブル作成</h2><p>今回、ブログ記事を管理するために、下記のテーブルを作成しました。</p><pre class=line-numbers><code>mysql&gt; describe blog_posts;
-+------------+--------------+------+-----+---------+----------------+
+<!doctype html><html lang=ja><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた | Indexing my brain</title>
+<meta name=description content="いいね機能つけました"><meta name=author content="yyh-gl"><meta property="og:site_name" content="Indexing my brain"><meta property="og:title" content="【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた"><meta property="og:description" content="いいね機能つけました"><meta property="og:url" content="https://tech.yyh-gl.dev/blog/good_api/"><meta property="og:type" content="article"><meta property="og:image" content="https://tech.yyh-gl.dev/img/2019/06/good_api/featured.webp"><meta property="og:image:alt" content="featured"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@yyh_gl"><link rel=icon type=image/x-icon href=/favicon/favicon.ico><link rel=apple-touch-icon sizes=180x180 href=/favicon/apple-touch-icon.png><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/prism.css><script src=https://kit.fontawesome.com/04f97481a8.js crossorigin=anonymous></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3B9GBPE91"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q3B9GBPE91")}</script></head><body><nav class=site-nav><div class=nav-inner><a href=/ class=nav-logo><span class=prompt>$</span>
+<span>Indexing my brain</span>
+<span class=cursor></span></a><ul class=nav-links><li><a href=/about/ aria-label=About><i class='far fa-id-card' aria-hidden=true></i>&nbsp;<span>About</span></a></li><li><a href=/blog/ aria-label=Blog><i class='far fa-newspaper' aria-hidden=true></i>&nbsp;<span>Blog</span></a></li><li><a href=/categories/ aria-label=Categories><i class='fas fa-sitemap' aria-hidden=true></i>&nbsp;<span>Categories</span></a></li><li><a href=/stats/ aria-label=Stats><i class='fas fa-chart-bar' aria-hidden=true></i>&nbsp;<span>Stats</span></a></li></ul></div></nav><main id=site-main class=site-main><article class=post-article><header class=post-header><div class=post-breadcrumb><a href=/>Home</a>
+<span class=sep>/</span>
+<a href=/blog/>Blog</a>
+<span class=sep>/</span>
+<a href=/categories/web-api/>Web API</a></div><h1>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</h1><div class=post-meta><span class=meta-item><i class="far fa-calendar-alt"></i> 2019-06-08</span>
+<span class=meta-item><i class="far fa-user"></i> yyh-gl</span>
+<span class=meta-item><i class="far fa-clock"></i> 2 min read</span></div><div class=post-tags><span class=post-tag>#Tech</span></div></header><img class=post-featured-img src=/img/2019/06/good_api/featured.webp alt=featured><div class=post-content><h1 id=いいねボタンがないブログ>いいねボタンがないブログ</h1><p>本ブログ、いいねボタンが <u>ありませんでした</u>。</p><p>だから、作っちゃいました。っていう記事です。</p><h1 id=構成>構成</h1><img src=https://tech.yyh-gl.dev/img/2019/06/good_api/architecture.png width=600><br><p>上図のように</p><p>記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。</p><p>記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。</p><p>APIサーバは Rails で実装しました。</p><p>（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）</p><h1 id=apiサーバ>APIサーバ</h1><p>Rails で APIサーバを建てる方法に関しては、</p><p>以前に Qiita で <a href=https://qiita.com/yyh-gl/items/30bd91c2b33fdfbe49b5 target=_blank rel="noopener noreferrer">入門記事</a>
+書いたのでそちらをご覧ください。</p><p>（少し古い記事ですが、そんなに問題はないはずです）</p><h2 id=db-にテーブル作成>DB にテーブル作成</h2><p>今回、ブログ記事を管理するために、下記のテーブルを作成しました。</p><pre class=line-numbers><code class=language-text>mysql&gt; describe blog_posts;
+&#43;------------&#43;--------------&#43;------&#43;-----&#43;---------&#43;----------------&#43;
 | Field      | Type         | Null | Key | Default | Extra          |
-+------------+--------------+------+-----+---------+----------------+
+&#43;------------&#43;--------------&#43;------&#43;-----&#43;---------&#43;----------------&#43;
 | id         | bigint(20)   | NO   | PRI | NULL    | auto_increment |
 | title      | varchar(255) | NO   |     | NULL    |                |
 | count      | varchar(255) | NO   |     | 0       |                |
 | created_at | datetime     | NO   |     | NULL    |                |
 | updated_at | datetime     | NO   |     | NULL    |                |
-+------------+--------------+------+-----+---------+----------------+
-5 rows in set (0.00 sec)
-</code></pre><p><code>title</code>には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
+&#43;------------&#43;--------------&#43;------&#43;-----&#43;---------&#43;----------------&#43;
+5 rows in set (0.00 sec)</code></pre><p><code>title</code>には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
 記事ファイル（マークダウン）の名前（本記事だと『good_api』, 拡張子抜き）が入ります。</p><br><p>Web上の記事データと APIサーバのレコード をどうやって結びつけるか考えたとき、</p><p>ページが持っている記事の情報って、 URL に含まれる 記事ファイル名 しかないなぁ…と考え、</p><p>URL から取得した 英title と テーブルの <code>title</code> が一致するものを探すようにしました。</p><h2 id=corsの設定>CORSの設定</h2><p>今回重要なのは CORS の設定です。</p><p>CORS を説明するとなると、 CSRF の説明やらなんやらで、とても長くなり、本題からかなり脱線するので</p><p>今回は <a href=http://watanabe-tsuyoshi.hatenablog.com/entry/2015/03/04/123649 target=_blank rel="noopener noreferrer">こちらのサイト</a>
 をご紹介するだけにしておきます。</p><p>僕的に一番分かりやすかったです。</p><p>・</p><p>・</p><p>・</p><p>では、本題の CORS の設定についてですが、</p><p>Rails における CORS の設定はとても簡単です。</p><div><ol><li><p>Gemfile に <code>rack-cors</code> を追加</p><p>Rails で生成した Gemfile にデフォルトで入っていますが、コメントアウトされています。</p><p>コメントを解除してあげましょう。</p><pre class=line-numbers><code class=language-text># Gemfile
 
 …省略
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
+gem &#39;rack-cors&#39;
 
-…省略
-</code></pre></li><li><p><code>cors.rb</code> を編集</p><p>こちらも元から存在するファイルです。</p><p>中身に関しては、コメントを解除してあげるだけでOKです。</p><pre class=line-numbers><code class=language-ruby># &lt;Rails Root Directory&gt;/config/initializers/cors.rb   
+…省略</code></pre></li><li><p><code>cors.rb</code> を編集</p><p>こちらも元から存在するファイルです。</p><p>中身に関しては、コメントを解除してあげるだけでOKです。</p><pre class=line-numbers><code class=language-ruby># &lt;Rails Root Directory&gt;/config/initializers/cors.rb   
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://yyh-gl.github.io'
+    origins &#39;https://yyh-gl.github.io&#39;
 
-    resource '*',
+    resource &#39;*&#39;,
       headers: :any,
       methods: [:get, :post, :options]
   end
-end
-</code></pre><p><code>origins</code> で指定した場所からのアクセスに関しては、同一生成元ポリシーを少し無視して</p><p>アクセスを許可します。</p><p>ワイルドカードによる指定もできます。</p><p>今回は、僕のブログからのアクセスのみを許可します。</p><br><p><code>resource</code> によってアクセスを許可するリソースを指定できます。</p><p><code>resource</code> で許可したリソースに対して、</p><p><code>headers</code> および <code>methods</code> で指定したヘッダおよびメソッドのみを受け付けます。</p><br><p><a href=https://github.com/cyu/rack-cors#rack-configuration target=_blank rel="noopener noreferrer">こちら</a>
+end</code></pre><p><code>origins</code> で指定した場所からのアクセスに関しては、同一生成元ポリシーを少し無視して</p><p>アクセスを許可します。</p><p>ワイルドカードによる指定もできます。</p><p>今回は、僕のブログからのアクセスのみを許可します。</p><br><p><code>resource</code> によってアクセスを許可するリソースを指定できます。</p><p><code>resource</code> で許可したリソースに対して、</p><p><code>headers</code> および <code>methods</code> で指定したヘッダおよびメソッドのみを受け付けます。</p><br><p><a href=https://github.com/cyu/rack-cors#rack-configuration target=_blank rel="noopener noreferrer">こちら</a>
 を見ていただければ、より詳しい設定方法が分かると思います。</p><p>今回実装するAPIは GET と POST しか使わないので</p><p><code>methods: [:get, :post, :options]</code> となっています。</p><br><p><code>options</code> は <u>プリフライトリクエスト</u> と言って、</p><p>事前にサーバに対してリクエストを送信しても大丈夫か問い合わせるさいに使用します（<a href=https://developer.mozilla.org/ja/docs/Web/HTTP/CORS#Preflighted_requests target=_blank rel="noopener noreferrer">参考</a>
 ）。</p><p>忘れずに追加しましょう。<br></p></li></ol></div><br>以上で、Rails における CORS の設定は完了です。<h1 id=クライアントの実装>クライアントの実装</h1><p>次は、記事ページからリクエストを送る部分です。</p><p>まず、HTMLファイルはこんな感じです ↓</p><pre class=line-numbers><code class=language-html>&lt;html&gt;
-      &lt;div id=&quot;GoodCounter&quot;&gt;
+      &lt;div id=&#34;GoodCounter&#34;&gt;
         &lt;good-counter&gt;&lt;/good-counter&gt;
       &lt;/div&gt;
 &lt;/html&gt;
 
-&lt;script src=&quot;/tech-blog/js/axios.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;/tech-blog/js/vue.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;/tech-blog/js/vue_app.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>中の処理を説明すると、</p><p>IDが <code>GoodCounter</code> の <code>div</code>要素の部分に Vue コンポーネント（後述）を入れ込んでいます。</p><p><code>script</code>タグは、上から axios, Vue, Vue コンポーネント を読み込んでいます。</p><p>次に Vue コンポーネントです。</p><pre class=line-numbers><code class=language-js>// vue_app.js
+&lt;script src=&#34;/tech-blog/js/axios.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/tech-blog/js/vue.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/tech-blog/js/vue_app.js&#34;&gt;&lt;/script&gt;</code></pre><p>中の処理を説明すると、</p><p>IDが <code>GoodCounter</code> の <code>div</code>要素の部分に Vue コンポーネント（後述）を入れ込んでいます。</p><p><code>script</code>タグは、上から axios, Vue, Vue コンポーネント を読み込んでいます。</p><p>次に Vue コンポーネントです。</p><pre class=line-numbers><code class=language-js>// vue_app.js
 
-Vue.component('good-counter', {
-  template: '&lt;button v-on:click=&quot;addCount&quot;&gt;\n' +
-    '&lt;i class=&quot;far fa-thumbs-up&quot;&gt;&lt;/i&gt; いいね　｛｛ good_count ｝｝\n' +
-    '&lt;/button&gt;',
+Vue.component(&#39;good-counter&#39;, {
+  template: &#39;&lt;button v-on:click=&#34;addCount&#34;&gt;\n&#39; &#43;
+    &#39;&lt;i class=&#34;far fa-thumbs-up&#34;&gt;&lt;/i&gt; いいね　｛｛ good_count ｝｝\n&#39; &#43;
+    &#39;&lt;/button&gt;&#39;,
   data: function () {
     return {
-      good_count: &quot;-&quot;,
+      good_count: &#34;-&#34;,
     }
   },
   mounted () {
     // URL から記事情報を取得
-    let paths = location.pathname.split('/');
+    let paths = location.pathname.split(&#39;/&#39;);
     // URL のタイトル部分のみを抽出
     // GET /posts/:title への リクエストURL を作成
-    let reqUrl = '&lt;server url&gt;' + paths[paths.length - 2];
+    let reqUrl = &#39;&lt;server url&gt;&#39; &#43; paths[paths.length - 2];
 
     axios
       .get(reqUrl)
@@ -72,10 +72,10 @@ Vue.component('good-counter', {
   methods: {
     addCount: function (event) {
       // URL から記事情報を取得
-      let paths = location.pathname.split('/');
+      let paths = location.pathname.split(&#39;/&#39;);
       // URL のタイトル部分のみを抽出
       // POST /posts/:title/good への リクエストURL を作成
-      let reqUrl = '&lt;server url&gt;' + paths[paths.length - 2] + '/good';
+      let reqUrl = &#39;&lt;server url&gt;&#39; &#43; paths[paths.length - 2] &#43; &#39;/good&#39;;
 
       if(event) {
         axios
@@ -88,8 +88,13 @@ Vue.component('good-counter', {
 
 // root インスタンスを作成
 new Vue({
-  el: '#GoodCounter',
-});
-</code></pre><p>いろいろ書いていますが、 URL から記事タイトルを取得し、</p><p>それを基にリクエストを送っているだけです。</p><p>Vue コンポーネントのマウント時に いいねの数を GET しています。</p><p>そして、いいねボタンが押されるたびに <code>addCount()</code> が実行されて、 いいね が加算されます。</p><br><p>Vue の SFC を使いたかったのですが、勉強不足で実現できず、このような実装になりました。</p><p>詳しい人ぜひ教えてください。</p><h1 id=完成>完成！</h1><p>できあがったものは、↓ の方にスクロールしていったら実物があるので見てみてください</p><br><p>だれがいいねしてくれたかは分からないですが、 誰かがしてくれた という事実を噛み締めたいと思います。</p><br><p>Vue は僕の会社でも使われているので、今後も積極的にキャッチアップを続けていきたいです。</p><p>フロントの知識もっとつけていきたいですねー👾</p><p>（APIサーバへのアクセスを制限しないとな…）</p></div><footer><div class=blog-stats><ul class=categories><li><a class=article-terms-link href=/categories/web-api/>Web API</a></li><li><a class=article-terms-link href=/categories/vue.js/>Vue.js</a></li><li><a class=article-terms-link href=/categories/html/css/>HTML/CSS</a></li></ul><div><good-counter rel-permalink=/blog/good_api/></good-counter></div></div></footer><div class=fix><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e3%80%90Web%20API%ef%bc%88Rails%ef%bc%89%20%2b%20Vue.js%e3%80%91%e3%83%96%e3%83%ad%e3%82%b0%e3%81%ae%e3%81%84%e3%81%84%e3%81%ad%e3%83%9c%e3%82%bf%e3%83%b3%e8%87%aa%e4%bd%9c%e3%81%97%e3%81%a6%e3%81%bf%e3%81%9f』" target=_blank rel="noopener noreferrer">修正提案</a></div></article><div class=pagination><a href=/blog/bigdata_processing/ class="button left"><span>【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた</span></a>
-<a href=/blog/scrum_entry/ class="button right"><span>スクラムについて学んだ話</span></a></div></main><section id=site-sidebar><section id=recent-posts><header><h1>最近の投稿</h1></header><article class=mini-post><a href=/blog/kotlin-fest-2025/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2025/11/kotlin-fest-2025/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2025/11/kotlin-fest-2025/featured.webp alt=featured></a><header><h2><a href=/blog/kotlin-fest-2025/>Kotlin言語仕様書への招待 @Kotlin Fest 2025</a></h2><time class=published datetime="2025-11-01 13:20:00 +0900 +0900">2025-11-01</time></header></article><article class=mini-post><a href=/blog/java-integer-cache/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2025/05/java-integer-cache/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2025/05/java-integer-cache/featured.webp alt=featured></a><header><h2><a href=/blog/java-integer-cache/>JavaのIntegerクラスがキャッシュする範囲</a></h2><time class=published datetime="2025-05-18 22:30:08 +0900 +0900">2025-05-18</time></header></article><article class=mini-post><a href=/blog/the-code-book/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2025/01/the-code-book/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2025/01/the-code-book/featured.webp alt=featured></a><header><h2><a href=/blog/the-code-book/>『暗号解読（上）』を読んで</a></h2><time class=published datetime="2025-01-24 00:30:40 +0900 +0900">2025-01-24</time></header></article><footer><a href=/blog/ class=button>続きを見る</a></footer></section><section id=mini-bio><header><h1>About</h1></header><p>東京で働くソフトウェアエンジニアです。<br>バックエンドがメインですが、フロントエンドやインフラもさわっています。</p><footer><a href=/about class=button>もっと詳しく知る</a></footer></section></section><footer id=site-footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener aria-label=GitHub><i class="fa-brands fa-github" aria-hidden=true></i></a></li><li><a href=//www.linkedin.com/in/yyh-gl target=_blank rel=noopener aria-label=LinkedIn><i class="fa-brands fa-linkedin" aria-hidden=true></i></a></li><li><a href=//x.com/yyh_gl target=_blank rel=noopener aria-label=X><i class="fa-brands fa-x-twitter" aria-hidden=true></i></a></li><li><a href=//bsky.app/profile/yyh-gl.bsky.social target=_blank rel=noopener aria-label=Bluesky><i class="fa-solid fa-cloud" aria-hidden=true></i></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank rel=noopener aria-label="Speaker Deck"><i class="fa-brands fa-speaker-deck" aria-hidden=true></i></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank rel=noopener aria-label=Crowdin><i class="fa-solid fa-pen-square" aria-hidden=true></i></a></li></ul><p class=copyright>© 2026 Indexing my brain<br>Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.146.2 target=_blank rel=noopener>Hugo</a></p></footer><a id=back-to-top href=# aria-label=トップへ戻る><i class="fas fa-arrow-up fa-2x" aria-hidden=true></i></a>
-<script src=//code.jquery.com/jquery-3.5.1.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js></script><script src=//unpkg.com/lunr/lunr.min.js></script><script src=/js/bundlecdn.min.70a44919fe2b86c48196e069b4cf8c2db75d57570d4d703be285319acf2eb966.js integrity="sha256-cKRJGf4rhsSBluBptM+MLbddV1cNTXA74oUxms8uuWY="></script><script src=/js/add-on.js></script><script src=/js/prism.js></script></div></body></html>
+  el: &#39;#GoodCounter&#39;,
+});</code></pre><p>いろいろ書いていますが、 URL から記事タイトルを取得し、</p><p>それを基にリクエストを送っているだけです。</p><p>Vue コンポーネントのマウント時に いいねの数を GET しています。</p><p>そして、いいねボタンが押されるたびに <code>addCount()</code> が実行されて、 いいね が加算されます。</p><br><p>Vue の SFC を使いたかったのですが、勉強不足で実現できず、このような実装になりました。</p><p>詳しい人ぜひ教えてください。</p><h1 id=完成>完成！</h1><p>できあがったものは、↓ の方にスクロールしていったら実物があるので見てみてください</p><br><p>だれがいいねしてくれたかは分からないですが、 誰かがしてくれた という事実を噛み締めたいと思います。</p><br><p>Vue は僕の会社でも使われているので、今後も積極的にキャッチアップを続けていきたいです。</p><p>フロントの知識もっとつけていきたいですねー👾</p><p>（APIサーバへのアクセスを制限しないとな…）</p></div><footer class=post-footer><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e3%80%90Web%20API%ef%bc%88Rails%ef%bc%89%20%2b%20Vue.js%e3%80%91%e3%83%96%e3%83%ad%e3%82%b0%e3%81%ae%e3%81%84%e3%81%84%e3%81%ad%e3%83%9c%e3%82%bf%e3%83%b3%e8%87%aa%e4%bd%9c%e3%81%97%e3%81%a6%e3%81%bf%e3%81%9f』" target=_blank rel="noopener noreferrer" class=fix-link><i class="fas fa-code-pull-request"></i> 修正提案</a><nav class=post-nav><a href=/blog/bigdata_processing/ class=nav-prev><span class=nav-label><i class="fas fa-chevron-left"></i> 前の記事</span>
+<span class=nav-title>【大規模サービス技術入門 5章】大規模データの処理方法についてまとめた</span>
+</a><a href=/blog/scrum_entry/ class=nav-next><span class=nav-label>次の記事 <i class="fas fa-chevron-right"></i></span>
+<span class=nav-title>スクラムについて学んだ話</span></a></nav></footer></article></main><footer class=site-footer><div class=footer-inner><div class=footer-logo>$ Indexing my brain</div><div class=footer-links><a href=https://github.com/yyh-gl target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a>
+<a href=https://x.com/yyh_gl target=_blank rel=noopener><i class="fab fa-x-twitter"></i> X</a>
+<a href=https://bsky.app/profile/yyh-gl.bsky.social target=_blank rel=noopener><i class="fas fa-cloud"></i> Bluesky</a>
+<a href=https://speakerdeck.com/yyh_gl target=_blank rel=noopener><i class="fab fa-speaker-deck"></i> Speaker Deck</a>
+<a href=https://www.linkedin.com/in/yyh-gl target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a>
+<a href=https://crowdin.com/profile/yyh-gl target=_blank rel=noopener><i class="fa-solid fa-square-pen"></i> Crowdin</a></div><p class=footer-copy>&copy; 2026 yyh-gl &mdash; Built with <span class=heart>&#9829;</span> & Hugo</p></div></footer><script src=/js/prism.js></script></body></html>

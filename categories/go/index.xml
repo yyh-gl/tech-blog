@@ -47,11 +47,11 @@
 &lt;h1 id="buildコマンドとは">&lt;code>build&lt;/code>コマンドとは&lt;/h1>
 &lt;p>まずは&lt;code>build&lt;/code>とはどういったコマンドなのか見ていきましょう。&lt;/p>
 &lt;p>&lt;code>help&lt;/code>を使って調べてみます。&lt;/p>
-&lt;pre>&lt;code class="language-shell">$ go help build
+&lt;pre class="line-numbers">&lt;code class="language-shell">$ go help build
 Build compiles the packages named by the import paths,
 along with their dependencies, but it does not install the results.
 &amp;lt;省略&amp;gt;
-When compiling packages, build ignores files that end in '_test.go'.
+When compiling packages, build ignores files that end in &amp;#39;_test.go&amp;#39;.
 &amp;lt;省略&amp;gt;
 When compiling multiple packages or a single non-main package,
 build compiles the packages but discards the resulting object,
@@ -63,8 +63,7 @@ build. For more information about build tags, see the description of
 build constraints in the documentation for the go/build package.
 (Earlier versions of Go used a space-separated list, and that form
 is deprecated but still recognized.)
-&amp;lt;省略&amp;gt;
-&lt;/code>&lt;/pre>
+&amp;lt;省略&amp;gt;&lt;/code>&lt;/pre>
 &lt;p>&lt;code>build&lt;/code>はコンパイルするやつですよという文章から始まり、
 いろいろ書かれていますが、今回は以下の4点について見てみます。&lt;/p></description></item><item><title>【GitHub Actions】GitHubのプロフィールを自動更新する仕組みを作った</title><link>https://tech.yyh-gl.dev/blog/profile-readme-updater/</link><pubDate>Fri, 19 Feb 2021 18:53:19 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/profile-readme-updater/</guid><description>&lt;h1 id="おもしろいツイートを見つけた">おもしろいツイートを見つけた&lt;/h1>
 &lt;blockquote class="twitter-tweet">&lt;p lang="ja" dir="ltr">GitHub ActionsでQiita/Zennの投稿をGitHubプロフィールに自動反映できるようにした &lt;a href="https://t.co/o47E7YHSsx">pic.twitter.com/o47E7YHSsx&lt;/a>&lt;/p>&amp;mdash; mikkame (@mikkameee) &lt;a href="https://twitter.com/mikkameee/status/1360887240587571201?ref_src=twsrc%5Etfw">February 14, 2021&lt;/a>&lt;/blockquote> &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
@@ -89,15 +88,14 @@ Goで書いたプロフィール（README）更新スクリプトをGitHub Actio
 &lt;p>&lt;strong>ちなみに、だいたいのコードは現場で使うと怒られそうです😇&lt;/strong> &lt;br>
 （いや、まず間違いなく怒られる）&lt;/p>
 &lt;h1 id="1-comments">1. Comments&lt;/h1>
-&lt;pre>&lt;code class="language-go">package main
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
 import (
-&amp;quot;fmt&amp;quot;
+&amp;#34;fmt&amp;#34;
 )
 func main() {
 var/*comment*/a = 1
 fmt.Println(a)
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/9Dun0LiT5N5" target="_blank" rel="noopener noreferrer">https://play.golang.org/p/9Dun0LiT5N5&lt;/a>
 &lt;/p>
 &lt;p>まずはこちら。&lt;br>
@@ -112,40 +110,38 @@ fmt.Println(a)
 &lt;p>改行を含まないgeneral commentはスペースのように作用する。&lt;/p>&lt;/blockquote>
 &lt;p>（general commentとは&lt;code>/**/&lt;/code>で囲われたコメントのことを指します）&lt;/p>
 &lt;p>よって、先程のコードは以下と同じということです。&lt;/p>
-&lt;pre>&lt;code class="language-go">package main
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
 import (
-&amp;quot;fmt&amp;quot;
+&amp;#34;fmt&amp;#34;
 )
 func main() {
 var a = 1
 fmt.Println(a)
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>こうして変換してみると、エラーでないことは明白ですね。&lt;/p></description></item><item><title>【Go】Switch文のfallthroughに関するまとめ</title><link>https://tech.yyh-gl.dev/blog/go-switch-fallthrough/</link><pubDate>Sat, 03 Oct 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-switch-fallthrough/</guid><description>&lt;h1 id="fallthrough-とは">fallthrough とは&lt;/h1>
 &lt;p>GoではSwitch文でfallthroughという&lt;a href="https://golang.org/ref/spec#Keywords" target="_blank" rel="noopener noreferrer">キーワード&lt;/a>
 が使用可能です。&lt;/p>
 &lt;p>機能としては、処理を次の節（caseやdefault）に進めます。（&lt;a href="https://github.com/golang/go/wiki/Switch#fall-through" target="_blank" rel="noopener noreferrer">参考&lt;/a>
 ）&lt;br>
 言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。&lt;/p>
-&lt;pre>&lt;code class="language-go">package main
-import &amp;quot;fmt&amp;quot;
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
+import &amp;#34;fmt&amp;#34;
 func main() {
 num := 1
 switch num {
 case 1:
-fmt.Print(&amp;quot;I &amp;quot;)
+fmt.Print(&amp;#34;I &amp;#34;)
 fallthrough
 case 2:
-fmt.Print(&amp;quot;am &amp;quot;)
+fmt.Print(&amp;#34;am &amp;#34;)
 fallthrough
 case 3:
-fmt.Println(&amp;quot;yyh-gl.&amp;quot;)
+fmt.Println(&amp;#34;yyh-gl.&amp;#34;)
 // fallthrough // 次の節がなければコンパイルエラー
 }
 }
 // 実行結果：
-// I am yyh-gl.
-&lt;/code>&lt;/pre>
+// I am yyh-gl.&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/FBJKDxbVw5n" target="_blank" rel="noopener noreferrer">Playground&lt;/a>
 &lt;/p>
 &lt;p>&lt;a href="https://play.golang.org/p/VmfdVwngNGi" target="_blank" rel="noopener noreferrer">defaultにも飛べるという例&lt;/a>
@@ -159,7 +155,7 @@ fmt.Println(&amp;quot;yyh-gl.&amp;quot;)
 僕がGoでどうやって実装しているのか紹介していきます。&lt;/p>
 &lt;h1 id="実装例">実装例&lt;/h1>
 &lt;p>兎にも角にも、まずはコードを示します。&lt;/p>
-&lt;pre>&lt;code class="language-go">// animal/dog/dog.go
+&lt;pre class="line-numbers">&lt;code class="language-go">// animal/dog/dog.go
 package dog
 type Dog struct {
 name Name
@@ -172,62 +168,56 @@ return nil, err
 return &amp;amp;Dog{
 name: *n,
 }, nil
-}
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-go">// animal/dog/name.go
+}&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-go">// animal/dog/name.go
 package dog
 import (
-&amp;quot;errors&amp;quot;
-&amp;quot;unicode/utf8&amp;quot;
+&amp;#34;errors&amp;#34;
+&amp;#34;unicode/utf8&amp;#34;
 )
 type Name string
 func newName(v string) (*Name, error) {
 // 名前は3文字以上というビジネスロジック
 if utf8.RuneCountInString(v) &amp;lt; 3 {
-return nil, errors.New(&amp;quot;名前は3文字以上！&amp;quot;)
+return nil, errors.New(&amp;#34;名前は3文字以上！&amp;#34;)
 }
 n := Name(v)
 return &amp;amp;n, nil
-}
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-go">// main.go
+}&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-go">// main.go
 package main
 import (
-&amp;quot;fmt&amp;quot;
-&amp;quot;playground/animal/dog&amp;quot;
+&amp;#34;fmt&amp;#34;
+&amp;#34;playground/animal/dog&amp;#34;
 )
 func main() {
-// d := dog.Dog{name: &amp;quot;犬太郎&amp;quot;} できない
-d, _ := dog.New(&amp;quot;犬太郎&amp;quot;) // できる
-fmt.Printf(&amp;quot;%+v\n&amp;quot;, d)
-d, err := dog.New(&amp;quot;犬&amp;quot;)
+// d := dog.Dog{name: &amp;#34;犬太郎&amp;#34;} できない
+d, _ := dog.New(&amp;#34;犬太郎&amp;#34;) // できる
+fmt.Printf(&amp;#34;%&amp;#43;v\n&amp;#34;, d)
+d, err := dog.New(&amp;#34;犬&amp;#34;)
 if err != nil {
 fmt.Println(err) // 犬の名前が「犬」は可愛そうだからできない()
 }
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/cmNp5MlCNuc" target="_blank" rel="noopener noreferrer">playground&lt;/a>
 &lt;/p></description></item><item><title>go test におけるキャッシュの消し方</title><link>https://tech.yyh-gl.dev/blog/go-test-cache-clear/</link><pubDate>Thu, 30 Apr 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-test-cache-clear/</guid><description>&lt;h1 id="go-test-のキャッシュを消すのは簡単">go test のキャッシュを消すのは簡単&lt;/h1>
 &lt;p>&lt;code>$ go clean -testcache&lt;/code>&lt;/p>
 &lt;p>以上です！&lt;/p>
-&lt;pre>&lt;code class="language-zsh">$ go test ./...
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ go test ./...
 ok github.com/oxequa/realize (cached)
-ok github.com/oxequa/realize/realize (cached)
-&lt;/code>&lt;/pre>
+ok github.com/oxequa/realize/realize (cached)&lt;/code>&lt;/pre>
 &lt;p>このように &lt;code>(cached)&lt;/code> となっていたものが、、、&lt;/p>
-&lt;pre>&lt;code class="language-zsh">$ go clean -testcache
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ go clean -testcache
 $ go test ./...
 ok github.com/oxequa/realize 0.086s
-ok github.com/oxequa/realize/realize 0.389s
-&lt;/code>&lt;/pre>
+ok github.com/oxequa/realize/realize 0.389s&lt;/code>&lt;/pre>
 &lt;p>このように、実行時間が表示されており、キャッシュが消えていることが分かりますね。&lt;/p>
 &lt;br>
 &lt;p>ちなみに、キャッシュを無視する方法はもうひとつあり、&lt;br>
 以下のように &lt;code>-count=1&lt;/code> をつけてやればOKです。&lt;/p>
-&lt;pre>&lt;code class="language-zsh">$ go test ./... -count=1
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ go test ./... -count=1
 ok github.com/oxequa/realize 0.076s
-ok github.com/oxequa/realize/realize 0.384s
-&lt;/code>&lt;/pre>
+ok github.com/oxequa/realize/realize 0.384s&lt;/code>&lt;/pre>
 &lt;br>
 &lt;p>ここからは上記コマンドが一体なにをしてくれたのか、&lt;br>
 もう少し詳細に話していきます。&lt;/p>
@@ -235,7 +225,10 @@ ok github.com/oxequa/realize/realize 0.384s
 &lt;p>&lt;a href="https://golang.org/pkg/cmd/go/internal/clean/" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
 にドキュメントがあります。&lt;/p>
 &lt;blockquote>
-&lt;p>Clean removes object files from package source directories.&lt;/p></description></item><item><title>【Go】jsonパッケージの知っておくと便利な機能</title><link>https://tech.yyh-gl.dev/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-json-tips/</guid><description>&lt;h1 id="jsonパッケージ">jsonパッケージ&lt;/h1>
+&lt;p>Clean removes object files from package source directories.&lt;/p>&lt;/blockquote>
+&lt;p>&lt;code>go clean&lt;/code> は上記のとおりファイルを消してくれるわけですね。&lt;/p>
+&lt;p>&lt;code>-testcache&lt;/code> オプションをつけると、&lt;br>
+テストに関するキャッシュファイルのみを消してくれます。&lt;/p></description></item><item><title>【Go】jsonパッケージの知っておくと便利な機能</title><link>https://tech.yyh-gl.dev/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-json-tips/</guid><description>&lt;h1 id="jsonパッケージ">jsonパッケージ&lt;/h1>
 &lt;p>Goを触ってる人ならだれもが一度はお世話になるであろう
 パッケージ「&lt;a href="https://golang.org/pkg/encoding/json/" target="_blank" rel="noopener noreferrer">json&lt;/a>
 」&lt;/p>
@@ -247,14 +240,14 @@ ok github.com/oxequa/realize/realize 0.384s
 ある構造体（&lt;code>Human&lt;/code>）のフィールドを外部公開したくない場合、&lt;br>
 jsonパッケージの &lt;code>Unmarshal()&lt;/code>，&lt;code>Marshal()&lt;/code> が使えません。&lt;br>
 （上記関数は外部公開されたフィールドのみ変換できる）&lt;/p>
-&lt;pre>&lt;code class="language-go">type Human struct {
+&lt;pre class="line-numbers">&lt;code class="language-go">type Human struct {
 // フィールドを外部公開したくない
 name string
 age int
 }
 func main() {
 h := Human{
-name: &amp;quot;Taro&amp;quot;,
+name: &amp;#34;Taro&amp;#34;,
 age: 21,
 }
 // 構造体 → JSON
@@ -263,23 +256,25 @@ fmt.Println(string(j)) // {}
 // JSON → 構造体
 var uh Human
 _ = json.Unmarshal(j, &amp;amp;uh)
-fmt.Printf(&amp;quot;%+v\n&amp;quot;, uh) // {name: age:0}
-}
-&lt;/code>&lt;/pre>
+fmt.Printf(&amp;#34;%&amp;#43;v\n&amp;#34;, uh) // {name: age:0}
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/53yg13xW5T7" target="_blank" rel="noopener noreferrer">playgroud&lt;/a>
-&lt;/p></description></item><item><title>【Go】errorの同値性と表示について調べた</title><link>https://tech.yyh-gl.dev/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/error_questions/</guid><description>&lt;h1 id="errorについて疑問があった">errorについて疑問があった&lt;/h1>
+&lt;/p>
+&lt;br>
+&lt;p>実際に実行してみると、うまく変換できていないことが分かると思います。&lt;/p>
+&lt;p>さて、このときどうすれば正しく変換できるかというと、&lt;br>
+変換対象の構造体に以下のメソッドを生やしてやればOKです。&lt;/p></description></item><item><title>【Go】errorの同値性と表示について調べた</title><link>https://tech.yyh-gl.dev/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/error_questions/</guid><description>&lt;h1 id="errorについて疑問があった">errorについて疑問があった&lt;/h1>
 &lt;p>Goのコードを書いてて、ふと気になったことがあったので調べてみました。&lt;/p>
 &lt;h1 id="errorの同値性">errorの同値性&lt;/h1>
 &lt;p>1つ目の疑問は、下記コードで e1 と e2 がイコールではないことです。 &lt;br>
 （同値性なんて仰々しく言ってすみません。たったこれだけの疑問です😇🙇‍♂️）&lt;/p>
-&lt;pre>&lt;code class="language-go">func main() {
-e1 := errors.New(&amp;quot;error1&amp;quot;)
-e2 := errors.New(&amp;quot;error1&amp;quot;)
+&lt;pre class="line-numbers">&lt;code class="language-go">func main() {
+e1 := errors.New(&amp;#34;error1&amp;#34;)
+e2 := errors.New(&amp;#34;error1&amp;#34;)
 e3 := e1
 fmt.Println(e1 == e2) // false
 fmt.Println(e1 == e3) // true
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/hwjeo1L6TS1" target="_blank" rel="noopener noreferrer">Playground&lt;/a>
 &lt;/p>
 &lt;h1 id="結論errorの同値性">結論（errorの同値性）&lt;/h1>
@@ -288,33 +283,31 @@ fmt.Println(e1 == e3) // true
 &lt;h1 id="errorの表示">errorの表示&lt;/h1>
 &lt;p>2つ目の疑問は、下記コードで e1 を表示すると、&lt;br>
 errors.New()の戻り値である構造体の値ではなく、エラー文言が表示されることです。&lt;/p>
-&lt;pre>&lt;code class="language-go">package main
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
 import (
-&amp;quot;fmt&amp;quot;
-&amp;quot;errors&amp;quot;
+&amp;#34;fmt&amp;#34;
+&amp;#34;errors&amp;#34;
 )
 func main() {
-e1 := errors.New(&amp;quot;error1&amp;quot;)
+e1 := errors.New(&amp;#34;error1&amp;#34;)
 fmt.Println(e1) // error1
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/z8CQyypo4zX" target="_blank" rel="noopener noreferrer">Playground&lt;/a>
 &lt;/p>
 &lt;p>errors.New()が返しているのは構造体なので、&lt;br>
 下記コードのように構造体の内容が表示されないのはなんでだ？ってなったわけです。&lt;br>&lt;/p>
-&lt;pre>&lt;code class="language-go">package main
-import &amp;quot;fmt&amp;quot;
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
+import &amp;#34;fmt&amp;#34;
 func Hoge() interface{} {
 type hoge struct {
 s string
 }
-return &amp;amp;hoge{s: &amp;quot;hoge&amp;quot;}
+return &amp;amp;hoge{s: &amp;#34;hoge&amp;#34;}
 }
 func main() {
 h := Hoge()
 fmt.Println(h) // &amp;amp;{hoge}
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/_MeqQS420HV" target="_blank" rel="noopener noreferrer">Playground&lt;/a>
 &lt;/p></description></item><item><title>【Go】errorsパッケージの中身覗いてみた</title><link>https://tech.yyh-gl.dev/blog/errors_package/</link><pubDate>Mon, 09 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/errors_package/</guid><description>&lt;h1 id="errorsパッケージに興味持った">errorsパッケージに興味持った&lt;/h1>
 &lt;p>v1.13からerrorsパッケージに &lt;code>Unwrap()&lt;/code> &lt;code>Is()&lt;/code> &lt;code>As()&lt;/code> といった関数が追加されました。&lt;br>
@@ -350,7 +343,7 @@ v1.13にて標準パッケージに取り込まれました。&lt;/p>
 &lt;/h1>
 &lt;p>ラップされたエラーから中身のエラーを取り出す関数です。&lt;/p>
 &lt;p>処理としては下記のようになっています。&lt;/p>
-&lt;pre>&lt;code class="language-go">func Unwrap(err error) error {
+&lt;pre class="line-numbers">&lt;code class="language-go">func Unwrap(err error) error {
 u, ok := err.(interface {
 Unwrap() error
 })
@@ -358,8 +351,7 @@ if !ok {
 return nil
 }
 return u.Unwrap()
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://golang.org/src/errors/wrap.go?s=372:400#L14" target="_blank" rel="noopener noreferrer">https://golang.org/src/errors/wrap.go?s=372:400#L14&lt;/a>
 &lt;/p></description></item><item><title>Goのバージョン管理について</title><link>https://tech.yyh-gl.dev/blog/go-versions/</link><pubDate>Tue, 03 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-versions/</guid><description>&lt;h1 id="goのバージョン管理">Goのバージョン管理&lt;/h1>
 &lt;p>&lt;b>注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。&lt;/b> &lt;br>
@@ -391,11 +383,10 @@ return u.Unwrap()
 &lt;p>本方法は&lt;a href="https://golang.org/doc/manage-install#installing-multiple" target="_blank" rel="noopener noreferrer">公式サイト&lt;/a>
 に
 記載されている方法です。&lt;/p>
-&lt;pre>&lt;code class="language-zsh">$ go get golang.org/dl/goX.Y.Z
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ go get golang.org/dl/goX.Y.Z
 $ goX.Y.Z download
 $ goX.Y.Z version
-go version goX.Y.Z linux/amd64
-&lt;/code>&lt;/pre>
+go version goX.Y.Z linux/amd64&lt;/code>&lt;/pre>
 &lt;p>コマンド打つたびに、バージョンまで打つのがめんどくさいという方は、&lt;br>
 bash や zsh の設定でエイリアスでも貼ってやればOKですね。&lt;/p>
 &lt;h1 id="最新バージョンのインストール方法">最新バージョンのインストール方法&lt;/h1>
@@ -403,9 +394,12 @@ bash や zsh の設定でエイリアスでも貼ってやればOKですね。&l
 最新バージョンのインストール方法についても言及しておきます。&lt;/p>
 &lt;p>特に新しいことはなくいろんなサイトで紹介されているのでさらっと流していきます。&lt;/p>
 &lt;h2 id="-homebrew">▼ Homebrew&lt;/h2>
-&lt;pre>&lt;code class="language-zsh">$ brew install go
-&lt;/code>&lt;/pre>
-&lt;p>以上です。&lt;/p></description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://tech.yyh-gl.dev/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/changes-since-go-1-12/</guid><description>&lt;h1 id="簡単まとめシリーズ">簡単まとめシリーズ&lt;/h1>
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ brew install go&lt;/code>&lt;/pre>
+&lt;p>以上です。&lt;/p>
+&lt;p>標準出力にて「必要ならパスの設定してね」と言われます。&lt;br>
+言われたとおりにやればOKです。&lt;/p>
+&lt;h2 id="-ソースからのインストール">▼ ソースからのインストール&lt;/h2>
+&lt;p>こちらの方法はHomebrewでのインストールと比べると、少しややこしくなります。&lt;/p></description></item><item><title>【簡単まとめシリーズ】Go1.12からの変更点</title><link>https://tech.yyh-gl.dev/blog/changes-since-go-1-12/</link><pubDate>Mon, 03 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/changes-since-go-1-12/</guid><description>&lt;h1 id="簡単まとめシリーズ">簡単まとめシリーズ&lt;/h1>
 &lt;p>『簡単まとめ』では、僕が記事や書籍で学んだ内容をメモ程度に簡単にまとめていきます📝&lt;/p>
 &lt;p>今回は &lt;b>Go1.12からの変更点&lt;/b> についてです。&lt;/p>
 &lt;h1 id="the-state-of-go-2020">The State of Go 2020&lt;/h1>
@@ -632,13 +626,12 @@ k8sの技術書をいただいちゃいました！！！&lt;br>
 &lt;/ul>
 &lt;h2 id="error-is-your-domain">”Error is your domain”&lt;/h2>
 &lt;p>Domain Error Struct を作成する。&lt;/p>
-&lt;pre>&lt;code class="language-go">type Error struct {
+&lt;pre class="line-numbers">&lt;code class="language-go">type Error struct {
 Op Op
 Kind Kind
 Serverity zapcore.ErrorLevel
 Err error
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;ul>
 &lt;li>Op：Operation → 関数名とか&lt;/li>
 &lt;li>Kind：エラー種別 → NotAvailable, NotFound といったもの&lt;/li>
@@ -733,12 +726,11 @@ Err error
 &lt;/li>
 &lt;/ol>
 &lt;p>ディレクトリ構成例&lt;/p>
-&lt;pre>&lt;code>.
+&lt;pre class="line-numbers">&lt;code class="language-text">.
 ├BUILD.bazel
 ├WORKSPACE
 └cmd
-└main.go
-&lt;/code>&lt;/pre>
+└main.go&lt;/code>&lt;/pre>
 &lt;h2 id="gazzelは-go-modules-と-dep-に対応">Gazzelは Go Modules と dep に対応&lt;/h2>
 &lt;p>go.mod, Gopkg.lockファイルから依存パッケージを取りこみWORKSPACEファイルに書き込んでくれる&lt;/p></description></item><item><title>【mercari.go #8】メルカリのGoに関する勉強会メモ</title><link>https://tech.yyh-gl.dev/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/mercari_go/</guid><description>&lt;h1 id="mercarigo-8">mercari.go #8&lt;/h1>
 &lt;ul>
@@ -840,12 +832,11 @@ httprouter のみで薄く作っていこうと思います。&lt;/p>
 &lt;p>矢印は依存の方向を示しています。&lt;br>
 例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。&lt;/p></description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://tech.yyh-gl.dev/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/gopath/</guid><description>&lt;h1 id="gopath-が変わらない">GOPATH が変わらない…&lt;/h1>
 &lt;p>今日こんな現象に遭遇した。&lt;/p>
-&lt;pre>&lt;code>$ export GOPATH=/Users/yyh-gl/workspaces/Go
+&lt;pre class="line-numbers">&lt;code class="language-text">$ export GOPATH=/Users/yyh-gl/workspaces/Go
 $ echo $GOPATH
 /Users/yyh-gl/workspaces/Go
 $ go env GOPATH
-/Users/yyh-gl/go/1.12.5
-&lt;/code>&lt;/pre>
+/Users/yyh-gl/go/1.12.5&lt;/code>&lt;/pre>
 &lt;p>GOPATH が書き換わらない。&lt;/p>
 &lt;h1 id="解決方法">解決方法&lt;/h1>
 &lt;img src="https://tech.yyh-gl.dev/img/2019/06/gopath/help.png" width="600">
@@ -866,7 +857,6 @@ goenv による管理は バージョン 1.12 からとのこと。&lt;/p>&lt;/b
 &lt;p>&lt;code>export GOENV_DISABLE_GOPATH=1&lt;/code>&lt;/p>
 &lt;p>（zshrc の読み込み直しを忘れずに）&lt;/p>
 &lt;h1 id="結果">結果&lt;/h1>
-&lt;pre>&lt;code>$ go env GOPATH
-/Users/yyh-gl/workspaces/Go
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-text">$ go env GOPATH
+/Users/yyh-gl/workspaces/Go&lt;/code>&lt;/pre>
 &lt;p>変わった。よかった&lt;/p></description></item></channel></rss>

@@ -1437,13 +1437,12 @@ k8sの技術書をいただいちゃいました！！！&lt;br>
 &lt;/ul>
 &lt;h2 id="error-is-your-domain">”Error is your domain”&lt;/h2>
 &lt;p>Domain Error Struct を作成する。&lt;/p>
-&lt;pre>&lt;code class="language-go">type Error struct {
+&lt;pre class="line-numbers">&lt;code class="language-go">type Error struct {
 Op Op
 Kind Kind
 Serverity zapcore.ErrorLevel
 Err error
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;ul>
 &lt;li>Op：Operation → 関数名とか&lt;/li>
 &lt;li>Kind：エラー種別 → NotAvailable, NotFound といったもの&lt;/li>
@@ -1618,12 +1617,11 @@ Err error
 &lt;/li>
 &lt;/ol>
 &lt;p>ディレクトリ構成例&lt;/p>
-&lt;pre>&lt;code>.
+&lt;pre class="line-numbers">&lt;code class="language-text">.
 ├BUILD.bazel
 ├WORKSPACE
 └cmd
-└main.go
-&lt;/code>&lt;/pre>
+└main.go&lt;/code>&lt;/pre>
 &lt;h2 id="gazzelは-go-modules-と-dep-に対応">Gazzelは Go Modules と dep に対応&lt;/h2>
 &lt;p>go.mod, Gopkg.lockファイルから依存パッケージを取りこみWORKSPACEファイルに書き込んでくれる&lt;/p></description></item><item><title>【mercari.go #8】メルカリのGoに関する勉強会メモ</title><link>https://tech.yyh-gl.dev/blog/mercari_go/</link><pubDate>Sat, 15 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/mercari_go/</guid><description>&lt;h1 id="mercarigo-8">mercari.go #8&lt;/h1>
 &lt;ul>

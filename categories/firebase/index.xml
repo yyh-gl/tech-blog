@@ -30,13 +30,11 @@
 &lt;li>
 &lt;p>以下コマンドを実行&lt;/p>
 &lt;p>Mac/Linux&lt;/p>
-&lt;pre>&lt;code>keytool -list -v \
--alias androiddebugkey -keystore ~/.android/debug.keystore
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-text">keytool -list -v \
+-alias androiddebugkey -keystore ~/.android/debug.keystore&lt;/code>&lt;/pre>
 &lt;p>Windows&lt;/p>
-&lt;pre>&lt;code>keytool -list -v \
--alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-text">keytool -list -v \
+-alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore&lt;/code>&lt;/pre>
 &lt;/li>
 &lt;li>
 &lt;p>パスワード入力&lt;/p>
@@ -50,4 +48,7 @@
 &lt;hr>
 &lt;p>ひととおり作業が進むと、↓このような画面が表示されます。&lt;/p>
 &lt;img src="https://tech.yyh-gl.dev/img/2019/05/android_push/app-registering-complete.png" width="750">
-&lt;p>自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。&lt;/p></description></item></channel></rss>
+&lt;p>自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。&lt;/p>
+&lt;p>エミュレータでもちゃんと通信してくれるか不安だったのですが大丈夫でした。&lt;/p>
+&lt;h1 id="firebase-関連のライブラリを追加">Firebase 関連のライブラリを追加&lt;/h1>
+&lt;p>アプリ情報の登録工程において、 &lt;code>app/build.gradle&lt;/code> を触ったと思いますが、加えて、以下の追記が必要です。&lt;/p></description></item></channel></rss>

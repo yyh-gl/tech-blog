@@ -1,49 +1,52 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><title>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた - Indexing my brain</title>
-<meta name=description content="技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=twitter:card content="summary_large_image"><meta property="og:site_name" content="Indexing my brain"><meta property="og:title" content="【Terraform + ECS + RDS】Terraform で ECS環境構築してみた"><meta property="og:description" content="技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"><meta property="og:type" content="article"><meta property="og:url" content="https://tech.yyh-gl.dev/blog/terraform_ecs/"><meta property="og:image" content="https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/featured.webp"><meta property="og:image:alt" content="featured"><link rel=manifest href="/favicon/site.webmanifest?v=1"><link rel=apple-touch-icon sizes=180x180 href="/favicon/apple-touch-icon.png?v=1"><link rel=icon type=image/png sizes=32x32 href="/favicon/favicon-32x32.png?v=1"><link rel=icon type=image/png sizes=16x16 href="/favicon/favicon-16x16.png?v=1"><link rel=mask-icon href="/favicon/safari-pinned-tab.svg?v=1" color=#ffffff><link rel="shortcut icon" href="/favicon/favicon.ico?v=1"><meta name=msapplication-config content="/favicon/browserconfig.xml?v=1"><meta name=msapplication-TileColor content="#ffffff"><meta name=theme-color content="#ffffff"><meta name=generator content="Hugo 0.146.2"><meta property="og:site_name" content="Indexing my brain"><meta property="og:title" content="【Terraform + ECS + RDS】Terraform で ECS環境構築してみた"><meta property="og:description" content="技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"><meta property="description" content="技術系ネタ中心のブログです。サーバサイドをメインとしたフルスタックエンジニアを目指しています。"><meta property="og:url" content="https://tech.yyh-gl.dev/blog/terraform_ecs/"><meta property="og:type" content="article"><meta property="og:image" content="https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/featured.webp"><meta property="og:image:alt" content="featured"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name=twitter:card content="summary_large_image"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700"><link rel=stylesheet href=/css/academicons.min.540c558e7d3a8819ddefe207faca165d21d27adaedb7e6504b13c3dc62cb9d0b.css integrity="sha256-VAxVjn06iBnd7+IH+soWXSHSetrtt+ZQSxPD3GLLnQs="><script src=https://kit.fontawesome.com/04f97481a8.js crossorigin=anonymous></script><link rel=stylesheet href=/css/fancybox.min.edda9ad80cee672789cd8c51659c8084483f04f9bd928aa0d94c017d8d2f71ec.css integrity="sha256-7dqa2AzuZyeJzYxRZZyAhEg/BPm9koqg2UwBfY0vcew="><link rel=stylesheet href=/css/main.min.0d633d4f7e2e3fa99a33d30eb27da0dc1bad3ddd6344f71f16cb5c3b3dfbbed9.css integrity="sha256-DWM9T34uP6maM9MOsn2g3ButPd1jRPcfFstcOz37vtk="><link rel=stylesheet href=/css/add-on.css><link rel=stylesheet href=/css/prism.css><link rel=alternate type=application/atom+xml title=Atom href=/index.xml><script src=/js/vue.min.js></script><script src=/js/good-counter.js defer></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3B9GBPE91"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q3B9GBPE91")}</script></head><body><header id=site-header><nav id=site-nav><h1 class=nav-title><a href=/ class=nav>Blog</a></h1><menu id=site-nav-menu class="flyout-menu menu"><a href=/ class="nav link"><i class='fa fa-home'></i> Home</a>
-<a href=/about/ class="nav link"><i class='far fa-id-card'></i> About</a>
-<a href=/blog/ class="nav link"><i class='far fa-newspaper'></i> Blog</a>
-<a href=/categories/ class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-<a href=/stats/ class="nav link"><i class='fas fa-chart-bar'></i> Stats</a></menu><a href=#site-nav class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a></nav></header><div id=wrapper><section id=site-intro><a href=/><img src=/img/main/logo.webp class=circle width=80 alt="yyh-gl's icon"></a><header><h1>Indexing my brain</h1></header><main><p>技術ネタ中心のブログです。<br>主な扱いはバックエンド技術と設計です。</p></main><footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener aria-label=GitHub><i class="fa-brands fa-github" aria-hidden=true></i></a></li><li><a href=//www.linkedin.com/in/yyh-gl target=_blank rel=noopener aria-label=LinkedIn><i class="fa-brands fa-linkedin" aria-hidden=true></i></a></li><li><a href=//x.com/yyh_gl target=_blank rel=noopener aria-label=X><i class="fa-brands fa-x-twitter" aria-hidden=true></i></a></li><li><a href=//bsky.app/profile/yyh-gl.bsky.social target=_blank rel=noopener aria-label=Bluesky><i class="fa-solid fa-cloud" aria-hidden=true></i></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank rel=noopener aria-label="Speaker Deck"><i class="fa-brands fa-speaker-deck" aria-hidden=true></i></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank rel=noopener aria-label=Crowdin><i class="fa-solid fa-pen-square" aria-hidden=true></i></a></li></ul></footer></section><main id=site-main><article class=post><header><div class=title><h2><a href=/blog/terraform_ecs/>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた</a></h2></div><div class=meta><time datetime="2019-06-04 09:00:00 +0900 +0900">2019-06-04</time><p>yyh-gl</p><p>9 分で読めます</p></div></header><div id=socnet-share></div><div class=content><a href=/blog/terraform_ecs/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/featured.webp alt=featured></a><h1 id=terraform-とは>Terraform とは</h1><p>最近流行りの IaC です。</p><p>つまり、コードベースでインフラリソースを管理するためのツールです。</p><p>中でもTerraform はクラウドに特化した IaC ツールという立ち位置です。</p><p>AWSやGCP, Azure などの他に<a href=https://www.terraform.io/docs/providers/index.html target=_blank rel="noopener noreferrer">様々なクラウドプラットフォーム</a>
+<!doctype html><html lang=ja><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた | Indexing my brain</title>
+<meta name=description content="技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"><meta name=author content="yyh-gl"><meta property="og:site_name" content="Indexing my brain"><meta property="og:title" content="【Terraform + ECS + RDS】Terraform で ECS環境構築してみた"><meta property="og:description" content="技術ネタ中心のブログです。主な扱いはバックエンド技術と設計です。"><meta property="og:url" content="https://tech.yyh-gl.dev/blog/terraform_ecs/"><meta property="og:type" content="article"><meta property="og:image" content="https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/featured.webp"><meta property="og:image:alt" content="featured"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@yyh_gl"><link rel=icon type=image/x-icon href=/favicon/favicon.ico><link rel=apple-touch-icon sizes=180x180 href=/favicon/apple-touch-icon.png><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/prism.css><script src=https://kit.fontawesome.com/04f97481a8.js crossorigin=anonymous></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3B9GBPE91"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q3B9GBPE91")}</script></head><body><nav class=site-nav><div class=nav-inner><a href=/ class=nav-logo><span class=prompt>$</span>
+<span>Indexing my brain</span>
+<span class=cursor></span></a><ul class=nav-links><li><a href=/about/ aria-label=About><i class='far fa-id-card' aria-hidden=true></i>&nbsp;<span>About</span></a></li><li><a href=/blog/ aria-label=Blog><i class='far fa-newspaper' aria-hidden=true></i>&nbsp;<span>Blog</span></a></li><li><a href=/categories/ aria-label=Categories><i class='fas fa-sitemap' aria-hidden=true></i>&nbsp;<span>Categories</span></a></li><li><a href=/stats/ aria-label=Stats><i class='fas fa-chart-bar' aria-hidden=true></i>&nbsp;<span>Stats</span></a></li></ul></div></nav><main id=site-main class=site-main><article class=post-article><header class=post-header><div class=post-breadcrumb><a href=/>Home</a>
+<span class=sep>/</span>
+<a href=/blog/>Blog</a>
+<span class=sep>/</span>
+<a href=/categories/aws/>AWS</a></div><h1>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた</h1><div class=post-meta><span class=meta-item><i class="far fa-calendar-alt"></i> 2019-06-04</span>
+<span class=meta-item><i class="far fa-user"></i> yyh-gl</span>
+<span class=meta-item><i class="far fa-clock"></i> 9 min read</span></div><div class=post-tags><span class=post-tag>#Tech</span></div></header><img class=post-featured-img src=/img/2019/06/terraform_ecs/featured.webp alt=featured><div class=post-content><h1 id=terraform-とは>Terraform とは</h1><p>最近流行りの IaC です。</p><p>つまり、コードベースでインフラリソースを管理するためのツールです。</p><p>中でもTerraform はクラウドに特化した IaC ツールという立ち位置です。</p><p>AWSやGCP, Azure などの他に<a href=https://www.terraform.io/docs/providers/index.html target=_blank rel="noopener noreferrer">様々なクラウドプラットフォーム</a>
 に対応しています。</p><p>（ちなみに、Vagrant 開発元の <a href=https://www.hashicorp.com/ target=_blank rel="noopener noreferrer">HashiCorp</a>
 社が開発しています）</p><h1 id=今回やること>今回やること</h1><p>Terraform で AWS 上に下記のような環境を自動構築します。</p><img src=https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/architecture.png width=600><br><p>ECS でデプロイされるサービスは ECR から引っ張ってくるようにします。</p><p>そして、そのサービスは Aurora を使うシステムを想定しています。</p><p><u>【⚠注意⚠】上記構成はお金が発生します！ まったくもって無料枠ではありません！</u></p><p>【⚠注意⚠】今回独自ドメインを使用していますが、ドメイン取得に関しては省略しています。</p><h2 id=今回やる内容は>今回やる内容は…</h2><p>僕が所属する会社の研修資料を参考に進めています。</p><p>資料を作成してくださった<a href=https://twitter.com/_y_ohgi target=_blank rel="noopener noreferrer">@_y_ohgi</a>
-さんに感謝。</p><h1 id=自動構築プロセス全体で使用する共通設定を定義>自動構築プロセス全体で使用する共通設定を定義</h1><p>まず、 <code>main.tf</code> を作成し、以下のとおり共通設定を定義していきます。</p><pre class=line-numbers><code># AWS を利用することを明示
-provider &quot;aws&quot; {
+さんに感謝。</p><h1 id=自動構築プロセス全体で使用する共通設定を定義>自動構築プロセス全体で使用する共通設定を定義</h1><p>まず、 <code>main.tf</code> を作成し、以下のとおり共通設定を定義していきます。</p><pre class=line-numbers><code class=language-text># AWS を利用することを明示
+provider &#34;aws&#34; {
     # リージョンを設定
-    region = &quot;ap-northeast-1&quot;
+    region = &#34;ap-northeast-1&#34;
 }
 
 # これから作成するリソースに付与する名前のプリフィックスを設定
 # グローバル変数的な立ち位置で定義
-variable &quot;prefix&quot; {
-    default = &quot;sample-project&quot;
-}
-</code></pre><p><code>provider</code> で使用するクラウドを指定することができます。</p><p><code>variable</code> は変数定義です。</p><p><code>${var.prefix}</code> と書くことで <code>default</code> で指定した内容が展開されます。</p><p>（次の定義ファイルでも変数が出てくるので、そこで使いかたを見てみてください。）</p><p>なお、変数定義を別ファイルに切り出す方法もあるようですが、今回はやりません。</p><p>切り出す方法は<a href=https://qiita.com/ringo/items/3af1735cd833fb80da75#%E5%A4%89%E6%95%B0%E6%88%A6%E7%95%A5%E8%A8%AD%E8%A8%88 target=_blank rel="noopener noreferrer">こちら</a>
+variable &#34;prefix&#34; {
+    default = &#34;sample-project&#34;
+}</code></pre><p><code>provider</code> で使用するクラウドを指定することができます。</p><p><code>variable</code> は変数定義です。</p><p><code>${var.prefix}</code> と書くことで <code>default</code> で指定した内容が展開されます。</p><p>（次の定義ファイルでも変数が出てくるので、そこで使いかたを見てみてください。）</p><p>なお、変数定義を別ファイルに切り出す方法もあるようですが、今回はやりません。</p><p>切り出す方法は<a href=https://qiita.com/ringo/items/3af1735cd833fb80da75#%E5%A4%89%E6%95%B0%E6%88%A6%E7%95%A5%E8%A8%AD%E8%A8%88 target=_blank rel="noopener noreferrer">こちら</a>
 が参考になると思います。</p><h1 id=route53-の設定>Route53 の設定</h1><p><code>route53_acm.tf</code> を作成し、以下のとおり定義します。</p><p>内部で ACM に関する定義も行っています。</p><p>以降、クラウドプラットフォームに依存しない設定に関しては【解説】コメントで解説を行っています。</p><p>各 resource の定義内容に関しては コメントにあるURLを参考にしてください。</p><blockquote><p>英語ではありますが、<a href=https://www.terraform.io/docs/providers/aws/index.html target=_blank rel="noopener noreferrer">公式ドキュメント</a>
-がとても分かりやすいです</p></blockquote><pre class=line-numbers><code># ドメイン名の設定
-variable &quot;domain&quot; {
-    description = &quot;「Route53で管理するドメイン」 などの説明文&quot;
-    type        = &quot;string&quot;
+がとても分かりやすいです</p></blockquote><pre class=line-numbers><code class=language-text># ドメイン名の設定
+variable &#34;domain&#34; {
+    description = &#34;「Route53で管理するドメイン」 などの説明文&#34;
+    type        = &#34;string&#34;
 
     # みなさんが持つドメイン名にしてください
-    default = &quot;example.com&quot;
+    default = &#34;example.com&#34;
 }
 
 # Route53 Hosted Zone
 # https://www.terraform.io/docs/providers/aws/d/route53_zone.html
 # 【解説】data で始まっていますが、これは読み取り専用のリソースであることを示します。
 # すでにクラウド上に存在するリソースの値を参照するために使用します。
-data &quot;aws_route53_zone&quot; &quot;main&quot; {
-    name         = &quot;${var.domain}&quot; # 変数を展開しているところ、ここです
+data &#34;aws_route53_zone&#34; &#34;main&#34; {
+    name         = &#34;${var.domain}&#34; # 変数を展開しているところ、ここです
     private_zone = false
 }
 
 # ACM
 # https://www.terraform.io/docs/providers/aws/r/acm_certificate.html
 # 【解説】resource は作成するリソースを定義する場所です。
-resource &quot;aws_acm_certificate&quot; &quot;main&quot; {
-    domain_name = &quot;${var.domain}&quot;
+resource &#34;aws_acm_certificate&#34; &#34;main&#34; {
+    domain_name = &#34;${var.domain}&#34;
 
-    validation_method = &quot;DNS&quot;
+    validation_method = &#34;DNS&#34;
 
     lifecycle {
         create_before_destroy = true
@@ -53,460 +56,457 @@ resource &quot;aws_acm_certificate&quot; &quot;main&quot; {
 # Route53 record
 # ACMによる検証用レコード
 # https://www.terraform.io/docs/providers/aws/r/route53_record.html
-resource &quot;aws_route53_record&quot; &quot;validation&quot; {
-    depends_on = [&quot;aws_acm_certificate.main&quot;]
+resource &#34;aws_route53_record&#34; &#34;validation&#34; {
+    depends_on = [&#34;aws_acm_certificate.main&#34;]
 
-    zone_id = &quot;${data.aws_route53_zone.main.id}&quot;
+    zone_id = &#34;${data.aws_route53_zone.main.id}&#34;
 
     ttl = 60
 
-    name    = &quot;${aws_acm_certificate.main.domain_validation_options.0.resource_record_name}&quot;
-    type    = &quot;${aws_acm_certificate.main.domain_validation_options.0.resource_record_type}&quot;
-    records = [&quot;${aws_acm_certificate.main.domain_validation_options.0.resource_record_value}&quot;]
+    name    = &#34;${aws_acm_certificate.main.domain_validation_options.0.resource_record_name}&#34;
+    type    = &#34;${aws_acm_certificate.main.domain_validation_options.0.resource_record_type}&#34;
+    records = [&#34;${aws_acm_certificate.main.domain_validation_options.0.resource_record_value}&#34;]
 }
 
 # ACM Validate
 # https://www.terraform.io/docs/providers/aws/r/acm_certificate_validation.html
-resource &quot;aws_acm_certificate_validation&quot; &quot;main&quot; {
-    certificate_arn = &quot;${aws_acm_certificate.main.arn}&quot;
+resource &#34;aws_acm_certificate_validation&#34; &#34;main&#34; {
+    certificate_arn = &#34;${aws_acm_certificate.main.arn}&#34;
 
-    validation_record_fqdns = [&quot;${aws_route53_record.validation.0.fqdn}&quot;]
+    validation_record_fqdns = [&#34;${aws_route53_record.validation.0.fqdn}&#34;]
 }
 
 # Route53 record
 # https://www.terraform.io/docs/providers/aws/r/route53_record.html
-resource &quot;aws_route53_record&quot; &quot;main&quot; {
-    type = &quot;A&quot;
+resource &#34;aws_route53_record&#34; &#34;main&#34; {
+    type = &#34;A&#34;
 
-    name    = &quot;${var.domain}&quot;
-    zone_id = &quot;${data.aws_route53_zone.main.id}&quot;
+    name    = &#34;${var.domain}&#34;
+    zone_id = &#34;${data.aws_route53_zone.main.id}&#34;
 
     alias = {
-        name                   = &quot;${aws_lb.main.dns_name}&quot;
-        zone_id                = &quot;${aws_lb.main.zone_id}&quot;
+        name                   = &#34;${aws_lb.main.dns_name}&#34;
+        zone_id                = &#34;${aws_lb.main.zone_id}&#34;
         evaluate_target_health = true
     }
 }
 
 # ALB Listener
 # https://www.terraform.io/docs/providers/aws/r/lb_listener.html
-resource &quot;aws_lb_listener&quot; &quot;https&quot; {
-    load_balancer_arn = &quot;${aws_lb.main.arn}&quot;
+resource &#34;aws_lb_listener&#34; &#34;https&#34; {
+    load_balancer_arn = &#34;${aws_lb.main.arn}&#34;
 
-    certificate_arn = &quot;${aws_acm_certificate.main.arn}&quot;
+    certificate_arn = &#34;${aws_acm_certificate.main.arn}&#34;
 
-    port     = &quot;443&quot;
-    protocol = &quot;HTTPS&quot;
+    port     = &#34;443&#34;
+    protocol = &#34;HTTPS&#34;
 
     default_action {
-        type             = &quot;forward&quot;
-        target_group_arn = &quot;${aws_lb_target_group.main.id}&quot;
+        type             = &#34;forward&#34;
+        target_group_arn = &#34;${aws_lb_target_group.main.id}&#34;
     }
 }
 
 # ALB Listener Rule
 # https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html
-resource &quot;aws_lb_listener_rule&quot; &quot;http_to_https&quot; {
-    listener_arn = &quot;${aws_lb_listener.main.arn}&quot;
+resource &#34;aws_lb_listener_rule&#34; &#34;http_to_https&#34; {
+    listener_arn = &#34;${aws_lb_listener.main.arn}&#34;
 
     priority = 99
 
     action {
-        type = &quot;redirect&quot;
+        type = &#34;redirect&#34;
 
         redirect {
-            port        = &quot;443&quot;
-            protocol    = &quot;HTTPS&quot;
-            status_code = &quot;HTTP_301&quot;
+            port        = &#34;443&#34;
+            protocol    = &#34;HTTPS&#34;
+            status_code = &#34;HTTP_301&#34;
         }
     }
 
     condition {
-        field  = &quot;host-header&quot;
-        values = [&quot;${var.domain}&quot;]
+        field  = &#34;host-header&#34;
+        values = [&#34;${var.domain}&#34;]
     }
 }
 
 # Security Group Rule
 # https://www.terraform.io/docs/providers/aws/r/security_group_rule.html
-resource &quot;aws_security_group_rule&quot; &quot;alb_https&quot; {
-    security_group_id = &quot;${aws_security_group.alb.id}&quot;
+resource &#34;aws_security_group_rule&#34; &#34;alb_https&#34; {
+    security_group_id = &#34;${aws_security_group.alb.id}&#34;
 
-    type = &quot;ingress&quot;
+    type = &#34;ingress&#34;
 
     from_port = 443
     to_port   = 443
-    protocol  = &quot;tcp&quot;
+    protocol  = &#34;tcp&#34;
 
-    cidr_blocks = [&quot;0.0.0.0/0&quot;]
-}
-</code></pre><h1 id=vpcの設定>VPCの設定</h1><p><code>vpc.tf</code> を以下のとおり定義します。</p><p>ここで、 <code>main.tf</code> で定義した変数が大活躍します。</p><pre class=line-numbers><code># VPC
+    cidr_blocks = [&#34;0.0.0.0/0&#34;]
+}</code></pre><h1 id=vpcの設定>VPCの設定</h1><p><code>vpc.tf</code> を以下のとおり定義します。</p><p>ここで、 <code>main.tf</code> で定義した変数が大活躍します。</p><pre class=line-numbers><code class=language-text># VPC
 # https://www.terraform.io/docs/providers/aws/r/vpc.html
-resource &quot;aws_vpc&quot; &quot;main&quot; {
-	cidr_block = &quot;10.0.0.0/16&quot;
+resource &#34;aws_vpc&#34; &#34;main&#34; {
+	cidr_block = &#34;10.0.0.0/16&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-vpc&quot;
+		Name = &#34;${var.prefix}-vpc&#34;
 	}
 }
 
 # Public Subnet
 # https://www.terraform.io/docs/providers/aws/r/subnet.html
-resource &quot;aws_subnet&quot; &quot;public_1a&quot; {
+resource &#34;aws_subnet&#34; &#34;public_1a&#34; {
 	# 先程作成したVPCを参照し、そのVPC内にSubnetを立てる
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
 	# Subnetを作成するAZ
-	availability_zone = &quot;ap-northeast-1a&quot;
+	availability_zone = &#34;ap-northeast-1a&#34;
 
-	cidr_block = &quot;10.0.1.0/24&quot;
+	cidr_block = &#34;10.0.1.0/24&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-public-1a&quot;
+		Name = &#34;${var.prefix}-public-1a&#34;
 	}
 }
 
-resource &quot;aws_subnet&quot; &quot;public_1c&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_subnet&#34; &#34;public_1c&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
-	availability_zone = &quot;ap-northeast-1c&quot;
+	availability_zone = &#34;ap-northeast-1c&#34;
 
-	cidr_block = &quot;10.0.2.0/24&quot;
+	cidr_block = &#34;10.0.2.0/24&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-public-1c&quot;
+		Name = &#34;${var.prefix}-public-1c&#34;
 	}
 }
 
-resource &quot;aws_subnet&quot; &quot;public_1d&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_subnet&#34; &#34;public_1d&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
-	availability_zone = &quot;ap-northeast-1d&quot;
+	availability_zone = &#34;ap-northeast-1d&#34;
 
-	cidr_block = &quot;10.0.3.0/24&quot;
+	cidr_block = &#34;10.0.3.0/24&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-public-1d&quot;
+		Name = &#34;${var.prefix}-public-1d&#34;
 	}
 }
 
 # Private Subnets
-resource &quot;aws_subnet&quot; &quot;private_1a&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_subnet&#34; &#34;private_1a&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
-	availability_zone = &quot;ap-northeast-1a&quot;
+	availability_zone = &#34;ap-northeast-1a&#34;
 
-	cidr_block = &quot;10.0.10.0/24&quot;
+	cidr_block = &#34;10.0.10.0/24&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-private-1a&quot;
+		Name = &#34;${var.prefix}-private-1a&#34;
 	}
 }
 
-resource &quot;aws_subnet&quot; &quot;private_1c&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_subnet&#34; &#34;private_1c&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
-	availability_zone = &quot;ap-northeast-1c&quot;
+	availability_zone = &#34;ap-northeast-1c&#34;
 
-	cidr_block = &quot;10.0.20.0/24&quot;
+	cidr_block = &#34;10.0.20.0/24&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-private-1c&quot;
+		Name = &#34;${var.prefix}-private-1c&#34;
 	}
 }
 
-resource &quot;aws_subnet&quot; &quot;private_1d&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_subnet&#34; &#34;private_1d&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
-	availability_zone = &quot;ap-northeast-1d&quot;
+	availability_zone = &#34;ap-northeast-1d&#34;
 
-	cidr_block = &quot;10.0.30.0/24&quot;
+	cidr_block = &#34;10.0.30.0/24&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-private-1d&quot;
+		Name = &#34;${var.prefix}-private-1d&#34;
 	}
 }
 
 # Internet Gateway
 # https://www.terraform.io/docs/providers/aws/r/internet_gateway.html
-resource &quot;aws_internet_gateway&quot; &quot;main&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_internet_gateway&#34; &#34;main&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-igw&quot;
+		Name = &#34;${var.prefix}-igw&#34;
 	}
 }
 
 # Elasti IP
 # NAT Gateway には1つの Elastic IP が必要なので作成
 # https://www.terraform.io/docs/providers/aws/r/eip.html
-resource &quot;aws_eip&quot; &quot;nat_1a&quot; {
+resource &#34;aws_eip&#34; &#34;nat_1a&#34; {
 	vpc = true
 
 	tags = {
-		Name = &quot;${var.prefix}-eip-for-natgw-1a&quot;
+		Name = &#34;${var.prefix}-eip-for-natgw-1a&#34;
 	}
 }
 
 # NAT Gateway
 # https://www.terraform.io/docs/providers/aws/r/nat_gateway.html
-resource &quot;aws_nat_gateway&quot; &quot;nat_1a&quot; {
-	subnet_id     = &quot;${aws_subnet.public_1a.id}&quot; # NAT Gatewayを配置するSubnetを指定
-	allocation_id = &quot;${aws_eip.nat_1a.id}&quot;       # 紐付けるElasti IP
+resource &#34;aws_nat_gateway&#34; &#34;nat_1a&#34; {
+	subnet_id     = &#34;${aws_subnet.public_1a.id}&#34; # NAT Gatewayを配置するSubnetを指定
+	allocation_id = &#34;${aws_eip.nat_1a.id}&#34;       # 紐付けるElasti IP
 
 	tags = {
-		Name = &quot;${var.prefix}-natgw-1a&quot;
+		Name = &#34;${var.prefix}-natgw-1a&#34;
 	}
 }
 
-resource &quot;aws_eip&quot; &quot;nat_1c&quot; {
+resource &#34;aws_eip&#34; &#34;nat_1c&#34; {
 	vpc = true
 
 	tags = {
-		Name = &quot;${var.prefix}-eip-for-natgw-1c&quot;
+		Name = &#34;${var.prefix}-eip-for-natgw-1c&#34;
 	}
 }
 
-resource &quot;aws_nat_gateway&quot; &quot;nat_1c&quot; {
-	subnet_id     = &quot;${aws_subnet.public_1c.id}&quot;
-	allocation_id = &quot;${aws_eip.nat_1c.id}&quot;
+resource &#34;aws_nat_gateway&#34; &#34;nat_1c&#34; {
+	subnet_id     = &#34;${aws_subnet.public_1c.id}&#34;
+	allocation_id = &#34;${aws_eip.nat_1c.id}&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-natgw-1c&quot;
+		Name = &#34;${var.prefix}-natgw-1c&#34;
 	}
 }
 
-resource &quot;aws_eip&quot; &quot;nat_1d&quot; {
+resource &#34;aws_eip&#34; &#34;nat_1d&#34; {
 	vpc = true
 
 	tags = {
-		Name = &quot;${var.prefix}-eip-for-natgw-1d&quot;
+		Name = &#34;${var.prefix}-eip-for-natgw-1d&#34;
 	}
 }
 
-resource &quot;aws_nat_gateway&quot; &quot;nat_1d&quot; {
-	subnet_id     = &quot;${aws_subnet.public_1d.id}&quot;
-	allocation_id = &quot;${aws_eip.nat_1d.id}&quot;
+resource &#34;aws_nat_gateway&#34; &#34;nat_1d&#34; {
+	subnet_id     = &#34;${aws_subnet.public_1d.id}&#34;
+	allocation_id = &#34;${aws_eip.nat_1d.id}&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-natgw-1d&quot;
+		Name = &#34;${var.prefix}-natgw-1d&#34;
 	}
 }
 
 # Route Table
 # https://www.terraform.io/docs/providers/aws/r/route_table.html
-resource &quot;aws_route_table&quot; &quot;public&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_route_table&#34; &#34;public&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}-public-route-table&quot;
+		Name = &#34;${var.prefix}-public-route-table&#34;
 	}
 }
 
 # Route
 # https://www.terraform.io/docs/providers/aws/r/route.html
-resource &quot;aws_route&quot; &quot;public&quot; {
-	destination_cidr_block = &quot;0.0.0.0/0&quot;
-	route_table_id         = &quot;${aws_route_table.public.id}&quot;
-	gateway_id             = &quot;${aws_internet_gateway.main.id}&quot;
+resource &#34;aws_route&#34; &#34;public&#34; {
+	destination_cidr_block = &#34;0.0.0.0/0&#34;
+	route_table_id         = &#34;${aws_route_table.public.id}&#34;
+	gateway_id             = &#34;${aws_internet_gateway.main.id}&#34;
 }
 
 # Association
 # https://www.terraform.io/docs/providers/aws/r/route_table_association.html
-resource &quot;aws_route_table_association&quot; &quot;public_1a&quot; {
-	subnet_id      = &quot;${aws_subnet.public_1a.id}&quot;
-	route_table_id = &quot;${aws_route_table.public.id}&quot;
+resource &#34;aws_route_table_association&#34; &#34;public_1a&#34; {
+	subnet_id      = &#34;${aws_subnet.public_1a.id}&#34;
+	route_table_id = &#34;${aws_route_table.public.id}&#34;
 }
 
-resource &quot;aws_route_table_association&quot; &quot;public_1c&quot; {
-	subnet_id      = &quot;${aws_subnet.public_1c.id}&quot;
-	route_table_id = &quot;${aws_route_table.public.id}&quot;
+resource &#34;aws_route_table_association&#34; &#34;public_1c&#34; {
+	subnet_id      = &#34;${aws_subnet.public_1c.id}&#34;
+	route_table_id = &#34;${aws_route_table.public.id}&#34;
 }
 
-resource &quot;aws_route_table_association&quot; &quot;public_1d&quot; {
-	subnet_id      = &quot;${aws_subnet.public_1d.id}&quot;
-	route_table_id = &quot;${aws_route_table.public.id}&quot;
+resource &#34;aws_route_table_association&#34; &#34;public_1d&#34; {
+	subnet_id      = &#34;${aws_subnet.public_1d.id}&#34;
+	route_table_id = &#34;${aws_route_table.public.id}&#34;
 }
 
 # Route Table (Private)
 # https://www.terraform.io/docs/providers/aws/r/route_table.html
-resource &quot;aws_route_table&quot; &quot;private_1a&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_route_table&#34; &#34;private_1a&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}--private-1a&quot;
+		Name = &#34;${var.prefix}--private-1a&#34;
 	}
 }
 
-resource &quot;aws_route_table&quot; &quot;private_1c&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_route_table&#34; &#34;private_1c&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}--private-1c&quot;
+		Name = &#34;${var.prefix}--private-1c&#34;
 	}
 }
 
-resource &quot;aws_route_table&quot; &quot;private_1d&quot; {
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_route_table&#34; &#34;private_1d&#34; {
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
 	tags = {
-		Name = &quot;${var.prefix}--private-1d&quot;
+		Name = &#34;${var.prefix}--private-1d&#34;
 	}
 }
 
 # Route (Private)
 # https://www.terraform.io/docs/providers/aws/r/route.html
-resource &quot;aws_route&quot; &quot;private_1a&quot; {
-	destination_cidr_block = &quot;0.0.0.0/0&quot;
-	route_table_id         = &quot;${aws_route_table.private_1a.id}&quot;
-	nat_gateway_id         = &quot;${aws_nat_gateway.nat_1a.id}&quot;
+resource &#34;aws_route&#34; &#34;private_1a&#34; {
+	destination_cidr_block = &#34;0.0.0.0/0&#34;
+	route_table_id         = &#34;${aws_route_table.private_1a.id}&#34;
+	nat_gateway_id         = &#34;${aws_nat_gateway.nat_1a.id}&#34;
 }
 
-resource &quot;aws_route&quot; &quot;private_1c&quot; {
-	destination_cidr_block = &quot;0.0.0.0/0&quot;
-	route_table_id         = &quot;${aws_route_table.private_1c.id}&quot;
-	nat_gateway_id         = &quot;${aws_nat_gateway.nat_1c.id}&quot;
+resource &#34;aws_route&#34; &#34;private_1c&#34; {
+	destination_cidr_block = &#34;0.0.0.0/0&#34;
+	route_table_id         = &#34;${aws_route_table.private_1c.id}&#34;
+	nat_gateway_id         = &#34;${aws_nat_gateway.nat_1c.id}&#34;
 }
 
-resource &quot;aws_route&quot; &quot;private_1d&quot; {
-	destination_cidr_block = &quot;0.0.0.0/0&quot;
-	route_table_id         = &quot;${aws_route_table.private_1d.id}&quot;
-	nat_gateway_id         = &quot;${aws_nat_gateway.nat_1d.id}&quot;
+resource &#34;aws_route&#34; &#34;private_1d&#34; {
+	destination_cidr_block = &#34;0.0.0.0/0&#34;
+	route_table_id         = &#34;${aws_route_table.private_1d.id}&#34;
+	nat_gateway_id         = &#34;${aws_nat_gateway.nat_1d.id}&#34;
 }
 
 # Association (Private)
 # https://www.terraform.io/docs/providers/aws/r/route_table_association.html
-resource &quot;aws_route_table_association&quot; &quot;private_1a&quot; {
-	subnet_id      = &quot;${aws_subnet.private_1a.id}&quot;
-	route_table_id = &quot;${aws_route_table.private_1a.id}&quot;
+resource &#34;aws_route_table_association&#34; &#34;private_1a&#34; {
+	subnet_id      = &#34;${aws_subnet.private_1a.id}&#34;
+	route_table_id = &#34;${aws_route_table.private_1a.id}&#34;
 }
 
-resource &quot;aws_route_table_association&quot; &quot;private_1c&quot; {
-	subnet_id      = &quot;${aws_subnet.private_1c.id}&quot;
-	route_table_id = &quot;${aws_route_table.private_1c.id}&quot;
+resource &#34;aws_route_table_association&#34; &#34;private_1c&#34; {
+	subnet_id      = &#34;${aws_subnet.private_1c.id}&#34;
+	route_table_id = &#34;${aws_route_table.private_1c.id}&#34;
 }
 
-resource &quot;aws_route_table_association&quot; &quot;private_1d&quot; {
-	subnet_id      = &quot;${aws_subnet.private_1d.id}&quot;
-	route_table_id = &quot;${aws_route_table.private_1d.id}&quot;
-}
-</code></pre><h1 id=ロードバランサの設定>ロードバランサの設定</h1><p>次は ALB の定義を作成します。</p><p><code>alb.tf</code> に以下のとおり定義します。</p><pre class=line-numbers><code># SecurityGroup
+resource &#34;aws_route_table_association&#34; &#34;private_1d&#34; {
+	subnet_id      = &#34;${aws_subnet.private_1d.id}&#34;
+	route_table_id = &#34;${aws_route_table.private_1d.id}&#34;
+}</code></pre><h1 id=ロードバランサの設定>ロードバランサの設定</h1><p>次は ALB の定義を作成します。</p><p><code>alb.tf</code> に以下のとおり定義します。</p><pre class=line-numbers><code class=language-text># SecurityGroup
 # https://www.terraform.io/docs/providers/aws/r/security_group.html
-resource &quot;aws_security_group&quot; &quot;alb&quot; {
-    name        = &quot;${var.prefix}-alb&quot;
-    description = &quot;${var.prefix} alb&quot;
-    vpc_id      = &quot;${aws_vpc.main.id}&quot;
+resource &#34;aws_security_group&#34; &#34;alb&#34; {
+    name        = &#34;${var.prefix}-alb&#34;
+    description = &#34;${var.prefix} alb&#34;
+    vpc_id      = &#34;${aws_vpc.main.id}&#34;
 
     # セキュリティグループ内のリソースからインターネットへのアクセスを許可する
     egress {
         from_port   = 0
         to_port     = 0
-        protocol    = &quot;-1&quot;
-        cidr_blocks = [&quot;0.0.0.0/0&quot;]
+        protocol    = &#34;-1&#34;
+        cidr_blocks = [&#34;0.0.0.0/0&#34;]
     }
 
     tags = {
-        Name = &quot;${var.prefix}-alb&quot;
+        Name = &#34;${var.prefix}-alb&#34;
     }
 }
 
 # SecurityGroup Rule
 # https://www.terraform.io/docs/providers/aws/r/security_group.html
-resource &quot;aws_security_group_rule&quot; &quot;alb_http&quot; {
-    security_group_id = &quot;${aws_security_group.alb.id}&quot;
+resource &#34;aws_security_group_rule&#34; &#34;alb_http&#34; {
+    security_group_id = &#34;${aws_security_group.alb.id}&#34;
 
     # セキュリティグループ内のリソースへインターネットからのアクセスを許可する
-    type = &quot;ingress&quot;
+    type = &#34;ingress&#34;
 
     from_port = 80
     to_port   = 80
-    protocol  = &quot;tcp&quot;
+    protocol  = &#34;tcp&#34;
 
-    cidr_blocks = [&quot;0.0.0.0/0&quot;]
+    cidr_blocks = [&#34;0.0.0.0/0&#34;]
 }
 
 # ALB
 # https://www.terraform.io/docs/providers/aws/d/lb.html
-resource &quot;aws_lb&quot; &quot;main&quot; {
-    load_balancer_type = &quot;application&quot;
-    name               = &quot;${var.prefix}&quot;
+resource &#34;aws_lb&#34; &#34;main&#34; {
+    load_balancer_type = &#34;application&#34;
+    name               = &#34;${var.prefix}&#34;
 
-    security_groups = [&quot;${aws_security_group.alb.id}&quot;]
-    subnets         = [&quot;${aws_subnet.public_1a.id}&quot;, &quot;${aws_subnet.public_1c.id}&quot;, &quot;${aws_subnet.public_1d.id}&quot;]
+    security_groups = [&#34;${aws_security_group.alb.id}&#34;]
+    subnets         = [&#34;${aws_subnet.public_1a.id}&#34;, &#34;${aws_subnet.public_1c.id}&#34;, &#34;${aws_subnet.public_1d.id}&#34;]
 }
 
 # Listener
 # https://www.terraform.io/docs/providers/aws/r/lb_listener.html
-resource &quot;aws_lb_listener&quot; &quot;main&quot; {
+resource &#34;aws_lb_listener&#34; &#34;main&#34; {
     # HTTPでのアクセスを受け付ける
-    port              = &quot;80&quot;
-    protocol          = &quot;HTTP&quot;
+    port              = &#34;80&#34;
+    protocol          = &#34;HTTP&#34;
 
     # ALBのarnを指定します。
-    load_balancer_arn = &quot;${aws_lb.main.arn}&quot;
+    load_balancer_arn = &#34;${aws_lb.main.arn}&#34;
 
-    # &quot;ok&quot; という固定レスポンスを設定する
+    # &#34;ok&#34; という固定レスポンスを設定する
     default_action {
-        type             = &quot;fixed-response&quot;
+        type             = &#34;fixed-response&#34;
 
         fixed_response {
-            content_type = &quot;text/plain&quot;
-            status_code  = &quot;200&quot;
-            message_body = &quot;ok&quot;
+            content_type = &#34;text/plain&#34;
+            status_code  = &#34;200&#34;
+            message_body = &#34;ok&#34;
         }
     }
-}
-</code></pre><h1 id=ecsの設定>ECSの設定</h1><p><code>ecs.tf</code> はこんな感じです。</p><pre class=line-numbers><code>resource &quot;aws_iam_role&quot; &quot;ecs_task_execution_role&quot; {
-	name = &quot;ecs_task_execution_role&quot;
+}</code></pre><h1 id=ecsの設定>ECSの設定</h1><p><code>ecs.tf</code> はこんな感じです。</p><pre class=line-numbers><code class=language-text>resource &#34;aws_iam_role&#34; &#34;ecs_task_execution_role&#34; {
+	name = &#34;ecs_task_execution_role&#34;
 	assume_role_policy = &lt;&lt;EOF
 {
-  &quot;Version&quot;: &quot;2012-10-17&quot;,
-  &quot;Statement&quot;: [
+  &#34;Version&#34;: &#34;2012-10-17&#34;,
+  &#34;Statement&#34;: [
     {
-      &quot;Sid&quot;: &quot;&quot;,
-      &quot;Effect&quot;: &quot;Allow&quot;,
-      &quot;Principal&quot;: {
-        &quot;Service&quot;: [
-          &quot;ecs-tasks.amazonaws.com&quot;
+      &#34;Sid&#34;: &#34;&#34;,
+      &#34;Effect&#34;: &#34;Allow&#34;,
+      &#34;Principal&#34;: {
+        &#34;Service&#34;: [
+          &#34;ecs-tasks.amazonaws.com&#34;
         ]
       },
-      &quot;Action&quot;: &quot;sts:AssumeRole&quot;
+      &#34;Action&#34;: &#34;sts:AssumeRole&#34;
     }
   ]
 }
 EOF
 }
 
-resource &quot;aws_iam_role_policy_attachment&quot; &quot;ecs-task-execution-policy&quot; {
-	role = &quot;${aws_iam_role.ecs_task_execution_role.name}&quot;
-	policy_arn = &quot;arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy&quot;
+resource &#34;aws_iam_role_policy_attachment&#34; &#34;ecs-task-execution-policy&#34; {
+	role = &#34;${aws_iam_role.ecs_task_execution_role.name}&#34;
+	policy_arn = &#34;arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy&#34;
 }
 
-resource &quot;aws_iam_role_policy_attachment&quot; &quot;ecr-read-policy&quot; {
-	role = &quot;${aws_iam_role.ecs_task_execution_role.name}&quot;
-	policy_arn = &quot;arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess&quot;
+resource &#34;aws_iam_role_policy_attachment&#34; &#34;ecr-read-policy&#34; {
+	role = &#34;${aws_iam_role.ecs_task_execution_role.name}&#34;
+	policy_arn = &#34;arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess&#34;
 }
 
 # Task Definition
 # https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html
-resource &quot;aws_ecs_task_definition&quot; &quot;main&quot; {
-	family = &quot;${var.prefix}&quot;
+resource &#34;aws_ecs_task_definition&#34; &#34;main&#34; {
+	family = &#34;${var.prefix}&#34;
 
 	# データプレーンの選択
-	requires_compatibilities = [&quot;FARGATE&quot;]
+	requires_compatibilities = [&#34;FARGATE&#34;]
 
 	# ECSタスクが使用可能なリソースの上限
 	# タスク内のコンテナはこの上限内に使用するリソースを収める必要があり
 	# メモリが上限に達した場合OOM Killer にタスクがキルされる
-	cpu    = &quot;256&quot;
-	memory = &quot;512&quot;
+	cpu    = &#34;256&#34;
+	memory = &#34;512&#34;
 
 	# ECSタスクのネットワークドライバ
-	# Fargateを使用する場合は&quot;awsvpc&quot;決め打ち
-	network_mode = &quot;awsvpc&quot;
+	# Fargateを使用する場合は&#34;awsvpc&#34;決め打ち
+	network_mode = &#34;awsvpc&#34;
 
 	# ECRからDocker ImageをPULLするための権限
-	execution_role_arn = &quot;${aws_iam_role.ecs_task_execution_role.arn}&quot;
+	execution_role_arn = &#34;${aws_iam_role.ecs_task_execution_role.arn}&#34;
 
 	# 起動するコンテナの定義
 	# 【解説1】JSONでコンテナを定義します
@@ -522,48 +522,48 @@ resource &quot;aws_ecs_task_definition&quot; &quot;main&quot; {
 	container_definitions = &lt;&lt;EOL
 [
   {
-    &quot;name&quot;: &quot;&lt;your repository name&gt;&quot;,
-    &quot;image&quot;: &quot;&lt;your image name&gt;&quot;,
-    &quot;portMappings&quot;: [
+    &#34;name&#34;: &#34;&lt;your repository name&gt;&#34;,
+    &#34;image&#34;: &#34;&lt;your image name&gt;&#34;,
+    &#34;portMappings&#34;: [
       {
-        &quot;containerPort&quot;: 8080,
-        &quot;hostPort&quot;: 8080
+        &#34;containerPort&#34;: 8080,
+        &#34;hostPort&#34;: 8080
       }
     ],
-    &quot;environment&quot;: [
+    &#34;environment&#34;: [
         {
-            &quot;name&quot;: &quot;MYSQL_HOST&quot;,
-            &quot;value&quot;: &quot;${aws_rds_cluster.this.endpoint}&quot;
+            &#34;name&#34;: &#34;MYSQL_HOST&#34;,
+            &#34;value&#34;: &#34;${aws_rds_cluster.this.endpoint}&#34;
         }
     ],
-    &quot;secrets&quot;: [
+    &#34;secrets&#34;: [
       {
-        &quot;name&quot;: &quot;MYSQL_PASSWORD&quot;,
-        &quot;valueFrom&quot;: &quot;arn:aws:ssm:ap-northeast-1:910114278227:parameter/MYSQL_PASSWORD&quot;
+        &#34;name&#34;: &#34;MYSQL_PASSWORD&#34;,
+        &#34;valueFrom&#34;: &#34;arn:aws:ssm:ap-northeast-1:910114278227:parameter/MYSQL_PASSWORD&#34;
       },
       {
-        &quot;name&quot;: &quot;MYSQL_USER&quot;,
-        &quot;valueFrom&quot;: &quot;arn:aws:ssm:ap-northeast-1:910114278227:parameter/MYSQL_USER&quot;
+        &#34;name&#34;: &#34;MYSQL_USER&#34;,
+        &#34;valueFrom&#34;: &#34;arn:aws:ssm:ap-northeast-1:910114278227:parameter/MYSQL_USER&#34;
       },
       {
-        &quot;name&quot;: &quot;MYSQL_DATABASE&quot;,
-        &quot;valueFrom&quot;: &quot;arn:aws:ssm:ap-northeast-1:910114278227:parameter/MYSQL_DATABASE&quot;
+        &#34;name&#34;: &#34;MYSQL_DATABASE&#34;,
+        &#34;valueFrom&#34;: &#34;arn:aws:ssm:ap-northeast-1:910114278227:parameter/MYSQL_DATABASE&#34;
       },
       {
-        &quot;name&quot;: &quot;AWS_ACCESS_KEY&quot;,
-        &quot;valueFrom&quot;: &quot;arn:aws:ssm:ap-northeast-1:910114278227:parameter/ACCESS_KEY&quot;
+        &#34;name&#34;: &#34;AWS_ACCESS_KEY&#34;,
+        &#34;valueFrom&#34;: &#34;arn:aws:ssm:ap-northeast-1:910114278227:parameter/ACCESS_KEY&#34;
       },
       {
-        &quot;name&quot;: &quot;AWS_SECRET_KEY&quot;,
-        &quot;valueFrom&quot;: &quot;arn:aws:ssm:ap-northeast-1:910114278227:parameter/SECRET_KEY&quot;
+        &#34;name&#34;: &#34;AWS_SECRET_KEY&#34;,
+        &#34;valueFrom&#34;: &#34;arn:aws:ssm:ap-northeast-1:910114278227:parameter/SECRET_KEY&#34;
       },
       {
-        &quot;name&quot;: &quot;S3_BUCKET_NAME&quot;,
-        &quot;valueFrom&quot;: &quot;arn:aws:ssm:ap-northeast-1:910114278227:parameter/S3_BUCKET_NAME&quot;
+        &#34;name&#34;: &#34;S3_BUCKET_NAME&#34;,
+        &#34;valueFrom&#34;: &#34;arn:aws:ssm:ap-northeast-1:910114278227:parameter/S3_BUCKET_NAME&#34;
       },
       {
-        &quot;name&quot;: &quot;AUTH_SECRET&quot;,
-        &quot;valueFrom&quot;: &quot;arn:aws:ssm:ap-northeast-1:910114278227:parameter/AUTH_SECRET&quot;
+        &#34;name&#34;: &#34;AUTH_SECRET&#34;,
+        &#34;valueFrom&#34;: &#34;arn:aws:ssm:ap-northeast-1:910114278227:parameter/AUTH_SECRET&#34;
       }
     ]
   }
@@ -573,257 +573,256 @@ EOL
 
 # ECS Cluster
 # https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html
-resource &quot;aws_ecs_cluster&quot; &quot;main&quot; {
-	name = &quot;${var.prefix}&quot;
+resource &#34;aws_ecs_cluster&#34; &#34;main&#34; {
+	name = &#34;${var.prefix}&#34;
 }
 
 # ELB Target Group
 # https://www.terraform.io/docs/providers/aws/r/lb_target_group.html
-resource &quot;aws_lb_target_group&quot; &quot;main&quot; {
-	name = &quot;${var.prefix}&quot;
+resource &#34;aws_lb_target_group&#34; &#34;main&#34; {
+	name = &#34;${var.prefix}&#34;
 
 	# ターゲットグループを作成するVPC
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
 	# ALBからECSタスクのコンテナへトラフィックを振り分ける設定
 	port        = 8080
-	protocol    = &quot;HTTP&quot;
-	target_type = &quot;ip&quot;
+	protocol    = &#34;HTTP&#34;
+	target_type = &#34;ip&#34;
 
 	# コンテナへの死活監視設定
 	health_check = {
 		port = 8080
-		path = &quot;/health&quot;
+		path = &#34;/health&#34;
 	}
 }
 
 # ALB Listener Rule
 # https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html
-resource &quot;aws_lb_listener_rule&quot; &quot;main&quot; {
+resource &#34;aws_lb_listener_rule&#34; &#34;main&#34; {
 	# ルールを追加するリスナー
-	listener_arn = &quot;${aws_lb_listener.main.arn}&quot;
+	listener_arn = &#34;${aws_lb_listener.main.arn}&#34;
 
 	# 受け取ったトラフィックをターゲットグループへ受け渡す
 	action {
-		type             = &quot;forward&quot;
-		target_group_arn = &quot;${aws_lb_target_group.main.id}&quot;
+		type             = &#34;forward&#34;
+		target_group_arn = &#34;${aws_lb_target_group.main.id}&#34;
 	}
 
 	# ターゲットグループへ受け渡すトラフィックの条件
 	condition {
-		field  = &quot;path-pattern&quot;
-		values = [&quot;*&quot;]
+		field  = &#34;path-pattern&#34;
+		values = [&#34;*&#34;]
 	}
 }
 
 # SecurityGroup
 # https://www.terraform.io/docs/providers/aws/r/security_group.html
-resource &quot;aws_security_group&quot; &quot;ecs&quot; {
-	name        = &quot;${var.prefix}-ecs&quot;
-	description = &quot;${var.prefix} ecs&quot;
+resource &#34;aws_security_group&#34; &#34;ecs&#34; {
+	name        = &#34;${var.prefix}-ecs&#34;
+	description = &#34;${var.prefix} ecs&#34;
 
 	# セキュリティグループを配置するVPC
-	vpc_id      = &quot;${aws_vpc.main.id}&quot;
+	vpc_id      = &#34;${aws_vpc.main.id}&#34;
 
 	# セキュリティグループ内のリソースからインターネットへのアクセス許可設定
 	# 今回の場合DockerHubへのPullに使用する。
 	egress {
 		from_port   = 0
 		to_port     = 0
-		protocol    = &quot;-1&quot;
-		cidr_blocks = [&quot;0.0.0.0/0&quot;]
+		protocol    = &#34;-1&#34;
+		cidr_blocks = [&#34;0.0.0.0/0&#34;]
 	}
 
 	tags = {
-		Name = &quot;${var.prefix}-ecs&quot;
+		Name = &#34;${var.prefix}-ecs&#34;
 	}
 }
 
 # SecurityGroup Rule
 # https://www.terraform.io/docs/providers/aws/r/security_group.html
-resource &quot;aws_security_group_rule&quot; &quot;ecs&quot; {
-	security_group_id = &quot;${aws_security_group.ecs.id}&quot;
+resource &#34;aws_security_group_rule&#34; &#34;ecs&#34; {
+	security_group_id = &#34;${aws_security_group.ecs.id}&#34;
 
 	# インターネットからセキュリティグループ内のリソースへのアクセス許可設定
-	type = &quot;ingress&quot;
+	type = &#34;ingress&#34;
 
 	# TCPでの80ポートへのアクセスを許可する
 	from_port = 80
 	to_port   = 8080
-	protocol  = &quot;tcp&quot;
+	protocol  = &#34;tcp&#34;
 
 	# 同一VPC内からのアクセスのみ許可
-	cidr_blocks = [&quot;10.0.0.0/16&quot;]
+	cidr_blocks = [&#34;10.0.0.0/16&#34;]
 }
 
 # ECS Service
 # https://www.terraform.io/docs/providers/aws/r/ecs_service.html
-resource &quot;aws_ecs_service&quot; &quot;main&quot; {
-	name = &quot;${var.prefix}&quot;
+resource &#34;aws_ecs_service&#34; &#34;main&#34; {
+	name = &#34;${var.prefix}&#34;
 
 	# 依存関係の記述。
-	# &quot;aws_lb_listener_rule.main&quot; リソースの作成が完了するのを待ってから当該リソースの作成を開始する。
-	# &quot;depends_on&quot; は &quot;aws_ecs_service&quot; リソース専用のプロパティではなく、Terraformのシンタックスのため他の&quot;resource&quot;でも使用可能
-	depends_on = [&quot;aws_lb_listener_rule.main&quot;]
+	# &#34;aws_lb_listener_rule.main&#34; リソースの作成が完了するのを待ってから当該リソースの作成を開始する。
+	# &#34;depends_on&#34; は &#34;aws_ecs_service&#34; リソース専用のプロパティではなく、Terraformのシンタックスのため他の&#34;resource&#34;でも使用可能
+	depends_on = [&#34;aws_lb_listener_rule.main&#34;]
 
 	# 当該ECSサービスを配置するECSクラスターの指定
-	cluster = &quot;${aws_ecs_cluster.main.name}&quot;
+	cluster = &#34;${aws_ecs_cluster.main.name}&#34;
 
 	# データプレーンとしてFargateを使用する
-	launch_type = &quot;FARGATE&quot;
+	launch_type = &#34;FARGATE&#34;
 
 	# ECSタスクの起動数を定義
-	desired_count = &quot;1&quot;
+	desired_count = &#34;1&#34;
 
 	# 起動するECSタスクのタスク定義
-	task_definition = &quot;${aws_ecs_task_definition.main.arn}&quot;
+	task_definition = &#34;${aws_ecs_task_definition.main.arn}&#34;
 
 	# ECSタスクへ設定するネットワークの設定
 	network_configuration = {
 		# タスクの起動を許可するサブネット
-		subnets         = [&quot;${aws_subnet.private_1a.id}&quot;, &quot;${aws_subnet.private_1c.id}&quot;, &quot;${aws_subnet.private_1d.id}&quot;]
+		subnets         = [&#34;${aws_subnet.private_1a.id}&#34;, &#34;${aws_subnet.private_1c.id}&#34;, &#34;${aws_subnet.private_1d.id}&#34;]
 		# タスクに紐付けるセキュリティグループ
-		security_groups = [&quot;${aws_security_group.ecs.id}&quot;]
+		security_groups = [&#34;${aws_security_group.ecs.id}&#34;]
 	}
 
 	# ECSタスクの起動後に紐付けるELBターゲットグループ
 	load_balancer = [
 		{
-			target_group_arn = &quot;${aws_lb_target_group.main.arn}&quot;
-			container_name   = &quot;&lt;your container name&gt;&quot;
-			container_port   = &quot;8080&quot;
+			target_group_arn = &#34;${aws_lb_target_group.main.arn}&#34;
+			container_name   = &#34;&lt;your container name&gt;&#34;
+			container_port   = &#34;8080&#34;
 		},
 	]
-}
-</code></pre><p>機密情報を渡すところに関しては <a href=https://khigashigashi.hatenablog.com/entry/2018/08/28/214417 target=_blank rel="noopener noreferrer">こちら</a>
-の記事が分かりやすいです。</p><p>機密情報として設定する値は System Manager のパラメータストアにセットする必要があります。</p><h1 id=rdsの設定>RDSの設定</h1><p>最後に <code>rds.tf</code> を以下のとおり定義します。</p><pre class=line-numbers><code># SSM Parameter data source
+}</code></pre><p>機密情報を渡すところに関しては <a href=https://khigashigashi.hatenablog.com/entry/2018/08/28/214417 target=_blank rel="noopener noreferrer">こちら</a>
+の記事が分かりやすいです。</p><p>機密情報として設定する値は System Manager のパラメータストアにセットする必要があります。</p><h1 id=rdsの設定>RDSの設定</h1><p>最後に <code>rds.tf</code> を以下のとおり定義します。</p><pre class=line-numbers><code class=language-text># SSM Parameter data source
 # https://www.terraform.io/docs/providers/aws/d/ssm_parameter.html
-data &quot;aws_ssm_parameter&quot; &quot;database_name&quot; {
-	name = &quot;MYSQL_DATABASE&quot;
+data &#34;aws_ssm_parameter&#34; &#34;database_name&#34; {
+	name = &#34;MYSQL_DATABASE&#34;
 }
 
-data &quot;aws_ssm_parameter&quot; &quot;database_user&quot; {
-	name = &quot;MYSQL_USER&quot;
+data &#34;aws_ssm_parameter&#34; &#34;database_user&#34; {
+	name = &#34;MYSQL_USER&#34;
 }
 
-data &quot;aws_ssm_parameter&quot; &quot;database_password&quot; {
-	name = &quot;MYSQL_PASSWORD&quot;
+data &#34;aws_ssm_parameter&#34; &#34;database_password&#34; {
+	name = &#34;MYSQL_PASSWORD&#34;
 }
 
 # 【解説】locals は名前のとおりローカル変数です。
 # variables だと `${}` 展開できないのでこちらを使用しました。
 # 他にやり方があれば教えてほしいです。
 locals {
-	name = &quot;${var.prefix}-rds-mysql&quot;
+	name = &#34;${var.prefix}-rds-mysql&#34;
 }
 
-resource &quot;aws_security_group&quot; &quot;this&quot; {
-	name        = &quot;${local.name}&quot;
-	description = &quot;${local.name}&quot;
+resource &#34;aws_security_group&#34; &#34;this&#34; {
+	name        = &#34;${local.name}&#34;
+	description = &#34;${local.name}&#34;
 
-	vpc_id = &quot;${aws_vpc.main.id}&quot;
+	vpc_id = &#34;${aws_vpc.main.id}&#34;
 
   egress {
 	  from_port   = 0
 	  to_port     = 0
-	  protocol    = &quot;-1&quot;
-	  cidr_blocks = [&quot;0.0.0.0/0&quot;]
+	  protocol    = &#34;-1&#34;
+	  cidr_blocks = [&#34;0.0.0.0/0&#34;]
   }
 
   tags = {
-	  Name = &quot;${local.name}&quot;
+	  Name = &#34;${local.name}&#34;
   }
 }
 
-resource &quot;aws_security_group_rule&quot; &quot;mysql&quot; {
-	security_group_id = &quot;${aws_security_group.this.id}&quot;
+resource &#34;aws_security_group_rule&#34; &#34;mysql&#34; {
+	security_group_id = &#34;${aws_security_group.this.id}&#34;
 
-	type = &quot;ingress&quot;
+	type = &#34;ingress&#34;
 
 	from_port   = 3306
 	to_port     = 3306
-	protocol    = &quot;tcp&quot;
-	cidr_blocks = [&quot;10.0.0.0/16&quot;]
+	protocol    = &#34;tcp&#34;
+	cidr_blocks = [&#34;10.0.0.0/16&#34;]
 }
 
-resource &quot;aws_db_subnet_group&quot; &quot;this&quot; {
-	name        = &quot;${local.name}&quot;
-	description = &quot;${local.name}&quot;
+resource &#34;aws_db_subnet_group&#34; &#34;this&#34; {
+	name        = &#34;${local.name}&#34;
+	description = &#34;${local.name}&#34;
 	subnet_ids  = [
-		&quot;${aws_subnet.private_1a.id}&quot;,
-		&quot;${aws_subnet.private_1c.id}&quot;,
-		&quot;${aws_subnet.private_1d.id}&quot;,
+		&#34;${aws_subnet.private_1a.id}&#34;,
+		&#34;${aws_subnet.private_1c.id}&#34;,
+		&#34;${aws_subnet.private_1d.id}&#34;,
 	]
 }
 
 # RDS Cluster
 # https://www.terraform.io/docs/providers/aws/r/rds_cluster.html
-resource &quot;aws_rds_cluster&quot; &quot;this&quot; {
-	cluster_identifier = &quot;${local.name}&quot;
+resource &#34;aws_rds_cluster&#34; &#34;this&#34; {
+	cluster_identifier = &#34;${local.name}&#34;
 
-	db_subnet_group_name   = &quot;${aws_db_subnet_group.this.name}&quot;
-	vpc_security_group_ids = [&quot;${aws_security_group.this.id}&quot;]
+	db_subnet_group_name   = &#34;${aws_db_subnet_group.this.name}&#34;
+	vpc_security_group_ids = [&#34;${aws_security_group.this.id}&#34;]
 
-	engine = &quot;aurora-mysql&quot;
-	port   = &quot;3306&quot;
+	engine = &#34;aurora-mysql&#34;
+	port   = &#34;3306&#34;
 
-	database_name   = &quot;${data.aws_ssm_parameter.database_name.value}&quot;
-	master_username = &quot;${data.aws_ssm_parameter.database_user.value}&quot;
-	master_password = &quot;${data.aws_ssm_parameter.database_password.value}&quot;
+	database_name   = &#34;${data.aws_ssm_parameter.database_name.value}&#34;
+	master_username = &#34;${data.aws_ssm_parameter.database_user.value}&#34;
+	master_password = &#34;${data.aws_ssm_parameter.database_password.value}&#34;
 
 	# RDSインスタンス削除時のスナップショットの取得強制を無効化
 	skip_final_snapshot = true
 
 	# 使用する Parameter Group を指定
-	db_cluster_parameter_group_name = &quot;${aws_rds_cluster_parameter_group.this.name}&quot;
+	db_cluster_parameter_group_name = &#34;${aws_rds_cluster_parameter_group.this.name}&#34;
 }
 
 # RDS Cluster Instance
 # https://www.terraform.io/docs/providers/aws/r/rds_cluster_instance.html
-resource &quot;aws_rds_cluster_instance&quot; &quot;this&quot; {
-	identifier         = &quot;${local.name}&quot;
-	cluster_identifier = &quot;${aws_rds_cluster.this.id}&quot;
+resource &#34;aws_rds_cluster_instance&#34; &#34;this&#34; {
+	identifier         = &#34;${local.name}&#34;
+	cluster_identifier = &#34;${aws_rds_cluster.this.id}&#34;
 
-	engine = &quot;aurora-mysql&quot;
+	engine = &#34;aurora-mysql&#34;
 
-	instance_class = &quot;db.t3.small&quot;
+	instance_class = &#34;db.t3.small&#34;
 }
 
 # RDS Cluster Parameter Group
 # https://www.terraform.io/docs/providers/aws/r/rds_cluster_parameter_group.html
 # 日本時間に変更 &amp; 日本語対応のために文字コードを変更
-resource &quot;aws_rds_cluster_parameter_group&quot; &quot;this&quot; {
-	name   = &quot;${local.name}&quot;
-	family = &quot;aurora-mysql5.7&quot;
+resource &#34;aws_rds_cluster_parameter_group&#34; &#34;this&#34; {
+	name   = &#34;${local.name}&#34;
+	family = &#34;aurora-mysql5.7&#34;
 
 	parameter {
-		name  = &quot;time_zone&quot;
-		value = &quot;Asia/Tokyo&quot;
+		name  = &#34;time_zone&#34;
+		value = &#34;Asia/Tokyo&#34;
 	}
 
 	parameter {
-		name  = &quot;character_set_client&quot;
-		value = &quot;utf8mb4&quot;
+		name  = &#34;character_set_client&#34;
+		value = &#34;utf8mb4&#34;
 	}
 
 	parameter {
-		name  = &quot;character_set_connection&quot;
-		value = &quot;utf8mb4&quot;
+		name  = &#34;character_set_connection&#34;
+		value = &#34;utf8mb4&#34;
 	}
 
 	parameter {
-		name  = &quot;character_set_database&quot;
-		value = &quot;utf8mb4&quot;
+		name  = &#34;character_set_database&#34;
+		value = &#34;utf8mb4&#34;
 	}
 
 	parameter {
-		name  = &quot;character_set_results&quot;
-		value = &quot;utf8mb4&quot;
+		name  = &#34;character_set_results&#34;
+		value = &#34;utf8mb4&#34;
 	}
 
 	parameter {
-		name  = &quot;character_set_server&quot;
-		value = &quot;utf8mb4&quot;
+		name  = &#34;character_set_server&#34;
+		value = &#34;utf8mb4&#34;
 	}
 }
 
@@ -831,9 +830,14 @@ resource &quot;aws_rds_cluster_parameter_group&quot; &quot;this&quot; {
 # 【解説】もしエンドポイントも機密情報として扱うのであれば
 # ここで表示されたエンドポイントをパラメータストアに格納すればよい。
 # 今回は紹介のために使用。
-output &quot;rds_endpoint&quot; {
-	value = &quot;${aws_rds_cluster.this.endpoint}&quot;
-}
-</code></pre><h1 id=テスト>テスト</h1><p>上記で作成してきた tfファイルたちを同じディレクトリに格納し、</p><p>そのディレクトリ内で下記コマンドを実行します。</p><p><code>AWS_ACCESS_KEY_ID=&lt;your access key> AWS_SECRET_ACCESS_KEY=&lt;your secret access key> terraform apply</code></p><p>アクセスキーとシークレットキーは IAM から取得してください。</p><p>terraform コマンドが入ってない人は brew やらなんやらでインストールお願いします。</p><br><p>実行して（かなり時間がかかりますが）下記のように出力されたら成功です！</p><img src=https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/terraform_apply_success.png width=600><br><p>削除もやってみましょう。</p><p><code>AWS_ACCESS_KEY_ID=&lt;your access key> AWS_SECRET_ACCESS_KEY=&lt;your secret access key> terraform destroy</code></p><p>こちらもかなり時間がかかりますが、下記のようにリソースが削除されると思います。</p><img src=https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/terraform_destroy_success.png width=600><h2 id=tfファイルの実行順>tfファイルの実行順</h2><p>tfファイル内で作成したリソースから取得した値を他のリソースで使用する場面がありました。</p><p>ここで気になるのが tfファイルの実行順番です。</p><p>実行順番次第では、取得したい値がまだできていないということも起こりそうです。</p><p>これに関して、結論から言うと僕たちが順番を考える必要はありません。</p><p>tfファイルを適当にディレクトリに突っ込んだだけですが、</p><p>terraform 側でよしなに順番を決めてやってくれます。</p><p>すごい。</p><h1 id=まとめ>まとめ</h1><p>Terraformすごい。</p><p>自動でここまでできてしまう。</p><p>しかも、コードで定義するからバージョン管理できる。</p><p>差分チェックできる。</p><p>「分かる、こいつ強い。」</p><br><p>今回はファイル分割しただけですが、モジュール分割とかもできるようなので今後やっていきます。</p></div><footer><div class=blog-stats><ul class=categories><li><a class=article-terms-link href=/categories/aws/>AWS</a></li><li><a class=article-terms-link href=/categories/terraform/>Terraform</a></li><li><a class=article-terms-link href=/categories/ecs/>ECS</a></li><li><a class=article-terms-link href=/categories/rds/>RDS</a></li></ul><div><good-counter rel-permalink=/blog/terraform_ecs/></good-counter></div></div></footer><div class=fix><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e3%80%90Terraform%20%2b%20ECS%20%2b%20RDS%e3%80%91Terraform%20%e3%81%a7%20ECS%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%e3%81%97%e3%81%a6%e3%81%bf%e3%81%9f』" target=_blank rel="noopener noreferrer">修正提案</a></div></article><div class=pagination><a href=/blog/scrum_entry/ class="button left"><span>スクラムについて学んだ話</span></a>
-<a href=/blog/android_push/ class="button right"><span>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</span></a></div></main><section id=site-sidebar><section id=recent-posts><header><h1>最近の投稿</h1></header><article class=mini-post><a href=/blog/kotlin-fest-2025/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2025/11/kotlin-fest-2025/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2025/11/kotlin-fest-2025/featured.webp alt=featured></a><header><h2><a href=/blog/kotlin-fest-2025/>Kotlin言語仕様書への招待 @Kotlin Fest 2025</a></h2><time class=published datetime="2025-11-01 13:20:00 +0900 +0900">2025-11-01</time></header></article><article class=mini-post><a href=/blog/java-integer-cache/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2025/05/java-integer-cache/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2025/05/java-integer-cache/featured.webp alt=featured></a><header><h2><a href=/blog/java-integer-cache/>JavaのIntegerクラスがキャッシュする範囲</a></h2><time class=published datetime="2025-05-18 22:30:08 +0900 +0900">2025-05-18</time></header></article><article class=mini-post><a href=/blog/the-code-book/ class=image style="--bg-image:url('https://tech.yyh-gl.dev/img/2025/01/the-code-book/featured.webp')"><img src=https://tech.yyh-gl.dev/img/2025/01/the-code-book/featured.webp alt=featured></a><header><h2><a href=/blog/the-code-book/>『暗号解読（上）』を読んで</a></h2><time class=published datetime="2025-01-24 00:30:40 +0900 +0900">2025-01-24</time></header></article><footer><a href=/blog/ class=button>続きを見る</a></footer></section><section id=mini-bio><header><h1>About</h1></header><p>東京で働くソフトウェアエンジニアです。<br>バックエンドがメインですが、フロントエンドやインフラもさわっています。</p><footer><a href=/about class=button>もっと詳しく知る</a></footer></section></section><footer id=site-footer><ul class=socnet-icons><li><a href=//github.com/yyh-gl target=_blank rel=noopener aria-label=GitHub><i class="fa-brands fa-github" aria-hidden=true></i></a></li><li><a href=//www.linkedin.com/in/yyh-gl target=_blank rel=noopener aria-label=LinkedIn><i class="fa-brands fa-linkedin" aria-hidden=true></i></a></li><li><a href=//x.com/yyh_gl target=_blank rel=noopener aria-label=X><i class="fa-brands fa-x-twitter" aria-hidden=true></i></a></li><li><a href=//bsky.app/profile/yyh-gl.bsky.social target=_blank rel=noopener aria-label=Bluesky><i class="fa-solid fa-cloud" aria-hidden=true></i></a></li><li><a href=//speakerdeck.com/yyh_gl target=_blank rel=noopener aria-label="Speaker Deck"><i class="fa-brands fa-speaker-deck" aria-hidden=true></i></a></li><li><a href=//crowdin.com/profile/yyh-gl target=_blank rel=noopener aria-label=Crowdin><i class="fa-solid fa-pen-square" aria-hidden=true></i></a></li></ul><p class=copyright>© 2026 Indexing my brain<br>Theme: <a href=https://github.com/pacollins/hugo-future-imperfect-slim target=_blank rel=noopener>Hugo Future Imperfect Slim</a><br>A <a href=https://html5up.net/future-imperfect target=_blank rel=noopener>HTML5 UP port</a> | Powered by <a href=https://gohugo.io/ title=0.146.2 target=_blank rel=noopener>Hugo</a></p></footer><a id=back-to-top href=# aria-label=トップへ戻る><i class="fas fa-arrow-up fa-2x" aria-hidden=true></i></a>
-<script src=//code.jquery.com/jquery-3.5.1.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js></script><script src=//unpkg.com/lunr/lunr.min.js></script><script src=/js/bundlecdn.min.70a44919fe2b86c48196e069b4cf8c2db75d57570d4d703be285319acf2eb966.js integrity="sha256-cKRJGf4rhsSBluBptM+MLbddV1cNTXA74oUxms8uuWY="></script><script src=/js/add-on.js></script><script src=/js/prism.js></script></div></body></html>
+output &#34;rds_endpoint&#34; {
+	value = &#34;${aws_rds_cluster.this.endpoint}&#34;
+}</code></pre><h1 id=テスト>テスト</h1><p>上記で作成してきた tfファイルたちを同じディレクトリに格納し、</p><p>そのディレクトリ内で下記コマンドを実行します。</p><p><code>AWS_ACCESS_KEY_ID=&lt;your access key> AWS_SECRET_ACCESS_KEY=&lt;your secret access key> terraform apply</code></p><p>アクセスキーとシークレットキーは IAM から取得してください。</p><p>terraform コマンドが入ってない人は brew やらなんやらでインストールお願いします。</p><br><p>実行して（かなり時間がかかりますが）下記のように出力されたら成功です！</p><img src=https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/terraform_apply_success.png width=600><br><p>削除もやってみましょう。</p><p><code>AWS_ACCESS_KEY_ID=&lt;your access key> AWS_SECRET_ACCESS_KEY=&lt;your secret access key> terraform destroy</code></p><p>こちらもかなり時間がかかりますが、下記のようにリソースが削除されると思います。</p><img src=https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/terraform_destroy_success.png width=600><h2 id=tfファイルの実行順>tfファイルの実行順</h2><p>tfファイル内で作成したリソースから取得した値を他のリソースで使用する場面がありました。</p><p>ここで気になるのが tfファイルの実行順番です。</p><p>実行順番次第では、取得したい値がまだできていないということも起こりそうです。</p><p>これに関して、結論から言うと僕たちが順番を考える必要はありません。</p><p>tfファイルを適当にディレクトリに突っ込んだだけですが、</p><p>terraform 側でよしなに順番を決めてやってくれます。</p><p>すごい。</p><h1 id=まとめ>まとめ</h1><p>Terraformすごい。</p><p>自動でここまでできてしまう。</p><p>しかも、コードで定義するからバージョン管理できる。</p><p>差分チェックできる。</p><p>「分かる、こいつ強い。」</p><br><p>今回はファイル分割しただけですが、モジュール分割とかもできるようなので今後やっていきます。</p></div><footer class=post-footer><a href="https://github.com/yyh-gl/tech-blog/issues/new?template=fix_proposal.md&assignees=yyh-gl&title=修正提案：『%e3%80%90Terraform%20%2b%20ECS%20%2b%20RDS%e3%80%91Terraform%20%e3%81%a7%20ECS%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89%e3%81%97%e3%81%a6%e3%81%bf%e3%81%9f』" target=_blank rel="noopener noreferrer" class=fix-link><i class="fas fa-code-pull-request"></i> 修正提案</a><nav class=post-nav><a href=/blog/scrum_entry/ class=nav-prev><span class=nav-label><i class="fas fa-chevron-left"></i> 前の記事</span>
+<span class=nav-title>スクラムについて学んだ話</span>
+</a><a href=/blog/android_push/ class=nav-next><span class=nav-label>次の記事 <i class="fas fa-chevron-right"></i></span>
+<span class=nav-title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</span></a></nav></footer></article></main><footer class=site-footer><div class=footer-inner><div class=footer-logo>$ Indexing my brain</div><div class=footer-links><a href=https://github.com/yyh-gl target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a>
+<a href=https://x.com/yyh_gl target=_blank rel=noopener><i class="fab fa-x-twitter"></i> X</a>
+<a href=https://bsky.app/profile/yyh-gl.bsky.social target=_blank rel=noopener><i class="fas fa-cloud"></i> Bluesky</a>
+<a href=https://speakerdeck.com/yyh_gl target=_blank rel=noopener><i class="fab fa-speaker-deck"></i> Speaker Deck</a>
+<a href=https://www.linkedin.com/in/yyh-gl target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a>
+<a href=https://crowdin.com/profile/yyh-gl target=_blank rel=noopener><i class="fa-solid fa-square-pen"></i> Crowdin</a></div><p class=footer-copy>&copy; 2026 yyh-gl &mdash; Built with <span class=heart>&#9829;</span> & Hugo</p></div></footer><script src=/js/prism.js></script></body></html>

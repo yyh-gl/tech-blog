@@ -62,7 +62,7 @@
 僕がGoでどうやって実装しているのか紹介していきます。&lt;/p>
 &lt;h1 id="実装例">実装例&lt;/h1>
 &lt;p>兎にも角にも、まずはコードを示します。&lt;/p>
-&lt;pre>&lt;code class="language-go">// animal/dog/dog.go
+&lt;pre class="line-numbers">&lt;code class="language-go">// animal/dog/dog.go
 package dog
 type Dog struct {
 name Name
@@ -75,40 +75,37 @@ return nil, err
 return &amp;amp;Dog{
 name: *n,
 }, nil
-}
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-go">// animal/dog/name.go
+}&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-go">// animal/dog/name.go
 package dog
 import (
-&amp;quot;errors&amp;quot;
-&amp;quot;unicode/utf8&amp;quot;
+&amp;#34;errors&amp;#34;
+&amp;#34;unicode/utf8&amp;#34;
 )
 type Name string
 func newName(v string) (*Name, error) {
 // 名前は3文字以上というビジネスロジック
 if utf8.RuneCountInString(v) &amp;lt; 3 {
-return nil, errors.New(&amp;quot;名前は3文字以上！&amp;quot;)
+return nil, errors.New(&amp;#34;名前は3文字以上！&amp;#34;)
 }
 n := Name(v)
 return &amp;amp;n, nil
-}
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-go">// main.go
+}&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-go">// main.go
 package main
 import (
-&amp;quot;fmt&amp;quot;
-&amp;quot;playground/animal/dog&amp;quot;
+&amp;#34;fmt&amp;#34;
+&amp;#34;playground/animal/dog&amp;#34;
 )
 func main() {
-// d := dog.Dog{name: &amp;quot;犬太郎&amp;quot;} できない
-d, _ := dog.New(&amp;quot;犬太郎&amp;quot;) // できる
-fmt.Printf(&amp;quot;%+v\n&amp;quot;, d)
-d, err := dog.New(&amp;quot;犬&amp;quot;)
+// d := dog.Dog{name: &amp;#34;犬太郎&amp;#34;} できない
+d, _ := dog.New(&amp;#34;犬太郎&amp;#34;) // できる
+fmt.Printf(&amp;#34;%&amp;#43;v\n&amp;#34;, d)
+d, err := dog.New(&amp;#34;犬&amp;#34;)
 if err != nil {
 fmt.Println(err) // 犬の名前が「犬」は可愛そうだからできない()
 }
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/cmNp5MlCNuc" target="_blank" rel="noopener noreferrer">playground&lt;/a>
 &lt;/p></description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</guid><description>&lt;h1 id="簡単まとめシリーズ">簡単まとめシリーズ&lt;/h1>
 &lt;p>今回は &lt;b>集約とトランザクション境界&lt;/b> について、&lt;br>

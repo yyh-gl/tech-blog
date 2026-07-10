@@ -84,12 +84,11 @@
 &lt;p>この設定項目について調べたのでメモを残す。&lt;/p>
 &lt;h1 id="editorquicksuggestions">editor.quickSuggestions&lt;/h1>
 &lt;p>&lt;code>editor.quickSuggestions&lt;/code>は以下のような設定ができる。&lt;/p>
-&lt;pre>&lt;code class="language-json">&amp;quot;editor.quickSuggestions&amp;quot;: {
-&amp;quot;other&amp;quot;: &amp;quot;on&amp;quot;,
-&amp;quot;comments&amp;quot;: &amp;quot;off&amp;quot;,
-&amp;quot;strings&amp;quot;: &amp;quot;off&amp;quot;
-},
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-json">&amp;#34;editor.quickSuggestions&amp;#34;: {
+&amp;#34;other&amp;#34;: &amp;#34;on&amp;#34;,
+&amp;#34;comments&amp;#34;: &amp;#34;off&amp;#34;,
+&amp;#34;strings&amp;#34;: &amp;#34;off&amp;#34;
+},&lt;/code>&lt;/pre>
 &lt;p>ref: &lt;a href="https://code.visualstudio.com/docs/getstarted/settings" target="_blank" rel="noopener noreferrer">https://code.visualstudio.com/docs/getstarted/settings&lt;/a>
 &lt;/p>
 &lt;p>&lt;code>other&lt;/code>, &lt;code>comments&lt;/code>, &lt;code>strings&lt;/code> の意味がわからず、調べた内容をメモする。&lt;/p>
@@ -443,11 +442,10 @@ Kotlinのお作法を守れていないところもあると思いますが、�
 &lt;h1 id="実際の動きを見てみる">実際の動きを見てみる&lt;/h1>
 &lt;p>以下のような&lt;code>docker-compose.yml&lt;/code>を用意します。&lt;/p>
 &lt;p>&lt;code>docker-compose.yml&lt;/code>&lt;/p>
-&lt;pre>&lt;code class="language-docker-compose">version: '3'
+&lt;pre class="line-numbers">&lt;code class="language-docker-compose">version: &amp;#39;3&amp;#39;
 services:
 web:
-image: &amp;quot;nginx:latest&amp;quot;
-&lt;/code>&lt;/pre>
+image: &amp;#34;nginx:latest&amp;#34;&lt;/code>&lt;/pre>
 &lt;p>&lt;code>docker compose -f docker-compose.yml up&lt;/code>でコンテナを起動した後に、
 ブラウザを開いて&lt;code>http://localhost/&lt;/code>にアクセスしてみます。&lt;/p>
 &lt;img src="https://tech.yyh-gl.dev/img/2022/03/docker-compose-override/result1.webp" width="600">
@@ -456,12 +454,11 @@ image: &amp;quot;nginx:latest&amp;quot;
 &lt;br>
 &lt;p>次に、以下のような&lt;code>docker-compose.override.yml&lt;/code>を用意します。&lt;/p>
 &lt;p>&lt;code>docker-compose.override.yml&lt;/code>&lt;/p>
-&lt;pre>&lt;code class="language-docker-compose">version: '3'
+&lt;pre class="line-numbers">&lt;code class="language-docker-compose">version: &amp;#39;3&amp;#39;
 services:
 web:
 ports:
-- &amp;quot;80:80&amp;quot;
-&lt;/code>&lt;/pre>
+- &amp;#34;80:80&amp;#34;&lt;/code>&lt;/pre>
 &lt;p>そして、今度は以下のようにして、複数の設定ファイルを指定します。&lt;/p>
 &lt;p>&lt;code>docker compose -f docker-compose.yml -f docker-compose.override.yml up&lt;/code>&lt;/p>
 &lt;p>では、&lt;code>http://localhost/&lt;/code>にアクセスしてみます。&lt;/p>
@@ -475,7 +472,11 @@ ports:
 &lt;br>
 &lt;p>すなわち、Docker Composeは追加で設定ファイルを指定することで、設定を追加できます。&lt;/p>
 &lt;p>なお、今回はサンプルを省きましたが、追加だけではなく、上書きも可能です。&lt;br>
-（後ほど出てくるサンプルを見れば、上書きの挙動も分かると思います）&lt;/p></description></item><item><title>【2021年】アクティビティまとめ</title><link>https://tech.yyh-gl.dev/blog/activity-2021/</link><pubDate>Sun, 02 Jan 2022 20:59:04 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/activity-2021/</guid><description>&lt;h1 id="今年も">今年も…&lt;/h1>
+（後ほど出てくるサンプルを見れば、上書きの挙動も分かると思います）&lt;/p>
+&lt;h1 id="重複した設定項目がある場合はどちらが優先される">重複した設定項目がある場合はどちらが優先される？&lt;/h1>
+&lt;p>前章の最後に、「追加だけではなく、上書きも可能です」と書きました。&lt;/p>
+&lt;p>本章では、複数の設定ファイルを指定したさいに、
+例えば、同じ環境変数名に対して異なる値を設定していた場合どちらの設定が優先されるのかを解説します。&lt;/p></description></item><item><title>【2021年】アクティビティまとめ</title><link>https://tech.yyh-gl.dev/blog/activity-2021/</link><pubDate>Sun, 02 Jan 2022 20:59:04 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/activity-2021/</guid><description>&lt;h1 id="今年も">今年も…&lt;/h1>
 &lt;p>&lt;a href="https://tech.yyh-gl.dev/blog/activity-2020/" target="_blank" rel="noopener noreferrer">昨年に引き続き&lt;/a>
 、
 今年も&lt;a href="https://lapras.com/" target="_blank" rel="noopener noreferrer">LAPRAS&lt;/a>
@@ -1117,11 +1118,11 @@ ports:
 &lt;h1 id="buildコマンドとは">&lt;code>build&lt;/code>コマンドとは&lt;/h1>
 &lt;p>まずは&lt;code>build&lt;/code>とはどういったコマンドなのか見ていきましょう。&lt;/p>
 &lt;p>&lt;code>help&lt;/code>を使って調べてみます。&lt;/p>
-&lt;pre>&lt;code class="language-shell">$ go help build
+&lt;pre class="line-numbers">&lt;code class="language-shell">$ go help build
 Build compiles the packages named by the import paths,
 along with their dependencies, but it does not install the results.
 &amp;lt;省略&amp;gt;
-When compiling packages, build ignores files that end in '_test.go'.
+When compiling packages, build ignores files that end in &amp;#39;_test.go&amp;#39;.
 &amp;lt;省略&amp;gt;
 When compiling multiple packages or a single non-main package,
 build compiles the packages but discards the resulting object,
@@ -1133,8 +1134,7 @@ build. For more information about build tags, see the description of
 build constraints in the documentation for the go/build package.
 (Earlier versions of Go used a space-separated list, and that form
 is deprecated but still recognized.)
-&amp;lt;省略&amp;gt;
-&lt;/code>&lt;/pre>
+&amp;lt;省略&amp;gt;&lt;/code>&lt;/pre>
 &lt;p>&lt;code>build&lt;/code>はコンパイルするやつですよという文章から始まり、
 いろいろ書かれていますが、今回は以下の4点について見てみます。&lt;/p></description></item><item><title>【2020年】アクティビティまとめ</title><link>https://tech.yyh-gl.dev/blog/activity-2020/</link><pubDate>Tue, 23 Feb 2021 18:41:54 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/activity-2020/</guid><description>&lt;h1 id="laprasでおもしろい機能を見つけた">LAPRASでおもしろい機能を見つけた&lt;/h1>
 &lt;p>&lt;a href="https://lapras.com/" target="_blank" rel="noopener noreferrer">LAPRAS&lt;/a>
@@ -1807,15 +1807,14 @@ Goで書いたプロフィール（README）更新スクリプトをGitHub Actio
 &lt;p>&lt;strong>ちなみに、だいたいのコードは現場で使うと怒られそうです😇&lt;/strong> &lt;br>
 （いや、まず間違いなく怒られる）&lt;/p>
 &lt;h1 id="1-comments">1. Comments&lt;/h1>
-&lt;pre>&lt;code class="language-go">package main
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
 import (
-&amp;quot;fmt&amp;quot;
+&amp;#34;fmt&amp;#34;
 )
 func main() {
 var/*comment*/a = 1
 fmt.Println(a)
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/9Dun0LiT5N5" target="_blank" rel="noopener noreferrer">https://play.golang.org/p/9Dun0LiT5N5&lt;/a>
 &lt;/p>
 &lt;p>まずはこちら。&lt;br>
@@ -1830,15 +1829,14 @@ fmt.Println(a)
 &lt;p>改行を含まないgeneral commentはスペースのように作用する。&lt;/p>&lt;/blockquote>
 &lt;p>（general commentとは&lt;code>/**/&lt;/code>で囲われたコメントのことを指します）&lt;/p>
 &lt;p>よって、先程のコードは以下と同じということです。&lt;/p>
-&lt;pre>&lt;code class="language-go">package main
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
 import (
-&amp;quot;fmt&amp;quot;
+&amp;#34;fmt&amp;#34;
 )
 func main() {
 var a = 1
 fmt.Println(a)
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>こうして変換してみると、エラーでないことは明白ですね。&lt;/p></description></item><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://tech.yyh-gl.dev/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/support-webp/</guid><description>&lt;h1 id="画像の形式をwebpに変えた">画像の形式をWebPに変えた&lt;/h1>
 &lt;p>本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、&lt;br>
 まずはサムネ画像をWebPに変えてみました。&lt;/p>
@@ -1871,25 +1869,24 @@ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじ
 &lt;p>機能としては、処理を次の節（caseやdefault）に進めます。（&lt;a href="https://github.com/golang/go/wiki/Switch#fall-through" target="_blank" rel="noopener noreferrer">参考&lt;/a>
 ）&lt;br>
 言葉で説明するよりも、サンプルコードを見てもらった方がイメージしやすいと思います。&lt;/p>
-&lt;pre>&lt;code class="language-go">package main
-import &amp;quot;fmt&amp;quot;
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
+import &amp;#34;fmt&amp;#34;
 func main() {
 num := 1
 switch num {
 case 1:
-fmt.Print(&amp;quot;I &amp;quot;)
+fmt.Print(&amp;#34;I &amp;#34;)
 fallthrough
 case 2:
-fmt.Print(&amp;quot;am &amp;quot;)
+fmt.Print(&amp;#34;am &amp;#34;)
 fallthrough
 case 3:
-fmt.Println(&amp;quot;yyh-gl.&amp;quot;)
+fmt.Println(&amp;#34;yyh-gl.&amp;#34;)
 // fallthrough // 次の節がなければコンパイルエラー
 }
 }
 // 実行結果：
-// I am yyh-gl.
-&lt;/code>&lt;/pre>
+// I am yyh-gl.&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/FBJKDxbVw5n" target="_blank" rel="noopener noreferrer">Playground&lt;/a>
 &lt;/p>
 &lt;p>&lt;a href="https://play.golang.org/p/VmfdVwngNGi" target="_blank" rel="noopener noreferrer">defaultにも飛べるという例&lt;/a>
@@ -1960,7 +1957,7 @@ fmt.Println(&amp;quot;yyh-gl.&amp;quot;)
 僕がGoでどうやって実装しているのか紹介していきます。&lt;/p>
 &lt;h1 id="実装例">実装例&lt;/h1>
 &lt;p>兎にも角にも、まずはコードを示します。&lt;/p>
-&lt;pre>&lt;code class="language-go">// animal/dog/dog.go
+&lt;pre class="line-numbers">&lt;code class="language-go">// animal/dog/dog.go
 package dog
 type Dog struct {
 name Name
@@ -1973,62 +1970,56 @@ return nil, err
 return &amp;amp;Dog{
 name: *n,
 }, nil
-}
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-go">// animal/dog/name.go
+}&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-go">// animal/dog/name.go
 package dog
 import (
-&amp;quot;errors&amp;quot;
-&amp;quot;unicode/utf8&amp;quot;
+&amp;#34;errors&amp;#34;
+&amp;#34;unicode/utf8&amp;#34;
 )
 type Name string
 func newName(v string) (*Name, error) {
 // 名前は3文字以上というビジネスロジック
 if utf8.RuneCountInString(v) &amp;lt; 3 {
-return nil, errors.New(&amp;quot;名前は3文字以上！&amp;quot;)
+return nil, errors.New(&amp;#34;名前は3文字以上！&amp;#34;)
 }
 n := Name(v)
 return &amp;amp;n, nil
-}
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-go">// main.go
+}&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-go">// main.go
 package main
 import (
-&amp;quot;fmt&amp;quot;
-&amp;quot;playground/animal/dog&amp;quot;
+&amp;#34;fmt&amp;#34;
+&amp;#34;playground/animal/dog&amp;#34;
 )
 func main() {
-// d := dog.Dog{name: &amp;quot;犬太郎&amp;quot;} できない
-d, _ := dog.New(&amp;quot;犬太郎&amp;quot;) // できる
-fmt.Printf(&amp;quot;%+v\n&amp;quot;, d)
-d, err := dog.New(&amp;quot;犬&amp;quot;)
+// d := dog.Dog{name: &amp;#34;犬太郎&amp;#34;} できない
+d, _ := dog.New(&amp;#34;犬太郎&amp;#34;) // できる
+fmt.Printf(&amp;#34;%&amp;#43;v\n&amp;#34;, d)
+d, err := dog.New(&amp;#34;犬&amp;#34;)
 if err != nil {
 fmt.Println(err) // 犬の名前が「犬」は可愛そうだからできない()
 }
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/cmNp5MlCNuc" target="_blank" rel="noopener noreferrer">playground&lt;/a>
 &lt;/p></description></item><item><title>go test におけるキャッシュの消し方</title><link>https://tech.yyh-gl.dev/blog/go-test-cache-clear/</link><pubDate>Thu, 30 Apr 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-test-cache-clear/</guid><description>&lt;h1 id="go-test-のキャッシュを消すのは簡単">go test のキャッシュを消すのは簡単&lt;/h1>
 &lt;p>&lt;code>$ go clean -testcache&lt;/code>&lt;/p>
 &lt;p>以上です！&lt;/p>
-&lt;pre>&lt;code class="language-zsh">$ go test ./...
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ go test ./...
 ok github.com/oxequa/realize (cached)
-ok github.com/oxequa/realize/realize (cached)
-&lt;/code>&lt;/pre>
+ok github.com/oxequa/realize/realize (cached)&lt;/code>&lt;/pre>
 &lt;p>このように &lt;code>(cached)&lt;/code> となっていたものが、、、&lt;/p>
-&lt;pre>&lt;code class="language-zsh">$ go clean -testcache
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ go clean -testcache
 $ go test ./...
 ok github.com/oxequa/realize 0.086s
-ok github.com/oxequa/realize/realize 0.389s
-&lt;/code>&lt;/pre>
+ok github.com/oxequa/realize/realize 0.389s&lt;/code>&lt;/pre>
 &lt;p>このように、実行時間が表示されており、キャッシュが消えていることが分かりますね。&lt;/p>
 &lt;br>
 &lt;p>ちなみに、キャッシュを無視する方法はもうひとつあり、&lt;br>
 以下のように &lt;code>-count=1&lt;/code> をつけてやればOKです。&lt;/p>
-&lt;pre>&lt;code class="language-zsh">$ go test ./... -count=1
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ go test ./... -count=1
 ok github.com/oxequa/realize 0.076s
-ok github.com/oxequa/realize/realize 0.384s
-&lt;/code>&lt;/pre>
+ok github.com/oxequa/realize/realize 0.384s&lt;/code>&lt;/pre>
 &lt;br>
 &lt;p>ここからは上記コマンドが一体なにをしてくれたのか、&lt;br>
 もう少し詳細に話していきます。&lt;/p>
@@ -2036,7 +2027,10 @@ ok github.com/oxequa/realize/realize 0.384s
 &lt;p>&lt;a href="https://golang.org/pkg/cmd/go/internal/clean/" target="_blank" rel="noopener noreferrer">こちら&lt;/a>
 にドキュメントがあります。&lt;/p>
 &lt;blockquote>
-&lt;p>Clean removes object files from package source directories.&lt;/p></description></item><item><title>【Go】jsonパッケージの知っておくと便利な機能</title><link>https://tech.yyh-gl.dev/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-json-tips/</guid><description>&lt;h1 id="jsonパッケージ">jsonパッケージ&lt;/h1>
+&lt;p>Clean removes object files from package source directories.&lt;/p>&lt;/blockquote>
+&lt;p>&lt;code>go clean&lt;/code> は上記のとおりファイルを消してくれるわけですね。&lt;/p>
+&lt;p>&lt;code>-testcache&lt;/code> オプションをつけると、&lt;br>
+テストに関するキャッシュファイルのみを消してくれます。&lt;/p></description></item><item><title>【Go】jsonパッケージの知っておくと便利な機能</title><link>https://tech.yyh-gl.dev/blog/go-json-tips/</link><pubDate>Sun, 26 Apr 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-json-tips/</guid><description>&lt;h1 id="jsonパッケージ">jsonパッケージ&lt;/h1>
 &lt;p>Goを触ってる人ならだれもが一度はお世話になるであろう
 パッケージ「&lt;a href="https://golang.org/pkg/encoding/json/" target="_blank" rel="noopener noreferrer">json&lt;/a>
 」&lt;/p>
@@ -2048,14 +2042,14 @@ ok github.com/oxequa/realize/realize 0.384s
 ある構造体（&lt;code>Human&lt;/code>）のフィールドを外部公開したくない場合、&lt;br>
 jsonパッケージの &lt;code>Unmarshal()&lt;/code>，&lt;code>Marshal()&lt;/code> が使えません。&lt;br>
 （上記関数は外部公開されたフィールドのみ変換できる）&lt;/p>
-&lt;pre>&lt;code class="language-go">type Human struct {
+&lt;pre class="line-numbers">&lt;code class="language-go">type Human struct {
 // フィールドを外部公開したくない
 name string
 age int
 }
 func main() {
 h := Human{
-name: &amp;quot;Taro&amp;quot;,
+name: &amp;#34;Taro&amp;#34;,
 age: 21,
 }
 // 構造体 → JSON
@@ -2064,23 +2058,25 @@ fmt.Println(string(j)) // {}
 // JSON → 構造体
 var uh Human
 _ = json.Unmarshal(j, &amp;amp;uh)
-fmt.Printf(&amp;quot;%+v\n&amp;quot;, uh) // {name: age:0}
-}
-&lt;/code>&lt;/pre>
+fmt.Printf(&amp;#34;%&amp;#43;v\n&amp;#34;, uh) // {name: age:0}
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/53yg13xW5T7" target="_blank" rel="noopener noreferrer">playgroud&lt;/a>
-&lt;/p></description></item><item><title>【Go】errorの同値性と表示について調べた</title><link>https://tech.yyh-gl.dev/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/error_questions/</guid><description>&lt;h1 id="errorについて疑問があった">errorについて疑問があった&lt;/h1>
+&lt;/p>
+&lt;br>
+&lt;p>実際に実行してみると、うまく変換できていないことが分かると思います。&lt;/p>
+&lt;p>さて、このときどうすれば正しく変換できるかというと、&lt;br>
+変換対象の構造体に以下のメソッドを生やしてやればOKです。&lt;/p></description></item><item><title>【Go】errorの同値性と表示について調べた</title><link>https://tech.yyh-gl.dev/blog/error_questions/</link><pubDate>Tue, 10 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/error_questions/</guid><description>&lt;h1 id="errorについて疑問があった">errorについて疑問があった&lt;/h1>
 &lt;p>Goのコードを書いてて、ふと気になったことがあったので調べてみました。&lt;/p>
 &lt;h1 id="errorの同値性">errorの同値性&lt;/h1>
 &lt;p>1つ目の疑問は、下記コードで e1 と e2 がイコールではないことです。 &lt;br>
 （同値性なんて仰々しく言ってすみません。たったこれだけの疑問です😇🙇‍♂️）&lt;/p>
-&lt;pre>&lt;code class="language-go">func main() {
-e1 := errors.New(&amp;quot;error1&amp;quot;)
-e2 := errors.New(&amp;quot;error1&amp;quot;)
+&lt;pre class="line-numbers">&lt;code class="language-go">func main() {
+e1 := errors.New(&amp;#34;error1&amp;#34;)
+e2 := errors.New(&amp;#34;error1&amp;#34;)
 e3 := e1
 fmt.Println(e1 == e2) // false
 fmt.Println(e1 == e3) // true
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/hwjeo1L6TS1" target="_blank" rel="noopener noreferrer">Playground&lt;/a>
 &lt;/p>
 &lt;h1 id="結論errorの同値性">結論（errorの同値性）&lt;/h1>
@@ -2089,33 +2085,31 @@ fmt.Println(e1 == e3) // true
 &lt;h1 id="errorの表示">errorの表示&lt;/h1>
 &lt;p>2つ目の疑問は、下記コードで e1 を表示すると、&lt;br>
 errors.New()の戻り値である構造体の値ではなく、エラー文言が表示されることです。&lt;/p>
-&lt;pre>&lt;code class="language-go">package main
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
 import (
-&amp;quot;fmt&amp;quot;
-&amp;quot;errors&amp;quot;
+&amp;#34;fmt&amp;#34;
+&amp;#34;errors&amp;#34;
 )
 func main() {
-e1 := errors.New(&amp;quot;error1&amp;quot;)
+e1 := errors.New(&amp;#34;error1&amp;#34;)
 fmt.Println(e1) // error1
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/z8CQyypo4zX" target="_blank" rel="noopener noreferrer">Playground&lt;/a>
 &lt;/p>
 &lt;p>errors.New()が返しているのは構造体なので、&lt;br>
 下記コードのように構造体の内容が表示されないのはなんでだ？ってなったわけです。&lt;br>&lt;/p>
-&lt;pre>&lt;code class="language-go">package main
-import &amp;quot;fmt&amp;quot;
+&lt;pre class="line-numbers">&lt;code class="language-go">package main
+import &amp;#34;fmt&amp;#34;
 func Hoge() interface{} {
 type hoge struct {
 s string
 }
-return &amp;amp;hoge{s: &amp;quot;hoge&amp;quot;}
+return &amp;amp;hoge{s: &amp;#34;hoge&amp;#34;}
 }
 func main() {
 h := Hoge()
 fmt.Println(h) // &amp;amp;{hoge}
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://play.golang.org/p/_MeqQS420HV" target="_blank" rel="noopener noreferrer">Playground&lt;/a>
 &lt;/p></description></item><item><title>【Go】errorsパッケージの中身覗いてみた</title><link>https://tech.yyh-gl.dev/blog/errors_package/</link><pubDate>Mon, 09 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/errors_package/</guid><description>&lt;h1 id="errorsパッケージに興味持った">errorsパッケージに興味持った&lt;/h1>
 &lt;p>v1.13からerrorsパッケージに &lt;code>Unwrap()&lt;/code> &lt;code>Is()&lt;/code> &lt;code>As()&lt;/code> といった関数が追加されました。&lt;br>
@@ -2151,7 +2145,7 @@ v1.13にて標準パッケージに取り込まれました。&lt;/p>
 &lt;/h1>
 &lt;p>ラップされたエラーから中身のエラーを取り出す関数です。&lt;/p>
 &lt;p>処理としては下記のようになっています。&lt;/p>
-&lt;pre>&lt;code class="language-go">func Unwrap(err error) error {
+&lt;pre class="line-numbers">&lt;code class="language-go">func Unwrap(err error) error {
 u, ok := err.(interface {
 Unwrap() error
 })
@@ -2159,8 +2153,7 @@ if !ok {
 return nil
 }
 return u.Unwrap()
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;a href="https://golang.org/src/errors/wrap.go?s=372:400#L14" target="_blank" rel="noopener noreferrer">https://golang.org/src/errors/wrap.go?s=372:400#L14&lt;/a>
 &lt;/p></description></item><item><title>Goのバージョン管理について</title><link>https://tech.yyh-gl.dev/blog/go-versions/</link><pubDate>Tue, 03 Mar 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go-versions/</guid><description>&lt;h1 id="goのバージョン管理">Goのバージョン管理&lt;/h1>
 &lt;p>&lt;b>注意1：本記事はGo自体のバージョン管理についてです。Go Modulesなどは対象外です。&lt;/b> &lt;br>
@@ -2192,11 +2185,10 @@ return u.Unwrap()
 &lt;p>本方法は&lt;a href="https://golang.org/doc/manage-install#installing-multiple" target="_blank" rel="noopener noreferrer">公式サイト&lt;/a>
 に
 記載されている方法です。&lt;/p>
-&lt;pre>&lt;code class="language-zsh">$ go get golang.org/dl/goX.Y.Z
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ go get golang.org/dl/goX.Y.Z
 $ goX.Y.Z download
 $ goX.Y.Z version
-go version goX.Y.Z linux/amd64
-&lt;/code>&lt;/pre>
+go version goX.Y.Z linux/amd64&lt;/code>&lt;/pre>
 &lt;p>コマンド打つたびに、バージョンまで打つのがめんどくさいという方は、&lt;br>
 bash や zsh の設定でエイリアスでも貼ってやればOKですね。&lt;/p>
 &lt;h1 id="最新バージョンのインストール方法">最新バージョンのインストール方法&lt;/h1>
@@ -2204,9 +2196,12 @@ bash や zsh の設定でエイリアスでも貼ってやればOKですね。&l
 最新バージョンのインストール方法についても言及しておきます。&lt;/p>
 &lt;p>特に新しいことはなくいろんなサイトで紹介されているのでさらっと流していきます。&lt;/p>
 &lt;h2 id="-homebrew">▼ Homebrew&lt;/h2>
-&lt;pre>&lt;code class="language-zsh">$ brew install go
-&lt;/code>&lt;/pre>
-&lt;p>以上です。&lt;/p></description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</guid><description>&lt;h1 id="簡単まとめシリーズ">簡単まとめシリーズ&lt;/h1>
+&lt;pre class="line-numbers">&lt;code class="language-zsh">$ brew install go&lt;/code>&lt;/pre>
+&lt;p>以上です。&lt;/p>
+&lt;p>標準出力にて「必要ならパスの設定してね」と言われます。&lt;br>
+言われたとおりにやればOKです。&lt;/p>
+&lt;h2 id="-ソースからのインストール">▼ ソースからのインストール&lt;/h2>
+&lt;p>こちらの方法はHomebrewでのインストールと比べると、少しややこしくなります。&lt;/p></description></item><item><title>【DDD】集約とトランザクション境界について調べたことメモ</title><link>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</link><pubDate>Tue, 18 Feb 2020 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ddd-aggregates-transaction/</guid><description>&lt;h1 id="簡単まとめシリーズ">簡単まとめシリーズ&lt;/h1>
 &lt;p>今回は &lt;b>集約とトランザクション境界&lt;/b> について、&lt;br>
 自分のわからないところを調べたので、メモとして残しておきます。&lt;/p>
 &lt;h1 id="集約">集約&lt;/h1>
@@ -2622,29 +2617,27 @@ k8sの技術書をいただいちゃいました！！！&lt;br>
 つまり、公開しない（できない）アクション ＝ &lt;u>プライベートアクション&lt;/u> です。
 &lt;h1 id="プライベートアクションを使うための準備">プライベートアクションを使うための準備&lt;/h1>
 &lt;p>ディレクトリ構成は以下のとおりです。&lt;/p>
-&lt;pre>&lt;code>.github
+&lt;pre class="line-numbers">&lt;code class="language-text">.github
 ├── actions
 │   └── golang-test
 │   ├── Dockerfile
 │   ├── action.yml
 │   └── entrypoint.sh
 └── workflows
-└── golang.yml
-&lt;/code>&lt;/pre>
+└── golang.yml&lt;/code>&lt;/pre>
 &lt;p>&lt;code>/actions&lt;/code> ディレクトリ配下に golang-test という、Lint とテストを実行するアクションを作ってみます。&lt;/p>
 &lt;p>&lt;code>/workflow&lt;/code> ディレクトリ配下には、golang 用のワークフロー定義ファイルを置いています。&lt;/p>
 &lt;p>では、次から各ファイルの定義を見ていきます。&lt;/p>
 &lt;h1 id="プライベートアクションの定義">プライベートアクションの定義&lt;/h1>
-&lt;pre>&lt;code class="language-yml"># /actions/golang-test/action.yml
-name: 'Golang Lint and Test Action'
-description: 'Lint and Test for Golang'
-author: 'yyh-gl'
+&lt;pre class="line-numbers">&lt;code class="language-yml"># /actions/golang-test/action.yml
+name: &amp;#39;Golang Lint and Test Action&amp;#39;
+description: &amp;#39;Lint and Test for Golang&amp;#39;
+author: &amp;#39;yyh-gl&amp;#39;
 runs:
 # Docker を使って実行することを宣言
-using: 'docker'
+using: &amp;#39;docker&amp;#39;
 # 使用する Docker イメージを指定
-image: 'Dockerfile'
-&lt;/code>&lt;/pre>
+image: &amp;#39;Dockerfile&amp;#39;&lt;/code>&lt;/pre>
 &lt;p>アクションの定義は上記のとおりです。
 &lt;br>
 &lt;a href="https://help.github.com/ja/github/automating-your-workflow-with-github-actions/creating-a-docker-container-action#create-an-action-metadata-file" target="_blank" rel="noopener noreferrer">公式ドキュメント&lt;/a>
@@ -2675,13 +2668,12 @@ image: 'Dockerfile'
 &lt;/ul>
 &lt;h2 id="error-is-your-domain">”Error is your domain”&lt;/h2>
 &lt;p>Domain Error Struct を作成する。&lt;/p>
-&lt;pre>&lt;code class="language-go">type Error struct {
+&lt;pre class="line-numbers">&lt;code class="language-go">type Error struct {
 Op Op
 Kind Kind
 Serverity zapcore.ErrorLevel
 Err error
-}
-&lt;/code>&lt;/pre>
+}&lt;/code>&lt;/pre>
 &lt;ul>
 &lt;li>Op：Operation → 関数名とか&lt;/li>
 &lt;li>Kind：エラー種別 → NotAvailable, NotFound といったもの&lt;/li>
@@ -2892,12 +2884,11 @@ Messageコンポーネントではmessage propsの変更を察知し、必要分
 &lt;/li>
 &lt;/ol>
 &lt;p>ディレクトリ構成例&lt;/p>
-&lt;pre>&lt;code>.
+&lt;pre class="line-numbers">&lt;code class="language-text">.
 ├BUILD.bazel
 ├WORKSPACE
 └cmd
-└main.go
-&lt;/code>&lt;/pre>
+└main.go&lt;/code>&lt;/pre>
 &lt;h2 id="gazzelは-go-modules-と-dep-に対応">Gazzelは Go Modules と dep に対応&lt;/h2>
 &lt;p>go.mod, Gopkg.lockファイルから依存パッケージを取りこみWORKSPACEファイルに書き込んでくれる&lt;/p></description></item><item><title>【徒然なるままに】サービス発案における主観と客観のバランスについて</title><link>https://tech.yyh-gl.dev/blog/my_thinking_about_planning/</link><pubDate>Tue, 18 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/my_thinking_about_planning/</guid><description>&lt;h1 id="研修での-サービス発案-をやった">研修での サービス発案 をやった&lt;/h1>
 &lt;p>新卒研修で サービス発案 について学び、実際に&lt;/p>
@@ -2987,12 +2978,11 @@ Messageコンポーネントではmessage propsの変更を察知し、必要分
 &lt;li>og:image&lt;/li>
 &lt;/ul>
 &lt;p>これらの情報を head タグ内に埋め込みます。&lt;/p>
-&lt;pre>&lt;code class="language-html">&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる&amp;quot;&amp;gt;
-&amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt;
-&amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/blog/go_web_api/&amp;quot;&amp;gt;
-&amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt;
-&amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;quot;&amp;gt;
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-html">&amp;lt;meta property=&amp;#34;og:title&amp;#34; content=&amp;#34;【Go &amp;#43; レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:type&amp;#34; content=&amp;#34;article&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:url&amp;#34; content=&amp;#34;https://tech.yyh-gl.dev/blog/go_web_api/&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:description&amp;#34; content=&amp;#34;hoge&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:image&amp;#34; content=&amp;#34;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;#34;&amp;gt;&lt;/code>&lt;/pre>
 &lt;p>ただし、僕の場合、Hugo のテーマの方で og:image 以外は設定してくれていました。&lt;br>
 したがって、今回は og:image だけを追加で設定します。&lt;/p></description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>&lt;h1 id="シンタックスハイライト導入">シンタックスハイライト導入&lt;/h1>
 &lt;p>このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。&lt;/p>
@@ -3041,10 +3031,9 @@ Messageコンポーネントではmessage propsの変更を察知し、必要分
 &lt;h1 id="困ったこと">困ったこと&lt;/h1>
 &lt;h2 id="行番号が表示されない">行番号が表示されない&lt;/h2>
 &lt;p>行番号を表示するには、&lt;/p>
-&lt;pre>&lt;code class="language-html">&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt;
+&lt;pre class="line-numbers">&lt;code class="language-html">&amp;lt;pre class=&amp;#34;line-numbers&amp;#34;&amp;gt;&amp;lt;code class=&amp;#34;language-c&amp;#34;&amp;gt;
 コード
-&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
-&lt;/code>&lt;/pre>
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/code>&lt;/pre>
 &lt;p>上記コードのように、表示するコードスニペットに対して、&lt;br>
 line-numbers というクラスを付与してあげるだけでOKです。&lt;/p>
 &lt;p>…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。&lt;br>
@@ -3150,12 +3139,11 @@ httprouter のみで薄く作っていこうと思います。&lt;/p>
 &lt;p>矢印は依存の方向を示しています。&lt;br>
 例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。&lt;/p></description></item><item><title>【goenv】GOPATH が変わらないときの対処法</title><link>https://tech.yyh-gl.dev/blog/gopath/</link><pubDate>Thu, 13 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/gopath/</guid><description>&lt;h1 id="gopath-が変わらない">GOPATH が変わらない…&lt;/h1>
 &lt;p>今日こんな現象に遭遇した。&lt;/p>
-&lt;pre>&lt;code>$ export GOPATH=/Users/yyh-gl/workspaces/Go
+&lt;pre class="line-numbers">&lt;code class="language-text">$ export GOPATH=/Users/yyh-gl/workspaces/Go
 $ echo $GOPATH
 /Users/yyh-gl/workspaces/Go
 $ go env GOPATH
-/Users/yyh-gl/go/1.12.5
-&lt;/code>&lt;/pre>
+/Users/yyh-gl/go/1.12.5&lt;/code>&lt;/pre>
 &lt;p>GOPATH が書き換わらない。&lt;/p>
 &lt;h1 id="解決方法">解決方法&lt;/h1>
 &lt;img src="https://tech.yyh-gl.dev/img/2019/06/gopath/help.png" width="600">
@@ -3176,9 +3164,8 @@ goenv による管理は バージョン 1.12 からとのこと。&lt;/p>&lt;/b
 &lt;p>&lt;code>export GOENV_DISABLE_GOPATH=1&lt;/code>&lt;/p>
 &lt;p>（zshrc の読み込み直しを忘れずに）&lt;/p>
 &lt;h1 id="結果">結果&lt;/h1>
-&lt;pre>&lt;code>$ go env GOPATH
-/Users/yyh-gl/workspaces/Go
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-text">$ go env GOPATH
+/Users/yyh-gl/workspaces/Go&lt;/code>&lt;/pre>
 &lt;p>変わった。よかった&lt;/p></description></item><item><title>【エリック・エヴァンスのドメイン駆動設計】DDD入門 Part 1</title><link>https://tech.yyh-gl.dev/blog/evans_ddd_1/</link><pubDate>Tue, 11 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/evans_ddd_1/</guid><description>&lt;h1 id="ddd-の勉強始めます">DDD の勉強始めます&lt;/h1>
 &lt;p>新卒研修を受ける中で DDD が出てきて、勉強したくなったので、&lt;br>
 &lt;a href="https://www.amazon.co.jp/dp/B00GRKD6XU/ref=dp-kindle-redirect?_encoding=UTF8&amp;amp;btkr=1" target="_blank" rel="noopener noreferrer">『エリック・エヴァンスのドメイン駆動設計』（エリック・エヴァンス著，今関 剛 監訳，和智 右桂、牧野 祐子 訳）&lt;/a>
@@ -3286,18 +3273,17 @@ goenv による管理は バージョン 1.12 からとのこと。&lt;/p>&lt;/b
 &lt;p>（少し古い記事ですが、そんなに問題はないはずです）&lt;/p>
 &lt;h2 id="db-にテーブル作成">DB にテーブル作成&lt;/h2>
 &lt;p>今回、ブログ記事を管理するために、下記のテーブルを作成しました。&lt;/p>
-&lt;pre>&lt;code>mysql&amp;gt; describe blog_posts;
-+------------+--------------+------+-----+---------+----------------+
+&lt;pre class="line-numbers">&lt;code class="language-text">mysql&amp;gt; describe blog_posts;
+&amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
 | Field | Type | Null | Key | Default | Extra |
-+------------+--------------+------+-----+---------+----------------+
+&amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
 | id | bigint(20) | NO | PRI | NULL | auto_increment |
 | title | varchar(255) | NO | | NULL | |
 | count | varchar(255) | NO | | 0 | |
 | created_at | datetime | NO | | NULL | |
 | updated_at | datetime | NO | | NULL | |
-+------------+--------------+------+-----+---------+----------------+
-5 rows in set (0.00 sec)
-&lt;/code>&lt;/pre>
+&amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
+5 rows in set (0.00 sec)&lt;/code>&lt;/pre>
 &lt;p>&lt;code>title&lt;/code>には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
 記事ファイル（マークダウン）の名前（本記事だと『good_api』, 拡張子抜き）が入ります。&lt;/p></description></item><item><title>スクラムについて学んだ話</title><link>https://tech.yyh-gl.dev/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/scrum_entry/</guid><description>&lt;h1 id="スクラムとは">スクラムとは&lt;/h1>
 &lt;h2 id="概要">概要&lt;/h2>
@@ -3455,19 +3441,19 @@ goenv による管理は バージョン 1.12 からとのこと。&lt;/p>&lt;/b
 さんに感謝。&lt;/p>
 &lt;h1 id="自動構築プロセス全体で使用する共通設定を定義">自動構築プロセス全体で使用する共通設定を定義&lt;/h1>
 &lt;p>まず、 &lt;code>main.tf&lt;/code> を作成し、以下のとおり共通設定を定義していきます。&lt;/p>
-&lt;pre>&lt;code># AWS を利用することを明示
-provider &amp;quot;aws&amp;quot; {
+&lt;pre class="line-numbers">&lt;code class="language-text"># AWS を利用することを明示
+provider &amp;#34;aws&amp;#34; {
 # リージョンを設定
-region = &amp;quot;ap-northeast-1&amp;quot;
+region = &amp;#34;ap-northeast-1&amp;#34;
 }
 # これから作成するリソースに付与する名前のプリフィックスを設定
 # グローバル変数的な立ち位置で定義
-variable &amp;quot;prefix&amp;quot; {
-default = &amp;quot;sample-project&amp;quot;
-}
-&lt;/code>&lt;/pre>
+variable &amp;#34;prefix&amp;#34; {
+default = &amp;#34;sample-project&amp;#34;
+}&lt;/code>&lt;/pre>
 &lt;p>&lt;code>provider&lt;/code> で使用するクラウドを指定することができます。&lt;/p>
-&lt;p>&lt;code>variable&lt;/code> は変数定義です。&lt;/p></description></item><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://tech.yyh-gl.dev/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/android_push/</guid><description>&lt;p>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので&lt;/p>
+&lt;p>&lt;code>variable&lt;/code> は変数定義です。&lt;/p>
+&lt;p>&lt;code>${var.prefix}&lt;/code> と書くことで &lt;code>default&lt;/code> で指定した内容が展開されます。&lt;/p></description></item><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://tech.yyh-gl.dev/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/android_push/</guid><description>&lt;p>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので&lt;/p>
 &lt;p>なにか困ったときはそこを一度見てみてください。&lt;/p>
 &lt;h1 id="tldr">tl;dr&lt;/h1>
 &lt;ul>
@@ -3499,13 +3485,11 @@ default = &amp;quot;sample-project&amp;quot;
 &lt;li>
 &lt;p>以下コマンドを実行&lt;/p>
 &lt;p>Mac/Linux&lt;/p>
-&lt;pre>&lt;code>keytool -list -v \
--alias androiddebugkey -keystore ~/.android/debug.keystore
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-text">keytool -list -v \
+-alias androiddebugkey -keystore ~/.android/debug.keystore&lt;/code>&lt;/pre>
 &lt;p>Windows&lt;/p>
-&lt;pre>&lt;code>keytool -list -v \
--alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-text">keytool -list -v \
+-alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore&lt;/code>&lt;/pre>
 &lt;/li>
 &lt;li>
 &lt;p>パスワード入力&lt;/p>
@@ -3519,7 +3503,10 @@ default = &amp;quot;sample-project&amp;quot;
 &lt;hr>
 &lt;p>ひととおり作業が進むと、↓このような画面が表示されます。&lt;/p>
 &lt;img src="https://tech.yyh-gl.dev/img/2019/05/android_push/app-registering-complete.png" width="750">
-&lt;p>自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。&lt;/p></description></item><item><title>【エンジニアリング組織論への招待】メンタリングの技術</title><link>https://tech.yyh-gl.dev/blog/engineering_organization_theory_mentoring/</link><pubDate>Sat, 25 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/engineering_organization_theory_mentoring/</guid><description>&lt;h1 id="概要">概要&lt;/h1>
+&lt;p>自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。&lt;/p>
+&lt;p>エミュレータでもちゃんと通信してくれるか不安だったのですが大丈夫でした。&lt;/p>
+&lt;h1 id="firebase-関連のライブラリを追加">Firebase 関連のライブラリを追加&lt;/h1>
+&lt;p>アプリ情報の登録工程において、 &lt;code>app/build.gradle&lt;/code> を触ったと思いますが、加えて、以下の追記が必要です。&lt;/p></description></item><item><title>【エンジニアリング組織論への招待】メンタリングの技術</title><link>https://tech.yyh-gl.dev/blog/engineering_organization_theory_mentoring/</link><pubDate>Sat, 25 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/engineering_organization_theory_mentoring/</guid><description>&lt;h1 id="概要">概要&lt;/h1>
 &lt;p>今回は、広木 大地さんが書かれた
 『&lt;a href="https://www.amazon.co.jp/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E7%B5%84%E7%B9%94%E8%AB%96%E3%81%B8%E3%81%AE%E6%8B%9B%E5%BE%85-%E4%B8%8D%E7%A2%BA%E5%AE%9F%E6%80%A7%E3%81%AB%E5%90%91%E3%81%8D%E5%90%88%E3%81%86%E6%80%9D%E8%80%83%E3%81%A8%E7%B5%84%E7%B9%94%E3%81%AE%E3%83%AA%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0-%E5%BA%83%E6%9C%A8-%E5%A4%A7%E5%9C%B0/dp/4774196053/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&amp;crid=1RMF6RYJ2VXGL&amp;keywords=%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E7%B5%84%E7%B9%94%E8%AB%96%E3%81%B8%E3%81%AE%E6%8B%9B%E5%BE%85&amp;qid=1558967032&amp;s=gateway&amp;sprefix=%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%2Caps%2C244&amp;sr=8-1">エンジニアリング組織論への招待 不確実性に向き合う思考と組織のリファクタリング&lt;/a>』
 という本から、&lt;/p>

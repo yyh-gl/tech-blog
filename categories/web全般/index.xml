@@ -47,12 +47,11 @@ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじ
 &lt;li>og:image&lt;/li>
 &lt;/ul>
 &lt;p>これらの情報を head タグ内に埋め込みます。&lt;/p>
-&lt;pre>&lt;code class="language-html">&amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる&amp;quot;&amp;gt;
-&amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;article&amp;quot;&amp;gt;
-&amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/blog/go_web_api/&amp;quot;&amp;gt;
-&amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;hoge&amp;quot;&amp;gt;
-&amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;quot;&amp;gt;
-&lt;/code>&lt;/pre>
+&lt;pre class="line-numbers">&lt;code class="language-html">&amp;lt;meta property=&amp;#34;og:title&amp;#34; content=&amp;#34;【Go &amp;#43; レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:type&amp;#34; content=&amp;#34;article&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:url&amp;#34; content=&amp;#34;https://tech.yyh-gl.dev/blog/go_web_api/&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:description&amp;#34; content=&amp;#34;hoge&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:image&amp;#34; content=&amp;#34;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;#34;&amp;gt;&lt;/code>&lt;/pre>
 &lt;p>ただし、僕の場合、Hugo のテーマの方で og:image 以外は設定してくれていました。&lt;br>
 したがって、今回は og:image だけを追加で設定します。&lt;/p></description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>&lt;h1 id="シンタックスハイライト導入">シンタックスハイライト導入&lt;/h1>
 &lt;p>このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。&lt;/p>
@@ -101,10 +100,9 @@ WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじ
 &lt;h1 id="困ったこと">困ったこと&lt;/h1>
 &lt;h2 id="行番号が表示されない">行番号が表示されない&lt;/h2>
 &lt;p>行番号を表示するには、&lt;/p>
-&lt;pre>&lt;code class="language-html">&amp;lt;pre class=&amp;quot;line-numbers&amp;quot;&amp;gt;&amp;lt;code class=&amp;quot;language-c&amp;quot;&amp;gt;
+&lt;pre class="line-numbers">&lt;code class="language-html">&amp;lt;pre class=&amp;#34;line-numbers&amp;#34;&amp;gt;&amp;lt;code class=&amp;#34;language-c&amp;#34;&amp;gt;
 コード
-&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
-&lt;/code>&lt;/pre>
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/code>&lt;/pre>
 &lt;p>上記コードのように、表示するコードスニペットに対して、&lt;br>
 line-numbers というクラスを付与してあげるだけでOKです。&lt;/p>
 &lt;p>…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。&lt;br>
