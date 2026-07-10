@@ -46,10 +46,6 @@
     <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}">
   {{ end }}
 
-  <!-- Vue + good-counter -->
-  <script src="{{ "/js/vue.min.js" | relURL }}"></script>
-  <script src="{{ "/js/good-counter.js" | relURL }}" defer></script>
-
   {{ template "_internal/google_analytics.html" . }}
 
   {{ block "head_extra" . }}{{ end }}

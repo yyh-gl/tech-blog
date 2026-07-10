@@ -32,7 +32,7 @@ Hugo static site blog running in Docker. Hugo v0.146.2 (extended). The site uses
 │   ├── favicon/
 │   ├── font/            # Kinto Sans font (used for OGP image generation)
 │   ├── img/             # Images organized by year/month/slug
-│   └── js/              # vue.min.js, prism.js, good-counter.js, add-on.js
+│   └── js/              # prism.js, add-on.js
 ├── Dockerfile
 ├── Makefile
 ├── package.json         # pnpm project (textlint, postcss, etc.)
@@ -67,9 +67,6 @@ make create-ogp title=<article-slug>
 
 # Convert PNG/JPG images to WebP
 make convert-to-webp title=<article-slug>
-
-# Register article for like-count tracking
-make init-blog-like-count title=<article-slug>
 ```
 
 Package manager: **pnpm** (not npm).
@@ -132,7 +129,6 @@ Key config values:
 
 ### Features
 
-- **Like counter**: Vue.js + `good-counter.js` calls external API at `https://hobigon.yyh-gl.dev/api/v1/blogs/`. State stored in `localStorage`.
 - **Syntax highlighting**: Prism.js (`static/js/prism.js`, `static/css/prism.css`).
 - **Comment system**: removed during the UI renewal — `layouts/_default/comments.html` no longer exists and no template references it. `staticman.yml` remains in the repo but is currently inert.
 - **CSS optimization**: PostCSS + PurgeCSS (`postcss.config.js`) scans `layouts/` and `content/`.
