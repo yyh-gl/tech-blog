@@ -1,0 +1,75 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-terminal">
+      <span class="prompt">$ </span><span class="cmd">cat title.txt</span>
+    </div>
+    <div class="hero-title-row">
+      <h1>{{ .Site.Title }}</h1>
+      <div class="hero-capybara hero-capybara--sp">
+        <img src="{{ "/img/site/capybara.webp" | relURL }}" alt="妻作：カピバラ" title="妻作：カピバラ">
+      </div>
+    </div>
+    <p class="hero-desc">{{ .Site.Params.intro.paragraph | safeHTML }}</p>
+    <div class="hero-tags">
+      {{ range .Site.Params.heroTags }}
+      <span class="hero-tag">{{ . }}</span>
+      {{ end }}
+    </div>
+    <div class="hero-social">
+      {{ with .Site.Params.social.github }}
+      <a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub">
+        <i class="fab fa-github" aria-hidden="true"></i><span class="social-label"> {{ . }}</span>
+      </a>
+      {{ end }}
+      {{ with .Site.Params.social.x }}
+      <a href="https://x.com/{{ . }}" target="_blank" rel="noopener" aria-label="X">
+        <i class="fab fa-x-twitter" aria-hidden="true"></i><span class="social-label"> @{{ . }}</span>
+      </a>
+      {{ end }}
+      {{ with .Site.Params.social.bluesky }}
+      <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener" aria-label="Bluesky">
+        <i class="fas fa-cloud" aria-hidden="true"></i><span class="social-label"> {{ . }}</span>
+      </a>
+      {{ end }}
+      {{ with .Site.Params.social.linkedin }}
+      <a href="https://www.linkedin.com/in/{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fab fa-linkedin" aria-hidden="true"></i><span class="social-label"> {{ . }}</span>
+      </a>
+      {{ end }}
+      {{ with .Site.Params.social.crowdin }}
+      <a href="https://crowdin.com/profile/{{ . }}" target="_blank" rel="noopener" aria-label="Crowdin">
+        <i class="fa-solid fa-square-pen" aria-hidden="true"></i><span class="social-label"> {{ . }}</span>
+      </a>
+      {{ end }}
+      {{ with .OutputFormats.Get "RSS" }}
+      <a href="{{ .RelPermalink }}" type="application/rss+xml" target="_blank" aria-label="RSS">
+        <i class="fas fa-rss" aria-hidden="true"></i><span class="social-label"> RSS</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  <div class="hero-capybara hero-capybara--pc">
+    <img src="{{ "/img/site/capybara.webp" | relURL }}" alt="妻作：カピバラ" title="妻作：カピバラ">
+  </div>
+</section>
+
+{{ $posts := where .Site.RegularPages "Type" "post" }}
+{{ $posts = $posts | first 6 }}
+
+<div class="section-header">
+  <h2><span class="cmd-prefix">$ ls </span><span class="cmd-text">./blog/</span></h2>
+  <div class="divider"></div>
+</div>
+
+<div class="post-grid">
+  {{ range $posts }}
+    {{ partial "post-card.html" . }}
+  {{ end }}
+</div>
+
+<div class="view-more">
+  <a href="{{ "/blog/" | relURL }}"><i class="fas fa-chevron-right"></i> {{ i18n "more_posts" | default "すべての記事を見る"
+    }}</a>
+</div>
+{{ end }}

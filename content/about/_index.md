@@ -3,13 +3,10 @@ title = "About yyh-gl"
 date = "2020-04-04"
 +++
 
-はじめまして、yyh-gl と申します💻🤓
-
-ご用のさいは [XのDM](https://x.com/yyh_gl) にお願いします🙇‍♂️
-
-<br>
-
 【最終更新日：2026年3月12日】
+
+はじめまして、yyh-gl と申します💻🤓<br>
+ご用のさいは [XのDM](https://x.com/yyh_gl) にお願いします🙇‍♂️
 
 # いま
 

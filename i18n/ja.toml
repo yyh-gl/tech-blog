@@ -81,3 +81,9 @@
   other = "申し訳ありません。表示しようとしていたページは存在しません。"
 [404_back]
   other = "戻る"
+
+# List
+[posts_count]
+  other = "{{ .Count }}件の記事"
+[more_posts]
+  other = "すべての記事を見る"

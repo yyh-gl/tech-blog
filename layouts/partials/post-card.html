@@ -1,0 +1,31 @@
+<article class="post-card">
+  {{ with .Params.images }}
+    {{ range first 1 . }}
+      <img class="post-card-img" src="{{ printf "/%s" .src | relURL }}" alt="{{ .alt }}" loading="lazy">
+    {{ end }}
+  {{ end }}
+  <div class="post-card-body">
+    <div class="post-card-meta">
+      <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
+      {{ with .Params.categories }}
+        <div class="post-card-cats">
+          {{ range . }}
+            <a href="{{ partial "category-url.html" . }}" class="post-card-cat">{{ . }}</a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+    <h2 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{ with .Params.description }}
+      <p class="post-card-desc">{{ . }}</p>
+    {{ end }}
+    <div class="post-card-footer">
+      <a href="{{ .RelPermalink }}" class="read-more">
+        <i class="fas fa-terminal" aria-hidden="true"></i> read_more()
+      </a>
+      {{ if .Site.Params.ReadingTime }}
+        <span class="reading-time"><i class="far fa-clock" aria-hidden="true"></i> {{ .ReadingTime }}min</span>
+      {{ end }}
+    </div>
+  </div>
+</article>

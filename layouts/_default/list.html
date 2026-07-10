@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="list-header">
+  <h1>
+    <span class="prompt">$ </span>
+    {{ .Title }}
+  </h1>
+  {{ if .Pages }}
+    <p class="list-count">{{ i18n "posts_count" (len .Pages) | default (printf "%d posts" (len .Pages)) }}</p>
+  {{ end }}
+</div>
+
+{{ if .Content }}
+  <div class="post-content" style="margin-bottom:2rem;">{{ .Content }}</div>
+{{ end }}
+
+{{ if .Pages }}
+  {{ $paginator := .Paginate .Pages }}
+  <div class="post-grid">
+    {{ range $paginator.Pages }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+
+  {{ template "_internal/pagination.html" . }}
+{{ else if not .Content }}
+  <p style="color:var(--text-muted);font-family:var(--font-mono)">// No posts found</p>
+{{ end }}
+{{ end }}
