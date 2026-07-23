@@ -694,6 +694,8 @@ a:hover {
 .post-content pre.line-numbers {
   position: relative;
   padding-left: 3.8em;
+  font-size: .88rem;
+  line-height: 1.5;
 }
 
 .post-content pre.line-numbers > code {
@@ -704,8 +706,10 @@ a:hover {
   top: 0;
   left: -3.8em;
   width: 3em;
-  padding: 1.25rem 0;
+  padding: 0;
   border-right: 1px solid var(--border);
+  font-size: .88rem;
+  line-height: 1.5;
 }
 
 .post-content img {
