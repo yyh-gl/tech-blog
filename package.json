@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/yyh-gl/tech-blog#readme",
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^8.0.0",
+    "@fullhuman/postcss-purgecss": "^9.0.0",
     "ajv": "^8.0.0",
     "minimist": "^1.2.6",
     "postcss": "^8.5.10",
