@@ -14,3 +14,6 @@ overrides:
   path-to-regexp: ">=8.4.0"
   ip-address: ">=10.1.1"
   fast-uri: ">=3.1.2"
+minimumReleaseAgeExclude:
+  # Renovate security update: postcss@8.5.23
+  - postcss@8.5.23
