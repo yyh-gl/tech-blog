@@ -78,13 +78,13 @@ weight = 5
 
 [Languages]
 [Languages.ja]
-languageCode = "ja"
-LanguageName = "Japanese"
+locale = "ja"
+label = "Japanese"
 weight = 1
 
 #[Languages.en]
-#languageCode = "en"
-#LanguageName = "English"
+#locale = "en"
+#label = "English"
 #weight = 2
 
 [services]
