@@ -1,81 +1,81 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>セキュリティ on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/</link><description>Recent content in セキュリティ on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 21 Aug 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/index.xml" rel="self" type="application/rss+xml"/><item><title>【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた</title><link>https://tech.yyh-gl.dev/blog/mercari_meetup_for_backend_engineers_1/</link><pubDate>Wed, 21 Aug 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/mercari_meetup_for_backend_engineers_1/</guid><description>&lt;h1 id="backend-engineers-meetup-マイクロサービスにおける認証認可基盤">Backend Engineer’s meetup &lt;del>マイクロサービスにおける認証認可基盤&lt;/del>&lt;/h1>
-&lt;ul>
-&lt;li>&lt;a href="https://mercari.connpass.com/event/142624/" target="_blank" rel="noopener noreferrer">connpass&lt;/a>
-&lt;/li>
-&lt;li>ハッシュタグ：&lt;a href="https://twitter.com/hashtag/merpay_meetup" target="_blank" rel="noopener noreferrer">#merpay_meetup&lt;/a>
-&lt;/li>
-&lt;/ul>
-&lt;p>メルカリさん恒例のオリジナルドリンクもらいました&lt;/p>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/08/mercari_meetup_for_backend_engineers_1/original_drink.jpeg" height="400">
-&lt;h1 id="1-マイクロサービスの内部通信における認証について">1. マイクロサービスの内部通信における認証について&lt;/h1>
-&lt;p>登壇者：@pospome さん&lt;/p>
-&lt;p>&lt;a href="https://www.slideshare.net/pospome/ss-165369557/pospome/ss-165369557" target="_blank" rel="noopener noreferrer">スライド&lt;/a>
-（日本語が消えてしまっていますが、ダウンロードしたら見れました）&lt;/p>
-&lt;h2 id="上記スライドの簡易メモ">上記スライドの簡易メモ&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>アカウント管理とログイン処理はそれぞれのチームに任せている&lt;/p>
-&lt;ul>
-&lt;li>SubjectID という 全サービス共通のID に変換して扱う&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>メルカリでは、OIDCベースの認可の仕組みを採用&lt;/p>
-&lt;ul>
-&lt;li>RFCに書いてあるものと大差ないので、今回は &lt;code>マイクロサービスの内部通信における認証&lt;/code> について話す&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>全サービスは Gatwway を経由&lt;/p>
-&lt;ul>
-&lt;li>Gateway から Authority Service にくる&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>Authority Service を認証基盤チームが管理&lt;/p>
-&lt;ul>
-&lt;li>外部からのリクエスト検証と内部通信用のトークンを生成している&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>内部トークンは毎リクエストごとに生成&lt;/p>
-&lt;ul>
-&lt;li>マイクロサービス間で使用されるトークンはリクエスト単位で同一&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>内部トークン用のSDKを提供&lt;/p>
-&lt;ul>
-&lt;li>Goのみ対応&lt;/li>
-&lt;li>SDKを使うといろいろとよしなにしてくれる
-&lt;ul>
-&lt;li>クレームをいい感じに取得&lt;/li>
-&lt;li>SubjectID のパースとかをいい感じにしてくれる&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h1 id="2-パネルディスカッション">2. パネルディスカッション&lt;/h1>
-&lt;p>登壇者：&lt;/p>
-&lt;ul>
-&lt;li>Keigo Watanabe さん&lt;/li>
-&lt;li>@kazegusuri&lt;/li>
-&lt;li>@nerocrux&lt;/li>
-&lt;li>@pospome&lt;/li>
-&lt;/ul>
-&lt;br>
-&lt;p>パネルディスカッションのはずがほとんど質疑で終わりましたｗ&lt;/p>
-&lt;p>質疑は さきほどの &lt;a href="https://www.slideshare.net/pospome/ss-165369557/pospome/ss-165369557" target="_blank" rel="noopener noreferrer">発表&lt;/a>
-に対するものが主でした。&lt;/p>
-&lt;p>したがって、以下、上記発表に関する質問と回答になります。&lt;/p>
-&lt;h3 id="q-第三パーティーにスコープを指定させるのではなく外部スコープと内部スコープのマッピングを行ったのはなぜか">Q. 第三パーティーにスコープを指定させるのではなく、外部スコープと内部スコープのマッピングを行ったのはなぜか&lt;/h3>
-&lt;p>A.&lt;/p>
-&lt;p>ユースケースベースでスコープを提供した方が第三パーティーの開発者がわかりやすい。&lt;/p>
-&lt;p>リソースベースだとどれが必要なスコープなのかが分かりづらい。&lt;/p>
-&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>セキュリティ on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/</link><description>Recent content in セキュリティ on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><managingEditor>yyh-gl</managingEditor><webMaster>yyh-gl</webMaster><lastBuildDate>Wed, 21 Aug 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/index.xml" rel="self" type="application/rss+xml"/><item><title>【Backend Engineer’s meetup】メルカリ社主催 バックエンダーのための Meetup イベント行ってきた</title><link>https://tech.yyh-gl.dev/blog/mercari_meetup_for_backend_engineers_1/</link><pubDate>Wed, 21 Aug 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/mercari_meetup_for_backend_engineers_1/</guid><description>&lt;h1 id="backend-engineers-meetup-マイクロサービスにおける認証認可基盤"&gt;Backend Engineer’s meetup &lt;del&gt;マイクロサービスにおける認証認可基盤&lt;/del&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://mercari.connpass.com/event/142624/" target="_blank" rel="noopener noreferrer"&gt;connpass&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;ハッシュタグ：&lt;a href="https://twitter.com/hashtag/merpay_meetup" target="_blank" rel="noopener noreferrer"&gt;#merpay_meetup&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;メルカリさん恒例のオリジナルドリンクもらいました&lt;/p&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/08/mercari_meetup_for_backend_engineers_1/original_drink.jpeg" height="400"&gt;
+&lt;h1 id="1-マイクロサービスの内部通信における認証について"&gt;1. マイクロサービスの内部通信における認証について&lt;/h1&gt;
+&lt;p&gt;登壇者：@pospome さん&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.slideshare.net/pospome/ss-165369557/pospome/ss-165369557" target="_blank" rel="noopener noreferrer"&gt;スライド&lt;/a&gt;
+（日本語が消えてしまっていますが、ダウンロードしたら見れました）&lt;/p&gt;
+&lt;h2 id="上記スライドの簡易メモ"&gt;上記スライドの簡易メモ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;アカウント管理とログイン処理はそれぞれのチームに任せている&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SubjectID という 全サービス共通のID に変換して扱う&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;メルカリでは、OIDCベースの認可の仕組みを採用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RFCに書いてあるものと大差ないので、今回は &lt;code&gt;マイクロサービスの内部通信における認証&lt;/code&gt; について話す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全サービスは Gatwway を経由&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gateway から Authority Service にくる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Authority Service を認証基盤チームが管理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;外部からのリクエスト検証と内部通信用のトークンを生成している&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;内部トークンは毎リクエストごとに生成&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;マイクロサービス間で使用されるトークンはリクエスト単位で同一&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;内部トークン用のSDKを提供&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Goのみ対応&lt;/li&gt;
+&lt;li&gt;SDKを使うといろいろとよしなにしてくれる
+&lt;ul&gt;
+&lt;li&gt;クレームをいい感じに取得&lt;/li&gt;
+&lt;li&gt;SubjectID のパースとかをいい感じにしてくれる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;マイクロサービスはバッチのためのエンドポイントをもつことがあるので、Gatewayによってユーザが直接叩くことがきない環境を作れるのはメリットとなる&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="2-パネルディスカッション"&gt;2. パネルディスカッション&lt;/h1&gt;
+&lt;p&gt;登壇者：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Keigo Watanabe さん&lt;/li&gt;
+&lt;li&gt;@kazegusuri&lt;/li&gt;
+&lt;li&gt;@nerocrux&lt;/li&gt;
+&lt;li&gt;@pospome&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;パネルディスカッションのはずがほとんど質疑で終わりましたｗ&lt;/p&gt;
+&lt;p&gt;質疑は さきほどの &lt;a href="https://www.slideshare.net/pospome/ss-165369557/pospome/ss-165369557" target="_blank" rel="noopener noreferrer"&gt;発表&lt;/a&gt;
+に対するものが主でした。&lt;/p&gt;
+&lt;p&gt;したがって、以下、上記発表に関する質問と回答になります。&lt;/p&gt;
+&lt;h3 id="q-第三パーティーにスコープを指定させるのではなく外部スコープと内部スコープのマッピングを行ったのはなぜか"&gt;Q. 第三パーティーにスコープを指定させるのではなく、外部スコープと内部スコープのマッピングを行ったのはなぜか&lt;/h3&gt;
+&lt;p&gt;A.&lt;/p&gt;
+&lt;p&gt;ユースケースベースでスコープを提供した方が第三パーティーの開発者がわかりやすい。&lt;/p&gt;
+&lt;p&gt;リソースベースだとどれが必要なスコープなのかが分かりづらい。&lt;/p&gt;
+&lt;br&gt;
 （yyh-gl 感想）
-&lt;p>AWSのポリシーがリソースベースだと思うんだけど、どのポリシーが必要か分かりづらいもんねー&lt;/p></description></item></channel></rss>
+&lt;p&gt;AWSのポリシーがリソースベースだと思うんだけど、どのポリシーが必要か分かりづらいもんねー&lt;/p&gt;</description></item></channel></rss>

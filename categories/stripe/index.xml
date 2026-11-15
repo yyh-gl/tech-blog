@@ -1,61 +1,62 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Stripe on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/stripe/</link><description>Recent content in Stripe on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 21 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/stripe/index.xml" rel="self" type="application/rss+xml"/><item><title>KtorとStripeでECサイトを作ってみた</title><link>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</link><pubDate>Wed, 21 Dec 2022 00:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</guid><description>&lt;h1 id="kotlin-advent-calendar-2022">Kotlin Advent Calendar 2022&lt;/h1>
-&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/qiita_advent_calendar_2022.webp" width="700">
-&lt;p>本記事は&lt;a href="https://qiita.com/advent-calendar/2022/kotlin" target="_blank" rel="noopener noreferrer">Kotlin Advent Calendar 2022&lt;/a>
-の21日目の記事です。&lt;/p>
-&lt;h1 id="概要">概要&lt;/h1>
-&lt;p>クリスマスといえばプレゼント。&lt;br>
-ということでECサイトを作ってみます。&lt;/p>
-&lt;p>ECサイトと言いつつもあまり複雑なことはせずに、Stripeから取得した商品情報を表示する画面を作るところまでやります。&lt;br>
-本画面を実装する過程で、APIを経由した情報のやりとり→受け取った情報を画面に表示するところまで触れます。&lt;br>
-よって、本記事を読めばKotlinで外部API（主にStripe）を使ったシステムの実装イメージをざっくり掴めると思います。&lt;/p>
-&lt;br>
-&lt;p>ただただKotlinで作るだけではなくて、個人的にこれまで触ったことないフレームワークやサービスを使ってみたいと思っています。&lt;/p>
-&lt;blockquote>
-&lt;p>個人的にこれまで触ったことない&lt;/p>&lt;/blockquote>
-&lt;p>あたかもKotlinは触ったことあるような言い方ですが、私はこれまでGo中心のエンジニア人生でした。&lt;br>
-したがって、そもそもKotlin自体あまり触ったことがないです←&lt;br>
-Kotlinのお作法を守れていないところもあると思いますが、こんな感じで作れるのかぁとイメージしてもらえると幸いです。&lt;/p>
-&lt;br>
-&lt;p>では、採用技術を紹介したら、さっそくECサイトを作っていこうと思います。&lt;br>&lt;/p>
-&lt;br>
-&lt;p>⚠️ 本記事内に記載するコードは&lt;code>package&lt;/code>や&lt;code>import&lt;/code>周りのコードを省略しています。&lt;br>
-コード全体を見たい場合は以下のリポジトリにコードを置いているのでこちらを参照ください。&lt;br>
-&lt;a href="https://github.com/yyh-gl/ktor-shop/" target="_blank" rel="noopener noreferrer">https://github.com/yyh-gl/ktor-shop/&lt;/a>
-&lt;/p>
-&lt;h1 id="採用技術">採用技術&lt;/h1>
-&lt;ul>
-&lt;li>Webフレームワーク：&lt;a href="https://ktor.io/" target="_blank" rel="noopener noreferrer">Ktor&lt;/a>
-&lt;/li>
-&lt;li>テンプレートエンジン：&lt;a href="https://freemarker.apache.org/" target="_blank" rel="noopener noreferrer">FreeMarker&lt;/a>
-&lt;/li>
-&lt;li>決済および商品管理：&lt;a href="https://stripe.com/jp" target="_blank" rel="noopener noreferrer">Stripe&lt;/a>
-&lt;/li>
-&lt;li>DI：&lt;a href="https://insert-koin.io/" target="_blank" rel="noopener noreferrer">Koin&lt;/a>
-&lt;/li>
-&lt;/ul>
-&lt;h1 id="hello-world">Hello World&lt;/h1>
-&lt;p>まずは「Hello World」していきます。&lt;/p>
-&lt;p>プロジェクトの作成は下記公式サイトに記載の手順を参考にしてください。&lt;/p>
-&lt;p>&lt;a href="https://ktor.io/docs/intellij-idea.html#create_ktor_project" target="_blank" rel="noopener noreferrer">https://ktor.io/docs/intellij-idea.html#create_ktor_project&lt;/a>
-&lt;/p>
-&lt;br>
-&lt;p>インストールしたプラグインは以下のとおりです。&lt;/p>
-&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/dependency.webp" width="700">
-&lt;p>&lt;br>&lt;br>&lt;/p>
-&lt;p>コードがひととおりできあがったら下記コマンドを実行しサーバーを起動します。&lt;/p>
-&lt;p>&lt;code>$ ./gradlew run&lt;/code>&lt;/p>
-&lt;p>サーバーが起動したら &lt;code>http://localhost:8080/&lt;/code> にアクセスします。&lt;br>&lt;/p>
-&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/hello_world.webp" width="500">
-&lt;p>「Hello World!」を表示できました。&lt;/p>
-&lt;h2 id="auto-reloadの有効化">Auto-reloadの有効化&lt;/h2>
-&lt;!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
-&lt;p>開発していく上ではAuto-reloadがあった方が便利なのでAuto-reloadを有効にしていきます。&lt;/p>
-&lt;!-- textlint-enable ja-technical-writing/no-doubled-joshi -->
-&lt;p>Auto-reloadを有効化する手順は以下のとおりです。&lt;/p>
-&lt;ol>
-&lt;li>developmentモードを有効化&lt;/li>
-&lt;li>継続的なビルドを実行&lt;br>&lt;code>$ ./gradlew -t build&lt;/code>&lt;/li>
-&lt;li>サーバーを起動&lt;br>&lt;code>$ ./gradlew run&lt;/code>&lt;/li>
-&lt;/ol>
-&lt;p>サーバー起動手順がHello Worldのときよりも2つ増えています。&lt;br>
-詳しく見てみましょう。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Stripe on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/stripe/</link><description>Recent content in Stripe on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><managingEditor>yyh-gl</managingEditor><webMaster>yyh-gl</webMaster><lastBuildDate>Wed, 21 Dec 2022 00:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/stripe/index.xml" rel="self" type="application/rss+xml"/><item><title>KtorとStripeでECサイトを作ってみた</title><link>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</link><pubDate>Wed, 21 Dec 2022 00:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/kotlin-ktor-stripe-tutorial/</guid><description>&lt;h1 id="kotlin-advent-calendar-2022"&gt;Kotlin Advent Calendar 2022&lt;/h1&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/qiita_advent_calendar_2022.webp" width="700"&gt;
+&lt;p&gt;本記事は&lt;a href="https://qiita.com/advent-calendar/2022/kotlin" target="_blank" rel="noopener noreferrer"&gt;Kotlin Advent Calendar 2022&lt;/a&gt;
+の21日目の記事です。&lt;/p&gt;
+&lt;h1 id="概要"&gt;概要&lt;/h1&gt;
+&lt;p&gt;クリスマスといえばプレゼント。&lt;br&gt;
+ということでECサイトを作ってみます。&lt;/p&gt;
+&lt;p&gt;ECサイトと言いつつもあまり複雑なことはせずに、Stripeから取得した商品情報を表示する画面を作るところまでやります。&lt;br&gt;
+本画面を実装する過程で、APIを経由した情報のやりとり→受け取った情報を画面に表示するところまで触れます。&lt;br&gt;
+よって、本記事を読めばKotlinで外部API（主にStripe）を使ったシステムの実装イメージをざっくり掴めると思います。&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;ただただKotlinで作るだけではなくて、個人的にこれまで触ったことないフレームワークやサービスを使ってみたいと思っています。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;個人的にこれまで触ったことない&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;あたかもKotlinは触ったことあるような言い方ですが、私はこれまでGo中心のエンジニア人生でした。&lt;br&gt;
+したがって、そもそもKotlin自体あまり触ったことがないです←&lt;br&gt;
+Kotlinのお作法を守れていないところもあると思いますが、こんな感じで作れるのかぁとイメージしてもらえると幸いです。&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;では、採用技術を紹介したら、さっそくECサイトを作っていこうと思います。&lt;br&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;⚠️ 本記事内に記載するコードは&lt;code&gt;package&lt;/code&gt;や&lt;code&gt;import&lt;/code&gt;周りのコードを省略しています。&lt;br&gt;
+コード全体を見たい場合は以下のリポジトリにコードを置いているのでこちらを参照ください。&lt;br&gt;
+&lt;a href="https://github.com/yyh-gl/ktor-shop/" target="_blank" rel="noopener noreferrer"&gt;https://github.com/yyh-gl/ktor-shop/&lt;/a&gt;
+&lt;/p&gt;
+&lt;h1 id="採用技術"&gt;採用技術&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Webフレームワーク：&lt;a href="https://ktor.io/" target="_blank" rel="noopener noreferrer"&gt;Ktor&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;テンプレートエンジン：&lt;a href="https://freemarker.apache.org/" target="_blank" rel="noopener noreferrer"&gt;FreeMarker&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;決済および商品管理：&lt;a href="https://stripe.com/jp" target="_blank" rel="noopener noreferrer"&gt;Stripe&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;DI：&lt;a href="https://insert-koin.io/" target="_blank" rel="noopener noreferrer"&gt;Koin&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="hello-world"&gt;Hello World&lt;/h1&gt;
+&lt;p&gt;まずは「Hello World」していきます。&lt;/p&gt;
+&lt;p&gt;プロジェクトの作成は下記公式サイトに記載の手順を参考にしてください。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ktor.io/docs/intellij-idea.html#create_ktor_project" target="_blank" rel="noopener noreferrer"&gt;https://ktor.io/docs/intellij-idea.html#create_ktor_project&lt;/a&gt;
+&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;インストールしたプラグインは以下のとおりです。&lt;/p&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/dependency.webp" width="700"&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;コードがひととおりできあがったら下記コマンドを実行しサーバーを起動します。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ ./gradlew run&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;サーバーが起動したら &lt;code&gt;http://localhost:8080/&lt;/code&gt; にアクセスします。&lt;br&gt;&lt;/p&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2022/12/kotlin-ktor-stripe-tutorial/hello_world.webp" width="500"&gt;
+&lt;p&gt;「Hello World!」を表示できました。&lt;/p&gt;
+&lt;h2 id="auto-reloadの有効化"&gt;Auto-reloadの有効化&lt;/h2&gt;
+&lt;!-- textlint-disable ja-technical-writing/no-doubled-joshi --&gt;
+&lt;p&gt;開発していく上ではAuto-reloadがあった方が便利なのでAuto-reloadを有効にしていきます。&lt;/p&gt;
+&lt;!-- textlint-enable ja-technical-writing/no-doubled-joshi --&gt;
+&lt;p&gt;Auto-reloadを有効化する手順は以下のとおりです。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;developmentモードを有効化&lt;/li&gt;
+&lt;li&gt;継続的なビルドを実行&lt;br&gt;&lt;code&gt;$ ./gradlew -t build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;サーバーを起動&lt;br&gt;&lt;code&gt;$ ./gradlew run&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;サーバー起動手順がHello Worldのときよりも2つ増えています。&lt;br&gt;
+詳しく見てみましょう。&lt;/p&gt;</description></item></channel></rss>

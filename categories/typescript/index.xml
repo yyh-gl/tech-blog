@@ -1,47 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TypeScript on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/typescript/</link><description>Recent content in TypeScript on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Mon, 02 Dec 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/typescript/index.xml" rel="self" type="application/rss+xml"/><item><title>【React+TypeScript】TypeScript入門</title><link>https://tech.yyh-gl.dev/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/react_typescript_sample/</guid><description>&lt;h1 id="typescript-advent-calendar-2019">TypeScript Advent Calendar 2019&lt;/h1>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700">
-&lt;p>本記事は &lt;a href="https://qiita.com/advent-calendar/2019/typescript" target="_blank" rel="noopener noreferrer">TypeScript Advent Calendar 2019&lt;/a>
-の 2 日目の記事です。&lt;/p>
-&lt;p>内容としては、TypeScript 初級者のための TypeScript 入門です。&lt;/p>
-&lt;p>基礎的な内容から入り、&lt;br>
-最終的には、企業や個人の技術ブログを参考に、&lt;br>
-React の実プロジェクトにおいて、&lt;br>
-どのように TypeScript が使われているのか紹介できればと思います。&lt;br>
-（APIリクエスト周りのTypeScript活用事例を紹介）&lt;/p>
-&lt;p>今日の記事を読んで TypeScript に入門し、&lt;br>
-今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！&lt;/p>
-&lt;h1 id="基礎編">基礎編&lt;/h1>
-&lt;h2 id="typescript-とは">TypeScript とは&lt;/h2>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/ts.png" width="200">
-&lt;p>&lt;a href="https://www.typescriptlang.org/index.html" target="_blank" rel="noopener noreferrer">TypeScript&lt;/a>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TypeScript on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/typescript/</link><description>Recent content in TypeScript on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><managingEditor>yyh-gl</managingEditor><webMaster>yyh-gl</webMaster><lastBuildDate>Mon, 02 Dec 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/typescript/index.xml" rel="self" type="application/rss+xml"/><item><title>【React+TypeScript】TypeScript入門</title><link>https://tech.yyh-gl.dev/blog/react_typescript_sample/</link><pubDate>Mon, 02 Dec 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/react_typescript_sample/</guid><description>&lt;h1 id="typescript-advent-calendar-2019"&gt;TypeScript Advent Calendar 2019&lt;/h1&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/qiita_advent_calendar_2019.png" width="700"&gt;
+&lt;p&gt;本記事は &lt;a href="https://qiita.com/advent-calendar/2019/typescript" target="_blank" rel="noopener noreferrer"&gt;TypeScript Advent Calendar 2019&lt;/a&gt;
+の 2 日目の記事です。&lt;/p&gt;
+&lt;p&gt;内容としては、TypeScript 初級者のための TypeScript 入門です。&lt;/p&gt;
+&lt;p&gt;基礎的な内容から入り、&lt;br&gt;
+最終的には、企業や個人の技術ブログを参考に、&lt;br&gt;
+React の実プロジェクトにおいて、&lt;br&gt;
+どのように TypeScript が使われているのか紹介できればと思います。&lt;br&gt;
+（APIリクエスト周りのTypeScript活用事例を紹介）&lt;/p&gt;
+&lt;p&gt;今日の記事を読んで TypeScript に入門し、&lt;br&gt;
+今後の TypeScript Advent Calendar をお楽しみいただけると幸いです！&lt;/p&gt;
+&lt;h1 id="基礎編"&gt;基礎編&lt;/h1&gt;
+&lt;h2 id="typescript-とは"&gt;TypeScript とは&lt;/h2&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/12/react_typescript_sample/ts.png" width="200"&gt;
+&lt;p&gt;&lt;a href="https://www.typescriptlang.org/index.html" target="_blank" rel="noopener noreferrer"&gt;TypeScript&lt;/a&gt;
 は Microsoft 社によって開発され、
-現在は &lt;a href="https://github.com/microsoft/TypeScript" target="_blank" rel="noopener noreferrer">OSS&lt;/a>
-として開発が進められています。&lt;/p>
-&lt;p>「TypeScript とは何か」を簡単に説明すると、&lt;br>
-&lt;u>JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット&lt;/u> です。&lt;/p>
-&lt;p>&lt;a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">公式サイト&lt;/a>
-はこちらで、&lt;br>
-2019年12月2日現在、最新版は 3.7.2 となっています。&lt;/p>
-&lt;p>では、実際にコードを交えながら基礎的な部分を説明していきます。&lt;br>
-ただし、実践編で使用する内容に絞って説明していきますので、&lt;br>
-その点はご了承ください🙇‍&lt;br>
-（足りない情報は&lt;a href="https://www.typescriptlang.org/docs/home.html" target="_blank" rel="noopener noreferrer">公式ドキュメント&lt;/a>
-を参考にしてください）&lt;/p>
-&lt;h2 id="型">型&lt;/h2>
-&lt;p>では、早速、TypeScript の型に触れていきましょう。&lt;br>
-TypeScript で使用できる基本的な型として以下のものがあります。&lt;/p>
-&lt;ul>
-&lt;li>Boolean&lt;/li>
-&lt;li>Number&lt;/li>
-&lt;li>String&lt;/li>
-&lt;li>Array&lt;/li>
-&lt;li>Tuple&lt;/li>
-&lt;li>Enum&lt;/li>
-&lt;li>Any&lt;/li>
-&lt;li>Void&lt;/li>
-&lt;li>Null and Undefined&lt;/li>
-&lt;li>Never&lt;/li>
-&lt;li>Object&lt;/li>
-&lt;/ul>
-&lt;p>だいたいの型は他言語でも用意されているので、&lt;br>
-説明がなくても理解できると思います。&lt;/p></description></item></channel></rss>
+現在は &lt;a href="https://github.com/microsoft/TypeScript" target="_blank" rel="noopener noreferrer"&gt;OSS&lt;/a&gt;
+として開発が進められています。&lt;/p&gt;
+&lt;p&gt;「TypeScript とは何か」を簡単に説明すると、&lt;br&gt;
+&lt;u&gt;JavaScript に対して、省略も可能な静的型付けとクラスベースオブジェクト指向を加えたスーパーセット&lt;/u&gt; です。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer"&gt;公式サイト&lt;/a&gt;
+はこちらで、&lt;br&gt;
+2019年12月2日現在、最新版は 3.7.2 となっています。&lt;/p&gt;
+&lt;p&gt;では、実際にコードを交えながら基礎的な部分を説明していきます。&lt;br&gt;
+ただし、実践編で使用する内容に絞って説明していきますので、&lt;br&gt;
+その点はご了承ください🙇‍&lt;br&gt;
+（足りない情報は&lt;a href="https://www.typescriptlang.org/docs/home.html" target="_blank" rel="noopener noreferrer"&gt;公式ドキュメント&lt;/a&gt;
+を参考にしてください）&lt;/p&gt;
+&lt;h2 id="型"&gt;型&lt;/h2&gt;
+&lt;p&gt;では、早速、TypeScript の型に触れていきましょう。&lt;br&gt;
+TypeScript で使用できる基本的な型として以下のものがあります。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Boolean&lt;/li&gt;
+&lt;li&gt;Number&lt;/li&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;li&gt;Array&lt;/li&gt;
+&lt;li&gt;Tuple&lt;/li&gt;
+&lt;li&gt;Enum&lt;/li&gt;
+&lt;li&gt;Any&lt;/li&gt;
+&lt;li&gt;Void&lt;/li&gt;
+&lt;li&gt;Null and Undefined&lt;/li&gt;
+&lt;li&gt;Never&lt;/li&gt;
+&lt;li&gt;Object&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;だいたいの型は他言語でも用意されているので、&lt;br&gt;
+説明がなくても理解できると思います。&lt;/p&gt;</description></item></channel></rss>

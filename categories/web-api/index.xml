@@ -1,69 +1,69 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web API on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/web-api/</link><description>Recent content in Web API on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Fri, 14 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/web-api/index.xml" rel="self" type="application/rss+xml"/><item><title>【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる</title><link>https://tech.yyh-gl.dev/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/go_web_api/</guid><description>&lt;h1 id="更新2019年10月30日">更新（2019年10月30日）&lt;/h1>
-&lt;p>初回投稿から3ヶ月経ちました。&lt;br>
-この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。&lt;/p>
-&lt;h1 id="今回やること">今回やること&lt;/h1>
-&lt;p>Goのディレクトリ構成についていろいろと調べる中で、&lt;br>
-&lt;a href="https://www.slideshare.net/pospome/go-80591000" target="_blank" rel="noopener noreferrer">こちらの資料&lt;/a>
-がとても分かりやすかったので、&lt;br>
-今回はこちらを参考にGoでWeb APIを作っていきたいと思います。&lt;/p>
-&lt;br>
-&lt;p>加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャ を取り入れます。&lt;br>
-（内容はほぼレイヤードアーキテクチャになってしまいましたが…）&lt;/p>
-&lt;p>DDD については、「DDD を Go とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。&lt;br>
-パッケージ構成の参考になれば幸いです。&lt;br>
-（なので、ドメインモデルは重度の貧血症）&lt;/p>
-&lt;h2 id="環境">環境&lt;/h2>
-&lt;ul>
-&lt;li>MacOS Mojave 10.14.6&lt;/li>
-&lt;li>Go 1.12.5&lt;/li>
-&lt;/ul>
-&lt;p>なお、今回は、Gin や Mux などといったフレームワークは使わず、&lt;br>
-httprouter のみで薄く作っていこうと思います。&lt;/p>
-&lt;p>Mux を使った実装は &lt;a href="https://yyh-gl.hatenablog.com/entry/2019/02/08/195310" target="_blank" rel="noopener noreferrer">僕の前のブログで紹介している&lt;/a>
-のでよければどうぞ。&lt;/p>
-&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web API on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/web-api/</link><description>Recent content in Web API on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><managingEditor>yyh-gl</managingEditor><webMaster>yyh-gl</webMaster><lastBuildDate>Fri, 14 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/web-api/index.xml" rel="self" type="application/rss+xml"/><item><title>【Go + レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる</title><link>https://tech.yyh-gl.dev/blog/go_web_api/</link><pubDate>Fri, 14 Jun 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/go_web_api/</guid><description>&lt;h1 id="更新2019年10月30日"&gt;更新（2019年10月30日）&lt;/h1&gt;
+&lt;p&gt;初回投稿から3ヶ月経ちました。&lt;br&gt;
+この3ヶ月で新しく得た知見を基に、内容を一部アップデートしました。&lt;/p&gt;
+&lt;h1 id="今回やること"&gt;今回やること&lt;/h1&gt;
+&lt;p&gt;Goのディレクトリ構成についていろいろと調べる中で、&lt;br&gt;
+&lt;a href="https://www.slideshare.net/pospome/go-80591000" target="_blank" rel="noopener noreferrer"&gt;こちらの資料&lt;/a&gt;
+がとても分かりやすかったので、&lt;br&gt;
+今回はこちらを参考にGoでWeb APIを作っていきたいと思います。&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;加えて、本プロジェクトでは、DDD と レイヤードアーキテクチャ を取り入れます。&lt;br&gt;
+（内容はほぼレイヤードアーキテクチャになってしまいましたが…）&lt;/p&gt;
+&lt;p&gt;DDD については、「DDD を Go とレイヤードアーキテクチャでやるなら、こんな感じかな？」という個人の見解レベルです。&lt;br&gt;
+パッケージ構成の参考になれば幸いです。&lt;br&gt;
+（なので、ドメインモデルは重度の貧血症）&lt;/p&gt;
+&lt;h2 id="環境"&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MacOS Mojave 10.14.6&lt;/li&gt;
+&lt;li&gt;Go 1.12.5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;なお、今回は、Gin や Mux などといったフレームワークは使わず、&lt;br&gt;
+httprouter のみで薄く作っていこうと思います。&lt;/p&gt;
+&lt;p&gt;Mux を使った実装は &lt;a href="https://yyh-gl.hatenablog.com/entry/2019/02/08/195310" target="_blank" rel="noopener noreferrer"&gt;僕の前のブログで紹介している&lt;/a&gt;
+のでよければどうぞ。&lt;/p&gt;
+&lt;br&gt;
 ・
-&lt;p>・&lt;/p>
-&lt;p>・&lt;/p>
-&lt;p>では、早速本題に入っていきましょう。&lt;/p>
-&lt;h1 id="採用アーキテクチャレイヤードアーキテクチャ">採用アーキテクチャ：レイヤードアーキテクチャ&lt;/h1>
-&lt;p>&lt;a href="https://www.slideshare.net/pospome/go-80591000" target="_blank" rel="noopener noreferrer">参考記事内&lt;/a>
-で紹介されているのは &lt;u>レイヤードアーキテクチャ&lt;/u> をベースに &lt;br>
-いろいろカスタマイズされたものらしいです。&lt;/p>
-&lt;p>クリーンアーキテクチャに似たアーキテクチャだとか。&lt;/p>
-&lt;hr>
-&lt;p>ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。&lt;/p>
-&lt;p>DDD の文脈では アプリケーション層 と呼ばれますが、&lt;br>
-アプリケーションって意味が広くて分かりづらいので、&lt;br>
-本プロジェクトでは ユースケース という単語を使用します。&lt;/p>
-&lt;hr>
-&lt;p>とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 &lt;br>
-&lt;u>DDD を意識して&lt;/u> Web API を実装していこうと思います。&lt;/p>
-&lt;p>（意識だけして、実践できずに終わりましたが😇）&lt;/p>
-&lt;br>
-&lt;p>レイヤードアーキテクチャ における各層の依存関係 について説明します。&lt;/p>
-&lt;p>依存関係の図は下記のとおりです。&lt;/p>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/architecture.png" width="600">
-&lt;p>矢印は依存の方向を示しています。&lt;br>
-例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。&lt;/p></description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://tech.yyh-gl.dev/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/good_api/</guid><description>&lt;h1 id="いいねボタンがないブログ">いいねボタンがないブログ&lt;/h1>
-&lt;p>本ブログ、いいねボタンが &lt;u>ありませんでした&lt;/u>。&lt;/p>
-&lt;p>だから、作っちゃいました。っていう記事です。&lt;/p>
-&lt;h1 id="構成">構成&lt;/h1>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/06/good_api/architecture.png" width="600">
-&lt;br>
-&lt;p>上図のように&lt;/p>
-&lt;p>記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。&lt;/p>
-&lt;p>記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。&lt;/p>
-&lt;p>APIサーバは Rails で実装しました。&lt;/p>
-&lt;p>（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）&lt;/p>
-&lt;h1 id="apiサーバ">APIサーバ&lt;/h1>
-&lt;p>Rails で APIサーバを建てる方法に関しては、&lt;/p>
-&lt;p>以前に Qiita で &lt;a href="https://qiita.com/yyh-gl/items/30bd91c2b33fdfbe49b5" target="_blank" rel="noopener noreferrer">入門記事&lt;/a>
-書いたのでそちらをご覧ください。&lt;/p>
-&lt;p>（少し古い記事ですが、そんなに問題はないはずです）&lt;/p>
-&lt;h2 id="db-にテーブル作成">DB にテーブル作成&lt;/h2>
-&lt;p>今回、ブログ記事を管理するために、下記のテーブルを作成しました。&lt;/p>
-&lt;pre class="line-numbers">&lt;code class="language-text">mysql&amp;gt; describe blog_posts;
+&lt;p&gt;・&lt;/p&gt;
+&lt;p&gt;・&lt;/p&gt;
+&lt;p&gt;では、早速本題に入っていきましょう。&lt;/p&gt;
+&lt;h1 id="採用アーキテクチャレイヤードアーキテクチャ"&gt;採用アーキテクチャ：レイヤードアーキテクチャ&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://www.slideshare.net/pospome/go-80591000" target="_blank" rel="noopener noreferrer"&gt;参考記事内&lt;/a&gt;
+で紹介されているのは &lt;u&gt;レイヤードアーキテクチャ&lt;/u&gt; をベースに &lt;br&gt;
+いろいろカスタマイズされたものらしいです。&lt;/p&gt;
+&lt;p&gt;クリーンアーキテクチャに似たアーキテクチャだとか。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;ユースケース層という呼び方はクリーンアーキテクチャ由来ですね。&lt;/p&gt;
+&lt;p&gt;DDD の文脈では アプリケーション層 と呼ばれますが、&lt;br&gt;
+アプリケーションって意味が広くて分かりづらいので、&lt;br&gt;
+本プロジェクトでは ユースケース という単語を使用します。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;とりあえず、今回はスライドページ19で紹介されているディレクトリ構成に従って、 &lt;br&gt;
+&lt;u&gt;DDD を意識して&lt;/u&gt; Web API を実装していこうと思います。&lt;/p&gt;
+&lt;p&gt;（意識だけして、実践できずに終わりましたが😇）&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;レイヤードアーキテクチャ における各層の依存関係 について説明します。&lt;/p&gt;
+&lt;p&gt;依存関係の図は下記のとおりです。&lt;/p&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/go_web_api/architecture.png" width="600"&gt;
+&lt;p&gt;矢印は依存の方向を示しています。&lt;br&gt;
+例えば、上図だと Handler層 は UseCase層 の処理を利用することを意味します。&lt;/p&gt;</description></item><item><title>【Web API（Rails） + Vue.js】ブログのいいねボタン自作してみた</title><link>https://tech.yyh-gl.dev/blog/good_api/</link><pubDate>Sat, 08 Jun 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/good_api/</guid><description>&lt;h1 id="いいねボタンがないブログ"&gt;いいねボタンがないブログ&lt;/h1&gt;
+&lt;p&gt;本ブログ、いいねボタンが &lt;u&gt;ありませんでした&lt;/u&gt;。&lt;/p&gt;
+&lt;p&gt;だから、作っちゃいました。っていう記事です。&lt;/p&gt;
+&lt;h1 id="構成"&gt;構成&lt;/h1&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/good_api/architecture.png" width="600"&gt;
+&lt;br&gt;
+&lt;p&gt;上図のように&lt;/p&gt;
+&lt;p&gt;記事ページからAPIサーバにリクエストを送り、 いいねの数を取得・加算します。&lt;/p&gt;
+&lt;p&gt;記事ページからAPIサーバへのリクエスト部分（クライアント）には Vue + axios を使用。&lt;/p&gt;
+&lt;p&gt;APIサーバは Rails で実装しました。&lt;/p&gt;
+&lt;p&gt;（以前から Slackのスラッシュコマンド用に使用していたAPIサーバを流用しました）&lt;/p&gt;
+&lt;h1 id="apiサーバ"&gt;APIサーバ&lt;/h1&gt;
+&lt;p&gt;Rails で APIサーバを建てる方法に関しては、&lt;/p&gt;
+&lt;p&gt;以前に Qiita で &lt;a href="https://qiita.com/yyh-gl/items/30bd91c2b33fdfbe49b5" target="_blank" rel="noopener noreferrer"&gt;入門記事&lt;/a&gt;
+書いたのでそちらをご覧ください。&lt;/p&gt;
+&lt;p&gt;（少し古い記事ですが、そんなに問題はないはずです）&lt;/p&gt;
+&lt;h2 id="db-にテーブル作成"&gt;DB にテーブル作成&lt;/h2&gt;
+&lt;p&gt;今回、ブログ記事を管理するために、下記のテーブルを作成しました。&lt;/p&gt;
+&lt;pre class="line-numbers"&gt;&lt;code class="language-text"&gt;mysql&amp;gt; describe blog_posts;
 &amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
 | Field | Type | Null | Key | Default | Extra |
 &amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
@@ -73,6 +73,6 @@ httprouter のみで薄く作っていこうと思います。&lt;/p>
 | created_at | datetime | NO | | NULL | |
 | updated_at | datetime | NO | | NULL | |
 &amp;#43;------------&amp;#43;--------------&amp;#43;------&amp;#43;-----&amp;#43;---------&amp;#43;----------------&amp;#43;
-5 rows in set (0.00 sec)&lt;/code>&lt;/pre>
-&lt;p>&lt;code>title&lt;/code>には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
-記事ファイル（マークダウン）の名前（本記事だと『good_api』, 拡張子抜き）が入ります。&lt;/p></description></item></channel></rss>
+5 rows in set (0.00 sec)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;title&lt;/code&gt;には、日本語のタイトル（本記事だと『【WEB API（RAILS） + VUE.JS】ブログのいいねボタン自作してみた』）ではなく、
+記事ファイル（マークダウン）の名前（本記事だと『good_api』, 拡張子抜き）が入ります。&lt;/p&gt;</description></item></channel></rss>

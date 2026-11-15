@@ -1,26 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/aws/</link><description>Recent content in AWS on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 04 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた</title><link>https://tech.yyh-gl.dev/blog/terraform_ecs/</link><pubDate>Tue, 04 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/terraform_ecs/</guid><description>&lt;h1 id="terraform-とは">Terraform とは&lt;/h1>
-&lt;p>最近流行りの IaC です。&lt;/p>
-&lt;p>つまり、コードベースでインフラリソースを管理するためのツールです。&lt;/p>
-&lt;p>中でもTerraform はクラウドに特化した IaC ツールという立ち位置です。&lt;/p>
-&lt;p>AWSやGCP, Azure などの他に&lt;a href="https://www.terraform.io/docs/providers/index.html" target="_blank" rel="noopener noreferrer">様々なクラウドプラットフォーム&lt;/a>
-に対応しています。&lt;/p>
-&lt;p>（ちなみに、Vagrant 開発元の &lt;a href="https://www.hashicorp.com/" target="_blank" rel="noopener noreferrer">HashiCorp&lt;/a>
-社が開発しています）&lt;/p>
-&lt;h1 id="今回やること">今回やること&lt;/h1>
-&lt;p>Terraform で AWS 上に下記のような環境を自動構築します。&lt;/p>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/architecture.png" width="600">
-&lt;br>
-&lt;p>ECS でデプロイされるサービスは ECR から引っ張ってくるようにします。&lt;/p>
-&lt;p>そして、そのサービスは Aurora を使うシステムを想定しています。&lt;/p>
-&lt;p>&lt;u>【⚠注意⚠】上記構成はお金が発生します！ まったくもって無料枠ではありません！&lt;/u>&lt;/p>
-&lt;p>【⚠注意⚠】今回独自ドメインを使用していますが、ドメイン取得に関しては省略しています。&lt;/p>
-&lt;h2 id="今回やる内容は">今回やる内容は…&lt;/h2>
-&lt;p>僕が所属する会社の研修資料を参考に進めています。&lt;/p>
-&lt;p>資料を作成してくださった&lt;a href="https://twitter.com/_y_ohgi" target="_blank" rel="noopener noreferrer">@_y_ohgi&lt;/a>
-さんに感謝。&lt;/p>
-&lt;h1 id="自動構築プロセス全体で使用する共通設定を定義">自動構築プロセス全体で使用する共通設定を定義&lt;/h1>
-&lt;p>まず、 &lt;code>main.tf&lt;/code> を作成し、以下のとおり共通設定を定義していきます。&lt;/p>
-&lt;pre class="line-numbers">&lt;code class="language-text"># AWS を利用することを明示
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/aws/</link><description>Recent content in AWS on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><managingEditor>yyh-gl</managingEditor><webMaster>yyh-gl</webMaster><lastBuildDate>Tue, 04 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>【Terraform + ECS + RDS】Terraform で ECS環境構築してみた</title><link>https://tech.yyh-gl.dev/blog/terraform_ecs/</link><pubDate>Tue, 04 Jun 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/terraform_ecs/</guid><description>&lt;h1 id="terraform-とは"&gt;Terraform とは&lt;/h1&gt;
+&lt;p&gt;最近流行りの IaC です。&lt;/p&gt;
+&lt;p&gt;つまり、コードベースでインフラリソースを管理するためのツールです。&lt;/p&gt;
+&lt;p&gt;中でもTerraform はクラウドに特化した IaC ツールという立ち位置です。&lt;/p&gt;
+&lt;p&gt;AWSやGCP, Azure などの他に&lt;a href="https://www.terraform.io/docs/providers/index.html" target="_blank" rel="noopener noreferrer"&gt;様々なクラウドプラットフォーム&lt;/a&gt;
+に対応しています。&lt;/p&gt;
+&lt;p&gt;（ちなみに、Vagrant 開発元の &lt;a href="https://www.hashicorp.com/" target="_blank" rel="noopener noreferrer"&gt;HashiCorp&lt;/a&gt;
+社が開発しています）&lt;/p&gt;
+&lt;h1 id="今回やること"&gt;今回やること&lt;/h1&gt;
+&lt;p&gt;Terraform で AWS 上に下記のような環境を自動構築します。&lt;/p&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/terraform_ecs/architecture.png" width="600"&gt;
+&lt;br&gt;
+&lt;p&gt;ECS でデプロイされるサービスは ECR から引っ張ってくるようにします。&lt;/p&gt;
+&lt;p&gt;そして、そのサービスは Aurora を使うシステムを想定しています。&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;【⚠注意⚠】上記構成はお金が発生します！ まったくもって無料枠ではありません！&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;【⚠注意⚠】今回独自ドメインを使用していますが、ドメイン取得に関しては省略しています。&lt;/p&gt;
+&lt;h2 id="今回やる内容は"&gt;今回やる内容は…&lt;/h2&gt;
+&lt;p&gt;僕が所属する会社の研修資料を参考に進めています。&lt;/p&gt;
+&lt;p&gt;資料を作成してくださった&lt;a href="https://twitter.com/_y_ohgi" target="_blank" rel="noopener noreferrer"&gt;@_y_ohgi&lt;/a&gt;
+さんに感謝。&lt;/p&gt;
+&lt;h1 id="自動構築プロセス全体で使用する共通設定を定義"&gt;自動構築プロセス全体で使用する共通設定を定義&lt;/h1&gt;
+&lt;p&gt;まず、 &lt;code&gt;main.tf&lt;/code&gt; を作成し、以下のとおり共通設定を定義していきます。&lt;/p&gt;
+&lt;pre class="line-numbers"&gt;&lt;code class="language-text"&gt;# AWS を利用することを明示
 provider &amp;#34;aws&amp;#34; {
 # リージョンを設定
 region = &amp;#34;ap-northeast-1&amp;#34;
@@ -29,7 +29,7 @@ region = &amp;#34;ap-northeast-1&amp;#34;
 # グローバル変数的な立ち位置で定義
 variable &amp;#34;prefix&amp;#34; {
 default = &amp;#34;sample-project&amp;#34;
-}&lt;/code>&lt;/pre>
-&lt;p>&lt;code>provider&lt;/code> で使用するクラウドを指定することができます。&lt;/p>
-&lt;p>&lt;code>variable&lt;/code> は変数定義です。&lt;/p>
-&lt;p>&lt;code>${var.prefix}&lt;/code> と書くことで &lt;code>default&lt;/code> で指定した内容が展開されます。&lt;/p></description></item></channel></rss>
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;provider&lt;/code&gt; で使用するクラウドを指定することができます。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;variable&lt;/code&gt; は変数定義です。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;${var.prefix}&lt;/code&gt; と書くことで &lt;code&gt;default&lt;/code&gt; で指定した内容が展開されます。&lt;/p&gt;</description></item></channel></rss>

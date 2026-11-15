@@ -1,135 +1,152 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>スクラム on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0/</link><description>Recent content in スクラム on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 05 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>スクラムについて学んだ話</title><link>https://tech.yyh-gl.dev/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/scrum_entry/</guid><description>&lt;h1 id="スクラムとは">スクラムとは&lt;/h1>
-&lt;h2 id="概要">概要&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;u>変化に対し柔軟に開発を運用するためのアジャイルフレームワーク&lt;/u>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>開発に常に優先度をつける&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>仕事を進めることを主眼に考え、そのために改善を常に行う&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>ロールが3つあり、協調しあい開発する&lt;/p>
-&lt;ul>
-&lt;li>プロダクトオーナー&lt;/li>
-&lt;li>スクラムチーム&lt;/li>
-&lt;li>開発チーム&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>POが満足するアウトプットがあったかのみを検証&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>5つのイベントがある（後述）&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>2つのアウトプット（成果物）がある（後述）&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h2 id="特徴">特徴&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>非常にシンプルなフレームワーク&lt;/p>
-&lt;ul>
-&lt;li>定められたルールが他の手法より少なくアレンジが容易&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>実践的で経験主義&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>世界的に普及している&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h1 id="アジャイル開発とは">アジャイル開発とは&lt;/h1>
-&lt;h2 id="アジャイルとスクラムの違い">アジャイルとスクラムの違い&lt;/h2>
-&lt;p>スクラムとはアジャイル開発手法のひとつ&lt;/p>
-&lt;p>他にもXPとかがある&lt;/p>
-&lt;h1 id="アジャイルソフトウェア開発宣言">アジャイルソフトウェア開発宣言&lt;/h1>
-&lt;p>&lt;a href="https://agilemanifesto.org/iso/ja/manifesto.html" target="_blank" rel="noopener noreferrer">ここ&lt;/a>
-にいろいろな言語で宣言されています&lt;/p>
-&lt;p>この宣言では以下のことを重要視している&lt;/p>
-&lt;ul>
-&lt;li>個人と対話&lt;/li>
-&lt;li>動くソフトウェア&lt;/li>
-&lt;li>顧客との協調&lt;/li>
-&lt;li>変化への対応&lt;/li>
-&lt;/ul>
-&lt;h1 id="スクラムとウォータフォールの違い">スクラムとウォータフォールの違い&lt;/h1>
-&lt;ul>
-&lt;li>
-&lt;p>ウォータフォール&lt;/p>
-&lt;ul>
-&lt;li>計画、設計、実装、テストが一方向に進む&lt;/li>
-&lt;li>リリース直前の実装や仕様に漏れがあると最悪の場合プロジェクトがぽしゃる&lt;/li>
-&lt;li>運用・保守には強い。新規案件向けではない&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>スクラム&lt;/p>
-&lt;ul>
-&lt;li>開発期間中に計画、設計、実装、テストのリサイクルを何度も回す&lt;/li>
-&lt;li>細かいスパンでリリースするので、大きな手戻りが少ない&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h1 id="スクラムで登場するロール役割">スクラムで登場するロール（役割）&lt;/h1>
-&lt;p>あくまでテンプレの内容を紹介&lt;/p>
-&lt;p>自分のチームに合わせて変えてOK（むしろカスタマイズすることが重要）&lt;/p>
-&lt;h2 id="プロダクトオーナーpo">プロダクトオーナー（PO）&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>役割&lt;/p>
-&lt;ul>
-&lt;li>プロダクトのビジネス価値に責任を持つ&lt;/li>
-&lt;li>リリース判断をすることができる&lt;/li>
-&lt;li>優先度の判断役&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>求められる力&lt;/p>
-&lt;ul>
-&lt;li>情報アウトプット（見える化、透明性） → 実現したいことをちゃんと伝える力&lt;/li>
-&lt;li>クライアントとチームを繋ぐハブ役&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h2 id="スクラムマスターsm">スクラムマスター（SM）&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>役割&lt;/p>
-&lt;ul>
-&lt;li>スクラム開発に関わる全ての人を支援し、成功に導く
-&lt;ul>
-&lt;li>POのビジネス的な相談を受けたり、開発チームの技術的な相談を受けたり などなど&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>スクラムの理論や価値を関係者全員に教え、理解してもらう&lt;/li>
-&lt;li>開発チームへの障害や外部干渉を取り除き、防ぐ&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>求められる力&lt;/p>
-&lt;ul>
-&lt;li>サーヴァントリーダシップ（奉仕型リーダー）
-&lt;ul>
-&lt;li>下からみんなを持ち上げるようなリーダー&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>理解と実行の話づくりと良きファシリテーター&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;br>
-&lt;blockquote>
-&lt;p>&lt;u>SMが開発に加わるのはOK？&lt;/u>&lt;/p>&lt;/blockquote>
-&lt;blockquote>
-&lt;p>チームが良しとするならばOK。&lt;/p>&lt;/blockquote>
-&lt;blockquote>
-&lt;p>はじめから参加することは基本的にない。&lt;/p>&lt;/blockquote>
-&lt;h2 id="開発チーム">開発チーム&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>役割&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>スクラム on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0/</link><description>Recent content in スクラム on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><managingEditor>yyh-gl</managingEditor><webMaster>yyh-gl</webMaster><lastBuildDate>Wed, 05 Jun 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>スクラムについて学んだ話</title><link>https://tech.yyh-gl.dev/blog/scrum_entry/</link><pubDate>Wed, 05 Jun 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/scrum_entry/</guid><description>&lt;h1 id="スクラムとは"&gt;スクラムとは&lt;/h1&gt;
+&lt;h2 id="概要"&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;u&gt;変化に対し柔軟に開発を運用するためのアジャイルフレームワーク&lt;/u&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;開発に常に優先度をつける&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;仕事を進めることを主眼に考え、そのために改善を常に行う&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ロールが3つあり、協調しあい開発する&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;プロダクトオーナー&lt;/li&gt;
+&lt;li&gt;スクラムチーム&lt;/li&gt;
+&lt;li&gt;開発チーム&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;POが満足するアウトプットがあったかのみを検証&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;5つのイベントがある（後述）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2つのアウトプット（成果物）がある（後述）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="特徴"&gt;特徴&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;非常にシンプルなフレームワーク&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定められたルールが他の手法より少なくアレンジが容易&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;実践的で経験主義&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;世界的に普及している&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="アジャイル開発とは"&gt;アジャイル開発とは&lt;/h1&gt;
+&lt;h2 id="アジャイルとスクラムの違い"&gt;アジャイルとスクラムの違い&lt;/h2&gt;
+&lt;p&gt;スクラムとはアジャイル開発手法のひとつ&lt;/p&gt;
+&lt;p&gt;他にもXPとかがある&lt;/p&gt;
+&lt;h1 id="アジャイルソフトウェア開発宣言"&gt;アジャイルソフトウェア開発宣言&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://agilemanifesto.org/iso/ja/manifesto.html" target="_blank" rel="noopener noreferrer"&gt;ここ&lt;/a&gt;
+にいろいろな言語で宣言されています&lt;/p&gt;
+&lt;p&gt;この宣言では以下のことを重要視している&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;個人と対話&lt;/li&gt;
+&lt;li&gt;動くソフトウェア&lt;/li&gt;
+&lt;li&gt;顧客との協調&lt;/li&gt;
+&lt;li&gt;変化への対応&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="スクラムとウォータフォールの違い"&gt;スクラムとウォータフォールの違い&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ウォータフォール&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;計画、設計、実装、テストが一方向に進む&lt;/li&gt;
+&lt;li&gt;リリース直前の実装や仕様に漏れがあると最悪の場合プロジェクトがぽしゃる&lt;/li&gt;
+&lt;li&gt;運用・保守には強い。新規案件向けではない&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;スクラム&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;開発期間中に計画、設計、実装、テストのリサイクルを何度も回す&lt;/li&gt;
+&lt;li&gt;細かいスパンでリリースするので、大きな手戻りが少ない&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="スクラムで登場するロール役割"&gt;スクラムで登場するロール（役割）&lt;/h1&gt;
+&lt;p&gt;あくまでテンプレの内容を紹介&lt;/p&gt;
+&lt;p&gt;自分のチームに合わせて変えてOK（むしろカスタマイズすることが重要）&lt;/p&gt;
+&lt;h2 id="プロダクトオーナーpo"&gt;プロダクトオーナー（PO）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;役割&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;プロダクトのビジネス価値に責任を持つ&lt;/li&gt;
+&lt;li&gt;リリース判断をすることができる&lt;/li&gt;
+&lt;li&gt;優先度の判断役&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;求められる力&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情報アウトプット（見える化、透明性） → 実現したいことをちゃんと伝える力&lt;/li&gt;
+&lt;li&gt;クライアントとチームを繋ぐハブ役&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="スクラムマスターsm"&gt;スクラムマスター（SM）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;役割&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;スクラム開発に関わる全ての人を支援し、成功に導く
+&lt;ul&gt;
+&lt;li&gt;POのビジネス的な相談を受けたり、開発チームの技術的な相談を受けたり などなど&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;スクラムの理論や価値を関係者全員に教え、理解してもらう&lt;/li&gt;
+&lt;li&gt;開発チームへの障害や外部干渉を取り除き、防ぐ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;求められる力&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;サーヴァントリーダシップ（奉仕型リーダー）
+&lt;ul&gt;
+&lt;li&gt;下からみんなを持ち上げるようなリーダー&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;理解と実行の話づくりと良きファシリテーター&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;u&gt;SMが開発に加わるのはOK？&lt;/u&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;チームが良しとするならばOK。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;はじめから参加することは基本的にない。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="開発チーム"&gt;開発チーム&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;役割&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;具体的な開発を遂行&lt;/li&gt;
+&lt;li&gt;リリース可能なプロダクトバックログアイテムを完成させる&lt;/li&gt;
+&lt;li&gt;何をどのように作るか決定する（POは実現したいものを言うが、どうやって作り上げるかは開発チームに委ねる）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;求められる力&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主体性と協調性（ただ作るだけの存在にならない） → 受注体質はだめ&lt;/li&gt;
+&lt;li&gt;仮説や知識を理解し、サービス価値向上の施策を立案する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

@@ -1,54 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Firebase on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/firebase/</link><description>Recent content in Firebase on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 30 May 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/firebase/index.xml" rel="self" type="application/rss+xml"/><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://tech.yyh-gl.dev/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/android_push/</guid><description>&lt;p>僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので&lt;/p>
-&lt;p>なにか困ったときはそこを一度見てみてください。&lt;/p>
-&lt;h1 id="tldr">tl;dr&lt;/h1>
-&lt;ul>
-&lt;li>Firebase使ってAndroidアプリにプッシュ通知を実装した&lt;/li>
-&lt;li>フォアグラウンドとバックグラウンドで表示方法が異なる&lt;/li>
-&lt;li>めちゃくちゃ簡単&lt;/li>
-&lt;/ul>
-&lt;h1 id="開発環境">開発環境&lt;/h1>
-&lt;ul>
-&lt;li>macOS Mojave 10.14.4&lt;/li>
-&lt;li>Android Studio 3.4.1&lt;/li>
-&lt;li>Gradle 3.4.1&lt;/li>
-&lt;li>Java 1.8.0_202&lt;/li>
-&lt;li>Kotlin 1.3.21&lt;/li>
-&lt;/ul>
-&lt;h1 id="firebaseに登録">Firebaseに登録&lt;/h1>
-&lt;p>Firebaseを使用するためには登録が必要です。&lt;/p>
-&lt;p>Googleアカウントを持っている方なら&lt;a href="https://firebase.google.com/?hl=ja" target="_blank" rel="noopener noreferrer">公式サイト&lt;/a>
-から簡単に登録できます&lt;/p>
-&lt;h1 id="firebaseにプロジェクト作成">Firebaseにプロジェクト作成&lt;/h1>
-&lt;p>&lt;a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer">プロジェクト登録ページ&lt;/a>
-でプロジェクトを登録します。&lt;/p>
-&lt;p>プロジェクト名は特に指定はありません。ご自由にどうぞ。&lt;/p>
-&lt;h1 id="アプリ情報を登録する">アプリ情報を登録する&lt;/h1>
-&lt;p>プロジェクト選択後のホーム画面より 「Project Overview」 をクリック。&lt;/p>
-&lt;p>画面の指示に従って進めていてください。&lt;/p>
-&lt;h2 id="デバッグ用の署名証明書-sha-1-の取得方法">デバッグ用の署名証明書 SHA-1 の取得方法&lt;/h2>
-&lt;ol>
-&lt;li>
-&lt;p>以下コマンドを実行&lt;/p>
-&lt;p>Mac/Linux&lt;/p>
-&lt;pre class="line-numbers">&lt;code class="language-text">keytool -list -v \
--alias androiddebugkey -keystore ~/.android/debug.keystore&lt;/code>&lt;/pre>
-&lt;p>Windows&lt;/p>
-&lt;pre class="line-numbers">&lt;code class="language-text">keytool -list -v \
--alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore&lt;/code>&lt;/pre>
-&lt;/li>
-&lt;li>
-&lt;p>パスワード入力&lt;/p>
-&lt;p>パスワードは &lt;code>android&lt;/code> です。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>表示される SHA-1 をメモ&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;br>
-&lt;hr>
-&lt;p>ひととおり作業が進むと、↓このような画面が表示されます。&lt;/p>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/05/android_push/app-registering-complete.png" width="750">
-&lt;p>自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。&lt;/p>
-&lt;p>エミュレータでもちゃんと通信してくれるか不安だったのですが大丈夫でした。&lt;/p>
-&lt;h1 id="firebase-関連のライブラリを追加">Firebase 関連のライブラリを追加&lt;/h1>
-&lt;p>アプリ情報の登録工程において、 &lt;code>app/build.gradle&lt;/code> を触ったと思いますが、加えて、以下の追記が必要です。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Firebase on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/firebase/</link><description>Recent content in Firebase on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><managingEditor>yyh-gl</managingEditor><webMaster>yyh-gl</webMaster><lastBuildDate>Thu, 30 May 2019 09:00:00 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/firebase/index.xml" rel="self" type="application/rss+xml"/><item><title>【Android + Kotlin + Firebase】Androidアプリにプッシュ通知を実装してみた</title><link>https://tech.yyh-gl.dev/blog/android_push/</link><pubDate>Thu, 30 May 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/android_push/</guid><description>&lt;p&gt;僕がひっかかった場所は 「つまづきポイント」 という章にまとめているので&lt;/p&gt;
+&lt;p&gt;なにか困ったときはそこを一度見てみてください。&lt;/p&gt;
+&lt;h1 id="tldr"&gt;tl;dr&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Firebase使ってAndroidアプリにプッシュ通知を実装した&lt;/li&gt;
+&lt;li&gt;フォアグラウンドとバックグラウンドで表示方法が異なる&lt;/li&gt;
+&lt;li&gt;めちゃくちゃ簡単&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="開発環境"&gt;開発環境&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;macOS Mojave 10.14.4&lt;/li&gt;
+&lt;li&gt;Android Studio 3.4.1&lt;/li&gt;
+&lt;li&gt;Gradle 3.4.1&lt;/li&gt;
+&lt;li&gt;Java 1.8.0_202&lt;/li&gt;
+&lt;li&gt;Kotlin 1.3.21&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="firebaseに登録"&gt;Firebaseに登録&lt;/h1&gt;
+&lt;p&gt;Firebaseを使用するためには登録が必要です。&lt;/p&gt;
+&lt;p&gt;Googleアカウントを持っている方なら&lt;a href="https://firebase.google.com/?hl=ja" target="_blank" rel="noopener noreferrer"&gt;公式サイト&lt;/a&gt;
+から簡単に登録できます&lt;/p&gt;
+&lt;h1 id="firebaseにプロジェクト作成"&gt;Firebaseにプロジェクト作成&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer"&gt;プロジェクト登録ページ&lt;/a&gt;
+でプロジェクトを登録します。&lt;/p&gt;
+&lt;p&gt;プロジェクト名は特に指定はありません。ご自由にどうぞ。&lt;/p&gt;
+&lt;h1 id="アプリ情報を登録する"&gt;アプリ情報を登録する&lt;/h1&gt;
+&lt;p&gt;プロジェクト選択後のホーム画面より 「Project Overview」 をクリック。&lt;/p&gt;
+&lt;p&gt;画面の指示に従って進めていてください。&lt;/p&gt;
+&lt;h2 id="デバッグ用の署名証明書-sha-1-の取得方法"&gt;デバッグ用の署名証明書 SHA-1 の取得方法&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;以下コマンドを実行&lt;/p&gt;
+&lt;p&gt;Mac/Linux&lt;/p&gt;
+&lt;pre class="line-numbers"&gt;&lt;code class="language-text"&gt;keytool -list -v \
+-alias androiddebugkey -keystore ~/.android/debug.keystore&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Windows&lt;/p&gt;
+&lt;pre class="line-numbers"&gt;&lt;code class="language-text"&gt;keytool -list -v \
+-alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;パスワード入力&lt;/p&gt;
+&lt;p&gt;パスワードは &lt;code&gt;android&lt;/code&gt; です。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;表示される SHA-1 をメモ&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;p&gt;ひととおり作業が進むと、↓このような画面が表示されます。&lt;/p&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/05/android_push/app-registering-complete.png" width="750"&gt;
+&lt;p&gt;自分の環境では、登録したアプリがFirebaseと通信できているかのチェックに少し時間がかかりました。&lt;/p&gt;
+&lt;p&gt;エミュレータでもちゃんと通信してくれるか不安だったのですが大丈夫でした。&lt;/p&gt;
+&lt;h1 id="firebase-関連のライブラリを追加"&gt;Firebase 関連のライブラリを追加&lt;/h1&gt;
+&lt;p&gt;アプリ情報の登録工程において、 &lt;code&gt;app/build.gradle&lt;/code&gt; を触ったと思いますが、加えて、以下の追記が必要です。&lt;/p&gt;</description></item></channel></rss>

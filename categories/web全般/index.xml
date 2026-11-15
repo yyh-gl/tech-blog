@@ -1,111 +1,112 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web全般 on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/web%E5%85%A8%E8%88%AC/</link><description>Recent content in Web全般 on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Thu, 26 Nov 2020 13:50:31 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/web%E5%85%A8%E8%88%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://tech.yyh-gl.dev/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/support-webp/</guid><description>&lt;h1 id="画像の形式をwebpに変えた">画像の形式をWebPに変えた&lt;/h1>
-&lt;p>本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、&lt;br>
-まずはサムネ画像をWebPに変えてみました。&lt;/p>
-&lt;p>WebPとは、Googleが開発しているオープンな静止画像フォーマットで、&lt;br>
-トラフィック量軽減と表示速度短縮を目的しています。 （&lt;a href="https://ja.wikipedia.org/wiki/WebP" target="_blank" rel="noopener noreferrer">wikiから拝借&lt;/a>
-）&lt;/p>
-&lt;h1 id="webpを採用した結果">WebPを採用した結果&lt;/h1>
-&lt;p>以下のツイートのとおりです。&lt;/p>
-&lt;p>たまたま100が撮れただけで、もう一回テストしみると少し落ちました。&lt;br>
-それでも90台はキープできていそうです。&lt;/p>
-&lt;blockquote class="twitter-tweet">&lt;p lang="ja" dir="ltr">個人ブログ（Desktop版）のPerformanceが78だったので、画像をwebpに変えたら一気に100になった🎊&lt;br>（モバイルは未だに70切ってる😇） &lt;a href="https://t.co/VNxztIsR28">pic.twitter.com/VNxztIsR28&lt;/a>&lt;/p>&amp;mdash; hon-D (@yyh_gl) &lt;a href="https://twitter.com/yyh_gl/status/1329487413400375296?ref_src=twsrc%5Etfw">November 19, 2020&lt;/a>&lt;/blockquote> &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
-&lt;h1 id="safariでは注意が必要">Safariでは注意が必要&lt;/h1>
-&lt;p>多くのブラウザでWebPへの対応が既に完了しています。&lt;br>
-ただし、Safariに関してはv14でようやく対応しました。&lt;/p>
-&lt;p>&lt;a href="https://ja.wikipedia.org/wiki/WebP#%E5%AF%BE%E5%BF%9C%E7%92%B0%E5%A2%83" target="_blank" rel="noopener noreferrer">対応状況&lt;/a>
-&lt;/p>
-&lt;p>Safari v14は2020年9月17日（日本時間）にリリースされたばかりなので、&lt;br>
-まだ画像をちゃんと見れないユーザが多く存在すると思われます。&lt;/p>
-&lt;p>&lt;a href="https://developer.apple.com/documentation/safari-release-notes/safari-14-release-notes" target="_blank" rel="noopener noreferrer">リリースノート&lt;/a>
-&lt;/p>
-&lt;br>
-&lt;blockquote class="twitter-tweet">&lt;p lang="ja" dir="ltr">Safariのwebp対応ってバージョン14からだったんだ😇&lt;br>&lt;br>自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←&lt;/p>&amp;mdash; hon-D (@yyh_gl) &lt;a href="https://twitter.com/yyh_gl/status/1331834104254369794?ref_src=twsrc%5Etfw">November 26, 2020&lt;/a>&lt;/blockquote> &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
-&lt;br>
-&lt;blockquote>
-&lt;p>自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←&lt;/p>&lt;/blockquote>
-&lt;p>嘘です、10%ほどの方々すみません🙇‍♂ &lt;br>
-WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。&lt;/p></description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://tech.yyh-gl.dev/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/ogp/</guid><description>&lt;h1 id="twitter-のリンクにサムネイル画像が表示されない">Twitter のリンクにサムネイル画像が表示されない&lt;/h1>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/06/ogp/before.png" width="600">
-&lt;p>このように Twitter でブログのリンクを載せても、サムネイルが表示されない。&lt;/p>
-&lt;p>はてなブログをやっていたときは、何もしなくてもサムネイルが表示されていました。&lt;/p>
-&lt;p>トップ画像をよしなにサムネイルにしてくれるのかなぁっと思っていましたが違ったんですね…。&lt;/p>
-&lt;h1 id="どうやったらサムネイル画像が表示されるか">どうやったらサムネイル画像が表示されるか&lt;/h1>
-&lt;!-- textlint-disable ja-technical-writing/sentence-length -->
-&lt;p>Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、
-&lt;u>Open Graph Protocol（OGP）&lt;/u> というものを設定する必要があります。&lt;/p>
-&lt;!-- textlint-enable ja-technical-writing/sentence-length -->
-&lt;p>OGP を設定することで Twitter や Facebook でサムネイル付きのリンクを表示できます。&lt;/p>
-&lt;p>&lt;a href="https://digitalidentity.co.jp/blog/seo/ogp-share-setting.html" target="_blank" rel="noopener noreferrer">こちらのサイト&lt;/a>
-で詳細が説明されています。&lt;/p>
-&lt;h1 id="ogp-の設定">OGP の設定&lt;/h1>
-&lt;p>今回設定する OGP 情報は以下のとおりです。&lt;/p>
-&lt;ul>
-&lt;li>og:title&lt;/li>
-&lt;li>og:type&lt;/li>
-&lt;li>og:url&lt;/li>
-&lt;li>og:description&lt;/li>
-&lt;li>og:image&lt;/li>
-&lt;/ul>
-&lt;p>これらの情報を head タグ内に埋め込みます。&lt;/p>
-&lt;pre class="line-numbers">&lt;code class="language-html">&amp;lt;meta property=&amp;#34;og:title&amp;#34; content=&amp;#34;【Go &amp;#43; レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる&amp;#34;&amp;gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web全般 on Indexing my brain</title><link>https://tech.yyh-gl.dev/categories/web%E5%85%A8%E8%88%AC/</link><description>Recent content in Web全般 on Indexing my brain</description><generator>Hugo -- gohugo.io</generator><language>ja</language><managingEditor>yyh-gl</managingEditor><webMaster>yyh-gl</webMaster><lastBuildDate>Thu, 26 Nov 2020 13:50:31 +0900</lastBuildDate><atom:link href="https://tech.yyh-gl.dev/categories/web%E5%85%A8%E8%88%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログの画像をWebPに変えた話とSafariで表示されない件について</title><link>https://tech.yyh-gl.dev/blog/support-webp/</link><pubDate>Thu, 26 Nov 2020 13:50:31 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/support-webp/</guid><description>&lt;h1 id="画像の形式をwebpに変えた"&gt;画像の形式をWebPに変えた&lt;/h1&gt;
+&lt;p&gt;本ブログにて、Lighthouse使ってみると、表示速度あたりで怒られていたので、&lt;br&gt;
+まずはサムネ画像をWebPに変えてみました。&lt;/p&gt;
+&lt;p&gt;WebPとは、Googleが開発しているオープンな静止画像フォーマットで、&lt;br&gt;
+トラフィック量軽減と表示速度短縮を目的しています。 （&lt;a href="https://ja.wikipedia.org/wiki/WebP" target="_blank" rel="noopener noreferrer"&gt;wikiから拝借&lt;/a&gt;
+）&lt;/p&gt;
+&lt;h1 id="webpを採用した結果"&gt;WebPを採用した結果&lt;/h1&gt;
+&lt;p&gt;以下のツイートのとおりです。&lt;/p&gt;
+&lt;p&gt;たまたま100が撮れただけで、もう一回テストしみると少し落ちました。&lt;br&gt;
+それでも90台はキープできていそうです。&lt;/p&gt;
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="ja" dir="ltr"&gt;個人ブログ（Desktop版）のPerformanceが78だったので、画像をwebpに変えたら一気に100になった🎊&lt;br&gt;（モバイルは未だに70切ってる😇） &lt;a href="https://t.co/VNxztIsR28"&gt;pic.twitter.com/VNxztIsR28&lt;/a&gt;&lt;/p&gt;&amp;mdash; hon-D (@yyh_gl) &lt;a href="https://twitter.com/yyh_gl/status/1329487413400375296?ref_src=twsrc%5Etfw"&gt;November 19, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;h1 id="safariでは注意が必要"&gt;Safariでは注意が必要&lt;/h1&gt;
+&lt;p&gt;多くのブラウザでWebPへの対応が既に完了しています。&lt;br&gt;
+ただし、Safariに関してはv14でようやく対応しました。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ja.wikipedia.org/wiki/WebP#%E5%AF%BE%E5%BF%9C%E7%92%B0%E5%A2%83" target="_blank" rel="noopener noreferrer"&gt;対応状況&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;Safari v14は2020年9月17日（日本時間）にリリースされたばかりなので、&lt;br&gt;
+まだ画像をちゃんと見れないユーザが多く存在すると思われます。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://developer.apple.com/documentation/safari-release-notes/safari-14-release-notes" target="_blank" rel="noopener noreferrer"&gt;リリースノート&lt;/a&gt;
+&lt;/p&gt;
+&lt;br&gt;
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="ja" dir="ltr"&gt;Safariのwebp対応ってバージョン14からだったんだ😇&lt;br&gt;&lt;br&gt;自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←&lt;/p&gt;&amp;mdash; hon-D (@yyh_gl) &lt;a href="https://twitter.com/yyh_gl/status/1331834104254369794?ref_src=twsrc%5Etfw"&gt;November 26, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;br&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自分のブログに来る人の90%弱がSafariじゃないから、まぁいいか←&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;嘘です、10%ほどの方々すみません🙇‍♂ &lt;br&gt;
+WebPにしたのはサムネ画像だけで、記事本文内の画像はWebPじゃないので許してください。。。&lt;/p&gt;</description></item><item><title>【OGP】リンク先のサムネイル画像を表示できるようにした話</title><link>https://tech.yyh-gl.dev/blog/ogp/</link><pubDate>Mon, 17 Jun 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/ogp/</guid><description>&lt;h1 id="twitter-のリンクにサムネイル画像が表示されない"&gt;Twitter のリンクにサムネイル画像が表示されない&lt;/h1&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/ogp/before.png" width="600"&gt;
+&lt;p&gt;このように Twitter でブログのリンクを載せても、サムネイルが表示されない。&lt;/p&gt;
+&lt;p&gt;はてなブログをやっていたときは、何もしなくてもサムネイルが表示されていました。&lt;/p&gt;
+&lt;p&gt;トップ画像をよしなにサムネイルにしてくれるのかなぁっと思っていましたが違ったんですね…。&lt;/p&gt;
+&lt;h1 id="どうやったらサムネイル画像が表示されるか"&gt;どうやったらサムネイル画像が表示されるか&lt;/h1&gt;
+&lt;!-- textlint-disable ja-technical-writing/sentence-length --&gt;
+&lt;p&gt;Twitter や Facebook などの SNS でタイトルやサムネイルといったWebページの情報を表示するには、
+&lt;u&gt;Open Graph Protocol（OGP）&lt;/u&gt; というものを設定する必要があります。&lt;/p&gt;
+&lt;!-- textlint-enable ja-technical-writing/sentence-length --&gt;
+&lt;p&gt;OGP を設定することで Twitter や Facebook でサムネイル付きのリンクを表示できます。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://digitalidentity.co.jp/blog/seo/ogp-share-setting.html" target="_blank" rel="noopener noreferrer"&gt;こちらのサイト&lt;/a&gt;
+で詳細が説明されています。&lt;/p&gt;
+&lt;h1 id="ogp-の設定"&gt;OGP の設定&lt;/h1&gt;
+&lt;p&gt;今回設定する OGP 情報は以下のとおりです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;og:title&lt;/li&gt;
+&lt;li&gt;og:type&lt;/li&gt;
+&lt;li&gt;og:url&lt;/li&gt;
+&lt;li&gt;og:description&lt;/li&gt;
+&lt;li&gt;og:image&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;これらの情報を head タグ内に埋め込みます。&lt;/p&gt;
+&lt;pre class="line-numbers"&gt;&lt;code class="language-html"&gt;&amp;lt;meta property=&amp;#34;og:title&amp;#34; content=&amp;#34;【Go &amp;#43; レイヤードアーキテクチャ】DDDを意識してWeb APIを実装してみる&amp;#34;&amp;gt;
 &amp;lt;meta property=&amp;#34;og:type&amp;#34; content=&amp;#34;article&amp;#34;&amp;gt;
 &amp;lt;meta property=&amp;#34;og:url&amp;#34; content=&amp;#34;https://tech.yyh-gl.dev/blog/go_web_api/&amp;#34;&amp;gt;
 &amp;lt;meta property=&amp;#34;og:description&amp;#34; content=&amp;#34;hoge&amp;#34;&amp;gt;
-&amp;lt;meta property=&amp;#34;og:image&amp;#34; content=&amp;#34;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;#34;&amp;gt;&lt;/code>&lt;/pre>
-&lt;p>ただし、僕の場合、Hugo のテーマの方で og:image 以外は設定してくれていました。&lt;br>
-したがって、今回は og:image だけを追加で設定します。&lt;/p></description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>&lt;h1 id="シンタックスハイライト導入">シンタックスハイライト導入&lt;/h1>
-&lt;p>このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。&lt;/p>
-&lt;p>正確には対応していない言語が（めちゃくちゃ）ありました。&lt;/p>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/syntax_highlight_before.png" width="600">
-&lt;p>このとおり、 Goにも対応していませんでした…。&lt;/p>
-&lt;br>
-&lt;p>もともと、このブログのテーマは &lt;a href="https://themes.gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo Themes&lt;/a>
-（Hugo 公式 テーマショップ的なの）に &lt;br>
-あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、&lt;br>
-シンタックスハイライト部分だけ個別に導入することにしました。&lt;/p>
-&lt;h1 id="prismjs">Prism.js&lt;/h1>
-&lt;p>さっそく、「HTML シンタックスハイライト」で調べてみました。&lt;/p>
-&lt;p>そしたら、だいたい以下の3つが出てきました。&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://prismjs.com/" target="_blank" rel="noopener noreferrer">Prism.js&lt;/a>
-&lt;/li>
-&lt;li>&lt;a href="https://highlightjs.org/" target="_blank" rel="noopener noreferrer">highlight.js&lt;/a>
-&lt;/li>
-&lt;li>&lt;a href="https://github.com/google/code-prettify" target="_blank" rel="noopener noreferrer">Google code-prettify&lt;/a>
-&lt;/li>
-&lt;/ul>
-&lt;p>どれにしようか迷ったのですが、見た目が一番好みだった Prism.js を使うことにしました。&lt;/p>
-&lt;h2 id="導入">導入&lt;/h2>
-&lt;p>導入方法については記事がたくさんあるので、そちらをご覧ください。&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://prismjs.com/download.html#themes=prism&amp;amp;languages=markup&amp;#43;css&amp;#43;clike&amp;#43;javascript" target="_blank" rel="noopener noreferrer">公式ダウンロードページ&lt;/a>
-&lt;/li>
-&lt;li>&lt;a href="https://mndangler.net/2017/04/syntaxhighlighter_prism-js/" target="_blank" rel="noopener noreferrer">導入 参考記事&lt;/a>
-&lt;/li>
-&lt;li>&lt;a href="https://thk.kanzae.net/net/wordpress/t1171/" target="_blank" rel="noopener noreferrer">導入 参考記事&lt;/a>
-&lt;/li>
-&lt;li>&lt;a href="https://niwaka-web.com/prism_js/" target="_blank" rel="noopener noreferrer">導入 参考記事&lt;/a>
-&lt;/li>
-&lt;/ul>
-&lt;h2 id="導入後">導入後&lt;/h2>
-&lt;img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/syntax_highlight_after.png" width="600">
-&lt;p>きれいですねー&lt;/p>
-&lt;p>今回導入した Prism.js のプラグインは、&lt;/p>
-&lt;ul>
-&lt;li>Line Highlight：行指定した箇所をハイライトする機能（上記画像内では使用していません）&lt;/li>
-&lt;li>Line Numbers：行番号を表示する機能&lt;/li>
-&lt;li>Show Language：右上に 言語名 を表示している機能&lt;/li>
-&lt;/ul>
-&lt;p>の3つです。&lt;/p>
-&lt;h1 id="困ったこと">困ったこと&lt;/h1>
-&lt;h2 id="行番号が表示されない">行番号が表示されない&lt;/h2>
-&lt;p>行番号を表示するには、&lt;/p>
-&lt;pre class="line-numbers">&lt;code class="language-html">&amp;lt;pre class=&amp;#34;line-numbers&amp;#34;&amp;gt;&amp;lt;code class=&amp;#34;language-c&amp;#34;&amp;gt;
+&amp;lt;meta property=&amp;#34;og:image&amp;#34; content=&amp;#34;https://tech.yyh-gl.dev/img/2019/06/go_web_api/featured.png&amp;#34;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ただし、僕の場合、Hugo のテーマの方で og:image 以外は設定してくれていました。&lt;br&gt;
+したがって、今回は og:image だけを追加で設定します。&lt;/p&gt;</description></item><item><title>【HTML + CSS + Prism.js】ブログの見た目を整えた話</title><link>https://tech.yyh-gl.dev/blog/blog_style_fix/</link><pubDate>Sun, 16 Jun 2019 09:00:00 +0900</pubDate><author>yyh-gl</author><guid>https://tech.yyh-gl.dev/blog/blog_style_fix/</guid><description>&lt;h1 id="シンタックスハイライト導入"&gt;シンタックスハイライト導入&lt;/h1&gt;
+&lt;p&gt;このブログ、ちょっと前までコードのシンタックスハイライトが効いていませんでした。&lt;/p&gt;
+&lt;p&gt;正確には対応していない言語が（めちゃくちゃ）ありました。&lt;/p&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/syntax_highlight_before.png" width="600"&gt;
+&lt;p&gt;このとおり、 Goにも対応していませんでした…。&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;もともと、このブログのテーマは &lt;a href="https://themes.gohugo.io/" target="_blank" rel="noopener noreferrer"&gt;Hugo Themes&lt;/a&gt;
+（Hugo 公式 テーマショップ的なの）に &lt;br&gt;
+あったものを使わせてもらっているのですが、さすがに対応していない言語が多すぎたので、&lt;br&gt;
+シンタックスハイライト部分だけ個別に導入することにしました。&lt;/p&gt;
+&lt;h1 id="prismjs"&gt;Prism.js&lt;/h1&gt;
+&lt;p&gt;さっそく、「HTML シンタックスハイライト」で調べてみました。&lt;/p&gt;
+&lt;p&gt;そしたら、だいたい以下の3つが出てきました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://prismjs.com/" target="_blank" rel="noopener noreferrer"&gt;Prism.js&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://highlightjs.org/" target="_blank" rel="noopener noreferrer"&gt;highlight.js&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/code-prettify" target="_blank" rel="noopener noreferrer"&gt;Google code-prettify&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;どれにしようか迷ったのですが、見た目が一番好みだった Prism.js を使うことにしました。&lt;/p&gt;
+&lt;h2 id="導入"&gt;導入&lt;/h2&gt;
+&lt;p&gt;導入方法については記事がたくさんあるので、そちらをご覧ください。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://prismjs.com/download.html#themes=prism&amp;amp;languages=markup&amp;#43;css&amp;#43;clike&amp;#43;javascript" target="_blank" rel="noopener noreferrer"&gt;公式ダウンロードページ&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://mndangler.net/2017/04/syntaxhighlighter_prism-js/" target="_blank" rel="noopener noreferrer"&gt;導入 参考記事&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://thk.kanzae.net/net/wordpress/t1171/" target="_blank" rel="noopener noreferrer"&gt;導入 参考記事&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://niwaka-web.com/prism_js/" target="_blank" rel="noopener noreferrer"&gt;導入 参考記事&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="導入後"&gt;導入後&lt;/h2&gt;
+&lt;img src="https://tech.yyh-gl.dev/img/2019/06/blog_style_fix/syntax_highlight_after.png" width="600"&gt;
+&lt;p&gt;きれいですねー&lt;/p&gt;
+&lt;p&gt;今回導入した Prism.js のプラグインは、&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Line Highlight：行指定した箇所をハイライトする機能（上記画像内では使用していません）&lt;/li&gt;
+&lt;li&gt;Line Numbers：行番号を表示する機能&lt;/li&gt;
+&lt;li&gt;Show Language：右上に 言語名 を表示している機能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;の3つです。&lt;/p&gt;
+&lt;h1 id="困ったこと"&gt;困ったこと&lt;/h1&gt;
+&lt;h2 id="行番号が表示されない"&gt;行番号が表示されない&lt;/h2&gt;
+&lt;p&gt;行番号を表示するには、&lt;/p&gt;
+&lt;pre class="line-numbers"&gt;&lt;code class="language-html"&gt;&amp;lt;pre class=&amp;#34;line-numbers&amp;#34;&amp;gt;&amp;lt;code class=&amp;#34;language-c&amp;#34;&amp;gt;
 コード
-&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/code>&lt;/pre>
-&lt;p>上記コードのように、表示するコードスニペットに対して、&lt;br>
-line-numbers というクラスを付与してあげるだけでOKです。&lt;/p>
-&lt;p>…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。&lt;br>
-したがって、prism.css を修正して行番号が他の要素の上に来るようにしました。&lt;/p>
-&lt;h2 id="リスト表示の行間が異様に広い">リスト表示の行間が異様に広い&lt;/h2>
-&lt;p>Prism.js 導入後…&lt;/p></description></item></channel></rss>
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上記コードのように、表示するコードスニペットに対して、&lt;br&gt;
+line-numbers というクラスを付与してあげるだけでOKです。&lt;/p&gt;
+&lt;p&gt;…が、なぜか行番号が他の要素の下にいってしまい、見えなくなっていました。&lt;br&gt;
+したがって、prism.css を修正して行番号が他の要素の上に来るようにしました。&lt;/p&gt;
+&lt;h2 id="リスト表示の行間が異様に広い"&gt;リスト表示の行間が異様に広い&lt;/h2&gt;
+&lt;p&gt;Prism.js 導入後…&lt;/p&gt;</description></item></channel></rss>
