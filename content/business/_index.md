@@ -44,28 +44,28 @@ Webアプリケーションのバックエンド・フロントエンド開発�
 ## Webサービス
 
 <div class="business-service-card">
-<a class="business-service-logo" href="https://ur-logs.yyh-gl.dev/">
-  <img src="https://tech.yyh-gl.dev/img/business/urlogs.webp" width="200" alt="urLogs（ユアログ）" >
-</a>
+  <a class="business-service-logo" href="https://ur-logs.yyh-gl.dev/">
+    <img src="https://tech.yyh-gl.dev/img/business/urlogs.webp" width="200" alt="urLogs（ユアログ）" >
+  </a>
 
-<div class="business-service-body">
+  <div class="business-service-body">
 
-### [urLogs（ユアログ）](https://ur-logs.yyh-gl.dev/)
+  ### [urLogs（ユアログ）](https://ur-logs.yyh-gl.dev/)
 
-**「時間を可視化し、人生を豊かに」**
+  **「時間を可視化し、人生を豊かに」**
 
-労働時間の可視化により効率的な労働を実現し、
-あなたのプライベート時間をより豊かにする時間管理ツールです。
+  労働時間の可視化により効率的な労働を実現し、
+  あなたのプライベート時間をより豊かにする時間管理ツールです。
 
-副業で個人事業を始めた会社員をメインターゲットとしており、時間給制で仕事をする方に最適です。
+  副業で個人事業を始めた会社員をメインターゲットとしており、時間給制で仕事をする方に最適です。
 
-- 時間単位での作業記録・管理
-- プロジェクト別の工数集計
-- 収入目標の可視化
+  - 時間単位での作業記録・管理
+  - プロジェクト別の工数集計
+  - 収入目標の可視化
 
-->> サービスURL：[https://ur-logs.yyh-gl.dev](https://ur-logs.yyh-gl.dev)
+  ->> サービスURL：[https://ur-logs.yyh-gl.dev](https://ur-logs.yyh-gl.dev)
 
-</div>
+  </div>
 </div>
 
 # 特定商取引法に基づく表記
