@@ -1,6 +1,13 @@
 {{ define "main" }}
+<div class="list-header">
+  <h1>
+    <span class="prompt">$ </span>
+    {{ .Title }}
+  </h1>
+</div>
+
 <article class="post">
-  <div class="content">
+  <div class="post-content business-content">
     {{ .Content }}
   </div>
 </article>
