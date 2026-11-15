@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Hugo static site blog running in Docker. Hugo v0.146.2 (extended). The site uses **no Hugo theme** — the UI is a fully custom implementation living entirely under `layouts/` and `static/css/style.css` (the former `hugo-future-imperfect-slim` theme submodule was removed).
+Hugo static site blog running in Docker. Hugo v0.170.0 (extended). The site uses **no Hugo theme** — the UI is a fully custom implementation living entirely under `layouts/` and `static/css/style.css` (the former `hugo-future-imperfect-slim` theme submodule was removed).
 
 - `main` branch: work branch
 - `gh-pages` branch: publication branch
