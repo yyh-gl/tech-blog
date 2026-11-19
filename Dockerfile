@@ -8,7 +8,7 @@ COPY . .
 RUN apt-get update && apt-get install -y webp nodejs
 RUN corepack enable && corepack prepare pnpm@latest --activate
 RUN go install github.com/Ladicle/tcardgen@latest
-RUN CGO_ENABLED=1 go install -tags extended github.com/gohugoio/hugo@v0.170.0
+RUN CGO_ENABLED=1 go install -tags extended github.com/gohugoio/hugo@v0.170.1
 
 EXPOSE 1313
 
