@@ -58,6 +58,15 @@ create-ogp: ## OGP画像を生成
 	docker exec tech-blog cwebp static/img/`date +"%Y/%m"`/${title}/featured.png -o static/img/`date +"%Y/%m"`/${title}/featured.webp
 	rm -f static/img/`date +"%Y/%m"`/${title}/featured.png
 
+.PHONY: create-ogp-specified
+create-ogp-specified: ## 指定したfeatured.pngをwebp形式に変換
+	@if [ -z "${title}" ]; then \
+		echo 'titleを指定してください。'; \
+		exit 1; \
+	fi
+	docker exec tech-blog cwebp static/img/`date +"%Y/%m"`/${title}/featured.png -o static/img/`date +"%Y/%m"`/${title}/featured.webp
+	rm -f static/img/`date +"%Y/%m"`/${title}/featured.png
+
 .PHONY: convert-to-webp
 convert-to-webp: ## 画像をwebp形式に変換
 	@if [ -z "${title}" ]; then \
