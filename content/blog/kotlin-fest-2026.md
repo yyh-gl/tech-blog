@@ -39,7 +39,7 @@ Kotlin Festのような規模が大きいカンファレンスで、コアスタ
 運営スタッフとして至らぬ点も多々あったと思いますが、懇親会では嬉しいフィードバックも多くいただけたのでよかったです。<br>
 ありがとうございました。
 
-<img src="http://localhost:1313/img/2026/11/kotlin-fest-2026/closing.webp" width="600">
+<img src="https://tech.yyh-gl.dev/img/2026/11/kotlin-fest-2026/closing.webp" width="600">
 
 ## 登壇
 
@@ -53,7 +53,7 @@ Kotlin Festのような規模が大きいカンファレンスで、コアスタ
 
 登壇を見に来てくださったみなさん、Ask the speakerで会話してくださったみなさん、ありがとうございました！
 
-<img src="http://localhost:1313/img/2026/11/kotlin-fest-2026/me.webp" width="600">
+<img src="https://tech.yyh-gl.dev/img/2026/11/kotlin-fest-2026/me.webp" width="600">
 
 ## ブース運営
 
